@@ -16,10 +16,12 @@ const HomePage = () => {
         <a href="#" className={styles.quickCard} style={{ backgroundColor: 'var(--sage-green)' }}>
           <FaChartBar className={styles.cardIcon} />
           <span className={styles.cardText}>Fixture</span>
+          <span className={styles.cardSubtext}>Próximamente</span>
         </a>
         <a href="#" className={styles.quickCard} style={{ backgroundColor: 'var(--petrol-blue)' }}>
           <FaTrophy className={styles.cardIcon} />
           <span className={styles.cardText}>Tabla de Posiciones</span>
+          <span className={styles.cardSubtext}>Próximamente</span>
         </a>
       </div>
 

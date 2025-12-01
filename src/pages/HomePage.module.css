@@ -64,6 +64,13 @@
   text-align: center;
 }
 
+.cardSubtext {
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.9;
+  font-weight: 400;
+}
+
 .cardsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -89,7 +96,20 @@
   }
   
   .quickAccess {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .quickCard {
+    padding: 1.25rem 0.75rem;
+    font-size: 0.9rem;
+  }
+  
+  .cardIcon {
+    font-size: 1.75rem;
+  }
+  
+  .cardSubtext {
+    font-size: 0.75rem;
   }
 }
 
