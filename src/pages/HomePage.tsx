@@ -6,7 +6,8 @@ import styles from './HomePage.module.css';
 const HomePage = () => {
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Premier Mitológico</h1>
+      <h4 className={styles.subtitle}>Premier Mitológico</h4>
+      <h1 className={styles.title}>Copa K&T Diciembre 2025</h1>
       <p className={styles.description}>
         Prepara tus mazos para el torneo más esperado del reino. Gloria y premios esperan a los mejores duelistas.
       </p>
