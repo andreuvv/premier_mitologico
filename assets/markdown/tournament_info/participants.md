@@ -13,6 +13,6 @@
 | Guari     | ❌                                 |              |
 | Chisco    | ✅                                 |              |
 | Vinny     | ❌                                 |              |
-| Traukolin | ✅                                 |              |
+| Traukolin | ✅                                 | ✅            |
 | Chester   | ✅                                 | ✅            |
 | David     | ✅                                 | ✅            |
