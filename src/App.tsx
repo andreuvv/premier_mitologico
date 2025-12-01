@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/layout/Header';
+import ScrollToTop from './components/ScrollToTop';
 import HomePage from './pages/HomePage';
 import TournamentInfoPage from './pages/TournamentInfoPage';
 import GameFormatsPage from './pages/GameFormatsPage';
@@ -18,6 +19,7 @@ function App() {
           <Route path="/banlist" element={<BanlistPage />} />
         </Routes>
       </main>
+      <ScrollToTop />
     </div>
   );
 }
