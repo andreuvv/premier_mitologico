@@ -1,0 +1,163 @@
+.header {
+  background-color: var(--coal-grey);
+  color: var(--beige);
+  padding: 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.container {
+  width: 100%;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 70px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0.5rem 0;
+  position: absolute;
+  left: 2rem;
+}
+
+.logo img {
+  height: 55px;
+  object-fit: contain;
+}
+
+.spacer {
+  display: none;
+}
+
+.nav {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.nav a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  color: var(--beige);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 24px;
+  transition: all 0.2s;
+}
+
+.nav a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.nav a.active {
+  color: var(--beige);
+  background-color: var(--petrol-blue);
+  font-weight: bold;
+}
+
+.deckBuilder {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  background: transparent;
+  border: none;
+  color: grey;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 24px;
+  text-decoration: line-through;
+  cursor: not-allowed;
+  position: absolute;
+  right: 2rem;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--beige);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.mobileMenu {
+  display: none;
+}
+
+.icon {
+  font-size: 18px;
+}
+
+@media (max-width: 800px) {
+  .container {
+    justify-content: flex-start;
+    position: relative;
+  }
+
+  .logo {
+    position: static;
+  }
+
+  .nav {
+    display: none;
+  }
+  
+  .deckBuilder {
+    display: none;
+  }
+
+  .spacer {
+    display: block;
+    flex: 1;
+  }
+  
+  .hamburger {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .mobileMenu {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--coal-grey);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .mobileMenu a,
+  .mobileMenu .mobileDisabled {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 1rem 2rem;
+    color: var(--beige);
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .mobileMenu a:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .mobileDisabled {
+    color: grey;
+    text-decoration: line-through;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+

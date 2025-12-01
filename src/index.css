@@ -1,0 +1,74 @@
+:root {
+  --coal-grey: #2D2D2D;
+  --sage-green: #7EA470;
+  --petrol-blue: #4B8BA3;
+  --ocher: #D69C41;
+  --brick-red: #C94338;
+  --beige: #EADDCF;
+  --white: #FFFFFF;
+}
+
+@font-face {
+  font-family: 'Cyrodiil';
+  src: url('/fonts/Cyrodiil.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cyrodiil';
+  src: url('/fonts/Cyrodiil Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cyrodiil';
+  src: url('/fonts/Cyrodiil Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Cyrodiil';
+  src: url('/fonts/Cyrodiil Bold Italic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--coal-grey);
+  color: var(--beige);
+  line-height: 1.6;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--coal-grey);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sage-green);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ocher);
+}

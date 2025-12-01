@@ -1,0 +1,100 @@
+{
+  "format": "Bloque Furia Racial Libre",
+  "lastUpdated": "2025-11-24",
+  "banned": [
+    {
+      "name": "Moñai",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/123/055.png"
+    },
+    {
+      "name": "Humbaba",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/76/291.png"
+    },
+    {
+      "name": "Traición de Efialtes",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/142/020.png"
+    },
+    {
+      "name": "Mag Mell",
+      "type": "Totem",
+      "imageUrl": "https://api.myl.cl/static/cards/146/220.png"
+    },
+    {
+      "name": "Ellen Trechend",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/146/223.png"
+    },
+    {
+      "name": "Merodeador",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/146/036.png"
+    },
+    {
+      "name": "Procesión",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/146/030.png"
+    },
+    {
+      "name": "Tír Na Nóg",
+      "type": "Totem",
+      "imageUrl": "https://api.myl.cl/static/cards/146/015.png"
+    },
+    {
+      "name": "Camahueto",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/123/012.png"
+    }
+  ],
+  "limitedX1": [
+    {
+      "name": "Morgause",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/88/048.png"
+    },
+    {
+      "name": "Tezcatlipoca",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/123/007.png"
+    },
+    {
+      "name": "Crear Dragón",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/146/178.png"
+    },
+    {
+      "name": "Cangrejo Cazador",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/146/037.png"
+    },
+    {
+      "name": "Reanimar",
+      "type": "Talisman",
+      "imageUrl": ""
+    }
+  ],
+  "limitedX2": [
+    {
+      "name": "Jormungdgander",
+      "type": "Aliado",
+      "imageUrl": ""
+    },
+    {
+      "name": "Sinach",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/146/018.png"
+    },
+    {
+      "name": "An Torc Diabhalta",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/146/219.png"
+    },
+    {
+      "name": "Surt",
+      "type": "Aliado",
+      "imageUrl": ""
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+.container {
+  max-width: 100%;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  color: var(--coal-grey);
+  margin: 0 0 0.5rem 0;
+}
+
+.lastUpdated {
+  color: var(--coal-grey);
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+.controls {
+  background-color: var(--coal-grey);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.formatSelector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.formatSelector label {
+  font-weight: bold;
+  color: var(--beige);
+  white-space: nowrap;
+}
+
+.formatSelector select {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--ocher);
+  border-radius: 8px;
+  background-color: var(--coal-grey);
+  color: var(--beige);
+  font-size: 1rem;
+  cursor: pointer;
+  min-width: 250px;
+}
+
+.lastUpdated {
+  margin: 0;
+  margin-left: auto;
+  color: var(--beige);
+  opacity: 0.7;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.categoryTabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.categoryTabs button {
+  flex: 1;
+  min-width: 150px;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--petrol-blue);
+  border-radius: 8px;
+  background-color: transparent;
+  color: var(--beige);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.categoryTabs button:hover {
+  background-color: rgba(75, 139, 163, 0.1);
+}
+
+.categoryTabs button.activeTab {
+  background-color: var(--petrol-blue);
+  color: var(--beige);
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+  color: var(--coal-grey);
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.placeholder {
+  width: 100%;
+  aspect-ratio: 2/3;
+  background-color: var(--coal-grey);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--beige);
+  font-size: 0.9rem;
+}
+
+.cardInfo {
+  padding: 1rem;
+}
+
+.cardInfo h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  color: var(--coal-grey);
+}
+
+.cardInfo p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--petrol-blue);
+  font-weight: 600;
+}
+
+@media (max-width: 800px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .formatSelector {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .formatSelector select {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .lastUpdated {
+    margin-left: 0;
+    align-self: flex-start;
+  }
+
+  .categoryTabs {
+    gap: 0.25rem;
+  }
+
+  .categoryTabs button {
+    flex: 1;
+    min-width: auto;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .cardsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+}
+

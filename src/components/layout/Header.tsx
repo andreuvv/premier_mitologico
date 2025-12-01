@@ -1,0 +1,85 @@
+import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { FaHome, FaClipboardList, FaBan, FaGamepad, FaHammer } from 'react-icons/fa';
+import styles from './Header.module.css';
+
+const Header = () => {
+  const location = useLocation();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  return (
+    <header className={styles.header}>
+      <div className={styles.container}>
+        <Link to="/" className={styles.logo}>
+          <img src="/assets/images/logo_premier.png" alt="MYL Premier" />
+        </Link>
+        
+        <nav className={styles.nav}>
+          <Link 
+            to="/tournament-info" 
+            className={location.pathname === '/tournament-info' ? styles.active : ''}
+          >
+            <FaClipboardList className={styles.icon} />
+            Info Torneo
+          </Link>
+          <Link 
+            to="/banlist" 
+            className={location.pathname === '/banlist' ? styles.active : ''}
+          >
+            <FaBan className={styles.icon} />
+            Ban List
+          </Link>
+          <Link 
+            to="/game-formats" 
+            className={location.pathname === '/game-formats' ? styles.active : ''}
+          >
+            <FaGamepad className={styles.icon} />
+            Formatos
+          </Link>
+        </nav>
+
+        <div className={styles.spacer}></div>
+
+        <button className={styles.deckBuilder} disabled>
+          <FaHammer className={styles.icon} />
+          Deck Builder
+        </button>
+
+        <button 
+          className={styles.hamburger}
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          ☰
+        </button>
+      </div>
+
+      {mobileMenuOpen && (
+        <div className={styles.mobileMenu}>
+          <Link to="/" onClick={() => setMobileMenuOpen(false)}>
+            <FaHome className={styles.icon} />
+            Inicio
+          </Link>
+          <Link to="/tournament-info" onClick={() => setMobileMenuOpen(false)}>
+            <FaClipboardList className={styles.icon} />
+            Info Torneo
+          </Link>
+          <Link to="/banlist" onClick={() => setMobileMenuOpen(false)}>
+            <FaBan className={styles.icon} />
+            Ban List
+          </Link>
+          <Link to="/game-formats" onClick={() => setMobileMenuOpen(false)}>
+            <FaGamepad className={styles.icon} />
+            Formatos
+          </Link>
+          <div className={styles.mobileDisabled}>
+            <FaHammer className={styles.icon} />
+            Deck Builder
+          </div>
+        </div>
+      )}
+    </header>
+  );
+};
+
+export default Header;
+

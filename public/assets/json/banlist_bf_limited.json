@@ -1,0 +1,30 @@
+{
+  "format": "Bloque Furia Racial Limitado",
+  "lastUpdated": "2025-11-24",
+  "banned": [
+    {
+      "name": "Procesión",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/146/030.png"
+    },
+    {
+      "name": "Tridente de los Mares",
+      "type": "Arma",
+      "imageUrl": "https://api.myl.cl/static/cards/114/071.png"
+    }
+  ],
+  "limitedX1": [
+    {
+      "name": "Merodeador",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/146/036.png"
+    },
+    {
+      "name": "Morgause",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/88/048.png"
+    }
+  ],
+  "limitedX2": [
+  ]
+}

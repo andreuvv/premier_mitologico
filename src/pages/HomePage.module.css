@@ -1,0 +1,81 @@
+.container {
+  max-width: 100%;
+}
+
+.title {
+  font-size: 42px;
+  font-weight: 900;
+  font-family: 'Roboto', sans-serif;
+  color: var(--coal-grey);
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
+
+.description {
+  text-align: center;
+  color: var(--coal-grey);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.quickAccess {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.quickCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 12px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+  gap: 0.5rem;
+}
+
+.quickCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.cardIcon {
+  font-size: 2.5rem;
+}
+
+.cardText {
+  text-align: center;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.cardWrapper {
+  min-width: 0;
+}
+
+@media (max-width: 800px) {
+  .title {
+    font-size: 32px;
+  }
+  
+  .cardsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .quickAccess {
+    grid-template-columns: 1fr;
+  }
+}
+
