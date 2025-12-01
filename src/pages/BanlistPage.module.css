@@ -34,6 +34,7 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 1.5rem;
+  position: relative;
 }
 
 .formatSelector label {
@@ -60,6 +61,119 @@
   opacity: 0.7;
   font-size: 0.9rem;
   white-space: nowrap;
+}
+
+.lastUpdatedWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.infoIconContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.infoIcon {
+  color: var(--petrol-blue);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.infoIcon:hover {
+  color: var(--ocher);
+}
+
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  background-color: var(--coal-grey);
+  color: var(--beige);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  border: 1px solid var(--petrol-blue);
+  z-index: 10;
+}
+
+.infoIconContainer:hover .tooltip {
+  opacity: 1;
+}
+
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup {
+  background-color: var(--beige);
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.popupHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.popupHeader h3 {
+  margin: 0;
+  color: var(--coal-grey);
+  font-size: 1.5rem;
+}
+
+.popupHeader button {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--coal-grey);
+  cursor: pointer;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.popupHeader button:hover {
+  color: var(--brick-red);
+}
+
+.popupContent {
+  color: var(--coal-grey);
+  line-height: 1.6;
+}
+
+.popupContent p {
+  margin: 0 0 1rem 0;
+}
+
+.popupContent p:last-child {
+  margin-bottom: 0;
 }
 
 .categoryTabs {
@@ -168,7 +282,18 @@
 
   .lastUpdated {
     margin-left: 0;
-    align-self: flex-start;
+  }
+
+  .lastUpdatedWrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .infoIconContainer {
+    position: relative;
   }
 
   .categoryTabs {

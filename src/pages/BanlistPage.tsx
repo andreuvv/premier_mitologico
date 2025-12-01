@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { FaInfoCircle } from 'react-icons/fa';
 import { BanListFormat, BanListCategory, BanListData, BanListCard } from '../types/banlist';
 import { loadBanlist } from '../services/banlistService';
 import styles from './BanlistPage.module.css';
@@ -8,6 +9,7 @@ const BanlistPage = () => {
   const [selectedCategory, setSelectedCategory] = useState<BanListCategory>(BanListCategory.BANNED);
   const [banlistData, setBanlistData] = useState<BanListData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [showInfoPopup, setShowInfoPopup] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -76,9 +78,23 @@ const BanlistPage = () => {
             ))}
           </select>
           {banlistData && (
-            <p className={styles.lastUpdated}>
-              Última actualización: {new Date(banlistData.lastUpdated).toLocaleDateString('es-ES', { month: 'long', year: 'numeric' }).replace(/^\w/, c => c.toUpperCase())}
-            </p>
+            <div className={styles.lastUpdatedWrapper}>
+              <p className={styles.lastUpdated}>
+                Última actualización: {new Date(banlistData.lastUpdated).toLocaleDateString('es-ES', { month: 'long', year: 'numeric' }).replace(/^\w/, c => c.toUpperCase())}
+              </p>
+              <div className={styles.infoIconContainer}>
+                <FaInfoCircle 
+                  className={styles.infoIcon}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowInfoPopup(!showInfoPopup);
+                  }}
+                />
+                <div className={styles.tooltip}>
+                   Información importante de las restricciones.
+                </div>
+              </div>
+            </div>
           )}
         </div>
 
@@ -112,6 +128,28 @@ const BanlistPage = () => {
               </div>
             </div>
           ))}
+        </div>
+      )}
+
+      {showInfoPopup && (
+        <div className={styles.popupOverlay} onClick={() => setShowInfoPopup(false)}>
+          <div className={styles.popup} onClick={(e) => e.stopPropagation()}>
+            <div className={styles.popupHeader}>
+              <h3>Información de Banlist</h3>
+              <button onClick={() => setShowInfoPopup(false)}>×</button>
+            </div>
+            <div className={styles.popupContent}>
+              <p><strong>Para todos los formatos, no se pueden incluir en el mazo:</strong></p>
+              <ul>
+                <li>Las cartas de Aliado sin raza</li>
+                <li>Las cartas con "SP" en su nombre</li>
+                <li>Las cartas con ★ en su nombre</li>
+              </ul>
+              <p> </p>
+              <p>Las imágenes usadas son referenciales y pueden o no corresponder a la última versión impresa de la carta.</p>
+              <p>Las siguientes restricciones aplican a cualquier versión de la carta.</p>
+            </div>
+          </div>
         </div>
       )}
     </div>
