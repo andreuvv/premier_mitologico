@@ -11,7 +11,7 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.container}>
         <Link to="/" className={styles.logo}>
-          <img src="/assets/images/logo_premier.png" alt="MYL Premier" />
+          <img src={`${import.meta.env.BASE_URL}assets/images/logo_premier.png`} alt="MYL Premier" />
         </Link>
         
         <nav className={styles.nav}>

@@ -22,7 +22,7 @@ export const loadMarkdownContent = async (
       }
     }
 
-    const path = `/assets/markdown/${type}/${fileName}`;
+    const path = `${import.meta.env.BASE_URL}assets/markdown/${type}/${fileName}`;
     const response = await fetch(path);
     
     if (!response.ok) {

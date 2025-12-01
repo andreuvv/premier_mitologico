@@ -9,7 +9,7 @@ const formatToFile: Record<BanListFormat, string> = {
 
 export const loadBanlist = async (format: BanListFormat): Promise<BanListData> => {
   const filename = formatToFile[format];
-  const response = await fetch(`/assets/json/${filename}`);
+  const response = await fetch(`${import.meta.env.BASE_URL}assets/json/${filename}`);
   if (!response.ok) {
     throw new Error(`Failed to load banlist: ${filename}`);
   }
