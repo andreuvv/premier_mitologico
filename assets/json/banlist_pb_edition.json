@@ -1,0 +1,385 @@
+{
+  "format": "Primer Bloque Racial Edición",
+  "lastUpdated": "2025-11-24",
+  "banned": [
+    {
+      "name": "Ataque a Traición",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/43/063.png"
+    },
+    {
+      "name": "Hogar de Demonios",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/109/090.png"
+    },
+    {
+      "name": "Fergus",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/116/047.png"
+    },
+    {
+      "name": "Bas-Pef",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/116/294.png"
+    },
+    {
+      "name": "Traficante de Esclavos",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/43/040.png"
+    },
+    {
+      "name": "Red de Aracne",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/109/136.png"
+    },
+    {
+      "name": "Avalon",
+      "type": "Totem",
+      "imageUrl": "https://api.myl.cl/static/cards/92/053.png"
+    },
+    {
+      "name": "Guiza",
+      "type": "Totem",
+      "imageUrl": "https://api.myl.cl/static/cards/116/328.png"
+    },
+    {
+      "name": "Juglares",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/19/193.png"
+    },
+    {
+      "name": "Marco Antonio",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/109/051.png"
+    },
+    {
+      "name": "La Traición de Macalpin",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/72/099.png"
+    },
+    {
+      "name": "Vuelta a lo Primordial",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/47/262.png"
+    },
+    {
+      "name": "Felipe II",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/93/056.png"
+    },
+    {
+      "name": "Rómulo y Remo",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/109/050.png"
+    },
+    {
+      "name": "Cathbadh el Druida (Rework)",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/45/174.png"
+    },
+    {
+      "name": "Nuh",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/47/249.png"
+    },
+    {
+      "name": "Dragón Dorado",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/82/001.png"
+    },
+    {
+      "name": "Rayos",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/109/037.png"
+    },
+    {
+      "name": "Daga de Bote",
+      "type": "Arma",
+      "imageUrl": "https://api.myl.cl/static/cards/47/319.png"
+    },
+    {
+      "name": "Joyero",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/93/145.png"
+    },
+    {
+      "name": "Eolo",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/109/031.png"
+    },
+    {
+      "name": "Forma de Toro",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/82/004.png"
+    },
+    {
+      "name": "Curandera",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/43/055.png"
+    },
+    {
+      "name": "Caballo Lunar",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/19/059.png"
+    },
+    {
+      "name": "Furias",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/20/114.png"
+    },
+    {
+      "name": "Urisk",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/19/130.png"
+    }
+  ],
+  "limitedX1": [
+    {
+      "name": "Tótem de Nwyre",
+      "type": "Totem",
+      "imageUrl": "https://api.myl.cl/static/cards/93/144.png"
+    },
+    {
+      "name": "César Augusto",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/116/142.png"
+    },
+    {
+      "name": "Gaitas",
+      "type": "Oro",
+      "imageUrl": "https://api.myl.cl/static/cards/82/002.png"
+    },
+    {
+      "name": "Baal-Zaphon",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/47/254.png"
+    },
+    {
+      "name": "Helios",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/20/002.png"
+    },
+    {
+      "name": "Carmix",
+      "type": "Oro",
+      "imageUrl": "https://api.myl.cl/static/cards/72/100.png"
+    },
+    {
+      "name": "Bennu",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/21/184.png"
+    },
+    {
+      "name": "Leucrota",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/72/084.png"
+    },
+    {
+      "name": "Druida Maldito",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/116/308.png"
+    },
+    {
+      "name": "Qer-Her",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/116/107.png"
+    },
+    {
+      "name": "Antorcha Olímpica",
+      "type": "Oro",
+      "imageUrl": "https://api.myl.cl/static/cards/109/043.png"
+    },
+    {
+      "name": "Ulster",
+      "type": "Totem",
+      "imageUrl": "https://api.myl.cl/static/cards/116/162.png"
+    },
+    {
+      "name": "Rito de Atón",
+      "type": "Oro",
+      "imageUrl": "https://api.myl.cl/static/cards/72/046.png"
+    },
+    {
+      "name": "Aceite de Oliva",
+      "type": "Oro",
+      "imageUrl": "https://api.myl.cl/static/cards/116/276.png"
+    },
+    {
+      "name": "Marmita Druida (Rework)",
+      "type": "Oro",
+      "imageUrl": ""
+    },
+    {
+      "name": "Beni Hassam",
+      "type": "Totem",
+      "imageUrl": "https://api.myl.cl/static/cards/21/141.png"
+    },
+    {
+      "name": "Ofrenda a los Dioses",
+      "type": "Oro",
+      "imageUrl": "https://api.myl.cl/static/cards/20/221.png"
+    },
+    {
+      "name": "Pwyll",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/46/255.png"
+    },
+    {
+      "name": "Jinetes de Fuego",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/116/055.png"
+    },
+    {
+      "name": "La Ilíada",
+      "type": "Oro",
+      "imageUrl": "https://api.myl.cl/static/cards/116/148.png"
+    },
+    {
+      "name": "Morir de Pie",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/82/005.png"
+    },
+    {
+      "name": "Yelmo Alejandrino",
+      "type": "Arma",
+      "imageUrl": "https://api.myl.cl/static/cards/47/275.png"
+    },
+    {
+      "name": "Kobold",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/116/283.png"
+    },
+    {
+      "name": "Montuhopet II",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/116/292.png"
+    }
+  ],
+  "limitedX2": [
+    {
+      "name": "Fe Sin Límite",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/81/003.png"
+    },
+    {
+      "name": "Idmon el Adivino",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/20/092.png"
+    },
+    {
+      "name": "Amergin el Druida",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/45/039.png"
+    },
+    {
+      "name": "Tebas",
+      "type": "Totem",
+      "imageUrl": "https://api.myl.cl/static/cards/116/249.png"
+    },
+    {
+      "name": "Mercaderes",
+      "type": "Oro",
+      "imageUrl": "https://api.myl.cl/static/cards/93/058.png"
+    },
+    {
+      "name": "Constantino",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/44/009.png"
+    },
+    {
+      "name": "Red de Plata",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/72/241.png"
+    },
+    {
+      "name": "Nut",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/21/012.png"
+    },
+    {
+      "name": "Goblin Stone",
+      "type": "Totem",
+      "imageUrl": ""
+    },
+    {
+      "name": "Rea",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/20/030.png"
+    },
+    {
+      "name": "País sin Luz",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/116/104.png"
+    },
+    {
+      "name": "Qadesh",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/21/049.png"
+    },
+    {
+      "name": "Ma'arrat an-Numán",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/72/127.png"
+    },
+    {
+      "name": "Afrodita",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/72/215.png"
+    },
+    {
+      "name": "Conand",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/72/036.png"
+    },
+    {
+      "name": "Haquika",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/116/052.png"
+    },
+    {
+      "name": "Zagreus",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/116/062.png"
+    },
+    {
+      "name": "Linaje Celta",
+      "type": "Oro",
+      "imageUrl": "https://api.myl.cl/static/cards/72/044.png"
+    },
+    {
+      "name": "Papiros de Lahún",
+      "type": "Oro",
+      "imageUrl": "https://api.myl.cl/static/cards/118/008.png"
+    },
+    {
+      "name": "Corona del Día",
+      "type": "Oro",
+      "imageUrl": ""
+    },
+    {
+      "name": "Ptolomeo II",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/47/238.png"
+    },
+    {
+      "name": "Panteón",
+      "type": "Totem",
+      "imageUrl": "https://api.myl.cl/static/cards/109/146.png"
+    },
+    {
+      "name": "Amosis I",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/116/027.png"
+    },
+    {
+      "name": "Cantobele",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/109/294.png"
+    },
+    {
+      "name": "Alejandro Magno",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/109/069.png"
+    }
+  ]
+}
