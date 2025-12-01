@@ -4,7 +4,7 @@ import App from './App';
 
 export default function Root() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <App />
     </BrowserRouter>
   );
