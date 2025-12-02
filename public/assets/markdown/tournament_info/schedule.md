@@ -20,8 +20,8 @@
 ### 🍕 Horarios de Comida
 
 - 🍔 **Tiempo para almorzar**: Se dará un descanso apropiado para quienes no hayan comido antes del evento
-- 🍕 **Pizza - 21:00 hrs**: Se servirá pizza para todos los participantes
-- ☕ Refrigerios y bebidas disponibles durante todo el evento
+- 🍕 **Pizza - 21:00 hrs**: Se servirá pizza para todos los participantes (comprado con el restante de dinero de la cuota)
+- ☕ Refrigerios y bebidas disponibles durante todo el evento (de responsabilidad individual su compra y consumo)
 
 ---
 
