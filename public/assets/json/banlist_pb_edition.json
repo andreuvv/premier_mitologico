@@ -1,6 +1,6 @@
 {
   "format": "Primer Bloque Racial Edición",
-  "lastUpdated": "2025-11-24",
+  "lastUpdated": "2025-12-03",
   "banned": [
     {
       "name": "Ataque a Traición",
@@ -215,11 +215,6 @@
       "imageUrl": "https://api.myl.cl/static/cards/21/141.png"
     },
     {
-      "name": "Ofrenda a los Dioses",
-      "type": "Oro",
-      "imageUrl": "https://api.myl.cl/static/cards/20/221.png"
-    },
-    {
       "name": "Pwyll",
       "type": "Aliado",
       "imageUrl": "https://api.myl.cl/static/cards/46/255.png"
@@ -228,11 +223,6 @@
       "name": "Jinetes de Fuego",
       "type": "Talisman",
       "imageUrl": "https://api.myl.cl/static/cards/116/055.png"
-    },
-    {
-      "name": "La Ilíada",
-      "type": "Oro",
-      "imageUrl": "https://api.myl.cl/static/cards/116/148.png"
     },
     {
       "name": "Morir de Pie",
@@ -253,6 +243,11 @@
       "name": "Montuhopet II",
       "type": "Aliado",
       "imageUrl": "https://api.myl.cl/static/cards/116/292.png"
+    },
+    {
+      "name": "Jeroglíficos",
+      "type": "Oro",
+      "imageUrl": "https://api.myl.cl/static/cards/116/008.png"
     }
   ],
   "limitedX2": [
@@ -282,11 +277,6 @@
       "imageUrl": "https://api.myl.cl/static/cards/93/058.png"
     },
     {
-      "name": "Constantino",
-      "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/44/009.png"
-    },
-    {
       "name": "Red de Plata",
       "type": "Talisman",
       "imageUrl": "https://api.myl.cl/static/cards/72/241.png"
@@ -295,11 +285,6 @@
       "name": "Nut",
       "type": "Aliado",
       "imageUrl": "https://api.myl.cl/static/cards/21/012.png"
-    },
-    {
-      "name": "Goblin Stone",
-      "type": "Totem",
-      "imageUrl": ""
     },
     {
       "name": "Rea",
@@ -327,11 +312,6 @@
       "imageUrl": "https://api.myl.cl/static/cards/72/215.png"
     },
     {
-      "name": "Conand",
-      "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/72/036.png"
-    },
-    {
       "name": "Haquika",
       "type": "Aliado",
       "imageUrl": "https://api.myl.cl/static/cards/116/052.png"
@@ -340,11 +320,6 @@
       "name": "Zagreus",
       "type": "Aliado",
       "imageUrl": "https://api.myl.cl/static/cards/116/062.png"
-    },
-    {
-      "name": "Linaje Celta",
-      "type": "Oro",
-      "imageUrl": "https://api.myl.cl/static/cards/72/044.png"
     },
     {
       "name": "Papiros de Lahún",
@@ -380,6 +355,16 @@
       "name": "Alejandro Magno",
       "type": "Aliado",
       "imageUrl": "https://api.myl.cl/static/cards/109/069.png"
+    },
+    {
+      "name": "Ofrenda a los Dioses",
+      "type": "Oro",
+      "imageUrl": "https://api.myl.cl/static/cards/20/221.png"
+    },
+    {
+      "name": "La Ilíada",
+      "type": "Oro",
+      "imageUrl": "https://api.myl.cl/static/cards/116/148.png"
     }
   ]
 }
