@@ -1,6 +1,6 @@
 {
   "format": "Bloque Furia Racial Libre",
-  "lastUpdated": "2025-11-24",
+  "lastUpdated": "2025-12-03",
   "banned": [
     {
       "name": "Moñai",
@@ -46,6 +46,11 @@
       "name": "Camahueto",
       "type": "Aliado",
       "imageUrl": "https://api.myl.cl/static/cards/123/012.png"
+    },
+    {
+      "name": "Dragón Formoriano",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/146/175.png"
     }
   ],
   "limitedX1": [
@@ -73,14 +78,14 @@
       "name": "Reanimar",
       "type": "Talisman",
       "imageUrl": ""
+    },
+    {
+      "name": "Takam",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/142/002.png"
     }
   ],
   "limitedX2": [
-    {
-      "name": "Jormungdgander",
-      "type": "Aliado",
-      "imageUrl": ""
-    },
     {
       "name": "Sinach",
       "type": "Aliado",
