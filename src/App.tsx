@@ -6,6 +6,7 @@ import TournamentInfoPage from './pages/TournamentInfoPage';
 import GameFormatsPage from './pages/GameFormatsPage';
 import BanlistPage from './pages/BanlistPage';
 import FixturePage from './pages/FixturePage';
+import StandingsPage from './pages/StandingsPage';
 import styles from './App.module.css';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/game-formats" element={<GameFormatsPage />} />
           <Route path="/banlist" element={<BanlistPage />} />
           <Route path="/fixture" element={<FixturePage />} />
+          <Route path="/standings" element={<StandingsPage />} />
         </Routes>
       </main>
       <ScrollToTop />

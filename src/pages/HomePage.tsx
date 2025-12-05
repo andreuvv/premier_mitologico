@@ -24,11 +24,11 @@ const HomePage = () => {
           <span className={styles.cardText}>Fixture</span>
           <span className={styles.cardSubtext}>Ver Emparejamientos</span>
         </Link>
-        <a href="#" className={styles.quickCard} style={{ backgroundColor: 'var(--petrol-blue)' }}>
+        <Link to="/standings" className={styles.quickCard} style={{ backgroundColor: 'var(--petrol-blue)' }}>
           <FaTrophy className={styles.cardIcon} />
           <span className={styles.cardText}>Tabla de Posiciones</span>
-          <span className={styles.cardSubtext}>Próximamente</span>
-        </a>
+          <span className={styles.cardSubtext}>Ver Clasificación</span>
+        </Link>
       </div>
 
       <div className={styles.banlistSection}>

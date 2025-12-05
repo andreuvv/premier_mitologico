@@ -1,0 +1,263 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  color: var(--beige);
+  margin-bottom: 2rem;
+  text-align: center;
+  font-family: 'Cyrodiil', serif;
+}
+
+.loading,
+.error,
+.empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  font-size: 1.1rem;
+  color: var(--beige);
+}
+
+.error {
+  color: var(--brick-red);
+}
+
+.tableContainer {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+  background: var(--beige);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.standingsTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.standingsTable thead {
+  background: linear-gradient(135deg, var(--petrol-blue) 0%, var(--sage-green) 100%);
+  color: var(--beige);
+}
+
+.standingsTable th {
+  padding: 1rem 0.5rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.standingsTable tbody tr {
+  border-bottom: 1px solid #d4c4b4;
+  transition: background-color 0.2s ease;
+}
+
+.standingsTable tbody tr:hover {
+  background-color: #f5ebe0;
+}
+
+.standingsTable tbody tr.topThree {
+  font-weight: 600;
+}
+
+.standingsTable td {
+  padding: 1rem 0.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--coal-grey);
+}
+
+.posColumn {
+  width: 80px;
+  font-weight: 700;
+}
+
+.posCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.nameColumn {
+  text-align: left !important;
+  font-weight: 600;
+  min-width: 150px;
+}
+
+.winsColumn {
+  color: var(--sage-green);
+  font-weight: 600;
+}
+
+.lossesColumn {
+  color: var(--brick-red);
+  font-weight: 600;
+}
+
+.pointsColumn {
+  background-color: #f5ebe0;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ocher);
+}
+
+.positiveDiff {
+  color: #27ae60;
+  font-weight: 600;
+}
+
+.negativeDiff {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+.goldIcon {
+  color: #ffd700;
+  font-size: 1.2rem;
+}
+
+.silverIcon {
+  color: #c0c0c0;
+  font-size: 1.2rem;
+}
+
+.bronzeIcon {
+  color: #cd7f32;
+  font-size: 1.2rem;
+}
+
+.legend {
+  background: var(--beige);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1.5rem;
+}
+
+.legend h3 {
+  color: var(--coal-grey);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-family: 'Cyrodiil', serif;
+}
+
+.legend ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.5rem;
+}
+
+.legend li {
+  color: var(--coal-grey);
+  font-size: 0.9rem;
+}
+
+.legend strong {
+  color: var(--petrol-blue);
+  font-weight: 600;
+}
+
+.tiebreaker {
+  background: linear-gradient(135deg, var(--beige) 0%, #d4c4b4 100%);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.tiebreaker h3 {
+  color: var(--coal-grey);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-family: 'Cyrodiil', serif;
+}
+
+.tiebreaker ol {
+  padding-left: 1.5rem;
+  margin: 0;
+}
+
+.tiebreaker li {
+  color: var(--coal-grey);
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Mobile Responsive */
+@media (max-width: 800px) {
+  .container {
+    padding: 1rem 0.5rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .standingsTable {
+    font-size: 0.75rem;
+  }
+
+  .standingsTable th,
+  .standingsTable td {
+    padding: 0.5rem 0.25rem;
+  }
+
+  .posColumn {
+    width: 50px;
+  }
+
+  .nameColumn {
+    min-width: 100px;
+    font-size: 0.8rem;
+  }
+
+  .posCell {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .goldIcon,
+  .silverIcon,
+  .bronzeIcon {
+    font-size: 0.9rem;
+  }
+
+  .legend ul {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.3rem;
+  }
+
+  .legend li,
+  .tiebreaker li {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .standingsTable {
+    font-size: 0.7rem;
+  }
+
+  .standingsTable th,
+  .standingsTable td {
+    padding: 0.4rem 0.15rem;
+  }
+
+  .nameColumn {
+    min-width: 80px;
+    font-size: 0.75rem;
+  }
+
+  .legend ul {
+    grid-template-columns: 1fr;
+  }
+}

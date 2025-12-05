@@ -16,6 +16,13 @@ const Header = () => {
         
         <nav className={styles.nav}>
           <Link 
+            to="/" 
+            className={location.pathname === '/' ? styles.active : ''}
+          >
+            <FaHome className={styles.icon} />
+            Inicio
+          </Link>
+          <Link 
             to="/tournament-info" 
             className={location.pathname === '/tournament-info' ? styles.active : ''}
           >
