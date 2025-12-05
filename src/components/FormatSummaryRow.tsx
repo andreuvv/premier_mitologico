@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './FormatSummaryRow.module.css';
 import { BanListFormat } from '../types/banlist';
 import { FormatSummary } from '../data/banlistSummary';
