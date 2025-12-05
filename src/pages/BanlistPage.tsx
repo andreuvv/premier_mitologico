@@ -77,6 +77,7 @@ const BanlistPage = () => {
         </button>
         {showAccordion && (
           <div className={styles.accordionBody}>
+            <p className={styles.disclaimer}>Cartas no mencionadas mantienen restricciones del mes anterior</p>
             <FormatSummaryRow summaries={banlistSummaries} />
           </div>
         )}

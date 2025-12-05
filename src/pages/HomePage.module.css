@@ -93,6 +93,15 @@
   margin: 0;
 }
 
+.disclaimer {
+  margin: 0.75rem 0;
+  text-align: center;
+  color: var(--beige);
+  opacity: 0.6;
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
 .toggleButton {
   padding: 0.5rem 1.25rem;
   background-color: var(--petrol-blue);

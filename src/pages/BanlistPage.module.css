@@ -39,9 +39,22 @@
   border-radius: 8px;
 }
 
+.disclaimer {
+  margin: 0 0 0.75rem 0;
+  text-align: center;
+  color: var(--beige);
+  opacity: 0.6;
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
 @media (max-width: 800px) {
   .accordionBody {
     padding: 0.5rem;
+  }
+  
+  .disclaimer {
+    font-size: 0.7rem;
   }
 }
 

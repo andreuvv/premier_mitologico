@@ -43,6 +43,7 @@ const HomePage = () => {
         </div>
         {showSummaries && (
           <>
+            <p className={styles.disclaimer}>Cartas no mencionadas mantienen restricciones del mes anterior</p>
             <FormatSummaryRow summaries={banlistSummaries} />
             <Link to="/banlist" className={styles.banlistLink}>
               Ver Ban List completa

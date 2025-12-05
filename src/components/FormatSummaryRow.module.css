@@ -35,6 +35,15 @@
   padding: 1rem 0;
 }
 
+.disclaimer {
+  margin: 0.75rem 0 0 0;
+  text-align: center;
+  color: var(--coal-grey);
+  opacity: 0.5;
+  font-size: 0.7rem;
+  font-style: italic;
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
