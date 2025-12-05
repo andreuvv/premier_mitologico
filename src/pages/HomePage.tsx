@@ -19,11 +19,11 @@ const HomePage = () => {
       </p>
       
       <div className={styles.quickAccess}>
-        <a href="#" className={styles.quickCard} style={{ backgroundColor: 'var(--sage-green)' }}>
+        <Link to="/fixture" className={styles.quickCard} style={{ backgroundColor: 'var(--sage-green)' }}>
           <FaChartBar className={styles.cardIcon} />
           <span className={styles.cardText}>Fixture</span>
-          <span className={styles.cardSubtext}>Próximamente</span>
-        </a>
+          <span className={styles.cardSubtext}>Ver Emparejamientos</span>
+        </Link>
         <a href="#" className={styles.quickCard} style={{ backgroundColor: 'var(--petrol-blue)' }}>
           <FaTrophy className={styles.cardIcon} />
           <span className={styles.cardText}>Tabla de Posiciones</span>

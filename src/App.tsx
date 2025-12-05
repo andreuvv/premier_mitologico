@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import TournamentInfoPage from './pages/TournamentInfoPage';
 import GameFormatsPage from './pages/GameFormatsPage';
 import BanlistPage from './pages/BanlistPage';
+import FixturePage from './pages/FixturePage';
 import styles from './App.module.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/tournament-info" element={<TournamentInfoPage />} />
           <Route path="/game-formats" element={<GameFormatsPage />} />
           <Route path="/banlist" element={<BanlistPage />} />
+          <Route path="/fixture" element={<FixturePage />} />
         </Routes>
       </main>
       <ScrollToTop />
