@@ -1,25 +1,70 @@
-import { useState } from 'react';
-import { fixtureRounds } from '../data/fixtureData';
+import { useState, useEffect } from 'react';
+import { fixtureAPI, APIFixtureResponse } from '../services/fixtureAPI';
 import { FaDiceOne, FaFire } from 'react-icons/fa';
 import styles from './FixturePage.module.css';
 
 const FixturePage = () => {
   const [selectedRound, setSelectedRound] = useState(1);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [fixtureData, setFixtureData] = useState<APIFixtureResponse | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const currentRound = fixtureRounds.find(r => r.number === selectedRound);
+  useEffect(() => {
+    const fetchFixture = async () => {
+      try {
+        setLoading(true);
+        const data = await fixtureAPI.getFixture();
+        setFixtureData(data);
+        setError(null);
+      } catch (err) {
+        setError('Error al cargar el fixture. Por favor, intenta de nuevo.');
+        console.error('Error fetching fixture:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFixture();
+  }, []);
+
+  const currentRound = fixtureData?.rounds.find(r => r.number === selectedRound);
 
   const handleMenuClick = (roundNum: number) => {
     setSelectedRound(roundNum);
     setIsMobileMenuOpen(false);
   };
 
+  if (loading) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.loading}>Cargando fixture...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.error}>{error}</div>
+      </div>
+    );
+  }
+
+  if (!fixtureData || fixtureData.rounds.length === 0) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.empty}>No hay fixture disponible aún.</div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.layout}>
         <aside className={`${styles.sidebar} ${isMobileMenuOpen ? styles.open : ''}`}>
           <nav className={styles.nav}>
-            {fixtureRounds.map(round => {
+            {fixtureData.rounds.map(round => {
               const RoundIcon = round.format === 'PB' ? FaDiceOne : FaFire;
               return (
                 <button
@@ -61,13 +106,13 @@ const FixturePage = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {currentRound.matches.map((match, idx) => (
-                    <tr key={idx}>
-                      <td className={styles.playerName}>{match.player1}</td>
+                  {currentRound.matches.map((match) => (
+                    <tr key={match.id}>
+                      <td className={styles.playerName}>{match.player1_name}</td>
                       <td className={styles.score}>{match.score1 ?? '-'}</td>
                       <td className={styles.vs}>vs</td>
                       <td className={styles.score}>{match.score2 ?? '-'}</td>
-                      <td className={styles.playerName}>{match.player2}</td>
+                      <td className={styles.playerName}>{match.player2_name}</td>
                     </tr>
                   ))}
                 </tbody>
