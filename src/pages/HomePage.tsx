@@ -1,9 +1,15 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import CountdownCard from '../components/CountdownCard';
 import MapCard from '../components/MapCard';
+import FormatSummaryRow from '../components/FormatSummaryRow';
 import { FaChartBar, FaTrophy } from 'react-icons/fa';
+import { banlistSummaries, lastUpdateMonth } from '../data/banlistSummary';
 import styles from './HomePage.module.css';
 
 const HomePage = () => {
+  const [showSummaries, setShowSummaries] = useState(false);
+
   return (
     <div className={styles.container}>
       <h3 className={styles.subtitle}>Premier Mitológico</h3>
@@ -23,6 +29,26 @@ const HomePage = () => {
           <span className={styles.cardText}>Tabla de Posiciones</span>
           <span className={styles.cardSubtext}>Próximamente</span>
         </a>
+      </div>
+
+      <div className={styles.banlistSection}>
+        <div className={styles.banlistHeader}>
+          <h3 className={styles.banlistTitle}>Resumen Actualización Ban List {lastUpdateMonth}</h3>
+          <button 
+            className={styles.toggleButton}
+            onClick={() => setShowSummaries(!showSummaries)}
+          >
+            {showSummaries ? 'Ocultar' : 'Mostrar'}
+          </button>
+        </div>
+        {showSummaries && (
+          <>
+            <FormatSummaryRow summaries={banlistSummaries} />
+            <Link to="/banlist" className={styles.banlistLink}>
+              Ver Ban List completa
+            </Link>
+          </>
+        )}
       </div>
 
       <div className={styles.cardsGrid}>

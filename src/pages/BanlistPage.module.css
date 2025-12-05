@@ -2,6 +2,43 @@
   max-width: 100%;
 }
 
+.accordion {
+  margin-bottom: 1.5rem;
+}
+
+.accordionHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: var(--coal-grey);
+  border: 1px solid var(--ocher);
+  border-radius: 8px;
+  color: var(--beige);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.accordionHeader:hover {
+  background-color: rgba(45, 45, 45, 0.9);
+  border-color: var(--petrol-blue);
+}
+
+.accordionChevron {
+  font-size: 1.2rem;
+  transition: transform 0.2s;
+}
+
+.accordionBody {
+  margin-top: 0.75rem;
+  padding: 1rem;
+  background-color: var(--coal-grey);
+  border-radius: 8px;
+}
+
 .header {
   text-align: center;
   margin-bottom: 2rem;

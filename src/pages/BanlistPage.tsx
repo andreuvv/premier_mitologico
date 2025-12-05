@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { FaInfoCircle } from 'react-icons/fa';
 import { BanListFormat, BanListCategory, BanListData, BanListCard } from '../types/banlist';
 import { loadBanlist } from '../services/banlistService';
+import FormatSummaryRow from '../components/FormatSummaryRow';
+import { banlistSummaries, lastUpdateMonth } from '../data/banlistSummary';
 import styles from './BanlistPage.module.css';
 
 const BanlistPage = () => {
@@ -10,6 +12,7 @@ const BanlistPage = () => {
   const [banlistData, setBanlistData] = useState<BanListData | null>(null);
   const [loading, setLoading] = useState(true);
   const [showInfoPopup, setShowInfoPopup] = useState(false);
+  const [showAccordion, setShowAccordion] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -64,6 +67,21 @@ const BanlistPage = () => {
 
   return (
     <div className={styles.container}>
+      <div className={styles.accordion}>
+        <button 
+          className={styles.accordionHeader} 
+          onClick={() => setShowAccordion(!showAccordion)}
+        >
+          <span>Resumen actualización {lastUpdateMonth}</span>
+          <span className={styles.accordionChevron}>{showAccordion ? '▾' : '▸'}</span>
+        </button>
+        {showAccordion && (
+          <div className={styles.accordionBody}>
+            <FormatSummaryRow summaries={banlistSummaries} />
+          </div>
+        )}
+      </div>
+
       <div className={styles.controls}>
         <div className={styles.formatSelector}>
           <label>Formato:</label>

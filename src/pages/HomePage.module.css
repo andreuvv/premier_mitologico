@@ -71,6 +71,63 @@
   font-weight: 400;
 }
 
+.banlistSection {
+  background-color: var(--coal-grey);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.banlistHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.banlistTitle {
+  color: var(--beige);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.toggleButton {
+  padding: 0.5rem 1.25rem;
+  background-color: var(--petrol-blue);
+  color: var(--beige);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.toggleButton:hover {
+  background-color: var(--ocher);
+  transform: translateY(-2px);
+}
+
+.banlistLink {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--ocher);
+  color: var(--coal-grey);
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 700;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.banlistLink:hover {
+  background-color: var(--petrol-blue);
+  color: var(--beige);
+  transform: translateY(-2px);
+}
+
 .cardsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
