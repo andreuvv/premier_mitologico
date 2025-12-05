@@ -28,9 +28,9 @@ export interface APIStanding {
   name: string;
   matches_played: number;
   wins: number;
+  ties: number;
   losses: number;
   total_points_scored: number;
-  total_points_against: number;
 }
 
 export interface APIPlayer {

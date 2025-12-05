@@ -1,13 +1,13 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 1rem 1rem 2rem;
 }
 
 .title {
   font-size: 2rem;
-  color: var(--beige);
-  margin-bottom: 2rem;
+  color: var(--coal-grey);
+  margin-bottom: 1rem;
   text-align: center;
   font-family: 'Cyrodiil', serif;
 }
@@ -28,7 +28,7 @@
 .tableContainer {
   overflow-x: auto;
   margin-bottom: 2rem;
-  background: var(--beige);
+  background: var(--coal-grey);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
@@ -53,12 +53,12 @@
 }
 
 .standingsTable tbody tr {
-  border-bottom: 1px solid #d4c4b4;
+  border-bottom: 1px solid #4a4a4a;
   transition: background-color 0.2s ease;
 }
 
 .standingsTable tbody tr:hover {
-  background-color: #f5ebe0;
+  background-color: #3a3a3a;
 }
 
 .standingsTable tbody tr.topThree {
@@ -69,7 +69,7 @@
   padding: 1rem 0.5rem;
   text-align: center;
   font-size: 0.95rem;
-  color: var(--coal-grey);
+  color: var(--beige);
 }
 
 .posColumn {
@@ -95,13 +95,18 @@
   font-weight: 600;
 }
 
+.tiesColumn {
+  color: var(--ocher);
+  font-weight: 600;
+}
+
 .lossesColumn {
   color: var(--brick-red);
   font-weight: 600;
 }
 
 .pointsColumn {
-  background-color: #f5ebe0;
+  background-color: #3a3a3a;
   font-weight: 700;
   font-size: 1.05rem;
   color: var(--ocher);
@@ -133,7 +138,7 @@
 }
 
 .legend {
-  background: var(--beige);
+  background: #d4c4b4;
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -166,7 +171,7 @@
 }
 
 .tiebreaker {
-  background: linear-gradient(135deg, var(--beige) 0%, #d4c4b4 100%);
+  background: linear-gradient(135deg, #d4c4b4 0%, #c4b4a4 100%);
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);

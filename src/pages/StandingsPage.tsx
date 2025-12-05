@@ -52,8 +52,8 @@ const StandingsPage = () => {
         return b.total_points_scored - a.total_points_scored;
       }
 
-      // Rule 4: Points against (lower is better)
-      return a.total_points_against - b.total_points_against;
+      // Rule 4: Would require head-to-head or playoff
+      return 0;
     });
   };
 
@@ -100,6 +100,7 @@ const StandingsPage = () => {
               <th className={styles.nameColumn}>Jugador</th>
               <th>PJ</th>
               <th>G</th>
+              <th>E</th>
               <th>P</th>
               <th>Pts</th>
             </tr>
@@ -107,7 +108,7 @@ const StandingsPage = () => {
           <tbody>
             {standings.map((player, index) => {
               const position = index + 1;
-              const totalPoints = player.wins * 3;
+              const totalPoints = player.wins * 3 + player.ties * 1;
               
               return (
                 <tr key={player.id} className={position <= 3 ? styles.topThree : ''}>
@@ -120,6 +121,7 @@ const StandingsPage = () => {
                   <td className={styles.nameColumn}>{player.name}</td>
                   <td>{player.matches_played}</td>
                   <td className={styles.winsColumn}>{player.wins}</td>
+                  <td className={styles.tiesColumn}>{player.ties}</td>
                   <td className={styles.lossesColumn}>{player.losses}</td>
                   <td className={styles.pointsColumn}>{totalPoints}</td>
                 </tr>
@@ -134,8 +136,9 @@ const StandingsPage = () => {
         <ul>
           <li><strong>PJ:</strong> Partidos Jugados</li>
           <li><strong>G:</strong> Ganados</li>
+          <li><strong>E:</strong> Empates</li>
           <li><strong>P:</strong> Perdidos</li>
-          <li><strong>Pts:</strong> Puntos (3 por victoria)</li>
+          <li><strong>Pts:</strong> Puntos (3 por victoria, 1 por empate)</li>
         </ul>
       </div>
 
