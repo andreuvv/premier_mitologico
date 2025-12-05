@@ -4,6 +4,10 @@
 
 El **Primer Bloque _Extendido_** es la evolución del formato original de Primer Bloque, que incluye las ediciones clásicas de Segunda Era junto con nuevos productos de extensión lanzados desde 2021.
 
+Para este formato existen dos tipos de formatos de juego oficiales:
+- **Primer Bloque Racial Libre**
+- **Primer Bloque Racial Edición**
+
 ---
 
 ## 📖 Historia del Formato
