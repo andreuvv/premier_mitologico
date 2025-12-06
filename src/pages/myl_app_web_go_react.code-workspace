@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "../../../myl_app_go_backend"
+		},
+		{
+			"path": "../../../myl_app_flutter"
 		}
 	],
 	"settings": {}
