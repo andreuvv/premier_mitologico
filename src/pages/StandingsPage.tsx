@@ -111,11 +111,12 @@ const StandingsPage = () => {
             {standings.map((player, index) => {
               const position = index + 1;
               const totalPoints = player.wins * 3 + player.ties * 1;
-              // Calculate total individual matches from matches_played
-              // Assuming average of 2 games per match (can be refined with actual fixture data)
-              const estimatedTotalMatches = player.matches_played * 2;
-              const winRate = estimatedTotalMatches > 0 
-                ? ((player.total_points_scored / estimatedTotalMatches) * 100).toFixed(1)
+              // Use actual total_matches from backend, fallback to estimation if 0
+              const totalMatches = player.total_matches > 0 
+                ? player.total_matches 
+                : player.matches_played * 2;
+              const winRate = totalMatches > 0 
+                ? ((player.total_points_scored / totalMatches) * 100).toFixed(1)
                 : '0.0';
               
               return (
