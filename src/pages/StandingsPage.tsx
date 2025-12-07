@@ -98,7 +98,7 @@ const StandingsPage = () => {
             <tr>
               <th className={styles.posColumn}>Pos.</th>
               <th className={styles.nameColumn}>Jugador</th>
-              <th>PJ</th>
+              <th>RJ</th>
               <th>G</th>
               <th>E</th>
               <th>P</th>
@@ -111,8 +111,11 @@ const StandingsPage = () => {
             {standings.map((player, index) => {
               const position = index + 1;
               const totalPoints = player.wins * 3 + player.ties * 1;
-              const winRate = player.total_matches > 0 
-                ? ((player.total_points_scored / player.total_matches) * 100).toFixed(1)
+              // Calculate total individual matches from matches_played
+              // Assuming average of 2 games per match (can be refined with actual fixture data)
+              const estimatedTotalMatches = player.matches_played * 2;
+              const winRate = estimatedTotalMatches > 0 
+                ? ((player.total_points_scored / estimatedTotalMatches) * 100).toFixed(1)
                 : '0.0';
               
               return (
@@ -141,7 +144,7 @@ const StandingsPage = () => {
       <div className={styles.legend}>
         <h3>Leyenda</h3>
         <ul>
-          <li><strong>PJ:</strong> Rondas Jugadas</li>
+          <li><strong>RJ:</strong> Rondas Jugadas</li>
           <li><strong>G:</strong> Ganados</li>
           <li><strong>E:</strong> Empates</li>
           <li><strong>P:</strong> Perdidos</li>
