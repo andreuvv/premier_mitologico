@@ -102,6 +102,8 @@ const StandingsPage = () => {
               <th>G</th>
               <th>E</th>
               <th>P</th>
+              <th>TV</th>
+              <th>WR%</th>
               <th>Pts</th>
             </tr>
           </thead>
@@ -109,6 +111,9 @@ const StandingsPage = () => {
             {standings.map((player, index) => {
               const position = index + 1;
               const totalPoints = player.wins * 3 + player.ties * 1;
+              const winRate = player.total_matches > 0 
+                ? ((player.total_points_scored / player.total_matches) * 100).toFixed(1)
+                : '0.0';
               
               return (
                 <tr key={player.id} className={position <= 3 ? styles.topThree : ''}>
@@ -123,6 +128,8 @@ const StandingsPage = () => {
                   <td className={styles.winsColumn}>{player.wins}</td>
                   <td className={styles.tiesColumn}>{player.ties}</td>
                   <td className={styles.lossesColumn}>{player.losses}</td>
+                  <td className={styles.totalVictoriesColumn}>{player.total_points_scored}</td>
+                  <td className={styles.winRateColumn}>{winRate}%</td>
                   <td className={styles.pointsColumn}>{totalPoints}</td>
                 </tr>
               );
@@ -134,10 +141,12 @@ const StandingsPage = () => {
       <div className={styles.legend}>
         <h3>Leyenda</h3>
         <ul>
-          <li><strong>PJ:</strong> Partidos Jugados</li>
+          <li><strong>PJ:</strong> Rondas Jugadas</li>
           <li><strong>G:</strong> Ganados</li>
           <li><strong>E:</strong> Empates</li>
           <li><strong>P:</strong> Perdidos</li>
+          <li><strong>TV:</strong> Total Victorias (suma de victorias logradas en todas las partidas)</li>
+          <li><strong>WR%:</strong> Win Rate (porcentaje de partidas individuales ganadas)</li>
           <li><strong>Pts:</strong> Puntos (3 por victoria, 1 por empate)</li>
         </ul>
       </div>

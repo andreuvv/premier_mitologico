@@ -31,6 +31,7 @@ export interface APIStanding {
   ties: number;
   losses: number;
   total_points_scored: number;
+  total_matches: number;
 }
 
 export interface APIPlayer {
