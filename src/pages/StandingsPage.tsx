@@ -111,12 +111,9 @@ const StandingsPage = () => {
             {standings.map((player, index) => {
               const position = index + 1;
               const totalPoints = player.wins * 3 + player.ties * 1;
-              // Use actual total_matches from backend, fallback to estimation if 0
-              const totalMatches = player.total_matches > 0 
-                ? player.total_matches 
-                : player.matches_played * 2;
-              const winRate = totalMatches > 0 
-                ? ((player.total_points_scored / totalMatches) * 100).toFixed(1)
+              // Calculate WR% using total_matches (games played) and total_points_scored (games won)
+              const winRate = player.total_matches > 0 
+                ? ((player.total_points_scored / player.total_matches) * 100).toFixed(1)
                 : '0.0';
               
               return (
