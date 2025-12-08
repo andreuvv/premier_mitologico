@@ -99,28 +99,28 @@
 }
 
 .winsColumn {
-  color: var(--sage-green);
+  color: var(--sage-green) !important;
   font-weight: 600;
 }
 
 .tiesColumn {
-  color: var(--ocher);
+  color: var(--ocher) !important;
   font-weight: 600;
 }
 
 .totalVictoriesColumn {
-  color: var(--petrol-blue);
+  color: var(--petrol-blue) !important;
   font-weight: 600;
 }
 
 .winRateColumn {
-  color: var(--sage-green);
+  color: var(--sage-green) !important;
   font-weight: 600;
   font-size: 0.9rem;
 }
 
 .lossesColumn {
-  color: var(--brick-red);
+  color: var(--brick-red) !important;
   font-weight: 600;
 }
 
