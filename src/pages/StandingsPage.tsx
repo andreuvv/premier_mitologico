@@ -102,7 +102,7 @@ const StandingsPage = () => {
               <th>G</th>
               <th>E</th>
               <th>P</th>
-              <th>TV</th>
+              <th>TPG</th>
               <th>MWR%</th>
               <th>RWR%</th>
               <th>Pts</th>
@@ -151,10 +151,10 @@ const StandingsPage = () => {
         <h3>Leyenda</h3>
         <ul>
           <li><strong>RJ:</strong> Rondas Jugadas</li>
-          <li><strong>G:</strong> Ganados</li>
-          <li><strong>E:</strong> Empates</li>
-          <li><strong>P:</strong> Perdidos</li>
-          <li><strong>TV:</strong> Total Victorias (suma de victorias logradas en todas las partidas)</li>
+          <li><strong>G:</strong> Rondas Ganadas</li>
+          <li><strong>E:</strong> Rondas Empatadas</li>
+          <li><strong>P:</strong> Rondas Perdidas</li>
+          <li><strong>TPG:</strong> Total Partidas Ganadas (partidas individuales ganadas)</li>
           <li><strong>MWR%:</strong> Matches Win Rate (porcentaje de partidas individuales ganadas)</li>
           <li><strong>RWR%:</strong> Rounds Win Rate (porcentaje de rondas ganadas, empates cuentan como 0.5)</li>
           <li><strong>Pts:</strong> Puntos (3 por victoria, 1 por empate)</li>
