@@ -20,10 +20,10 @@ const HomePage = () => {
       
       <div className={styles.tournamentInfo}>
         <p className={styles.infoText}>
-          Formatos: <strong>Primer Bloque Racial Edición</strong> y <strong>Furia Extendido Racial Limitado</strong>
+          Formatos: <Link to="/game-formats" className={styles.formatLink}>Primer Bloque Racial Edición</Link> y <Link to="/game-formats" className={styles.formatLink}>Furia Extendido Racial Limitado</Link>
         </p>
         <p className={styles.infoText}>
-          Tipo de Rondas: <strong>Mejor de 3</strong>
+          Tipo de Rondas: <Link to="/tournament-info" className={styles.formatLink}>Mejor de 3</Link>
         </p>
       </div>
       

@@ -45,9 +45,16 @@
   margin: 0.5rem 0;
 }
 
-.infoText strong {
+.formatLink {
   font-weight: 700;
   color: var(--petrol-blue);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.formatLink:hover {
+  color: var(--sage-green);
+  text-decoration: underline;
 }
 
 .quickAccess {
