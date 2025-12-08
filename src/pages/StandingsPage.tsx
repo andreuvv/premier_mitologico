@@ -103,7 +103,8 @@ const StandingsPage = () => {
               <th>E</th>
               <th>P</th>
               <th>TV</th>
-              <th>WR%</th>
+              <th>MWR%</th>
+              <th>RWR%</th>
               <th>Pts</th>
             </tr>
           </thead>
@@ -111,13 +112,16 @@ const StandingsPage = () => {
             {standings.map((player, index) => {
               const position = index + 1;
               const totalPoints = player.wins * 3 + player.ties * 1;
-              // Calculate WR% using total_matches (games played) and total_points_scored (games won)
-              const winRate = player.total_matches > 0 
+              // Calculate MWR% (Matches Win Rate) using total_matches (games played) and total_points_scored (games won)
+              const matchWinRate = player.total_matches > 0 
                 ? ((player.total_points_scored / player.total_matches) * 100).toFixed(1)
                 : '0.0';
               
-              // Debug logging
-              console.log(`Player ${player.name}: total_matches=${player.total_matches}, total_points_scored=${player.total_points_scored}, WR%=${winRate}`);
+              // Calculate RWR% (Rounds Win Rate) from wins, ties, losses
+              const totalRounds = player.wins + player.ties + player.losses;
+              const roundWinRate = totalRounds > 0
+                ? (((player.wins + player.ties * 0.5) / totalRounds) * 100).toFixed(1)
+                : '0.0';
               
               return (
                 <tr key={player.id} className={position <= 3 ? styles.topThree : ''}>
@@ -133,7 +137,8 @@ const StandingsPage = () => {
                   <td className={styles.tiesColumn}>{player.ties}</td>
                   <td className={styles.lossesColumn}>{player.losses}</td>
                   <td className={styles.totalVictoriesColumn}>{player.total_points_scored}</td>
-                  <td className={styles.winRateColumn}>{winRate}%</td>
+                  <td className={styles.winRateColumn}>{matchWinRate}%</td>
+                  <td className={styles.winRateColumn}>{roundWinRate}%</td>
                   <td className={styles.pointsColumn}>{totalPoints}</td>
                 </tr>
               );
@@ -150,7 +155,8 @@ const StandingsPage = () => {
           <li><strong>E:</strong> Empates</li>
           <li><strong>P:</strong> Perdidos</li>
           <li><strong>TV:</strong> Total Victorias (suma de victorias logradas en todas las partidas)</li>
-          <li><strong>WR%:</strong> Win Rate (porcentaje de partidas individuales ganadas)</li>
+          <li><strong>MWR%:</strong> Matches Win Rate (porcentaje de partidas individuales ganadas)</li>
+          <li><strong>RWR%:</strong> Rounds Win Rate (porcentaje de rondas ganadas, empates cuentan como 0.5)</li>
           <li><strong>Pts:</strong> Puntos (3 por victoria, 1 por empate)</li>
         </ul>
       </div>
