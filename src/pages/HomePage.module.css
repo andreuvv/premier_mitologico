@@ -12,6 +12,17 @@
   opacity: 0.8;
 }
 
+.logoContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.mainLogo {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
+
 .title {
   font-size: 42px;
   font-weight: 900;

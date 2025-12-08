@@ -92,7 +92,32 @@
   padding: 0 4px;
 }
 
+@media (max-width: 900px) {
+  .countdown {
+    gap: 6px;
+  }
+
+  .timeValue {
+    font-size: 1.75rem;
+    padding: 10px 14px;
+    min-width: 60px;
+  }
+  
+  .timeLabel {
+    font-size: 0.7rem;
+  }
+  
+  .timeSeparator {
+    font-size: 1.75rem;
+    padding: 0 2px;
+  }
+}
+
 @media (max-width: 600px) {
+  .countdown {
+    gap: 4px;
+  }
+
   .timeValue {
     font-size: 1.5rem;
     padding: 8px 12px;
