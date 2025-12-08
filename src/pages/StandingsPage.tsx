@@ -116,6 +116,9 @@ const StandingsPage = () => {
                 ? ((player.total_points_scored / player.total_matches) * 100).toFixed(1)
                 : '0.0';
               
+              // Debug logging
+              console.log(`Player ${player.name}: total_matches=${player.total_matches}, total_points_scored=${player.total_points_scored}, WR%=${winRate}`);
+              
               return (
                 <tr key={player.id} className={position <= 3 ? styles.topThree : ''}>
                   <td className={styles.posColumn}>
