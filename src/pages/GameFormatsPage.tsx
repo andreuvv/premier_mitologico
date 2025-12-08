@@ -14,6 +14,32 @@ const GameFormatsPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Handle URL hash navigation
+  useEffect(() => {
+    const hash = window.location.hash.slice(1); // Remove the '#'
+    if (hash) {
+      // Check if it's a variant
+      const variant = Object.values(FormatVariant).find(v => v === hash);
+      if (variant) {
+        setSelectedVariant(variant);
+        // Find which section contains this variant
+        const sectionEntry = Object.entries(formatSectionConfig).find(([, config]) => 
+          config.variants?.includes(variant)
+        );
+        if (sectionEntry) {
+          setSelectedSection(sectionEntry[0] as FormatSection);
+        }
+      } else {
+        // Check if it's a main section
+        const section = Object.values(FormatSection).find(s => s === hash);
+        if (section) {
+          setSelectedSection(section);
+          setSelectedVariant(null);
+        }
+      }
+    }
+  }, []);
+
   useEffect(() => {
     const fetchContent = async () => {
       setLoading(true);

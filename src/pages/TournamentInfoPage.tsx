@@ -29,6 +29,32 @@ VEANVE@GMAIL.COM`;
     });
   };
 
+  // Handle URL hash navigation
+  useEffect(() => {
+    const hash = window.location.hash.slice(1); // Remove the '#'
+    if (hash) {
+      // Check if it's a subsection
+      const subsection = Object.values(TournamentSubsection).find(s => s === hash);
+      if (subsection) {
+        setSelectedSubsection(subsection);
+        // Find which section contains this subsection
+        const sectionEntry = Object.entries(infoSectionConfig).find(([, config]) => 
+          config.subsections?.includes(subsection)
+        );
+        if (sectionEntry) {
+          setSelectedSection(sectionEntry[0] as InfoSection);
+        }
+      } else {
+        // Check if it's a main section
+        const section = Object.values(InfoSection).find(s => s === hash);
+        if (section) {
+          setSelectedSection(section);
+          setSelectedSubsection(null);
+        }
+      }
+    }
+  }, []);
+
   useEffect(() => {
     const fetchContent = async () => {
       setLoading(true);
