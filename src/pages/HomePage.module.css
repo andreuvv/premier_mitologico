@@ -15,7 +15,8 @@
 .title {
   font-size: 42px;
   font-weight: 900;
-  font-family: 'Roboto', sans-serif;
+  /*font-family: 'Roboto', sans-serif;*/
+  font-family: 'Cyrodiil', serif; 
   color: var(--coal-grey);
   margin: 0 0 1rem 0;
   text-align: center;
@@ -23,6 +24,7 @@
 
 .description {
   text-align: center;
+  font-family: 'Cyrodiil', serif; 
   color: var(--coal-grey);
   margin-bottom: 1rem;
   font-size: 1.1rem;
