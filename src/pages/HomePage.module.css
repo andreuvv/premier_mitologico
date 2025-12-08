@@ -24,8 +24,23 @@
 .description {
   text-align: center;
   color: var(--coal-grey);
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   font-size: 1.1rem;
+}
+
+.tournamentInfo {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.infoText {
+  color: var(--coal-grey);
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.infoText strong {
+  font-weight: 700;
 }
 
 .quickAccess {

@@ -34,7 +34,7 @@ const Header = () => {
             className={location.pathname === '/standings' ? styles.active : ''}
           >
             <FaTrophy className={styles.icon} />
-            Posiciones
+            Standings
           </Link>
           <Link 
             to="/tournament-info" 
@@ -86,7 +86,7 @@ const Header = () => {
           </Link>
           <Link to="/standings" onClick={() => setMobileMenuOpen(false)}>
             <FaTrophy className={styles.icon} />
-            Posiciones
+            Standings
           </Link>
           <Link to="/tournament-info" onClick={() => setMobileMenuOpen(false)}>
             <FaClipboardList className={styles.icon} />

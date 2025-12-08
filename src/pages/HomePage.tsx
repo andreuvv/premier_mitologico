@@ -18,6 +18,15 @@ const HomePage = () => {
         Prepara tus mazos para el torneo más esperado del reino. Gloria y premios esperan a los mejores duelistas.
       </p>
       
+      <div className={styles.tournamentInfo}>
+        <p className={styles.infoText}>
+          Formatos: <strong>Primer Bloque Racial Edición</strong> y <strong>Furia Extendido Racial Limitado</strong>
+        </p>
+        <p className={styles.infoText}>
+          Tipo de Rondas: <strong>Mejor de 3</strong>
+        </p>
+      </div>
+      
       <div className={styles.quickAccess}>
         <Link to="/fixture" className={styles.quickCard} style={{ backgroundColor: 'var(--sage-green)' }}>
           <FaChartBar className={styles.cardIcon} />
@@ -26,8 +35,8 @@ const HomePage = () => {
         </Link>
         <Link to="/standings" className={styles.quickCard} style={{ backgroundColor: 'var(--petrol-blue)' }}>
           <FaTrophy className={styles.cardIcon} />
-          <span className={styles.cardText}>Tabla de Posiciones</span>
-          <span className={styles.cardSubtext}>Ver Clasificación</span>
+          <span className={styles.cardText}>Standings</span>
+          <span className={styles.cardSubtext}>Ver Tabla de Posiciones</span>
         </Link>
       </div>
 

@@ -17,12 +17,20 @@
 .empty {
   text-align: center;
   padding: 3rem 1rem;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: var(--coal-grey);
 }
 
 .error {
   color: var(--brick-red);
+  background-color: rgba(201, 67, 56, 0.1);
+  border-radius: 8px;
+  margin: 2rem;
+}
+
+.empty {
+  color: var(--coal-grey);
+  opacity: 0.6;
 }
 
 .tableContainer {
