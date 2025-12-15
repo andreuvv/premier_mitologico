@@ -15,7 +15,7 @@ const TournamentHistoryPage = () => {
   const [loading, setLoading] = useState(true);
   const [expandedYear, setExpandedYear] = useState<number | null>(null);
   const [expandedTournament, setExpandedTournament] = useState<number | null>(null);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 768);
 
   useEffect(() => {
     loadTournaments();
@@ -103,19 +103,40 @@ const TournamentHistoryPage = () => {
 
   return (
     <div className={styles.container}>
-      {/* Toggle Button */}
-      <button 
-        className={styles.toggleButton}
-        onClick={() => setSidebarOpen(!sidebarOpen)}
-        aria-label="Toggle sidebar"
-        style={{ left: sidebarOpen ? '280px' : '0' }}
-      >
-        {sidebarOpen ? '◀' : '▶'}
-      </button>
+      {/* Page Header with Hamburger Menu */}
+      <div className={styles.pageHeader}>
+        <button 
+          className={styles.hamburgerButton}
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <h1 className={styles.mobileTitle}>Historial de Torneos</h1>
+      </div>
+
+      {/* Overlay for mobile */}
+      {sidebarOpen && (
+        <div 
+          className={styles.overlay}
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
 
       {/* Side Menu */}
       <aside className={`${styles.sidebar} ${!sidebarOpen ? styles.sidebarClosed : ''}`}>
-        <h2 className={styles.sidebarTitle}>Historial de Torneos</h2>
+        <div className={styles.sidebarHeader}>
+          <h2 className={styles.sidebarTitle}>Historial de Torneos</h2>
+          <button 
+            className={styles.closeSidebar}
+            onClick={() => setSidebarOpen(false)}
+            aria-label="Close menu"
+          >
+            ✕
+          </button>
+        </div>
         {loading ? (
           <div className={styles.loadingText}>Cargando...</div>
         ) : tournaments.length === 0 ? (
