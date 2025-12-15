@@ -1,18 +1,18 @@
 # 👥 Participantes
 
-***Participantes Edición Diciembre 2025***
+***Participantes Siguiente Edición***
 
 | Duelista  | Confirmado para siguiente edición | Cuota pagada |
 | --------- | --------------------------------- | ------------ |
-| Troke     | ✅                                 | ✅            |
-| Timmy     | ✅                                 | ✅            |
-| Wesh      | ✅                                 | ✅            |
-| Folo      | ✅                                 | ✅            |
-| Piter     | ✅                                 | ✅            |
-| Clanso    | ✅                                 | ✅            |
-| Guari     | ❌                                 |              |
-| Chisco    | ✅                                 |              |
-| Vinny     | ❌                                 |              |
-| Traukolin | ✅                                 | ✅            |
-| Chester   | ✅                                 | ✅            |
-| David     | ✅                                 | ✅            |
+| Troke     |                                  |             |
+| Timmy     |                                  |             |
+| Wesh      |                                  |             |
+| Folo      |                                  |             |
+| Piter     |                                  |             |
+| Clanso    |                                  |             |
+| Guari     |                                  |              |
+| Chisco    |                                  |              |
+| Vinny     |                                  |              |
+| Traukolin |                                  |             |
+| Chester   |                                  |             |
+| David     |                                  |             |
