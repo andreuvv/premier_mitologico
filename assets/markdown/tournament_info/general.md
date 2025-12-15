@@ -1,12 +1,12 @@
-*Última actualización: 01 de Diciembre 2025*
+*Última actualización: 15 de Diciembre 2025*
 
 
 # **📅** Siguiente Torneo
 
-- 📆 Fecha: **13 de Diciembre 2025**
-- 🕒 Hora de inicio: **15:00 hrs**
-- 📍 Sede: [Karen's house - Las Tórtolas 3273, Macul, RM](https://maps.app.goo.gl/w65h8DxYtaYSoytC7)
-- 🎮 Formatos: **Primer Bloque Racial Edición** y **Bloque Furia Racial Limitado**
+- 📆 Fecha: **_TBD_**
+- 🕒 Hora de inicio: **_TBD_**
+- 📍 Sede: **_TBD_**
+- 🎮 Formatos: **Primer Bloque Racial Libre** y **Bloque Furia Racial Libre**
 - ⚔️ Rondas: **Mejor de 3**
 
 ---
