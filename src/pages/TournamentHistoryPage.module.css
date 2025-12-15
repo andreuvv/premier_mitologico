@@ -6,14 +6,7 @@
 }
 
 .pageHeader {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.5rem;
-  background-color: var(--coal-grey);
-  position: sticky;
-  top: 0;
-  z-index: 999;
+  display: none;
 }
 
 .overlay {
@@ -21,15 +14,7 @@
 }
 
 .hamburgerButton {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 28px;
-  height: 22px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
+  display: none;
 }
 
 .hamburgerButton span {
@@ -40,16 +25,37 @@
   transition: all 0.3s ease;
 }
 
-.hamburgerButton:hover span {
-  background-color: var(--sage-green);
-}
-
 .mobileTitle {
   display: none;
 }
 
 .closeSidebar {
   display: none;
+}
+
+.desktopToggle {
+  position: absolute;
+  right: -36px;
+  top: 20px;
+  background-color: var(--coal-grey);
+  color: var(--beige);
+  border: none;
+  border-radius: 0 6px 6px 0;
+  padding: 0.75rem 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  z-index: 10;
+}
+
+.desktopToggle:hover {
+  background-color: var(--petrol-blue);
+  box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.4);
 }
 
 .sidebar {
@@ -63,6 +69,7 @@
   height: 100vh;
   flex-shrink: 0;
   transition: transform 0.3s ease, margin 0.3s ease;
+  position: relative;
 }
 
 .sidebar.sidebarClosed {
@@ -450,6 +457,33 @@
     flex-direction: column;
   }
 
+  .pageHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background-color: var(--coal-grey);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+
+  .hamburgerButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 22px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .hamburgerButton:hover span {
+    background-color: var(--sage-green);
+  }
+
   .mobileTitle {
     display: block;
     font-size: 1.3rem;
@@ -457,6 +491,10 @@
     color: var(--beige);
     font-family: 'Cyrodiil', serif;
     margin: 0;
+  }
+
+  .desktopToggle {
+    display: none;
   }
 
   .overlay {

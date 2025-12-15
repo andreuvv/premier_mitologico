@@ -137,6 +137,15 @@ const TournamentHistoryPage = () => {
             ✕
           </button>
         </div>
+        
+        {/* Desktop Toggle Button - attached to sidebar */}
+        <button 
+          className={styles.desktopToggle}
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+          aria-label="Toggle sidebar"
+        >
+          {sidebarOpen ? '◀' : '▶'}
+        </button>
         {loading ? (
           <div className={styles.loadingText}>Cargando...</div>
         ) : tournaments.length === 0 ? (
