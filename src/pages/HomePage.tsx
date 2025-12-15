@@ -20,14 +20,14 @@ const HomePage = () => {
           className={styles.mainLogo}
         />
       </div>
-      <h1 className={styles.title}>Copa K&T Diciembre 2025</h1>
+      <h1 className={styles.title}>Copa K&T TBD</h1>
       <p className={styles.description}>
         Prepara tus mazos para el torneo más esperado del reino. Gloria y premios esperan a los mejores duelistas.
       </p>
       
       <div className={styles.tournamentInfo}>
         <p className={styles.infoText}>
-          Formatos: <Link to="/game-formats#primerBloqueRacialEdicion" className={styles.formatLink}>Primer Bloque Racial Edición</Link> y <Link to="/game-formats#bloqueFuriaRacialLimitado" className={styles.formatLink}>Furia Extendido Racial Limitado</Link>
+          Formatos: <Link to="/game-formats#primerBloqueRacialLibre" className={styles.formatLink}>Primer Bloque Racial Libre</Link> y <Link to="/game-formats#bloqueFuriaRacialLibre" className={styles.formatLink}>Furia Extendido Racial Libre</Link>
         </p>
         <p className={styles.infoText}>
           Tipo de Rondas: <Link to="/tournament-info#md3" className={styles.formatLink}>Mejor de 3</Link>
