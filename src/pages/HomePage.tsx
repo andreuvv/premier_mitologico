@@ -5,10 +5,13 @@ import MapCard from '../components/MapCard';
 import FormatSummaryRow from '../components/FormatSummaryRow';
 import { FaChartBar, FaTrophy } from 'react-icons/fa';
 import { banlistSummaries, lastUpdateMonth } from '../data/banlistSummary';
+import { tournamentConfig, isTournamentPast, getTournamentMonthYear } from '../config/tournamentConfig';
 import styles from './HomePage.module.css';
 
 const HomePage = () => {
   const [showSummaries, setShowSummaries] = useState(false);
+  const isPast = isTournamentPast();
+  const monthYear = getTournamentMonthYear();
 
   return (
     <div className={styles.container}>
@@ -20,17 +23,28 @@ const HomePage = () => {
           className={styles.mainLogo}
         />
       </div>
-      <h1 className={styles.title}>Copa K&T TBD</h1>
+      <h1 className={styles.title}>
+        {tournamentConfig.name} {isPast ? (
+          <span style={{ fontWeight: 'bold', fontStyle: 'italic' }}>TBD</span>
+        ) : (
+          monthYear && <span>{monthYear}</span>
+        )}
+      </h1>
       <p className={styles.description}>
         Prepara tus mazos para el torneo más esperado del reino. Gloria y premios esperan a los mejores duelistas.
       </p>
       
       <div className={styles.tournamentInfo}>
         <p className={styles.infoText}>
-          Formatos: <Link to="/game-formats#primerBloqueRacialLibre" className={styles.formatLink}>Primer Bloque Racial Libre</Link> y <Link to="/game-formats#bloqueFuriaRacialLibre" className={styles.formatLink}>Furia Extendido Racial Libre</Link>
+          Formatos: {tournamentConfig.formats.map((format, index) => (
+            <span key={format.name}>
+              {index > 0 && ' y '}
+              <Link to={format.link} className={styles.formatLink}>{format.name}</Link>
+            </span>
+          ))}
         </p>
         <p className={styles.infoText}>
-          Tipo de Rondas: <Link to="/tournament-info#md3" className={styles.formatLink}>Mejor de 3</Link>
+          Tipo de Rondas: <Link to={tournamentConfig.roundType.link} className={styles.formatLink}>{tournamentConfig.roundType.name}</Link>
         </p>
       </div>
       

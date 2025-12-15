@@ -530,16 +530,21 @@
   }
 
   .standingsTable {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 
   .standingsTable th,
   .standingsTable td {
-    padding: 0.5rem 0.3rem;
+    padding: 0.5rem 0.25rem;
   }
 
   .pageTitle {
     font-size: 1.5rem;
+  }
+
+  .nameCell {
+    min-width: 100px;
+    font-size: 0.8rem;
   }
 
   .matchesList {
@@ -550,10 +555,6 @@
   .tableContainer {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-  }
-
-  .standingsTable {
-    min-width: 800px;
   }
 }
 
@@ -574,6 +575,16 @@
   }
 
   .standingsTable {
+    font-size: 0.7rem;
+  }
+
+  .standingsTable th,
+  .standingsTable td {
+    padding: 0.4rem 0.15rem;
+  }
+
+  .nameCell {
+    min-width: 80px;
     font-size: 0.75rem;
   }
 

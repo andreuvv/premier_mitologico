@@ -92,6 +92,21 @@
   padding: 0 4px;
 }
 
+.tbdMessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.tbdText {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--ocher);
+  letter-spacing: 4px;
+  margin: 0;
+}
+
 @media (max-width: 900px) {
   .countdown {
     gap: 6px;
