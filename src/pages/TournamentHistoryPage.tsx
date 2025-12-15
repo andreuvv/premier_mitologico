@@ -15,7 +15,7 @@ const TournamentHistoryPage = () => {
   const [loading, setLoading] = useState(true);
   const [expandedYear, setExpandedYear] = useState<number | null>(null);
   const [expandedTournament, setExpandedTournament] = useState<number | null>(null);
-  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 768);
+  const [sidebarOpen, setSidebarOpen] = useState(false); // Only for mobile
 
   useEffect(() => {
     loadTournaments();
@@ -137,15 +137,6 @@ const TournamentHistoryPage = () => {
             ✕
           </button>
         </div>
-        
-        {/* Desktop Toggle Button - attached to sidebar */}
-        <button 
-          className={styles.desktopToggle}
-          onClick={() => setSidebarOpen(!sidebarOpen)}
-          aria-label="Toggle sidebar"
-        >
-          {sidebarOpen ? '◀' : '▶'}
-        </button>
         {loading ? (
           <div className={styles.loadingText}>Cargando...</div>
         ) : tournaments.length === 0 ? (
@@ -213,15 +204,14 @@ const TournamentHistoryPage = () => {
                   <tr>
                     <th>Pos</th>
                     <th>Jugador</th>
-                    <th>PJ</th>
-                    <th className={styles.winsColumn}>V</th>
+                    <th>RJ</th>
+                    <th className={styles.winsColumn}>G</th>
                     <th className={styles.tiesColumn}>E</th>
-                    <th className={styles.lossesColumn}>D</th>
-                    <th>Pts</th>
-                    <th>PTS</th>
-                    <th>PG</th>
+                    <th className={styles.lossesColumn}>P</th>
+                    <th>TPG</th>
                     <th>MWR%</th>
                     <th>RWR%</th>
+                    <th>Pts</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -229,15 +219,14 @@ const TournamentHistoryPage = () => {
                     <tr key={standing.id}>
                       <td className={styles.positionCell}>{standing.final_position}</td>
                       <td className={styles.nameCell}>{standing.player_name}</td>
-                      <td>{standing.matches_played}</td>
+                      <td className={styles.coalGreyColumn}>{standing.matches_played}</td>
                       <td className={styles.winsColumn}>{standing.wins}</td>
                       <td className={styles.tiesColumn}>{standing.ties}</td>
                       <td className={styles.lossesColumn}>{standing.losses}</td>
+                      <td className={styles.coalGreyColumn}>{standing.total_matches}</td>
+                      <td className={styles.coalGreyColumn}>{calculateWinRate(standing)}%</td>
+                      <td className={styles.coalGreyColumn}>{calculateRoundWinRate(standing)}%</td>
                       <td className={styles.pointsCell}>{standing.points}</td>
-                      <td>{standing.total_points_scored}</td>
-                      <td>{standing.total_matches}</td>
-                      <td>{calculateWinRate(standing)}%</td>
-                      <td>{calculateRoundWinRate(standing)}%</td>
                     </tr>
                   ))}
                 </tbody>
@@ -249,15 +238,14 @@ const TournamentHistoryPage = () => {
               <h3>Leyenda</h3>
               <ul>
                 <li><strong>Pos:</strong> Posición Final</li>
-                <li><strong>PJ:</strong> Partidos Jugados</li>
-                <li><strong>V:</strong> Victorias</li>
-                <li><strong>E:</strong> Empates</li>
-                <li><strong>D:</strong> Derrotas</li>
-                <li><strong>Pts:</strong> Puntos (Victoria = 3, Empate = 1)</li>
-                <li><strong>PTS:</strong> Puntos Totales Anotados</li>
-                <li><strong>PG:</strong> Partidas Ganadas (Juegos individuales)</li>
-                <li><strong>MWR%:</strong> Match Win Rate (PTS / PG)</li>
-                <li><strong>RWR%:</strong> Round Win Rate (Victorias + Empates×0.5) / PJ</li>
+                <li><strong>RJ:</strong> Rondas Jugadas</li>
+                <li><strong>G:</strong> Rondas Ganadas</li>
+                <li><strong>E:</strong> Rondas Empatadas</li>
+                <li><strong>P:</strong> Rondas Perdidas</li>
+                <li><strong>TPG:</strong> Total Partidas Ganadas (partidas individuales ganadas)</li>
+                <li><strong>MWR%:</strong> Matches Win Rate ( (Partidas ganadas / Partidas jugadas) * 100 )</li>
+                <li><strong>RWR%:</strong> Rounds Win Rate ( ((Rondas ganadas + Rondas empatadas * 0.5) / Rondas Jugadas) * 100 )</li>
+                <li><strong>Pts:</strong> Puntos (3 por victoria, 1 por empate)</li>
               </ul>
             </div>
 
@@ -265,8 +253,10 @@ const TournamentHistoryPage = () => {
             <div className={styles.tieBreakers}>
               <h3>Criterios de Desempate</h3>
               <ol>
-                <li>Mayor cantidad de <strong>Puntos (Pts)</strong></li>
-                <li>Mayor cantidad de <strong>Puntos Totales Anotados (PTS)</strong></li>
+                <li>⭐ <strong>Puntaje total</strong> (mayor puntaje)</li>
+                <li>💪 <strong>Mayor cantidad de victorias</strong></li>
+                <li>🎯 <strong>Victoria directa</strong> (ganó al otro jugador empatado durante las rondas)</li>
+                <li>⚔️ <strong>Duelo de desempate</strong> (si ningún criterio anterior resuelve)</li>
               </ol>
             </div>
           </div>
