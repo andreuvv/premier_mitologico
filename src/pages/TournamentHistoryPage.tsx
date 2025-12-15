@@ -15,6 +15,7 @@ const TournamentHistoryPage = () => {
   const [loading, setLoading] = useState(true);
   const [expandedYear, setExpandedYear] = useState<number | null>(null);
   const [expandedTournament, setExpandedTournament] = useState<number | null>(null);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   useEffect(() => {
     loadTournaments();
@@ -102,8 +103,18 @@ const TournamentHistoryPage = () => {
 
   return (
     <div className={styles.container}>
+      {/* Toggle Button */}
+      <button 
+        className={styles.toggleButton}
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        aria-label="Toggle sidebar"
+        style={{ left: sidebarOpen ? '280px' : '0' }}
+      >
+        {sidebarOpen ? '◀' : '▶'}
+      </button>
+
       {/* Side Menu */}
-      <aside className={styles.sidebar}>
+      <aside className={`${styles.sidebar} ${!sidebarOpen ? styles.sidebarClosed : ''}`}>
         <h2 className={styles.sidebarTitle}>Historial de Torneos</h2>
         {loading ? (
           <div className={styles.loadingText}>Cargando...</div>
