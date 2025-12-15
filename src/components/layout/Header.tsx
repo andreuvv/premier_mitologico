@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaHome, FaClipboardList, FaBan, FaGamepad, FaHammer, FaChartBar, FaTrophy } from 'react-icons/fa';
+import { FaHome, FaClipboardList, FaBan, FaGamepad, FaHammer, FaChartBar, FaTrophy, FaHistory } from 'react-icons/fa';
 import styles from './Header.module.css';
 
 const Header = () => {
@@ -35,6 +35,13 @@ const Header = () => {
           >
             <FaTrophy className={styles.icon} />
             Standings
+          </Link>
+          <Link 
+            to="/tournament-history" 
+            className={location.pathname.startsWith('/tournament-history') ? styles.active : ''}
+          >
+            <FaHistory className={styles.icon} />
+            Historial
           </Link>
           <Link 
             to="/tournament-info" 
@@ -87,6 +94,10 @@ const Header = () => {
           <Link to="/standings" onClick={() => setMobileMenuOpen(false)}>
             <FaTrophy className={styles.icon} />
             Standings
+          </Link>
+          <Link to="/tournament-history" onClick={() => setMobileMenuOpen(false)}>
+            <FaHistory className={styles.icon} />
+            Historial
           </Link>
           <Link to="/tournament-info" onClick={() => setMobileMenuOpen(false)}>
             <FaClipboardList className={styles.icon} />
