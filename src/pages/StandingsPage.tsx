@@ -32,24 +32,19 @@ const StandingsPage = () => {
   // Tie-breaking rules implementation
   const sortStandings = (data: APIStanding[]): APIStanding[] => {
     return [...data].sort((a, b) => {
-      // Calculate total points (wins * 3)
-      const pointsA = a.wins * 3;
-      const pointsB = b.wins * 3;
-
-      // Rule 1: Total points (higher is better)
-      if (pointsA !== pointsB) {
-        return pointsB - pointsA;
+      // Rule 1: Total points (3 for win, 1 for tie) - use the points from API
+      if (a.points !== b.points) {
+        return b.points - a.points;
       }
 
-      // Rule 2: Most victories (higher is better)
-      if (a.wins !== b.wins) {
-        return b.wins - a.wins;
-      }
-
-      // Rule 3: Head-to-head result would need match data
-      // For now, we'll use points scored as tiebreaker
+      // Rule 2: TPG - Total Partidas Ganadas (total individual games won)
       if (a.total_points_scored !== b.total_points_scored) {
         return b.total_points_scored - a.total_points_scored;
+      }
+
+      // Rule 3: Most round wins
+      if (a.wins !== b.wins) {
+        return b.wins - a.wins;
       }
 
       // Rule 4: Would require head-to-head or playoff
@@ -111,7 +106,6 @@ const StandingsPage = () => {
           <tbody>
             {standings.map((player, index) => {
               const position = index + 1;
-              const totalPoints = player.wins * 3 + player.ties * 1;
               // Calculate MWR% (Matches Win Rate) using total_matches (games played) and total_points_scored (games won)
               const matchWinRate = player.total_matches > 0 
                 ? ((player.total_points_scored / player.total_matches) * 100).toFixed(1)
@@ -139,7 +133,7 @@ const StandingsPage = () => {
                   <td className={styles.totalVictoriesColumn}>{player.total_points_scored}</td>
                   <td className={styles.winRateColumn}>{matchWinRate}%</td>
                   <td className={styles.winRateColumn}>{roundWinRate}%</td>
-                  <td className={styles.pointsColumn}>{totalPoints}</td>
+                  <td className={styles.pointsColumn}>{player.points}</td>
                 </tr>
               );
             })}

@@ -30,6 +30,7 @@ export interface APIStanding {
   wins: number;
   ties: number;
   losses: number;
+  points: number;
   total_points_scored: number;
   total_matches: number;
 }
