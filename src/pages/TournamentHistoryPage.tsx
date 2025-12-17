@@ -223,7 +223,7 @@ const TournamentHistoryPage = () => {
                       <td className={styles.winsColumn}>{standing.wins}</td>
                       <td className={styles.tiesColumn}>{standing.ties}</td>
                       <td className={styles.lossesColumn}>{standing.losses}</td>
-                      <td className={styles.coalGreyColumn}>{standing.total_matches}</td>
+                      <td className={styles.coalGreyColumn}>{standing.total_points_scored}</td>
                       <td className={styles.coalGreyColumn}>{calculateWinRate(standing)}%</td>
                       <td className={styles.coalGreyColumn}>{calculateRoundWinRate(standing)}%</td>
                       <td className={styles.pointsCell}>{standing.points}</td>
