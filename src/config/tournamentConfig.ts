@@ -26,12 +26,12 @@ export interface TournamentConfig {
 
 export const tournamentConfig: TournamentConfig = {
   name: 'Copa K&T',
-  date: '2025-12-13', // Set to null or past date for TBD mode
-  time: '15:00',
+  date: '2026-01-10', // Set to null or past date for TBD mode
+  time: '18:00',
   location: {
-    name: 'Donde los Karens',
-    address: 'Las Tórtolas 3273, Macul, Santiago',
-    googleMapsQuery: 'Las+Tórtolas+3273,+Macul,+Santiago',
+    name: "Weshe's",
+    address: 'Jorge Quevedo 5464, Macul, Santiago',
+    googleMapsQuery: 'Jorge+Quevedo+5464,+Macul,+Santiago',
   },
   formats: [
     {
