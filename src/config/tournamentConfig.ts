@@ -29,7 +29,7 @@ export const tournamentConfig: TournamentConfig = {
   date: '2026-01-10', // Set to null or past date for TBD mode
   time: '18:00',
   location: {
-    name: "Weshe's",
+    name: "Wesh's",
     address: 'Jorge Quevedo 5464, Macul, Santiago',
     googleMapsQuery: 'Jorge+Quevedo+5464,+Macul,+Santiago',
   },
@@ -77,7 +77,10 @@ export function formatTournamentDate(): string {
     return 'TBD';
   }
   
-  const date = new Date(tournamentConfig.date);
+  // Parse date string as local timezone (not UTC)
+  const [year, month, day] = tournamentConfig.date.split('-').map(Number);
+  const date = new Date(year, month - 1, day);
+  
   const months = [
     'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
     'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
@@ -105,7 +108,10 @@ export function getTournamentMonthYear(): string {
     return '';
   }
   
-  const date = new Date(tournamentConfig.date);
+  // Parse date string as local timezone (not UTC)
+  const [year, month] = tournamentConfig.date.split('-').map(Number);
+  const date = new Date(year, month - 1, 1);
+  
   const months = [
     'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
     'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
