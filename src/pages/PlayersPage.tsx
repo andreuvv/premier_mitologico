@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { fixtureAPI, APIPlayer } from '../services/fixtureAPI';
-import { tournamentAPI } from '../services/tournamentAPI';
 import { API_BASE_URL } from '../config/api';
 import { FaUser, FaBars, FaTimes } from 'react-icons/fa';
 import styles from './PlayersPage.module.css';
