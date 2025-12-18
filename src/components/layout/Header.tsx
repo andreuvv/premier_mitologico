@@ -48,6 +48,13 @@ const Header = () => {
             Historial
           </Link>
           <Link 
+            to="/players" 
+            className={location.pathname === '/players' ? styles.active : ''}
+          >
+            <FaUser className={styles.icon} />
+            Jugadores
+          </Link>
+          <Link 
             to="/tournament-info" 
             className={location.pathname === '/tournament-info' ? styles.active : ''}
           >
@@ -111,6 +118,10 @@ const Header = () => {
           <Link to="/tournament-history" onClick={() => setMobileMenuOpen(false)}>
             <FaHistory className={styles.icon} />
             Historial
+          </Link>
+          <Link to="/players" onClick={() => setMobileMenuOpen(false)}>
+            <FaUser className={styles.icon} />
+            Jugadores
           </Link>
           <Link to="/tournament-info" onClick={() => setMobileMenuOpen(false)}>
             <FaClipboardList className={styles.icon} />
