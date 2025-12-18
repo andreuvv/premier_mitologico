@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { fixtureAPI, APIPlayer } from '../services/fixtureAPI';
 import { API_BASE_URL } from '../config/api';
-import { FaUser, FaBars, FaTimes } from 'react-icons/fa';
+import { FaUser, FaBars, FaTimes, FaChevronDown } from 'react-icons/fa';
 import styles from './PlayersPage.module.css';
 
 interface PlayerDetail extends APIPlayer {
@@ -26,6 +26,24 @@ interface PlayerTournamentData {
     race_pb?: string;
     race_bf?: string;
   };
+  // Actual match data by format from backend
+  pbWins?: number;
+  pbTies?: number;
+  pbMatches?: number;
+  bfWins?: number;
+  bfTies?: number;
+  bfMatches?: number;
+}
+
+interface PlayerSummary {
+  tournamentsPlayed: number;
+  totalWins: number;
+  totalTies: number;
+  totalLosses: number;
+  mostPlayedRacePB?: string;
+  mostPlayedRaceBF?: string;
+  winRatePB: number;
+  winRateBF: number;
 }
 
 const PlayersPage = () => {
@@ -36,10 +54,83 @@ const PlayersPage = () => {
   const [dataLoading, setDataLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [expandedTournaments, setExpandedTournaments] = useState<Set<number>>(new Set());
 
   useEffect(() => {
     loadPlayers();
   }, []);
+
+  const playerSummary = useMemo(() => {
+    const summary: PlayerSummary = {
+      tournamentsPlayed: playerTournamentData.length,
+      totalWins: 0,
+      totalTies: 0,
+      totalLosses: 0,
+      mostPlayedRacePB: undefined,
+      mostPlayedRaceBF: undefined,
+      winRatePB: 0,
+      winRateBF: 0,
+    };
+
+    if (playerTournamentData.length === 0) return summary;
+
+    // Calculate overall record and win rates using actual match data by format
+    // Win rate = (wins + 0.5*ties) / total_matches
+    let totalPBWins = 0;
+    let totalPBTies = 0;
+    let totalPBMatches = 0;
+    let totalBFWins = 0;
+    let totalBFTies = 0;
+    let totalBFMatches = 0;
+
+    playerTournamentData.forEach((tournament) => {
+      if (tournament.standing) {
+        summary.totalWins += tournament.standing.wins;
+        summary.totalTies += tournament.standing.ties;
+        summary.totalLosses += tournament.standing.losses;
+      }
+
+      // Accumulate actual match data by format
+      if (tournament.pbMatches && tournament.pbMatches > 0) {
+        totalPBWins += tournament.pbWins || 0;
+        totalPBTies += tournament.pbTies || 0;
+        totalPBMatches += tournament.pbMatches;
+      }
+      if (tournament.bfMatches && tournament.bfMatches > 0) {
+        totalBFWins += tournament.bfWins || 0;
+        totalBFTies += tournament.bfTies || 0;
+        totalBFMatches += tournament.bfMatches;
+      }
+    });
+
+    // Calculate win rates: (wins + 0.5*ties) / total_matches * 100
+    // Cap at 100% to handle any edge cases
+    summary.winRatePB = totalPBMatches > 0 ? Math.min(100, Math.round(((totalPBWins + 0.5 * totalPBTies) / totalPBMatches) * 100)) : 0;
+    summary.winRateBF = totalBFMatches > 0 ? Math.min(100, Math.round(((totalBFWins + 0.5 * totalBFTies) / totalBFMatches) * 100)) : 0;
+
+    // Find most played races
+    const racePBCount: Record<string, number> = {};
+    const raceBFCount: Record<string, number> = {};
+
+    playerTournamentData.forEach(tournament => {
+      if (tournament.races?.race_pb) {
+        racePBCount[tournament.races.race_pb] = (racePBCount[tournament.races.race_pb] || 0) + 1;
+      }
+      if (tournament.races?.race_bf) {
+        raceBFCount[tournament.races.race_bf] = (raceBFCount[tournament.races.race_bf] || 0) + 1;
+      }
+    });
+
+    // Get most played race for each format
+    if (Object.keys(racePBCount).length > 0) {
+      summary.mostPlayedRacePB = Object.entries(racePBCount).sort((a, b) => b[1] - a[1])[0][0];
+    }
+    if (Object.keys(raceBFCount).length > 0) {
+      summary.mostPlayedRaceBF = Object.entries(raceBFCount).sort((a, b) => b[1] - a[1])[0][0];
+    }
+
+    return summary;
+  }, [playerTournamentData]);
 
   const loadPlayers = async () => {
     try {
@@ -53,6 +144,16 @@ const PlayersPage = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const toggleTournamentExpand = (tournamentId: number) => {
+    const newExpanded = new Set(expandedTournaments);
+    if (newExpanded.has(tournamentId)) {
+      newExpanded.delete(tournamentId);
+    } else {
+      newExpanded.add(tournamentId);
+    }
+    setExpandedTournaments(newExpanded);
   };
 
   const handlePlayerClick = async (player: APIPlayer) => {
@@ -93,6 +194,13 @@ const PlayersPage = () => {
           race_pb: item.race_pb,
           race_bf: item.race_bf,
         },
+        // Include actual match data by format
+        pbWins: item.pb_wins,
+        pbTies: item.pb_ties,
+        pbMatches: item.pb_matches,
+        bfWins: item.bf_wins,
+        bfTies: item.bf_ties,
+        bfMatches: item.bf_matches,
       }));
 
       setPlayerTournamentData(tournamentData);
@@ -156,7 +264,43 @@ const PlayersPage = () => {
       <main className={styles.main}>
         {selectedPlayer ? (
           <div className={styles.playerDetail}>
-            <h1 className={styles.playerName}>{selectedPlayer.name}</h1>
+            <div className={styles.playerHeader}>
+              <div className={styles.playerInfoColumn}>
+                <div className={styles.playerProfilePicture}></div>
+                <h1 className={styles.playerName}>{selectedPlayer.name}</h1>
+              </div>
+              
+              {playerTournamentData.length > 0 && (
+                <div className={styles.playerSummary}>
+                  <div className={styles.summaryItem}>
+                    <span className={styles.summaryLabel}>Récord Global:</span>
+                    <span className={styles.summaryValue}>
+                      {playerSummary.totalWins}G - {playerSummary.totalTies}E - {playerSummary.totalLosses}P
+                    </span>
+                  </div>
+                  <div className={styles.summaryItem}>
+                    <span className={styles.summaryLabel}>Torneos Participados:</span>
+                    <span className={styles.summaryValue}>{playerSummary.tournamentsPlayed}</span>
+                  </div>
+                  <div className={styles.summaryItem}>
+                    <span className={styles.summaryLabel}>Raza más jugada PB:</span>
+                    <span className={styles.summaryValue}>{playerSummary.mostPlayedRacePB || '-'}</span>
+                  </div>
+                  <div className={styles.summaryItem}>
+                    <span className={styles.summaryLabel}>WinRate Global en PB:</span>
+                    <span className={styles.summaryValue}>{playerSummary.winRatePB}%</span>
+                  </div>
+                  <div className={styles.summaryItem}>
+                    <span className={styles.summaryLabel}>Raza más jugada BF:</span>
+                    <span className={styles.summaryValue}>{playerSummary.mostPlayedRaceBF || '-'}</span>
+                  </div>
+                  <div className={styles.summaryItem}>
+                    <span className={styles.summaryLabel}>WinRate Global en BF:</span>
+                    <span className={styles.summaryValue}>{playerSummary.winRateBF}%</span>
+                  </div>
+                </div>
+              )}
+            </div>
             
             {dataLoading ? (
               <div className={styles.loadingSpinner}>Cargando datos del jugador...</div>
@@ -166,54 +310,64 @@ const PlayersPage = () => {
               <div className={styles.tournamentsList}>
                 {playerTournamentData.map(tournament => (
                   <div key={tournament.tournamentId} className={styles.tournamentCard}>
-                    <div className={styles.tournamentHeader}>
-                      <h3>{tournament.tournamentName}</h3>
-                      <span className={styles.tournamentDate}>
-                        {tournament.month} {tournament.year}
-                      </span>
-                    </div>
+                    <button
+                      className={styles.accordionHeader}
+                      onClick={() => toggleTournamentExpand(tournament.tournamentId)}
+                    >
+                      <div className={styles.headerContent}>
+                        <h3>{tournament.tournamentName}</h3>
+                        <span className={styles.tournamentDate}>
+                          {tournament.month} {tournament.year}
+                        </span>
+                      </div>
+                      <FaChevronDown 
+                        className={`${styles.chevron} ${expandedTournaments.has(tournament.tournamentId) ? styles.expanded : ''}`}
+                      />
+                    </button>
                     
-                    <div className={styles.tournamentInfo}>
-                      {tournament.standing && (
-                        <div className={styles.standingInfo}>
-                          <div className={styles.infoRow}>
-                            <span className={styles.label}>Posición:</span>
-                            <span className={styles.value}>{tournament.standing.final_position}°</span>
+                    {expandedTournaments.has(tournament.tournamentId) && (
+                      <div className={styles.tournamentInfo}>
+                        {tournament.standing && (
+                          <div className={styles.standingInfo}>
+                            <div className={styles.infoRow}>
+                              <span className={styles.label}>Posición:</span>
+                              <span className={styles.value}>{tournament.standing.final_position}°</span>
+                            </div>
+                            <div className={styles.infoRow}>
+                              <span className={styles.label}>Récord (Rondas):</span>
+                              <span className={styles.value}>
+                                {tournament.standing.wins}G - {tournament.standing.ties}E - {tournament.standing.losses}P
+                              </span>
+                            </div>
+                            <div className={styles.infoRow}>
+                              <span className={styles.label}>Puntos:</span>
+                              <span className={styles.value}>{tournament.standing.points}</span>
+                            </div>
+                            <div className={styles.infoRow}>
+                              <span className={styles.label}>Partidas Individuales Ganadas:</span>
+                              <span className={styles.value}>{tournament.standing.total_points_scored}</span>
+                            </div>
                           </div>
-                          <div className={styles.infoRow}>
-                            <span className={styles.label}>Récord:</span>
-                            <span className={styles.value}>
-                              {tournament.standing.wins}G - {tournament.standing.ties}E - {tournament.standing.losses}P
-                            </span>
+                        )}
+                        
+                        {tournament.races && (
+                          <div className={styles.racesInfo}>
+                            <div className={styles.infoRow}>
+                              <span className={styles.label}>Raza PB:</span>
+                              <span className={styles.value}>
+                                {tournament.races.race_pb || 'No registrada'}
+                              </span>
+                            </div>
+                            <div className={styles.infoRow}>
+                              <span className={styles.label}>Raza BF:</span>
+                              <span className={styles.value}>
+                                {tournament.races.race_bf || 'No registrada'}
+                              </span>
+                            </div>
                           </div>
-                          <div className={styles.infoRow}>
-                            <span className={styles.label}>Puntos:</span>
-                            <span className={styles.value}>{tournament.standing.points}</span>
-                          </div>
-                          <div className={styles.infoRow}>
-                            <span className={styles.label}>Partidas Ganadas:</span>
-                            <span className={styles.value}>{tournament.standing.total_points_scored}</span>
-                          </div>
-                        </div>
-                      )}
-                      
-                      {tournament.races && (
-                        <div className={styles.racesInfo}>
-                          <div className={styles.infoRow}>
-                            <span className={styles.label}>Raza PB:</span>
-                            <span className={styles.value}>
-                              {tournament.races.race_pb || 'No registrada'}
-                            </span>
-                          </div>
-                          <div className={styles.infoRow}>
-                            <span className={styles.label}>Raza BF:</span>
-                            <span className={styles.value}>
-                              {tournament.races.race_bf || 'No registrada'}
-                            </span>
-                          </div>
-                        </div>
-                      )}
-                    </div>
+                        )}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
