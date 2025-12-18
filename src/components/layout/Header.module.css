@@ -34,6 +34,7 @@
 
 .spacer {
   display: none;
+  flex: 1;
 }
 
 .nav {
@@ -54,6 +55,7 @@
   font-family: 'Roboto', sans-serif;
   border-radius: 24px;
   transition: all 0.2s;
+  position: relative;
 }
 
 .nav a:hover {
@@ -64,6 +66,60 @@
   color: var(--beige);
   background-color: var(--petrol-blue);
   font-weight: bold;
+}
+
+.badge {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--ocher);
+  color: var(--coal-grey);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.65rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.loginButton {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  background: transparent;
+  border: none;
+  color: grey;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 24px;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+.header > .loginButton {
+  display: flex;
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.navDisabled {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  background: transparent;
+  border: none;
+  color: grey;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 24px;
+  text-decoration: line-through;
+  cursor: not-allowed;
 }
 
 .deckBuilder {
@@ -119,15 +175,30 @@
   .deckBuilder {
     display: none;
   }
+  
+  .navDisabled {
+    display: none;
+  }
+
+  .container .loginButton {
+    display: flex;
+    position: static;
+    transform: none;
+    margin-left: auto;
+    order: 1;
+  }
+
+  .header > .loginButton {
+    display: none;
+  }
 
   .spacer {
-    display: block;
-    flex: 1;
+    display: none;
   }
   
   .hamburger {
     display: flex;
-    margin-left: auto;
+    order: 2;
   }
 
   .mobileMenu {
@@ -147,6 +218,19 @@
     font-family: 'Roboto', sans-serif;
     text-decoration: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+  }
+
+  .mobileBadge {
+    position: absolute;
+    right: 2rem;
+    background-color: var(--ocher);
+    color: var(--coal-grey);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    white-space: nowrap;
   }
 
   .mobileMenu a:hover {

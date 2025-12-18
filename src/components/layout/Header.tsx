@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaHome, FaClipboardList, FaBan, FaGamepad, FaHammer, FaChartBar, FaTrophy, FaHistory } from 'react-icons/fa';
+import { FaHome, FaClipboardList, FaBan, FaGamepad, FaHammer, FaChartBar, FaTrophy, FaHistory, FaUser } from 'react-icons/fa';
+import { getTournamentMonthYear } from '../../config/tournamentConfig';
 import styles from './Header.module.css';
 
 const Header = () => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const monthYear = getTournamentMonthYear();
 
   return (
     <header className={styles.header}>
@@ -28,6 +30,7 @@ const Header = () => {
           >
             <FaChartBar className={styles.icon} />
             Fixture
+            {monthYear && <span className={styles.badge}>{monthYear}</span>}
           </Link>
           <Link 
             to="/standings" 
@@ -35,6 +38,7 @@ const Header = () => {
           >
             <FaTrophy className={styles.icon} />
             Standings
+            {monthYear && <span className={styles.badge}>{monthYear}</span>}
           </Link>
           <Link 
             to="/tournament-history" 
@@ -64,14 +68,11 @@ const Header = () => {
             <FaGamepad className={styles.icon} />
             Formatos
           </Link>
+          <button className={styles.navDisabled} disabled>
+            <FaHammer className={styles.icon} />
+            Deck Builder
+          </button>
         </nav>
-
-        <div className={styles.spacer}></div>
-
-        <button className={styles.deckBuilder} disabled>
-          <FaHammer className={styles.icon} />
-          Deck Builder
-        </button>
 
         <button 
           className={styles.hamburger}
@@ -79,7 +80,17 @@ const Header = () => {
         >
           ☰
         </button>
+
+        <button className={styles.loginButton} disabled>
+          <FaUser className={styles.icon} />
+          Login
+        </button>
       </div>
+
+      <button className={styles.loginButton} disabled>
+        <FaUser className={styles.icon} />
+        Login
+      </button>
 
       {mobileMenuOpen && (
         <div className={styles.mobileMenu}>
@@ -90,10 +101,12 @@ const Header = () => {
           <Link to="/fixture" onClick={() => setMobileMenuOpen(false)}>
             <FaChartBar className={styles.icon} />
             Fixture
+            {monthYear && <span className={styles.mobileBadge}>{monthYear}</span>}
           </Link>
           <Link to="/standings" onClick={() => setMobileMenuOpen(false)}>
             <FaTrophy className={styles.icon} />
             Standings
+            {monthYear && <span className={styles.mobileBadge}>{monthYear}</span>}
           </Link>
           <Link to="/tournament-history" onClick={() => setMobileMenuOpen(false)}>
             <FaHistory className={styles.icon} />
