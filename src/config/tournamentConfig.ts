@@ -70,6 +70,22 @@ export function isTournamentPast(): boolean {
 }
 
 /**
+ * Check if today is the tournament day
+ */
+export function isTournamentDay(): boolean {
+  if (!tournamentConfig.date) return false;
+  
+  const tournamentDate = new Date(tournamentConfig.date);
+  const now = new Date();
+  
+  // Remove time component for comparison
+  tournamentDate.setHours(0, 0, 0, 0);
+  now.setHours(0, 0, 0, 0);
+  
+  return tournamentDate.getTime() === now.getTime();
+}
+
+/**
  * Format date for display
  */
 export function formatTournamentDate(): string {

@@ -2,6 +2,26 @@
   max-width: 100%;
 }
 
+.pageLayout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 2rem;
+  align-items: start;
+  padding: 0 1rem;
+}
+
+.mainContent {
+  min-width: 0;
+}
+
+.cardsColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: sticky;
+  top: 20px;
+}
+
 .subtitle {
   font-size: 28px;
   font-weight: 500;
@@ -193,27 +213,45 @@
 }
 
 .cardsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  display: none;
 }
 
 .cardWrapper {
   min-width: 0;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1024px) {
+  .pageLayout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .cardsColumn {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .pageLayout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .cardsColumn {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
   .subtitle {
     font-size: 24px;
   }
 
   .title {
     font-size: 32px;
-  }
-  
-  .cardsGrid {
-    grid-template-columns: 1fr;
   }
   
   .quickAccess {
@@ -233,4 +271,3 @@
     font-size: 0.75rem;
   }
 }
-

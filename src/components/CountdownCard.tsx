@@ -51,11 +51,11 @@ export default function CountdownCard() {
     <div className={styles.card}>
       <div className={styles.header}>
         <span className={styles.icon}>⏱️</span>
-        <h2>TIEMPO RESTANTE</h2>
+        <h2>FECHA DEL EVENTO</h2>
       </div>
       <div className={styles.divider}></div>
       <div className={styles.dateBox}>
-        <p className={styles.dateLabel}>Fecha del evento</p>
+        {/* <p className={styles.dateLabel}>Fecha del evento</p> */}
         <p className={styles.dateValue}>{dateDisplay}</p>
       </div>
       {isPast ? (
