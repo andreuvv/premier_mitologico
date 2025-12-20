@@ -356,7 +356,7 @@
 .chartSection {
   flex: 1;
   min-width: 300px;
-  max-width: 400px;
+  max-width: 500px;
   text-align: center;
   background: white;
   border-radius: 12px;
@@ -372,7 +372,7 @@
 }
 
 .resumenView {
-  padding: 2rem;
+  padding: 0.5rem;
 }
 
 .coalGreyColumn {
@@ -516,7 +516,7 @@
   }
 
   .mainContent {
-    padding: 2rem 1.5rem;
+    padding: 1rem 1rem;
   }
 
   .standingsTable {
@@ -621,7 +621,7 @@
   }
 
   .mainContent {
-    padding: 2rem 1rem;
+    padding: 1rem 0rem;
     width: 100%;
     margin-left: 0;
   }
@@ -663,7 +663,7 @@
   }
 
   .mainContent {
-    padding: 1.5rem 0.75rem;
+    padding: 0.5rem 0rem;
   }
 
   .pageTitle {
