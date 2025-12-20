@@ -51,6 +51,8 @@ export interface TournamentRoundsResponse {
 export interface TournamentRacesResponse {
   pb_races: { [race: string]: number };
   bf_races: { [race: string]: number };
+  pb_race_winrates: { [race: string]: number };
+  bf_race_winrates: { [race: string]: number };
 }
 
 export const tournamentAPI = {

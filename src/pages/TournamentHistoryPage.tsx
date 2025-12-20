@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { tournamentAPI, Tournament, TournamentStanding, TournamentRound, TournamentRacesResponse } from '../services/tournamentAPI';
 import { FaTrophy, FaMedal } from 'react-icons/fa';
-import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 import styles from './TournamentHistoryPage.module.css';
 
 const TournamentHistoryPage = () => {
@@ -135,6 +135,15 @@ const TournamentHistoryPage = () => {
     }));
   };
 
+  const prepareWinrateData = (winrateData: { [race: string]: number }) => {
+    return Object.entries(winrateData)
+      .map(([race, winrate]) => ({
+        race,
+        winrate: Math.round(winrate * 100) / 100 // round to 2 decimals
+      }))
+      .sort((a, b) => b.winrate - a.winrate); // sort by winrate descending
+  };
+
   const groupedTournaments = groupByYear();
   const years = Object.keys(groupedTournaments).map(Number).sort((a, b) => b - a);
 
@@ -254,6 +263,7 @@ const TournamentHistoryPage = () => {
                         outerRadius={80}
                         fill="#8884d8"
                         dataKey="value"
+                        label={(entry) => `${entry.value}`}
                       >
                         {prepareChartData(races.pb_races, 'pb').map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={getColorForRace(entry.name, 'pb')} />
@@ -282,6 +292,7 @@ const TournamentHistoryPage = () => {
                         outerRadius={80}
                         fill="#8884d8"
                         dataKey="value"
+                        label={(entry) => `${entry.value}`}
                       >
                         {prepareChartData(races.bf_races, 'bf').map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={getColorForRace(entry.name, 'bf')} />
@@ -296,6 +307,50 @@ const TournamentHistoryPage = () => {
                   </ResponsiveContainer>
                 ) : (
                   <p>No hay datos de razas para Bloque Furia</p>
+                )}
+              </div>
+              <div className={styles.chartSection}>
+                <h2>Winrate por Raza - Primer Bloque</h2>
+                {races ? (
+                  <ResponsiveContainer width="100%" height={400}>
+                    <BarChart data={prepareWinrateData(races.pb_race_winrates)}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis 
+                        dataKey="race" 
+                        angle={-45} 
+                        textAnchor="end" 
+                        height={80}
+                        interval={0}
+                      />
+                      <YAxis label={{ value: 'Winrate (%)', angle: -90, position: 'insideLeft' }} />
+                      <Tooltip formatter={(value) => [`${value}%`, 'Winrate']} contentStyle={{ color: 'var(--coal-grey)' }} />
+                      <Bar dataKey="winrate" fill="#38A169" label={{ fill: 'white', fontSize: 12, position: 'inside' }} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                ) : (
+                  <p>No hay datos de winrates para Primer Bloque</p>
+                )}
+              </div>
+              <div className={styles.chartSection}>
+                <h2>Winrate por Raza - Bloque Furia</h2>
+                {races ? (
+                  <ResponsiveContainer width="100%" height={400}>
+                    <BarChart data={prepareWinrateData(races.bf_race_winrates)}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis 
+                        dataKey="race" 
+                        angle={-45} 
+                        textAnchor="end" 
+                        height={80}
+                        interval={0}
+                      />
+                      <YAxis label={{ value: 'Winrate (%)', angle: -90, position: 'insideLeft' }} />
+                      <Tooltip formatter={(value) => [`${value}%`, 'Winrate']} contentStyle={{ color: 'var(--coal-grey)' }} />
+                      <Bar dataKey="winrate" fill="#E53E3E" label={{ fill: 'white', fontSize: 12, position: 'inside' }} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                ) : (
+                  <p>No hay datos de winrates para Bloque Furia</p>
                 )}
               </div>
             </div>
