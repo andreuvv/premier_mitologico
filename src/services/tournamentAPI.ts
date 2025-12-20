@@ -24,6 +24,8 @@ export interface TournamentStanding {
   total_points_scored: number;
   total_matches: number;
   final_position: number;
+  race_pb: string | null;
+  race_bf: string | null;
 }
 
 export interface TournamentMatch {
@@ -44,6 +46,11 @@ export interface TournamentRound {
 export interface TournamentRoundsResponse {
   tournament_name: string;
   rounds: TournamentRound[];
+}
+
+export interface TournamentRacesResponse {
+  pb_races: { [race: string]: number };
+  bf_races: { [race: string]: number };
 }
 
 export const tournamentAPI = {
@@ -79,6 +86,18 @@ export const tournamentAPI = {
     });
     if (!response.ok) {
       throw new Error(`Failed to fetch tournament rounds: ${response.statusText}`);
+    }
+    return response.json();
+  },
+
+  getTournamentRaces: async (tournamentId: number): Promise<TournamentRacesResponse> => {
+    const response = await fetch(`${API_BASE_URL}/tournaments/${tournamentId}/races`, {
+      headers: {
+        'X-API-Key': API_KEY,
+      },
+    });
+    if (!response.ok) {
+      throw new Error(`Failed to fetch tournament races: ${response.statusText}`);
     }
     return response.json();
   },

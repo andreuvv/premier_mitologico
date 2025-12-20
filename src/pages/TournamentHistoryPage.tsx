@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { tournamentAPI, Tournament, TournamentStanding, TournamentRound } from '../services/tournamentAPI';
+import { tournamentAPI, Tournament, TournamentStanding, TournamentRound, TournamentRacesResponse } from '../services/tournamentAPI';
+import { FaTrophy, FaMedal } from 'react-icons/fa';
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 import styles from './TournamentHistoryPage.module.css';
 
 const TournamentHistoryPage = () => {
@@ -11,6 +13,7 @@ const TournamentHistoryPage = () => {
   const [selectedTournament, setSelectedTournament] = useState<Tournament | null>(null);
   const [standings, setStandings] = useState<TournamentStanding[]>([]);
   const [rounds, setRounds] = useState<TournamentRound[]>([]);
+  const [races, setRaces] = useState<TournamentRacesResponse | null>(null);
   const [tournamentName, setTournamentName] = useState<string>('');
   const [loading, setLoading] = useState(true);
   const [expandedYear, setExpandedYear] = useState<number | null>(null);
@@ -56,6 +59,9 @@ const TournamentHistoryPage = () => {
         const data = await tournamentAPI.getTournamentRounds(id);
         setRounds(data.rounds);
         setTournamentName(data.tournament_name);
+      } else if (viewType === 'resumen') {
+        const data = await tournamentAPI.getTournamentRaces(id);
+        setRaces(data);
       }
     } catch (error) {
       console.error('Error loading tournament data:', error);
@@ -82,7 +88,7 @@ const TournamentHistoryPage = () => {
     }
   };
 
-  const handleViewClick = (tournament: Tournament, viewType: 'standings' | 'rounds') => {
+  const handleViewClick = (tournament: Tournament, viewType: 'resumen' | 'standings' | 'rounds') => {
     navigate(`/tournament-history/${tournament.id}/${viewType}`);
   };
 
@@ -96,6 +102,37 @@ const TournamentHistoryPage = () => {
     if (totalRounds === 0) return '0.0';
     const roundPoints = standing.wins + standing.ties * 0.5;
     return ((roundPoints / totalRounds) * 100).toFixed(1);
+  };
+
+  const getPositionIcon = (position: number) => {
+    if (position === 1) return <FaTrophy className={styles.goldIcon} />;
+    if (position === 2) return <FaMedal className={styles.silverIcon} />;
+    if (position === 3) return <FaMedal className={styles.bronzeIcon} />;
+    return null;
+  };
+
+  const getColorForRace = (race: string, format: 'pb' | 'bf') => {
+    const colors = [
+      '#6B46C1', '#38A169', '#D69E2E', '#E53E3E', '#3182CE', '#805AD5', '#DD6B20', '#2C5282', '#B83280', '#38B2AC', '#D4AF37', '#C53030', '#2D3748'
+    ];
+    const races = format === 'pb' 
+      ? ['Caballero', 'Faerie', 'Dragón', 'Olímpico', 'Titán', 'Héroe', 'Defensor', 'Desafiante', 'Sombra', 'Sacerdote', 'Faraón', 'Eterno', 'Tótem']
+      : ['Caballero', 'Guerrero', 'Eterno', 'Sombra', 'Dragón', 'Bestia', 'Sacerdote', 'Ancestral', 'Héroe', 'Bárbaro', 'Tótem'];
+    
+    const index = races.indexOf(race);
+    return index >= 0 ? colors[index % colors.length] : '#6B46C1';
+  };
+
+  const prepareChartData = (raceData: { [race: string]: number }, format: 'pb' | 'bf') => {
+    const allRaces = format === 'pb' 
+      ? ['Caballero', 'Faerie', 'Dragón', 'Olímpico', 'Titán', 'Héroe', 'Defensor', 'Desafiante', 'Sombra', 'Sacerdote', 'Faraón', 'Eterno', 'Tótem']
+      : ['Caballero', 'Guerrero', 'Eterno', 'Sombra', 'Dragón', 'Bestia', 'Sacerdote', 'Ancestral', 'Héroe', 'Bárbaro', 'Tótem'];
+    
+    return allRaces.map(race => ({
+      name: race,
+      value: raceData[race] || 0,
+      displayName: `${race}: ${raceData[race] || 0}`
+    }));
   };
 
   const groupedTournaments = groupByYear();
@@ -165,6 +202,12 @@ const TournamentHistoryPage = () => {
                         {expandedTournament === tournament.id && (
                           <div className={styles.viewOptions}>
                             <button
+                              className={`${styles.viewButton} ${view === 'resumen' ? styles.activeView : ''}`}
+                              onClick={() => handleViewClick(tournament, 'resumen')}
+                            >
+                              Resumen
+                            </button>
+                            <button
                               className={`${styles.viewButton} ${view === 'standings' ? styles.activeView : ''}`}
                               onClick={() => handleViewClick(tournament, 'standings')}
                             >
@@ -195,6 +238,68 @@ const TournamentHistoryPage = () => {
             <h2>Selecciona un torneo y vista para ver los resultados</h2>
             <p>Usa el menú lateral para navegar por el historial de torneos</p>
           </div>
+        ) : view === 'resumen' ? (
+          <div className={styles.resumenView}>
+            <h1 className={styles.pageTitle}>{selectedTournament?.name} - Resumen</h1>
+            <div className={styles.chartsContainer}>
+              <div className={styles.chartSection}>
+                <h2>Uso de Razas en Primer Bloque</h2>
+                {races ? (
+                  <ResponsiveContainer width="100%" height={400}>
+                    <PieChart>
+                      <Pie
+                        data={prepareChartData(races.pb_races, 'pb')}
+                        cx="50%"
+                        cy="50%"
+                        outerRadius={80}
+                        fill="#8884d8"
+                        dataKey="value"
+                      >
+                        {prepareChartData(races.pb_races, 'pb').map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={getColorForRace(entry.name, 'pb')} />
+                        ))}
+                      </Pie>
+                      <Tooltip />
+                      <Legend 
+                        formatter={(_, entry) => (entry.payload as { displayName: string }).displayName}
+                        wrapperStyle={{ color: 'var(--beige)' }}
+                      />
+                    </PieChart>
+                  </ResponsiveContainer>
+                ) : (
+                  <p>No hay datos de razas para Primer Bloque</p>
+                )}
+              </div>
+              <div className={styles.chartSection}>
+                <h2>Uso de Razas en Bloque Furia</h2>
+                {races ? (
+                  <ResponsiveContainer width="100%" height={400}>
+                    <PieChart>
+                      <Pie
+                        data={prepareChartData(races.bf_races, 'bf')}
+                        cx="50%"
+                        cy="50%"
+                        outerRadius={80}
+                        fill="#8884d8"
+                        dataKey="value"
+                      >
+                        {prepareChartData(races.bf_races, 'bf').map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={getColorForRace(entry.name, 'bf')} />
+                        ))}
+                      </Pie>
+                      <Tooltip />
+                      <Legend 
+                        formatter={(_, entry) => (entry.payload as { displayName: string }).displayName}
+                        wrapperStyle={{ color: 'var(--beige)' }}
+                      />
+                    </PieChart>
+                  </ResponsiveContainer>
+                ) : (
+                  <p>No hay datos de razas para Bloque Furia</p>
+                )}
+              </div>
+            </div>
+          </div>
         ) : view === 'standings' ? (
           <div className={styles.standingsView}>
             <h1 className={styles.pageTitle}>{selectedTournament?.name} - Tabla Final</h1>
@@ -202,12 +307,14 @@ const TournamentHistoryPage = () => {
               <table className={styles.standingsTable}>
                 <thead>
                   <tr>
-                    <th>Pos</th>
-                    <th>Jugador</th>
+                    <th className={styles.posColumn}>Pos.</th>
+                    <th className={styles.nameColumn}>Jugador</th>
+                    <th>Raza PB</th>
+                    <th>Raza BF</th>
                     <th>RJ</th>
-                    <th className={styles.winsColumn}>G</th>
-                    <th className={styles.tiesColumn}>E</th>
-                    <th className={styles.lossesColumn}>P</th>
+                    <th>G</th>
+                    <th>E</th>
+                    <th>P</th>
                     <th>TPG</th>
                     <th>MWR%</th>
                     <th>RWR%</th>
@@ -215,20 +322,30 @@ const TournamentHistoryPage = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {standings.map((standing) => (
-                    <tr key={standing.id}>
-                      <td className={styles.positionCell}>{standing.final_position}</td>
-                      <td className={styles.nameCell}>{standing.player_name}</td>
-                      <td className={styles.coalGreyColumn}>{standing.matches_played}</td>
-                      <td className={styles.winsColumn}>{standing.wins}</td>
-                      <td className={styles.tiesColumn}>{standing.ties}</td>
-                      <td className={styles.lossesColumn}>{standing.losses}</td>
-                      <td className={styles.coalGreyColumn}>{standing.total_points_scored}</td>
-                      <td className={styles.coalGreyColumn}>{calculateWinRate(standing)}%</td>
-                      <td className={styles.coalGreyColumn}>{calculateRoundWinRate(standing)}%</td>
-                      <td className={styles.pointsCell}>{standing.points}</td>
-                    </tr>
-                  ))}
+                  {standings.map((standing) => {
+                    const position = standing.final_position;
+                    return (
+                      <tr key={standing.id} className={position <= 3 ? styles.topThree : ''}>
+                        <td className={styles.posColumn}>
+                          <div className={styles.posCell}>
+                            {getPositionIcon(position)}
+                            <span>{position}</span>
+                          </div>
+                        </td>
+                        <td className={styles.nameColumn}>{standing.player_name}</td>
+                        <td>{standing.race_pb || '-'}</td>
+                        <td>{standing.race_bf || '-'}</td>
+                        <td>{standing.matches_played}</td>
+                        <td className={styles.winsColumn}>{standing.wins}</td>
+                        <td className={styles.tiesColumn}>{standing.ties}</td>
+                        <td className={styles.lossesColumn}>{standing.losses}</td>
+                        <td className={styles.totalVictoriesColumn}>{standing.total_points_scored}</td>
+                        <td className={styles.winRateColumn}>{calculateWinRate(standing)}%</td>
+                        <td className={styles.winRateColumn}>{calculateRoundWinRate(standing)}%</td>
+                        <td className={styles.pointsColumn}>{standing.points}</td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
@@ -238,6 +355,8 @@ const TournamentHistoryPage = () => {
               <h3>Leyenda</h3>
               <ul>
                 <li><strong>Pos:</strong> Posición Final</li>
+                <li><strong>Raza PB:</strong> Raza elegida en Primer Bloque</li>
+                <li><strong>Raza BF:</strong> Raza elegida en Bloque Furia</li>
                 <li><strong>RJ:</strong> Rondas Jugadas</li>
                 <li><strong>G:</strong> Rondas Ganadas</li>
                 <li><strong>E:</strong> Rondas Empatadas</li>
