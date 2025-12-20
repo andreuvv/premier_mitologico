@@ -263,7 +263,8 @@ const TournamentHistoryPage = () => {
                         outerRadius={80}
                         fill="#8884d8"
                         dataKey="value"
-                        label={(entry) => `${entry.value}`}
+                        label={(entry) => entry.value > 0 ? `${entry.value}` : ''}
+                        labelLine={false}
                       >
                         {prepareChartData(races.pb_races, 'pb').map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={getColorForRace(entry.name, 'pb')} />
@@ -292,7 +293,8 @@ const TournamentHistoryPage = () => {
                         outerRadius={80}
                         fill="#8884d8"
                         dataKey="value"
-                        label={(entry) => `${entry.value}`}
+                        label={(entry) => entry.value > 0 ? `${entry.value}` : ''}
+                        labelLine={false}
                       >
                         {prepareChartData(races.bf_races, 'bf').map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={getColorForRace(entry.name, 'bf')} />
