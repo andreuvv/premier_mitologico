@@ -1,7 +1,8 @@
 import { useState, useEffect, useMemo } from 'react';
 import { fixtureAPI, APIPlayer } from '../services/fixtureAPI';
 import { API_BASE_URL } from '../config/api';
-import { FaUser, FaBars, FaTimes, FaChevronDown } from 'react-icons/fa';
+import { FaUser, FaBars, FaTimes, FaChevronDown, FaChartPie } from 'react-icons/fa';
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 import styles from './PlayersPage.module.css';
 
 interface PlayerDetail extends APIPlayer {
@@ -41,7 +42,9 @@ interface PlayerSummary {
   totalTies: number;
   totalLosses: number;
   mostPlayedRacePB?: string;
+  mostPlayedRacePBPercentage: number;
   mostPlayedRaceBF?: string;
+  mostPlayedRaceBFPercentage: number;
   winRatePB: number;
   winRateBF: number;
 }
@@ -55,6 +58,7 @@ const PlayersPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [expandedTournaments, setExpandedTournaments] = useState<Set<number>>(new Set());
+  const [graphsExpanded, setGraphsExpanded] = useState(false);
 
   useEffect(() => {
     loadPlayers();
@@ -67,7 +71,9 @@ const PlayersPage = () => {
       totalTies: 0,
       totalLosses: 0,
       mostPlayedRacePB: undefined,
+      mostPlayedRacePBPercentage: 0,
       mostPlayedRaceBF: undefined,
+      mostPlayedRaceBFPercentage: 0,
       winRatePB: 0,
       winRateBF: 0,
     };
@@ -122,14 +128,91 @@ const PlayersPage = () => {
     });
 
     // Get most played race for each format
+    const totalPBRaces = Object.values(racePBCount).reduce((sum, count) => sum + count, 0);
+    const totalBFRaces = Object.values(raceBFCount).reduce((sum, count) => sum + count, 0);
+    
     if (Object.keys(racePBCount).length > 0) {
-      summary.mostPlayedRacePB = Object.entries(racePBCount).sort((a, b) => b[1] - a[1])[0][0];
+      const [race, count] = Object.entries(racePBCount).sort((a, b) => b[1] - a[1])[0];
+      summary.mostPlayedRacePB = race;
+      summary.mostPlayedRacePBPercentage = totalPBRaces > 0 ? Math.round((count / totalPBRaces) * 100) : 0;
     }
     if (Object.keys(raceBFCount).length > 0) {
-      summary.mostPlayedRaceBF = Object.entries(raceBFCount).sort((a, b) => b[1] - a[1])[0][0];
+      const [race, count] = Object.entries(raceBFCount).sort((a, b) => b[1] - a[1])[0];
+      summary.mostPlayedRaceBF = race;
+      summary.mostPlayedRaceBFPercentage = totalBFRaces > 0 ? Math.round((count / totalBFRaces) * 100) : 0;
     }
 
     return summary;
+  }, [playerTournamentData]);
+
+  const raceUsagePB = useMemo(() => {
+    const count: { [race: string]: number } = {};
+    playerTournamentData.forEach(tournament => {
+      if (tournament.races?.race_pb) {
+        count[tournament.races.race_pb] = (count[tournament.races.race_pb] || 0) + 1;
+      }
+    });
+    return count;
+  }, [playerTournamentData]);
+
+  const raceUsageBF = useMemo(() => {
+    const count: { [race: string]: number } = {};
+    playerTournamentData.forEach(tournament => {
+      if (tournament.races?.race_bf) {
+        count[tournament.races.race_bf] = (count[tournament.races.race_bf] || 0) + 1;
+      }
+    });
+    return count;
+  }, [playerTournamentData]);
+
+  const raceWinratesPB = useMemo(() => {
+    const winrates: { [race: string]: number } = {};
+    const raceStats: { [race: string]: { wins: number; ties: number; total: number } } = {};
+
+    playerTournamentData.forEach(tournament => {
+      if (tournament.races?.race_pb && tournament.pbMatches && tournament.pbMatches > 0) {
+        const race = tournament.races.race_pb;
+        if (!raceStats[race]) {
+          raceStats[race] = { wins: 0, ties: 0, total: 0 };
+        }
+        raceStats[race].wins += tournament.pbWins || 0;
+        raceStats[race].ties += tournament.pbTies || 0;
+        raceStats[race].total += tournament.pbMatches;
+      }
+    });
+
+    Object.entries(raceStats).forEach(([race, stats]) => {
+      if (stats.total > 0) {
+        winrates[race] = Math.round(((stats.wins + 0.5 * stats.ties) / stats.total) * 100);
+      }
+    });
+
+    return winrates;
+  }, [playerTournamentData]);
+
+  const raceWinratesBF = useMemo(() => {
+    const winrates: { [race: string]: number } = {};
+    const raceStats: { [race: string]: { wins: number; ties: number; total: number } } = {};
+
+    playerTournamentData.forEach(tournament => {
+      if (tournament.races?.race_bf && tournament.bfMatches && tournament.bfMatches > 0) {
+        const race = tournament.races.race_bf;
+        if (!raceStats[race]) {
+          raceStats[race] = { wins: 0, ties: 0, total: 0 };
+        }
+        raceStats[race].wins += tournament.bfWins || 0;
+        raceStats[race].ties += tournament.bfTies || 0;
+        raceStats[race].total += tournament.bfMatches;
+      }
+    });
+
+    Object.entries(raceStats).forEach(([race, stats]) => {
+      if (stats.total > 0) {
+        winrates[race] = Math.round(((stats.wins + 0.5 * stats.ties) / stats.total) * 100);
+      }
+    });
+
+    return winrates;
   }, [playerTournamentData]);
 
   const loadPlayers = async () => {
@@ -154,6 +237,31 @@ const PlayersPage = () => {
       newExpanded.add(tournamentId);
     }
     setExpandedTournaments(newExpanded);
+  };
+
+  const getColorForRace = (race: string, format: 'pb' | 'bf') => {
+    const colors = [
+      '#6B46C1', '#38A169', '#D69E2E', '#E53E3E', '#3182CE', '#805AD5', '#DD6B20', '#2C5282', '#B83280', '#38B2AC', '#D4AF37', '#C53030', '#2D3748'
+    ];
+    const races = format === 'pb' 
+      ? ['Caballero', 'Faerie', 'Dragón', 'Olímpico', 'Titán', 'Héroe', 'Defensor', 'Desafiante', 'Sombra', 'Sacerdote', 'Faraón', 'Eterno', 'Tótem']
+      : ['Caballero', 'Guerrero', 'Eterno', 'Sombra', 'Dragón', 'Bestia', 'Sacerdote', 'Ancestral', 'Héroe', 'Bárbaro', 'Tótem'];
+    
+    const index = races.indexOf(race);
+    return index >= 0 ? colors[index % colors.length] : '#6B46C1';
+  };
+
+  const prepareChartData = (raceData: { [race: string]: number }, winrateData: { [race: string]: number }, format: 'pb' | 'bf') => {
+    const allRaces = format === 'pb' 
+      ? ['Caballero', 'Faerie', 'Dragón', 'Olímpico', 'Titán', 'Héroe', 'Defensor', 'Desafiante', 'Sombra', 'Sacerdote', 'Faraón', 'Eterno', 'Tótem']
+      : ['Caballero', 'Guerrero', 'Eterno', 'Sombra', 'Dragón', 'Bestia', 'Sacerdote', 'Ancestral', 'Héroe', 'Bárbaro', 'Tótem'];
+    
+    return allRaces.map(race => ({
+      name: race,
+      value: raceData[race] || 0,
+      winrate: winrateData[race] || 0,
+      displayName: `${race}: ${raceData[race] || 0}`
+    }));
   };
 
   const handlePlayerClick = async (player: APIPlayer) => {
@@ -284,7 +392,9 @@ const PlayersPage = () => {
                   </div>
                   <div className={styles.summaryItem}>
                     <span className={styles.summaryLabel}>Raza más jugada PB:</span>
-                    <span className={styles.summaryValue}>{playerSummary.mostPlayedRacePB || '-'}</span>
+                    <span className={styles.summaryValue}>
+                      {playerSummary.mostPlayedRacePB ? `${playerSummary.mostPlayedRacePB} (${playerSummary.mostPlayedRacePBPercentage}%)` : '-'}
+                    </span>
                   </div>
                   <div className={styles.summaryItem}>
                     <span className={styles.summaryLabel}>WinRate Global en PB:</span>
@@ -292,15 +402,101 @@ const PlayersPage = () => {
                   </div>
                   <div className={styles.summaryItem}>
                     <span className={styles.summaryLabel}>Raza más jugada BF:</span>
-                    <span className={styles.summaryValue}>{playerSummary.mostPlayedRaceBF || '-'}</span>
+                    <span className={styles.summaryValue}>
+                      {playerSummary.mostPlayedRaceBF ? `${playerSummary.mostPlayedRaceBF} (${playerSummary.mostPlayedRaceBFPercentage}%)` : '-'}
+                    </span>
                   </div>
                   <div className={styles.summaryItem}>
                     <span className={styles.summaryLabel}>WinRate Global en BF:</span>
                     <span className={styles.summaryValue}>{playerSummary.winRateBF}%</span>
                   </div>
                 </div>
+
+                
               )}
             </div>
+            
+            {/* Race Usage Graphs Accordion */}
+            {playerTournamentData.length > 0 && (
+              <div className={styles.graphsAccordion}>
+                <button
+                  className={styles.accordionHeader}
+                  onClick={() => setGraphsExpanded(!graphsExpanded)}
+                >
+                  <div className={styles.headerContent}>
+                    <h3><FaChartPie className={styles.chartIcon} /> Estadísticas de Razas</h3>
+                  </div>
+                  <FaChevronDown 
+                    className={`${styles.chevron} ${graphsExpanded ? styles.expanded : ''}`}
+                  />
+                </button>
+                
+                {graphsExpanded && (
+                  <div className={styles.graphsContent}>
+                    <div className={styles.chartSection}>
+                      <h4>Uso de Razas en Primer Bloque</h4>
+                      <p className={styles.chartSubtitle}>(WinRate% con esa Raza)</p>
+                      <ResponsiveContainer width="100%" height={300}>
+                        <PieChart>
+                          <Pie
+                            data={prepareChartData(raceUsagePB, raceWinratesPB, 'pb')}
+                            cx="50%"
+                            cy="50%"
+                            outerRadius={80}
+                            fill="#8884d8"
+                            dataKey="value"
+                            label={(entry) => {
+                              const e = entry as unknown as { value: number; winrate: number };
+                              return e.value > 0 ? `${e.value} (${e.winrate}%)` : '';
+                            }}
+                            labelLine={false}
+                          >
+                            {prepareChartData(raceUsagePB, raceWinratesPB, 'pb').map((entry, index) => (
+                              <Cell key={`cell-${index}`} fill={getColorForRace(entry.name, 'pb')} />
+                            ))}
+                          </Pie>
+                          <Tooltip />
+                          <Legend 
+                            formatter={(_, entry) => (entry.payload as { displayName: string }).displayName}
+                            wrapperStyle={{ color: 'var(--coal-grey)' }}
+                          />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </div>
+                    <div className={styles.chartSection}>
+                      <h4>Uso de Razas en Bloque Furia</h4>
+                      <p className={styles.chartSubtitle}>(WinRate% con esa Raza)</p>
+                      <ResponsiveContainer width="100%" height={300}>
+                        <PieChart>
+                          <Pie
+                            data={prepareChartData(raceUsageBF, raceWinratesBF, 'bf')}
+                            cx="50%"
+                            cy="50%"
+                            outerRadius={80}
+                            fill="#8884d8"
+                            dataKey="value"
+                            label={(entry) => {
+                              const e = entry as unknown as { value: number; winrate: number };
+                              return e.value > 0 ? `${e.value} (${e.winrate}%)` : '';
+                            }}
+                            labelLine={false}
+                          >
+                            {prepareChartData(raceUsageBF, raceWinratesBF, 'bf').map((entry, index) => (
+                              <Cell key={`cell-${index}`} fill={getColorForRace(entry.name, 'bf')} />
+                            ))}
+                          </Pie>
+                          <Tooltip />
+                          <Legend 
+                            formatter={(_, entry) => (entry.payload as { displayName: string }).displayName}
+                            wrapperStyle={{ color: 'var(--coal-grey)' }}
+                          />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
             
             {dataLoading ? (
               <div className={styles.loadingSpinner}>Cargando datos del jugador...</div>
