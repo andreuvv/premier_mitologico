@@ -5,4 +5,16 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: '/premier_mitologico/',
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor': ['react', 'react-dom', 'react-router-dom'],
+          'recharts': ['recharts'],
+          'react-icons': ['react-icons'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 600,
+  },
 })
