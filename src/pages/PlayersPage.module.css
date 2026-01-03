@@ -150,6 +150,13 @@
   flex: 1;
 }
 
+.summaryAndTrophiesContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .summaryItem {
   display: flex;
   flex-direction: column;
@@ -443,4 +450,70 @@
   font-size: 0.9rem;
   margin-bottom: 1rem;
   font-style: italic;
+}
+
+.trophySection {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0;
+  border-radius: 8px;
+}
+
+.trophySection > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.trophySectionTitle {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--ocher);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.trophyContainer {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.trophy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.trophyIcon {
+  font-size: 1.8rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.trophy:hover .trophyIcon {
+  transform: none;
+}
+
+.goldTrophy {
+  color: #D4AF37;
+}
+
+.silverTrophy {
+  color: #C0C0C0;
+}
+
+.bronzeTrophy {
+  color: #CD7F32;
+}
+
+.trophyCount {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--beige);
+  min-width: 2rem;
+  text-align: center;
 }

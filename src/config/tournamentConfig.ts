@@ -25,7 +25,7 @@ export interface TournamentConfig {
 }
 
 export const tournamentConfig: TournamentConfig = {
-  name: 'Copa K&T',
+  name: 'Premier K&T',
   date: '2026-01-10', // Set to null or past date for TBD mode
   time: '18:00',
   location: {

@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { fixtureAPI, APIPlayer } from '../services/fixtureAPI';
 import { API_BASE_URL } from '../config/api';
-import { FaUser, FaBars, FaTimes, FaChevronDown, FaChartPie } from 'react-icons/fa';
+import { FaUser, FaBars, FaTimes, FaChevronDown, FaChartPie, FaTrophy } from 'react-icons/fa';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 import styles from './PlayersPage.module.css';
 
@@ -47,6 +47,9 @@ interface PlayerSummary {
   mostPlayedRaceBFPercentage: number;
   winRatePB: number;
   winRateBF: number;
+  firstPlaceCount: number;
+  secondPlaceCount: number;
+  thirdPlaceCount: number;
 }
 
 const PlayersPage = () => {
@@ -76,6 +79,9 @@ const PlayersPage = () => {
       mostPlayedRaceBFPercentage: 0,
       winRatePB: 0,
       winRateBF: 0,
+      firstPlaceCount: 0,
+      secondPlaceCount: 0,
+      thirdPlaceCount: 0,
     };
 
     if (playerTournamentData.length === 0) return summary;
@@ -94,6 +100,15 @@ const PlayersPage = () => {
         summary.totalWins += tournament.standing.wins;
         summary.totalTies += tournament.standing.ties;
         summary.totalLosses += tournament.standing.losses;
+        
+        // Count trophy placements
+        if (tournament.standing.final_position === 1) {
+          summary.firstPlaceCount += 1;
+        } else if (tournament.standing.final_position === 2) {
+          summary.secondPlaceCount += 1;
+        } else if (tournament.standing.final_position === 3) {
+          summary.thirdPlaceCount += 1;
+        }
       }
 
       // Accumulate actual match data by format
@@ -376,6 +391,27 @@ const PlayersPage = () => {
               <div className={styles.playerInfoColumn}>
                 <div className={styles.playerProfilePicture}></div>
                 <h1 className={styles.playerName}>{selectedPlayer.name}</h1>
+                {playerTournamentData.length > 0 && (
+                  <div className={styles.trophySection}>
+                    <div>
+                      <h3 className={styles.trophySectionTitle}>Récord de Trofeos</h3>
+                      <div className={styles.trophyContainer}>
+                        <div className={styles.trophy}>
+                          <FaTrophy className={`${styles.trophyIcon} ${styles.goldTrophy}`} />
+                          <span className={styles.trophyCount}>{playerSummary.firstPlaceCount}</span>
+                        </div>
+                        <div className={styles.trophy}>
+                          <FaTrophy className={`${styles.trophyIcon} ${styles.silverTrophy}`} />
+                          <span className={styles.trophyCount}>{playerSummary.secondPlaceCount}</span>
+                        </div>
+                        <div className={styles.trophy}>
+                          <FaTrophy className={`${styles.trophyIcon} ${styles.bronzeTrophy}`} />
+                          <span className={styles.trophyCount}>{playerSummary.thirdPlaceCount}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
               
               {playerTournamentData.length > 0 && (
@@ -411,8 +447,6 @@ const PlayersPage = () => {
                     <span className={styles.summaryValue}>{playerSummary.winRateBF}%</span>
                   </div>
                 </div>
-
-                
               )}
             </div>
             
