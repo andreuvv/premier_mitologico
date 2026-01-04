@@ -27,7 +27,7 @@ export interface TournamentConfig {
 export const tournamentConfig: TournamentConfig = {
   name: 'Premier K&T',
   date: '2026-01-10', // Set to null or past date for TBD mode
-  time: '18:00',
+  time: '15:00',
   location: {
     name: "Wesh's",
     address: 'Jorge Quevedo 5464, Macul, Santiago',
