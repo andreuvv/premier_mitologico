@@ -29,9 +29,9 @@ export const tournamentConfig: TournamentConfig = {
   date: '2026-01-10', // Set to null or past date for TBD mode
   time: '15:00',
   location: {
-    name: "Wesh's",
-    address: 'Jorge Quevedo 5464, Macul, Santiago',
-    googleMapsQuery: 'Jorge+Quevedo+5464,+Macul,+Santiago',
+    name: "Piter house",
+    address: 'Las Tórtolas 3273, Macul, Santiago',
+    googleMapsQuery: 'Las+Tortolas+3273,+Macul,+Santiago',
   },
   formats: [
     {
