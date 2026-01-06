@@ -282,14 +282,14 @@ const PlayersPage = () => {
   const handlePlayerClick = async (player: APIPlayer) => {
     setSelectedPlayer(player);
     setSidebarOpen(false);
-    await loadPlayerTournamentData(player.id);
+    await loadPlayerTournamentData(player.id, player.name);
   };
 
-  const loadPlayerTournamentData = async (playerId: number) => {
+  const loadPlayerTournamentData = async (playerId: number, playerName: string) => {
     try {
       setDataLoading(true);
       const response = await fetch(
-        `${API_BASE_URL}/players/${playerId}/tournaments`
+        `${API_BASE_URL}/players/${playerId}/tournaments?name=${encodeURIComponent(playerName)}`
       );
       
       if (!response.ok) {
