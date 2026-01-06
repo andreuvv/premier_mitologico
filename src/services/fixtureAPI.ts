@@ -70,5 +70,13 @@ export const fixtureAPI = {
       throw new Error('Failed to fetch players');
     }
     return response.json();
+  },
+
+  getPremierPlayers: async (): Promise<APIPlayer[]> => {
+    const response = await fetch(`${API_BASE_URL}/premier-players`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch premier players');
+    }
+    return response.json();
   }
 };

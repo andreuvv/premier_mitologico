@@ -233,7 +233,7 @@ const PlayersPage = () => {
   const loadPlayers = async () => {
     try {
       setLoading(true);
-      const data = await fixtureAPI.getPlayers();
+      const data = await fixtureAPI.getPremierPlayers();
       setPlayers(data.sort((a, b) => a.name.localeCompare(b.name)));
       setError(null);
     } catch (err) {
