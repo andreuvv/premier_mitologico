@@ -66,6 +66,17 @@ const HomePage = () => {
         </div>
       )}
 
+      </div>
+
+      <div className={styles.cardsColumn}>
+        <div className={styles.cardWrapper}>
+          <CountdownCard />
+        </div>
+        <div className={styles.cardWrapper}>
+          <MapCard />
+        </div>
+      </div>
+
       <div className={styles.banlistSection}>
         <div className={styles.banlistHeader}>
           <h3 className={styles.banlistTitle}>Resumen Actualización Ban List {lastUpdateMonth}</h3>
@@ -86,16 +97,6 @@ const HomePage = () => {
           </>
         )}
       </div>
-        </div>
-
-        <div className={styles.cardsColumn}>
-          <div className={styles.cardWrapper}>
-            <CountdownCard />
-          </div>
-          <div className={styles.cardWrapper}>
-            <MapCard />
-          </div>
-        </div>
       </div>
     </div>
   );

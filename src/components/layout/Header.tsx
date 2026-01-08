@@ -75,10 +75,10 @@ const Header = () => {
             <FaGamepad className={styles.icon} />
             Formatos
           </Link>
-          <button className={styles.navDisabled} disabled>
+          {/* <button className={styles.navDisabled} disabled>
             <FaHammer className={styles.icon} />
             Deck Builder
-          </button>
+          </button> */}
         </nav>
 
         <button 
@@ -87,17 +87,17 @@ const Header = () => {
         >
           ☰
         </button>
-
+        {/* Aca poner un option si es que quieres un botón al lado del hambuger icon */}
+        
         <button className={styles.loginButton} disabled>
-          <FaUser className={styles.icon} />
-          Login
         </button>
       </div>
-
+  
+      {/* Acá poner un option que este justificado a la derecha, usar styles.loginButton */}
       <button className={styles.loginButton} disabled>
-        <FaUser className={styles.icon} />
-        Login
-      </button>
+          <FaHammer className={styles.icon} />
+          Deck Builder
+        </button>
 
       {mobileMenuOpen && (
         <div className={styles.mobileMenu}>
