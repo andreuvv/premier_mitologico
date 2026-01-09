@@ -55,6 +55,18 @@ export interface TournamentRacesResponse {
   bf_race_winrates: { [race: string]: number };
 }
 
+export interface GlobalStanding {
+  player_id: number;
+  player_name: string;
+  first_place_count: number;
+  second_place_count: number;
+  third_place_count: number;
+  most_played_race_pb: string | null;
+  most_played_race_bf: string | null;
+  winrate_pb: number;
+  winrate_bf: number;
+}
+
 export const tournamentAPI = {
   getTournaments: async (): Promise<Tournament[]> => {
     const response = await fetch(`${API_BASE_URL}/tournaments`, {
@@ -100,6 +112,30 @@ export const tournamentAPI = {
     });
     if (!response.ok) {
       throw new Error(`Failed to fetch tournament races: ${response.statusText}`);
+    }
+    return response.json();
+  },
+
+  getGlobalStandings: async (): Promise<GlobalStanding[]> => {
+    const response = await fetch(`${API_BASE_URL}/global-standings`, {
+      headers: {
+        'X-API-Key': API_KEY,
+      },
+    });
+    if (!response.ok) {
+      throw new Error(`Failed to fetch global standings: ${response.statusText}`);
+    }
+    return response.json();
+  },
+
+  getGlobalRaces: async (): Promise<TournamentRacesResponse> => {
+    const response = await fetch(`${API_BASE_URL}/global-races`, {
+      headers: {
+        'X-API-Key': API_KEY,
+      },
+    });
+    if (!response.ok) {
+      throw new Error(`Failed to fetch global races: ${response.statusText}`);
     }
     return response.json();
   },

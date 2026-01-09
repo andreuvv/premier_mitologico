@@ -178,6 +178,49 @@
   font-weight: 600;
 }
 
+.globalSection {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(234, 221, 207, 0.2);
+}
+
+.globalTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ocher);
+  margin: 0 0 0.75rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.globalButton {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  background-color: var(--petrol-blue);
+  color: var(--beige);
+  border: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+  margin-bottom: 0.25rem;
+}
+
+.globalButton:hover {
+  background-color: var(--sage-green);
+}
+
+.globalButton.activeView {
+  background-color: var(--ocher);
+  color: var(--coal-grey);
+  font-weight: 600;
+}
+
+.divider {
+  display: none;
+}
+
 .mainContent {
   flex: 1;
   padding: 3rem;
@@ -304,6 +347,56 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+}
+
+.globalStandingsView {
+  animation: fadeIn 0.3s ease-in;
+}
+
+.globalStandingsTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.globalStandingsTable thead {
+  background: linear-gradient(135deg, var(--petrol-blue) 0%, var(--sage-green) 100%);
+  color: var(--beige);
+}
+
+.globalStandingsTable th {
+  padding: 1rem 0.5rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.globalStandingsTable td {
+  padding: 1rem 0.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--beige);
+}
+
+.globalStandingsTable tbody tr {
+  border-bottom: 1px solid #4a4a4a;
+  transition: background-color 0.2s ease;
+}
+
+.globalStandingsTable tbody tr:hover {
+  background-color: #3a3a3a;
+}
+
+.nameColumn {
+  text-align: left !important;
+  color: var(--coal-grey);
+  font-weight: 600;
+}
+
+.centerColumn {
+  font-weight: 600;
+  color: var(--ocher);
 }
 
 .nameColumn {

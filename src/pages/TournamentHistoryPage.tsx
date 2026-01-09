@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { tournamentAPI, Tournament, TournamentStanding, TournamentRound, TournamentRacesResponse } from '../services/tournamentAPI';
+import { tournamentAPI, Tournament, TournamentStanding, TournamentRound, TournamentRacesResponse, GlobalStanding } from '../services/tournamentAPI';
 import { FaTrophy, FaMedal } from 'react-icons/fa';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 import styles from './TournamentHistoryPage.module.css';
@@ -19,10 +19,24 @@ const TournamentHistoryPage = () => {
   const [expandedYear, setExpandedYear] = useState<number | null>(null);
   const [expandedTournament, setExpandedTournament] = useState<number | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false); // Only for mobile
+  const [globalStandings, setGlobalStandings] = useState<GlobalStanding[]>([]);
+  const [globalRaces, setGlobalRaces] = useState<TournamentRacesResponse | null>(null);
 
   useEffect(() => {
     loadTournaments();
+    loadGlobalData();
   }, []);
+
+  const loadGlobalData = async () => {
+    try {
+      const standings = await tournamentAPI.getGlobalStandings();
+      const races = await tournamentAPI.getGlobalRaces();
+      setGlobalStandings(standings);
+      setGlobalRaces(races);
+    } catch (error) {
+      console.error('Error loading global data:', error);
+    }
+  };
 
   useEffect(() => {
     if (tournamentId && view) {
@@ -188,7 +202,24 @@ const TournamentHistoryPage = () => {
         ) : tournaments.length === 0 ? (
           <div className={styles.emptyText}>No hay torneos archivados</div>
         ) : (
-          <div className={styles.tournamentList}>
+          <>
+            <div className={styles.globalSection}>
+              <h3 className={styles.globalTitle}>Estadísticas Globales</h3>
+              <button
+                className={`${styles.globalButton} ${view === 'global-standings' ? styles.activeView : ''}`}
+                onClick={() => navigate('/tournament-history/0/global-standings')}
+              >
+                Ranking Global
+              </button>
+              <button
+                className={`${styles.globalButton} ${view === 'global-races' ? styles.activeView : ''}`}
+                onClick={() => navigate('/tournament-history/0/global-races')}
+              >
+                Razas Global
+              </button>
+            </div>
+            <div className={styles.divider} />
+            <div className={styles.tournamentList}>
             {years.map(year => (
               <div key={year} className={styles.yearGroup}>
                 <button
@@ -236,7 +267,8 @@ const TournamentHistoryPage = () => {
                 )}
               </div>
             ))}
-          </div>
+            </div>
+            </>
         )}
       </aside>
 
@@ -246,6 +278,146 @@ const TournamentHistoryPage = () => {
           <div className={styles.placeholder}>
             <h2>Selecciona un torneo y vista para ver los resultados</h2>
             <p>Usa el menú lateral para navegar por el historial de torneos</p>
+          </div>
+        ) : view === 'global-standings' ? (
+          <div className={styles.globalStandingsView}>
+            <h1 className={styles.pageTitle}>Ranking Global</h1>
+            <div className={styles.tableContainer}>
+              <table className={styles.globalStandingsTable}>
+                <thead>
+                  <tr>
+                    <th className={styles.nameColumn}>Jugador</th>
+                    <th>🥇 1eros Lugares conseguidos</th>
+                    <th>🥈 2dos Lugares conseguidos</th>
+                    <th>🥉 3eros Lugares conseguidos</th>
+                    <th>Raza más usada PB (Winrate%)</th>
+                    <th>Raza más usada BF (Winrate%)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {globalStandings.map((standing) => (
+                    <tr key={standing.player_id}>
+                      <td className={styles.nameColumn}>{standing.player_name}</td>
+                      <td className={styles.centerColumn}>{standing.first_place_count}</td>
+                      <td className={styles.centerColumn}>{standing.second_place_count}</td>
+                      <td className={styles.centerColumn}>{standing.third_place_count}</td>
+                      <td>{standing.most_played_race_pb ? `${standing.most_played_race_pb} (${standing.winrate_pb.toFixed(1)}%)` : '-'}</td>
+                      <td>{standing.most_played_race_bf ? `${standing.most_played_race_bf} (${standing.winrate_bf.toFixed(1)}%)` : '-'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ) : view === 'global-races' ? (
+          <div className={styles.resumenView}>
+            <h1 className={styles.pageTitle}>Razas Global - Todos los Torneos</h1>
+            <div className={styles.chartsContainer}>
+              <div className={styles.chartSection}>
+                <h2>Uso de Razas en Primer Bloque</h2>
+                {globalRaces ? (
+                  <ResponsiveContainer width="100%" height={400}>
+                    <PieChart>
+                      <Pie
+                        data={prepareChartData(globalRaces.pb_races, 'pb')}
+                        cx="50%"
+                        cy="50%"
+                        outerRadius={80}
+                        fill="#8884d8"
+                        dataKey="value"
+                        label={(entry) => entry.value > 0 ? `${entry.value}` : ''}
+                        labelLine={false}
+                      >
+                        {prepareChartData(globalRaces.pb_races, 'pb').map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={getColorForRace(entry.name, 'pb')} />
+                        ))}
+                      </Pie>
+                      <Tooltip />
+                      <Legend 
+                        formatter={(_, entry) => (entry.payload as { displayName: string }).displayName}
+                        wrapperStyle={{ color: 'var(--beige)' }}
+                      />
+                    </PieChart>
+                  </ResponsiveContainer>
+                ) : (
+                  <p>No hay datos de razas para Primer Bloque</p>
+                )}
+              </div>
+              <div className={styles.chartSection}>
+                <h2>Uso de Razas en Bloque Furia</h2>
+                {globalRaces ? (
+                  <ResponsiveContainer width="100%" height={400}>
+                    <PieChart>
+                      <Pie
+                        data={prepareChartData(globalRaces.bf_races, 'bf')}
+                        cx="50%"
+                        cy="50%"
+                        outerRadius={80}
+                        fill="#8884d8"
+                        dataKey="value"
+                        label={(entry) => entry.value > 0 ? `${entry.value}` : ''}
+                        labelLine={false}
+                      >
+                        {prepareChartData(globalRaces.bf_races, 'bf').map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={getColorForRace(entry.name, 'bf')} />
+                        ))}
+                      </Pie>
+                      <Tooltip />
+                      <Legend 
+                        formatter={(_, entry) => (entry.payload as { displayName: string }).displayName}
+                        wrapperStyle={{ color: 'var(--beige)' }}
+                      />
+                    </PieChart>
+                  </ResponsiveContainer>
+                ) : (
+                  <p>No hay datos de razas para Bloque Furia</p>
+                )}
+              </div>
+              <div className={styles.chartSection}>
+                <h2>Winrate por Raza - Primer Bloque</h2>
+                {globalRaces ? (
+                  <ResponsiveContainer width="100%" height={400}>
+                    <BarChart data={prepareWinrateData(globalRaces.pb_race_winrates)}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis 
+                        dataKey="race" 
+                        angle={-45} 
+                        textAnchor="end" 
+                        height={80}
+                        interval={0}
+                      />
+                      <YAxis label={{ value: 'Winrate (%)', angle: -90, position: 'insideLeft' }} />
+                      <Tooltip formatter={(value) => [`${value}%`, 'Winrate']} contentStyle={{ color: 'var(--coal-grey)' }} />
+                      <Bar dataKey="winrate" fill="#38A169" label={{ fill: 'white', fontSize: 12, position: 'inside' }} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                ) : (
+                  <p>No hay datos de winrates para Primer Bloque</p>
+                )}
+              </div>
+              <div className={styles.chartSection}>
+                <h2>Winrate por Raza - Bloque Furia</h2>
+                {globalRaces ? (
+                  <ResponsiveContainer width="100%" height={400}>
+                    <BarChart data={prepareWinrateData(globalRaces.bf_race_winrates)}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis 
+                        dataKey="race" 
+                        angle={-45} 
+                        textAnchor="end" 
+                        height={80}
+                        interval={0}
+                      />
+                      <YAxis label={{ value: 'Winrate (%)', angle: -90, position: 'insideLeft' }} />
+                      <Tooltip formatter={(value) => [`${value}%`, 'Winrate']} contentStyle={{ color: 'var(--coal-grey)' }} />
+                      <Bar dataKey="winrate" fill="#E53E3E" label={{ fill: 'white', fontSize: 12, position: 'inside' }} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                ) : (
+                  <p>No hay datos de winrates para Bloque Furia</p>
+                )}
+              </div>
+            </div>
           </div>
         ) : view === 'resumen' ? (
           <div className={styles.resumenView}>
