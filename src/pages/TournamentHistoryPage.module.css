@@ -388,6 +388,31 @@
   background-color: #3a3a3a;
 }
 
+/* Medal row highlights */
+.goldMedalRow {
+  background-color: rgba(212, 175, 55, 0.3);
+}
+
+.goldMedalRow:hover {
+  background-color: rgba(212, 175, 55, 0.4);
+}
+
+.silverMedalRow {
+  background-color: rgba(192, 192, 192, 0.28);
+}
+
+.silverMedalRow:hover {
+  background-color: rgba(192, 192, 192, 0.38);
+}
+
+.bronzeMedalRow {
+  background-color: rgba(205, 127, 50, 0.28);
+}
+
+.bronzeMedalRow:hover {
+  background-color: rgba(205, 127, 50, 0.38);
+}
+
 .nameColumn {
   text-align: left !important;
   color: var(--coal-grey);

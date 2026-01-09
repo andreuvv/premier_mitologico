@@ -295,16 +295,27 @@ const TournamentHistoryPage = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {globalStandings.map((standing) => (
-                    <tr key={standing.player_id}>
-                      <td className={styles.nameColumn}>{standing.player_name}</td>
-                      <td className={styles.centerColumn}>{standing.first_place_count}</td>
-                      <td className={styles.centerColumn}>{standing.second_place_count}</td>
-                      <td className={styles.centerColumn}>{standing.third_place_count}</td>
-                      <td>{standing.most_played_race_pb ? `${standing.most_played_race_pb} (${standing.winrate_pb.toFixed(1)}%)` : '-'}</td>
-                      <td>{standing.most_played_race_bf ? `${standing.most_played_race_bf} (${standing.winrate_bf.toFixed(1)}%)` : '-'}</td>
-                    </tr>
-                  ))}
+                  {globalStandings.map((standing) => {
+                    let medalClass = '';
+                    if (standing.first_place_count >= 1) {
+                      medalClass = styles.goldMedalRow;
+                    } else if (standing.second_place_count >= 1) {
+                      medalClass = styles.silverMedalRow;
+                    } else if (standing.third_place_count >= 1) {
+                      medalClass = styles.bronzeMedalRow;
+                    }
+                    
+                    return (
+                      <tr key={standing.player_id} className={medalClass}>
+                        <td className={styles.nameColumn}>{standing.player_name}</td>
+                        <td className={styles.centerColumn}>{standing.first_place_count}</td>
+                        <td className={styles.centerColumn}>{standing.second_place_count}</td>
+                        <td className={styles.centerColumn}>{standing.third_place_count}</td>
+                        <td>{standing.most_played_race_pb ? `${standing.most_played_race_pb} (${standing.winrate_pb.toFixed(1)}%)` : '-'}</td>
+                        <td>{standing.most_played_race_bf ? `${standing.most_played_race_bf} (${standing.winrate_bf.toFixed(1)}%)` : '-'}</td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
