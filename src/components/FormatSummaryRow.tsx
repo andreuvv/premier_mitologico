@@ -1,6 +1,6 @@
 import styles from './FormatSummaryRow.module.css';
 import { BanListFormat } from '../types/banlist';
-import { FormatSummary } from '../data/banlistSummary';
+import { FormatSummary, ChangeType } from '../data/banlistSummary';
 
 type Props = {
   summaries: Record<BanListFormat, FormatSummary[]>;
@@ -11,6 +11,19 @@ const formatLabels: Record<BanListFormat, string> = {
   [BanListFormat.PRIMER_BLOQUE_EDICION]: 'PB Racial Edición',
   [BanListFormat.BLOQUE_FURIA_LIBRE]: 'BF Racial Libre',
   [BanListFormat.BLOQUE_FURIA_LIMITED]: 'BF Limitado',
+};
+
+const getRowClassName = (changeType?: ChangeType): string => {
+  switch (changeType) {
+    case 'positive':
+      return styles.rowPositive;
+    case 'negative':
+      return styles.rowNegative;
+    case 'neutral':
+      return styles.rowNeutral;
+    default:
+      return '';
+  }
 };
 
 export default function FormatSummaryRow({ summaries }: Props) {
@@ -35,8 +48,8 @@ export default function FormatSummaryRow({ summaries }: Props) {
                 </thead>
                 <tbody>
                   {items.map((item, idx) => (
-                    <tr key={idx}>
-                      <td>{item.card}</td>
+                    <tr key={idx} className={getRowClassName(item.changeType)}>
+                      <td><strong>{item.card}</strong></td>
                       <td>{item.pastMonth}</td>
                       <td>{item.currentMonth}</td>
                     </tr>
