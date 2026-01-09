@@ -1,11 +1,11 @@
-*Última actualización: 15 de Diciembre 2025*
+*Última actualización: 08 de Enero 2026*
 
 
 # **📅** Siguiente Torneo
 
-- 📆 Fecha: **_TBD_**
-- 🕒 Hora de inicio: **_TBD_**
-- 📍 Sede: **_TBD_**
+- 📆 Fecha: **10 de Enero de 2026**
+- 🕒 Hora de inicio: **15:00 hrs**
+- 📍 Sede: **Piter's**
 - 🎮 Formatos: **Primer Bloque Racial Libre** y **Bloque Furia Racial Libre**
 - ⚔️ Rondas: **Mejor de 3**
 
