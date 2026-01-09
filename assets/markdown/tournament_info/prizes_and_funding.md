@@ -17,7 +17,7 @@ Los premios se distribuyen de la siguiente manera:
 - Premio menor
 
 ### 🎁 Premio de Participación
-- **1 sobre por jugador** para todos los participantes
+- **1 sobre por jugador** para todos los participantes _(Dependiendo de la cantidad de participantes este premio puede no estar disponible)_
 
 ---
 
