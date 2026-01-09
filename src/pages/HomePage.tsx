@@ -9,7 +9,7 @@ import { tournamentConfig, isTournamentPast, getTournamentMonthYear, isTournamen
 import styles from './HomePage.module.css';
 
 const HomePage = () => {
-  const [showSummaries, setShowSummaries] = useState(false);
+  const [showSummaries, setShowSummaries] = useState(true);
   const isPast = isTournamentPast();
   const isTodayTournament = isTournamentDay();
   const monthYear = getTournamentMonthYear();
