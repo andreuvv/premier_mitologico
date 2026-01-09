@@ -1,6 +1,6 @@
 {
   "format": "Primer Bloque Racial Edición",
-  "lastUpdated": "2025-12-03",
+  "lastUpdated": "2026-01-08",
   "banned": [
     {
       "name": "Ataque a Traición",
@@ -46,11 +46,6 @@
       "name": "Juglares",
       "type": "Talisman",
       "imageUrl": "https://api.myl.cl/static/cards/19/193.png"
-    },
-    {
-      "name": "Marco Antonio",
-      "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/109/051.png"
     },
     {
       "name": "La Traición de Macalpin",
@@ -248,6 +243,16 @@
       "name": "Jeroglíficos",
       "type": "Oro",
       "imageUrl": "https://api.myl.cl/static/cards/116/008.png"
+    },
+    {
+      "name": "Ptolomeo II",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/47/238.png"
+    },
+    {
+      "name": "Furia Irracional",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/47/310.png"
     }
   ],
   "limitedX2": [
@@ -285,11 +290,6 @@
       "name": "Nut",
       "type": "Aliado",
       "imageUrl": "https://api.myl.cl/static/cards/21/012.png"
-    },
-    {
-      "name": "Rea",
-      "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/20/030.png"
     },
     {
       "name": "País sin Luz",
@@ -332,11 +332,6 @@
       "imageUrl": ""
     },
     {
-      "name": "Ptolomeo II",
-      "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/47/238.png"
-    },
-    {
       "name": "Panteón",
       "type": "Totem",
       "imageUrl": "https://api.myl.cl/static/cards/109/146.png"
@@ -365,6 +360,26 @@
       "name": "La Ilíada",
       "type": "Oro",
       "imageUrl": "https://api.myl.cl/static/cards/116/148.png"
+    },
+    {
+      "name": "La Llama Fría",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/116/133.png"
+    },
+    {
+      "name": "Renfield",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/111/006.png"
+    },
+    {
+      "name": "Monte Kilgharrah",
+      "type": "Totem",
+      "imageUrl": ""
+    },
+    {
+      "name": "Ulster",
+      "type": "Totem",
+      "imageUrl": "https://api.myl.cl/static/cards/116/162.png"
     }
   ]
 }

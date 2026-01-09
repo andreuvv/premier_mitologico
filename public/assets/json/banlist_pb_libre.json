@@ -1,6 +1,6 @@
 {
   "format": "Primer Bloque Racial Libre",
-  "lastUpdated": "2025-12-03",
+  "lastUpdated": "2026-01-08",
   "banned": [
     {
       "name": "Curandera",
@@ -78,19 +78,9 @@
       "imageUrl": "https://api.myl.cl/static/cards/116/047.png"
     },
     {
-      "name": "Cathbadh el Druida (Rework)",
-      "type": "Aliado",
-      "imageUrl": ""
-    },
-    {
       "name": "Absalon",
       "type": "Aliado",
       "imageUrl": "https://api.myl.cl/static/cards/47/290.png"
-    },
-    {
-      "name": "Amón",
-      "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/21/001.png"
     }
   ],
   "limitedX1": [
@@ -173,6 +163,31 @@
       "name": "Druida Maldito",
       "type": "Aliado",
       "imageUrl": "https://api.myl.cl/static/cards/116/308.png"
+    },
+    {
+      "name": "Festín",
+      "type": "Oro",
+      "imageUrl": "https://api.myl.cl/static/cards/44/064.png"
+    },
+    {
+      "name": "Amón",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/21/001.png"
+    },
+    {
+      "name": "Cathbadh el Druida",
+      "type": "Aliado",
+      "imageUrl": ""
+    },
+    {
+      "name": "Kobold",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/116/283.png"
+    },
+    {
+      "name": "Daga de Bote",
+      "type": "Arma",
+      "imageUrl": "https://api.myl.cl/static/cards/47/319.png"
     }
   ],
   "limitedX2": [
@@ -210,11 +225,6 @@
       "name": "La Ilíada",
       "type": "Oro",
       "imageUrl": "https://api.myl.cl/static/cards/116/148.png"
-    },
-    {
-      "name": "Kobold",
-      "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/116/283.png"
     },
     {
       "name": "Haquika",
@@ -257,11 +267,6 @@
       "imageUrl": "https://api.myl.cl/static/cards/92/007.png"
     },
     {
-      "name": "Averix el Sabio",
-      "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/45/040.png"
-    },
-    {
       "name": "Goblin Stone",
       "type": "Totem",
       "imageUrl": ""
@@ -275,6 +280,11 @@
       "name": "Duque Godofredo",
       "type": "Aliado",
       "imageUrl": "https://api.myl.cl/static/cards/116/258.png"
+    },
+    {
+      "name": "Ptolomeo II",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/47/238.png"
     }
   ]
 }
