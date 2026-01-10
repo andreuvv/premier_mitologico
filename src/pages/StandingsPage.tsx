@@ -7,26 +7,37 @@ const StandingsPage = () => {
   const [standings, setStandings] = useState<APIStanding[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+
+  const fetchStandings = async () => {
+    try {
+      setLoading(true);
+      const data = await fixtureAPI.getStandings();
+      
+      // Apply tie-breaking rules
+      const sortedStandings = sortStandings(data);
+      setStandings(sortedStandings);
+      setLastUpdated(new Date());
+      setError(null);
+    } catch (err) {
+      setError('Error al cargar la tabla de posiciones. Por favor, intenta de nuevo.');
+      console.error('Error fetching standings:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchStandings = async () => {
-      try {
-        setLoading(true);
-        const data = await fixtureAPI.getStandings();
-        
-        // Apply tie-breaking rules
-        const sortedStandings = sortStandings(data);
-        setStandings(sortedStandings);
-        setError(null);
-      } catch (err) {
-        setError('Error al cargar la tabla de posiciones. Por favor, intenta de nuevo.');
-        console.error('Error fetching standings:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
+    // Fetch standings immediately on mount
     fetchStandings();
+
+    // Set up auto-refresh every 15 minutes (900000 ms)
+    const intervalId = setInterval(() => {
+      fetchStandings();
+    }, 900000); // 15 minutes
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(intervalId);
   }, []);
 
   // Tie-breaking rules implementation
@@ -85,7 +96,15 @@ const StandingsPage = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Tabla de Posiciones</h1>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+        <h1 className={styles.title}>Tabla de Posiciones</h1>
+        {lastUpdated && (
+          <div style={{ fontSize: '0.9rem', color: '#888', textAlign: 'right' }}>
+            <div>Actualizado: {lastUpdated.toLocaleTimeString('es-ES')}</div>
+            <div style={{ fontSize: '0.8rem', color: '#666' }}>Se actualiza cada 15 minutos</div>
+          </div>
+        )}
+      </div>
       
       <div className={styles.tableContainer}>
         <table className={styles.standingsTable}>
