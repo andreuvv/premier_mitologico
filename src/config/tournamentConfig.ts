@@ -55,7 +55,9 @@ export const tournamentConfig: TournamentConfig = {
 export function isTournamentPast(): boolean {
   if (!tournamentConfig.date) return true;
   
-  const tournamentDate = new Date(tournamentConfig.date);
+  // Parse date string as local timezone (not UTC) to avoid timezone offset issues
+  const [year, month, day] = tournamentConfig.date.split('-').map(Number);
+  const tournamentDate = new Date(year, month - 1, day);
   const now = new Date();
   
   // Remove time component for comparison
