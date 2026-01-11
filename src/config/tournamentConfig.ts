@@ -26,21 +26,21 @@ export interface TournamentConfig {
 
 export const tournamentConfig: TournamentConfig = {
   name: 'Premier K&T',
-  date: '2026-01-10', // Set to null or past date for TBD mode
+  date: '2026-02-21', // Set to null or past date for TBD mode
   time: '15:00',
   location: {
-    name: "Piter house",
-    address: 'Las Tórtolas 3273, Macul, Santiago',
-    googleMapsQuery: 'Las+Tortolas+3273,+Macul,+Santiago',
+    name: "Weshes",
+    address: 'Jorge Quevedo 5464, Macul, Santiago',
+    googleMapsQuery: 'Jorge+Quevedo+5464,+Macul,+Santiago',
   },
   formats: [
     {
-      name: 'Primer Bloque Racial Libre',
-      link: '/game-formats#primerBloqueRacialLibre',
+      name: 'Primer Bloque Racial Edición',
+      link: '/game-formats#primerBloqueRacialEdicion',
     },
     {
-      name: 'Furia Extendido Racial Libre',
-      link: '/game-formats#bloqueFuriaRacialLibre',
+      name: 'Furia Extendido Racial Limitado',
+      link: '/game-formats#bloqueFuriaRacialLimitado',
     },
   ],
   roundType: {
