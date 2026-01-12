@@ -286,6 +286,7 @@ const TournamentHistoryPage = () => {
               <table className={styles.globalStandingsTable}>
                 <thead>
                   <tr>
+                    <th className={styles.positionColumn}>#</th>
                     <th className={styles.nameColumn}>Jugador</th>
                     <th>🥇 1eros Lugares conseguidos</th>
                     <th>🥈 2dos Lugares conseguidos</th>
@@ -295,19 +296,25 @@ const TournamentHistoryPage = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {globalStandings.map((standing) => {
+                  {globalStandings.map((standing, index) => {
                     let medalClass = '';
-                    if (standing.first_place_count >= 1) {
+                    let positionBadge = '';
+                    // Only the top 3 in the overall ranking get colors
+                    if (index === 0) {
                       medalClass = styles.goldMedalRow;
-                    } else if (standing.second_place_count >= 1) {
+                      positionBadge = '🏆';
+                    } else if (index === 1) {
                       medalClass = styles.silverMedalRow;
-                    } else if (standing.third_place_count >= 1) {
+                      positionBadge = '🥈';
+                    } else if (index === 2) {
                       medalClass = styles.bronzeMedalRow;
+                      positionBadge = '🥉';
                     }
                     
                     return (
                       <tr key={standing.player_id} className={medalClass}>
-                        <td className={styles.nameColumn}>{standing.player_name}</td>
+                        <td className={styles.positionColumn}>{index + 1}</td>
+                        <td className={styles.nameColumn}>{positionBadge ? `${positionBadge} ` : ''}{standing.player_name}</td>
                         <td className={styles.centerColumn}>{standing.first_place_count}</td>
                         <td className={styles.centerColumn}>{standing.second_place_count}</td>
                         <td className={styles.centerColumn}>{standing.third_place_count}</td>

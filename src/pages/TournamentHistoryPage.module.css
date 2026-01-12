@@ -413,6 +413,13 @@
   background-color: rgba(205, 127, 50, 0.38);
 }
 
+.positionColumn {
+  width: 50px;
+  text-align: center !important;
+  font-weight: 700;
+  color: var(--coal-grey);
+}
+
 .nameColumn {
   text-align: left !important;
   color: var(--coal-grey);
@@ -774,6 +781,27 @@
 }
 
 /* Small mobile */
+@media (max-width: 768px) {
+  /* Global standings table on tablets */
+  .globalStandingsTable th {
+    padding: 0.5rem 0.2rem;
+    font-size: 0.65rem;
+  }
+
+  .globalStandingsTable td {
+    padding: 0.5rem 0.2rem;
+    font-size: 0.7rem;
+  }
+
+  .positionColumn {
+    width: 30px;
+  }
+
+  .nameColumn {
+    min-width: 80px;
+  }
+}
+
 @media (max-width: 480px) {
   .sidebar {
     width: 100%;
@@ -814,5 +842,30 @@
 
   .playerName {
     font-size: 0.9rem;
+  }
+
+  /* Global standings table on mobile */
+  .globalStandingsTable {
+    font-size: 0.6rem;
+  }
+
+  .globalStandingsTable th {
+    padding: 0.35rem 0.15rem;
+    font-size: 0.55rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .globalStandingsTable td {
+    padding: 0.35rem 0.15rem;
+    font-size: 0.6rem;
+  }
+
+  .positionColumn {
+    width: 25px;
+  }
+
+  .nameColumn {
+    min-width: 60px;
   }
 }
