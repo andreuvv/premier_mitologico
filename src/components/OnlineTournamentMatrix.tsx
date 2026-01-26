@@ -42,7 +42,7 @@ const OnlineTournamentMatrix = ({ standings, matches }: OnlineTournamentMatrixPr
         <table className={styles.matrix}>
           <thead>
             <tr>
-              <th className={styles.headerCell}>Player</th>
+              <th className={styles.headerCell}>MITERO</th>
               {standings.map((standing) => (
                 <th key={standing.player_id} className={styles.headerCell}>
                   <span className={styles.playerNameRotated}>
@@ -50,7 +50,7 @@ const OnlineTournamentMatrix = ({ standings, matches }: OnlineTournamentMatrixPr
                   </span>
                 </th>
               ))}
-              <th className={styles.headerCell}>Points</th>
+              <th className={styles.headerCell}>PUNTAJE</th>
             </tr>
           </thead>
           <tbody>
