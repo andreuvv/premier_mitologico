@@ -17,7 +17,7 @@ const OnlineTournamentMatrix = ({ standings, matches }: OnlineTournamentMatrixPr
   });
 
   // Get match result between two players
-  const getMatchResult = (player1Id: number, player2Id: number, player1Name: string, player2Name: string): string => {
+  const getMatchResult = (player1Id: number, player2Id: number, player1Name: string): string => {
     if (player1Id === player2Id) return '-';
 
     const key = `${Math.min(player1Id, player2Id)}-${Math.max(player1Id, player2Id)}`;
@@ -67,8 +67,7 @@ const OnlineTournamentMatrix = ({ standings, matches }: OnlineTournamentMatrixPr
                     {getMatchResult(
                       rowPlayer.player_id,
                       colPlayer.player_id,
-                      rowPlayer.player_name,
-                      colPlayer.player_name
+                      rowPlayer.player_name
                     )}
                   </td>
                 ))}
