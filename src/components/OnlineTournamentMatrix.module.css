@@ -1,0 +1,146 @@
+.matrixContainer {
+  width: 100%;
+  overflow-x: auto;
+  padding: 20px 0;
+}
+
+.tableWrapper {
+  min-width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  background: var(--coal-grey);
+}
+
+.matrix {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #222;
+  font-size: 14px;
+}
+
+.matrix thead {
+  background: linear-gradient(135deg, var(--petrol-blue) 0%, var(--sage-green) 100%);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.headerCell {
+  padding: 12px 8px;
+  text-align: center;
+  font-weight: 600;
+  border-right: 1px solid #444;
+  height: 60px;
+  vertical-align: bottom;
+  color: white;
+}
+
+.headerCell:first-child {
+  text-align: left;
+  min-width: 120px;
+  position: sticky;
+  left: 0;
+  z-index: 11;
+}
+
+.playerNameRotated {
+  display: inline-block;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  max-width: 100%;
+  font-size: 12px;
+  color: white;
+}
+
+.rowHeaderCell {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  background-color: #333;
+  border-right: 2px solid var(--sage-green);
+  position: sticky;
+  left: 0;
+  z-index: 9;
+  min-width: 120px;
+  white-space: nowrap;
+  color: white;
+}
+
+.dataCell {
+  padding: 12px 8px;
+  text-align: center;
+  border-right: 1px solid #444;
+  border-bottom: 1px solid #444;
+  background-color: #222;
+  transition: background-color 0.2s ease;
+  font-size: 13px;
+  color: #ddd;
+}
+
+.dataCell:hover {
+  background-color: #333;
+}
+
+.diagonalCell {
+  background-color: #1a1a1a;
+  color: #666;
+  font-style: italic;
+}
+
+.pointsCell {
+  padding: 12px 16px;
+  text-align: center;
+  font-weight: 700;
+  background-color: #333;
+  border-left: 2px solid var(--sage-green);
+  color: var(--sage-green);
+}
+
+.matrix tbody tr {
+  border-bottom: 1px solid #444;
+  transition: background-color 0.2s ease;
+}
+
+.matrix tbody tr:hover {
+  background-color: #2a2a2a;
+}
+
+.matrix tbody tr:last-child {
+  border-bottom: none;
+}
+
+.noData {
+  padding: 40px 20px;
+  text-align: center;
+  color: #999;
+  background-color: #222;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .matrix {
+    font-size: 12px;
+  }
+
+  .headerCell,
+  .dataCell {
+    padding: 8px 4px;
+  }
+
+  .rowHeaderCell {
+    min-width: 80px;
+    padding: 8px 8px;
+  }
+
+  .headerCell:first-child {
+    min-width: 80px;
+  }
+
+  .playerNameRotated {
+    font-size: 10px;
+  }
+}

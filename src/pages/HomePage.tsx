@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import CountdownCard from '../components/CountdownCard';
 import MapCard from '../components/MapCard';
 import FormatSummaryRow from '../components/FormatSummaryRow';
+import OnlineTournamentBanner from '../components/OnlineTournamentBanner';
 import { FaChartBar, FaTrophy } from 'react-icons/fa';
 import { banlistSummaries, lastUpdateMonth } from '../data/banlistSummary';
 import { tournamentConfig, isTournamentPast, getTournamentMonthYear, isTournamentDay } from '../config/tournamentConfig';
@@ -18,6 +19,7 @@ const HomePage = () => {
     <div className={styles.container}>
       <div className={styles.pageLayout}>
         <div className={styles.mainContent}>
+          <OnlineTournamentBanner />
           <h3 className={styles.subtitle}>Premier Mitológico</h3>
       <div className={styles.logoContainer}>
         <img 
