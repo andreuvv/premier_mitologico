@@ -39,7 +39,7 @@
 
 .headerCell:first-child {
   text-align: left;
-  min-width: 120px;
+  min-width: 70px;
   position: sticky;
   left: 0;
   z-index: 11;
@@ -57,7 +57,7 @@
 }
 
 .rowHeaderCell {
-  padding: 12px 16px;
+  padding: 12px 12px;
   text-align: left;
   font-weight: 600;
   background-color: #333;
@@ -65,7 +65,7 @@
   position: sticky;
   left: 0;
   z-index: 9;
-  min-width: 120px;
+  min-width: 70px;
   white-space: nowrap;
   color: white;
 }
@@ -92,12 +92,13 @@
 }
 
 .pointsCell {
-  padding: 12px 16px;
+  padding: 12px 10px;
   text-align: center;
   font-weight: 700;
   background-color: #333;
   border-left: 2px solid var(--sage-green);
   color: var(--sage-green);
+  min-width: 40px;
 }
 
 .matrix tbody tr {
@@ -132,12 +133,17 @@
   }
 
   .rowHeaderCell {
-    min-width: 80px;
-    padding: 8px 8px;
+    min-width: 60px;
+    padding: 8px 6px;
   }
 
   .headerCell:first-child {
-    min-width: 80px;
+    min-width: 60px;
+  }
+
+  .pointsCell {
+    padding: 8px 5px;
+    min-width: 35px;
   }
 
   .playerNameRotated {

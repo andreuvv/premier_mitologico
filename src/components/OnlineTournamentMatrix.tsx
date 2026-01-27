@@ -50,7 +50,7 @@ const OnlineTournamentMatrix = ({ standings, matches }: OnlineTournamentMatrixPr
                   </span>
                 </th>
               ))}
-              <th className={styles.headerCell}>PUNTAJE</th>
+              <th className={styles.headerCell}>PTJ</th>
             </tr>
           </thead>
           <tbody>
