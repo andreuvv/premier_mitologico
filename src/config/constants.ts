@@ -21,6 +21,15 @@ export const formatSectionConfig: Record<FormatSection, {
       FormatVariant.BLOQUE_FURIA_RACIAL_LIMITADO,
     ],
   },
+  [FormatSection.FORMATOS_ESPECIALES]: {
+    title: 'Formatos Especiales',
+    icon: 'FaStar',
+    variants: [
+      FormatVariant.INFANTERIA,
+      FormatVariant.VCR,
+      FormatVariant.COMMANDER,
+    ],
+  },
 };
 
 export const formatVariantConfig: Record<FormatVariant, { title: string }> = {
@@ -28,6 +37,9 @@ export const formatVariantConfig: Record<FormatVariant, { title: string }> = {
   [FormatVariant.PRIMER_BLOQUE_RACIAL_EDICION]: { title: 'Primer Bloque Racial Edición' },
   [FormatVariant.BLOQUE_FURIA_RACIAL_LIBRE]: { title: 'Bloque Furia Racial Libre' },
   [FormatVariant.BLOQUE_FURIA_RACIAL_LIMITADO]: { title: 'Bloque Furia Racial Limitado' },
+  [FormatVariant.INFANTERIA]: { title: 'Infantería' },
+  [FormatVariant.VCR]: { title: 'Vasallo, Cortesano, Real (VCR)' },
+  [FormatVariant.COMMANDER]: { title: 'Commander' },
 };
 
 export const infoSectionConfig: Record<InfoSection, {

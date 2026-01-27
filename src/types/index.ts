@@ -8,6 +8,7 @@ export enum MenuOption {
 export enum FormatSection {
   PRIMER_BLOQUE = 'primerBloque',
   BLOQUE_FURIA = 'bloqueFuria',
+  FORMATOS_ESPECIALES = 'formatosEspeciales',
 }
 
 export enum FormatVariant {
@@ -15,6 +16,9 @@ export enum FormatVariant {
   PRIMER_BLOQUE_RACIAL_EDICION = 'primerBloqueRacialEdicion',
   BLOQUE_FURIA_RACIAL_LIBRE = 'bloqueFuriaRacialLibre',
   BLOQUE_FURIA_RACIAL_LIMITADO = 'bloqueFuriaRacialLimitado',
+  INFANTERIA = 'infanteria',
+  VCR = 'vcr',
+  COMMANDER = 'commander',
 }
 
 export enum InfoSection {

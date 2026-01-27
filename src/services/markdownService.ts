@@ -42,6 +42,8 @@ const getFormatSectionFileName = (section: FormatSection): string => {
       return 'primer_bloque.md';
     case FormatSection.BLOQUE_FURIA:
       return 'bloque_furia.md';
+    case FormatSection.FORMATOS_ESPECIALES:
+      return 'special_formats.md';
   }
 };
 
@@ -55,6 +57,12 @@ const getFormatVariantFileName = (variant: FormatVariant): string => {
       return 'bf_racial_libre.md';
     case FormatVariant.BLOQUE_FURIA_RACIAL_LIMITADO:
       return 'bf_racial_edicion.md';
+    case FormatVariant.INFANTERIA:
+      return 'infanteria.md';
+    case FormatVariant.VCR:
+      return 'vcr.md';
+    case FormatVariant.COMMANDER:
+      return 'commander.md';
   }
 };
 

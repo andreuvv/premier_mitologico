@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import OnlineTournamentMatrix from '../components/OnlineTournamentMatrix';
 import onlineTournamentService, { OnlineStanding, OnlineMatch, OnlineTournament } from '../services/onlineTournamentService';
 import styles from './OnlineTournamentPage.module.css';
@@ -17,6 +17,18 @@ const monthTranslations: { [key: string]: string } = {
   'October': 'Octubre',
   'November': 'Noviembre',
   'December': 'Diciembre',
+};
+
+// Configure the format variant and display name for each tournament ID
+// Edit this to set the correct format for your tournament
+const formatConfig: { [key: number]: { name: string; hash: string } } = {
+    11: { name: 'Infantería Racial Libre', hash: 'infanteria' },
+    //2: { name: 'VCR', hash: 'vcr' },
+    //3: { name: 'Commander', hash: 'commander' },
+};
+
+const getFormatLink = (tournamentId: number): { name: string; hash: string } => {
+  return formatConfig[tournamentId] || { name: 'Formato', hash: 'formatosEspeciales' };
 };
 
 const OnlineTournamentPage = () => {
@@ -91,13 +103,18 @@ const OnlineTournamentPage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <button onClick={() => navigate('/')} className={styles.backLink}>
-          ← Atrás
-        </button>
         <div className={styles.titleSection}>
           <h1 className={styles.title}>Torneo '{tournament.name}'</h1>
           <p className={styles.subtitle}>
-            {monthTranslations[tournament.month] || tournament.month} {tournament.year} • Formato Infantería {tournament.format}
+            {monthTranslations[tournament.month] || tournament.month} {tournament.year} • 
+            {(() => {
+              const formatInfo = getFormatLink(tournament.id);
+              return (
+                <Link to={`/game-formats#${formatInfo.hash}`} style={{ textDecoration: 'none', color: '#2a5f7f', fontWeight: 'bold' }}>
+                   {' '} Formato {formatInfo.name}{' '}{tournament.format}
+                </Link>
+              );
+            })()}
           </p>
         </div>
       </div>
