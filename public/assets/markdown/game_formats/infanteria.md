@@ -39,6 +39,7 @@ Las reglas de construcción de mazo son **las mismas** que en los formatos en lo
 - Cartas con **Rework**
 - Aliados de rareza **Mayor** (Real, Ultra Real, Legendario)
 - Oros con habilidad
+- Banlist del formato
 
 ---
 

@@ -19,6 +19,7 @@ export enum FormatVariant {
   INFANTERIA = 'infanteria',
   VCR = 'vcr',
   COMMANDER = 'commander',
+  RAGNAROK = 'ragnarok',
 }
 
 export enum InfoSection {

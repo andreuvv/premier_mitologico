@@ -28,6 +28,7 @@ export const formatSectionConfig: Record<FormatSection, {
       FormatVariant.INFANTERIA,
       FormatVariant.VCR,
       FormatVariant.COMMANDER,
+      FormatVariant.RAGNAROK,
     ],
   },
 };
@@ -40,6 +41,7 @@ export const formatVariantConfig: Record<FormatVariant, { title: string }> = {
   [FormatVariant.INFANTERIA]: { title: 'Infantería' },
   [FormatVariant.VCR]: { title: 'Vasallo, Cortesano, Real (VCR)' },
   [FormatVariant.COMMANDER]: { title: 'Commander' },
+  [FormatVariant.RAGNAROK]: { title: 'Ragnarok' },
 };
 
 export const infoSectionConfig: Record<InfoSection, {
