@@ -46,6 +46,14 @@ Formato intermedio que permite cartas hasta rareza Real, con más potencia que I
 
 Formato de 4 jugadores o duelo con mecánicas únicas y una carta "Commander" especial que es el corazón del mazo.
 
+### 🧌 Ragnarok
+
+**Disponible para:**
+- ✅ Primer Bloque (Full, Racial Libre, Racial Edición)
+- ✅ Bloque Furia (Full, Racial Libre, Racial Limitado)
+
+Formato de restricción única donde todas las cartas se consideran Únicas. Permite Rework y cartas promocionales de todas las rarezas para máxima diversidad.
+
 ---
 
 ## 📊 Comparativa de Formatos Especiales
@@ -55,6 +63,7 @@ Formato de 4 jugadores o duelo con mecánicas únicas y una carta "Commander" es
 | **Infantería** | Vasallo, Cortesano | ❌ | ❌ | ⭐ Baja | 1v1 |
 | **VCR** | Vasallo, Cortesano, Real | ✅ | ✅ | ⭐⭐ Media | 1v1 |
 | **Commander** | Todas las rarezas | ✅ | ✅ | ⭐⭐⭐ Alta | 4 jugadores (o 1v1) |
+| **Ragnarok** | Todas (Únicas) | ✅ | ✅ | ⭐⭐ Media | 1v1 |
 
 ---
 
@@ -62,4 +71,5 @@ Formato de 4 jugadores o duelo con mecánicas únicas y una carta "Commander" es
 
 - **¿Buscas accesibilidad?** → 🗡️ **Infantería**
 - **¿Quieres más poder?** → 👑 **VCR**
+- **¿Buscas máxima diversidad?** → 🧌 **Ragnarok**
 - **¿Prefieres épica grupal?** → 🎭 **Commander**

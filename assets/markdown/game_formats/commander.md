@@ -17,6 +17,7 @@ Una nueva zona en el tablero alberga la carta de "Commander" al iniciar la parti
 | **📋 Tamaño** | 80 cartas (incluyendo commander y oro inicial) |
 | **👑 Commander** | Aliado de rareza Ultra Real |
 | **🏛️ Alineación racial** | Todos los aliados deben tener la misma raza que el commander |
+| **⚖️ Cartas Únicas** | Todas las cartas se consideran Únicas |
 | **📚 Ediciones permitidas** | Todas las ediciones y promocionales del Bloque Furia |
 
 ---
@@ -37,6 +38,7 @@ Una nueva zona en el tablero alberga la carta de "Commander" al iniciar la parti
 - Si el commander sale del juego (destruido, desterrado, barajado o llevado a la mano), **vuelve a la zona de comando**
 - El coste aumenta **+2 oros** cada vez que sale del juego (mantén un contador de coste)
 - Al jugar el commander de otro jugador, la **raza y todas las referencias a raza** en la habilidad de esa carta pasan a ser la raza elegida por el jugador que esté pagando el coste del commander
+- NO puedes controlar más de un commander al mismo tiempo.
 
 ### 🏆 Condiciones de Victoria
 

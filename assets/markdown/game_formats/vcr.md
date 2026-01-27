@@ -35,6 +35,7 @@ Las reglas de construcción de mazo son las mismas que en los formatos en los qu
 ## 🚫 Cartas Prohibidas
 
 - Aliados de rareza **Mayor** (Ultra Real, Legendario)
+- Banlist del formato
 
 ---
 
