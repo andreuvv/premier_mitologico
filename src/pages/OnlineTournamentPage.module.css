@@ -136,7 +136,8 @@
 
 .progressText {
   margin: 4px 0 0 0;
-  font-size: 12px;
+  font-size: 16px;
+  font-weight: 700;
   color: var(--sage-green, #7fb07f);
 }
 
