@@ -222,6 +222,21 @@
   color: var(--beige, #f5f5dc);
 }
 
+.winsCell {
+  color: var(--sage-green) !important;
+  font-weight: 600;
+}
+
+.tiesCell {
+  color: var(--ocher) !important;
+  font-weight: 600;
+}
+
+.lossesCell {
+  color: var(--brick-red) !important;
+  font-weight: 600;
+}
+
 .pointsCell {
   background-color: #333;
   font-weight: 700;

@@ -177,9 +177,9 @@ const OnlineTournamentPage = () => {
                   {index > 2 && <span>{index + 1}</span>}
                 </td>
                 <td className={styles.playerCell}>{standing.player_name}</td>
-                <td>{standing.wins}</td>
-                <td>{standing.ties}</td>
-                <td>{standing.losses}</td>
+                <td className={styles.winsCell}>{standing.wins}</td>
+                <td className={styles.tiesCell}>{standing.ties}</td>
+                <td className={styles.lossesCell}>{standing.losses}</td>
                 <td className={styles.pointsCell}>
                   <strong>{standing.points}</strong>
                 </td>

@@ -16,20 +16,35 @@ const OnlineTournamentMatrix = ({ standings, matches }: OnlineTournamentMatrixPr
     }
   });
 
-  // Get match result between two players
-  const getMatchResult = (player1Id: number, player2Id: number, player1Name: string): string => {
-    if (player1Id === player2Id) return '-';
+  // Get match result and class between two players
+  const getMatchResultAndClass = (player1Id: number, player2Id: number): { text: string; className: string } => {
+    if (player1Id === player2Id) return { text: '-', className: styles.diagonalCell };
 
     const key = `${Math.min(player1Id, player2Id)}-${Math.max(player1Id, player2Id)}`;
     const match = matchMap.get(key);
 
-    if (!match) return '-';
+    if (!match) return { text: '-', className: '' };
+
+    let text: string;
+    let className: string = '';
 
     if (match.player1_id === player1Id) {
-      return `${player1Name.split(' ')[0]} ${match.score1}-${match.score2}`;
+      text = `${match.score1}-${match.score2}`;
+      if (match.score1 !== undefined && match.score2 !== undefined) {
+        if (match.score1 > match.score2) className = styles.win;
+        else if (match.score1 < match.score2) className = styles.lose;
+        else className = styles.tie;
+      }
     } else {
-      return `${player1Name.split(' ')[0]} ${match.score2}-${match.score1}`;
+      text = `${match.score2}-${match.score1}`;
+      if (match.score1 !== undefined && match.score2 !== undefined) {
+        if (match.score2 > match.score1) className = styles.win;
+        else if (match.score2 < match.score1) className = styles.lose;
+        else className = styles.tie;
+      }
     }
+
+    return { text, className };
   };
 
   if (standings.length === 0) {
@@ -57,20 +72,17 @@ const OnlineTournamentMatrix = ({ standings, matches }: OnlineTournamentMatrixPr
             {standings.map((rowPlayer) => (
               <tr key={rowPlayer.player_id}>
                 <td className={styles.rowHeaderCell}>{rowPlayer.player_name}</td>
-                {standings.map((colPlayer) => (
-                  <td
-                    key={`${rowPlayer.player_id}-${colPlayer.player_id}`}
-                    className={`${styles.dataCell} ${
-                      rowPlayer.player_id === colPlayer.player_id ? styles.diagonalCell : ''
-                    }`}
-                  >
-                    {getMatchResult(
-                      rowPlayer.player_id,
-                      colPlayer.player_id,
-                      rowPlayer.player_name
-                    )}
-                  </td>
-                ))}
+                {standings.map((colPlayer) => {
+                  const result = getMatchResultAndClass(rowPlayer.player_id, colPlayer.player_id);
+                  return (
+                    <td
+                      key={`${rowPlayer.player_id}-${colPlayer.player_id}`}
+                      className={`${styles.dataCell} ${result.className}`}
+                    >
+                      {result.text}
+                    </td>
+                  );
+                })}
                 <td className={styles.pointsCell}>{rowPlayer.points}</td>
               </tr>
             ))}
