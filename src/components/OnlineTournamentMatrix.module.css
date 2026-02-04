@@ -82,6 +82,11 @@
   font-weight: bold;
 }
 
+.scoreText {
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
 .dataCell:hover {
   background-color: #333;
 }

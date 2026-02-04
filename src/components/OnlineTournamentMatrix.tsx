@@ -79,7 +79,7 @@ const OnlineTournamentMatrix = ({ standings, matches }: OnlineTournamentMatrixPr
                       key={`${rowPlayer.player_id}-${colPlayer.player_id}`}
                       className={`${styles.dataCell} ${result.className}`}
                     >
-                      {result.text}
+                      <span className={styles.scoreText}>{result.text}</span>
                     </td>
                   );
                 })}
