@@ -1,6 +1,6 @@
 {
   "format": "Primer Bloque Racial Edición",
-  "lastUpdated": "2026-01-08",
+  "lastUpdated": "2026-02-04",
   "banned": [
     {
       "name": "Ataque a Traición",
@@ -66,11 +66,6 @@
       "name": "Rómulo y Remo",
       "type": "Talisman",
       "imageUrl": "https://api.myl.cl/static/cards/109/050.png"
-    },
-    {
-      "name": "Cathbadh el Druida (Rework)",
-      "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/45/174.png"
     },
     {
       "name": "Nuh",
@@ -253,6 +248,16 @@
       "name": "Furia Irracional",
       "type": "Talisman",
       "imageUrl": "https://api.myl.cl/static/cards/47/310.png"
+    },
+    {
+      "name": "Cathbadh el Druida",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/45/174.png"
+    },
+    {
+      "name": "Dragón Nival",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/116/191.png"
     }
   ],
   "limitedX2": [
@@ -285,11 +290,6 @@
       "name": "Red de Plata",
       "type": "Talisman",
       "imageUrl": "https://api.myl.cl/static/cards/72/241.png"
-    },
-    {
-      "name": "Nut",
-      "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/21/012.png"
     },
     {
       "name": "País sin Luz",
