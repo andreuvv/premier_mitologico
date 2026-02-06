@@ -25,7 +25,7 @@ Los premios se distribuyen de la siguiente manera:
 
 ### 💰 Cuota de Participación
 
-Al igual que en eventos pasados, se solicita una cuota de **$12.000 pesos** para cubrir los gastos en premios y comida.
+Al igual que en eventos pasados, se solicita una cuota de **$15.000 pesos** para cubrir los gastos en premios y comida.
 
 #### 📊 Manejo de Fondos
 - ✅ Cualquier sobrante se agregará al dinero acumulado para la siguiente versión del evento.
