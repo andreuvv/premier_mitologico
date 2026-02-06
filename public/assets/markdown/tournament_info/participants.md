@@ -4,15 +4,15 @@
 
 | Duelista  | Confirmado para siguiente edición | Cuota pagada |
 | --------- | --------------------------------- | ------------ |
-| Troke     |✅                                  |✅             |
-| Timmy     |✅                                  |✅             |
-| Wesh      |✅                                  |✅             |
+| Troke     |                                  |             |
+| Timmy     |                                  |             |
+| Wesh      |                                  |             |
 | Folo      |                                  |             |
-| Piter     |✅                                  |✅             |
-| Clanso    |✅                                  |✅             |
+| Piter     |                                  |             |
+| Clanso    |                                  |             |
 | Guari     |                                  |              |
-| Chisco    |✅                                  |✅              |
+| Chisco    |                                  |              |
 | Vinny     |                                  |              |
-| Traukolin |✅                                  |✅             |
-| Chester   |✅                                  |✅             |
+| Traukolin |                                  |             |
+| Chester   |                                  |             |
 | David     |                                  |             |
