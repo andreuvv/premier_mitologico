@@ -28,10 +28,15 @@ export const tournamentConfig: TournamentConfig = {
   name: 'Premier K&T',
   date: '2026-02-21', // Set to null or past date for TBD mode
   time: '15:00',
+  //location: {
+  //  name: "Weshes",
+  //  address: 'Jorge Quevedo 5464, Macul, Santiago',
+  //  googleMapsQuery: 'Jorge+Quevedo+5464,+Macul,+Santiago',
+  //},
   location: {
-    name: "Weshes",
-    address: 'Jorge Quevedo 5464, Macul, Santiago',
-    googleMapsQuery: 'Jorge+Quevedo+5464,+Macul,+Santiago',
+    name: "Casa de la Vale, los Gatos y el Piter.",
+    address: 'Las Tórtolas 3273, Macul, Santiago',
+    googleMapsQuery: 'Las+Tórtolas+3273,+Macul,+Santiago',
   },
   formats: [
     {
