@@ -6,7 +6,7 @@
 - 📆 Fecha: **21 de Febrero de 2026**
 - 🕒 Hora de inicio: **15:00 hrs**
 - 📍 Sede: **Casa de la Vale, los Gatos y el Piter**
-- 🎮 Formatos: **Primer Bloque Racial Libre** y **Bloque Furia Racial Libre**
+- 🎮 Formatos: **Primer Bloque Racial Edición** y **Bloque Furia Racial Limitado**
 - ⚔️ Rondas: **Mejor de 3**
 
 ---
