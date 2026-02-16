@@ -31,7 +31,11 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/tournament-info" element={<TournamentInfoPage />} />
+            <Route path="/tournament-info/:section" element={<TournamentInfoPage />} />
+            <Route path="/tournament-info/:section/:subsection" element={<TournamentInfoPage />} />
             <Route path="/game-formats" element={<GameFormatsPage />} />
+            <Route path="/game-formats/:section" element={<GameFormatsPage />} />
+            <Route path="/game-formats/:section/:variant" element={<GameFormatsPage />} />
             <Route path="/banlist" element={<BanlistPage />} />
             <Route path="/fixture" element={<FixturePage />} />
             <Route path="/standings" element={<StandingsPage />} />

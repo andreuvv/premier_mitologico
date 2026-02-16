@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { FormatSection, FormatVariant } from '../types';
@@ -8,18 +9,18 @@ import { getIcon } from '../utils/iconMapper';
 import styles from './GameFormatsPage.module.css';
 
 const GameFormatsPage: React.FC = () => {
+  const { section: sectionParam, variant: variantParam } = useParams<{ section?: string; variant?: string }>();
+  const navigate = useNavigate();
   const [selectedSection, setSelectedSection] = useState<FormatSection>(FormatSection.PRIMER_BLOQUE);
   const [selectedVariant, setSelectedVariant] = useState<FormatVariant | null>(null);
   const [content, setContent] = useState<string>('');
   const [loading, setLoading] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Handle URL hash navigation
+  // Handle URL parameter navigation
   useEffect(() => {
-    const hash = window.location.hash.slice(1); // Remove the '#'
-    if (hash) {
-      // Check if it's a variant
-      const variant = Object.values(FormatVariant).find(v => v === hash);
+    if (variantParam) {
+      const variant = Object.values(FormatVariant).find(v => v === variantParam);
       if (variant) {
         setSelectedVariant(variant);
         // Find which section contains this variant
@@ -29,16 +30,19 @@ const GameFormatsPage: React.FC = () => {
         if (sectionEntry) {
           setSelectedSection(sectionEntry[0] as FormatSection);
         }
-      } else {
-        // Check if it's a main section
-        const section = Object.values(FormatSection).find(s => s === hash);
-        if (section) {
-          setSelectedSection(section);
-          setSelectedVariant(null);
-        }
       }
+    } else if (sectionParam) {
+      const section = Object.values(FormatSection).find(s => s === sectionParam);
+      if (section) {
+        setSelectedSection(section);
+        setSelectedVariant(null);
+      }
+    } else {
+      // Default to primerBloque if no params
+      setSelectedSection(FormatSection.PRIMER_BLOQUE);
+      setSelectedVariant(null);
     }
-  }, []);
+  }, [sectionParam, variantParam]);
 
   useEffect(() => {
     const fetchContent = async () => {
@@ -58,11 +62,13 @@ const GameFormatsPage: React.FC = () => {
   const handleSectionClick = (section: FormatSection) => {
     setSelectedSection(section);
     setSelectedVariant(null);
+    navigate(`/game-formats/${section}`);
   };
 
   const handleVariantClick = (variant: FormatVariant, section: FormatSection) => {
     setSelectedSection(section);
     setSelectedVariant(variant);
+    navigate(`/game-formats/${section}/${variant}`);
   };
 
   const isMobile = window.innerWidth < 800;

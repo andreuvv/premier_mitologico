@@ -1,11 +1,11 @@
-*Última actualización: 08 de Enero 2026*
+*Última actualización: 16 de Febrero 2026*
 
 
 # **📅** Siguiente Torneo
 
-- 📆 Fecha: **10 de Enero de 2026**
+- 📆 Fecha: **21 de Febrero de 2026**
 - 🕒 Hora de inicio: **15:00 hrs**
-- 📍 Sede: **Piter's**
+- 📍 Sede: **Casa de la Vale, los Gatos y el Piter**
 - 🎮 Formatos: **Primer Bloque Racial Libre** y **Bloque Furia Racial Libre**
 - ⚔️ Rondas: **Mejor de 3**
 

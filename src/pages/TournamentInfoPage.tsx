@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { InfoSection, TournamentSubsection } from '../types';
@@ -8,6 +9,8 @@ import { getIcon } from '../utils/iconMapper';
 import styles from './TournamentInfoPage.module.css';
 
 const TournamentInfoPage: React.FC = () => {
+  const { section: sectionParam, subsection: subsectionParam } = useParams<{ section?: string; subsection?: string }>();
+  const navigate = useNavigate();
   const [selectedSection, setSelectedSection] = useState<InfoSection>(InfoSection.GENERAL);
   const [selectedSubsection, setSelectedSubsection] = useState<TournamentSubsection | null>(null);
   const [content, setContent] = useState<string>('');
@@ -29,12 +32,10 @@ VEANVE@GMAIL.COM`;
     });
   };
 
-  // Handle URL hash navigation
+  // Handle URL parameter navigation
   useEffect(() => {
-    const hash = window.location.hash.slice(1); // Remove the '#'
-    if (hash) {
-      // Check if it's a subsection
-      const subsection = Object.values(TournamentSubsection).find(s => s === hash);
+    if (subsectionParam) {
+      const subsection = Object.values(TournamentSubsection).find(s => s === subsectionParam);
       if (subsection) {
         setSelectedSubsection(subsection);
         // Find which section contains this subsection
@@ -44,16 +45,19 @@ VEANVE@GMAIL.COM`;
         if (sectionEntry) {
           setSelectedSection(sectionEntry[0] as InfoSection);
         }
-      } else {
-        // Check if it's a main section
-        const section = Object.values(InfoSection).find(s => s === hash);
-        if (section) {
-          setSelectedSection(section);
-          setSelectedSubsection(null);
-        }
       }
+    } else if (sectionParam) {
+      const section = Object.values(InfoSection).find(s => s === sectionParam);
+      if (section) {
+        setSelectedSection(section);
+        setSelectedSubsection(null);
+      }
+    } else {
+      // Default to general if no params
+      setSelectedSection(InfoSection.GENERAL);
+      setSelectedSubsection(null);
     }
-  }, []);
+  }, [sectionParam, subsectionParam]);
 
   useEffect(() => {
     const fetchContent = async () => {
@@ -73,11 +77,13 @@ VEANVE@GMAIL.COM`;
   const handleSectionClick = (section: InfoSection) => {
     setSelectedSection(section);
     setSelectedSubsection(null);
+    navigate(`/tournament-info/${section}`);
   };
 
   const handleSubsectionClick = (subsection: TournamentSubsection, section: InfoSection) => {
     setSelectedSection(section);
     setSelectedSubsection(subsection);
+    navigate(`/tournament-info/${section}/${subsection}`);
   };
 
   const isMobile = window.innerWidth < 800;
