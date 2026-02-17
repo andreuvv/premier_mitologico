@@ -393,7 +393,7 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
-  background: white;
+  background: var(--coal-grey);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -402,7 +402,7 @@
   background: var(--coal-grey);
   color: var(--beige);
   border: none;
-  padding: 1rem 1.5rem;
+  padding: 1rem 0.75rem;
   text-align: left;
   cursor: pointer;
   display: flex;
@@ -436,7 +436,7 @@
 }
 
 .graphsContent {
-  padding: 1.5rem;
+  padding: 0.75rem;
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
@@ -446,9 +446,8 @@
 .chartSection {
   flex: 1;
   min-width: 300px;
-  max-width: 400px;
   text-align: center;
-  background: white;
+  background: var(--beige);
   border-radius: 8px;
   padding: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -458,13 +457,6 @@
   color: var(--coal-grey);
   margin-bottom: 0.5rem;
   font-size: 1.1rem;
-}
-
-.chartSubtitle {
-  color: var(--petrol-blue);
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-  font-style: italic;
 }
 
 .trophySection {
@@ -531,4 +523,61 @@
   color: var(--beige);
   min-width: 2rem;
   text-align: center;
+}
+
+/* Race Statistics Tables */
+.tableContainer {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+  background: var(--coal-grey);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.raceTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 400px;
+}
+
+.raceTable thead {
+  background: linear-gradient(135deg, var(--petrol-blue) 0%, var(--sage-green) 100%);
+  color: var(--beige);
+}
+
+.raceTable th {
+  padding: 1rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.raceTable th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.raceTable th:last-child {
+  border-top-right-radius: 8px;
+}
+
+.raceTable tbody tr {
+  border-bottom: 1px solid #4a4a4a;
+  transition: background-color 0.2s ease;
+}
+
+.raceTable tbody tr:hover {
+  background-color: #3a3a3a;
+}
+
+.raceTable td {
+  padding: 1rem 0.75rem;
+  font-size: 0.95rem;
+  color: var(--beige);
+}
+
+.raceTable td:first-child {
+  font-weight: 600;
+  color: var(--sage-green);
 }

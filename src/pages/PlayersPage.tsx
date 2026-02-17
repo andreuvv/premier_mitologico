@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { fixtureAPI, APIPlayer } from '../services/fixtureAPI';
 import { API_BASE_URL } from '../config/api';
 import { FaUser, FaBars, FaTimes, FaChevronDown, FaChartPie, FaTrophy } from 'react-icons/fa';
-import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 import styles from './PlayersPage.module.css';
 
 interface PlayerDetail extends APIPlayer {
@@ -284,17 +283,19 @@ const PlayersPage = () => {
     return index >= 0 ? colors[index % colors.length] : '#6B46C1';
   };
 
-  const prepareChartData = (raceData: { [race: string]: number }, winrateData: { [race: string]: number }, format: 'pb' | 'bf') => {
+  const prepareTableData = (raceData: { [race: string]: number }, winrateData: { [race: string]: number }, format: 'pb' | 'bf') => {
     const allRaces = format === 'pb' 
       ? ['Caballero', 'Faerie', 'Dragón', 'Olímpico', 'Titán', 'Héroe', 'Defensor', 'Desafiante', 'Sombra', 'Sacerdote', 'Faraón', 'Eterno', 'Tótem']
       : ['Caballero', 'Guerrero', 'Eterno', 'Sombra', 'Dragón', 'Bestia', 'Sacerdote', 'Ancestral', 'Héroe', 'Bárbaro', 'Tótem'];
     
+    const total = Object.values(raceData).reduce((sum, count) => sum + count, 0);
+    
     return allRaces.map(race => ({
-      name: race,
-      value: raceData[race] || 0,
-      winrate: winrateData[race] || 0,
-      displayName: `${race}: ${raceData[race] || 0}`
-    }));
+      race: race,
+      vecesUsada: raceData[race] || 0,
+      porcentaje: total > 0 ? Math.round(((raceData[race] || 0) / total) * 100) : 0,
+      winrate: winrateData[race] || 0
+    })).filter(item => item.vecesUsada > 0); // Only show races that were actually used
   };
 
   const handlePlayerClick = async (player: APIPlayer) => {
@@ -498,63 +499,49 @@ const PlayersPage = () => {
                   <div className={styles.graphsContent}>
                     <div className={styles.chartSection}>
                       <h4>Uso de Razas en Primer Bloque</h4>
-                      <p className={styles.chartSubtitle}>(WinRate% con esa Raza)</p>
-                      <ResponsiveContainer width="100%" height={300}>
-                        <PieChart>
-                          <Pie
-                            data={prepareChartData(raceUsagePB, raceWinratesPB, 'pb')}
-                            cx="50%"
-                            cy="50%"
-                            outerRadius={80}
-                            fill="#8884d8"
-                            dataKey="value"
-                            label={(entry) => {
-                              const e = entry as unknown as { value: number; winrate: number };
-                              return e.value > 0 ? `${e.value} (${e.winrate}%)` : '';
-                            }}
-                            labelLine={false}
-                          >
-                            {prepareChartData(raceUsagePB, raceWinratesPB, 'pb').map((entry, index) => (
-                              <Cell key={`cell-${index}`} fill={getColorForRace(entry.name, 'pb')} />
+                      <div className={styles.tableContainer}>
+                        <table className={styles.raceTable}>
+                          <thead>
+                            <tr>
+                              <th>Raza</th>
+                              <th>Veces Usada</th>
+                              <th>Winrate</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {prepareTableData(raceUsagePB, raceWinratesPB, 'pb').map((row, index) => (
+                              <tr key={index}>
+                                <td>{row.race}</td>
+                                <td>{row.vecesUsada} ({row.porcentaje}%)</td>
+                                <td>{row.winrate}%</td>
+                              </tr>
                             ))}
-                          </Pie>
-                          <Tooltip />
-                          <Legend 
-                            formatter={(_, entry) => (entry.payload as { displayName: string }).displayName}
-                            wrapperStyle={{ color: 'var(--coal-grey)' }}
-                          />
-                        </PieChart>
-                      </ResponsiveContainer>
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
                     <div className={styles.chartSection}>
                       <h4>Uso de Razas en Bloque Furia</h4>
-                      <p className={styles.chartSubtitle}>(WinRate% con esa Raza)</p>
-                      <ResponsiveContainer width="100%" height={300}>
-                        <PieChart>
-                          <Pie
-                            data={prepareChartData(raceUsageBF, raceWinratesBF, 'bf')}
-                            cx="50%"
-                            cy="50%"
-                            outerRadius={80}
-                            fill="#8884d8"
-                            dataKey="value"
-                            label={(entry) => {
-                              const e = entry as unknown as { value: number; winrate: number };
-                              return e.value > 0 ? `${e.value} (${e.winrate}%)` : '';
-                            }}
-                            labelLine={false}
-                          >
-                            {prepareChartData(raceUsageBF, raceWinratesBF, 'bf').map((entry, index) => (
-                              <Cell key={`cell-${index}`} fill={getColorForRace(entry.name, 'bf')} />
+                      <div className={styles.tableContainer}>
+                        <table className={styles.raceTable}>
+                          <thead>
+                            <tr>
+                              <th>Raza</th>
+                              <th>Veces Usada</th>
+                              <th>Winrate</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {prepareTableData(raceUsageBF, raceWinratesBF, 'bf').map((row, index) => (
+                              <tr key={index}>
+                                <td>{row.race}</td>
+                                <td>{row.vecesUsada} ({row.porcentaje}%)</td>
+                                <td>{row.winrate}%</td>
+                              </tr>
                             ))}
-                          </Pie>
-                          <Tooltip />
-                          <Legend 
-                            formatter={(_, entry) => (entry.payload as { displayName: string }).displayName}
-                            wrapperStyle={{ color: 'var(--coal-grey)' }}
-                          />
-                        </PieChart>
-                      </ResponsiveContainer>
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
                   </div>
                 )}
