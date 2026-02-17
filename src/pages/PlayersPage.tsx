@@ -271,18 +271,6 @@ const PlayersPage = () => {
     setExpandedTournaments(newExpanded);
   };
 
-  const getColorForRace = (race: string, format: 'pb' | 'bf') => {
-    const colors = [
-      '#6B46C1', '#38A169', '#D69E2E', '#E53E3E', '#3182CE', '#805AD5', '#DD6B20', '#2C5282', '#B83280', '#38B2AC', '#D4AF37', '#C53030', '#2D3748'
-    ];
-    const races = format === 'pb' 
-      ? ['Caballero', 'Faerie', 'Dragón', 'Olímpico', 'Titán', 'Héroe', 'Defensor', 'Desafiante', 'Sombra', 'Sacerdote', 'Faraón', 'Eterno', 'Tótem']
-      : ['Caballero', 'Guerrero', 'Eterno', 'Sombra', 'Dragón', 'Bestia', 'Sacerdote', 'Ancestral', 'Héroe', 'Bárbaro', 'Tótem'];
-    
-    const index = races.indexOf(race);
-    return index >= 0 ? colors[index % colors.length] : '#6B46C1';
-  };
-
   const prepareTableData = (raceData: { [race: string]: number }, winrateData: { [race: string]: number }, format: 'pb' | 'bf') => {
     const allRaces = format === 'pb' 
       ? ['Caballero', 'Faerie', 'Dragón', 'Olímpico', 'Titán', 'Héroe', 'Defensor', 'Desafiante', 'Sombra', 'Sacerdote', 'Faraón', 'Eterno', 'Tótem']
