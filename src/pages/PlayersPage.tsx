@@ -408,7 +408,17 @@ const PlayersPage = () => {
           <div className={styles.playerDetail}>
             <div className={styles.playerHeader}>
               <div className={styles.playerInfoColumn}>
-                <div className={styles.playerProfilePicture}></div>
+                <div className={styles.playerProfilePicture}>
+                  {selectedPlayer.name === 'Troke' ? (
+                    <img 
+                      src={`${import.meta.env.BASE_URL}assets/images/simon-andre.jpeg`}
+                      alt={`${selectedPlayer.name} profile`}
+                      className={styles.trokeImage}
+                    />
+                  ) : (
+                    <span>{selectedPlayer.name.charAt(0).toUpperCase()}</span>
+                  )}
+                </div>
                 <h1 className={styles.playerName}>{selectedPlayer.name}</h1>
                 {playerTournamentData.length > 0 && (
                   <div className={styles.trophySection}>
