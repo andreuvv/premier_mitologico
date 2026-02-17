@@ -5,6 +5,7 @@ export interface Tournament {
   name: string;
   month: string;
   year: number;
+  type: string;
   start_date?: string;
   end_date?: string;
   created_at: string;
