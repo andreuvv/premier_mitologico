@@ -314,7 +314,14 @@ const TournamentHistoryPage = () => {
                     return (
                       <tr key={standing.player_id} className={medalClass}>
                         <td className={styles.positionColumn}>{index + 1}</td>
-                        <td className={styles.nameColumn}>{positionBadge ? `${positionBadge} ` : ''}{standing.player_name}</td>
+                        <td className={styles.nameColumn}>
+                          <button 
+                            className={styles.playerLink}
+                            onClick={() => navigate(`/players/${encodeURIComponent(standing.player_name)}`)}
+                          >
+                            {positionBadge ? `${positionBadge} ` : ''}{standing.player_name}
+                          </button>
+                        </td>
                         <td className={styles.centerColumn}>{standing.first_place_count}</td>
                         <td className={styles.centerColumn}>{standing.second_place_count}</td>
                         <td className={styles.centerColumn}>{standing.third_place_count}</td>
@@ -579,7 +586,14 @@ const TournamentHistoryPage = () => {
                             <span>{position}</span>
                           </div>
                         </td>
-                        <td className={styles.nameColumn}>{standing.player_name}</td>
+                        <td className={styles.nameColumn}>
+                          <button 
+                            className={styles.playerLink}
+                            onClick={() => navigate(`/players/${encodeURIComponent(standing.player_name)}`)}
+                          >
+                            {standing.player_name}
+                          </button>
+                        </td>
                         <td>{standing.race_pb || '-'}</td>
                         <td>{standing.race_bf || '-'}</td>
                         <td>{standing.matches_played}</td>

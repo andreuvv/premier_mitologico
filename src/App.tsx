@@ -40,6 +40,7 @@ function App() {
             <Route path="/fixture" element={<FixturePage />} />
             <Route path="/standings" element={<StandingsPage />} />
             <Route path="/players" element={<PlayersPage />} />
+            <Route path="/players/:playerName" element={<PlayersPage />} />
             <Route path="/tournament-history" element={<TournamentHistoryPage />} />
             <Route path="/tournament-history/:tournamentId/:view" element={<TournamentHistoryPage />} />
             <Route path="/online-tournament/:tournamentId" element={<OnlineTournamentPage />} />

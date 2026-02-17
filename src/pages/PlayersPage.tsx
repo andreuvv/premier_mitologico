@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { fixtureAPI, APIPlayer } from '../services/fixtureAPI';
 import { API_BASE_URL } from '../config/api';
 import { FaUser, FaBars, FaTimes, FaChevronDown, FaChartPie, FaTrophy } from 'react-icons/fa';
@@ -53,6 +54,8 @@ interface PlayerSummary {
 }
 
 const PlayersPage = () => {
+  const { playerName } = useParams<{ playerName?: string }>();
+  const navigate = useNavigate();
   const [players, setPlayers] = useState<APIPlayer[]>([]);
   const [selectedPlayer, setSelectedPlayer] = useState<PlayerDetail | null>(null);
   const [playerTournamentData, setPlayerTournamentData] = useState<PlayerTournamentData[]>([]);
@@ -66,6 +69,21 @@ const PlayersPage = () => {
   useEffect(() => {
     loadPlayers();
   }, []);
+
+  useEffect(() => {
+    if (playerName && players.length > 0) {
+      const player = players.find(p => p.name === decodeURIComponent(playerName));
+      if (player) {
+        setSelectedPlayer(player);
+        setSidebarOpen(false);
+        loadPlayerTournamentData(player.id, player.name);
+      }
+    } else if (!playerName) {
+      // Clear selection when no playerName in URL
+      setSelectedPlayer(null);
+      setPlayerTournamentData([]);
+    }
+  }, [playerName, players]);
 
   const playerSummary = useMemo(() => {
     const summary: PlayerSummary = {
@@ -280,9 +298,10 @@ const PlayersPage = () => {
   };
 
   const handlePlayerClick = async (player: APIPlayer) => {
-    setSelectedPlayer(player);
+    // Navigate to player-specific URL using name
+    navigate(`/players/${encodeURIComponent(player.name)}`);
     setSidebarOpen(false);
-    await loadPlayerTournamentData(player.id, player.name);
+    // The useEffect will handle loading the player data
   };
 
   const loadPlayerTournamentData = async (playerId: number, playerName: string) => {

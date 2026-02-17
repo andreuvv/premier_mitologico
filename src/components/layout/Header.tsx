@@ -49,7 +49,7 @@ const Header = () => {
           </Link>
           <Link 
             to="/players" 
-            className={location.pathname === '/players' ? styles.active : ''}
+            className={location.pathname.startsWith('/players') ? styles.active : ''}
           >
             <FaUser className={styles.icon} />
             Jugadores
@@ -94,10 +94,13 @@ const Header = () => {
       </div>
   
       {/* Acá poner un option que este justificado a la derecha, usar styles.loginButton */}
-      <button className={styles.loginButton} disabled>
-          <FaHammer className={styles.icon} />
-          Deck Builder
-        </button>
+      <button 
+        className={styles.loginButton}
+        onClick={() => window.open('https://mazos.cl/format-selection', '_blank')}
+      >
+        <FaHammer className={styles.icon} />
+        Deck Builder
+      </button>
 
       {mobileMenuOpen && (
         <div className={styles.mobileMenu}>
@@ -135,10 +138,16 @@ const Header = () => {
             <FaGamepad className={styles.icon} />
             Formatos
           </Link>
-          <div className={styles.mobileDisabled}>
+          <button 
+            className={styles.mobileMenuLink}
+            onClick={() => {
+              window.open('https://mazos.cl/format-selection', '_blank');
+              setMobileMenuOpen(false);
+            }}
+          >
             <FaHammer className={styles.icon} />
             Deck Builder
-          </div>
+          </button>
         </div>
       )}
     </header>

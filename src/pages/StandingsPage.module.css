@@ -285,3 +285,21 @@
     grid-template-columns: 1fr;
   }
 }
+
+.playerLink {
+  background: none;
+  border: none;
+  color: var(--beige);
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+  text-decoration: none;
+  padding: 0;
+  text-align: left;
+  display: inline;
+}
+
+.playerLink:hover {
+  color: var(--petrol-blue);
+  text-decoration: underline;
+}

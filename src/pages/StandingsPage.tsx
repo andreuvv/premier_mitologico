@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { fixtureAPI, APIStanding } from '../services/fixtureAPI';
 import { FaTrophy, FaMedal } from 'react-icons/fa';
 import styles from './StandingsPage.module.css';
 
 const StandingsPage = () => {
+  const navigate = useNavigate();
   const [standings, setStandings] = useState<APIStanding[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -144,7 +146,14 @@ const StandingsPage = () => {
                       <span>{position}</span>
                     </div>
                   </td>
-                  <td className={styles.nameColumn}>{player.name}</td>
+                  <td className={styles.nameColumn}>
+                    <button 
+                      className={styles.playerLink}
+                      onClick={() => navigate(`/players/${encodeURIComponent(player.name)}`)}
+                    >
+                      {player.name}
+                    </button>
+                  </td>
                   <td>{player.matches_played}</td>
                   <td className={styles.winsColumn}>{player.wins}</td>
                   <td className={styles.tiesColumn}>{player.ties}</td>
