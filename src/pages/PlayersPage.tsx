@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fixtureAPI, APIPlayer } from '../services/fixtureAPI';
 import { API_BASE_URL } from '../config/api';
@@ -64,6 +64,8 @@ const PlayersPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [expandedTournaments, setExpandedTournaments] = useState<Set<number>>(new Set());
   const [graphsExpanded, setGraphsExpanded] = useState(false);
+  const [tablesCompact, setTablesCompact] = useState(false);
+  const tableContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     loadPlayers();
@@ -83,6 +85,31 @@ const PlayersPage = () => {
       setPlayerTournamentData([]);
     }
   }, [playerName, players]);
+
+  // Detect when tables need horizontal scrolling and make them compact
+  useEffect(() => {
+    const checkTableOverflow = () => {
+      if (tableContainerRef.current) {
+        const container = tableContainerRef.current;
+        const tables = container.querySelectorAll('table');
+        
+        let needsScrolling = false;
+        tables.forEach(table => {
+          if (table.scrollWidth > container.clientWidth) {
+            needsScrolling = true;
+          }
+        });
+        
+        setTablesCompact(needsScrolling);
+      }
+    };
+
+    // Check immediately and on window resize
+    checkTableOverflow();
+    window.addEventListener('resize', checkTableOverflow);
+    
+    return () => window.removeEventListener('resize', checkTableOverflow);
+  }, [playerTournamentData, graphsExpanded]);
 
   const playerSummary = useMemo(() => {
     const summary: PlayerSummary = {
@@ -487,7 +514,7 @@ const PlayersPage = () => {
                   <div className={styles.graphsContent}>
                     <div className={styles.chartSection}>
                       <h4>Uso de Razas en Primer Bloque</h4>
-                      <div className={styles.tableContainer}>
+                      <div className={`${styles.tableContainer} ${tablesCompact ? styles.tableContainerCompact : ''}`} ref={tableContainerRef}>
                         <table className={styles.raceTable}>
                           <thead>
                             <tr>
@@ -510,7 +537,7 @@ const PlayersPage = () => {
                     </div>
                     <div className={styles.chartSection}>
                       <h4>Uso de Razas en Bloque Furia</h4>
-                      <div className={styles.tableContainer}>
+                      <div className={`${styles.tableContainer} ${tablesCompact ? styles.tableContainerCompact : ''}`}>
                         <table className={styles.raceTable}>
                           <thead>
                             <tr>

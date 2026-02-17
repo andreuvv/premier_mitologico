@@ -385,6 +385,15 @@
     min-width: 100%;
     max-width: 100%;
   }
+
+  .tableContainerCompact .raceTable {
+    font-size: 0.75rem;
+  }
+
+  .tableContainerCompact .raceTable th,
+  .tableContainerCompact .raceTable td {
+    padding: 0.4rem 0.25rem;
+  }
 }
 
 @keyframes slideDown {
@@ -543,6 +552,22 @@
   background: var(--coal-grey);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.tableContainerCompact {
+  overflow-x: visible !important;
+}
+
+.tableContainerCompact .raceTable {
+  font-size: 0.8rem;
+  min-width: auto;
+  width: 100%;
+}
+
+.tableContainerCompact .raceTable th,
+.tableContainerCompact .raceTable td {
+  padding: 0.5rem 0.3rem;
+  white-space: nowrap;
 }
 
 .raceTable {
