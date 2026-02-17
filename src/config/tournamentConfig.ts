@@ -41,16 +41,16 @@ export const tournamentConfig: TournamentConfig = {
   formats: [
     {
       name: 'Primer Bloque Racial Edición',
-      link: '/game-formats#primerBloqueRacialEdicion',
+      link: '/game-formats/primerBloque/primerBloqueRacialEdicion',
     },
     {
       name: 'Furia Extendido Racial Limitado',
-      link: '/game-formats#bloqueFuriaRacialLimitado',
+      link: '/game-formats/bloqueFuria/bloqueFuriaRacialLimitado',
     },
   ],
   roundType: {
     name: 'Mejor de 3',
-    link: '/tournament-info#md3',
+    link: '/tournament-info/tournamentSystem/md3',
   },
 };
 
