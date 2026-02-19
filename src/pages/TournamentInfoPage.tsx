@@ -18,6 +18,13 @@ const TournamentInfoPage: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [copySuccess, setCopySuccess] = useState(false);
 
+  // Scroll to top when mobile menu opens
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [mobileMenuOpen]);
+
   const handleCopyClick = () => {
     const textToCopy = `ANDRE VERA VEAS
 18.537.438-6

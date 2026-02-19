@@ -17,6 +17,13 @@ const GameFormatsPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Scroll to top when mobile menu opens
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [mobileMenuOpen]);
+
   // Handle URL parameter navigation
   useEffect(() => {
     if (variantParam) {
