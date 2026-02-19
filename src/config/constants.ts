@@ -72,6 +72,7 @@ export const infoSectionConfig: Record<InfoSection, {
       TournamentSubsection.GAME_PHASES,
       TournamentSubsection.PLAY_OR_PUT,
       TournamentSubsection.ABILITY_EFFECT,
+      TournamentSubsection.ONCE_PER_TURN,
     ],
   },
   [InfoSection.PRIZES_AND_FUNDING]: {
@@ -98,4 +99,5 @@ export const tournamentSubsectionConfig: Record<TournamentSubsection, { title: s
   [TournamentSubsection.GAME_PHASES]: { title: 'Fases del Juego' },
   [TournamentSubsection.PLAY_OR_PUT]: { title: 'Jugar Vs Poner' },
   [TournamentSubsection.ABILITY_EFFECT]: { title: 'Habilidad Vs Efecto' },
+  [TournamentSubsection.ONCE_PER_TURN]: { title: 'Una Vez Por Turno' },
 };

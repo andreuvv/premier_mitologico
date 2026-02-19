@@ -8,10 +8,11 @@ Las fases del juego ocurren en el siguiente orden durante cada turno:
 
 ## 🔄 1. Fase de Agrupación
 
-En esta fase se deben **agrupar** (devolver a la reserva):
+En esta fase se deben **agrupar**:
 
 - 💰 **Oros pagados**: Se devuelven a la reserva
 - ⚔️ **Aliados atacantes**: Se devuelven a la línea de defensa
+- ⚡ Habilidades ***En Fase de Agrupación...**, se disparan en esta Fase.
 
 **Regla importante**: Un aliado con furia que no sea agrupado, **no puede atacar**.
 
@@ -44,7 +45,8 @@ Si una carta dice en su habilidad que se juega **"al comienzo de la Vigilia"**, 
 
 ## ⚔️ 3. Fase de Batalla Mitológica
 
-Esta es la fase más compleja del turno. Ocurre en varios pasos:
+Esta es la fase más compleja del turno.
+Ocurre en varios pasos:
 
 ### 📢 Paso 1: Declaración de Ataque
 - 🎯 **Jugador activo declara ataque**
@@ -56,15 +58,18 @@ Esta es la fase más compleja del turno. Ocurre en varios pasos:
 - ⚡ Se disparan las **habilidades asociadas a la declaración de bloqueo**
 
 ### 🎴 Paso 3: Guerra de Talismanes
-Una vez terminada la declaración de bloqueos:
+Una vez terminada la declaración de bloqueos, en orden de eventos:
 
 - 🔄 **Jugador defensor** puede jugar talismanes o activar habilidades
 - 🔄 **Jugador activo/atacante** puede hacer lo mismo
 - 🔄 Se alternan **hasta que ningún jugador quiera ceder la prioridad**
 - 🏁 Al ocurrir esto, **termina la guerra de talismanes**
 
-#### ⚠️ Aclaración
-**Si no hay declaración de ataque, la guerra de talismanes no ocurre**.
+#### ⚠️ Aclaración _Guerra de Talismanes_
+- **Solo se puede jugar una carta por prioridad**.
+  - Yo como defensor puedo jugar un talisman o activar una carta.
+  - Luego pasa la prioridad al atacante y asi sucesivamente.
+- **Si no hay declaración de ataque, la guerra de talismanes no ocurre**.
 
 ### 💥 Paso 4: Asignación de Daño
 En **orden de eventos** ocurre:

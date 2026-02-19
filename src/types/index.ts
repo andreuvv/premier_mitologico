@@ -41,4 +41,5 @@ export enum TournamentSubsection {
   GAME_PHASES = 'gamePhases',
   PLAY_OR_PUT = 'playOrPut',
   ABILITY_EFFECT = 'abilityEffect',
+  ONCE_PER_TURN = 'oncePerTurn',
 }

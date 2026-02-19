@@ -105,5 +105,7 @@ const getTournamentSubsectionFileName = (subsection: TournamentSubsection): stri
       return 'play_or_put.md';
     case TournamentSubsection.ABILITY_EFFECT:
       return 'ability_and_effect.md';
+    case TournamentSubsection.ONCE_PER_TURN:
+      return 'once_per_turn.md';
   }
 };
