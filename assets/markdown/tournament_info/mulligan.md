@@ -1,5 +1,6 @@
 # 🔄 Mulligan
 ### _✋ Cambio de mano_
+#### _(Estas reglas solo aplican a nuestros torneos, en premier oficiales se usa el mulligan estándar)_
 
 ## 🆓 Para formatos Libres
 
