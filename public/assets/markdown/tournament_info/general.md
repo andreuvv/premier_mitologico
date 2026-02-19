@@ -6,8 +6,8 @@
 - 📆 Fecha: **21 de Febrero de 2026**
 - 🕒 Hora de inicio: **15:00 hrs**
 - 📍 Sede: **Casa de la Vale, los Gatos y el Piter**
-- 🎮 Formatos: **Primer Bloque Racial Edición** y **Bloque Furia Racial Limitado**
-- ⚔️ Rondas: **Mejor de 3**
+- 🎮 Formatos: [**Primer Bloque Racial Edición**](https://andreuvv.github.io/premier_mitologico/game-formats/primerBloque/primerBloqueRacialEdicion) y [**Bloque Furia Racial Limitado**](https://andreuvv.github.io/premier_mitologico/game-formats/bloqueFuria/bloqueFuriaRacialLimitado)
+- ⚔️ Rondas: [**Mejor de 3**](https://andreuvv.github.io/premier_mitologico/tournament-info/tournamentSystem/md3)
 
 ---
 
@@ -22,7 +22,7 @@
 ### 🔥 **Bloque Furia Racial Libre / Bloque Furia Racial Limitado**
 - 📋 [Cartas Permitidas en _**BF**_ (Noviembre 2025)](https://docs.google.com/spreadsheets/d/17_Vq1_YJYeCVioJMoafOAMG2dF6Lm8NtanEcOmZOo00/edit?gid=2040408861#gid=2040408861)
 - 📋 [Cartas Permitidas de producto Leyendas Bloque Furia (LBF)](https://docs.google.com/spreadsheets/d/17_Vq1_YJYeCVioJMoafOAMG2dF6Lm8NtanEcOmZOo00/edit?gid=7548181#gid=7548181)
-- 📖 [Documento Actualizado de Reglas (DAR) Furia Extendido - más reciente](https://blog.myl.cl/wp-content/uploads/2024/07/DAR-Furia-Extendido-Julio-2024.pdf)
+- 📖 [Documento Actualizado de Reglas (DAR) Furia Extendido - más reciente](https://drive.google.com/file/d/1DfwWgBAqdCpZZNDdQMB5XltZmn5T6lBL/view)
 - ❓ [FAQ Furia Extendido 2023](https://drive.google.com/file/d/1hEMMHTjbGvDhU14Ehyj1tr7MvAZ7njSd/view)
 - ❓ [FAQ Furia Extendido - Guerreros del Sol 2024](https://blog.myl.cl/wp-content/uploads/2024/07/FAQ-GDS.pdf)
 - ❓ [FAQ FX - Agosto 2025](https://blog.myl.cl/wp-content/uploads/2025/07/FAQ-FX-UNIFICADO-AGO25.pdf) 🆕

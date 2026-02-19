@@ -25,6 +25,7 @@ export enum FormatVariant {
 export enum InfoSection {
   GENERAL = 'general',
   TOURNAMENT_SYSTEM = 'tournamentSystem',
+  GAME_RULES = 'gameRules',
   PRIZES_AND_FUNDING = 'prizesAndFunding',
   PARTICIPANTS = 'participants',
   SCHEDULE = 'schedule',
@@ -33,7 +34,11 @@ export enum InfoSection {
 export enum TournamentSubsection {
   MD1 = 'md1',
   MD3 = 'md3',
-  MULLIGAN = 'mulligan',
   SCORING = 'scoring',
   TIMING = 'timing',
+  MULLIGAN = 'mulligan',
+  WHO_STARTS = 'whoStarts',
+  GAME_PHASES = 'gamePhases',
+  PLAY_OR_PUT = 'playOrPut',
+  ABILITY_EFFECT = 'abilityEffect',
 }

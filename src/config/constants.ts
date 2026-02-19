@@ -59,9 +59,19 @@ export const infoSectionConfig: Record<InfoSection, {
     subsections: [
       TournamentSubsection.MD1,
       TournamentSubsection.MD3,
-      TournamentSubsection.MULLIGAN,
       TournamentSubsection.SCORING,
       TournamentSubsection.TIMING,
+    ],
+  },
+  [InfoSection.GAME_RULES]: {
+    title: 'Aclaración de Reglas',
+    icon: 'FaBook',
+    subsections: [
+      TournamentSubsection.MULLIGAN,
+      TournamentSubsection.WHO_STARTS,
+      TournamentSubsection.GAME_PHASES,
+      TournamentSubsection.PLAY_OR_PUT,
+      TournamentSubsection.ABILITY_EFFECT,
     ],
   },
   [InfoSection.PRIZES_AND_FUNDING]: {
@@ -81,7 +91,11 @@ export const infoSectionConfig: Record<InfoSection, {
 export const tournamentSubsectionConfig: Record<TournamentSubsection, { title: string }> = {
   [TournamentSubsection.MD1]: { title: 'Torneo Md1' },
   [TournamentSubsection.MD3]: { title: 'Torneo Md3' },
-  [TournamentSubsection.MULLIGAN]: { title: 'Mulligan' },
   [TournamentSubsection.SCORING]: { title: 'Puntuación' },
   [TournamentSubsection.TIMING]: { title: 'Tiempos' },
+  [TournamentSubsection.MULLIGAN]: { title: 'Mulligan' },
+  [TournamentSubsection.WHO_STARTS]: { title: '¿Quién Parte?' },
+  [TournamentSubsection.GAME_PHASES]: { title: 'Fases del Juego' },
+  [TournamentSubsection.PLAY_OR_PUT]: { title: 'Jugar Vs Poner' },
+  [TournamentSubsection.ABILITY_EFFECT]: { title: 'Habilidad Vs Efecto' },
 };

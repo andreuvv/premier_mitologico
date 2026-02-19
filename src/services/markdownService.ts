@@ -74,6 +74,8 @@ const getInfoSectionFileName = (section: InfoSection): string => {
       return 'general.md';
     case InfoSection.TOURNAMENT_SYSTEM:
       return 'tournament_system.md';
+    case InfoSection.GAME_RULES:
+      return 'game_rules.md';
     case InfoSection.PRIZES_AND_FUNDING:
       return 'prizes_and_funding.md';
     case InfoSection.PARTICIPANTS:
@@ -95,5 +97,13 @@ const getTournamentSubsectionFileName = (subsection: TournamentSubsection): stri
       return 'scoring.md';
     case TournamentSubsection.TIMING:
       return 'timing.md';
+    case TournamentSubsection.WHO_STARTS:
+      return 'who_starts.md';
+    case TournamentSubsection.GAME_PHASES:
+      return 'game_phases.md';
+    case TournamentSubsection.PLAY_OR_PUT:
+      return 'play_or_put.md';
+    case TournamentSubsection.ABILITY_EFFECT:
+      return 'ability_and_effect.md';
   }
 };
