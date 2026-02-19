@@ -1,5 +1,5 @@
 // API Configuration
-// Always use production API for now since we don't have local backend running
-export const API_BASE_URL = 'https://myltournamentbackend-production.up.railway.app/api';
+// Load from environment variables for security
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://myltournamentbackend-production.up.railway.app/api';
 
-export const API_KEY = 'tournament_myl_secret_2025';
+export const API_KEY = import.meta.env.VITE_API_KEY || '';
