@@ -25,7 +25,7 @@ export interface TournamentConfig {
 }
 
 export const tournamentConfig: TournamentConfig = {
-  name: 'Premier K&T',
+  name: 'Furia más Furia',
   date: '2026-02-21', // Set to null or past date for TBD mode
   time: '15:00',
   //location: {
@@ -40,12 +40,12 @@ export const tournamentConfig: TournamentConfig = {
   },
   formats: [
     {
-      name: 'Primer Bloque Racial Edición',
-      link: '/game-formats/primerBloque/primerBloqueRacialEdicion',
+      name: 'Primer Bloque Racial Libre',
+      link: '/game-formats/primerBloque/primerBloqueRacialLibre',
     },
     {
-      name: 'Furia Extendido Racial Limitado',
-      link: '/game-formats/bloqueFuria/bloqueFuriaRacialLimitado',
+      name: 'Furia Extendido Racial Libre',
+      link: '/game-formats/bloqueFuria/bloqueFuriaRacialLibre',
     },
   ],
   roundType: {

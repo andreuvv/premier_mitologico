@@ -41,13 +41,6 @@ const Header = () => {
             {monthYear && <span className={styles.badge}>{monthYear}</span>}
           </Link>
           <Link 
-            to="/tournament-history" 
-            className={location.pathname.startsWith('/tournament-history') ? styles.active : ''}
-          >
-            <FaHistory className={styles.icon} />
-            Historial
-          </Link>
-          <Link 
             to="/players" 
             className={location.pathname.startsWith('/players') ? styles.active : ''}
           >
@@ -55,18 +48,25 @@ const Header = () => {
             Jugadores
           </Link>
           <Link 
-            to="/tournament-info" 
-            className={location.pathname === '/tournament-info' ? styles.active : ''}
-          >
-            <FaClipboardList className={styles.icon} />
-            Info Torneo
-          </Link>
-          <Link 
             to="/banlist" 
             className={location.pathname === '/banlist' ? styles.active : ''}
           >
             <FaBan className={styles.icon} />
             Ban List
+          </Link>
+          <Link 
+            to="/tournament-history" 
+            className={location.pathname.startsWith('/tournament-history') ? styles.active : ''}
+          >
+            <FaHistory className={styles.icon} />
+            Historial
+          </Link>
+          <Link 
+            to="/tournament-info" 
+            className={location.pathname === '/tournament-info' ? styles.active : ''}
+          >
+            <FaClipboardList className={styles.icon} />
+            Info Torneo
           </Link>
           <Link 
             to="/game-formats" 
