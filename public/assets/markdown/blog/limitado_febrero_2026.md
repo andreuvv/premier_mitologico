@@ -34,9 +34,9 @@ También fue nuestro primer torneito con invitados; 2 espectadores invitados por
 
 Después de 11 rondas y terminando pasadas las 1:30 am del domingo (más de 10 horas jugando), salió el top 3:
 
-1. **Folo** — 1er lugar
-2. **Clanso** — 2do lugar  
-3. **Chisco** — 3er lugar
+1. [**Folo**](https://andreuvv.github.io/premier_mitologico/players/Folo) — 1er lugar
+2. [**Clanso**](https://andreuvv.github.io/premier_mitologico/players/Clanso) — 2do lugar  
+3. [**Chisco**](https://andreuvv.github.io/premier_mitologico/players/Chisco) — 3er lugar
 
 ![Los campeones.](https://i.imgur.com/nJCSc01.jpeg 'El Top 3!')
 
