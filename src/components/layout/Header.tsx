@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaHome, FaClipboardList, FaBan, FaGamepad, FaHammer, FaChartBar, FaTrophy, FaHistory, FaUser } from 'react-icons/fa';
+import { FaHome, FaClipboardList, FaBan, FaGamepad, FaHammer, FaChartBar, FaTrophy, FaHistory, FaUser, FaBlog } from 'react-icons/fa';
 import { getTournamentMonthYear } from '../../config/tournamentConfig';
 import styles from './Header.module.css';
 
@@ -74,6 +74,13 @@ const Header = () => {
           >
             <FaGamepad className={styles.icon} />
             Formatos
+          </Link>
+          <Link 
+            to="/blog" 
+            className={location.pathname.startsWith('/blog') ? styles.active : ''}
+          >
+            <FaBlog className={styles.icon} />
+            Blog
           </Link>
           {/* <button className={styles.navDisabled} disabled>
             <FaHammer className={styles.icon} />

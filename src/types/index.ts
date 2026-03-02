@@ -5,6 +5,18 @@ export enum MenuOption {
   BANLIST = 'banlist',
 }
 
+export interface BlogPost {
+  slug: string;
+  title: string;
+  date: string;
+  author: string;
+  tags: string[];
+  excerpt: string;
+  homeExcerpt?: string;
+  homeImage?: string;
+  content: string;
+}
+
 export enum FormatSection {
   PRIMER_BLOQUE = 'primerBloque',
   BLOQUE_FURIA = 'bloqueFuria',

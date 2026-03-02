@@ -1,0 +1,109 @@
+.card {
+  background-color: var(--coal-grey);
+  border: 1px solid var(--sage-green);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tagBadge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: var(--sage-green);
+  color: var(--coal-grey);
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.title {
+  font-size: 1.3rem;
+  margin: 0 0 1rem 0;
+  color: var(--beige);
+  line-height: 1.4;
+}
+
+.excerpt {
+  color: var(--light-grey);
+  font-size: 0.95rem;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.meta {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(169, 182, 164, 0.2);
+  padding-top: 1rem;
+}
+
+.date {
+  color: var(--sage-green);
+}
+
+.author {
+  background: none;
+  border: none;
+  color: var(--sage-green);
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.author:hover {
+  color: var(--beige);
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .imageContainer {
+    height: 150px;
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .excerpt {
+    font-size: 0.9rem;
+  }
+}

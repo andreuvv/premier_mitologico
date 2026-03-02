@@ -14,6 +14,8 @@ const StandingsPage = lazy(() => import('./pages/StandingsPage'));
 const TournamentHistoryPage = lazy(() => import('./pages/TournamentHistoryPage'));
 const PlayersPage = lazy(() => import('./pages/PlayersPage'));
 const OnlineTournamentPage = lazy(() => import('./pages/OnlineTournamentPage'));
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 
 // Loading fallback component
 const PageLoader = () => (
@@ -44,6 +46,8 @@ function App() {
             <Route path="/tournament-history" element={<TournamentHistoryPage />} />
             <Route path="/tournament-history/:tournamentId/:view" element={<TournamentHistoryPage />} />
             <Route path="/online-tournament/:tournamentId" element={<OnlineTournamentPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<BlogPostPage />} />
           </Routes>
         </Suspense>
       </main>
