@@ -14,7 +14,7 @@ Para este formato existen dos tipos de formatos de juego oficiales:
 
 ## 📚 Ediciones y Productos Permitidos
 
-### 🏛️ Bloque Furia Clásico
+### 🔥 Furia Extendido
 
 **Ediciones:**
 - Furia
@@ -24,33 +24,39 @@ Para este formato existen dos tipos de formatos de juego oficiales:
 - Asgard
 - Midgard
 - Leyendas Bloque Furia
-
-**Productos Especiales:**
-- Reliquias del Dragón
-- Tesoro Vikingo
-- Reinos Perdidos: Leyendas del Metal
-- Lootbox 2022 de Nueva Era
-
-### 🔥 Furia Extendido (Formato Oficial Actual)
-
-**Ediciones:**
-- Furia
-- Furia Extensión
-- Leyendas Bloque Furia (selección de cartas)
 - Roma
 - Excalibur
 - Troya
 - Guerreros del Sol
 - Guardianes de Daana
+- Leyendas Bloque Furia 2026
 
 **Productos Especiales:**
+- Reliquias del Dragón
+- Tesoro Vikingo
+- Sobre de cartas FX de edición Mundo Gótico
 - Lootbox 2022 (selección de cartas)
+- Kit de Batalla: Destino
+- Kit de Batalla: Instinto
+- Mystery Box: Roma
 - Reinos Perdidos: Leyendas del Metal
 - Mazos Raciales Preconstruidos
+- Kit de Batalla: Coraje
+- Kit de Batalla: Impetu
+- Mystery Box: Excalibur
 - Reinos Perdidos: Wasteland
+- Kit de Batalla: Fortaleza Heroica
+- Kit de Batalla: Fortuna Olimpica
+- Mystery Box: Troya
 - Reinos Perdidos: La Cofradía
+- Kit de Batalla: Dominio
+- Kit de Batalla: Conquista
+- Mystery Box: Guerreros del Sol
 - Reinos Perdidos: Vigilantes
 - Aniversario 2023
+- Kit de Batalla: Invasores Fomorianos
+- Kit de Batalla: Defensores Celtas
+- Mystery Box: Guardianes de Daana
 - Furia Aniversario X
 - Kingdom Quest
 - Kit Extensión Excalibur: Guerra Santa
@@ -64,6 +70,7 @@ Para este formato existen dos tipos de formatos de juego oficiales:
 - Celebración de Navidad 2024 (selección de cartas)
 - Toolkit 2025 Fortuna Oscura
 - Toolkit 2025 Destino Brillante
+- Armagedon
 
 ---
 
@@ -77,9 +84,6 @@ Para este formato existen dos tipos de formatos de juego oficiales:
 - Sombra
 - Dragón
 - Bestia
-
-### 🆕 Razas Adicionales (a partir de 2026 con LBF 2.0)
-
 - Sacerdote
 - Ancestral
 - Héroe
@@ -102,8 +106,9 @@ El formato fue oficialmente **abandonado** al comenzar la rotación de ediciones
 Las siguientes cartas **NO** se pueden usar en mazos oficiales:
 
 - ❌ Aliados sin raza
-- ❌ Cartas que contengan **★** en el nombre
 - ❌ Cartas que contengan **SP** en el nombre
+
+Si una carta ha recibido un _rework_ (reconocible por tener un logo de rareza de color morado), entonces la carta original ya no se puede usar oficialmente.
 
 ---
 

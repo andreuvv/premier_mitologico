@@ -30,9 +30,10 @@ Las cartas de "soporte" pueden ser de **cualquier edición y/o productos especia
 Todas las ediciones y productos especiales del **Bloque Furia** están permitidos, incluyendo:
 
 - Ediciones principales del bloque
-- Leyendas Bloque Furia:
-  - No todas, ver lista de cartas permitidas en Info General del torneo.
+- Leyendas Bloque Furia
+- Leyendas Bloque Furia 2
 - Productos Extensión
+- Productos Kit de Batalla
 - Productos Reinos Perdidos
 - Mazos preconstruidos
 - Aniversarios
