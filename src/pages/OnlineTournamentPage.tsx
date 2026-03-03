@@ -23,7 +23,7 @@ const monthTranslations: { [key: string]: string } = {
 // Edit this to set the correct format for your tournament
 const formatConfig: { [key: number]: { name: string; hash: string } } = {
     11: { name: 'Infantería Racial Libre', hash: 'infanteria' },
-    3: { name: 'Sellado', hash: 'sellado' },
+    13: { name: 'Sellado', hash: 'sellado' },
     //2: { name: 'VCR', hash: 'vcr' },
     //3: { name: 'Commander', hash: 'commander' },
 };
