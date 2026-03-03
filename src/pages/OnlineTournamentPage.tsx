@@ -21,15 +21,15 @@ const monthTranslations: { [key: string]: string } = {
 
 // Configure the format variant and display name for each tournament ID
 // Edit this to set the correct format for your tournament
-const formatConfig: { [key: number]: { name: string; hash: string } } = {
-    11: { name: 'Infantería Racial Libre', hash: 'infanteria' },
-    13: { name: 'Sellado', hash: 'sellado' },
-    //2: { name: 'VCR', hash: 'vcr' },
-    //3: { name: 'Commander', hash: 'commander' },
+const formatConfig: { [key: number]: { name: string; path: string } } = {
+    11: { name: 'Infantería Racial Libre', path: '/game-formats/formatosEspeciales/infanteria' },
+    13: { name: 'Sellado', path: '/game-formats/formatosEspeciales/sellado' },
+    //2: { name: 'VCR', path: '/game-formats/formatosEspeciales/vcr' },
+    //3: { name: 'Commander', path: '/game-formats/formatosEspeciales/commander' },
 };
 
-const getFormatLink = (tournamentId: number): { name: string; hash: string } => {
-  return formatConfig[tournamentId] || { name: '', hash: 'formatosEspeciales' };
+const getFormatLink = (tournamentId: number): { name: string; path: string } => {
+  return formatConfig[tournamentId] || { name: '', path: '/game-formats' };
 };
 
 const OnlineTournamentPage = () => {
@@ -111,7 +111,7 @@ const OnlineTournamentPage = () => {
             {(() => {
               const formatInfo = getFormatLink(tournament.id);
               return (
-                <Link to={`/game-formats#${formatInfo.hash}`} style={{ textDecoration: 'none', color: '#2a5f7f', fontWeight: 'bold' }}>
+                <Link to={formatInfo.path} style={{ textDecoration: 'none', color: '#2a5f7f', fontWeight: 'bold' }}>
                    {' '} Formato {formatInfo.name}{' '}{tournament.format}
                 </Link>
               );
