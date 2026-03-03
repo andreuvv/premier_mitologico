@@ -34,8 +34,11 @@ Para este formato existen dos tipos de formatos de juego oficiales:
 **Productos Especiales:**
 - Reliquias del Dragón
 - Tesoro Vikingo
-- Sobre de cartas FX de edición Mundo Gótico
+- Sobre de cartas FX de edición Despertar Gótico
 - Lootbox 2022 (selección de cartas)
+- Kit de Batalla: Bola de Fuego
+- Kit de Batalla: Walkiria
+- Mystery Box: Leyendas Bloque Furia
 - Kit de Batalla: Destino
 - Kit de Batalla: Instinto
 - Mystery Box: Roma
@@ -71,6 +74,8 @@ Para este formato existen dos tipos de formatos de juego oficiales:
 - Toolkit 2025 Fortuna Oscura
 - Toolkit 2025 Destino Brillante
 - Armagedon
+- Kit de Batalla: Alianza Temporal
+- Kit de Batalla: Concilio Milenario
 
 ---
 
