@@ -28,7 +28,7 @@ const formatConfig: { [key: number]: { name: string; hash: string } } = {
 };
 
 const getFormatLink = (tournamentId: number): { name: string; hash: string } => {
-  return formatConfig[tournamentId] || { name: 'Formato', hash: 'formatosEspeciales' };
+  return formatConfig[tournamentId] || { name: 'Sellado', hash: 'sellado' };
 };
 
 const OnlineTournamentPage = () => {
