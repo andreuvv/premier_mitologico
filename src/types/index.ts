@@ -32,6 +32,7 @@ export enum FormatVariant {
   VCR = 'vcr',
   COMMANDER = 'commander',
   RAGNAROK = 'ragnarok',
+  SELLADO = 'sellado',
 }
 
 export enum InfoSection {

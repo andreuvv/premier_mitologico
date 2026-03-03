@@ -58,7 +58,7 @@ const OnlineTournamentBanner = () => {
           )}
           {startDate && !endDate && <p>Desde {startDate}</p>}
         </div>
-        <p className={styles.format}>Torneo online • Formato Infantería Racial Libre {tournament.format}</p>
+        <p className={styles.format}>Torneo Presencial • Formato Sellado {tournament.format}</p>
       </div>
       <div className={styles.cta}>
         <span className={styles.ctaText}>Ver Tabla →</span>

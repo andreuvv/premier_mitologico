@@ -145,6 +145,10 @@ const Header = () => {
             <FaGamepad className={styles.icon} />
             Formatos
           </Link>
+          <Link to="/blog" onClick={() => setMobileMenuOpen(false)}>
+            <FaBlog className={styles.icon} />
+            Blog
+          </Link>
           <button 
             className={styles.mobileMenuLink}
             onClick={() => {

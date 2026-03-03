@@ -65,6 +65,8 @@ const getFormatVariantFileName = (variant: FormatVariant): string => {
       return 'commander.md';
     case FormatVariant.RAGNAROK:
       return 'ragnarok.md';
+    case FormatVariant.SELLADO:
+      return 'sellado.md';
   }
 };
 
