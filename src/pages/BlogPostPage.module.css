@@ -82,21 +82,21 @@
 }
 
 .content h1 {
-  color: #d14231;
+  color: var(--markdown-h1);
   font-size: 2rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
 .content h2 {
-  color: #fe8019;
+  color: var(--markdown-h2);
   margin-top: 2rem;
   margin-bottom: 1rem;
   font-size: 1.5rem;
 }
 
 .content h3 {
-  color: #fabd2f;
+  color: var(--markdown-h3);
   margin-top: 1.5rem;
   margin-bottom: 0.8rem;
   font-size: 1.2rem;

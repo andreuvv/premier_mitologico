@@ -103,21 +103,21 @@
 }
 
 .markdown h1 {
-  color: #d14231;
+  color: var(--markdown-h1);
   font-size: 2rem;
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
 
 .markdown h2 {
-  color: #fe8019;
+  color: var(--markdown-h2);
   font-size: 1.5rem;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
 }
 
 .markdown h3 {
-  color: #fabd2f;
+  color: var(--markdown-h3);
   font-size: 1.25rem;
   margin-top: 1.25rem;
   margin-bottom: 0.5rem;
