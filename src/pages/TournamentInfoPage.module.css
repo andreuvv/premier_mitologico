@@ -167,12 +167,12 @@
 }
 
 .markdown a {
-  color: var(--petrol-blue);
+  color: var(--sage-green);
   text-decoration: underline;
 }
 
 .markdown a:hover {
-  color: var(--sage-green);
+  color: var(--beige);
 }
 
 .markdown table {
