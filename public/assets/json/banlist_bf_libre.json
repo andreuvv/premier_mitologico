@@ -1,6 +1,6 @@
 {
   "format": "Bloque Furia Racial Libre",
-  "lastUpdated": "2026-02-04",
+  "lastUpdated": "2026-03-04",
   "banned": [
     {
       "name": "Moñai",
@@ -77,7 +77,7 @@
     {
       "name": "Reanimar",
       "type": "Talisman",
-      "imageUrl": ""
+      "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/06-Daana/promos/239-GUA-Reanimar-MazosCL.webp"
     },
     {
       "name": "Takam",
@@ -99,7 +99,7 @@
     {
       "name": "Surt",
       "type": "Aliado",
-      "imageUrl": ""
+      "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/00-Productos/toolkit25/024-TKFX-Surt-MazosCL.webp"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "format": "Primer Bloque Racial Edición",
-  "lastUpdated": "2026-02-04",
+  "lastUpdated": "2026-03-04",
   "banned": [
     {
       "name": "Ataque a Traición",
@@ -11,11 +11,6 @@
       "name": "Hogar de Demonios",
       "type": "Talisman",
       "imageUrl": "https://api.myl.cl/static/cards/109/090.png"
-    },
-    {
-      "name": "Fergus",
-      "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/116/047.png"
     },
     {
       "name": "Bas-Pef",
@@ -195,9 +190,9 @@
       "imageUrl": "https://api.myl.cl/static/cards/116/276.png"
     },
     {
-      "name": "Marmita Druida (Rework)",
+      "name": "Marmita Druida",
       "type": "Oro",
-      "imageUrl": ""
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/176-AHD-Marmita-Druida-MazosCL.png"
     },
     {
       "name": "Beni Hassam",
@@ -258,6 +253,21 @@
       "name": "Dragón Nival",
       "type": "Aliado",
       "imageUrl": "https://api.myl.cl/static/cards/116/191.png"
+    },
+    {
+      "name": "Fergus",
+      "type": "Aliado",
+      "imageUrl": "https://api.myl.cl/static/cards/116/047.png"
+    },
+    {
+      "name": "Tebas",
+      "type": "Totem",
+      "imageUrl": "https://api.myl.cl/static/cards/116/249.png"
+    },
+    {
+      "name": "La Llama Fría",
+      "type": "Talisman",
+      "imageUrl": "https://api.myl.cl/static/cards/116/133.png"
     }
   ],
   "limitedX2": [
@@ -275,11 +285,6 @@
       "name": "Amergin el Druida",
       "type": "Aliado",
       "imageUrl": "https://api.myl.cl/static/cards/45/039.png"
-    },
-    {
-      "name": "Tebas",
-      "type": "Totem",
-      "imageUrl": "https://api.myl.cl/static/cards/116/249.png"
     },
     {
       "name": "Mercaderes",
@@ -329,7 +334,7 @@
     {
       "name": "Corona del Día",
       "type": "Oro",
-      "imageUrl": ""
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/14-Raciales-2023/cartas/048-Corona-del-día-MazosCL.png"
     },
     {
       "name": "Panteón",
@@ -352,19 +357,9 @@
       "imageUrl": "https://api.myl.cl/static/cards/109/069.png"
     },
     {
-      "name": "Ofrenda a los Dioses",
-      "type": "Oro",
-      "imageUrl": "https://api.myl.cl/static/cards/20/221.png"
-    },
-    {
       "name": "La Ilíada",
       "type": "Oro",
       "imageUrl": "https://api.myl.cl/static/cards/116/148.png"
-    },
-    {
-      "name": "La Llama Fría",
-      "type": "Talisman",
-      "imageUrl": "https://api.myl.cl/static/cards/116/133.png"
     },
     {
       "name": "Renfield",
@@ -374,7 +369,12 @@
     {
       "name": "Monte Kilgharrah",
       "type": "Totem",
-      "imageUrl": ""
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/023-AESX-Monte-Kilgharrah-MazosCL.png"
+    },
+    {
+      "name": "Kamose el Guerrero",
+      "type": "Aliado",
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/295-ARA-Kamose-el-Guerrero-MazosCL.png"
     }
   ]
 }

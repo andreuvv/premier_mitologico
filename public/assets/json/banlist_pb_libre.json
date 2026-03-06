@@ -1,6 +1,6 @@
 {
   "format": "Primer Bloque Racial Libre",
-  "lastUpdated": "2026-02-04",
+  "lastUpdated": "2026-03-04",
   "banned": [
     {
       "name": "Curandera",
@@ -63,9 +63,9 @@
       "imageUrl": "https://api.myl.cl/static/cards/109/090.png"
     },
     {
-      "name": "Dalriada (Rework)",
+      "name": "Dalriada",
       "type": "Totem",
-      "imageUrl": ""
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/reworks/392-AHD-Dalriada-MazosCL.png"
     },
     {
       "name": "Carro Celta",
@@ -155,9 +155,9 @@
       "imageUrl": "https://api.myl.cl/static/cards/92/053.png"
     },
     {
-      "name": "Marmita Druida (Rework)",
+      "name": "Marmita Druida",
       "type": "Oro",
-      "imageUrl": ""
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/176-AHD-Marmita-Druida-MazosCL.png"
     },
     {
       "name": "Druida Maldito",
@@ -177,7 +177,7 @@
     {
       "name": "Cathbadh el Druida",
       "type": "Aliado",
-      "imageUrl": ""
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/310-AHD-Cathbadh-el-Druida-MazosCL.png"
     },
     {
       "name": "Kobold",
@@ -194,7 +194,7 @@
     {
       "name": "Monte Kilgharrah",
       "type": "Totem",
-      "imageUrl": ""
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/023-AESX-Monte-Kilgharrah-MazosCL.png"
     },
     {
       "name": "Panteón",
@@ -239,7 +239,7 @@
     {
       "name": "Corona del Día",
       "type": "Oro",
-      "imageUrl": ""
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/14-Raciales-2023/cartas/048-Corona-del-día-MazosCL.png"
     },
     {
       "name": "Ulster",
@@ -269,7 +269,7 @@
     {
       "name": "Goblin Stone",
       "type": "Totem",
-      "imageUrl": ""
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Goblin-stone-real.png-1763577499173"
     },
     {
       "name": "Goblin",

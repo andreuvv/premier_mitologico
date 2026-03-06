@@ -15,9 +15,11 @@ export const banlistSummaries: Record<BanListFormat, FormatSummary[]> = {
     //{ card: 'Festín', pastMonth: 'Baneada', currentMonth: 'Limitada x1', changeType: 'positive' },
   ],
   [BanListFormat.PRIMER_BLOQUE_EDICION]: [
-    { card: 'Cathbadh el Druida', pastMonth: 'Baneada', currentMonth: 'Limitada x1', changeType: 'positive' },
-    { card: 'Nut', pastMonth: 'Limitada x2', currentMonth: 'Liberado', changeType: 'positive' },
-    { card: 'Dragón Nival', pastMonth: 'Liberado', currentMonth: 'Limitada x1', changeType: 'negative' }
+    { card: 'Fergus', pastMonth: 'Baneada', currentMonth: 'Limitada x1', changeType: 'positive' },
+    { card: 'Ofrenda a los Dioses', pastMonth: 'Limitada x2', currentMonth: 'Liberado', changeType: 'positive' },
+    { card: 'La llama Fría', pastMonth: 'Limitada x2', currentMonth: 'Limitada x1', changeType: 'neutral' },
+    { card: 'Tebas', pastMonth: 'Limitada x2', currentMonth: 'Limitada x1', changeType: 'neutral' },
+    { card: 'Kamose el Guerrero', pastMonth: 'Liberado', currentMonth: 'Limitada x2', changeType: 'neutral' },
   ],
   [BanListFormat.BLOQUE_FURIA_LIBRE]: [
     //{ card: 'Dragón Fomoriano', pastMonth: 'Liberado', currentMonth: 'Baneada' },
@@ -28,4 +30,4 @@ export const banlistSummaries: Record<BanListFormat, FormatSummary[]> = {
 };
 
 // This will be displayed in the accordion title
-export const lastUpdateMonth = 'Febrero 2026';
+export const lastUpdateMonth = 'Marzo 2026';
