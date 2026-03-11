@@ -18,70 +18,80 @@ const HomePage = () => {
 
   return (
     <div className={styles.container}>
+      <OnlineTournamentBanner />
       <div className={styles.pageLayout}>
+        <h2 className={styles.pageTitle}>Próximo Torneo Premier</h2>
         <div className={styles.mainContent}>
-          <OnlineTournamentBanner />
-          <h3 className={styles.subtitle}>Premier Mitológico</h3>
-      <div className={styles.logoContainer}>
-        <img 
-          src={`${import.meta.env.BASE_URL}assets/images/logo_app(1).svg`} 
-          alt="MYL Tournament Logo" 
-          className={styles.mainLogo}
-        />
-      </div>
-      <h1 className={styles.title}>
-        {tournamentConfig.name} {isPast ? (
-          <span style={{ fontWeight: 'bold', fontStyle: 'italic' }}>TBD</span>
-        ) : (
-          monthYear && <span>{monthYear}</span>
-        )}
-      </h1>
-      <p className={styles.description}>
-        Prepara tus mazos para el torneo más esperado del reino. Gloria y premios esperan a los mejores duelistas.
-      </p>
-      
-      <div className={styles.tournamentInfo}>
-        <p className={styles.infoText}>
-          Formatos: {tournamentConfig.formats.map((format, index) => (
-            <span key={format.name}>
-              {index > 0 && ' y '}
-              <Link to={format.link} className={styles.formatLink}>{format.name}</Link>
-            </span>
-          ))}
-        </p>
-        <p className={styles.infoText}>
-          Tipo de Rondas: <Link to={tournamentConfig.roundType.link} className={styles.formatLink}>{tournamentConfig.roundType.name}</Link>
-        </p>
-      </div>
-      
-      {isTodayTournament && (
-        <div className={styles.quickAccess}>
-          <Link to="/fixture" className={styles.quickCard} style={{ backgroundColor: 'var(--sage-green)' }}>
-            <FaChartBar className={styles.cardIcon} />
-            <span className={styles.cardText}>Fixture {monthYear}</span>
-            <span className={styles.cardSubtext}>Ver Emparejamientos</span>
-          </Link>
-          <Link to="/standings" className={styles.quickCard} style={{ backgroundColor: 'var(--petrol-blue)' }}>
-            <FaTrophy className={styles.cardIcon} />
-            <span className={styles.cardText}>Standings {monthYear}</span>
-            <span className={styles.cardSubtext}>Ver Tabla de Posiciones</span>
-          </Link>
-        </div>
-      )}
+          <div className={styles.mainContentTop}>
+            <div className={styles.logoSection}>
+              <div className={styles.logoContainer}>
+                <img 
+                  src={`${import.meta.env.BASE_URL}assets/images/logo_app(1).svg`} 
+                  alt="MYL Tournament Logo" 
+                  className={styles.mainLogo}
+                />
+              </div>
+            </div>
+            
+            <div className={styles.contentSection}>
+              <div className={styles.eventBadge}>EVENTO PREMIER</div>
+              <h1 className={styles.title}>
+                {tournamentConfig.name} {isPast ? (
+                  <span style={{ fontWeight: 'bold', fontStyle: 'italic' }}>TBD</span>
+                ) : (
+                  monthYear && <span>{monthYear}</span>
+                )}
+              </h1>
+              <p className={styles.description}>
+                Prepara tus mazos para el torneo más esperado del reino. Gloria y premios esperan a los mejores duelistas.
+              </p>
+              
+              <div className={styles.tournamentInfo}>
+                <p className={styles.infoText}>
+                  Formatos: {tournamentConfig.formats.map((format, index) => (
+                    <span key={format.name}>
+                      {index > 0 && ' y '}
+                      <Link to={format.link} className={styles.formatLink}>{format.name}</Link>
+                    </span>
+                  ))}
+                </p>
+                <p className={styles.infoText}>
+                  Tipo de Rondas: <Link to={tournamentConfig.roundType.link} className={styles.formatLink}>{tournamentConfig.roundType.name}</Link>
+                </p>
+              </div>
+              
+              {isTodayTournament && (
+                <div className={styles.quickAccess}>
+                  <Link to="/fixture" className={styles.quickCard} style={{ backgroundColor: 'var(--sage-green)' }}>
+                    <FaChartBar className={styles.cardIcon} />
+                    <span className={styles.cardText}>Fixture {monthYear}</span>
+                    <span className={styles.cardSubtext}>Ver Emparejamientos</span>
+                  </Link>
+                  <Link to="/standings" className={styles.quickCard} style={{ backgroundColor: 'var(--petrol-blue)' }}>
+                    <FaTrophy className={styles.cardIcon} />
+                    <span className={styles.cardText}>Standings {monthYear}</span>
+                    <span className={styles.cardSubtext}>Ver Tabla de Posiciones</span>
+                  </Link>
+                </div>
+              )}
+            </div>
 
-      </div>
+            <div className={styles.cardsRow}>
+              <div className={styles.cardWrapper}>
+                <CountdownCard />
+              </div>
+              <div className={styles.cardWrapper}>
+                <MapCard />
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <div className={styles.cardsColumn}>
-        <div className={styles.cardWrapper}>
-          <LatestBlogCard />
+        <div className={styles.cardsColumn}>
+          <div className={styles.cardWrapper}>
+            <LatestBlogCard />
+          </div>
         </div>
-        <div className={styles.cardWrapper}>
-          <CountdownCard />
-        </div>
-        <div className={styles.cardWrapper}>
-          <MapCard />
-        </div>
-      </div>
 
       <div className={styles.banlistSection}>
         <div className={styles.banlistHeader}>

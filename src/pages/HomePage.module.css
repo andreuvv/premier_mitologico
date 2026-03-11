@@ -1,13 +1,13 @@
 .container {
   max-width: 100%;
+  background-color: var(--coal-grey);
 }
 
 .pageLayout {
   display: grid;
   grid-template-columns: 1fr 320px;
-  gap: 2rem;
+  gap: 1.5rem;
   align-items: start;
-  padding: 0 1rem;
 }
 
 @media (max-width: 800px) {
@@ -17,6 +17,60 @@
   }
 }
 
+.pageTitle {
+  font-size: 32px;
+  font-weight: 600;
+  font-family: 'Cyrodiil', serif;
+  color: var(--beige);
+  /*margin: 0 0 1.5rem 1rem;*/
+  grid-column: 1 / -1;
+}
+
+.mainContent {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mainContentTop {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  background: var(--dark-brown);
+  padding: 2rem;
+  border: 1px solid var(--ocher);
+  border-radius: 12px;
+  position: relative;
+}
+
+.logoSection {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contentSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.eventBadge {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background-color: var(--ocher);
+  color: var(--coal-grey);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
 .mainContent {
   min-width: 0;
 }
@@ -24,7 +78,15 @@
 .cardsColumn {
   display: flex;
   flex-direction: column;
+  background-color: var(--dark-brown);
   gap: 1rem;
+}
+
+.cardsRow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  grid-column: 1 / -1;
 }
 
 .subtitle {
@@ -35,6 +97,7 @@
   margin: 0 0 0.5rem 0;
   text-align: center;
   opacity: 0.8;
+  display: none;
 }
 
 .logoContainer {
@@ -53,32 +116,29 @@
   font-weight: 900;
   /*font-family: 'Roboto', sans-serif;*/
   font-family: 'Cyrodiil', serif; 
-  color: var(--coal-grey);
+  color: var(--beige);
   margin: 0 0 1rem 0;
-  text-align: center;
+  text-align: left;
 }
 
 .description {
-  text-align: center;
+  text-align: left;
   font-family: 'Cyrodiil', serif; 
-  color: var(--coal-grey);
+  color: var(--beige);
   margin-bottom: 1rem;
   font-size: 1.1rem;
 }
 
 .tournamentInfo {
-  background: #d4c4b4;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  margin-bottom: 2rem;
-  text-align: center;
+  padding: 0;
+  margin-bottom: 1.5rem;
 }
 
 .infoText {
-  color: var(--coal-grey);
+  color: var(--beige);
   font-size: 1rem;
   margin: 0.5rem 0;
+  text-align: left;
 }
 
 .formatLink {
@@ -137,12 +197,13 @@
 }
 
 .banlistSection {
-  background-color: var(--coal-grey);
+  background-color: var(--dark-brown);
   border-radius: 12px;
   padding: 1.5rem;
   margin-bottom: 2rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   grid-column: 1 / -1;
+  border: 1px solid var(--ocher);
 }
 
 .banlistHeader {
@@ -224,12 +285,28 @@
 
 .cardWrapper {
   min-width: 0;
+  border: 1px solid var(--ocher);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.cardsRow .cardWrapper {
+  border: none;
+  border-radius: 0;
 }
 
 @media (max-width: 1024px) {
   .pageLayout {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .mainContentTop {
+    grid-template-columns: 1fr;
+  }
+
+  .cardsRow {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .cardsColumn {
@@ -245,6 +322,31 @@
     grid-template-columns: 1fr;
     gap: 1.5rem;
     padding: 0 0.5rem;
+  }
+
+  .pageTitle {
+    margin: 0 0 1rem 0.5rem;
+    font-size: 24px;
+  }
+
+  .mainContentTop {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+
+  .contentSection {
+    width: 100%;
+  }
+
+  .eventBadge {
+    position: static;
+    margin-bottom: 1rem;
+  }
+
+  .cardsRow {
+    grid-template-columns: 1fr;
+    grid-column: 1;
   }
 
   .cardsColumn {

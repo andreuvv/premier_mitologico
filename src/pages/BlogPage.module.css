@@ -1,5 +1,5 @@
 .container {
-  max-width: 900px;
+  /*max-width: 900px;*/
   margin: 0 auto;
   padding: 2rem 1.5rem;
 }
@@ -8,7 +8,7 @@
   font-size: 2.5rem;
   margin-bottom: 2rem;
   text-align: center;
-  color: var(--coal-grey);
+  color: var(--beige);
 }
 
 .feed {

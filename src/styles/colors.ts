@@ -6,4 +6,5 @@ export const AppColors = {
   ocher: '#D69C41',
   brickRed: '#C94338',
   beige: '#EADDCF',
+  darkBrown: '#2b2522'
 } as const;

@@ -1,5 +1,5 @@
 .card {
-  background-color: var(--coal-grey);
+  background-color: var(--dark-brown);
   border: 1px solid var(--sage-green);
   border-radius: 8px;
   overflow: hidden;
@@ -58,7 +58,7 @@
 }
 
 .excerpt {
-  color: var(--light-grey);
+  color: var(--beige);
   font-size: 0.95rem;
   margin: 0 0 1.5rem 0;
   line-height: 1.6;

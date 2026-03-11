@@ -6,7 +6,7 @@
 
 .title {
   font-size: 2rem;
-  color: var(--coal-grey);
+  color: var(--beige);
   margin-bottom: 1rem;
   text-align: center;
   font-family: 'Cyrodiil', serif;
@@ -36,7 +36,7 @@
 .tableContainer {
   overflow-x: auto;
   margin-bottom: 2rem;
-  background: var(--coal-grey);
+  background: var(--dark-brown);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }

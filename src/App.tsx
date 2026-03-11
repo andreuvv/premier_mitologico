@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import styles from './App.module.css';
 
@@ -51,6 +52,7 @@ function App() {
           </Routes>
         </Suspense>
       </main>
+      <Footer />
       <ScrollToTop />
     </div>
   );
