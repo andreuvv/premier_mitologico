@@ -11,7 +11,7 @@ const Footer = () => {
             Este proyecto es una plataforma independiente para una comunidad de amigos jugadores de Mitos y Leyendas desde hace más de 20 años.
           </p>
           <a
-            href="https://github.com"
+            href="https://github.com/andreuvv"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.githubLink}
