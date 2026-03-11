@@ -60,7 +60,7 @@
   padding: 12px 12px;
   text-align: left;
   font-weight: 600;
-  background-color: #333;
+  background-color: var(--dark-brown);
   border-right: 2px solid var(--sage-green);
   position: sticky;
   left: 0;
@@ -113,7 +113,7 @@
   padding: 12px 10px;
   text-align: center;
   font-weight: 700;
-  background-color: #333;
+  background-color: var(--dark-brown);
   border-left: 2px solid var(--sage-green);
   color: var(--sage-green);
   min-width: 40px;
