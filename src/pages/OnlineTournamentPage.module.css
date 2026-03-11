@@ -94,7 +94,7 @@
   margin: 0 0 4px 0;
   font-size: 11px;
   font-weight: 600;
-  color: var(--beige);
+  color: var(--coal-grey);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -238,7 +238,7 @@
 }
 
 .pointsCell {
-  background-color: #333;
+  background-color: var(--dark-brown);
   font-weight: 700;
   font-size: 1.05rem;
   color: var(--sage-green, #7fb07f);
