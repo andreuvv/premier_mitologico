@@ -1,5 +1,5 @@
 .container {
-  max-width: 1400px;
+  /*max-width: 1400px;*/
   margin: 0 auto;
   padding: 10px;
 }
@@ -48,7 +48,7 @@
   margin: 0 0 8px 0;
   font-size: 32px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--beige);
   font-family: 'Cyrodiil', serif;
 }
 
@@ -166,7 +166,7 @@
 .standingsTable {
   width: 100%;
   border-collapse: collapse;
-  background: var(--coal-grey, #1a1a1a);
+  background: var(--dark-brown, #1a1a1a);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
