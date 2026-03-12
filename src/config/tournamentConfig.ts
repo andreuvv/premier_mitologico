@@ -40,12 +40,12 @@ export const tournamentConfig: TournamentConfig = {
   },
   formats: [
     {
-      name: 'Primer Bloque Racial Libre',
-      link: '/game-formats/primerBloque/primerBloqueRacialLibre',
-    },
-    {
       name: 'Furia Extendido Racial Libre',
       link: '/game-formats/bloqueFuria/bloqueFuriaRacialLibre',
+    },
+    {
+      name: 'Furia Extendido Racial VCR',
+      link: '/game-formats/formatosEspeciales/vcr',
     },
   ],
   roundType: {
