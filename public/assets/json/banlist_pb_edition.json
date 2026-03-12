@@ -10,12 +10,14 @@
     {
       "name": "Hogar de Demonios",
       "type": "Talisman",
-      "imageUrl": "https://api.myl.cl/static/cards/109/090.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/089-AHE-Hogar-de-Demonios-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/3235/hogar-de-demonios"
     },
     {
       "name": "Bas-Pef",
       "type": "Talisman",
-      "imageUrl": "https://api.myl.cl/static/cards/116/294.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/181-ARA-Bas-Pef-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/4910/bas-pef"
     },
     {
       "name": "Traficante de Esclavos",
@@ -25,12 +27,14 @@
     {
       "name": "Red de Aracne",
       "type": "Talisman",
-      "imageUrl": "https://api.myl.cl/static/cards/109/136.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/135-AHE-Red-de-Aracne-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/3281/red-de-aracne"
     },
     {
       "name": "Avalon",
       "type": "Totem",
-      "imageUrl": "https://api.myl.cl/static/cards/92/053.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/17-Lootbox3/cartas/054-Avalon-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/3588/avalon"
     },
     {
       "name": "Guiza",
@@ -40,12 +44,14 @@
     {
       "name": "Juglares",
       "type": "Talisman",
-      "imageUrl": "https://api.myl.cl/static/cards/19/193.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/294-Juglares-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/2788/juglares"
     },
     {
       "name": "La Traición de Macalpin",
       "type": "Talisman",
-      "imageUrl": "https://api.myl.cl/static/cards/72/099.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/021-AHD-La-Traicion-de-Macalpin-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/4022/la-traicion-de-macalpin"
     },
     {
       "name": "Vuelta a lo Primordial",
@@ -55,17 +61,20 @@
     {
       "name": "Felipe II",
       "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/93/056.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Felipe-ii-real.png-1764035983821",
+      "cardUrl": "https://mazos.cl/card/5210/felipe-ii"
     },
     {
       "name": "Rómulo y Remo",
       "type": "Talisman",
-      "imageUrl": "https://api.myl.cl/static/cards/109/050.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/016-AHE-Romulo-y-Remo-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/3162/romulo-y-remo"
     },
     {
       "name": "Nuh",
       "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/47/249.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/014-ARA-Nuh-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/4743/nuh"
     },
     {
       "name": "Dragón Dorado",
@@ -80,17 +89,20 @@
     {
       "name": "Daga de Bote",
       "type": "Arma",
-      "imageUrl": "https://api.myl.cl/static/cards/47/319.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/268-ARA-Daga-de-Bote-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/4997/daga-de-bote"
     },
     {
       "name": "Joyero",
       "type": "Talisman",
-      "imageUrl": "https://api.myl.cl/static/cards/93/145.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/145-Joyero-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/2639/joyero"
     },
     {
       "name": "Eolo",
       "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/109/031.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/030-AHE-Eolo-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/3176/eolo"
     },
     {
       "name": "Forma de Toro",
@@ -100,12 +112,14 @@
     {
       "name": "Curandera",
       "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/43/055.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/10-Shogun/cartas/001.png",
+      "cardUrl": "https://mazos.cl/card/1559/curandera"
     },
     {
       "name": "Caballo Lunar",
       "type": "Talisman",
-      "imageUrl": "https://api.myl.cl/static/cards/19/059.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/088-Caballo-Lunar-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/2582/caballo-lunar"
     },
     {
       "name": "Furias",
@@ -122,7 +136,8 @@
     {
       "name": "Tótem de Nwyre",
       "type": "Totem",
-      "imageUrl": "https://api.myl.cl/static/cards/93/144.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Totem-de-nwyre-cortesano.png-1763463422504",
+      "cardUrl": "https://mazos.cl/card/2044/totem-de-nwyre"
     },
     {
       "name": "César Augusto",
@@ -132,12 +147,14 @@
     {
       "name": "Gaitas",
       "type": "Oro",
-      "imageUrl": "https://api.myl.cl/static/cards/82/002.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/393-AHD-Gaitas-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/4436/gaitas"
     },
     {
       "name": "Baal-Zaphon",
       "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/47/254.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/038-ARA-Baal-zaphon-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/4767/baal-zaphon"
     },
     {
       "name": "Helios",
@@ -152,7 +169,8 @@
     {
       "name": "Bennu",
       "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/21/184.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/379-ARA-Bennu-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/5122/bennu"
     },
     {
       "name": "Leucrota",
@@ -162,22 +180,26 @@
     {
       "name": "Druida Maldito",
       "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/116/308.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/307-LPB23-Druida-Maldito-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/3932/druida-maldito"
     },
     {
       "name": "Qer-Her",
       "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/116/107.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/17-Lootbox3/cartas/032-Qer-Her-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/3566/qer-her"
     },
     {
       "name": "Antorcha Olímpica",
       "type": "Oro",
-      "imageUrl": "https://api.myl.cl/static/cards/109/043.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/345-AHE-Antorcha-Olimpica-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/3491/antorcha-olimpica"
     },
     {
       "name": "Ulster",
       "type": "Totem",
-      "imageUrl": "https://api.myl.cl/static/cards/116/162.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/378-AHD-Ulster-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/4402/ulster"
     },
     {
       "name": "Rito de Atón",
@@ -187,12 +209,14 @@
     {
       "name": "Aceite de Oliva",
       "type": "Oro",
-      "imageUrl": "https://api.myl.cl/static/cards/116/276.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/355-AHE-Aceite-de-Oliva-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/3501/aceite-de-oliva"
     },
     {
       "name": "Marmita Druida",
       "type": "Oro",
-      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/176-AHD-Marmita-Druida-MazosCL.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/176-AHD-Marmita-Druida-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/4177/marmita-druida"
     },
     {
       "name": "Beni Hassam",
@@ -207,12 +231,14 @@
     {
       "name": "Jinetes de Fuego",
       "type": "Talisman",
-      "imageUrl": "https://api.myl.cl/static/cards/116/055.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/017-ARA-Jinetes-de-Fuego-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/4746/jinetes-de-fuego"
     },
     {
       "name": "Morir de Pie",
       "type": "Talisman",
-      "imageUrl": "https://api.myl.cl/static/cards/82/005.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/relatos/007-AHDX-Morir-de-Pie-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/4612/morir-de-pie"
     },
     {
       "name": "Yelmo Alejandrino",
@@ -222,7 +248,8 @@
     {
       "name": "Kobold",
       "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/116/283.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/369-AHD-Kobold-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/4393/kobold"
     },
     {
       "name": "Montuhopet II",
@@ -237,7 +264,8 @@
     {
       "name": "Ptolomeo II",
       "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/47/238.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/083-ARA-Ptolomeo-II-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/4812/ptolomeo-ii"
     },
     {
       "name": "Furia Irracional",
@@ -247,7 +275,8 @@
     {
       "name": "Cathbadh el Druida",
       "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/45/174.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/310-AHD-Cathbadh-el-Druida-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/4311/cathbadh-el-druida"
     },
     {
       "name": "Dragón Nival",
@@ -257,7 +286,8 @@
     {
       "name": "Fergus",
       "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/116/047.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/046-LPB23-Fergus-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/3671/fergus"
     },
     {
       "name": "Tebas",
@@ -284,12 +314,14 @@
     {
       "name": "Amergin el Druida",
       "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/45/039.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/28-Lootbox25/cartas/014-LBPB25-Amergin-el-Druida-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/8814/amergin-el-druida"
     },
     {
       "name": "Mercaderes",
       "type": "Oro",
-      "imageUrl": "https://api.myl.cl/static/cards/93/058.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Mercaderes-real.png-1764036016311",
+      "cardUrl": "https://mazos.cl/card/5211/mercaderes"
     },
     {
       "name": "Red de Plata",
@@ -299,7 +331,8 @@
     {
       "name": "País sin Luz",
       "type": "Talisman",
-      "imageUrl": "https://api.myl.cl/static/cards/116/104.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/026-AHD-Pais-sin-Luz-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/4027/pais-sin-luz"
     },
     {
       "name": "Qadesh",
@@ -319,7 +352,8 @@
     {
       "name": "Haquika",
       "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/116/052.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/10-Shogun/cartas/012.png",
+      "cardUrl": "https://mazos.cl/card/1570/haquika"
     },
     {
       "name": "Zagreus",
@@ -334,12 +368,14 @@
     {
       "name": "Corona del Día",
       "type": "Oro",
-      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/14-Raciales-2023/cartas/048-Corona-del-día-MazosCL.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/28-Lootbox25/cartas/037-LBPB25-Corona-del-Dia-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/8870/corona-del-dia"
     },
     {
       "name": "Panteón",
       "type": "Totem",
-      "imageUrl": "https://api.myl.cl/static/cards/109/146.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/026-AHE-Pantein-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/3172/panteon"
     },
     {
       "name": "Amosis I",
@@ -359,17 +395,20 @@
     {
       "name": "La Ilíada",
       "type": "Oro",
-      "imageUrl": "https://api.myl.cl/static/cards/116/148.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/344-AHE-La-Iliada-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/3490/la-iliada"
     },
     {
       "name": "Renfield",
       "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/111/006.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/28-Lootbox25/cartas/027-LBPB25-Renfield-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/8860/renfield"
     },
     {
       "name": "Monte Kilgharrah",
       "type": "Totem",
-      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/023-AESX-Monte-Kilgharrah-MazosCL.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/023-AESX-Monte-Kilgharrah-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/2979/monte-kilgharrah"
     },
     {
       "name": "Kamose el Guerrero",
