@@ -8,7 +8,7 @@
   text-align: center;
   padding: 3rem 1rem;
   font-size: 1.2rem;
-  color: var(--coal-grey);
+  color: var(--beige);
 }
 
 .error {
@@ -19,7 +19,7 @@
 }
 
 .empty {
-  color: var(--coal-grey);
+  color: var(--beige);
   opacity: 0.6;
 }
 

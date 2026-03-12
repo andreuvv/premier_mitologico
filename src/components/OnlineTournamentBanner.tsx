@@ -46,8 +46,9 @@ const OnlineTournamentBanner = () => {
   const endDate = formatDate(tournament.end_date);
 
   return (
-    <Link to={`/online-tournament/${tournament.id}`} className={styles.banner}>
+    <div className={styles.banner}>
       <div className={styles.content}>
+        <div className={styles.badge}>Evento Especial</div>
         <h2 className={styles.title}>Torneo '{tournament.name}'</h2>
         <div className={styles.dates}>
           <FaCalendar className={styles.icon} />
@@ -59,11 +60,11 @@ const OnlineTournamentBanner = () => {
           {startDate && !endDate && <p>Desde {startDate}</p>}
         </div>
         <p className={styles.format}>Torneo Presencial • Formato Sellado {tournament.format}</p>
+        <Link to={`/online-tournament/${tournament.id}`} className={styles.ctaButton}>
+          <span className={styles.ctaText}>Ver Tabla</span>
+        </Link>
       </div>
-      <div className={styles.cta}>
-        <span className={styles.ctaText}>Ver Tabla →</span>
-      </div>
-    </Link>
+    </div>
   );
 };
 

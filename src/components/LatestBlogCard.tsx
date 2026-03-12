@@ -43,7 +43,7 @@ const LatestBlogCard = () => {
     navigate(`/players/${latestPost.author}`);
   };
 
-  const officialTag = latestPost.tags.find(tag => tag === 'Torneo Oficial');
+  const officialTag = latestPost.tags.find(tag => tag === 'Torneo Premier');
   const excerpt = latestPost.homeExcerpt || latestPost.excerpt;
   const image = latestPost.homeImage || 'https://i.imgur.com/HckHDVA.jpeg';
 
@@ -55,12 +55,12 @@ const LatestBlogCard = () => {
           alt={latestPost.title}
           className={styles.image}
         />
-        {officialTag && (
-          <div className={styles.tagBadge}>{officialTag}</div>
-        )}
       </div>
       
       <div className={styles.content}>
+        {officialTag && (
+          <div className={styles.tagBadge}>{officialTag}</div>
+        )}
         <h3 className={styles.title}>{latestPost.title}</h3>
         <p className={styles.excerpt}>{excerpt}</p>
         

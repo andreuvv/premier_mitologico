@@ -30,21 +30,19 @@
 }
 
 .tagBadge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
   background-color: var(--sage-green);
   color: var(--coal-grey);
   padding: 0.35rem 0.85rem;
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 600;
-  text-transform: uppercase;
   letter-spacing: 0.5px;
+  width: fit-content;
+  margin-bottom: 0.75rem;
 }
 
 .content {
-  padding: 1.5rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   flex: 1;

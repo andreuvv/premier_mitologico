@@ -34,7 +34,7 @@ const HomePage = () => {
             </div>
             
             <div className={styles.contentSection}>
-              <div className={styles.eventBadge}>EVENTO PREMIER</div>
+              <div className={styles.eventBadge}>Torneo Premier</div>
               <h1 className={styles.title}>
                 {tournamentConfig.name} {isPast ? (
                   <span style={{ fontWeight: 'bold', fontStyle: 'italic' }}>TBD</span>

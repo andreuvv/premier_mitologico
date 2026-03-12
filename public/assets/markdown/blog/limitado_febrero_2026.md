@@ -2,7 +2,7 @@
 title: "Torneito formato Limitado Febrero 2026"
 date: "2026-02-27"
 author: "Troke"
-tags: ["Torneo Oficial", "Febrero", "Limitado", "2026"]
+tags: ["Torneo Premier", "Febrero", "Limitado", "2026"]
 excerpt: "Cómo se vivió el torneito del 21 de Febrero, despidiendo el formato Limitado de Fx, al menos como lo conocemos."
 homeExcerpt: "11 participantes, jornada eterna y una suerte desmedida en los premios. El último torneito Limitado de la era Fx."
 homeImage: "https://i.imgur.com/nJCSc01.jpeg"
