@@ -35,7 +35,7 @@ const Footer = () => {
       </div>
 
       <div className={styles.bottomBar}>
-        <p className={styles.copyright}>© 2026 MYL Tournament Platform. All rights reserved.</p>
+        <p className={styles.copyright}>© 2026 Premier Mitológico Platoform. All rights reserved.</p>
       </div>
     </footer>
   );
