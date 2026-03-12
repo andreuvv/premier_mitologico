@@ -25,8 +25,8 @@ export interface TournamentConfig {
 }
 
 export const tournamentConfig: TournamentConfig = {
-  name: 'Furia más Furia',
-  date: '2026-02-21', // Set to null or past date for TBD mode
+  name: 'Furia más Furia -',
+  date: '2026-04-21', // Set to null or past date for TBD mode
   time: '15:00',
   //location: {
   //  name: "Weshes",
