@@ -1,6 +1,6 @@
 .card {
   background-color: var(--dark-brown);
-  border: 1px solid var(--sage-green);
+  /*border: 1px solid var(--sage-green);*/
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
@@ -32,7 +32,7 @@
 .tagBadge {
   position: absolute;
   top: 12px;
-  right: 12px;
+  left: 12px;
   background-color: var(--sage-green);
   color: var(--coal-grey);
   padding: 0.35rem 0.85rem;

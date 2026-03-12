@@ -162,11 +162,15 @@ const BanlistPage = () => {
               <ul>
                 <li>Las cartas de Aliado sin raza</li>
                 <li>Las cartas con "SP" en su nombre</li>
+              </ul>
+              <p> </p>
+              <p><strong>Agregando a lo de arriba, en Primer Bloque, no se pueden incluir en el mazo:</strong></p>
+              <ul>
                 <li>Las cartas con ★ en su nombre</li>
               </ul>
               <p> </p>
               <p>Las imágenes usadas son referenciales y pueden o no corresponder a la última versión impresa de la carta.</p>
-              <p>Las siguientes restricciones aplican a cualquier versión de la carta.</p>
+              <p>Las anteriores restricciones aplican a cualquier versión de la carta.</p>
             </div>
           </div>
         </div>
