@@ -26,8 +26,8 @@ const HomePage = () => {
             <div className={styles.logoSection}>
               <div className={styles.logoContainer}>
                 <img 
-                  src={`${import.meta.env.BASE_URL}assets/images/logo_app(1).svg`} 
-                  alt="MYL Tournament Logo" 
+                  src={`${import.meta.env.BASE_URL}assets/images/premier_image.png`} 
+                  alt="Premier Tournament Image" 
                   className={styles.mainLogo}
                 />
               </div>
