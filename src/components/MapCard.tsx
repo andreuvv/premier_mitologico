@@ -15,7 +15,7 @@ export default function MapCard() {
       <div className={styles.header}>
         <div className={styles.titleRow}>
           <span className={styles.icon}>🗺️</span>
-          <h2>UBICACIÓN DEL TORNEO PRESENCIAL</h2>
+          <h2>UBICACIÓN DEL TORNEO PREMIER</h2>
         </div>
         <div className={styles.divider}></div>
         <div className={styles.locationInfo}>

@@ -51,7 +51,7 @@ export default function CountdownCard() {
     <div className={styles.card}>
       <div className={styles.header}>
         <span className={styles.icon}>⏱️</span>
-        <h2>FECHA DEL TORNEO PRESENCIAL</h2>
+        <h2>FECHA DEL TORNEO PREMIER</h2>
       </div>
       <div className={styles.divider}></div>
       <div className={styles.dateBox}>
