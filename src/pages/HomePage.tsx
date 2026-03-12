@@ -23,6 +23,11 @@ const HomePage = () => {
         <h2 className={styles.pageTitle}>Próximo Torneo Premier</h2>
         <div className={styles.mainContent}>
           <div className={styles.mainContentTop}>
+            {tournamentConfig.dateTentative && (
+              <div className={styles.undefinedRibbon}>
+                Fecha y Ubicación aún NO definidas
+              </div>
+            )}
             <div className={styles.logoSection}>
               <div className={styles.logoContainer}>
                 <img 

@@ -44,6 +44,23 @@
   overflow: hidden;
 }
 
+.undefinedRibbon {
+  position: absolute;
+  top: 80px;
+  right: -100px;
+  width: 400px;
+  padding: 1rem 0;
+  background-color: var(--ocher);
+  color: var(--coal-grey);
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transform: rotate(45deg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  letter-spacing: 0.05em;
+}
+
 .logoSection {
   display: flex;
   align-items: center;

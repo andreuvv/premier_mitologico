@@ -9,6 +9,7 @@ export interface TournamentConfig {
   name: string;
   date: string | null; // Format: 'YYYY-MM-DD'
   time: string | null; // Format: 'HH:MM' (24-hour format)
+  dateTentative: boolean; // Set to true to show "Fecha y Ubicación aún NO definidas" ribbon
   location: {
     name: string | null;
     address: string | null;
@@ -28,6 +29,7 @@ export const tournamentConfig: TournamentConfig = {
   name: 'Furia más Furia -',
   date: '2026-04-21', // Set to null or past date for TBD mode
   time: '15:00',
+  dateTentative: true, // Set to true to show the ribbon
   //location: {
   //  name: "Weshes",
   //  address: 'Jorge Quevedo 5464, Macul, Santiago',
