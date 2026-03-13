@@ -73,6 +73,13 @@ const TournamentHistoryPage = () => {
     }
   }, [tournamentId, view]);
 
+  // Sync selectedOnlineTournament state with URL when viewing online tournaments
+  useEffect(() => {
+    if (isViewingOnlineTournament && tournamentId) {
+      setSelectedOnlineTournament(Number(tournamentId));
+    }
+  }, [tournamentId, isViewingOnlineTournament]);
+
   const loadTournaments = async () => {
     try {
       const data = await tournamentAPI.getTournaments();
