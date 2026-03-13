@@ -78,8 +78,6 @@ const GameFormatsPage: React.FC = () => {
     navigate(`/game-formats/${section}/${variant}`);
   };
 
-  const isMobile = window.innerWidth < 800;
-
   return (
     <div className={styles.container}>
       <div className={styles.mobileHeader}>

@@ -93,8 +93,6 @@ VEANVE@GMAIL.COM`;
     navigate(`/tournament-info/${section}/${subsection}`);
   };
 
-  const isMobile = window.innerWidth < 800;
-
   return (
     <div className={styles.container}>
       <div className={styles.mobileHeader}>
