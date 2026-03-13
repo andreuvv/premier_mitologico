@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { FaInfoCircle } from 'react-icons/fa';
 import { BanListFormat, BanListCategory, BanListData, BanListCard } from '../types/banlist';
 import { loadBanlist } from '../services/banlistService';
@@ -6,9 +7,39 @@ import FormatSummaryRow from '../components/FormatSummaryRow';
 import { banlistSummaries, lastUpdateMonth } from '../data/banlistSummary';
 import styles from './BanlistPage.module.css';
 
+const formatToSlug: Record<BanListFormat, string> = {
+  [BanListFormat.PRIMER_BLOQUE_LIBRE]: 'pb-libre',
+  [BanListFormat.PRIMER_BLOQUE_EDICION]: 'pb-edition',
+  [BanListFormat.BLOQUE_FURIA_LIBRE]: 'bf-libre',
+  [BanListFormat.BLOQUE_FURIA_LIMITED]: 'bf-limited',
+};
+
+const slugToFormat = Object.entries(formatToSlug).reduce((acc, [format, slug]) => {
+  acc[slug] = format as BanListFormat;
+  return acc;
+}, {} as Record<string, BanListFormat>);
+
+const categoryToSlug: Record<BanListCategory, string> = {
+  [BanListCategory.BANNED]: 'baneadas',
+  [BanListCategory.LIMITED_X1]: 'limitadas-x1',
+  [BanListCategory.LIMITED_X2]: 'limitadas-x2',
+};
+
+const slugToCategory = Object.entries(categoryToSlug).reduce((acc, [category, slug]) => {
+  acc[slug] = category as BanListCategory;
+  return acc;
+}, {} as Record<string, BanListCategory>);
+
 const BanlistPage = () => {
-  const [selectedFormat, setSelectedFormat] = useState<BanListFormat>(BanListFormat.PRIMER_BLOQUE_LIBRE);
-  const [selectedCategory, setSelectedCategory] = useState<BanListCategory>(BanListCategory.BANNED);
+  const { format: formatSlug, category: categorySlug } = useParams<{ format?: string; category?: string }>();
+  const navigate = useNavigate();
+
+  const [selectedFormat, setSelectedFormat] = useState<BanListFormat>(
+    formatSlug && slugToFormat[formatSlug] ? slugToFormat[formatSlug] : BanListFormat.PRIMER_BLOQUE_LIBRE
+  );
+  const [selectedCategory, setSelectedCategory] = useState<BanListCategory>(
+    categorySlug && slugToCategory[categorySlug] ? slugToCategory[categorySlug] : BanListCategory.BANNED
+  );
   const [banlistData, setBanlistData] = useState<BanListData | null>(null);
   const [loading, setLoading] = useState(true);
   const [showInfoPopup, setShowInfoPopup] = useState(false);
@@ -94,7 +125,13 @@ const BanlistPage = () => {
           <label>Formato:</label>
           <select 
             value={selectedFormat} 
-            onChange={(e) => setSelectedFormat(e.target.value as BanListFormat)}
+            onChange={(e) => {
+              const newFormat = e.target.value as BanListFormat;
+              setSelectedFormat(newFormat);
+              const formatSlug = formatToSlug[newFormat];
+              const categorySlug = categoryToSlug[selectedCategory];
+              navigate(`/banlist/${formatSlug}/${categorySlug}`);
+            }}
           >
             {Object.values(BanListFormat).map(format => (
               <option key={format} value={format}>
@@ -128,7 +165,12 @@ const BanlistPage = () => {
             <button
               key={category}
               className={selectedCategory === category ? styles.activeTab : ''}
-              onClick={() => setSelectedCategory(category)}
+              onClick={() => {
+                setSelectedCategory(category);
+                const formatSlug = formatToSlug[selectedFormat];
+                const categorySlug = categoryToSlug[category];
+                navigate(`/banlist/${formatSlug}/${categorySlug}`);
+              }}
             >
               {getCategoryLabel(category)}
             </button>
