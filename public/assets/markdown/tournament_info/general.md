@@ -1,4 +1,4 @@
-*Última actualización: 03 de Marzo 2026*
+*Última actualización: 13 de Marzo 2026*
 
 
 # **📅** Siguiente Torneo
@@ -6,7 +6,7 @@
 - 📆 Fecha: **TBD**
 - 🕒 Hora de inicio: **TBD**
 - 📍 Sede: **TBD**
-- 🎮 Formatos: [Primer Bloque Racial Libre](https://andreuvv.github.io/premier_mitologico/game-formats/primerBloque/primerBloqueRacialLibre) y [Bloque Furia Racial Libre](https://andreuvv.github.io/premier_mitologico/game-formats/bloqueFuria/bloqueFuriaRacialLibre)
+- 🎮 Formatos: [Bloque Furia Racial Libre](https://andreuvv.github.io/premier_mitologico/game-formats/bloqueFuria/bloqueFuriaRacialLibre) y [Bloque Furia Racial VCR](https://andreuvv.github.io/premier_mitologico/game-formats/formatosEspeciales/vcr)
 - ⚔️ Rondas: [Mejor de 3](https://andreuvv.github.io/premier_mitologico/tournament-info/tournamentSystem/md3)
 
 ---
