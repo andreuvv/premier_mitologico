@@ -234,12 +234,15 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 28px;
-    height: 22px;
-    background: transparent;
+    width: 44px;
+    height: 44px;
+    background-color: var(--dark-brown);
     border: none;
     cursor: pointer;
-    padding: 0;
+    padding: 0.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
   }
 
   .mobileMenuButton span {
@@ -247,11 +250,17 @@
     height: 3px;
     background-color: var(--beige);
     border-radius: 2px;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
   }
 
-  .mobileMenuButton:hover span {
-    background-color: var(--sage-green);
+  .mobileMenuButton:active {
+    background-color: var(--ocher);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    transform: scale(0.98);
+  }
+
+  .mobileMenuButton:active span {
+    background-color: var(--coal-grey);
   }
 
   .mobileTitle {

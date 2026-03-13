@@ -199,18 +199,23 @@
 
   .hamburger {
     display: block;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
     border: none;
-    background-color: var(--petrol-blue);
-    color: white;
+    background-color: var(--dark-brown);
+    color: var(--beige);
     font-size: 1.5rem;
     border-radius: 8px;
     cursor: pointer;
     margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
   }
 
-  .hamburger:hover {
-    background-color: var(--sage-green);
+  .hamburger:active {
+    background-color: var(--ocher);
+    color: var(--coal-grey);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    transform: scale(0.98);
   }
 
   .layout {
