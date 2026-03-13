@@ -64,14 +64,32 @@ const TournamentHistoryPage = () => {
 
   useEffect(() => {
     if (tournamentId && view) {
-      loadTournamentData(Number(tournamentId), view);
+      // Clear accordion states when viewing global views (tournamentId = '0')
+      if (tournamentId === '0') {
+        setExpandedTournament(null);
+        setExpandedYear(null);
+        // globalStandings and globalRaces are already loaded on mount, no need to reload
+      } else if (!isViewingOnlineTournament) {
+        // Load data for specific traditional tournaments
+        loadTournamentData(Number(tournamentId), view);
+        // Expand tournament's view options when navigating to it
+        setExpandedTournament(Number(tournamentId));
+      }
+    } else if (isViewingOnlineTournament) {
+      // Clear traditional tournament accordion states when viewing online tournaments
+      setExpandedTournament(null);
+      setExpandedYear(null);
     }
-  }, [tournamentId, view]);
+  }, [tournamentId, view, isViewingOnlineTournament]);
 
   // Sync selectedOnlineTournament state with URL when viewing online tournaments
   useEffect(() => {
     if (isViewingOnlineTournament && tournamentId) {
       setSelectedOnlineTournament(Number(tournamentId));
+    } else if (!isViewingOnlineTournament) {
+      // Clear online tournament state when not viewing online tournaments
+      setExpandedOnlineMonth(null);
+      setSelectedOnlineTournament(null);
     }
   }, [tournamentId, isViewingOnlineTournament]);
 
@@ -137,11 +155,8 @@ const TournamentHistoryPage = () => {
 
   const handleTournamentClick = (tournament: Tournament) => {
     setSelectedTournament(tournament);
-    if (expandedTournament === tournament.id) {
-      setExpandedTournament(null);
-    } else {
-      setExpandedTournament(tournament.id);
-    }
+    // Automatically navigate to resumen (default view) when clicking a tournament
+    navigate(`/tournament-history/${tournament.id}/resumen`);
   };
 
   const handleViewClick = (tournament: Tournament, viewType: 'resumen' | 'standings' | 'rounds') => {
