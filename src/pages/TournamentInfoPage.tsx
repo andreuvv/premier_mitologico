@@ -102,7 +102,9 @@ VEANVE@GMAIL.COM`;
           className={styles.mobileMenuButton}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          ☰
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
         <h2 className={styles.mobileTitle}>
           {selectedSubsection 
@@ -112,45 +114,14 @@ VEANVE@GMAIL.COM`;
       </div>
       
       {mobileMenuOpen && (
-        <div className={styles.mobileMenu}>
-          {Object.entries(infoSectionConfig).map(([key, config]) => {
-            const section = key as InfoSection;
-            const isActive = selectedSection === section && !selectedSubsection;
-            const IconComponent = getIcon(config.icon);
-
-            return (
-              <div key={section}>
-                <button
-                  className={`${styles.mobileMenuItem} ${isActive ? styles.active : ''}`}
-                  onClick={() => {
-                    handleSectionClick(section);
-                    setMobileMenuOpen(false);
-                  }}
-                >
-                  <IconComponent className={styles.icon} />
-                  <span>{config.title}</span>
-                </button>
-                {config.subsections && config.subsections.map((subsection) => (
-                  <button
-                    key={subsection}
-                    className={`${styles.mobileMenuSubItem} ${selectedSubsection === subsection ? styles.active : ''}`}
-                    onClick={() => {
-                      handleSubsectionClick(subsection, section);
-                      setMobileMenuOpen(false);
-                    }}
-                  >
-                    {tournamentSubsectionConfig[subsection].title}
-                  </button>
-                ))}
-              </div>
-            );
-          })}
-        </div>
+        <div 
+          className={styles.overlay}
+          onClick={() => setMobileMenuOpen(false)}
+        />
       )}
       
-      {!isMobile && (
-        <aside className={styles.sidebar}>
-          {Object.entries(infoSectionConfig).map(([key, config]) => {
+      <aside className={`${styles.sidebar} ${!mobileMenuOpen ? styles.sidebarClosed : ''}`}>
+        {Object.entries(infoSectionConfig).map(([key, config]) => {
             const section = key as InfoSection;
             const isActive = selectedSection === section && !selectedSubsection;
             const IconComponent = getIcon(config.icon);
@@ -180,8 +151,7 @@ VEANVE@GMAIL.COM`;
               </div>
             );
           })}
-        </aside>
-      )}
+      </aside>
       <main className={styles.content}>
         {loading ? (
           <div className={styles.loading}>Cargando...</div>

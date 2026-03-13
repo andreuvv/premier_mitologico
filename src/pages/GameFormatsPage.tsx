@@ -87,7 +87,9 @@ const GameFormatsPage: React.FC = () => {
           className={styles.mobileMenuButton}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          ☰
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
         <h2 className={styles.mobileTitle}>
           {selectedVariant 
@@ -97,45 +99,14 @@ const GameFormatsPage: React.FC = () => {
       </div>
       
       {mobileMenuOpen && (
-        <div className={styles.mobileMenu}>
-          {Object.entries(formatSectionConfig).map(([key, config]) => {
-            const section = key as FormatSection;
-            const isActive = selectedSection === section && !selectedVariant;
-            const IconComponent = getIcon(config.icon);
-
-            return (
-              <div key={section}>
-                <button
-                  className={`${styles.mobileMenuItem} ${isActive ? styles.active : ''}`}
-                  onClick={() => {
-                    handleSectionClick(section);
-                    setMobileMenuOpen(false);
-                  }}
-                >
-                  <IconComponent className={styles.icon} />
-                  <span>{config.title}</span>
-                </button>
-                {config.variants && config.variants.map((variant) => (
-                  <button
-                    key={variant}
-                    className={`${styles.mobileMenuSubItem} ${selectedVariant === variant ? styles.active : ''}`}
-                    onClick={() => {
-                      handleVariantClick(variant, section);
-                      setMobileMenuOpen(false);
-                    }}
-                  >
-                    {formatVariantConfig[variant].title}
-                  </button>
-                ))}
-              </div>
-            );
-          })}
-        </div>
+        <div 
+          className={styles.overlay}
+          onClick={() => setMobileMenuOpen(false)}
+        />
       )}
       
-      {!isMobile && (
-        <aside className={styles.sidebar}>
-          {Object.entries(formatSectionConfig).map(([key, config]) => {
+      <aside className={`${styles.sidebar} ${!mobileMenuOpen ? styles.sidebarClosed : ''}`}>
+        {Object.entries(formatSectionConfig).map(([key, config]) => {
             const section = key as FormatSection;
             const isActive = selectedSection === section && !selectedVariant;
             const IconComponent = getIcon(config.icon);
@@ -165,8 +136,7 @@ const GameFormatsPage: React.FC = () => {
               </div>
             );
           })}
-        </aside>
-      )}
+      </aside>
       <main className={styles.content}>
         {loading ? (
           <div className={styles.loading}>Cargando...</div>

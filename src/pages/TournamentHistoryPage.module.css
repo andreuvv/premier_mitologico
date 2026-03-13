@@ -35,9 +35,9 @@
 
 .sidebar {
   width: 280px;
-  background-color: var(--coal-grey);
+  background-color: var(--dark-brown);
   color: var(--beige);
-  /*padding: 2rem 1rem;*/
+  padding: 1rem;
   overflow-y: auto;
   position: sticky;
   top: 0;
