@@ -341,7 +341,7 @@ const TournamentHistoryPage = () => {
                     {Object.entries(groupOnlineByMonth()).map(([month, tournaments]) => (
                       <div key={month} className={styles.yearGroup}>
                         <button
-                          className={styles.yearButton}
+                          className={`${styles.yearButton} ${expandedOnlineMonth === month ? styles.active : ''}`}
                           onClick={() => setExpandedOnlineMonth(expandedOnlineMonth === month ? null : month)}
                         >
                           <span>{month}</span>
