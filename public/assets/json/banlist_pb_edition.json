@@ -447,7 +447,8 @@
     {
       "name": "Kamose el Guerrero",
       "type": "Aliado",
-      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/295-ARA-Kamose-el-Guerrero-MazosCL.png"
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/295-ARA-Kamose-el-Guerrero-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/5024/kamose-el-guerrero"
     }
   ]
 }

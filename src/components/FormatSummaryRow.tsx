@@ -1,10 +1,17 @@
 import styles from './FormatSummaryRow.module.css';
 import { BanListFormat } from '../types/banlist';
 import { FormatSummary, ChangeType } from '../data/banlistSummary';
+import { useState, useEffect } from 'react';
 
 type Props = {
   summaries: Record<BanListFormat, FormatSummary[]>;
 };
+
+type HoveredCard = {
+  imageUrl: string;
+  x: number;
+  y: number;
+} | null;
 
 const formatLabels: Record<BanListFormat, string> = {
   [BanListFormat.PRIMER_BLOQUE_LIBRE]: 'PB Racial Libre',
@@ -27,6 +34,47 @@ const getRowClassName = (changeType?: ChangeType): string => {
 };
 
 export default function FormatSummaryRow({ summaries }: Props) {
+  const [hoveredCard, setHoveredCard] = useState<HoveredCard>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [selectedCardImage, setSelectedCardImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 800);
+    };
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
+
+  const handleMouseEnter = (imageUrl: string, e: React.MouseEvent<HTMLTableRowElement>) => {
+    if (!imageUrl || isMobile) return;
+    setHoveredCard({
+      imageUrl,
+      x: e.clientX,
+      y: e.clientY,
+    });
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLTableRowElement>) => {
+    if (isMobile) return;
+    setHoveredCard(prev => prev ? { ...prev, x: e.clientX, y: e.clientY } : null);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredCard(null);
+  };
+
+  const handleRowClick = (imageUrl: string) => {
+    if (isMobile && imageUrl) {
+      setSelectedCardImage(imageUrl);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setSelectedCardImage(null);
+  };
+
   return (
     <div className={styles.row}>
       {Object.keys(summaries).map((k) => {
@@ -48,7 +96,12 @@ export default function FormatSummaryRow({ summaries }: Props) {
                 </thead>
                 <tbody>
                   {items.map((item, idx) => (
-                    <tr key={idx} className={getRowClassName(item.changeType)}>
+                    <tr key={idx} className={getRowClassName(item.changeType)}
+                        onMouseEnter={(e) => handleMouseEnter(item.imageUrl || '', e)}
+                        onMouseMove={handleMouseMove}
+                        onMouseLeave={handleMouseLeave}
+                        onClick={() => handleRowClick(item.imageUrl || '')}
+                        style={{ cursor: item.imageUrl ? 'pointer' : 'default' }}>
                       <td><strong>{item.card}</strong></td>
                       <td>{item.pastMonth}</td>
                       <td>{item.currentMonth}</td>
@@ -60,6 +113,24 @@ export default function FormatSummaryRow({ summaries }: Props) {
           </div>
         );
       })}
+      {!isMobile && hoveredCard && (
+        <div 
+          className={styles.cardTooltip}
+          style={{
+            left: `${hoveredCard.x + 10}px`,
+            top: `${hoveredCard.y + 10}px`,
+          }}
+        >
+          <img src={hoveredCard.imageUrl} alt="Card" />
+        </div>
+      )}
+      {isMobile && selectedCardImage && (
+        <div className={styles.modalOverlay} onClick={handleCloseModal}>
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <img src={selectedCardImage} alt="Card" />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -128,3 +128,58 @@
     white-space: normal;
   }
 }
+
+.cardTooltip {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  background-color: var(--coal-grey);
+  padding: 4px;
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.cardTooltip img {
+  max-width: 300px;
+  height: auto;
+  display: block;
+  border-radius: 2px;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.modalContent {
+  background-color: var(--coal-grey);
+  padding: 1rem;
+  border-radius: 8px;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalContent img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+@media (max-width: 800px) {
+  .cardTooltip {
+    display: none;
+  }
+}

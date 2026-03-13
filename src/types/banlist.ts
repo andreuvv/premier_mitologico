@@ -15,6 +15,7 @@ export interface BanListCard {
   name: string;
   type: string;
   imageUrl: string;
+  cardUrl?: string;
 }
 
 export interface BanListData {

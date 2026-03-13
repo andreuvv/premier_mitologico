@@ -63,6 +63,12 @@ const BanlistPage = () => {
     }
   };
 
+  const handleCardClick = (cardUrl?: string) => {
+    if (cardUrl) {
+      window.open(cardUrl, '_blank');
+    }
+  };
+
   const cards = getCurrentCards();
 
   return (
@@ -135,7 +141,12 @@ const BanlistPage = () => {
       ) : (
         <div className={styles.cardsGrid}>
           {cards.map((card, index) => (
-            <div key={index} className={styles.card}>
+            <div 
+              key={index} 
+              className={styles.card}
+              onClick={() => handleCardClick(card.cardUrl)}
+              style={{ cursor: card.cardUrl ? 'pointer' : 'default' }}
+            >
               {card.imageUrl ? (
                 <img src={card.imageUrl} alt={card.name} />
               ) : (
@@ -170,7 +181,7 @@ const BanlistPage = () => {
               </ul>
               <p> </p>
               <p>Las imágenes usadas son referenciales y pueden o no corresponder a la última versión impresa de la carta.</p>
-              <p>Las anteriores restricciones aplican a cualquier versión de la carta.</p>
+              <p>Las restricciones en esta página aplican a cualquier versión de la carta.</p>
             </div>
           </div>
         </div>
