@@ -25,6 +25,29 @@ const OnlineTournamentBanner = () => {
     return null;
   }
 
+  // Hide banner if tournament end date is more than 3 days in the past
+  const isEndDateOld = (dateString?: string) => {
+    if (!dateString) return false;
+    try {
+      const dateOnly = dateString.split('T')[0];
+      const [year, month, day] = dateOnly.split('-').map(Number);
+      
+      if (!year || !month || !day) return false;
+      
+      const endDate = new Date(year, month - 1, day);
+      const today = new Date();
+      const daysAgo = Math.floor((today.getTime() - endDate.getTime()) / (1000 * 60 * 60 * 24));
+      
+      return daysAgo > 3;
+    } catch {
+      return false;
+    }
+  };
+
+  if (isEndDateOld(tournament.end_date)) {
+    return null;
+  }
+
   const formatDate = (dateString?: string) => {
     if (!dateString) return null;
     try {
