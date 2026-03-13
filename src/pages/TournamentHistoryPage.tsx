@@ -57,11 +57,6 @@ const TournamentHistoryPage = () => {
     try {
       const data = await onlineTournamentService.getActiveTournaments();
       setOnlineTournaments(data);
-      
-      // If viewing an online tournament, set it as selected
-      if (isViewingOnlineTournament && tournamentId) {
-        setSelectedOnlineTournament(Number(tournamentId));
-      }
     } catch (error) {
       console.error('Error loading online tournaments:', error);
     }
@@ -382,8 +377,8 @@ const TournamentHistoryPage = () => {
 
       {/* Main Content */}
       <main className={styles.mainContent}>
-        {isViewingOnlineTournament && selectedOnlineTournament ? (
-          <OnlineTournamentPage key={selectedOnlineTournament} />
+        {isViewingOnlineTournament && tournamentId ? (
+          <OnlineTournamentPage key={tournamentId} />
         ) : !tournamentId || !view ? (
           <div className={styles.placeholder}>
             <h2>Selecciona un torneo y vista para ver los resultados</h2>
