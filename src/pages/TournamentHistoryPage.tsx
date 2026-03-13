@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { tournamentAPI, Tournament, TournamentStanding, TournamentRound, TournamentRacesResponse, GlobalStanding } from '../services/tournamentAPI';
+import onlineTournamentService, { OnlineTournament } from '../services/onlineTournamentService';
+import OnlineTournamentPage from './OnlineTournamentPage';
 import { FaTrophy, FaMedal } from 'react-icons/fa';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 import styles from './TournamentHistoryPage.module.css';
@@ -8,6 +10,8 @@ import styles from './TournamentHistoryPage.module.css';
 const TournamentHistoryPage = () => {
   const { tournamentId, view } = useParams<{ tournamentId: string; view?: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
+  const isViewingOnlineTournament = location.pathname.includes('/tournament-history/online/');
   
   const [tournaments, setTournaments] = useState<Tournament[]>([]);
   const [selectedTournament, setSelectedTournament] = useState<Tournament | null>(null);
@@ -19,12 +23,23 @@ const TournamentHistoryPage = () => {
   const [expandedYear, setExpandedYear] = useState<number | null>(null);
   const [expandedTournament, setExpandedTournament] = useState<number | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false); // Only for mobile
+  const [torneosPremierExpanded, setTorneosPremierExpanded] = useState(false);
+  const [eventosEspecialesExpanded, setEventosEspecialesExpanded] = useState(false);
   const [globalStandings, setGlobalStandings] = useState<GlobalStanding[]>([]);
   const [globalRaces, setGlobalRaces] = useState<TournamentRacesResponse | null>(null);
+  const [onlineTournaments, setOnlineTournaments] = useState<OnlineTournament[]>([]);
+  const [expandedOnlineMonth, setExpandedOnlineMonth] = useState<string | null>(null);
+  const [selectedOnlineTournament, setSelectedOnlineTournament] = useState<number | null>(null);
 
   useEffect(() => {
     loadTournaments();
     loadGlobalData();
+    loadOnlineTournaments();
+    
+    // Auto-navigate to Ranking Global if no tournamentId/view is provided and not viewing online tournament
+    if (!tournamentId || (!view && !isViewingOnlineTournament)) {
+      navigate('/tournament-history/0/global-standings');
+    }
   }, []);
 
   const loadGlobalData = async () => {
@@ -35,6 +50,20 @@ const TournamentHistoryPage = () => {
       setGlobalRaces(races);
     } catch (error) {
       console.error('Error loading global data:', error);
+    }
+  };
+
+  const loadOnlineTournaments = async () => {
+    try {
+      const data = await onlineTournamentService.getActiveTournaments();
+      setOnlineTournaments(data);
+      
+      // If viewing an online tournament, set it as selected
+      if (isViewingOnlineTournament && tournamentId) {
+        setSelectedOnlineTournament(Number(tournamentId));
+      }
+    } catch (error) {
+      console.error('Error loading online tournaments:', error);
     }
   };
 
@@ -89,6 +118,17 @@ const TournamentHistoryPage = () => {
         grouped[tournament.year] = [];
       }
       grouped[tournament.year].push(tournament);
+    });
+    return grouped;
+  };
+
+  const groupOnlineByMonth = () => {
+    const grouped: { [month: string]: OnlineTournament[] } = {};
+    onlineTournaments.forEach(tournament => {
+      if (!grouped[tournament.month]) {
+        grouped[tournament.month] = [];
+      }
+      grouped[tournament.month].push(tournament);
     });
     return grouped;
   };
@@ -219,54 +259,115 @@ const TournamentHistoryPage = () => {
               </button>
             </div>
             <div className={styles.divider} />
-            <div className={styles.tournamentList}>
-            {years.map(year => (
-              <div key={year} className={styles.yearGroup}>
-                <button
-                  className={styles.yearButton}
-                  onClick={() => setExpandedYear(expandedYear === year ? null : year)}
-                >
-                  <span>{year}</span>
-                  <span className={styles.arrow}>{expandedYear === year ? '▼' : '▶'}</span>
-                </button>
-                {expandedYear === year && (
-                  <div className={styles.yearTournaments}>
-                    {groupedTournaments[year].map(tournament => (
-                      <div key={tournament.id} className={styles.tournamentItem}>
+            
+            {/* Torneos Premier Accordion */}
+            <div className={styles.accordionSection}>
+              <button
+                className={styles.accordionButton}
+                onClick={() => setTorneosPremierExpanded(!torneosPremierExpanded)}
+              >
+                <span>Torneos Premier</span>
+                <span className={styles.arrow}>{torneosPremierExpanded ? '▼' : '▶'}</span>
+              </button>
+              {torneosPremierExpanded && (
+                <div className={styles.tournamentList}>
+                  {years.map(year => (
+                    <div key={year} className={styles.yearGroup}>
+                      <button
+                        className={`${styles.yearButton} ${expandedYear === year ? styles.active : ''}`}
+                        onClick={() => setExpandedYear(expandedYear === year ? null : year)}
+                      >
+                        <span>{year}</span>
+                        <span className={styles.arrow}>{expandedYear === year ? '▼' : '▶'}</span>
+                      </button>
+                      {expandedYear === year && (
+                        <div className={styles.yearTournaments}>
+                          {groupedTournaments[year].map(tournament => (
+                            <div key={tournament.id} className={styles.tournamentItem}>
+                              <button
+                                className={`${styles.tournamentButton} ${selectedTournament?.id === tournament.id ? styles.active : ''}`}
+                                onClick={() => handleTournamentClick(tournament)}
+                              >
+                                {tournament.month}
+                              </button>
+                              {expandedTournament === tournament.id && (
+                                <div className={styles.viewOptions}>
+                                  <button
+                                    className={`${styles.viewButton} ${view === 'resumen' ? styles.activeView : ''}`}
+                                    onClick={() => handleViewClick(tournament, 'resumen')}
+                                  >
+                                    Resumen
+                                  </button>
+                                  <button
+                                    className={`${styles.viewButton} ${view === 'standings' ? styles.activeView : ''}`}
+                                    onClick={() => handleViewClick(tournament, 'standings')}
+                                  >
+                                    Tabla Final
+                                  </button>
+                                  <button
+                                    className={`${styles.viewButton} ${view === 'rounds' ? styles.activeView : ''}`}
+                                    onClick={() => handleViewClick(tournament, 'rounds')}
+                                  >
+                                    Rondas
+                                  </button>
+                                </div>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Eventos Especiales Accordion */}
+            <div className={styles.accordionSection}>
+              <button
+                className={styles.accordionButton}
+                onClick={() => setEventosEspecialesExpanded(!eventosEspecialesExpanded)}
+              >
+                <span>Eventos Especiales</span>
+                <span className={styles.arrow}>{eventosEspecialesExpanded ? '▼' : '▶'}</span>
+              </button>
+              {eventosEspecialesExpanded && (
+                onlineTournaments.length === 0 ? (
+                  <div className={styles.emptySection}>
+                    <p>No hay eventos especiales registrados</p>
+                  </div>
+                ) : (
+                  <div className={styles.tournamentList}>
+                    {Object.entries(groupOnlineByMonth()).map(([month, tournaments]) => (
+                      <div key={month} className={styles.yearGroup}>
                         <button
-                          className={`${styles.tournamentButton} ${selectedTournament?.id === tournament.id ? styles.active : ''}`}
-                          onClick={() => handleTournamentClick(tournament)}
+                          className={styles.yearButton}
+                          onClick={() => setExpandedOnlineMonth(expandedOnlineMonth === month ? null : month)}
                         >
-                          {tournament.month}
+                          <span>{month}</span>
+                          <span className={styles.arrow}>{expandedOnlineMonth === month ? '▼' : '▶'}</span>
                         </button>
-                        {expandedTournament === tournament.id && (
-                          <div className={styles.viewOptions}>
-                            <button
-                              className={`${styles.viewButton} ${view === 'resumen' ? styles.activeView : ''}`}
-                              onClick={() => handleViewClick(tournament, 'resumen')}
-                            >
-                              Resumen
-                            </button>
-                            <button
-                              className={`${styles.viewButton} ${view === 'standings' ? styles.activeView : ''}`}
-                              onClick={() => handleViewClick(tournament, 'standings')}
-                            >
-                              Tabla Final
-                            </button>
-                            <button
-                              className={`${styles.viewButton} ${view === 'rounds' ? styles.activeView : ''}`}
-                              onClick={() => handleViewClick(tournament, 'rounds')}
-                            >
-                              Rondas
-                            </button>
+                        {expandedOnlineMonth === month && (
+                          <div className={styles.yearTournaments}>
+                            {tournaments.map(tournament => (
+                              <button
+                                key={tournament.id}
+                                className={`${styles.tournamentButton} ${selectedOnlineTournament === tournament.id ? styles.active : ''}`}
+                                onClick={() => {
+                                  setSelectedOnlineTournament(tournament.id);
+                                  navigate(`/tournament-history/online/${tournament.id}`);
+                                }}
+                              >
+                                {tournament.name}
+                              </button>
+                            ))}
                           </div>
                         )}
                       </div>
                     ))}
                   </div>
-                )}
-              </div>
-            ))}
+                )
+              )}
             </div>
             </>
         )}
@@ -274,7 +375,9 @@ const TournamentHistoryPage = () => {
 
       {/* Main Content */}
       <main className={styles.mainContent}>
-        {!tournamentId || !view ? (
+        {isViewingOnlineTournament && selectedOnlineTournament ? (
+          <OnlineTournamentPage key={selectedOnlineTournament} />
+        ) : !tournamentId || !view ? (
           <div className={styles.placeholder}>
             <h2>Selecciona un torneo y vista para ver los resultados</h2>
             <p>Usa el menú lateral para navegar por el historial de torneos</p>

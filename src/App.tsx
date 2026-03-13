@@ -47,6 +47,7 @@ function App() {
             <Route path="/players/:playerName" element={<PlayersPage />} />
             <Route path="/tournament-history" element={<TournamentHistoryPage />} />
             <Route path="/tournament-history/:tournamentId/:view" element={<TournamentHistoryPage />} />
+            <Route path="/tournament-history/online/:tournamentId" element={<TournamentHistoryPage />} />
             <Route path="/online-tournament/:tournamentId" element={<OnlineTournamentPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog/:slug" element={<BlogPostPage />} />
