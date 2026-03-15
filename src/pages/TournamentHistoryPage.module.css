@@ -713,30 +713,26 @@
   .hamburgerButton {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     width: 44px;
     height: 44px;
-    background-color: var(--dark-brown);
+    background-color: var(--sage-green);
     border: none;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 0;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     transition: all 0.2s ease;
+    font-size: 1.5rem;
+    color: var(--beige);
   }
 
   .hamburgerButton:active {
     background-color: var(--ocher);
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
     transform: scale(0.98);
-  }
-
-  .hamburgerButton span {
-    background-color: var(--beige);
-  }
-
-  .hamburgerButton:active span {
-    background-color: var(--coal-grey);
+    color: var(--coal-grey);
   }
 
   .mobileTitle {

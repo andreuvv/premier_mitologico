@@ -202,11 +202,15 @@
   
   .hamburger {
     display: flex;
+    justify-content: center;
+    align-items: center;
     order: 2;
-    background-color: var(--dark-brown);
+    width: 44px;
+    height: 44px;
+    background-color: var(--sage-green);
     border: none;
     color: var(--beige);
-    padding: 0.5rem 0.75rem;
+    padding: 0;
     border-radius: 8px;
     cursor: pointer;
     font-size: 1.5rem;

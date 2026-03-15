@@ -198,10 +198,14 @@
   }
 
   .hamburger {
-    display: block;
-    padding: 0.5rem 0.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    width: 44px;
+    height: 44px;
     border: none;
-    background-color: var(--dark-brown);
+    background-color: var(--sage-green);
     color: var(--beige);
     font-size: 1.5rem;
     border-radius: 8px;

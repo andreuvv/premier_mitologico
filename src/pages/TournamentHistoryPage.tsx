@@ -227,9 +227,7 @@ const TournamentHistoryPage = () => {
           onClick={() => setSidebarOpen(!sidebarOpen)}
           aria-label="Toggle menu"
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          ☰
         </button>
         <h1 className={styles.mobileTitle}>Historial de Torneos</h1>
       </div>

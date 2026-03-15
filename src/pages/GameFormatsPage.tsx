@@ -85,9 +85,7 @@ const GameFormatsPage: React.FC = () => {
           className={styles.mobileMenuButton}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          ☰
         </button>
         <h2 className={styles.mobileTitle}>
           {selectedVariant 

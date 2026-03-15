@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fixtureAPI, APIPlayer } from '../services/fixtureAPI';
 import { API_BASE_URL } from '../config/api';
-import { FaUser, FaBars, FaTimes, FaChevronDown, FaChartPie, FaTrophy } from 'react-icons/fa';
+import { FaUser, FaChevronDown, FaChartPie, FaTrophy } from 'react-icons/fa';
 import styles from './PlayersPage.module.css';
 
 interface PlayerDetail extends APIPlayer {
@@ -380,7 +380,7 @@ const PlayersPage = () => {
           className={styles.hamburger}
           onClick={() => setSidebarOpen(!sidebarOpen)}
         >
-          {sidebarOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+          ☰
         </button>
         <h1 className={styles.mobileTitle}>Jugadores</h1>
       </div>
