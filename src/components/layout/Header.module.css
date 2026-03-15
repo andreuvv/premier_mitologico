@@ -270,6 +270,8 @@
     padding: 1rem 1.5rem;
     color: var(--beige);
     font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
     text-decoration: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     position: relative;
@@ -284,6 +286,17 @@
   .mobileMenu a:hover,
   .mobileMenu .mobileMenuLink:hover {
     background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .mobileBadge {
+    background-color: var(--ocher);
+    color: var(--coal-grey);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.65rem;
+    font-weight: bold;
+    white-space: nowrap;
+    margin-left: auto;
   }
 
   .mobileDisabled {
