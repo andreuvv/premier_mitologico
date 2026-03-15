@@ -110,57 +110,61 @@ const Header = () => {
       </button>
 
       {mobileMenuOpen && (
-        <div className={styles.mobileMenu}>
-          <Link to="/" onClick={() => setMobileMenuOpen(false)}>
-            <FaHome className={styles.icon} />
-            Inicio
-          </Link>
-          <Link to="/fixture" onClick={() => setMobileMenuOpen(false)}>
-            <FaChartBar className={styles.icon} />
-            Fixture
-            {monthYear && <span className={styles.mobileBadge}>{monthYear}</span>}
-          </Link>
-          <Link to="/standings" onClick={() => setMobileMenuOpen(false)}>
-            <FaTrophy className={styles.icon} />
-            Standings
-            {monthYear && <span className={styles.mobileBadge}>{monthYear}</span>}
-          </Link>
-          <Link to="/tournament-history" onClick={() => setMobileMenuOpen(false)}>
-            <FaHistory className={styles.icon} />
-            Historial
-          </Link>
-          <Link to="/players" onClick={() => setMobileMenuOpen(false)}>
-            <FaUser className={styles.icon} />
-            Jugadores
-          </Link>
-          <Link to="/tournament-info" onClick={() => setMobileMenuOpen(false)}>
-            <FaClipboardList className={styles.icon} />
-            Info Torneo
-          </Link>
-          <Link to="/banlist" onClick={() => setMobileMenuOpen(false)}>
-            <FaBan className={styles.icon} />
-            Ban List
-          </Link>
-          <Link to="/game-formats" onClick={() => setMobileMenuOpen(false)}>
-            <FaGamepad className={styles.icon} />
-            Formatos
-          </Link>
-          <Link to="/blog" onClick={() => setMobileMenuOpen(false)}>
-            <FaBlog className={styles.icon} />
-            Blog
-          </Link>
-          <button 
-            className={styles.mobileMenuLink}
-            onClick={() => {
-              window.open('https://mazos.cl/format-selection', '_blank');
-              setMobileMenuOpen(false);
-            }}
-          >
-            <FaHammer className={styles.icon} />
-            Deck Builder
-          </button>
-        </div>
+        <div 
+          className={styles.overlay}
+          onClick={() => setMobileMenuOpen(false)}
+        />
       )}
+      <div className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.mobileMenuOpen : ''}`}>
+        <Link to="/" onClick={() => setMobileMenuOpen(false)}>
+          <FaHome className={styles.icon} />
+          Inicio
+        </Link>
+        <Link to="/fixture" onClick={() => setMobileMenuOpen(false)}>
+          <FaChartBar className={styles.icon} />
+          Fixture
+          {monthYear && <span className={styles.mobileBadge}>{monthYear}</span>}
+        </Link>
+        <Link to="/standings" onClick={() => setMobileMenuOpen(false)}>
+          <FaTrophy className={styles.icon} />
+          Standings
+          {monthYear && <span className={styles.mobileBadge}>{monthYear}</span>}
+        </Link>
+        <Link to="/tournament-history" onClick={() => setMobileMenuOpen(false)}>
+          <FaHistory className={styles.icon} />
+          Historial
+        </Link>
+        <Link to="/players" onClick={() => setMobileMenuOpen(false)}>
+          <FaUser className={styles.icon} />
+          Jugadores
+        </Link>
+        <Link to="/tournament-info" onClick={() => setMobileMenuOpen(false)}>
+          <FaClipboardList className={styles.icon} />
+          Info Torneo
+        </Link>
+        <Link to="/banlist" onClick={() => setMobileMenuOpen(false)}>
+          <FaBan className={styles.icon} />
+          Ban List
+        </Link>
+        <Link to="/game-formats" onClick={() => setMobileMenuOpen(false)}>
+          <FaGamepad className={styles.icon} />
+          Formatos
+        </Link>
+        <Link to="/blog" onClick={() => setMobileMenuOpen(false)}>
+          <FaBlog className={styles.icon} />
+          Blog
+        </Link>
+        <button 
+          className={styles.mobileMenuLink}
+          onClick={() => {
+            window.open('https://mazos.cl/format-selection', '_blank');
+            setMobileMenuOpen(false);
+          }}
+        >
+          <FaHammer className={styles.icon} />
+          Deck Builder
+        </button>
+      </div>
     </header>
   );
 };

@@ -44,6 +44,8 @@ const getFormatSectionFileName = (section: FormatSection): string => {
       return 'bloque_furia.md';
     case FormatSection.FORMATOS_ESPECIALES:
       return 'special_formats.md';
+    default:
+      return 'primer_bloque.md';
   }
 };
 
@@ -67,6 +69,8 @@ const getFormatVariantFileName = (variant: FormatVariant): string => {
       return 'ragnarok.md';
     case FormatVariant.SELLADO:
       return 'sellado.md';
+    default:
+      return 'pb_racial_libre.md';
   }
 };
 
@@ -84,6 +88,8 @@ const getInfoSectionFileName = (section: InfoSection): string => {
       return 'participants.md';
     case InfoSection.SCHEDULE:
       return 'schedule.md';
+    default:
+      return 'general.md';
   }
 };
 
@@ -109,5 +115,7 @@ const getTournamentSubsectionFileName = (subsection: TournamentSubsection): stri
       return 'ability_and_effect.md';
     case TournamentSubsection.ONCE_PER_TURN:
       return 'once_per_turn.md';
+    default:
+      return 'md1.md';
   }
 };

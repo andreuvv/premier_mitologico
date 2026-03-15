@@ -707,7 +707,7 @@
     background-color: var(--coal-grey);
     position: sticky;
     top: 0;
-    z-index: 999;
+    z-index: 50;
   }
 
   .hamburgerButton {
@@ -752,7 +752,7 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
+    z-index: 100;
     animation: fadeIn 0.3s ease;
   }
 
@@ -765,7 +765,7 @@
   .sidebar {
     position: fixed;
     width: 280px;
-    z-index: 1001;
+    z-index: 150;
     left: 0;
     top: 0;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
