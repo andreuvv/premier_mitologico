@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import CountdownCard from '../components/CountdownCard';
 import MapCard from '../components/MapCard';
 import LatestBlogCard from '../components/LatestBlogCard';
+import ImportantDocumentsCard from '../components/ImportantDocumentsCard';
 import FormatSummaryRow from '../components/FormatSummaryRow';
 import OnlineTournamentBanner from '../components/OnlineTournamentBanner';
 import { FaChartBar, FaTrophy } from 'react-icons/fa';
@@ -93,6 +94,9 @@ const HomePage = () => {
         </div>
 
         <div className={styles.cardsColumn}>
+          <div className={styles.cardWrapper}>
+            <ImportantDocumentsCard />
+          </div>
           <div className={styles.cardWrapper}>
             <LatestBlogCard />
           </div>

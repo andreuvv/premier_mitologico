@@ -98,7 +98,6 @@
 .cardsColumn {
   display: flex;
   flex-direction: column;
-  background-color: var(--dark-brown);
   gap: 1rem;
 }
 
