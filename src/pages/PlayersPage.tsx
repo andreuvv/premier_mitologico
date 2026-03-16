@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fixtureAPI, APIPlayer } from '../services/fixtureAPI';
 import { API_BASE_URL } from '../config/api';
-import { FaUser, FaChevronDown, FaChartPie, FaTrophy } from 'react-icons/fa';
+import { FaUser, FaChevronDown, FaChartPie, FaTrophy, FaHistory } from 'react-icons/fa';
 import styles from './PlayersPage.module.css';
 
 interface PlayerDetail extends APIPlayer {
@@ -576,7 +576,12 @@ const PlayersPage = () => {
             ) : playerTournamentData.length === 0 ? (
               <p className={styles.noData}>Este jugador no ha participado en ningún torneo.</p>
             ) : (
-              <div className={styles.tournamentsList}>
+              <>
+                <h2 style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem', fontSize: '1.25rem', color: 'var(--beige)' }}>
+                  <FaHistory style={{ color: 'var(--sage-green)' }} />
+                  Historial de Torneos
+                </h2>
+                <div className={styles.tournamentsList}>
                 {playerTournamentData.map(tournament => (
                   <div key={tournament.tournamentId} className={styles.tournamentCard}>
                     <button
@@ -640,6 +645,7 @@ const PlayersPage = () => {
                   </div>
                 ))}
               </div>
+              </>
             )}
           </div>
         ) : (
