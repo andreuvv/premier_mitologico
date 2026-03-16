@@ -10,8 +10,7 @@ const HomePage = lazy(() => import('./pages/HomePage'));
 const TournamentInfoPage = lazy(() => import('./pages/TournamentInfoPage'));
 const GameFormatsPage = lazy(() => import('./pages/GameFormatsPage'));
 const BanlistPage = lazy(() => import('./pages/BanlistPage'));
-const FixturePage = lazy(() => import('./pages/FixturePage'));
-const StandingsPage = lazy(() => import('./pages/StandingsPage'));
+const PremierTournamentPage = lazy(() => import('./pages/PremierTournamentPage'));
 const TournamentHistoryPage = lazy(() => import('./pages/TournamentHistoryPage'));
 const PlayersPage = lazy(() => import('./pages/PlayersPage'));
 const OnlineTournamentPage = lazy(() => import('./pages/OnlineTournamentPage'));
@@ -41,8 +40,10 @@ function App() {
             <Route path="/game-formats/:section/:variant" element={<GameFormatsPage />} />
             <Route path="/banlist" element={<BanlistPage />} />
             <Route path="/banlist/:format/:category" element={<BanlistPage />} />
-            <Route path="/fixture" element={<FixturePage />} />
-            <Route path="/standings" element={<StandingsPage />} />
+            <Route path="/torneo-premier" element={<PremierTournamentPage />} />
+            <Route path="/torneo-premier/:tab" element={<PremierTournamentPage />} />
+            <Route path="/fixture" element={<PremierTournamentPage />} />
+            <Route path="/standings" element={<PremierTournamentPage />} />
             <Route path="/players" element={<PlayersPage />} />
             <Route path="/players/:playerName" element={<PlayersPage />} />
             <Route path="/tournament-history" element={<TournamentHistoryPage />} />

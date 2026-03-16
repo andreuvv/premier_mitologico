@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaHome, FaClipboardList, FaBan, FaGamepad, FaHammer, FaChartBar, FaTrophy, FaHistory, FaUser, FaBlog } from 'react-icons/fa';
+import { FaHome, FaClipboardList, FaBan, FaGamepad, FaHammer, FaTrophy, FaHistory, FaUser, FaBlog } from 'react-icons/fa';
 import { getTournamentMonthYear } from '../../config/tournamentConfig';
 import styles from './Header.module.css';
 
@@ -25,19 +25,11 @@ const Header = () => {
             Inicio
           </Link>
           <Link 
-            to="/fixture" 
-            className={location.pathname === '/fixture' ? styles.active : ''}
-          >
-            <FaChartBar className={styles.icon} />
-            Fixture
-            {monthYear && <span className={styles.badge}>{monthYear}</span>}
-          </Link>
-          <Link 
-            to="/standings" 
-            className={location.pathname === '/standings' ? styles.active : ''}
+            to="/torneo-premier" 
+            className={location.pathname === '/torneo-premier' || location.pathname.startsWith('/torneo-premier/') || location.pathname === '/fixture' || location.pathname === '/standings' ? styles.active : ''}
           >
             <FaTrophy className={styles.icon} />
-            Standings
+            Torneo Premier
             {monthYear && <span className={styles.badge}>{monthYear}</span>}
           </Link>
           <Link 
@@ -120,14 +112,9 @@ const Header = () => {
           <FaHome className={styles.icon} />
           Inicio
         </Link>
-        <Link to="/fixture" onClick={() => setMobileMenuOpen(false)}>
-          <FaChartBar className={styles.icon} />
-          Fixture
-          {monthYear && <span className={styles.mobileBadge}>{monthYear}</span>}
-        </Link>
-        <Link to="/standings" onClick={() => setMobileMenuOpen(false)}>
+        <Link to="/torneo-premier" onClick={() => setMobileMenuOpen(false)}>
           <FaTrophy className={styles.icon} />
-          Standings
+          Torneo Premier
           {monthYear && <span className={styles.mobileBadge}>{monthYear}</span>}
         </Link>
         <Link to="/tournament-history" onClick={() => setMobileMenuOpen(false)}>
