@@ -24,17 +24,21 @@ Las reglas de construcción de mazo son las mismas que en los formatos en los qu
 | Tipo | Rarezas Permitidas |
 |------|-------------------|
 | **Aliados** | Vasallo, Cortesano, Real |
-| **Oros** | Todas (incluyendo con habilidad) |
+| **Oros** | Vasallo, Cortesano, Real (Incluyendo con habilidad) |
 | **Talismanes** | Vasallo, Cortesano, Real |
 | **Tótems** | Vasallo, Cortesano, Real |
 | **Armas** | Vasallo, Cortesano, Real |
-| **Rework** | ✅ Permitido |
+| **Rework** | ✅ Permitido (Mientras sean Vasallo, Cortesano o Real) |
 
 ---
 
 ## 🚫 Cartas Prohibidas
 
-- Aliados de rareza **Mayor** (Ultra Real, Legendario)
+- Cartas de rareza:
+  - Mega Real
+  - Ultra Real
+  - Legendaria
+  - Promocional
 - Banlist del formato
 
 ---
