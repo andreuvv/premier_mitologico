@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaHome, FaClipboardList, FaBan, FaGamepad, FaHammer, FaTrophy, FaHistory, FaUser, FaBlog } from 'react-icons/fa';
+import LatestBlogCard from '../LatestBlogCard';
 import { getTournamentMonthYear } from '../../config/tournamentConfig';
 import styles from './Header.module.css';
 
 const Header = () => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [blogHovered, setBlogHovered] = useState(false);
   const monthYear = getTournamentMonthYear();
 
   return (
@@ -67,13 +69,25 @@ const Header = () => {
             <FaGamepad className={styles.icon} />
             Formatos
           </Link>
-          <Link 
-            to="/blog" 
-            className={location.pathname.startsWith('/blog') ? styles.active : ''}
+          <div 
+            className={styles.blogNavItem}
+            onMouseEnter={() => setBlogHovered(true)}
+            onMouseLeave={() => setBlogHovered(false)}
           >
-            <FaBlog className={styles.icon} />
-            Blog
-          </Link>
+            <Link 
+              to="/blog" 
+              className={location.pathname.startsWith('/blog') ? styles.active : ''}
+            >
+              <FaBlog className={styles.icon} />
+              Blog
+            </Link>
+            {blogHovered && (
+              <div className={styles.blogPopover}>
+                <h3 className={styles.blogPopoverTitle}>Último Post</h3>
+                <LatestBlogCard />
+              </div>
+            )}
+          </div>
           {/* <button className={styles.navDisabled} disabled>
             <FaHammer className={styles.icon} />
             Deck Builder

@@ -12,7 +12,7 @@ import { tournamentConfig, isTournamentPast, getTournamentMonthYear, isTournamen
 import styles from './HomePage.module.css';
 
 const HomePage = () => {
-  const [showSummaries, setShowSummaries] = useState(true);
+  const [showSummaries, setShowSummaries] = useState(false);
   const [activeTab, setActiveTab] = useState<'torneo' | 'documentos' | 'blog' | 'banlist'>('torneo');
   const isPast = isTournamentPast();
   const isTodayTournament = isTournamentDay();
@@ -54,6 +54,27 @@ const HomePage = () => {
             <FaBlog className={styles.tabIcon} />
             <span className={styles.tabLabel}>Último Blog</span>
           </button>
+        </div>
+
+        <div className={styles.banlistSection}>
+          <div className={styles.banlistHeader}>
+            <h3 className={styles.banlistTitle}>Resumen Actualización Ban List {lastUpdateMonth}</h3>
+            <button 
+              className={styles.toggleButton}
+              onClick={() => setShowSummaries(!showSummaries)}
+            >
+              {showSummaries ? 'Ocultar' : 'Mostrar'}
+            </button>
+          </div>
+          {showSummaries && (
+            <>
+              <p className={styles.disclaimer}>Cartas no mencionadas mantienen restricciones del mes anterior</p>
+              <FormatSummaryRow summaries={banlistSummaries} />
+              <Link to="/banlist" className={styles.banlistLink}>
+                Ver Ban List completa
+              </Link>
+            </>
+          )}
         </div>
 
         <div className={styles.mainContent}>
@@ -134,9 +155,6 @@ const HomePage = () => {
         <div className={styles.desktopSidebar}>
           <div className={styles.cardWrapper}>
             <ImportantDocumentsCard />
-          </div>
-          <div className={styles.cardWrapper}>
-            <LatestBlogCard />
           </div>
         </div>
 
@@ -236,26 +254,6 @@ const HomePage = () => {
           )}
         </div>
 
-      <div className={styles.banlistSection}>
-        <div className={styles.banlistHeader}>
-          <h3 className={styles.banlistTitle}>Resumen Actualización Ban List {lastUpdateMonth}</h3>
-          <button 
-            className={styles.toggleButton}
-            onClick={() => setShowSummaries(!showSummaries)}
-          >
-            {showSummaries ? 'Ocultar' : 'Mostrar'}
-          </button>
-        </div>
-        {showSummaries && (
-          <>
-            <p className={styles.disclaimer}>Cartas no mencionadas mantienen restricciones del mes anterior</p>
-            <FormatSummaryRow summaries={banlistSummaries} />
-            <Link to="/banlist" className={styles.banlistLink}>
-              Ver Ban List completa
-            </Link>
-          </>
-        )}
-      </div>
       </div>
     </div>
   );
