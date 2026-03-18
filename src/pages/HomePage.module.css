@@ -95,7 +95,7 @@
   border-radius: 12px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .pageLayout {
     display: grid;
     grid-template-columns: 1fr;

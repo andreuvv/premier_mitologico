@@ -15,24 +15,24 @@ const ImportantDocumentsCard = () => {
       ],
       documents: [
         {
-          name: 'Documento Actualizado de Reglas (D.A.R) - Julio 2021',
-          link: 'https://drive.google.com/file/d/1vRDfyMMHdfy_qQrLX4zfAE83XYcH-IBH/view',
+            name: 'Documento Actualizado de Reglas (D.A.R) - Julio 2021',
+            link: 'https://drive.google.com/file/d/1vRDfyMMHdfy_qQrLX4zfAE83XYcH-IBH/view',
         },
         {
-          name: 'Documento de Preguntas Frecuentes (F.A.Q) - Abril 2024',
-          link: 'https://drive.google.com/file/d/1l6W5Qnc_Xp93i52tOflLaz1E-wzF3NM2/view',
+            name: 'Documento de Preguntas Frecuentes (F.A.Q) - Abril 2024',
+            link: 'https://drive.google.com/file/d/1l6W5Qnc_Xp93i52tOflLaz1E-wzF3NM2/view',
         },
         {
-          name: 'Oráculo Ra Aniversario',
-          link: 'https://drive.google.com/file/d/1RnaG_evDVGQ3VWAOX25xUkKWt1EhLC0z/view',
+            name: 'Oráculo Ra Aniversario',
+            link: 'https://drive.google.com/file/d/1RnaG_evDVGQ3VWAOX25xUkKWt1EhLC0z/view',
         },
         {
-          name: 'Oráculo Colmillos de Avalon e Inframundo',
-          link: 'https://blog.myl.cl/wp-content/uploads/2025/10/Oraculo-Colmillos-v1.0_compressed.pdf',
+            name: 'Oráculo Colmillos de Avalon e Inframundo',
+            link: 'https://blog.myl.cl/wp-content/uploads/2025/10/Oraculo-Colmillos-v1.0_compressed.pdf',
         },
         {
-          name: 'Oráculo LootBox 2025',
-          link: 'https://blog.myl.cl/wp-content/uploads/2026/02/Oraculo-Lootbox-PB-2025.pdf',
+            name: 'Oráculo LootBox 2025',
+            link: 'https://blog.myl.cl/wp-content/uploads/2026/02/Oraculo-Lootbox-PB-2025.pdf',
         },
       ],
     },
@@ -45,17 +45,25 @@ const ImportantDocumentsCard = () => {
       ],
       documents: [
         {
-          name: 'Documento Actualizado de Reglas (D.A.R.) - Julio 2024',
-          link: 'https://drive.google.com/file/d/1DfwWgBAqdCpZZNDdQMB5XltZmn5T6lBL/view',
+            name: 'Documento Actualizado de Reglas (D.A.R.) - Julio 2024',
+            link: 'https://drive.google.com/file/d/1DfwWgBAqdCpZZNDdQMB5XltZmn5T6lBL/view',
         },
         {
-          name: 'Documento de Preguntas Frecuentes (F.A.Q.) - Agosto 2025',
-          link: 'https://drive.google.com/file/d/1lalgtNHq-0QftFw26gLmV7Lzqfa2KmLC/view',
+            name: 'Documento de Preguntas Frecuentes (F.A.Q.) - Agosto 2025',
+            link: 'https://drive.google.com/file/d/1lalgtNHq-0QftFw26gLmV7Lzqfa2KmLC/view',
         },
         {
-          name: 'Reworks LBF2026',
-          link: 'https://blog.myl.cl/todas-las-cartas-rework-de-leyendas-bloque-furia-2026/',
+            name: 'Reworks LBF2026',
+            link: 'https://blog.myl.cl/todas-las-cartas-rework-de-leyendas-bloque-furia-2026/',
         },
+        {
+            name: 'Aclaraciones LBF2026',
+            link: 'https://blog.myl.cl/aclaraciones-y-los-ultimos-spoilers/',
+        },
+        {
+            name: 'Cartas nuevas LBF2026',
+            link: 'https://blog.myl.cl/spoiler-leyendas-bloque-furia-2026/',
+        }
       ],
     },
   ];
