@@ -314,6 +314,17 @@
   align-items: center;
 }
 
+.blogNavItem::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 0.5rem;
+  cursor: pointer;
+}
+
 .blogPopover {
   position: absolute;
   top: 100%;
