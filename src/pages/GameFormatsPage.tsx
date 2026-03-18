@@ -8,11 +8,43 @@ import { loadMarkdownContent } from '../services/markdownService';
 import { getIcon } from '../utils/iconMapper';
 import styles from './GameFormatsPage.module.css';
 
+// Helper function to determine initial state from URL params
+const getInitialState = (sectionParam?: string, variantParam?: string) => {
+  if (variantParam) {
+    const variant = Object.values(FormatVariant).find(v => v === variantParam);
+    if (variant) {
+      const sectionEntry = Object.entries(formatSectionConfig).find(([, config]) => 
+        config.variants?.includes(variant)
+      );
+      if (sectionEntry) {
+        return {
+          section: sectionEntry[0] as FormatSection,
+          variant: variant
+        };
+      }
+    }
+  } else if (sectionParam) {
+    const section = Object.values(FormatSection).find(s => s === sectionParam);
+    if (section) {
+      return {
+        section: section,
+        variant: null
+      };
+    }
+  }
+  // Default
+  return {
+    section: FormatSection.PRIMER_BLOQUE,
+    variant: null
+  };
+};
+
 const GameFormatsPage: React.FC = () => {
   const { section: sectionParam, variant: variantParam } = useParams<{ section?: string; variant?: string }>();
   const navigate = useNavigate();
-  const [selectedSection, setSelectedSection] = useState<FormatSection>(FormatSection.PRIMER_BLOQUE);
-  const [selectedVariant, setSelectedVariant] = useState<FormatVariant | null>(null);
+  const initialState = getInitialState(sectionParam, variantParam);
+  const [selectedSection, setSelectedSection] = useState<FormatSection>(initialState.section);
+  const [selectedVariant, setSelectedVariant] = useState<FormatVariant | null>(initialState.variant);
   const [content, setContent] = useState<string>('');
   const [loading, setLoading] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
