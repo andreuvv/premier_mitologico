@@ -1,5 +1,6 @@
 /* Tabs Container */
 .titleSection {
+  position: relative;
   margin-bottom: 2rem;
   padding: 1.5rem;
   background: linear-gradient(135deg, rgba(45, 120, 140, 0.1) 0%, rgba(126, 164, 112, 0.1) 100%);
@@ -128,7 +129,7 @@
   width: 250px;
   background-color: var(--coal-grey);
   border-radius: 12px;
-  padding: 1.5rem 1rem;
+  padding: 0.5rem;
   height: fit-content;
   position: sticky;
   top: 1rem;
@@ -880,5 +881,447 @@
 
   .legend ul {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Timer Button */
+.timerButton {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border: 2px solid var(--ocher);
+  background: transparent;
+  color: var(--ocher);
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.timerButton:hover {
+  background: var(--ocher);
+  color: var(--dark-bg);
+}
+
+.timerIcon {
+  font-size: 1.1rem;
+}
+
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  background: var(--coal-grey);
+  border: 2px solid var(--ocher);
+  border-radius: 12px;
+  max-width: 900px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(234, 221, 207, 0.2);
+  background: var(--dark-brown);
+}
+
+.modalHeader h2 {
+  margin: 0;
+  color: var(--beige);
+  font-size: 1.5rem;
+  font-family: 'Cyrodiil', serif;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: var(--beige);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background: rgba(234, 221, 207, 0.1);
+  color: var(--ocher);
+}
+
+/* Modal Content */
+.modalContent {
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Carousel */
+.carouselSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.carouselArrow {
+  background: transparent;
+  border: 2px solid var(--ocher);
+  color: var(--ocher);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.carouselArrow:hover {
+  background: var(--ocher);
+  color: var(--dark-bg);
+  transform: scale(1.1);
+}
+
+.carouselArrow:active {
+  transform: scale(0.95);
+}
+
+.carouselDisplay {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.roundCard {
+  background: var(--dark-brown);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+}
+
+.roundCard h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 0 0 0.5rem 0;
+  color: var(--beige);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.roundIcon {
+  font-size: 1.2rem;
+  color: var(--ocher);
+}
+
+.formatRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 0.5rem 0 0.75rem 0;
+}
+
+.roundFormat {
+  color: var(--beige);
+  font-size: 0.95rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.roundSubformat {
+  color: var(--ocher);
+  font-size: 0.9rem;
+  margin: 0;
+  font-weight: 600;
+  background: rgba(214, 156, 65, 0.1);
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.matchesList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(234, 221, 207, 0.2);
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.matchItem {
+  display: grid;
+  grid-template-columns: 1fr 30px 25px 30px 1fr;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0;
+  margin: 0.3rem 0;
+  font-size: 0.75rem;
+  color: rgba(234, 221, 207, 0.85);
+}
+
+.playerName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.playerName:last-child {
+  text-align: left;
+}
+
+.matchScore {
+  text-align: center;
+  color: var(--ocher);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.vs {
+  font-size: 0.65rem;
+  color: rgba(234, 221, 207, 0.5);
+  text-align: center;
+}
+
+/* Countdowns */
+.countdownsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.countdownBox {
+  background: var(--dark-brown);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.countdownTitle {
+  color: var(--beige);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.countdownDisplay {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 1.5rem;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--ocher);
+  font-family: 'Courier New', monospace;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.countdownButton {
+  background: transparent;
+  border: 2px solid var(--ocher);
+  color: var(--ocher);
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.countdownButton:hover:not(:disabled) {
+  background: var(--ocher);
+  color: var(--dark-bg);
+}
+
+.countdownButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.countdownButton.running {
+  background: rgba(214, 156, 65, 0.2);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Responsive - Tablet */
+@media (max-width: 768px) {
+  .modal {
+    max-width: 90%;
+    width: 95%;
+  }
+
+  .matchesList {
+    grid-template-columns: 1fr;
+  }
+
+  .countdownDisplay {
+    font-size: 2.5rem;
+    padding: 1rem;
+  }
+
+  .roundCard {
+    padding: 1.5rem 1rem;
+  }
+
+  .tabsContainer {
+    flex-wrap: wrap;
+  }
+
+  .timerButton {
+    position: static;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    justify-content: center;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 480px) {
+  .modal {
+    max-width: 100%;
+    width: 100%;
+    border-radius: 8px;
+    max-height: 95vh;
+  }
+
+  .modalHeader h2 {
+    font-size: 1.2rem;
+  }
+
+  .modalContent {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .carouselArrow {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .roundCard h3 {
+    font-size: 1.2rem;
+    gap: 0.5rem;
+  }
+
+  .roundFormat {
+    font-size: 1rem;
+  }
+
+  .matchesList {
+    grid-template-columns: 1fr;
+  }
+
+  .countdownDisplay {
+    font-size: 2rem;
+    padding: 0.75rem;
+  }
+
+  .buttonGroup {
+    gap: 0.5rem;
+  }
+
+  .countdownButton {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .matchItem {
+    font-size: 0.7rem;
+  }
+
+  .timerButton {
+    position: static;
+    width: 100%;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    padding: 0.6rem 1rem;
+    justify-content: center;
+  }
+
+  .timerIcon {
+    font-size: 1rem;
   }
 }
