@@ -44,6 +44,7 @@
   gap: 0.5rem;
   margin-bottom: 2rem;
   border-bottom: 2px solid rgba(234, 221, 207, 0.2);
+  justify-content: center;
 }
 
 .tab {
@@ -61,6 +62,8 @@
   border-bottom: 3px solid transparent;
   position: relative;
   bottom: -2px;
+  white-space: normal;
+  word-break: keep-all;
 }
 
 .tab:hover {
@@ -668,6 +671,7 @@
 @media (max-width: 800px) {
   .tabsContainer {
     margin-bottom: 1rem;
+    justify-content: center;
   }
 
   .tab {
@@ -833,6 +837,7 @@
   .tabsContainer {
     gap: 0.25rem;
     margin-bottom: 1rem;
+    justify-content: center;
   }
 
   .tab {
@@ -942,7 +947,6 @@
   border-radius: 12px;
   max-width: 900px;
   width: 90%;
-  max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   animation: slideUp 0.3s ease;
@@ -1099,7 +1103,6 @@
 .matchesList {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
   margin-top: 0.75rem;
   padding-top: 0.75rem;
   border-top: 1px solid rgba(234, 221, 207, 0.2);
@@ -1245,6 +1248,8 @@
 
   .tabsContainer {
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.3rem;
   }
 
   .timerButton {
