@@ -156,6 +156,7 @@
   transition: all 0.2s ease;
   text-align: left;
   width: 100%;
+  flex-wrap: wrap;
 }
 
 .menuItem:hover {
@@ -166,6 +167,24 @@
   background-color: var(--petrol-blue);
   color: white;
   font-weight: 700;
+}
+
+.subformatBadge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ocher);
+  background-color: rgba(214, 156, 65, 0.15);
+  border: 1px solid var(--ocher);
+  border-radius: 3px;
+  padding: 0.25rem 0.5rem;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.menuItem.active .subformatBadge {
+  color: var(--ocher);
+  background-color: rgba(214, 156, 65, 0.25);
 }
 
 .menuIcon {
@@ -198,6 +217,20 @@
   font-weight: 700;
   color: var(--beige);
   margin: 0;
+}
+
+.subformatText {
+  display: inline-block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ocher);
+  background-color: rgba(214, 156, 65, 0.15);
+  border: 1px solid var(--ocher);
+  border-radius: 4px;
+  padding: 0.4rem 0.8rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  letter-spacing: 0.5px;
 }
 
 .icon {
@@ -701,6 +734,17 @@
     font-size: 1.5rem;
   }
 
+  .subformatText {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.6rem;
+    margin-top: 0.5rem;
+  }
+
+  .subformatBadge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.4rem;
+  }
+
   .icon {
     font-size: 1.5rem;
   }
@@ -797,6 +841,18 @@
 
   .tabIcon {
     display: none;
+  }
+
+  .subformatBadge {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.3rem;
+    margin-left: 0.25rem;
+  }
+
+  .subformatText {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+    margin-top: 0.3rem;
   }
 
   .matchTable {

@@ -7,6 +7,17 @@ import styles from './PremierTournamentPage.module.css';
 
 type Tab = 'fixture' | 'standings' | 'matriz';
 
+const getSubformatDisplayName = (subformat: string | undefined | null): string => {
+  if (!subformat) return '';
+  const subformatMap: Record<string, string> = {
+    'BFRL': 'Racial Libre',
+    'BFVCR': 'VCR',
+    'PBRL': 'Racial Libre',
+    'PBRE': 'Racial Edición'
+  };
+  return subformatMap[subformat] || subformat;
+};
+
 const PremierTournamentPage = () => {
   const navigate = useNavigate();
   const { tab: tabParam } = useParams<{ tab?: string }>();
@@ -181,9 +192,11 @@ const PremierTournamentPage = () => {
                         key={round.number}
                         className={`${styles.menuItem} ${selectedRound === round.number ? styles.active : ''}`}
                         onClick={() => handleMenuClick(round.number)}
+                        title={`Ronda ${round.number} - ${round.format}${round.subformat ? ` (${getSubformatDisplayName(round.subformat)})` : ''}`}
                       >
                         <RoundIcon className={styles.menuIcon} />
                         <span>Ronda {round.number}</span>
+                        {round.subformat && <span className={styles.subformatBadge}>{getSubformatDisplayName(round.subformat)}</span>}
                       </button>
                     );
                   })}
@@ -197,10 +210,15 @@ const PremierTournamentPage = () => {
                   <button className={styles.hamburger} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
                     ☰
                   </button>
-                  <h1>
-                    {currentRound && (currentRound.format === 'PB' ? <FaListOl className={styles.icon} /> : <FaFire className={styles.icon} />)}
-                    Ronda {selectedRound} - {currentRound?.format === 'PB' ? 'Primer Bloque' : 'Bloque Furia'}
-                  </h1>
+                  <div>
+                    <h1>
+                      {currentRound && (currentRound.format === 'PB' ? <FaListOl className={styles.icon} /> : <FaFire className={styles.icon} />)}
+                      Ronda {selectedRound} - {currentRound?.format === 'PB' ? 'Primer Bloque' : 'Bloque Furia'}
+                    </h1>
+                    {currentRound?.subformat && (
+                      <p className={styles.subformatText}>{getSubformatDisplayName(currentRound.subformat)}</p>
+                    )}
+                  </div>
                 </div>
 
                 {currentRound ? (

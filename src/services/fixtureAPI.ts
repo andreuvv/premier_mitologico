@@ -5,6 +5,7 @@ export interface APIMatchDetail {
   id: number;
   round_number: number;
   format: string;
+  subformat?: string | null;
   player1_name: string;
   player2_name: string;
   score1: number | null;
@@ -16,6 +17,7 @@ export interface APIMatchDetail {
 export interface APIFixtureRound {
   number: number;
   format: string;
+  subformat?: string | null;
   matches: APIMatchDetail[];
 }
 
