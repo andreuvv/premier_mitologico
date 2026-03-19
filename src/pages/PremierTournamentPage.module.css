@@ -1299,10 +1299,6 @@
     padding: 0.75rem;
   }
 
-  .buttonGroup {
-    gap: 0.5rem;
-  }
-
   .countdownButton {
     padding: 0.6rem 1.2rem;
     font-size: 0.9rem;
@@ -1310,6 +1306,18 @@
 
   .matchItem {
     font-size: 0.7rem;
+  }
+
+  .buttonGroup {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .countdownButton {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    flex: 1;
+    min-width: 100px;
   }
 
   .timerButton {

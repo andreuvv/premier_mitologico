@@ -69,6 +69,22 @@ const PremierTournamentPage = () => {
     fetchFixture();
   }, []);
 
+  // Auto-refresh fixture data every 5 minutes when modal is open
+  useEffect(() => {
+    if (!isModalOpen) return;
+
+    const intervalId = setInterval(async () => {
+      try {
+        const data = await fixtureAPI.getFixture();
+        setFixtureData(data);
+      } catch (err) {
+        console.error('Error refreshing fixture data:', err);
+      }
+    }, 5 * 60 * 1000); // 5 minutes in milliseconds
+
+    return () => clearInterval(intervalId);
+  }, [isModalOpen]);
+
   // 45-minute countdown effect
   useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
