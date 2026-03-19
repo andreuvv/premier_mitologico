@@ -39,6 +39,7 @@ Las reglas de construcción de mazo son las mismas que en los formatos en los qu
   - Ultra Real
   - Legendaria
   - Promocional
+- Cartas originales que hayan recibido rework
 - Banlist del formato
 
 ---
