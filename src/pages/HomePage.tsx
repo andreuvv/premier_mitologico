@@ -81,6 +81,7 @@ const HomePage = () => {
           {/* Desktop Layout */}
           <div className={styles.desktopView}>
             <div className={styles.mainContentTop}>
+            <div className={styles.mainHeroSection}>
             {tournamentConfig.dateTentative && (
               <div className={styles.undefinedRibbon}>
                 Fecha y Ubicación aún NO definidas
@@ -109,20 +110,23 @@ const HomePage = () => {
                 Prepara tus mazos para el torneo más esperado del reino. Gloria y premios esperan a los mejores duelistas.
               </p>
               
-              <div className={styles.tournamentInfo}>
-                <p className={styles.infoText}>
-                  Formatos: {tournamentConfig.formats.map((format, index) => (
-                    <span key={format.name}>
-                      {index > 0 && ' y '}
-                      <Link to={format.link} className={styles.formatLink}>{format.name}</Link>
-                    </span>
-                  ))}
-                </p>
-                <p className={styles.infoText}>
-                  Tipo de Rondas: <Link to={tournamentConfig.roundType.link} className={styles.formatLink}>{tournamentConfig.roundType.name}</Link>
-                </p>
+              <div className={styles.formatBadges}>
+                {tournamentConfig.formats.map((format) => {
+                  const name = format.shortName || format.name;
+                  const colorClass = name.startsWith('FX') ? styles.formatBadgeFX
+                    : name.startsWith('PB') ? styles.formatBadgePB
+                    : styles.formatBadge;
+                  return (
+                    <Link key={format.name} to={format.link} className={`${styles.formatBadge} ${colorClass}`}>
+                      {name}
+                    </Link>
+                  );
+                })}
+                <Link to={tournamentConfig.roundType.link} className={`${styles.formatBadge} ${styles.formatBadgeRound}`}>
+                  {tournamentConfig.roundType.name}
+                </Link>
               </div>
-              
+
               {isTodayTournament && (
                 <div className={styles.quickAccess}>
                   <Link to="/fixture" className={styles.quickCard} style={{ backgroundColor: 'var(--sage-green)' }}>
@@ -137,6 +141,7 @@ const HomePage = () => {
                   </Link>
                 </div>
               )}
+            </div>
             </div>
 
             <div className={styles.cardsRow}>
