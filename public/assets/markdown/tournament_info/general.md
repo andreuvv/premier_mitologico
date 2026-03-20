@@ -1,13 +1,14 @@
-*Última actualización: 13 de Marzo 2026*
+*Última actualización: 20 de Marzo 2026*
 
 
 # **📅** Siguiente Torneo
 
-- 📆 Fecha: **TBD**
-- 🕒 Hora de inicio: **TBD**
-- 📍 Sede: **TBD**
-- 🎮 Formatos: [Bloque Furia Racial Libre](https://andreuvv.github.io/premier_mitologico/game-formats/bloqueFuria/bloqueFuriaRacialLibre) y [Bloque Furia Racial VCR](https://andreuvv.github.io/premier_mitologico/game-formats/formatosEspeciales/vcr)
+- 📆 Fecha: **03 de Abril 2026**
+- 🕒 Hora de inicio: **14:30 hrs**
+- 📍 Sede: **Donde Piter**
+- 🎮 Formatos: [Furia Extendido Racial Libre](https://andreuvv.github.io/premier_mitologico/game-formats/bloqueFuria/bloqueFuriaRacialLibre) y [Furia Extendido Racial VCR](https://andreuvv.github.io/premier_mitologico/game-formats/formatosEspeciales/vcr)
 - ⚔️ Rondas: [Mejor de 3](https://andreuvv.github.io/premier_mitologico/tournament-info/tournamentSystem/md3)
+- 🔄 Mulligan: [Mulligan estándar + Mano Seca](https://andreuvv.github.io/premier_mitologico/tournament-info/gameRules/mulligan)
 
 ---
 
@@ -19,8 +20,8 @@
 - 📖 [Documento Actualizado de Reglas (DAR) Primer Bloque - más reciente](https://drive.google.com/file/d/1vRDfyMMHdfy_qQrLX4zfAE83XYcH-IBH/view)
 - ❓ [FAQ Primer Bloque - más reciente](https://drive.google.com/file/d/1l6W5Qnc_Xp93i52tOflLaz1E-wzF3NM2/view)
 
-### 🔥 **Bloque Furia Racial Libre / Bloque Furia Racial Limitado**
-- 📋 [Cartas Permitidas en _BF_ (Noviembre 2025)](https://docs.google.com/spreadsheets/d/17_Vq1_YJYeCVioJMoafOAMG2dF6Lm8NtanEcOmZOo00/edit?gid=2040408861#gid=2040408861)
+### 🔥 **Furia Extendido Racial Libre / Furia Extendido Racial Limitado / Furia Extendido Racial VCR**
+- 📋 [Cartas Permitidas en _FX_ (Noviembre 2025)](https://docs.google.com/spreadsheets/d/17_Vq1_YJYeCVioJMoafOAMG2dF6Lm8NtanEcOmZOo00/edit?gid=2040408861#gid=2040408861)
 - 📖 [Documento Actualizado de Reglas (DAR) Furia Extendido - más reciente](https://drive.google.com/file/d/1DfwWgBAqdCpZZNDdQMB5XltZmn5T6lBL/view)
 - ❓ [FAQ Furia Extendido 2023](https://drive.google.com/file/d/1hEMMHTjbGvDhU14Ehyj1tr7MvAZ7njSd/view)
 - ❓ [FAQ Furia Extendido - Guerreros del Sol 2024](https://blog.myl.cl/wp-content/uploads/2024/07/FAQ-GDS.pdf)
