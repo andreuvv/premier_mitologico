@@ -167,57 +167,63 @@ const HomePage = () => {
                   Fecha y Ubicación aún NO definidas
                 </div>
               )}
-              <div className={styles.logoSection}>
-                <div className={styles.logoContainer}>
-                  <img 
-                    src={`${import.meta.env.BASE_URL}assets/images/premier_image.png`} 
-                    alt="Premier Tournament Image" 
-                    className={styles.mainLogo}
-                  />
+
+              <div className={styles.mobileHeroSection}>
+                <div className={styles.logoSection}>
+                  <div className={styles.logoContainer}>
+                    <img 
+                      src={`${import.meta.env.BASE_URL}assets/images/premier_image.png`} 
+                      alt="Premier Tournament Image" 
+                      className={styles.mainLogo}
+                    />
+                  </div>
                 </div>
-              </div>
-              
-              <div className={styles.contentSection}>
-                <div className={styles.eventBadge}>Torneo Premier</div>
-                <h1 className={styles.title}>
-                  {tournamentConfig.name} {isPast ? (
-                    <span style={{ fontWeight: 'bold', fontStyle: 'italic' }}>TBD</span>
-                  ) : (
-                    monthYear && <span>{monthYear}</span>
-                  )}
-                </h1>
-                <p className={styles.description}>
-                  Prepara tus mazos para el torneo más esperado del reino. Gloria y premios esperan a los mejores duelistas.
-                </p>
-                
-                <div className={styles.tournamentInfo}>
-                  <p className={styles.infoText}>
-                    Formatos: {tournamentConfig.formats.map((format, index) => (
-                      <span key={format.name}>
-                        {index > 0 && ' y '}
-                        <Link to={format.link} className={styles.formatLink}>{format.name}</Link>
-                      </span>
-                    ))}
+
+                <div className={styles.contentSection}>
+                  <div className={styles.eventBadge}>Torneo Premier</div>
+                  <h1 className={styles.title}>
+                    {tournamentConfig.name} {isPast ? (
+                      <span style={{ fontWeight: 'bold', fontStyle: 'italic' }}>TBD</span>
+                    ) : (
+                      monthYear && <span>{monthYear}</span>
+                    )}
+                  </h1>
+                  <p className={styles.description}>
+                    Prepara tus mazos para el torneo más esperado del reino. Gloria y premios esperan a los mejores duelistas.
                   </p>
-                  <p className={styles.infoText}>
-                    Tipo de Rondas: <Link to={tournamentConfig.roundType.link} className={styles.formatLink}>{tournamentConfig.roundType.name}</Link>
-                  </p>
-                </div>
-                
-                {isTodayTournament && (
-                  <div className={styles.quickAccess}>
-                    <Link to="/fixture" className={styles.quickCard} style={{ backgroundColor: 'var(--sage-green)' }}>
-                      <FaChartBar className={styles.cardIcon} />
-                      <span className={styles.cardText}>Fixture {monthYear}</span>
-                      <span className={styles.cardSubtext}>Ver Emparejamientos</span>
-                    </Link>
-                    <Link to="/standings" className={styles.quickCard} style={{ backgroundColor: 'var(--petrol-blue)' }}>
-                      <FaTrophy className={styles.cardIcon} />
-                      <span className={styles.cardText}>Standings {monthYear}</span>
-                      <span className={styles.cardSubtext}>Ver Tabla de Posiciones</span>
+
+                  <div className={styles.formatBadges}>
+                    {tournamentConfig.formats.map((format) => {
+                      const name = format.shortName || format.name;
+                      const colorClass = name.startsWith('FX') ? styles.formatBadgeFX
+                        : name.startsWith('PB') ? styles.formatBadgePB
+                        : styles.formatBadge;
+                      return (
+                        <Link key={format.name} to={format.link} className={`${styles.formatBadge} ${colorClass}`}>
+                          {name}
+                        </Link>
+                      );
+                    })}
+                    <Link to={tournamentConfig.roundType.link} className={`${styles.formatBadge} ${styles.formatBadgeRound}`}>
+                      {tournamentConfig.roundType.name}
                     </Link>
                   </div>
-                )}
+
+                  {isTodayTournament && (
+                    <div className={styles.quickAccess}>
+                      <Link to="/fixture" className={styles.quickCard} style={{ backgroundColor: 'var(--sage-green)' }}>
+                        <FaChartBar className={styles.cardIcon} />
+                        <span className={styles.cardText}>Fixture {monthYear}</span>
+                        <span className={styles.cardSubtext}>Ver Emparejamientos</span>
+                      </Link>
+                      <Link to="/standings" className={styles.quickCard} style={{ backgroundColor: 'var(--petrol-blue)' }}>
+                        <FaTrophy className={styles.cardIcon} />
+                        <span className={styles.cardText}>Standings {monthYear}</span>
+                        <span className={styles.cardSubtext}>Ver Tabla de Posiciones</span>
+                      </Link>
+                    </div>
+                  )}
+                </div>
               </div>
 
               <div className={styles.cardsRow}>

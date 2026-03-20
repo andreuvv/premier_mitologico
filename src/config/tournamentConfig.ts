@@ -17,6 +17,7 @@ export interface TournamentConfig {
   };
   formats: Array<{
     name: string;
+    shortName?: string;
     link: string;
   }>;
   roundType: {
@@ -43,10 +44,12 @@ export const tournamentConfig: TournamentConfig = {
   formats: [
     {
       name: 'Furia Extendido Racial Libre',
+      shortName: 'FX Racial Libre',
       link: '/game-formats/bloqueFuria/bloqueFuriaRacialLibre',
     },
     {
       name: 'Furia Extendido Racial VCR',
+      shortName: 'FX Racial VCR',
       link: '/game-formats/formatosEspeciales/vcr',
     },
   ],
