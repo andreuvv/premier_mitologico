@@ -28,7 +28,7 @@ export interface TournamentConfig {
 
 export const tournamentConfig: TournamentConfig = {
   name: 'Furia más Furia -',
-  date: '2026-04-03', // Set to null or past date for TBD mode
+  date: '2026-04-03',
   time: '14:00',
   dateTentative: false, // Set to true to show the ribbon
   //location: {

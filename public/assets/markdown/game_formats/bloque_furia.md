@@ -17,65 +17,65 @@ Para este formato existen dos tipos de formatos de juego oficiales:
 ### 🔥 Furia Extendido
 
 **Ediciones:**
-- Furia
-- Furia Extensión
-- Sumeria
-- Rebelión
-- Asgard
-- Midgard
-- Leyendas Bloque Furia
-- Roma
-- Excalibur
-- Troya
-- Guerreros del Sol
-- Guardianes de Daana
-- Leyendas Bloque Furia 2026
+- Furia [1FU]
+- Furia Extensión [EF]
+- Sumeria [SU]
+- Rebelión [XS]
+- Asgard [ASG]
+- Midgard [MID]
+- Leyendas Bloque Furia [LBF]
+- Roma [ROM]
+- Excalibur [EXC]
+- Troya [TRO]
+- Guerreros del Sol [GUE]
+- Guardianes de Daana [GUA]
+- Leyendas Bloque Furia 2026 [LBF2]
 
 **Productos Especiales:**
-- Reliquias del Dragón
-- Tesoro Vikingo
-- Sobre de cartas FX de edición Despertar Gótico
-- Lootbox 2022 (selección de cartas)
-- Kit de Batalla: Bola de Fuego
-- Kit de Batalla: Walkiria
-- Mystery Box: Leyendas Bloque Furia
-- Kit de Batalla: Destino
-- Kit de Batalla: Instinto
-- Mystery Box: Roma
-- Reinos Perdidos: Leyendas del Metal
-- Mazos Raciales Preconstruidos
-- Kit de Batalla: Coraje
-- Kit de Batalla: Impetu
-- Mystery Box: Excalibur
-- Reinos Perdidos: Wasteland
-- Kit de Batalla: Fortaleza Heroica
-- Kit de Batalla: Fortuna Olimpica
-- Mystery Box: Troya
-- Reinos Perdidos: La Cofradía
-- Kit de Batalla: Dominio
-- Kit de Batalla: Conquista
-- Mystery Box: Guerreros del Sol
-- Reinos Perdidos: Vigilantes
-- Aniversario 2023
-- Kit de Batalla: Invasores Fomorianos
-- Kit de Batalla: Defensores Celtas
-- Mystery Box: Guardianes de Daana
-- Furia Aniversario X
-- Kingdom Quest
-- Kit Extensión Excalibur: Guerra Santa
-- Kit Extensión Excalibur: Sombras del Desierto
-- Kit Extensión Troya: Honor Espartano
-- Kit Extensión Troya: Dominio Persa
-- Kit Extensión Troya: Valor Ateniense
-- Aniversario 25 años (selección de cartas)
-- Cartas de Juego Organizado
-- Cartas Especiales Casa MYL (selección de cartas)
-- Celebración de Navidad 2024 (selección de cartas)
-- Toolkit 2025 Fortuna Oscura
-- Toolkit 2025 Destino Brillante
-- Armagedon
-- Kit de Batalla: Alianza Temporal
-- Kit de Batalla: Concilio Milenario
+- Reliquias del Dragón [XP]
+- Tesoro Vikingo [TV]
+- Sobre de cartas FX de edición Despertar Gótico [★]
+- Lootbox 2022 (selección de cartas) [ROM]
+- Kit de Batalla: Bola de Fuego [LBF]
+- Kit de Batalla: Walkiria [LBF]
+- Mystery Box: Leyendas Bloque Furia [LBF]
+- Kit de Batalla: Destino [ROM]
+- Kit de Batalla: Instinto [ROM]
+- Mystery Box: Roma [ROM]
+- Reinos Perdidos: Leyendas del Metal [HM]
+- Mazos Raciales Preconstruidos [MI]
+- Kit de Batalla: Coraje [EXC]
+- Kit de Batalla: Impetu [EXC]
+- Mystery Box: Excalibur [EXC]
+- Reinos Perdidos: Wasteland [WAS]
+- Kit de Batalla: Fortaleza Heroica [TRO]
+- Kit de Batalla: Fortuna Olimpica [TRO]
+- Mystery Box: Troya [TRO]
+- Reinos Perdidos: La Cofradía [LCF]
+- Kit de Batalla: Dominio [GUE]
+- Kit de Batalla: Conquista [GUE]
+- Mystery Box: Guerreros del Sol [GUE]
+- Reinos Perdidos: Vigilantes [VIG]
+- Aniversario 2023 [ANIVERSARIO FURIA X]
+- Kit de Batalla: Invasores Fomorianos [GUA]
+- Kit de Batalla: Defensores Celtas [GUA]
+- Mystery Box: Guardianes de Daana [GUA]
+- Furia Aniversario X [FURIA 10 AÑOS] [FURIA X]
+- Kingdom Quest [KIN]
+- Kit Extensión Excalibur: Guerra Santa [EXC]
+- Kit Extensión Excalibur: Sombras del Desierto [EXC]
+- Kit Extensión Troya: Honor Espartano [TEX]
+- Kit Extensión Troya: Dominio Persa [TEX]
+- Kit Extensión Troya: Valor Ateniense [TEX]
+- Aniversario 25 años (selección de cartas) [25 ANIVERSARIO]
+- Cartas de Juego Organizado 
+- Cartas Especiales Casa MYL (selección de cartas) [CML]
+- Celebración de Navidad 2024 (selección de cartas) [NFX]
+- Toolkit 2025 Fortuna Oscura [TKFX25]
+- Toolkit 2025 Destino Brillante [TKFX25]
+- Armagedon [ARM]
+- Kit de Batalla: Alianza Temporal [LBF2]
+- Kit de Batalla: Concilio Milenario [LBF2]
 
 ---
 
