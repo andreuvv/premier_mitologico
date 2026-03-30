@@ -94,7 +94,7 @@
 
 .content {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 280px 1fr;
   gap: 2rem;
   margin-bottom: 2rem;
   align-items: start;

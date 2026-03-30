@@ -3,6 +3,7 @@ import { CollectionFormat, CollectionCard, CollectionCatalog } from '../types/co
 import { loadCollectionCards } from '../services/collectionService';
 import CardGrid from '../components/CardGrid';
 import EditionSidebar from '../components/EditionSidebar';
+import PBEditionSidebar from '../components/PBEditionSidebar';
 import styles from './CollectionPage.module.css';
 
 interface SimpleCard {
@@ -96,14 +97,17 @@ const CollectionPage = () => {
       {loading ? (
         <div className={styles.loading}>Cargando cartas...</div>
       ) : (
-        <div className={`${styles.content} ${selectedFormat === CollectionFormat.FURIA_EXTENDIDO ? styles.withSidebar : ''}`}>
-          {selectedFormat === CollectionFormat.FURIA_EXTENDIDO ? (
+        <div className={`${styles.content} ${styles.withSidebar}`}>
+          {selectedFormat === CollectionFormat.PRIMER_BLOQUE ? (
+            <>
+              <PBEditionSidebar cards={allCards} onFilterChange={handleFilterChange} />
+              <CardGrid cards={filteredCards} />
+            </>
+          ) : (
             <>
               <EditionSidebar cards={allCards} onFilterChange={handleFilterChange} />
               <CardGrid cards={filteredCards} />
             </>
-          ) : (
-            <CardGrid cards={filteredCards} />
           )}
         </div>
       )}
