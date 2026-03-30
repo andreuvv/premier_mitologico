@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaHome, FaClipboardList, FaBan, FaGamepad, FaHammer, FaTrophy, FaHistory, FaUser, FaBlog } from 'react-icons/fa';
+import { FaHome, FaClipboardList, FaBan, FaGamepad, FaHammer, FaTrophy, FaHistory, FaUser, FaBlog, FaBook } from 'react-icons/fa';
 import LatestBlogCard from '../LatestBlogCard';
 import { getTournamentMonthYear } from '../../config/tournamentConfig';
 import styles from './Header.module.css';
@@ -47,6 +47,13 @@ const Header = () => {
           >
             <FaBan className={styles.icon} />
             Ban List
+          </Link>
+          <Link 
+            to="/coleccion" 
+            className={location.pathname === '/coleccion' ? styles.active : ''}
+          >
+            <FaBook className={styles.icon} />
+            Colección
           </Link>
           <Link 
             to="/tournament-history" 
@@ -146,6 +153,10 @@ const Header = () => {
         <Link to="/banlist" onClick={() => setMobileMenuOpen(false)}>
           <FaBan className={styles.icon} />
           Ban List
+        </Link>
+        <Link to="/coleccion" onClick={() => setMobileMenuOpen(false)}>
+          <FaBook className={styles.icon} />
+          Colección
         </Link>
         <Link to="/game-formats" onClick={() => setMobileMenuOpen(false)}>
           <FaGamepad className={styles.icon} />

@@ -1,0 +1,142 @@
+.sidebar {
+  width: 280px;
+  padding: 1.5rem;
+  background: var(--dark-brown);
+  border-radius: 8px;
+  border: 1px solid var(--ocher);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: fit-content;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--beige);
+  font-weight: 600;
+}
+
+.clearButton {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  background: var(--brick-red);
+  color: var(--beige);
+  border: 1px solid var(--brick-red);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.clearButton:hover {
+  background: transparent;
+  color: var(--brick-red);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  border: 1px solid var(--ocher);
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--beige);
+  transition: all 0.2s ease;
+}
+
+.sectionHeader:hover {
+  background: rgba(214, 156, 65, 0.1);
+}
+
+.chevron {
+  font-size: 0.85rem;
+  transition: transform 0.2s ease;
+  color: var(--ocher);
+}
+
+.sectionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.item {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  background: transparent;
+  border: 1px solid #555;
+  border-radius: 4px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: var(--beige);
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.item:hover {
+  background: rgba(214, 156, 65, 0.1);
+  border-color: var(--ocher);
+}
+
+.item.active {
+  background: var(--ocher);
+  color: var(--coal-grey);
+  border-color: var(--ocher);
+  font-weight: 600;
+}
+
+.noItems {
+  padding: 0.75rem;
+  color: var(--beige);
+  opacity: 0.6;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.activeFilters {
+  padding: 1rem;
+  background: transparent;
+  border: 1px solid var(--petrol-blue);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filterLabel {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--petrol-blue);
+  text-transform: uppercase;
+}
+
+.filterTag {
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border-left: 3px solid var(--petrol-blue);
+  border-radius: 2px;
+  font-size: 0.9rem;
+  color: var(--petrol-blue);
+}
+

@@ -27,7 +27,7 @@ export interface TournamentConfig {
 }
 
 export const tournamentConfig: TournamentConfig = {
-  name: 'Furia más Furia -',
+  name: 'Furia más Furia - Cumple Timmy!',
   date: '2026-04-03',
   time: '14:00',
   dateTentative: false, // Set to true to show the ribbon

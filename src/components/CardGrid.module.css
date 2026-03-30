@@ -1,0 +1,105 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.cardItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--beige);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cardItem:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cardImage {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2.5 / 3.5;
+  object-fit: cover;
+  display: block;
+}
+
+.placeholder {
+  width: 100%;
+  aspect-ratio: 2.5 / 3.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--coal-grey);
+  color: var(--beige);
+  font-size: 0.9rem;
+}
+
+.cardInfo {
+  padding: 1rem;
+}
+
+.cardInfo h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--coal-grey);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1.5rem;
+  background: var(--dark-brown);
+  border-radius: 8px;
+  border: 1px solid var(--ocher);
+}
+
+.pageButton {
+  padding: 0.6rem 1.2rem;
+  background: var(--dark-brown);
+  color: var(--beige);
+  border: 2px solid var(--ocher);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.pageButton:hover:not(:disabled) {
+  background: var(--ocher);
+  color: var(--coal-grey);
+}
+
+.pageButton:disabled {
+  border-color: #555;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pageInfo {
+  font-weight: 600;
+  color: var(--beige);
+  min-width: 120px;
+  text-align: center;
+}
+
+

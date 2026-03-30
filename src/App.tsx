@@ -10,6 +10,7 @@ const HomePage = lazy(() => import('./pages/HomePage'));
 const TournamentInfoPage = lazy(() => import('./pages/TournamentInfoPage'));
 const GameFormatsPage = lazy(() => import('./pages/GameFormatsPage'));
 const BanlistPage = lazy(() => import('./pages/BanlistPage'));
+const CollectionPage = lazy(() => import('./pages/CollectionPage'));
 const PremierTournamentPage = lazy(() => import('./pages/PremierTournamentPage'));
 const TournamentHistoryPage = lazy(() => import('./pages/TournamentHistoryPage'));
 const PlayersPage = lazy(() => import('./pages/PlayersPage'));
@@ -40,6 +41,7 @@ function App() {
             <Route path="/game-formats/:section/:variant" element={<GameFormatsPage />} />
             <Route path="/banlist" element={<BanlistPage />} />
             <Route path="/banlist/:format/:category" element={<BanlistPage />} />
+            <Route path="/coleccion" element={<CollectionPage />} />
             <Route path="/torneo-premier" element={<PremierTournamentPage />} />
             <Route path="/torneo-premier/:tab" element={<PremierTournamentPage />} />
             <Route path="/fixture" element={<PremierTournamentPage />} />
