@@ -3,6 +3,108 @@
     "CardCatalog": {
       "cards": [
         {
+          "id": 12726,
+          "slug": "necromancia",
+          "name": "Necromancia",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 362 P",
+          "effect": "Anularlo cuesta un Oro adicional. Cuando lo juegues, Destiérralo. Elige hasta dos: Anula una carta oponente, Cancela una habilidad, Roba dos cartas o Baraja hasta tres cartas de un Cementerio.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://scontent.fscl9-1.fna.fbcdn.net/v/t39.30808-6/658145206_1569613681835069_6968208485336828260_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=dd6889&_nc_ohc=7weVzEK4TtsQ7kNvwFP_aZI&_nc_oc=AdrC9_7dMe4MJeyGXR8UJFHAhW9hyGzWqZ_lbvRIrNGSDlSWZ0vIFpddwopFtmA-IHI&_nc_zt=23&_nc_ht=scontent.fscl9-1.fna&_nc_gid=hWFmXQ-gNmjZ-sdZcUCUtg&_nc_ss=7a3a8&oh=00_AfyiwuCoJd1T-7QwFcaEA01TjOWrlB1s-NtFQlV6JAgLcA&oe=69D07B8F",
+          "artist": "PAZU ARRIAGADA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": [
+          ]
+        },
+        {
+          "id": 12725,
+          "slug": "mirada-de-la-reina",
+          "name": "Mirada de la Reina",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 342 P",
+          "effect": "Nombra una carta. Tu oponente muestra su mano y Descarta todas las cartas con ese nombre que no sean Oro ni Aliado.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 1,
+          "attack": 0,
+          "imageUrl": "https://scontent.fscl9-1.fna.fbcdn.net/v/t39.30808-6/651698585_1556985299764574_7990281588141849550_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=dd6889&_nc_ohc=Gm9avsb--ccQ7kNvwF2v_U2&_nc_oc=Adr1f8OYGGiyDpUJbBGyeZfbgbzVsMKYDEArJIIOhzZL-OOcoCZL8qv0h5pW-qshVwk&_nc_zt=23&_nc_ht=scontent.fscl9-1.fna&_nc_gid=yGvHHxd-Ppq8a0wEhTu-6A&_nc_ss=7a3a8&oh=00_Afxqjy3knyRoqvn_6bKZKDTHEXWWqwmQBvWkoFE8OWxYyg&oe=69D087E7",
+          "artist": "PAZU ARRIAGADA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": [
+          ]
+        },
+        {
+          "id": 12724,
+          "slug": "tamaño-colosal",
+          "name": "Tamaño Colosal",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 341 P",
+          "effect": "Un Aliado gana 6 de Fuerza por el turno. Puedes pagar un Oro y Desterrarla de tu Cementerio para que tu oponente Bote cartas igual a la Fuerza de un Aliado que controles",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://scontent.fscl9-1.fna.fbcdn.net/v/t39.30808-6/650968881_1556985263097911_8529763172236016656_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=dd6889&_nc_ohc=3Wh6h7IPMdcQ7kNvwF5SbOM&_nc_oc=AdpGpk4m6-cQbyv1B-YhdsnO7Ee894CBZTCSzfF96tyiQIxuNJf6V9q7V8LTmS_7qi4&_nc_zt=23&_nc_ht=scontent.fscl9-1.fna&_nc_gid=TqkwirepjJMitJWb7fZT9Q&_nc_ss=7a3a8&oh=00_AfxXonNUxac2fSEH2oXf_0iggznzFiSZy6hAnWHNolyaEQ&oe=69D0888B",
+          "artist": "FRANXO",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": [
+          ]
+        },
+        {
           "id": 12741,
           "slug": "yatiri-y-yastai",
           "name": "Yatiri y Yastai",
