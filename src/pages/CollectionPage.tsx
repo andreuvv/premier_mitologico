@@ -1,16 +1,11 @@
 import { useState, useEffect } from 'react';
 import { CollectionFormat, CollectionCard, CollectionCatalog } from '../types/collection';
 import { loadCollectionCards } from '../services/collectionService';
-import CardGrid from '../components/CardGrid';
+import CardGrid, { type SimpleCard } from '../components/CardGrid';
+import CardDetailModal from '../components/CardDetailModal';
 import EditionSidebar from '../components/EditionSidebar';
 import PBEditionSidebar from '../components/PBEditionSidebar';
 import styles from './CollectionPage.module.css';
-
-interface SimpleCard {
-  id: number;
-  name: string;
-  imageUrl: string;
-}
 
 const CollectionPage = () => {
   const [selectedFormat, setSelectedFormat] = useState<CollectionFormat>(CollectionFormat.PRIMER_BLOQUE);
@@ -21,6 +16,7 @@ const CollectionPage = () => {
   const [activeFilterLabel, setActiveFilterLabel] = useState<string | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [selectedCard, setSelectedCard] = useState<SimpleCard | null>(null);
 
   useEffect(() => {
     setLoading(true);
@@ -54,7 +50,15 @@ const CollectionPage = () => {
     const simpleCards = filtered.map(card => ({
       id: card.id,
       name: card.name,
-      imageUrl: card.imageUrl
+      imageUrl: card.imageUrl,
+      collectorCode: card.collectorCode,
+      type: card.type,
+      cost: card.cost,
+      attack: card.attack,
+      effect: card.effect,
+      flavor: card.flavor,
+      artist: card.artist,
+      productName: card.product?.productName ?? card.edition?.name,
     }));
     setFilteredCards(simpleCards);
   }, [searchTerm, sidebarFilteredCards]);
@@ -136,7 +140,7 @@ const CollectionPage = () => {
                 isOpen={sidebarOpen}
                 onClose={() => setSidebarOpen(false)}
               />
-              <CardGrid cards={filteredCards} />
+              <CardGrid cards={filteredCards} onCardClick={setSelectedCard} />
             </>
           ) : (
             <>
@@ -147,7 +151,7 @@ const CollectionPage = () => {
                 isOpen={sidebarOpen}
                 onClose={() => setSidebarOpen(false)}
               />
-              <CardGrid cards={filteredCards} />
+              <CardGrid cards={filteredCards} onCardClick={setSelectedCard} />
             </>
           )}
         </div>
@@ -157,6 +161,10 @@ const CollectionPage = () => {
         {searchTerm && `Búsqueda: "${searchTerm}" • `}
         Mostrando {filteredCards.length} de {allCards.length} cartas
       </div>
+
+      {selectedCard && (
+        <CardDetailModal card={selectedCard} onClose={() => setSelectedCard(null)} />
+      )}
     </div>
   );
 };
