@@ -53,7 +53,7 @@ const Header = () => {
             className={location.pathname === '/coleccion' ? styles.active : ''}
           >
             <FaBook className={styles.icon} />
-            Colección
+            Cartas
           </Link>
           <Link 
             to="/tournament-history" 
@@ -156,7 +156,7 @@ const Header = () => {
         </Link>
         <Link to="/coleccion" onClick={() => setMobileMenuOpen(false)}>
           <FaBook className={styles.icon} />
-          Colección
+          Cartas
         </Link>
         <Link to="/game-formats" onClick={() => setMobileMenuOpen(false)}>
           <FaGamepad className={styles.icon} />

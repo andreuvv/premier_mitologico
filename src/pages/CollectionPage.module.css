@@ -195,10 +195,24 @@
     margin: 0;
     padding: 2rem;
     margin-bottom: 0;
+    order: 1;
   }
 
   .header h1 {
     font-size: 2rem;
+  }
+
+  .formatTabs {
+    order: 2;
+    margin-bottom: 0;
+    padding: 1rem 0;
+    justify-content: center;
+    border-bottom: 2px solid var(--ocher);
+  }
+
+  .tab {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
   }
 
   .mobileHeader {
@@ -206,6 +220,7 @@
     position: sticky;
     top: 70px;
     z-index: 50;
+    order: 3;
   }
 
   .hamburger {
@@ -238,14 +253,16 @@
     z-index: 201;
   }
 
-  .formatTabs {
-    margin-bottom: 1rem;
-    padding: 1rem 2rem;
+  .searchContainer {
+    order: 4;
   }
 
-  .tab {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.95rem;
+  .content {
+    order: 5;
+  }
+
+  .stats {
+    order: 6;
   }
 
   .searchContainer {

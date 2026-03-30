@@ -71,12 +71,18 @@ export default function EditionSidebar({ cards, onFilterChange, isOpen = true, o
     let filterLabel: string | null = null;
 
     if (newFilters.editionProduct) {
-      filtered = filtered.filter(card => card.product?.productName === newFilters.editionProduct);
+      filtered = filtered.filter(card => 
+        card.product?.productName === newFilters.editionProduct && 
+        card.product?.productType === 'Edición'
+      );
       filterLabel = `${editions.find(e => e.productName === newFilters.editionProduct)?.productName}`;
     }
 
     if (newFilters.specialProduct) {
-      filtered = filtered.filter(card => card.product?.productName === newFilters.specialProduct);
+      filtered = filtered.filter(card => 
+        card.product?.productName === newFilters.specialProduct && 
+        card.product?.productType === 'Producto Especial'
+      );
       filterLabel = `${specialProducts.find(p => p.productName === newFilters.specialProduct)?.productName}`;
     }
 

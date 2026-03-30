@@ -3,6 +3,42 @@
     "CardCatalog": {
       "cards": [
         {
+          "id": 12741,
+          "slug": "yatiri-y-yastai",
+          "name": "Yatiri y Yastai",
+          "gameId": 3,
+          "collectorCode": "CML-24",
+          "effect": "<p>Cuando entra en juego, puedes Barajar o Desterrar hasta una carta de un Cementerio y Robar una carta. Cuando sea Desterrado de tu Cementerio, tu oponente Bota una carta por cada Aliado en tu Destierro.</p>",
+          "flavor": "<p>La pequeña lleva su ancestral medicina a los más desamparados bajo la protección de sus noble guía.</p>",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 1,
+          "imageUrl": "https://scontent.fscl9-1.fna.fbcdn.net/v/t39.30808-6/652346860_1557020019761102_6663102380549783614_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=dd6889&_nc_ohc=AKSMpfq--hYQ7kNvwGmvGga&_nc_oc=Adrw4n3UJ19818CPofsE1hDoycy5ZqxgDvkFE6nq_5MsT7Bcs43FYPdvH7AvZHGPtUM&_nc_zt=23&_nc_ht=scontent.fscl9-1.fna&_nc_gid=DguBaIcJjV1rJ8mw9wLaTg&_nc_ss=7a3a8&oh=00_AfwBxCVjl-A0j2I9qeOs0-lyjkOgAXLcRUzcrDpFJZpdVw&oe=69D084C1",
+          "artist": "MARIOLA QUIRLAND",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "SACERDOTE"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Promos Casa MYL",
+            "productCode": "CML",
+            "productType": "Producto Especial"
+          },
+          "interactions": [
+          ]
+        },
+        {
           "id": 12740,
           "slug": "sherlock-y-watson",
           "name": "Sherlock y Watson",
@@ -13,7 +49,7 @@
           "type": "ALIADO",
           "cost": 2,
           "attack": 2,
-          "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/00-Especiales/cartas/Sherlock-y-watson-promocional.png-1772229208349",
+          "imageUrl": "https://scontent.fscl9-1.fna.fbcdn.net/v/t39.30808-6/651364705_1557019936427777_4546932803436186692_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=dd6889&_nc_ohc=NnCB1KshuKQQ7kNvwH07dtj&_nc_oc=AdpgxNb47HtSDtGxSJEkPxbZS-BBjcO71_lw239w6roeBLcdCvNiyMIwkFG5SIr1odg&_nc_zt=23&_nc_ht=scontent.fscl9-1.fna&_nc_gid=vYrU9QjQ-KqgauHHvKXlFg&_nc_ss=7a3a8&oh=00_Afz4PQjWxaxCGoD_WHQd51XLLbfe4rnlEC26kDNy-IGnvA&oe=69D07F6A",
           "artist": "MARIOLA QUIRLAND",
           "frequency": "PROMOCIONAL",
           "race": [
@@ -52,7 +88,7 @@
           "type": "ALIADO",
           "cost": 2,
           "attack": 2,
-          "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/00-Especiales/cartas/Krishna-y-ganesh-promocional.png-1772229188385",
+          "imageUrl": "https://scontent.fscl9-1.fna.fbcdn.net/v/t39.30808-6/650949067_1557019813094456_5504976268347834444_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=dd6889&_nc_ohc=YTj0zL1cawAQ7kNvwGXVY63&_nc_oc=AdpigGz-Wo2zZzRSkHrYFOkW2wmtA2X3liXrvficBieGmIbMzXjGaFjgLOG3Ez2mMAE&_nc_zt=23&_nc_ht=scontent.fscl9-1.fna&_nc_gid=Q3NRk2Mw8GRHkl5NFltrDw&_nc_ss=7a3a8&oh=00_AfxiVqFbS-IPVeY9enWzhggU6Rhfr__qnNP2hQItleHo0Q&oe=69D06D17",
           "artist": "MARIOLA QUIRLAND",
           "frequency": "PROMOCIONAL",
           "race": [
@@ -90,7 +126,7 @@
           "type": "ALIADO",
           "cost": 2,
           "attack": 3,
-          "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/00-Especiales/cartas/Atila-y-leon-promocional.png-1772229171133",
+          "imageUrl": "https://scontent.fscl9-2.fna.fbcdn.net/v/t39.30808-6/652911291_1557019896427781_354603374900331442_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=dd6889&_nc_ohc=gH62wUpHzrwQ7kNvwEIdSzQ&_nc_oc=AdpF7kn1OaPX8lHrmtQugCY6xbTqF2lSJA_NfDDFIDtZPW_owTy-c39n9ORXasNObVM&_nc_zt=23&_nc_ht=scontent.fscl9-2.fna&_nc_gid=50sbbgWGUnl5xh6SpjkKyQ&_nc_ss=7a3a8&oh=00_AfxvhiANgufapJenp4koVzv12y1eWhaY2S0t3vSgbCdkHA&oe=69D0644C",
           "artist": "MARIOLA QUIRLAND",
           "frequency": "PROMOCIONAL",
           "race": [

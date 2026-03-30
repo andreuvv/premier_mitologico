@@ -75,10 +75,6 @@ const CollectionPage = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <h1>Colección</h1>
-        <p>Explora todas las cartas disponibles en cada formato</p>
-      </div>
 
       <div className={styles.mobileHeader}>
         <button 
