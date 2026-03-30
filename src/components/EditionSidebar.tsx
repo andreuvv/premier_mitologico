@@ -4,7 +4,9 @@ import styles from './EditionSidebar.module.css';
 
 interface EditionSidebarProps {
   cards: CollectionCard[];
-  onFilterChange: (filteredCards: CollectionCard[]) => void;
+  onFilterChange: (data: { cards: CollectionCard[], filterLabel: string | null }) => void;
+  isOpen?: boolean;
+  onClose?: () => void;
 }
 
 interface FilterState {
@@ -12,7 +14,7 @@ interface FilterState {
   specialProduct: string | null;
 }
 
-export default function EditionSidebar({ cards, onFilterChange }: EditionSidebarProps) {
+export default function EditionSidebar({ cards, onFilterChange, isOpen = true, onClose: _onClose }: EditionSidebarProps) {
   const [filters, setFilters] = useState<FilterState>({ editionProduct: null, specialProduct: null });
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(['ediciones', 'productos']));
 
@@ -66,25 +68,28 @@ export default function EditionSidebar({ cards, onFilterChange }: EditionSidebar
 
   const applyFilters = (newFilters: FilterState) => {
     let filtered = cards;
+    let filterLabel: string | null = null;
 
     if (newFilters.editionProduct) {
       filtered = filtered.filter(card => card.product?.productName === newFilters.editionProduct);
+      filterLabel = `${editions.find(e => e.productName === newFilters.editionProduct)?.productName}`;
     }
 
     if (newFilters.specialProduct) {
       filtered = filtered.filter(card => card.product?.productName === newFilters.specialProduct);
+      filterLabel = `${specialProducts.find(p => p.productName === newFilters.specialProduct)?.productName}`;
     }
 
-    onFilterChange(filtered);
+    onFilterChange({ cards: filtered, filterLabel });
   };
 
   const clearFilters = () => {
     setFilters({ editionProduct: null, specialProduct: null });
-    onFilterChange(cards);
+    onFilterChange({ cards, filterLabel: null });
   };
 
   return (
-    <aside className={styles.sidebar}>
+    <aside className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
       <div className={styles.header}>
         <h3>Filtros</h3>
         {(filters.editionProduct || filters.specialProduct) && (

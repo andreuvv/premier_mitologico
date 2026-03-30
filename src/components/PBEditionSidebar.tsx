@@ -4,14 +4,16 @@ import styles from './EditionSidebar.module.css';
 
 interface PBEditionSidebarProps {
   cards: CollectionCard[];
-  onFilterChange: (filteredCards: CollectionCard[]) => void;
+  onFilterChange: (data: { cards: CollectionCard[], filterLabel: string | null }) => void;
+  isOpen?: boolean;
+  onClose?: () => void;
 }
 
 interface FilterState {
   edition: string | null;
 }
 
-export default function PBEditionSidebar({ cards, onFilterChange }: PBEditionSidebarProps) {
+export default function PBEditionSidebar({ cards, onFilterChange, isOpen = true, onClose: _onClose }: PBEditionSidebarProps) {
   const [filters, setFilters] = useState<FilterState>({ edition: null });
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(['ediciones']));
 
@@ -44,21 +46,23 @@ export default function PBEditionSidebar({ cards, onFilterChange }: PBEditionSid
 
   const applyFilters = (newFilters: FilterState) => {
     let filtered = cards;
+    let filterLabel: string | null = null;
 
     if (newFilters.edition) {
       filtered = filtered.filter(card => card.edition?.name === newFilters.edition);
+      filterLabel = newFilters.edition;
     }
 
-    onFilterChange(filtered);
+    onFilterChange({ cards: filtered, filterLabel });
   };
 
   const clearFilters = () => {
     setFilters({ edition: null });
-    onFilterChange(cards);
+    onFilterChange({ cards, filterLabel: null });
   };
 
   return (
-    <aside className={styles.sidebar}>
+    <aside className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
       <div className={styles.header}>
         <h3>Filtros</h3>
         {filters.edition && (

@@ -120,3 +120,146 @@
   border: 1px solid var(--ocher);
 }
 
+.mobileHeader {
+  display: none;
+  background-color: var(--coal-grey);
+  border-bottom: 1px solid #333;
+  padding: 1rem;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--beige);
+  display: none;
+  font-size: 1.5rem;
+}
+
+.mobileTitle {
+  flex: 1;
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--beige);
+}
+
+.mobileHeaderContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.mobileFilterBadge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--ocher);
+  color: var(--coal-grey);
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 201;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Mobile Responsive */
+@media (max-width: 1200px) {
+  .container {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 70px);
+  }
+
+  .header {
+    margin: 0;
+    padding: 2rem;
+    margin-bottom: 0;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .mobileHeader {
+    display: flex;
+    position: sticky;
+    top: 70px;
+    z-index: 50;
+  }
+
+  .hamburger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--sage-green);
+    border: none;
+    color: var(--beige);
+    padding: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .hamburger:active {
+    background-color: var(--ocher);
+    color: var(--coal-grey);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    transform: scale(0.98);
+  }
+
+  .overlay {
+    display: block;
+    z-index: 201;
+  }
+
+  .formatTabs {
+    margin-bottom: 1rem;
+    padding: 1rem 2rem;
+  }
+
+  .tab {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .searchContainer {
+    margin-bottom: 1rem;
+    padding: 0 2rem;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    padding: 0 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .stats {
+    margin: 0 2rem;
+  }
+}

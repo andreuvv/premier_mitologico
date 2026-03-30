@@ -18,6 +18,8 @@ const CollectionPage = () => {
   const [filteredCards, setFilteredCards] = useState<SimpleCard[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [sidebarFilteredCards, setSidebarFilteredCards] = useState<CollectionCard[]>([]);
+  const [activeFilterLabel, setActiveFilterLabel] = useState<string | null>(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -33,6 +35,11 @@ const CollectionPage = () => {
         console.error('Error loading collection:', err);
         setLoading(false);
       });
+  }, [selectedFormat]);
+
+  useEffect(() => {
+    setSidebarOpen(false);
+    setActiveFilterLabel(null);
   }, [selectedFormat]);
 
   useEffect(() => {
@@ -52,8 +59,9 @@ const CollectionPage = () => {
     setFilteredCards(simpleCards);
   }, [searchTerm, sidebarFilteredCards]);
 
-  const handleFilterChange = (filtered: CollectionCard[]) => {
-    setSidebarFilteredCards(filtered);
+  const handleFilterChange = (data: { cards: CollectionCard[], filterLabel: string | null }) => {
+    setSidebarFilteredCards(data.cards);
+    setActiveFilterLabel(data.filterLabel);
   };
 
   const getFormatLabel = (format: CollectionFormat): string => {
@@ -71,6 +79,31 @@ const CollectionPage = () => {
         <h1>Colección</h1>
         <p>Explora todas las cartas disponibles en cada formato</p>
       </div>
+
+      <div className={styles.mobileHeader}>
+        <button 
+          className={styles.hamburger}
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+          aria-label="Toggle sidebar"
+        >
+          ☰
+        </button>
+        <div className={styles.mobileHeaderContent}>
+          <h2 className={styles.mobileTitle}>{getFormatLabel(selectedFormat)}</h2>
+          {activeFilterLabel && !sidebarOpen && (
+            <div className={styles.mobileFilterBadge}>
+              {activeFilterLabel}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {sidebarOpen && (
+        <div 
+          className={styles.overlay}
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
 
       <div className={styles.formatTabs}>
         {Object.values(CollectionFormat).map(format => (
@@ -100,12 +133,24 @@ const CollectionPage = () => {
         <div className={`${styles.content} ${styles.withSidebar}`}>
           {selectedFormat === CollectionFormat.PRIMER_BLOQUE ? (
             <>
-              <PBEditionSidebar cards={allCards} onFilterChange={handleFilterChange} />
+              <PBEditionSidebar 
+                key="pb-sidebar"
+                cards={allCards} 
+                onFilterChange={handleFilterChange}
+                isOpen={sidebarOpen}
+                onClose={() => setSidebarOpen(false)}
+              />
               <CardGrid cards={filteredCards} />
             </>
           ) : (
             <>
-              <EditionSidebar cards={allCards} onFilterChange={handleFilterChange} />
+              <EditionSidebar 
+                key="fx-sidebar"
+                cards={allCards} 
+                onFilterChange={handleFilterChange}
+                isOpen={sidebarOpen}
+                onClose={() => setSidebarOpen(false)}
+              />
               <CardGrid cards={filteredCards} />
             </>
           )}
