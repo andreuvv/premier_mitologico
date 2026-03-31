@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { fixtureAPI, APIFixtureResponse, APIStanding } from '../services/fixtureAPI';
 import { getTournamentMonthYear, tournamentConfig } from '../config/tournamentConfig';
-import { FaHandRock, FaFire, FaTrophy, FaMedal, FaThLarge, FaListOl, FaClock, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaHandRock, FaFire, FaTrophy, FaMedal, FaThLarge, FaListOl, FaClock, FaChevronLeft, FaChevronRight, FaPlay, FaPause, FaRedo } from 'react-icons/fa';
 import styles from './PremierTournamentPage.module.css';
 
 type Tab = 'fixture' | 'standings' | 'matriz';
@@ -222,6 +222,14 @@ const PremierTournamentPage = () => {
   const handleReset5 = () => {
     setIsCountdown5Running(false);
     setTimeRemaining5(5 * 60);
+  };
+
+  const handleCompleteReset = () => {
+    setIsCountdown45Running(false);
+    setIsCountdown5Running(false);
+    setTimeRemaining45(45 * 60);
+    setTimeRemaining5(5 * 60);
+    setFirstCountdownCompleted(false);
   };
 
   return (
@@ -569,17 +577,18 @@ const PremierTournamentPage = () => {
             </div>
 
             <div className={styles.modalContent}>
-              {/* Carousel */}
+              {/* Carousel - Left Column */}
               <div className={styles.carouselSection}>
-                <button
-                  className={styles.carouselArrow}
-                  onClick={handlePrevRound}
-                  title="Ronda anterior"
-                >
-                  <FaChevronLeft />
-                </button>
+                <div className={styles.carouselContainer}>
+                  <button
+                    className={styles.carouselArrow}
+                    onClick={handlePrevRound}
+                    title="Ronda anterior"
+                  >
+                    <FaChevronLeft />
+                  </button>
 
-                <div className={styles.carouselDisplay}>
+                  <div className={styles.carouselDisplay}>
                   {fixtureData.rounds[carouselRoundIndex] && (
                     <div className={styles.roundCard}>
                       <h3>
@@ -622,81 +631,97 @@ const PremierTournamentPage = () => {
                 >
                   <FaChevronRight />
                 </button>
+                </div>
               </div>
 
               {/* Countdowns */}
               <div className={styles.countdownsSection}>
-                {/* 45-minute countdown */}
+                {/* Unified countdown box */}
                 <div className={styles.countdownBox}>
-                  <div className={styles.countdownTitle}>Tiempo Principal</div>
-                  <div className={styles.countdownDisplay}>
-                    {formatTime(timeRemaining45)}
+                  {/* Show 45-min timer when it's active, or in corner when supplementary time is active */}
+                  {firstCountdownCompleted && (
+                    <div className={styles.timerCorner}>
+                      <div className={styles.timerCornerLabel}>Tiempo Principal COMPLETADO</div>
+                      <div className={styles.timerCornerDisplay}>{formatTime(timeRemaining45)}</div>
+                    </div>
+                  )}
+
+                  <div className={styles.countdownTitle}>
+                    {firstCountdownCompleted ? 'Tiempo Suplementario' : 'Tiempo Principal'}
                   </div>
+                  
+                  <div className={styles.countdownDisplay}>
+                    {firstCountdownCompleted ? formatTime(timeRemaining5) : formatTime(timeRemaining45)}
+                  </div>
+
                   <div className={styles.buttonGroup}>
-                    <button
-                      className={`${styles.countdownButton} ${isCountdown45Running ? styles.running : ''}`}
-                      onClick={() => {
-                        if (!isCountdown45Running && timeRemaining45 > 0) {
-                          setIsCountdown45Running(true);
-                        }
-                      }}
-                      disabled={isCountdown45Running || timeRemaining45 === 0}
-                    >
-                      {isCountdown45Running ? 'En progreso...' : 'Iniciar'}
-                    </button>
-                    {isCountdown45Running && (
-                      <button
-                        className={styles.countdownButton}
-                        onClick={handleStop45}
-                      >
-                        Detener
-                      </button>
+                    {!firstCountdownCompleted ? (
+                      <>
+                        <button
+                          className={`${styles.countdownButton} ${styles.buttonStart} ${isCountdown45Running ? styles.running : ''}`}
+                          onClick={() => {
+                            if (!isCountdown45Running && timeRemaining45 > 0) {
+                              setIsCountdown45Running(true);
+                            }
+                          }}
+                          disabled={isCountdown45Running || timeRemaining45 === 0}
+                        >
+                          <FaPlay /> {isCountdown45Running ? 'En progreso...' : 'Iniciar'}
+                        </button>
+                        {isCountdown45Running && (
+                          <button
+                            className={`${styles.countdownButton} ${styles.buttonStop}`}
+                            onClick={handleStop45}
+                          >
+                            <FaPause /> Detener
+                          </button>
+                        )}
+                        <button
+                          className={`${styles.countdownButton} ${styles.buttonReset}`}
+                          onClick={handleReset45}
+                        >
+                          <FaRedo /> Reiniciar
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <button
+                          className={`${styles.countdownButton} ${styles.buttonStart} ${isCountdown5Running ? styles.running : ''}`}
+                          onClick={() => {
+                            if (!isCountdown5Running && timeRemaining5 > 0) {
+                              setIsCountdown5Running(true);
+                            }
+                          }}
+                          disabled={isCountdown5Running || timeRemaining5 === 0}
+                        >
+                          <FaPlay /> {isCountdown5Running ? 'En progreso...' : 'Iniciar'}
+                        </button>
+                        {isCountdown5Running && (
+                          <button
+                            className={`${styles.countdownButton} ${styles.buttonStop}`}
+                            onClick={handleStop5}
+                          >
+                            <FaPause /> Detener
+                          </button>
+                        )}
+                        <button
+                          className={`${styles.countdownButton} ${styles.buttonReset}`}
+                          onClick={handleReset5}
+                        >
+                          <FaRedo /> Reiniciar
+                        </button>
+                      </>
                     )}
+                  </div>
+                  <div className={styles.completeResetContainer}>
                     <button
-                      className={styles.countdownButton}
-                      onClick={handleReset45}
+                      className={`${styles.countdownButton} ${styles.buttonCompleteReset}`}
+                      onClick={handleCompleteReset}
                     >
-                      Reiniciar
+                      <FaRedo /> Reiniciar Todo
                     </button>
                   </div>
                 </div>
-
-                {/* 5-minute countdown */}
-                {firstCountdownCompleted && (
-                  <div className={styles.countdownBox}>
-                    <div className={styles.countdownTitle}>Tiempo Suplementario</div>
-                    <div className={styles.countdownDisplay}>
-                      {formatTime(timeRemaining5)}
-                    </div>
-                    <div className={styles.buttonGroup}>
-                      <button
-                        className={`${styles.countdownButton} ${isCountdown5Running ? styles.running : ''}`}
-                        onClick={() => {
-                          if (!isCountdown5Running && timeRemaining5 > 0) {
-                            setIsCountdown5Running(true);
-                          }
-                        }}
-                        disabled={isCountdown5Running || timeRemaining5 === 0}
-                      >
-                        {isCountdown5Running ? 'En progreso...' : 'Iniciar'}
-                      </button>
-                      {isCountdown5Running && (
-                        <button
-                          className={styles.countdownButton}
-                          onClick={handleStop5}
-                        >
-                          Detener
-                        </button>
-                      )}
-                      <button
-                        className={styles.countdownButton}
-                        onClick={handleReset5}
-                      >
-                        Reiniciar
-                      </button>
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
           </div>

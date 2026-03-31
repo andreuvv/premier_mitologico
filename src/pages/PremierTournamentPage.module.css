@@ -945,11 +945,14 @@
   background: var(--coal-grey);
   border: 2px solid var(--ocher);
   border-radius: 12px;
-  max-width: 900px;
-  width: 90%;
-  overflow-y: auto;
+  max-width: 90vw;
+  width: 90vw;
+  max-height: 90vh;
+  overflow: hidden;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   animation: slideUp 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes slideUp {
@@ -1004,16 +1007,29 @@
 .modalContent {
   padding: 2rem 1.5rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 2rem;
+  flex: 1;
+  overflow-y: auto;
 }
 
 /* Carousel */
 .carouselSection {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.carouselContainer {
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  width: 100%;
 }
 
 .carouselArrow {
@@ -1048,6 +1064,8 @@
   justify-content: center;
   align-items: center;
   min-height: 200px;
+  width: 100%;
+  min-width: 0;
 }
 
 .roundCard {
@@ -1056,6 +1074,9 @@
   padding: 1rem;
   text-align: center;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .roundCard h3 {
@@ -1150,59 +1171,148 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  flex: 1;
+  justify-content: flex-start;
 }
 
 .countdownBox {
   background: var(--dark-brown);
   border-radius: 8px;
-  padding: 1.5rem;
+  padding: 2.5rem;
   text-align: center;
+  border: 2px solid rgba(214, 156, 65, 0.3);
+  position: relative;
+}
+
+/* Timer corner for showing completed 45-minute timer */
+.timerCorner {
+  position: absolute;
+  top: 6rem;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid var(--ocher);
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.timerCornerLabel {
+  color: var(--ocher);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.timerCornerDisplay {
+  color: var(--ocher);
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1.5px;
+}
+
+.countdownBoxSmall {
+  transform: scale(0.7);
+  transform-origin: center;
+  opacity: 0.8;
+  padding: 1.5rem;
 }
 
 .countdownTitle {
   color: var(--beige);
-  font-size: 0.95rem;
+  font-size: 1.2rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   opacity: 0.8;
 }
 
 .countdownDisplay {
   background: rgba(0, 0, 0, 0.3);
   border-radius: 8px;
-  padding: 1.5rem;
-  font-size: 3rem;
+  padding: 3rem 2rem;
+  font-size: 5.5rem;
   font-weight: 700;
   color: var(--ocher);
   font-family: 'Courier New', monospace;
-  letter-spacing: 2px;
-  margin-bottom: 1rem;
+  letter-spacing: 4px;
+  margin-bottom: 2rem;
+  border: 3px solid var(--ocher);
 }
 
 .buttonGroup {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.completeResetContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(214, 156, 65, 0.3);
 }
 
 .countdownButton {
   background: transparent;
   border: 2px solid var(--ocher);
   color: var(--ocher);
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 2rem;
   border-radius: 4px;
   cursor: pointer;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.1rem;
   transition: all 0.2s ease;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
 }
 
-.countdownButton:hover:not(:disabled) {
+.buttonStart {
+  border-color: var(--sage-green);
+  color: var(--sage-green);
+}
+
+.buttonStart:hover:not(:disabled) {
+  background: var(--sage-green);
+  color: var(--dark-bg);
+}
+
+.buttonStop {
+  border-color: var(--petrol-blue);
+  color: var(--petrol-blue);
+}
+
+.buttonStop:hover:not(:disabled) {
+  background: var(--petrol-blue);
+  color: var(--dark-bg);
+}
+
+.buttonReset {
+  border-color: var(--brick-red);
+  color: var(--brick-red);
+}
+
+.buttonReset:hover:not(:disabled) {
+  background: var(--brick-red);
+  color: var(--dark-bg);
+}
+
+.buttonCompleteReset {
+  border-color: var(--ocher);
+  color: var(--ocher);
+}
+
+.buttonCompleteReset:hover:not(:disabled) {
   background: var(--ocher);
   color: var(--dark-bg);
 }
@@ -1213,24 +1323,72 @@
 }
 
 .countdownButton.running {
-  background: rgba(214, 156, 65, 0.2);
+  opacity: 0.7;
   animation: pulse 1.5s infinite;
 }
 
 @keyframes pulse {
   0%, 100% {
-    opacity: 1;
+    opacity: 0.7;
   }
   50% {
-    opacity: 0.6;
+    opacity: 1;
   }
 }
 
 /* Responsive - Tablet */
+@media (max-width: 1024px) {
+  .modal {
+    max-width: 95vw;
+    width: 95vw;
+    max-height: 95vh;
+  }
+
+  .modalContent {
+    flex-direction: column;
+  }
+
+  .carouselSection {
+    flex: none;
+  }
+
+  .countdownsSection {
+    flex: none;
+  }
+
+  .countdownDisplay {
+    font-size: 3.5rem;
+    padding: 2rem;
+  }
+
+  .timerCorner {
+    position: static;
+    background: transparent;
+    border: none;
+    padding: 0.5rem 0;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .timerCornerLabel {
+    font-size: 0.75rem;
+  }
+
+  .timerCornerDisplay {
+    font-size: 1.1rem;
+  }
+
+  .completeResetContainer {
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
+}
+
 @media (max-width: 768px) {
   .modal {
-    max-width: 90%;
-    width: 95%;
+    max-width: 95vw;
+    width: 95vw;
+    max-height: 95vh;
   }
 
   .matchesList {
@@ -1239,7 +1397,7 @@
 
   .countdownDisplay {
     font-size: 2.5rem;
-    padding: 1rem;
+    padding: 1.5rem;
   }
 
   .roundCard {

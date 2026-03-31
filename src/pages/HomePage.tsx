@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CountdownCard from '../components/CountdownCard';
 import MapCard from '../components/MapCard';
 import LatestBlogCard from '../components/LatestBlogCard';
@@ -12,6 +12,7 @@ import { tournamentConfig, isTournamentPast, getTournamentMonthYear, isTournamen
 import styles from './HomePage.module.css';
 
 const HomePage = () => {
+  const navigate = useNavigate();
   const [showSummaries, setShowSummaries] = useState(false);
   const [activeTab, setActiveTab] = useState<'torneo' | 'documentos' | 'blog' | 'banlist'>('torneo');
   const isPast = isTournamentPast();
@@ -81,7 +82,7 @@ const HomePage = () => {
           {/* Desktop Layout */}
           <div className={styles.desktopView}>
             <div className={styles.mainContentTop}>
-            <div className={styles.mainHeroSection}>
+            <div className={styles.mainHeroSection} onClick={() => navigate('/torneo-premier')} style={{ cursor: 'pointer' }}>
             {tournamentConfig.dateTentative && (
               <div className={styles.undefinedRibbon}>
                 Fecha y Ubicación aún NO definidas
@@ -117,24 +118,24 @@ const HomePage = () => {
                     : name.startsWith('PB') ? styles.formatBadgePB
                     : styles.formatBadge;
                   return (
-                    <Link key={format.name} to={format.link} className={`${styles.formatBadge} ${colorClass}`}>
+                    <Link key={format.name} to={format.link} className={`${styles.formatBadge} ${colorClass}`} onClick={(e) => e.stopPropagation()}>
                       {name}
                     </Link>
                   );
                 })}
-                <Link to={tournamentConfig.roundType.link} className={`${styles.formatBadge} ${styles.formatBadgeRound}`}>
+                <Link to={tournamentConfig.roundType.link} className={`${styles.formatBadge} ${styles.formatBadgeRound}`} onClick={(e) => e.stopPropagation()}>
                   {tournamentConfig.roundType.name}
                 </Link>
               </div>
 
               {isTodayTournament && (
                 <div className={styles.quickAccess}>
-                  <Link to="/fixture" className={styles.quickCard} style={{ backgroundColor: 'var(--sage-green)' }}>
+                  <Link to="/fixture" className={styles.quickCard} style={{ backgroundColor: 'var(--sage-green)' }} onClick={(e) => e.stopPropagation()}>
                     <FaChartBar className={styles.cardIcon} />
                     <span className={styles.cardText}>Fixture {monthYear}</span>
                     <span className={styles.cardSubtext}>Ver Emparejamientos</span>
                   </Link>
-                  <Link to="/standings" className={styles.quickCard} style={{ backgroundColor: 'var(--petrol-blue)' }}>
+                  <Link to="/standings" className={styles.quickCard} style={{ backgroundColor: 'var(--petrol-blue)' }} onClick={(e) => e.stopPropagation()}>
                     <FaTrophy className={styles.cardIcon} />
                     <span className={styles.cardText}>Standings {monthYear}</span>
                     <span className={styles.cardSubtext}>Ver Tabla de Posiciones</span>
@@ -173,7 +174,7 @@ const HomePage = () => {
                 </div>
               )}
 
-              <div className={styles.mobileHeroSection}>
+              <div className={styles.mobileHeroSection} onClick={() => navigate('/torneo-premier')} style={{ cursor: 'pointer' }}>
                 <div className={styles.logoSection}>
                   <div className={styles.logoContainer}>
                     <img 
@@ -204,24 +205,24 @@ const HomePage = () => {
                         : name.startsWith('PB') ? styles.formatBadgePB
                         : styles.formatBadge;
                       return (
-                        <Link key={format.name} to={format.link} className={`${styles.formatBadge} ${colorClass}`}>
+                        <Link key={format.name} to={format.link} className={`${styles.formatBadge} ${colorClass}`} onClick={(e) => e.stopPropagation()}>
                           {name}
                         </Link>
                       );
                     })}
-                    <Link to={tournamentConfig.roundType.link} className={`${styles.formatBadge} ${styles.formatBadgeRound}`}>
+                    <Link to={tournamentConfig.roundType.link} className={`${styles.formatBadge} ${styles.formatBadgeRound}`} onClick={(e) => e.stopPropagation()}>
                       {tournamentConfig.roundType.name}
                     </Link>
                   </div>
 
                   {isTodayTournament && (
                     <div className={styles.quickAccess}>
-                      <Link to="/fixture" className={styles.quickCard} style={{ backgroundColor: 'var(--sage-green)' }}>
+                      <Link to="/fixture" className={styles.quickCard} style={{ backgroundColor: 'var(--sage-green)' }} onClick={(e) => e.stopPropagation()}>
                         <FaChartBar className={styles.cardIcon} />
                         <span className={styles.cardText}>Fixture {monthYear}</span>
                         <span className={styles.cardSubtext}>Ver Emparejamientos</span>
                       </Link>
-                      <Link to="/standings" className={styles.quickCard} style={{ backgroundColor: 'var(--petrol-blue)' }}>
+                      <Link to="/standings" className={styles.quickCard} style={{ backgroundColor: 'var(--petrol-blue)' }} onClick={(e) => e.stopPropagation()}>
                         <FaTrophy className={styles.cardIcon} />
                         <span className={styles.cardText}>Standings {monthYear}</span>
                         <span className={styles.cardSubtext}>Ver Tabla de Posiciones</span>
