@@ -52,6 +52,7 @@ const CollectionPage = () => {
 
     setSearchParams(p => {
       const next = new URLSearchParams(p);
+      next.set('format', selectedFormat);
       if (params.edition) next.set('edition', params.edition); else next.delete('edition');
       if (params.product) next.set('product', params.product); else next.delete('product');
       if (params.q) next.set('q', params.q); else next.delete('q');
@@ -106,7 +107,7 @@ const CollectionPage = () => {
                 const next = new URLSearchParams();
                 next.set('format', format);
                 return next;
-              }, { replace: true });
+              });
             }}
           >
             {getFormatLabel(format)}
