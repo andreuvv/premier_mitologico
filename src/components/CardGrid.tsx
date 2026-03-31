@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './CardGrid.module.css';
 
 export interface SimpleCard {
   id: number;
+  slug: string;
   name: string;
   imageUrl: string;
   collectorCode: string;
@@ -17,11 +19,11 @@ export interface SimpleCard {
 
 interface CardGridProps {
   cards: SimpleCard[];
+  format: string;
   cardsPerPage?: number;
-  onCardClick?: (card: SimpleCard) => void;
 }
 
-export default function CardGrid({ cards, cardsPerPage = 100, onCardClick }: CardGridProps) {
+export default function CardGrid({ cards, format, cardsPerPage = 100 }: CardGridProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [paginatedCards, setPaginatedCards] = useState<SimpleCard[]>([]);
 
@@ -37,10 +39,10 @@ export default function CardGrid({ cards, cardsPerPage = 100, onCardClick }: Car
     <div className={styles.container}>
       <div className={styles.grid}>
         {paginatedCards.map((card) => (
-          <div
+          <Link
             key={card.id}
+            to={`/coleccion/carta/${format}/${card.id}/${card.slug}`}
             className={styles.cardItem}
-            onClick={() => onCardClick?.(card)}
           >
             {card.imageUrl ? (
               <img 
@@ -55,7 +57,7 @@ export default function CardGrid({ cards, cardsPerPage = 100, onCardClick }: Car
               <h4>{card.name}</h4>
               <span className={styles.cardCode}>{card.collectorCode}</span>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 

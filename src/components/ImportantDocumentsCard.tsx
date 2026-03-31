@@ -35,8 +35,8 @@ const ImportantDocumentsCard = () => {
             link: 'https://blog.myl.cl/wp-content/uploads/2026/02/Oraculo-Lootbox-PB-2025.pdf',
         },
         {
-            name: 'Explorando las Toolkit PB 2026',
-            link: 'https://blog.myl.cl/explorando-las-toolkit-pb-2026/',
+            name: 'Oráculo Toolkit PB 2026',
+            link: 'https://blog.myl.cl/wp-content/uploads/2026/03/Oraculo-Toolkit-PB-2026.pdf',
         },
       ],
     },

@@ -1,0 +1,245 @@
+import { useState, useEffect, useRef } from 'react';
+import { CollectionCard, CollectionFormat } from '../types/collection';
+import styles from './CollectionFilters.module.css';
+
+const PB_RACES = ['Caballero', 'Defensor', 'Desafiante', 'Dragon', 'Eterno', 'Faerie', 'Faraon', 'Heroe', 'Olimpico', 'Sacerdote', 'Sombra', 'Titan'];
+const FX_RACES = ['Ancestral', 'Barbaro', 'Bestia', 'Caballero', 'Dragon', 'Eterno', 'Guerrero', 'Heroe', 'Sacerdote', 'Sombra'];
+const CARD_TYPES = ['Aliado', 'Arma', 'Totem', 'Talisman', 'Oro'];
+
+export interface FilterParams {
+  edition: string | null;
+  product: string | null;
+  q: string | null;
+  type: string | null;
+  race: string | null;
+  freq: string | null;
+}
+
+interface CollectionFiltersProps {
+  allCards: CollectionCard[];
+  format: CollectionFormat;
+  isOpen: boolean;
+  onClose: () => void;
+  onFilterChange: (cards: CollectionCard[], params: FilterParams) => void;
+  initialEdition?: string | null;
+  initialProduct?: string | null;
+  initialSearch?: string | null;
+  initialType?: string | null;
+  initialRace?: string | null;
+  initialFreq?: string | null;
+}
+
+export default function CollectionFilters({
+  allCards, format, isOpen, onClose, onFilterChange,
+  initialEdition, initialProduct, initialSearch, initialType, initialRace, initialFreq,
+}: CollectionFiltersProps) {
+  const [edition, setEdition] = useState(initialEdition || '');
+  const [product, setProduct] = useState(initialProduct || '');
+  const [search, setSearch] = useState(initialSearch || '');
+  const [type, setType] = useState(initialType || '');
+  const [race, setRace] = useState(initialRace || '');
+  const [freq, setFreq] = useState(initialFreq || '');
+  const appliedInitialRef = useRef(false);
+
+  const isPB = format === CollectionFormat.PRIMER_BLOQUE;
+
+  // Derive options from loaded cards
+  const pbEditions = Array.from(new Map(
+    allCards.filter(c => c.edition?.name).map(c => [c.edition!.name, c.edition!.name])
+  ).values()).sort();
+
+  const fxEditions = Array.from(new Map(
+    allCards.filter(c => c.product?.productType === 'Edición').map(c => [c.product!.productName, c.product!.productName])
+  ).values()).sort();
+
+  const fxProducts = Array.from(new Map(
+    allCards.filter(c => c.product?.productType === 'Producto Especial').map(c => [c.product!.productName, c.product!.productName])
+  ).values()).sort();
+
+  const editionOptions = isPB ? pbEditions : fxEditions;
+
+  const frequencies = Array.from(new Set(
+    allCards.filter(c => c.frequency).map(c => c.frequency)
+  )).sort();
+
+  const races = isPB ? PB_RACES : FX_RACES;
+
+  const normalizeStr = (s: string) =>
+    s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+  const applyFilters = (e: string, p: string, s: string, t: string, r: string, f: string) => {
+    let filtered = allCards;
+
+    if (isPB) {
+      if (e) filtered = filtered.filter(c => c.edition?.name === e);
+    } else {
+      if (e) filtered = filtered.filter(c => c.product?.productName === e && c.product?.productType === 'Edición');
+      if (p) filtered = filtered.filter(c => c.product?.productName === p && c.product?.productType === 'Producto Especial');
+    }
+
+    if (s.trim()) filtered = filtered.filter(c => c.name.toLowerCase().includes(s.trim().toLowerCase()));
+    if (t) filtered = filtered.filter(c => c.type?.toUpperCase() === t.toUpperCase());
+    if (r) filtered = filtered.filter(c => c.race?.some(cr => normalizeStr(cr) === normalizeStr(r)));
+    if (f) filtered = filtered.filter(c => c.frequency === f);
+
+    onFilterChange(filtered, {
+      edition: e || null,
+      product: p || null,
+      q: s || null,
+      type: t || null,
+      race: r || null,
+      freq: f || null,
+    });
+  };
+
+  // Apply initial filter values once when cards are loaded
+  useEffect(() => {
+    if (appliedInitialRef.current || allCards.length === 0) return;
+    appliedInitialRef.current = true;
+    applyFilters(edition, product, search, type, race, freq);
+  }, [allCards]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const handleEditionChange = (val: string) => {
+    setEdition(val);
+    setProduct('');
+    applyFilters(val, '', search, type, race, freq);
+  };
+
+  const handleProductChange = (val: string) => {
+    setProduct(val);
+    setEdition('');
+    applyFilters('', val, search, type, race, freq);
+  };
+
+  const handleSearch = (val: string) => {
+    setSearch(val);
+    applyFilters(edition, product, val, type, race, freq);
+  };
+
+  const handleTypeClick = (val: string) => {
+    const newType = type === val ? '' : val;
+    const newRace = newType !== 'Aliado' ? '' : race;
+    setType(newType);
+    if (newType !== 'Aliado') setRace('');
+    applyFilters(edition, product, search, newType, newRace, freq);
+  };
+
+  const handleRaceChange = (val: string) => {
+    setRace(val);
+    applyFilters(edition, product, search, type, val, freq);
+  };
+
+  const handleFreqChange = (val: string) => {
+    setFreq(val);
+    applyFilters(edition, product, search, type, race, val);
+  };
+
+  const handleClear = () => {
+    setEdition(''); setProduct(''); setSearch('');
+    setType(''); setRace(''); setFreq('');
+    applyFilters('', '', '', '', '', '');
+  };
+
+  const hasFilters = !!(edition || product || search || type || race || freq);
+
+  return (
+    <aside className={`${styles.panel} ${isOpen ? styles.open : ''}`}>
+      <div className={styles.panelHeader}>
+        <span className={styles.panelTitle}>Filtros</span>
+        <div className={styles.panelActions}>
+          {hasFilters && (
+            <button className={styles.clearButton} onClick={handleClear}>Limpiar</button>
+          )}
+          <button className={styles.closeButton} onClick={onClose} aria-label="Cerrar filtros">✕</button>
+        </div>
+      </div>
+
+      <div className={styles.section}>
+        <label className={styles.label}>Edición</label>
+        <select
+          className={styles.select}
+          value={edition}
+          onChange={e => handleEditionChange(e.target.value)}
+        >
+          <option value="">Todas las ediciones</option>
+          {editionOptions.map(o => (
+            <option key={o} value={o}>{o}</option>
+          ))}
+        </select>
+      </div>
+
+      <div className={styles.section}>
+        <label className={`${styles.label} ${isPB ? styles.labelDisabled : ''}`}>
+          Producto Especial
+        </label>
+        <select
+          className={styles.select}
+          value={product}
+          disabled={isPB}
+          onChange={e => handleProductChange(e.target.value)}
+        >
+          <option value="">Todos los productos</option>
+          {fxProducts.map(p => (
+            <option key={p} value={p}>{p}</option>
+          ))}
+        </select>
+      </div>
+
+      <div className={styles.section}>
+        <label className={styles.label}>Buscar</label>
+        <input
+          type="text"
+          className={styles.searchInput}
+          placeholder="Nombre de carta..."
+          value={search}
+          onChange={e => handleSearch(e.target.value)}
+        />
+      </div>
+
+      <div className={styles.section}>
+        <label className={styles.label}>Tipo</label>
+        <div className={styles.typeButtons}>
+          {CARD_TYPES.map(t => (
+            <button
+              key={t}
+              className={`${styles.typeButton} ${type === t ? styles.typeButtonActive : ''}`}
+              onClick={() => handleTypeClick(t)}
+            >
+              {t}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {type === 'Aliado' && (
+        <div className={styles.section}>
+          <label className={styles.label}>Raza</label>
+          <select
+            className={styles.select}
+            value={race}
+            onChange={e => handleRaceChange(e.target.value)}
+          >
+            <option value="">Todas las razas</option>
+            {races.map(r => (
+              <option key={r} value={r}>{r}</option>
+            ))}
+          </select>
+        </div>
+      )}
+
+      <div className={styles.section}>
+        <label className={styles.label}>Frecuencia</label>
+        <select
+          className={styles.select}
+          value={freq}
+          onChange={e => handleFreqChange(e.target.value)}
+        >
+          <option value="">Todas las frecuencias</option>
+          {frequencies.map(f => (
+            <option key={f} value={f}>{f}</option>
+          ))}
+        </select>
+      </div>
+    </aside>
+  );
+}

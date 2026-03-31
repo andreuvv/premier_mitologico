@@ -1,0 +1,203 @@
+.panel {
+  width: 280px;
+  flex-shrink: 0;
+  background: var(--dark-brown);
+  border: 1px solid var(--ocher);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  height: fit-content;
+  position: sticky;
+  top: 1rem;
+}
+
+.panelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(214, 156, 65, 0.3);
+}
+
+.panelTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--beige);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.panelActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.clearButton {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: var(--brick-red);
+  color: var(--beige);
+  border: 1px solid var(--brick-red);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clearButton:hover {
+  background: transparent;
+  color: var(--brick-red);
+}
+
+.closeButton {
+  display: none;
+  background: none;
+  border: 1px solid #555;
+  color: var(--beige);
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.closeButton:hover {
+  border-color: var(--brick-red);
+  color: var(--brick-red);
+}
+
+/* Filter sections */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--beige);
+  opacity: 0.75;
+}
+
+.labelDisabled {
+  opacity: 0.35;
+}
+
+/* Selects — same style as BanlistPage formatSelector */
+.select {
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--ocher);
+  border-radius: 8px;
+  background-color: var(--coal-grey);
+  color: var(--beige);
+  font-size: 0.9rem;
+  cursor: pointer;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--petrol-blue);
+}
+
+.select:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  border-color: #555;
+}
+
+/* Search input */
+.searchInput {
+  padding: 0.5rem 0.75rem;
+  background: var(--coal-grey);
+  border: 2px solid var(--ocher);
+  border-radius: 8px;
+  color: var(--beige);
+  font-size: 0.9rem;
+  width: 100%;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.searchInput::placeholder {
+  color: rgba(241, 220, 174, 0.5);
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--petrol-blue);
+}
+
+/* Type buttons — like BanlistPage categoryTabs */
+.typeButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+}
+
+.typeButton {
+  padding: 0.45rem 0.5rem;
+  border: 2px solid var(--petrol-blue);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--beige);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.typeButton:hover {
+  background: rgba(75, 139, 163, 0.15);
+}
+
+.typeButtonActive {
+  background: var(--petrol-blue);
+  color: var(--beige);
+}
+
+/* Mobile */
+@media (max-width: 1200px) {
+  .panel {
+    width: 50%;
+    min-width: 260px;
+    background-color: var(--dark-brown);
+    border: none;
+    border-right: 1px solid #333;
+    border-radius: 0;
+    transform: translateX(-100%);
+    position: fixed;
+    top: 70px;
+    left: 0;
+    height: calc(100vh - 70px);
+    z-index: 202;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+    box-shadow: none;
+  }
+
+  .panel.open {
+    transform: translateX(0);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .closeButton {
+    display: flex;
+  }
+
+  .typeButtons {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

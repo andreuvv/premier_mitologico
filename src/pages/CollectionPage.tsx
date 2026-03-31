@@ -1,30 +1,30 @@
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { CollectionFormat, CollectionCard, CollectionCatalog } from '../types/collection';
 import { loadCollectionCards } from '../services/collectionService';
 import CardGrid, { type SimpleCard } from '../components/CardGrid';
-import CardDetailModal from '../components/CardDetailModal';
-import EditionSidebar from '../components/EditionSidebar';
-import PBEditionSidebar from '../components/PBEditionSidebar';
+import CollectionFilters, { type FilterParams } from '../components/CollectionFilters';
 import styles from './CollectionPage.module.css';
 
 const CollectionPage = () => {
-  const [selectedFormat, setSelectedFormat] = useState<CollectionFormat>(CollectionFormat.PRIMER_BLOQUE);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const [selectedFormat, setSelectedFormat] = useState<CollectionFormat>(
+    searchParams.get('format') === CollectionFormat.FURIA_EXTENDIDO
+      ? CollectionFormat.FURIA_EXTENDIDO
+      : CollectionFormat.PRIMER_BLOQUE
+  );
   const [allCards, setAllCards] = useState<CollectionCard[]>([]);
   const [filteredCards, setFilteredCards] = useState<SimpleCard[]>([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [sidebarFilteredCards, setSidebarFilteredCards] = useState<CollectionCard[]>([]);
-  const [activeFilterLabel, setActiveFilterLabel] = useState<string | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [selectedCard, setSelectedCard] = useState<SimpleCard | null>(null);
 
   useEffect(() => {
     setLoading(true);
+    setFilteredCards([]);
     loadCollectionCards(selectedFormat)
       .then((data: CollectionCatalog) => {
         setAllCards(data.data.CardCatalog.cards);
-        setSidebarFilteredCards(data.data.CardCatalog.cards);
-        setSearchTerm('');
         setLoading(false);
       })
       .catch(err => {
@@ -33,22 +33,10 @@ const CollectionPage = () => {
       });
   }, [selectedFormat]);
 
-  useEffect(() => {
-    setSidebarOpen(false);
-    setActiveFilterLabel(null);
-  }, [selectedFormat]);
-
-  useEffect(() => {
-    let filtered = sidebarFilteredCards;
-
-    if (searchTerm.trim()) {
-      filtered = filtered.filter(card =>
-        card.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }
-
-    const simpleCards = filtered.map(card => ({
+  const handleFilterChange = (cards: CollectionCard[], params: FilterParams) => {
+    const simpleCards = cards.map(card => ({
       id: card.id,
+      slug: card.slug,
       name: card.name,
       imageUrl: card.imageUrl,
       collectorCode: card.collectorCode,
@@ -61,45 +49,46 @@ const CollectionPage = () => {
       productName: card.product?.productName ?? card.edition?.name,
     }));
     setFilteredCards(simpleCards);
-  }, [searchTerm, sidebarFilteredCards]);
 
-  const handleFilterChange = (data: { cards: CollectionCard[], filterLabel: string | null }) => {
-    setSidebarFilteredCards(data.cards);
-    setActiveFilterLabel(data.filterLabel);
+    setSearchParams(p => {
+      const next = new URLSearchParams(p);
+      if (params.edition) next.set('edition', params.edition); else next.delete('edition');
+      if (params.product) next.set('product', params.product); else next.delete('product');
+      if (params.q) next.set('q', params.q); else next.delete('q');
+      if (params.type) next.set('type', params.type); else next.delete('type');
+      if (params.race) next.set('race', params.race); else next.delete('race');
+      if (params.freq) next.set('freq', params.freq); else next.delete('freq');
+      return next;
+    }, { replace: true });
   };
 
   const getFormatLabel = (format: CollectionFormat): string => {
     switch (format) {
-      case CollectionFormat.PRIMER_BLOQUE:
-        return 'Primer Bloque';
-      case CollectionFormat.FURIA_EXTENDIDO:
-        return 'Furia Extendido';
+      case CollectionFormat.PRIMER_BLOQUE: return 'Primer Bloque';
+      case CollectionFormat.FURIA_EXTENDIDO: return 'Furia Extendido';
     }
   };
+
+  // Only pass URL filter values back when the URL format matches the active tab.
+  const urlFormat = searchParams.get('format') ?? CollectionFormat.PRIMER_BLOQUE;
+  const matchesFormat = urlFormat === selectedFormat;
 
   return (
     <div className={styles.container}>
 
       <div className={styles.mobileHeader}>
-        <button 
+        <button
           className={styles.hamburger}
           onClick={() => setSidebarOpen(!sidebarOpen)}
-          aria-label="Toggle sidebar"
+          aria-label="Abrir filtros"
         >
           ☰
         </button>
-        <div className={styles.mobileHeaderContent}>
-          <h2 className={styles.mobileTitle}>{getFormatLabel(selectedFormat)}</h2>
-          {activeFilterLabel && !sidebarOpen && (
-            <div className={styles.mobileFilterBadge}>
-              {activeFilterLabel}
-            </div>
-          )}
-        </div>
+        <h2 className={styles.mobileTitle}>{getFormatLabel(selectedFormat)}</h2>
       </div>
 
       {sidebarOpen && (
-        <div 
+        <div
           className={styles.overlay}
           onClick={() => setSidebarOpen(false)}
         />
@@ -110,61 +99,46 @@ const CollectionPage = () => {
           <button
             key={format}
             className={`${styles.tab} ${selectedFormat === format ? styles.active : ''}`}
-            onClick={() => setSelectedFormat(format)}
+            onClick={() => {
+              setSelectedFormat(format);
+              setSidebarOpen(false);
+              setSearchParams(() => {
+                const next = new URLSearchParams();
+                next.set('format', format);
+                return next;
+              }, { replace: true });
+            }}
           >
             {getFormatLabel(format)}
           </button>
         ))}
       </div>
 
-      <div className={styles.searchContainer}>
-        <input
-          type="text"
-          placeholder="Buscar por nombre..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className={styles.searchInput}
-        />
-      </div>
-
       {loading ? (
         <div className={styles.loading}>Cargando cartas...</div>
       ) : (
         <div className={`${styles.content} ${styles.withSidebar}`}>
-          {selectedFormat === CollectionFormat.PRIMER_BLOQUE ? (
-            <>
-              <PBEditionSidebar 
-                key="pb-sidebar"
-                cards={allCards} 
-                onFilterChange={handleFilterChange}
-                isOpen={sidebarOpen}
-                onClose={() => setSidebarOpen(false)}
-              />
-              <CardGrid cards={filteredCards} onCardClick={setSelectedCard} />
-            </>
-          ) : (
-            <>
-              <EditionSidebar 
-                key="fx-sidebar"
-                cards={allCards} 
-                onFilterChange={handleFilterChange}
-                isOpen={sidebarOpen}
-                onClose={() => setSidebarOpen(false)}
-              />
-              <CardGrid cards={filteredCards} onCardClick={setSelectedCard} />
-            </>
-          )}
+          <CollectionFilters
+            key={selectedFormat}
+            allCards={allCards}
+            format={selectedFormat}
+            isOpen={sidebarOpen}
+            onClose={() => setSidebarOpen(false)}
+            onFilterChange={handleFilterChange}
+            initialEdition={matchesFormat ? searchParams.get('edition') : null}
+            initialProduct={matchesFormat ? searchParams.get('product') : null}
+            initialSearch={matchesFormat ? searchParams.get('q') : null}
+            initialType={matchesFormat ? searchParams.get('type') : null}
+            initialRace={matchesFormat ? searchParams.get('race') : null}
+            initialFreq={matchesFormat ? searchParams.get('freq') : null}
+          />
+          <CardGrid cards={filteredCards} format={selectedFormat} />
         </div>
       )}
 
       <div className={styles.stats}>
-        {searchTerm && `Búsqueda: "${searchTerm}" • `}
         Mostrando {filteredCards.length} de {allCards.length} cartas
       </div>
-
-      {selectedCard && (
-        <CardDetailModal card={selectedCard} onClose={() => setSelectedCard(null)} />
-      )}
     </div>
   );
 };
