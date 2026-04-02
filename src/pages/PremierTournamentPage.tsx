@@ -69,10 +69,8 @@ const PremierTournamentPage = () => {
     fetchFixture();
   }, []);
 
-  // Auto-refresh fixture data every 5 minutes when modal is open
+  // Auto-refresh fixture data every 1 minute and 30 seconds
   useEffect(() => {
-    if (!isModalOpen) return;
-
     const intervalId = setInterval(async () => {
       try {
         const data = await fixtureAPI.getFixture();
@@ -80,10 +78,10 @@ const PremierTournamentPage = () => {
       } catch (err) {
         console.error('Error refreshing fixture data:', err);
       }
-    }, 5 * 60 * 1000); // 5 minutes in milliseconds
+    }, 90 * 1000); // 90 seconds in milliseconds
 
     return () => clearInterval(intervalId);
-  }, [isModalOpen]);
+  }, []);
 
   // 45-minute countdown effect
   useEffect(() => {
@@ -152,10 +150,10 @@ const PremierTournamentPage = () => {
 
     fetchStandings();
 
-    // Set up auto-refresh every 15 minutes (900000 ms)
+    // Auto-refresh every 1 minute and 30 seconds (90000 ms)
     const intervalId = setInterval(() => {
       fetchStandings();
-    }, 900000);
+    }, 90 * 1000);
 
     return () => clearInterval(intervalId);
   }, []);
@@ -580,14 +578,6 @@ const PremierTournamentPage = () => {
               {/* Carousel - Left Column */}
               <div className={styles.carouselSection}>
                 <div className={styles.carouselContainer}>
-                  <button
-                    className={styles.carouselArrow}
-                    onClick={handlePrevRound}
-                    title="Ronda anterior"
-                  >
-                    <FaChevronLeft />
-                  </button>
-
                   <div className={styles.carouselDisplay}>
                   {fixtureData.rounds[carouselRoundIndex] && (
                     <div className={styles.roundCard}>
@@ -623,14 +613,22 @@ const PremierTournamentPage = () => {
                     </div>
                   )}
                 </div>
-
-                <button
-                  className={styles.carouselArrow}
-                  onClick={handleNextRound}
-                  title="Siguiente ronda"
-                >
-                  <FaChevronRight />
-                </button>
+                </div>
+                <div className={styles.carouselArrowsContainer}>
+                  <button
+                    className={styles.carouselArrow}
+                    onClick={handlePrevRound}
+                    title="Ronda anterior"
+                  >
+                    <FaChevronLeft />
+                  </button>
+                  <button
+                    className={styles.carouselArrow}
+                    onClick={handleNextRound}
+                    title="Siguiente ronda"
+                  >
+                    <FaChevronRight />
+                  </button>
                 </div>
               </div>
 
@@ -713,14 +711,16 @@ const PremierTournamentPage = () => {
                       </>
                     )}
                   </div>
-                  <div className={styles.completeResetContainer}>
-                    <button
-                      className={`${styles.countdownButton} ${styles.buttonCompleteReset}`}
-                      onClick={handleCompleteReset}
-                    >
-                      <FaRedo /> Reiniciar Todo
-                    </button>
-                  </div>
+                  {firstCountdownCompleted && (
+                    <div className={styles.completeResetContainer}>
+                      <button
+                        className={`${styles.countdownButton} ${styles.buttonCompleteReset}`}
+                        onClick={handleCompleteReset}
+                      >
+                        <FaRedo /> Reiniciar Todo
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
