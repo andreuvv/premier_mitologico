@@ -128,7 +128,8 @@ const HomePage = () => {
                 </Link>
               </div>
 
-              {isTodayTournament && (
+              
+              {/* {isTodayTournament && (
                 <div className={styles.quickAccess}>
                   <Link to="/fixture" className={styles.quickCard} style={{ backgroundColor: 'var(--sage-green)' }} onClick={(e) => e.stopPropagation()}>
                     <FaChartBar className={styles.cardIcon} />
@@ -141,7 +142,8 @@ const HomePage = () => {
                     <span className={styles.cardSubtext}>Ver Tabla de Posiciones</span>
                   </Link>
                 </div>
-              )}
+              )} */}
+              
             </div>
             </div>
 
@@ -215,7 +217,7 @@ const HomePage = () => {
                     </Link>
                   </div>
 
-                  {isTodayTournament && (
+                  {/* {isTodayTournament && (
                     <div className={styles.quickAccess}>
                       <Link to="/fixture" className={styles.quickCard} style={{ backgroundColor: 'var(--sage-green)' }} onClick={(e) => e.stopPropagation()}>
                         <FaChartBar className={styles.cardIcon} />
@@ -228,7 +230,7 @@ const HomePage = () => {
                         <span className={styles.cardSubtext}>Ver Tabla de Posiciones</span>
                       </Link>
                     </div>
-                  )}
+                  )} */}
                 </div>
               </div>
 
