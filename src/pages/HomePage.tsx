@@ -6,9 +6,9 @@ import LatestBlogCard from '../components/LatestBlogCard';
 import ImportantDocumentsCard from '../components/ImportantDocumentsCard';
 import FormatSummaryRow from '../components/FormatSummaryRow';
 import OnlineTournamentBanner from '../components/OnlineTournamentBanner';
-import { FaChartBar, FaTrophy, FaBook, FaBlog, FaGavel } from 'react-icons/fa';
+import {FaTrophy, FaBook, FaBlog, FaGavel } from 'react-icons/fa';
 import { banlistSummaries, lastUpdateMonth } from '../data/banlistSummary';
-import { tournamentConfig, isTournamentPast, getTournamentMonthYear, isTournamentDay } from '../config/tournamentConfig';
+import { tournamentConfig, isTournamentPast, getTournamentMonthYear } from '../config/tournamentConfig';
 import styles from './HomePage.module.css';
 
 const HomePage = () => {
@@ -16,7 +16,7 @@ const HomePage = () => {
   const [showSummaries, setShowSummaries] = useState(false);
   const [activeTab, setActiveTab] = useState<'torneo' | 'documentos' | 'blog' | 'banlist'>('torneo');
   const isPast = isTournamentPast();
-  const isTodayTournament = isTournamentDay();
+  /* const isTodayTournament = isTournamentDay(); */
   const monthYear = getTournamentMonthYear();
 
   return (
