@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { fixtureAPI, APIFixtureResponse, APIStanding } from '../services/fixtureAPI';
 import { getTournamentMonthYear, tournamentConfig } from '../config/tournamentConfig';
@@ -21,6 +21,8 @@ const getSubformatDisplayName = (subformat: string | undefined | null): string =
 const PremierTournamentPage = () => {
   const navigate = useNavigate();
   const { tab: tabParam } = useParams<{ tab?: string }>();
+  const scrollPositionRef = useRef(0);
+  
   const [activeTab, setActiveTab] = useState<Tab>(() => {
     if (tabParam === 'standings') return 'standings';
     if (tabParam === 'matriz') return 'matriz';
@@ -73,8 +75,12 @@ const PremierTournamentPage = () => {
   useEffect(() => {
     const intervalId = setInterval(async () => {
       try {
+        scrollPositionRef.current = window.scrollY;
         const data = await fixtureAPI.getFixture();
         setFixtureData(data);
+        requestAnimationFrame(() => {
+          window.scrollTo(0, scrollPositionRef.current);
+        });
       } catch (err) {
         console.error('Error refreshing fixture data:', err);
       }
@@ -152,7 +158,11 @@ const PremierTournamentPage = () => {
 
     // Auto-refresh every 1 minute and 30 seconds (90000 ms)
     const intervalId = setInterval(() => {
+      scrollPositionRef.current = window.scrollY;
       fetchStandings();
+      requestAnimationFrame(() => {
+        window.scrollTo(0, scrollPositionRef.current);
+      });
     }, 90 * 1000);
 
     return () => clearInterval(intervalId);
@@ -171,6 +181,41 @@ const PremierTournamentPage = () => {
       }
       return 0;
     });
+  };
+
+  interface RecordByType {
+    libre: { wins: number; ties: number; losses: number };
+    edicion: { wins: number; ties: number; losses: number };
+  }
+
+  const calculateRecordByRoundType = (playerName: string): RecordByType => {
+    const record: RecordByType = {
+      libre: { wins: 0, ties: 0, losses: 0 },
+      edicion: { wins: 0, ties: 0, losses: 0 }
+    };
+
+    if (!fixtureData) return record;
+
+    fixtureData.rounds.forEach(round => {
+      const isLibre = round.subformat === 'PBRL' || round.subformat === 'BFRL';
+      const targetRecord = isLibre ? record.libre : record.edicion;
+
+      round.matches.forEach(match => {
+        if (match.score1 === null || match.score2 === null) return;
+
+        if (match.player1_name === playerName) {
+          if (match.score1 > match.score2) targetRecord.wins++;
+          else if (match.score1 < match.score2) targetRecord.losses++;
+          else targetRecord.ties++;
+        } else if (match.player2_name === playerName) {
+          if (match.score2 > match.score1) targetRecord.wins++;
+          else if (match.score2 < match.score1) targetRecord.losses++;
+          else targetRecord.ties++;
+        }
+      });
+    });
+
+    return record;
   };
 
   const currentRound = fixtureData?.rounds.find(r => r.number === selectedRound);
@@ -384,7 +429,7 @@ const PremierTournamentPage = () => {
                 {lastUpdated && (
                   <div style={{ fontSize: '0.9rem', color: '#888', textAlign: 'right' }}>
                     <div>Actualizado: {lastUpdated.toLocaleTimeString('es-ES')}</div>
-                    <div style={{ fontSize: '0.8rem', color: '#666' }}>Se actualiza cada 15 minutos</div>
+                    <div style={{ fontSize: '0.8rem', color: '#666' }}>Se actualiza cada 1:30 minutos</div>
                   </div>
                 )}
               </div>
@@ -395,14 +440,16 @@ const PremierTournamentPage = () => {
                     <tr>
                       <th className={styles.posColumn}>Pos.</th>
                       <th className={styles.nameColumn}>Jugador</th>
-                      <th>RJ</th>
-                      <th>G</th>
-                      <th>E</th>
-                      <th>P</th>
-                      <th>TPG</th>
-                      <th>MWR%</th>
-                      <th>RWR%</th>
-                      <th>Pts</th>
+                      <th title="Rondas Jugadas">RJ</th>
+                      <th title="Rondas Ganadas">G</th>
+                      <th title="Rondas Empatadas">E</th>
+                      <th title="Rondas Perdidas">P</th>
+                      <th title="Total Partidas Ganadas (partidas individuales ganadas)">TPG</th>
+                      <th title="Record en rondas Racial Libre (Victorias-Empates-Derrotas)">Record Libre</th>
+                      <th title="Record en rondas Racial Edición/VCR (Victorias-Empates-Derrotas)">Record Edición/VCR</th>
+                      <th title="Matches Win Rate: (Partidas ganadas / Partidas jugadas) * 100">MWR%</th>
+                      <th title="Rounds Win Rate: ((Rondas ganadas + Rondas empatadas * 0.5) / Rondas Jugadas) * 100">RWR%</th>
+                      <th title="Puntos (3 por victoria, 1 por empate)">Pts</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -416,6 +463,8 @@ const PremierTournamentPage = () => {
                       const roundWinRate = totalRounds > 0
                         ? (((player.wins + player.ties * 0.5) / totalRounds) * 100).toFixed(1)
                         : '0.0';
+                      
+                      const recordByType = calculateRecordByRoundType(player.name);
                       
                       return (
                         <tr key={player.id} className={position <= 3 ? styles.topThree : ''}>
@@ -438,6 +487,20 @@ const PremierTournamentPage = () => {
                           <td className={styles.tiesColumn}>{player.ties}</td>
                           <td className={styles.lossesColumn}>{player.losses}</td>
                           <td className={styles.totalVictoriesColumn}>{player.total_points_scored}</td>
+                          <td className={styles.recordCell}>
+                            <span className={styles.recordWins}>{recordByType.libre.wins}</span>
+                            <span className={styles.recordSeparator}>-</span>
+                            <span className={styles.recordTies}>{recordByType.libre.ties}</span>
+                            <span className={styles.recordSeparator}>-</span>
+                            <span className={styles.recordLosses}>{recordByType.libre.losses}</span>
+                          </td>
+                          <td className={styles.recordCell}>
+                            <span className={styles.recordWins}>{recordByType.edicion.wins}</span>
+                            <span className={styles.recordSeparator}>-</span>
+                            <span className={styles.recordTies}>{recordByType.edicion.ties}</span>
+                            <span className={styles.recordSeparator}>-</span>
+                            <span className={styles.recordLosses}>{recordByType.edicion.losses}</span>
+                          </td>
                           <td className={styles.winRateColumn}>{matchWinRate}%</td>
                           <td className={styles.winRateColumn}>{roundWinRate}%</td>
                           <td className={styles.pointsColumn}>{player.points}</td>
@@ -456,6 +519,8 @@ const PremierTournamentPage = () => {
                   <li><strong>E:</strong> Rondas Empatadas</li>
                   <li><strong>P:</strong> Rondas Perdidas</li>
                   <li><strong>TPG:</strong> Total Partidas Ganadas (partidas individuales ganadas)</li>
+                  <li><strong>Record Libre:</strong> Record en rondas Racial Libre (Victorias-Empates-Derrotas)</li>
+                  <li><strong>Record Edición/VCR:</strong> Record en rondas Racial Edición/VCR (Victorias-Empates-Derrotas)</li>
                   <li><strong>MWR%:</strong> Matches Win Rate ( (Partidas ganadas / Partidas jugadas) * 100 )</li>
                   <li><strong>RWR%:</strong> Rounds Win Rate ( ((Rondas ganadas + Rondas empatadas * 0.5) / Rondas Jugadas) * 100 )</li>
                   <li><strong>Pts:</strong> Puntos (3 por victoria, 1 por empate)</li>

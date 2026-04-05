@@ -303,8 +303,9 @@
 
 /* Standings Styles */
 .standingsWrapper {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .title {
@@ -340,6 +341,41 @@
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  cursor: help;
+  position: relative;
+}
+
+.standingsTable th:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.95);
+  color: var(--beige);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  white-space: normal;
+  max-width: 250px;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--sage-green);
+  text-transform: none;
+  letter-spacing: normal;
+  pointer-events: none;
+}
+
+.standingsTable th:hover::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.95);
+  z-index: 1000;
+  pointer-events: none;
 }
 
 .standingsTable tbody tr {
@@ -381,11 +417,13 @@
 }
 
 .winsColumn {
+  background-color: #3a3a3a;
   color: var(--sage-green) !important;
   font-weight: 600;
 }
 
 .tiesColumn {
+  background-color: #3a3a3a;
   color: var(--ocher) !important;
   font-weight: 600;
 }
@@ -402,8 +440,37 @@
 }
 
 .lossesColumn {
+  background-color: #3a3a3a;
   color: var(--brick-red) !important;
   font-weight: 600;
+}
+
+.recordCell {
+  font-weight: 600;
+  white-space: nowrap;
+  font-size: 0.95rem;
+  letter-spacing: -0.5px;
+}
+
+.recordWins {
+  color: var(--sage-green) !important;
+  font-weight: 700;
+}
+
+.recordTies {
+  color: var(--ocher) !important;
+  font-weight: 700;
+}
+
+.recordLosses {
+  color: var(--brick-red) !important;
+  font-weight: 700;
+}
+
+.recordSeparator {
+  color: var(--beige);
+  opacity: 0.7;
+  margin: 0 0.15rem;
 }
 
 .pointsColumn {
