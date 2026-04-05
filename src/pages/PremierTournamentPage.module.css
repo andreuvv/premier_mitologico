@@ -95,7 +95,7 @@
 /* Container */
 .container {
   max-width: 100%;
-  padding: 1rem 1rem 2rem;
+  /*padding: 1rem 1rem 2rem; */
 }
 
 /* Common Styles */
@@ -861,12 +861,17 @@
   }
 
   .standingsTable {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
 
   .standingsTable th,
   .standingsTable td {
     padding: 0.5rem 0.25rem;
+    font-size: 0.7rem;
+  }
+
+  .recordCell {
+    font-size: 0.7rem;
   }
 
   .posColumn {
@@ -874,7 +879,7 @@
   }
 
   .nameColumn {
-    min-width: 100px;
+    min-width: 80px;
     font-size: 0.8rem;
   }
 
@@ -938,17 +943,22 @@
   }
 
   .standingsTable {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
 
   .standingsTable th,
   .standingsTable td {
     padding: 0.4rem 0.15rem;
+    font-size: 0.65rem;
+  }
+
+  .recordCell {
+    font-size: 0.65rem;
   }
 
   .nameColumn {
-    min-width: 80px;
-    font-size: 0.75rem;
+    min-width: 60px;
+    font-size: 0.65rem;
   }
 
   .legend ul {
