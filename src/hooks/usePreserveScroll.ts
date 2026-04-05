@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useCallback } from 'react';
 
 /**
  * Hook que proporciona métodos para preservar la posición del scroll durante actualizaciones
@@ -7,21 +7,13 @@ import { useRef } from 'react';
 export const usePreserveScroll = () => {
   const scrollPositionRef = useRef(0);
 
-  const saveScrollPosition = () => {
+  const withScrollPreservation = useCallback(async (asyncFn: () => Promise<void>) => {
     scrollPositionRef.current = window.scrollY;
-  };
-
-  const restoreScrollPosition = () => {
+    await asyncFn();
     requestAnimationFrame(() => {
       window.scrollTo(0, scrollPositionRef.current);
     });
-  };
+  }, []);
 
-  const withScrollPreservation = async (asyncFn: () => Promise<void>) => {
-    saveScrollPosition();
-    await asyncFn();
-    restoreScrollPosition();
-  };
-
-  return { saveScrollPosition, restoreScrollPosition, withScrollPreservation };
+  return { withScrollPreservation };
 };
