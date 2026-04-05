@@ -1,7 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { fixtureAPI, APIFixtureResponse, APIStanding } from '../services/fixtureAPI';
 import { getTournamentMonthYear, tournamentConfig } from '../config/tournamentConfig';
+import { usePreserveScroll } from '../hooks/usePreserveScroll';
 import { FaHandRock, FaFire, FaTrophy, FaMedal, FaThLarge, FaListOl, FaClock, FaChevronLeft, FaChevronRight, FaPlay, FaPause, FaRedo } from 'react-icons/fa';
 import styles from './PremierTournamentPage.module.css';
 
@@ -21,7 +22,7 @@ const getSubformatDisplayName = (subformat: string | undefined | null): string =
 const PremierTournamentPage = () => {
   const navigate = useNavigate();
   const { tab: tabParam } = useParams<{ tab?: string }>();
-  const scrollPositionRef = useRef(0);
+  const { withScrollPreservation } = usePreserveScroll();
   
   const [activeTab, setActiveTab] = useState<Tab>(() => {
     if (tabParam === 'standings') return 'standings';
@@ -74,20 +75,18 @@ const PremierTournamentPage = () => {
   // Auto-refresh fixture data every 1 minute and 30 seconds
   useEffect(() => {
     const intervalId = setInterval(async () => {
-      try {
-        scrollPositionRef.current = window.scrollY;
-        const data = await fixtureAPI.getFixture();
-        setFixtureData(data);
-        requestAnimationFrame(() => {
-          window.scrollTo(0, scrollPositionRef.current);
-        });
-      } catch (err) {
-        console.error('Error refreshing fixture data:', err);
-      }
+      await withScrollPreservation(async () => {
+        try {
+          const data = await fixtureAPI.getFixture();
+          setFixtureData(data);
+        } catch (err) {
+          console.error('Error refreshing fixture data:', err);
+        }
+      });
     }, 90 * 1000); // 90 seconds in milliseconds
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [withScrollPreservation]);
 
   // 45-minute countdown effect
   useEffect(() => {
@@ -158,15 +157,11 @@ const PremierTournamentPage = () => {
 
     // Auto-refresh every 1 minute and 30 seconds (90000 ms)
     const intervalId = setInterval(() => {
-      scrollPositionRef.current = window.scrollY;
-      fetchStandings();
-      requestAnimationFrame(() => {
-        window.scrollTo(0, scrollPositionRef.current);
-      });
+      withScrollPreservation(fetchStandings);
     }, 90 * 1000);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [withScrollPreservation]);
 
   const sortStandings = (data: APIStanding[]): APIStanding[] => {
     return [...data].sort((a, b) => {
