@@ -27,10 +27,10 @@ export interface TournamentConfig {
 }
 
 export const tournamentConfig: TournamentConfig = {
-  name: 'Furia más Furia - Cumple Timmy!',
-  date: '2026-04-03',
+  name: 'PREMIER PB MAYO 2026',
+  date: '2026-05-01',
   time: '14:00',
-  dateTentative: false, // Set to true to show the ribbon
+  dateTentative: true, // Set to true to show the ribbon
   //location: {
   //  name: "Weshes",
   //  address: 'Jorge Quevedo 5464, Macul, Santiago',
@@ -43,14 +43,14 @@ export const tournamentConfig: TournamentConfig = {
   },
   formats: [
     {
-      name: 'Furia Extendido Racial Libre',
-      shortName: 'FX Racial Libre',
-      link: '/game-formats/bloqueFuria/bloqueFuriaRacialLibre',
+      name: 'Primer Bloque Racial Libre',
+      shortName: 'PB Racial Libre',
+      link: '/game-formats/primerBloque/primerBloqueRacialLibre',
     },
     {
-      name: 'Furia Extendido Racial VCR',
-      shortName: 'FX Racial VCR',
-      link: '/game-formats/formatosEspeciales/vcr',
+      name: 'Primer Bloque Racial Edición',
+      shortName: 'PB Racial Edición',
+      link: '/game-formats/primerBloque/primerBloqueRacialEdicion',
     },
   ],
   roundType: {
