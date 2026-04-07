@@ -11,8 +11,8 @@ El formato **Bloque Furia Racial Libre** permite construir mazos utilizando cart
 ### 👥 Requisito Racial
 
 - Debes elegir **una raza de Aliados** de cualquiera de las ediciones y/o productos especiales del bloque.
-- Tu mazo debe contener **al menos 16 aliados de la misma raza**.
-- ⚠️ **Importante:** Los **tótem cuentan como aliados** para este límite de 16 cartas.
+- Tu mazo debe contener **al menos 16 aliados de la misma raza**, o **al menos 16 totems**
+- Si tu mazo es principalmente **Totems**, igual los **Aliados** que estén en el mazo deben ser de la **misma raza**.
 
 ### 🛡️ Cartas de Soporte
 

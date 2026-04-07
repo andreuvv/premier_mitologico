@@ -27,7 +27,7 @@ export interface TournamentConfig {
 }
 
 export const tournamentConfig: TournamentConfig = {
-  name: 'PREMIER PB MAYO 2026',
+  name: 'PREMIER DE LOS K - PB -',
   date: '2026-05-01',
   time: '14:00',
   dateTentative: true, // Set to true to show the ribbon
