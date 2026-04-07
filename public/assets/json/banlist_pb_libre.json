@@ -1,6 +1,6 @@
 {
   "format": "Primer Bloque Racial Libre",
-  "lastUpdated": "2026-03-04",
+  "lastUpdated": "2026-04-06",
   "banned": [
     {
       "name": "Curandera",
@@ -21,12 +21,6 @@
       "cardUrl": "https://mazos.cl/card/2639/joyero"
     },
     {
-      "name": "Felipe II",
-      "type": "Aliado",
-      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Felipe-ii-real.png-1764035983821",
-      "cardUrl": "https://mazos.cl/card/5210/felipe-ii"
-    },
-    {
       "name": "Duendes",
       "type": "Aliado",
       "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/035-AESX-Duendes-MazosCL.png",
@@ -43,18 +37,6 @@
       "type": "Totem",
       "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Totem-de-nwyre-cortesano.png-1763463422504",
       "cardUrl": "https://mazos.cl/card/2044/totem-de-nwyre"
-    },
-    {
-      "name": "Eolo",
-      "type": "Aliado",
-      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/030-AHE-Eolo-MazosCL.png",
-      "cardUrl": "https://mazos.cl/card/3176/eolo"
-    },
-    {
-      "name": "Marco Antonio",
-      "type": "Aliado",
-      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/017-AHE-Marco-Antonio-MazosCL.png",
-      "cardUrl": "https://mazos.cl/card/3163/marco-antonio"
     },
     {
       "name": "Red de Aracne",
@@ -97,15 +79,27 @@
       "type": "Aliado",
       "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/232-ARA-Absalon-MazosCL.png",
       "cardUrl": "https://mazos.cl/card/4961/absalon"
+    },
+    {
+      "name": "Traficante de Esclavos",
+      "type": "Talisman",
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/200-LPB23-Traficantes-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/3825/traficantes-de-esclavos"
+    },
+    {
+      "name": "Urisk",
+      "type": "Aliado",
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/199-LPB23-Urisk-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/3824/urisk"
+    },
+    {
+      "name": "Yelmo Alejandrino",
+      "type": "Arma",
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/161-ARA-Yelmo-Alejandrino-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/4890/yelmo-alejandrino"
     }
   ],
   "limitedX1": [
-    {
-      "name": "Mercaderes",
-      "type": "Oro",
-      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Mercaderes-real.png-1764036016311",
-      "cardUrl": "https://mazos.cl/card/5211/mercaderes"
-    },
     {
       "name": "Aceite de Oliva",
       "type": "Oro",
@@ -155,22 +149,10 @@
       "cardUrl": "https://mazos.cl/card/3566/qer-her"
     },
     {
-      "name": "País sin Luz",
-      "type": "Talisman",
-      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/026-AHD-Pais-sin-Luz-MazosCL.png",
-      "cardUrl": "https://mazos.cl/card/4027/pais-sin-luz"
-    },
-    {
       "name": "Bas-Pef",
       "type": "Talisman",
       "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/181-ARA-Bas-Pef-MazosCL.png",
       "cardUrl": "https://mazos.cl/card/4910/bas-pef"
-    },
-    {
-      "name": "Gruagash",
-      "type": "Aliado",
-      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-KitExtension/cartas/051-Gruagash.png",
-      "cardUrl": "https://mazos.cl/card/2012/gruagash"
     },
     {
       "name": "Nuh",
@@ -225,21 +207,39 @@
       "type": "Arma",
       "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/268-ARA-Daga-de-Bote-MazosCL.png",
       "cardUrl": "https://mazos.cl/card/4997/daga-de-bote"
+    },
+    {
+      "name": "Eolo",
+      "type": "Aliado",
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/030-AHE-Eolo-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/3176/eolo"
+    },
+    {
+      "name": "Felipe II",
+      "type": "Aliado",
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Felipe-ii-real.png-1764035983821",
+      "cardUrl": "https://mazos.cl/card/5210/felipe-ii"
+    },
+    {
+      "name": "Marco Antonio",
+      "type": "Aliado",
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/017-AHE-Marco-Antonio-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/3163/marco-antonio"
+    },
+    {
+      "name": "Ptolomeo II",
+      "type": "Aliado",
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/083-ARA-Ptolomeo-II-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/4812/ptolomeo-ii"
+    },
+    {
+      "name": "Abu Simbel",
+      "type": "Totem",
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/29-Toolkit2026/cartas/028-TKPB26-Abu-Simbel-MazosCL.webp",
+      "cardUrl": "https://mazos.cl/card/12723/abu-simbel"
     }
   ],
   "limitedX2": [
-    {
-      "name": "Monte Kilgharrah",
-      "type": "Totem",
-      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/023-AESX-Monte-Kilgharrah-MazosCL.png",
-      "cardUrl": "https://mazos.cl/card/2979/monte-kilgharrah"
-    },
-    {
-      "name": "Panteón",
-      "type": "Totem",
-      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/026-AHE-Pantein-MazosCL.png",
-      "cardUrl": "https://mazos.cl/card/3172/panteon"
-    },
     {
       "name": "Morir de Pie",
       "type": "Talisman",
@@ -335,12 +335,6 @@
       "type": "Aliado",
       "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Duque-godofredo-promocional.png-1764033213108",
       "cardUrl": "https://mazos.cl/card/5183/duque-godofredo"
-    },
-    {
-      "name": "Ptolomeo II",
-      "type": "Aliado",
-      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/083-ARA-Ptolomeo-II-MazosCL.png",
-      "cardUrl": "https://mazos.cl/card/4812/ptolomeo-ii"
     }
   ]
 }

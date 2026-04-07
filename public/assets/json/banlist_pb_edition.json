@@ -1,6 +1,6 @@
 {
   "format": "Primer Bloque Racial Edición",
-  "lastUpdated": "2026-03-04",
+  "lastUpdated": "2026-04-06",
   "banned": [
     {
       "name": "Ataque a Traición",
@@ -31,12 +31,6 @@
       "type": "Talisman",
       "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/135-AHE-Red-de-Aracne-MazosCL.png",
       "cardUrl": "https://mazos.cl/card/3281/red-de-aracne"
-    },
-    {
-      "name": "Avalon",
-      "type": "Totem",
-      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/17-Lootbox3/cartas/054-Avalon-MazosCL.png",
-      "cardUrl": "https://mazos.cl/card/3588/avalon"
     },
     {
       "name": "Guiza",
@@ -139,6 +133,12 @@
       "type": "Aliado",
       "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/199-LPB23-Urisk-MazosCL.png",
       "cardUrl": "https://mazos.cl/card/3824/urisk"
+    },
+    {
+      "name": "Kernuac el Cazador",
+      "type": "Aliado",
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/074-Kernuac-el-Cazador-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/2568/kernuac-el-cazador"
     }
   ],
   "limitedX1": [
@@ -165,12 +165,6 @@
       "type": "Aliado",
       "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/038-ARA-Baal-zaphon-MazosCL.png",
       "cardUrl": "https://mazos.cl/card/4767/baal-zaphon"
-    },
-    {
-      "name": "Helios",
-      "type": "Aliado",
-      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/22-Lootbox24/cartas/039-LB24-Helios-MazosCL.png",
-      "cardUrl": "https://mazos.cl/card/4524/helios"
     },
     {
       "name": "Carmix",
@@ -251,12 +245,6 @@
       "cardUrl": "https://mazos.cl/card/4746/jinetes-de-fuego"
     },
     {
-      "name": "Morir de Pie",
-      "type": "Talisman",
-      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/relatos/007-AHDX-Morir-de-Pie-MazosCL.png",
-      "cardUrl": "https://mazos.cl/card/4612/morir-de-pie"
-    },
-    {
       "name": "Yelmo Alejandrino",
       "type": "Arma",
       "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/161-ARA-Yelmo-Alejandrino-MazosCL.png",
@@ -321,6 +309,12 @@
       "type": "Talisman",
       "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/28-Lootbox25/cartas/028-LBPB25-La-Llama-fria-MazosCL.png",
       "cardUrl": "https://mazos.cl/card/8861/la-llama-fria"
+    },
+    {
+      "name": "Avalon",
+      "type": "Totem",
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/17-Lootbox3/cartas/054-Avalon-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/3588/avalon"
     }
   ],
   "limitedX2": [
@@ -353,12 +347,6 @@
       "type": "Talisman",
       "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/23-Toolkit25/cartas/018-TKPB25-Red-de-Plata-MazosCL.png",
       "cardUrl": "https://mazos.cl/card/4589/red-de-plata"
-    },
-    {
-      "name": "País sin Luz",
-      "type": "Talisman",
-      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/026-AHD-Pais-sin-Luz-MazosCL.png",
-      "cardUrl": "https://mazos.cl/card/4027/pais-sin-luz"
     },
     {
       "name": "Qadesh",
@@ -449,6 +437,24 @@
       "type": "Aliado",
       "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/295-ARA-Kamose-el-Guerrero-MazosCL.png",
       "cardUrl": "https://mazos.cl/card/5024/kamose-el-guerrero"
+    },
+    {
+      "name": "Morir de Pie",
+      "type": "Talisman",
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/relatos/007-AHDX-Morir-de-Pie-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/4612/morir-de-pie"
+    },
+    {
+      "name": "Helios",
+      "type": "Aliado",
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/22-Lootbox24/cartas/039-LB24-Helios-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/4524/helios"
+    },
+    {
+      "name": "Mineros del Lapislázuli",
+      "type": "Oro",
+      "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/385-ARA-Mineros-de-Lapislazuli-MazosCL.png",
+      "cardUrl": "https://mazos.cl/card/5128/mineros-del-lapislazuli"
     }
   ]
 }

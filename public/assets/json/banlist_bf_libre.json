@@ -1,18 +1,12 @@
 {
   "format": "Bloque Furia Racial Libre",
-  "lastUpdated": "2026-03-04",
+  "lastUpdated": "2026-04-06",
   "banned": [
     {
       "name": "Moñai",
       "type": "Aliado",
       "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/055-GUE-Monai-MazosCL.webp",
       "cardUrl": "https://mazos.cl/card/10340/monai"
-    },
-    {
-      "name": "Humbaba",
-      "type": "Aliado",
-      "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/06-Daana/promos/181-GUA-Humbaba-MazosCL.webp",
-      "cardUrl": "https://mazos.cl/card/10858/humbaba"
     },
     {
       "name": "Traición de Efialtes",
@@ -57,10 +51,16 @@
       "cardUrl": "https://mazos.cl/card/10297/camahueto"
     },
     {
-      "name": "Dragón Fomoriano",
+      "name": "Enki",
       "type": "Aliado",
-      "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/06-Daana/promos/175-GUA-Dragon-Fomoriano-MazosCL.webp",
-      "cardUrl": "https://mazos.cl/card/10852/dragon-fomoriano"
+      "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/10-Leyendas2/numeradas/316.webp",
+      "cardUrl": "https://mazos.cl/card/12645/enki"
+    },
+    {
+      "name": "Corte Terrenal",
+      "type": "Totem",
+      "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/10-Leyendas2/numeradas/307.webp",
+      "cardUrl": "https://mazos.cl/card/12636/corte-terrenal"
     }
   ],
   "limitedX1": [
@@ -83,22 +83,28 @@
       "cardUrl": "https://mazos.cl/card/10855/crear-dragon"
     },
     {
-      "name": "Cangrejo Cazador",
-      "type": "Aliado",
-      "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/06-Daana/cartas/037-GUA-Cangrejo-Cazador-MazosCL.webp",
-      "cardUrl": "https://mazos.cl/card/10639/cangrejo-cazador"
-    },
-    {
       "name": "Reanimar",
       "type": "Talisman",
       "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/10-Leyendas2/cartas-nombre/079-LBF2-Reanimar-MazosCL.webp",
       "cardUrl": "https://mazos.cl/card/12408/reanimar"
     },
     {
-      "name": "Takam",
+      "name": "Humbaba",
       "type": "Aliado",
-      "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/10-Leyendas2/cartas-nombre/104-LBF2-Takam-MazosCL.webp",
-      "cardUrl": "https://mazos.cl/card/12433/takam"
+      "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/06-Daana/promos/181-GUA-Humbaba-MazosCL.webp",
+      "cardUrl": "https://mazos.cl/card/10858/humbaba"
+    },
+    {
+      "name": "Dragón Fomoriano",
+      "type": "Aliado",
+      "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/06-Daana/promos/175-GUA-Dragon-Fomoriano-MazosCL.webp",
+      "cardUrl": "https://mazos.cl/card/10852/dragon-fomoriano"
+    },
+    {
+      "name": "Tribunal Eterno",
+      "type": "Totem",
+      "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/10-Leyendas2/numeradas/315.webp",
+      "cardUrl": "https://mazos.cl/card/12644/tribunal-eterno"
     }
   ],
   "limitedX2": [
@@ -119,6 +125,18 @@
       "type": "Aliado",
       "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/10-Leyendas2/cartas-nombre/124-LBF2-Surt-MazosCL.webp",
       "cardUrl": "https://mazos.cl/card/12453/surt"
+    },
+    {
+      "name": "Takam",
+      "type": "Aliado",
+      "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/10-Leyendas2/cartas-nombre/104-LBF2-Takam-MazosCL.webp",
+      "cardUrl": "https://mazos.cl/card/12433/takam"
+    },
+    {
+      "name": "Cangrejo Cazador",
+      "type": "Aliado",
+      "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/06-Daana/cartas/037-GUA-Cangrejo-Cazador-MazosCL.webp",
+      "cardUrl": "https://mazos.cl/card/10639/cangrejo-cazador"
     }
   ]
 }
