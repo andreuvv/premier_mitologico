@@ -28,9 +28,9 @@ export const banlistSummaries: Record<BanListFormat, FormatSummary[]> = {
     { card: 'Yelmo Alejandrino', pastMonth: 'Liberado', currentMonth: 'Baneada', changeType: 'negative', imageUrl: 'https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/161-ARA-Yelmo-Alejandrino-MazosCL.png'},
   ],
   [BanListFormat.PRIMER_BLOQUE_EDICION]: [
+    { card: 'País sin Luz', pastMonth: 'Limitada x2', currentMonth: 'Liberado', changeType: 'positive', imageUrl: 'https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/026-AHD-Pais-sin-Luz-MazosCL.png'},
     { card: 'Morir de Pie', pastMonth: 'Limitada x1', currentMonth: 'Limitada x2', changeType: 'neutral', imageUrl: 'https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/relatos/007-AHDX-Morir-de-Pie-MazosCL.png'},
     { card: 'Helios', pastMonth: 'Limitada x1', currentMonth: 'Limitada x2', changeType: 'neutral', imageUrl: 'https://cdn.mazos.cl/PRIMER_BLOQUE/22-Lootbox24/cartas/039-LB24-Helios-MazosCL.png'},
-    { card: 'País sin Luz', pastMonth: 'Limitada x2', currentMonth: 'Liberado', changeType: 'positive', imageUrl: 'https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/026-AHD-Pais-sin-Luz-MazosCL.png'},
     { card: 'Avalon', pastMonth: 'Baneada', currentMonth: 'Limitada x1', changeType: 'neutral', imageUrl: 'https://cdn.mazos.cl/PRIMER_BLOQUE/17-Lootbox3/cartas/054-Avalon-MazosCL.png'},
     { card: 'Mineros de Lapislázuli', pastMonth: 'Liberado', currentMonth: 'Limitada x2', changeType: 'neutral', imageUrl: 'https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/385-ARA-Mineros-de-Lapislazuli-MazosCL.png'},
     { card: 'Kernuac el Cazador', pastMonth: 'Liberado', currentMonth: 'Baneada', changeType: 'negative', imageUrl: 'https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/074-Kernuac-el-Cazador-MazosCL.png'},
