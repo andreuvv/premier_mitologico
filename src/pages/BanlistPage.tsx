@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaInfoCircle } from 'react-icons/fa';
 import { BanListFormat, BanListCategory, BanListData, BanListCard } from '../types/banlist';
+import { CollectionFormat } from '../types/collection';
 import { loadBanlist } from '../services/banlistService';
 import FormatSummaryRow from '../components/FormatSummaryRow';
 import { banlistSummaries, lastUpdateMonth } from '../data/banlistSummary';
@@ -29,6 +30,25 @@ const slugToCategory = Object.entries(categoryToSlug).reduce((acc, [category, sl
   acc[slug] = category as BanListCategory;
   return acc;
 }, {} as Record<string, BanListCategory>);
+
+const getCollectionFormatFromBanListFormat = (banListFormat: BanListFormat): string => {
+  if (banListFormat === BanListFormat.PRIMER_BLOQUE_LIBRE || banListFormat === BanListFormat.PRIMER_BLOQUE_EDICION) {
+    return CollectionFormat.PRIMER_BLOQUE;
+  }
+  return CollectionFormat.FURIA_EXTENDIDO;
+};
+
+const getCardIdFromUrl = (cardUrl?: string): number | null => {
+  if (!cardUrl) return null;
+  const match = cardUrl.match(/\/card\/(\d+)\//);
+  return match ? parseInt(match[1], 10) : null;
+};
+
+const getCardSlugFromUrl = (cardUrl?: string): string | null => {
+  if (!cardUrl) return null;
+  const match = cardUrl.match(/\/card\/\d+\/(.+?)(?:\?|$)/);
+  return match ? match[1] : null;
+};
 
 const BanlistPage = () => {
   const { format: formatSlug, category: categorySlug } = useParams<{ format?: string; category?: string }>();
@@ -94,10 +114,15 @@ const BanlistPage = () => {
     }
   };
 
-  const handleCardClick = (cardUrl?: string) => {
-    if (cardUrl) {
-      window.open(cardUrl, '_blank');
+  const handleCardClick = (card: BanListCard) => {
+    const cardId = card.id || getCardIdFromUrl(card.cardUrl);
+    const cardSlug = getCardSlugFromUrl(card.cardUrl);
+    if (!cardId || !cardSlug) {
+      console.warn('No card ID or slug found');
+      return;
     }
+    const collectionFormat = getCollectionFormatFromBanListFormat(selectedFormat);
+    navigate(`/coleccion/carta/${collectionFormat}/${cardId}/${cardSlug}`);
   };
 
   const cards = getCurrentCards();
@@ -186,8 +211,8 @@ const BanlistPage = () => {
             <div 
               key={index} 
               className={styles.card}
-              onClick={() => handleCardClick(card.cardUrl)}
-              style={{ cursor: card.cardUrl ? 'pointer' : 'default' }}
+              onClick={() => handleCardClick(card)}
+              style={{ cursor: 'pointer' }}
             >
               {card.imageUrl ? (
                 <img src={card.imageUrl} alt={card.name} />

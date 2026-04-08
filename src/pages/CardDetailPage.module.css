@@ -30,8 +30,8 @@
 
 .body {
   display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 2.5rem;
+  grid-template-columns: 450px 1fr;
+  gap: 2rem;
   background: var(--dark-brown);
   border: 1px solid var(--ocher);
   border-radius: 12px;
@@ -212,7 +212,7 @@
   }
 
   .imageWrapper {
-    max-width: 220px;
+    max-width: 100%;
     margin: 0 auto;
   }
 

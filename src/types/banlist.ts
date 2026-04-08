@@ -12,6 +12,7 @@ export enum BanListCategory {
 }
 
 export interface BanListCard {
+  id?: number;
   name: string;
   type: string;
   imageUrl: string;
