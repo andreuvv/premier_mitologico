@@ -182,6 +182,26 @@ const TournamentHistoryPage = () => {
     return null;
   };
 
+  // Helper functions for format-based display
+  const shouldShowPB = !selectedTournament?.format || selectedTournament?.format === 'PB';
+  const shouldShowBF = !selectedTournament?.format || selectedTournament?.format === 'BF';
+  const isFormatSpecific = selectedTournament?.format !== null && selectedTournament?.format !== undefined;
+  
+  const getRaceColumnLabels = () => {
+    if (isFormatSpecific) {
+      const format = selectedTournament?.format;
+      const edition = format === 'PB' ? 'Edición' : 'VCR';
+      return {
+        libre: `Raza ${format} Libre`,
+        edition: `Raza ${format} ${edition}`,
+      };
+    }
+    return {
+      libre: 'Raza PB',
+      edition: 'Raza BF',
+    };
+  };
+
   const getColorForRace = (race: string, format: 'pb' | 'bf') => {
     const colors = [
       '#6B46C1', '#38A169', '#D69E2E', '#E53E3E', '#3182CE', '#805AD5', '#DD6B20', '#2C5282', '#B83280', '#38B2AC', '#D4AF37', '#C53030', '#2D3748'
@@ -566,110 +586,226 @@ const TournamentHistoryPage = () => {
           <div className={styles.resumenView}>
             <h1 className={styles.pageTitle}>{selectedTournament?.name} - Resumen</h1>
             <div className={styles.chartsContainer}>
-              <div className={styles.chartSection}>
-                <h2>Uso de Razas en Primer Bloque</h2>
-                {races ? (
-                  <ResponsiveContainer width="100%" height={400}>
-                    <PieChart>
-                      <Pie
-                        data={prepareChartData(races.pb_races, 'pb')}
-                        cx="50%"
-                        cy="50%"
-                        outerRadius={80}
-                        fill="#8884d8"
-                        dataKey="value"
-                        label={(entry) => entry.value > 0 ? `${entry.value}` : ''}
-                        labelLine={false}
-                      >
-                        {prepareChartData(races.pb_races, 'pb').map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={getColorForRace(entry.name, 'pb')} />
-                        ))}
-                      </Pie>
-                      <Tooltip />
-                      <Legend 
-                        formatter={(_, entry) => (entry.payload as { displayName: string }).displayName}
-                        wrapperStyle={{ color: 'var(--beige)' }}
-                      />
-                    </PieChart>
-                  </ResponsiveContainer>
-                ) : (
-                  <p>No hay datos de razas para Primer Bloque</p>
-                )}
-              </div>
-              <div className={styles.chartSection}>
-                <h2>Uso de Razas en Bloque Furia</h2>
-                {races ? (
-                  <ResponsiveContainer width="100%" height={400}>
-                    <PieChart>
-                      <Pie
-                        data={prepareChartData(races.bf_races, 'bf')}
-                        cx="50%"
-                        cy="50%"
-                        outerRadius={80}
-                        fill="#8884d8"
-                        dataKey="value"
-                        label={(entry) => entry.value > 0 ? `${entry.value}` : ''}
-                        labelLine={false}
-                      >
-                        {prepareChartData(races.bf_races, 'bf').map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={getColorForRace(entry.name, 'bf')} />
-                        ))}
-                      </Pie>
-                      <Tooltip />
-                      <Legend 
-                        formatter={(_, entry) => (entry.payload as { displayName: string }).displayName}
-                        wrapperStyle={{ color: 'var(--beige)' }}
-                      />
-                    </PieChart>
-                  </ResponsiveContainer>
-                ) : (
-                  <p>No hay datos de razas para Bloque Furia</p>
-                )}
-              </div>
-              <div className={styles.chartSection}>
-                <h2>Winrate por Raza - Primer Bloque</h2>
-                {races ? (
-                  <ResponsiveContainer width="100%" height={400}>
-                    <BarChart data={prepareWinrateData(races.pb_race_winrates)}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis 
-                        dataKey="race" 
-                        angle={-45} 
-                        textAnchor="end" 
-                        height={80}
-                        interval={0}
-                      />
-                      <YAxis label={{ value: 'Winrate (%)', angle: -90, position: 'insideLeft' }} />
-                      <Tooltip formatter={(value) => [`${value}%`, 'Winrate']} contentStyle={{ color: 'var(--coal-grey)' }} />
-                      <Bar dataKey="winrate" fill="#38A169" label={{ fill: 'white', fontSize: 12, position: 'inside' }} />
-                    </BarChart>
-                  </ResponsiveContainer>
-                ) : (
-                  <p>No hay datos de winrates para Primer Bloque</p>
-                )}
-              </div>
-              <div className={styles.chartSection}>
-                <h2>Winrate por Raza - Bloque Furia</h2>
-                {races ? (
-                  <ResponsiveContainer width="100%" height={400}>
-                    <BarChart data={prepareWinrateData(races.bf_race_winrates)}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis 
-                        dataKey="race" 
-                        angle={-45} 
-                        textAnchor="end" 
-                        height={80}
-                        interval={0}
-                      />
-                      <YAxis label={{ value: 'Winrate (%)', angle: -90, position: 'insideLeft' }} />
-                      <Tooltip formatter={(value) => [`${value}%`, 'Winrate']} contentStyle={{ color: 'var(--coal-grey)' }} />
-                      <Bar dataKey="winrate" fill="#E53E3E" label={{ fill: 'white', fontSize: 12, position: 'inside' }} />
-                    </BarChart>
-                  </ResponsiveContainer>
-                ) : (
-                  <p>No hay datos de winrates para Bloque Furia</p>
-                )}
-              </div>
+              {shouldShowPB && !isFormatSpecific && (
+                <>
+                  <div className={styles.chartSection}>
+                    <h2>Uso de Razas en Primer Bloque</h2>
+                    {races ? (
+                      <ResponsiveContainer width="100%" height={400}>
+                        <PieChart>
+                          <Pie
+                            data={prepareChartData(races.pb_races, 'pb')}
+                            cx="50%"
+                            cy="50%"
+                            outerRadius={80}
+                            fill="#8884d8"
+                            dataKey="value"
+                            label={(entry) => entry.value > 0 ? `${entry.value}` : ''}
+                            labelLine={false}
+                          >
+                            {prepareChartData(races.pb_races, 'pb').map((entry, index) => (
+                              <Cell key={`cell-${index}`} fill={getColorForRace(entry.name, 'pb')} />
+                            ))}
+                          </Pie>
+                          <Tooltip />
+                          <Legend 
+                            formatter={(_, entry) => (entry.payload as { displayName: string }).displayName}
+                            wrapperStyle={{ color: 'var(--beige)' }}
+                          />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    ) : (
+                      <p>No hay datos de razas para Primer Bloque</p>
+                    )}
+                  </div>
+                  <div className={styles.chartSection}>
+                    <h2>Winrate por Raza - Primer Bloque</h2>
+                    {races ? (
+                      <ResponsiveContainer width="100%" height={400}>
+                        <BarChart data={prepareWinrateData(races.pb_race_winrates)}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis 
+                            dataKey="race" 
+                            angle={-45} 
+                            textAnchor="end" 
+                            height={80}
+                            interval={0}
+                          />
+                          <YAxis label={{ value: 'Winrate (%)', angle: -90, position: 'insideLeft' }} />
+                          <Tooltip formatter={(value) => [`${value}%`, 'Winrate']} contentStyle={{ color: 'var(--coal-grey)' }} />
+                          <Bar dataKey="winrate" fill="#38A169" label={{ fill: 'white', fontSize: 12, position: 'inside' }} />
+                        </BarChart>
+                      </ResponsiveContainer>
+                    ) : (
+                      <p>No hay datos de winrates para Primer Bloque</p>
+                    )}
+                  </div>
+                </>
+              )}
+              {shouldShowBF && !isFormatSpecific && (
+                <>
+                  <div className={styles.chartSection}>
+                    <h2>Uso de Razas en Bloque Furia</h2>
+                    {races ? (
+                      <ResponsiveContainer width="100%" height={400}>
+                        <PieChart>
+                          <Pie
+                            data={prepareChartData(races.bf_races, 'bf')}
+                            cx="50%"
+                            cy="50%"
+                            outerRadius={80}
+                            fill="#8884d8"
+                            dataKey="value"
+                            label={(entry) => entry.value > 0 ? `${entry.value}` : ''}
+                            labelLine={false}
+                          >
+                            {prepareChartData(races.bf_races, 'bf').map((entry, index) => (
+                              <Cell key={`cell-${index}`} fill={getColorForRace(entry.name, 'bf')} />
+                            ))}
+                          </Pie>
+                          <Tooltip />
+                          <Legend 
+                            formatter={(_, entry) => (entry.payload as { displayName: string }).displayName}
+                            wrapperStyle={{ color: 'var(--beige)' }}
+                          />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    ) : (
+                      <p>No hay datos de razas para Bloque Furia</p>
+                    )}
+                  </div>
+                  <div className={styles.chartSection}>
+                    <h2>Winrate por Raza - Bloque Furia</h2>
+                    {races ? (
+                      <ResponsiveContainer width="100%" height={400}>
+                        <BarChart data={prepareWinrateData(races.bf_race_winrates)}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis 
+                            dataKey="race" 
+                            angle={-45} 
+                            textAnchor="end" 
+                            height={80}
+                            interval={0}
+                          />
+                          <YAxis label={{ value: 'Winrate (%)', angle: -90, position: 'insideLeft' }} />
+                          <Tooltip formatter={(value) => [`${value}%`, 'Winrate']} contentStyle={{ color: 'var(--coal-grey)' }} />
+                          <Bar dataKey="winrate" fill="#E53E3E" label={{ fill: 'white', fontSize: 12, position: 'inside' }} />
+                        </BarChart>
+                      </ResponsiveContainer>
+                    ) : (
+                      <p>No hay datos de winrates para Bloque Furia</p>
+                    )}
+                  </div>
+                </>
+              )}
+              {isFormatSpecific && (
+                <>
+                  <div className={styles.chartSection}>
+                    <h2>Uso de Razas en {selectedTournament?.format} - Libre</h2>
+                    {races ? (
+                      <ResponsiveContainer width="100%" height={400}>
+                        <PieChart>
+                          <Pie
+                            data={prepareChartData(races.libre_races, selectedTournament?.format === 'PB' ? 'pb' : 'bf')}
+                            cx="50%"
+                            cy="50%"
+                            outerRadius={80}
+                            fill="#8884d8"
+                            dataKey="value"
+                            label={(entry) => entry.value > 0 ? `${entry.value}` : ''}
+                            labelLine={false}
+                          >
+                            {prepareChartData(races.libre_races, selectedTournament?.format === 'PB' ? 'pb' : 'bf').map((entry, index) => (
+                              <Cell key={`cell-${index}`} fill={getColorForRace(entry.name, selectedTournament?.format === 'PB' ? 'pb' : 'bf')} />
+                            ))}
+                          </Pie>
+                          <Tooltip />
+                          <Legend 
+                            formatter={(_, entry) => (entry.payload as { displayName: string }).displayName}
+                            wrapperStyle={{ color: 'var(--beige)' }}
+                          />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    ) : (
+                      <p>No hay datos de razas</p>
+                    )}
+                  </div>
+                  <div className={styles.chartSection}>
+                    <h2>Winrate por Raza - {selectedTournament?.format} Libre</h2>
+                    {races && races.libre_race_winrates ? (
+                      <ResponsiveContainer width="100%" height={400}>
+                        <BarChart data={prepareWinrateData(races.libre_race_winrates)}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis 
+                            dataKey="race" 
+                            angle={-45} 
+                            textAnchor="end" 
+                            height={80}
+                            interval={0}
+                          />
+                          <YAxis label={{ value: 'Winrate (%)', angle: -90, position: 'insideLeft' }} />
+                          <Tooltip formatter={(value) => [`${value}%`, 'Winrate']} contentStyle={{ color: 'var(--coal-grey)' }} />
+                          <Bar dataKey="winrate" fill="#3182CE" label={{ fill: 'white', fontSize: 12, position: 'inside' }} />
+                        </BarChart>
+                      </ResponsiveContainer>
+                    ) : (
+                      <p>No hay datos de winrates</p>
+                    )}
+                  </div>
+                  <div className={styles.chartSection}>
+                    <h2>Uso de Razas en {selectedTournament?.format} - {selectedTournament?.format === 'PB' ? 'Edición' : 'VCR'}</h2>
+                    {races ? (
+                      <ResponsiveContainer width="100%" height={400}>
+                        <PieChart>
+                          <Pie
+                            data={prepareChartData(races.vcr_races, selectedTournament?.format === 'PB' ? 'pb' : 'bf')}
+                            cx="50%"
+                            cy="50%"
+                            outerRadius={80}
+                            fill="#8884d8"
+                            dataKey="value"
+                            label={(entry) => entry.value > 0 ? `${entry.value}` : ''}
+                            labelLine={false}
+                          >
+                            {prepareChartData(races.vcr_races, selectedTournament?.format === 'PB' ? 'pb' : 'bf').map((entry, index) => (
+                              <Cell key={`cell-${index}`} fill={getColorForRace(entry.name, selectedTournament?.format === 'PB' ? 'pb' : 'bf')} />
+                            ))}
+                          </Pie>
+                          <Tooltip />
+                          <Legend 
+                            formatter={(_, entry) => (entry.payload as { displayName: string }).displayName}
+                            wrapperStyle={{ color: 'var(--beige)' }}
+                          />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    ) : (
+                      <p>No hay datos de razas</p>
+                    )}
+                  </div>
+                  <div className={styles.chartSection}>
+                    <h2>Winrate por Raza - {selectedTournament?.format} {selectedTournament?.format === 'PB' ? 'Edición' : 'VCR'}</h2>
+                    {races && races.vcr_race_winrates ? (
+                      <ResponsiveContainer width="100%" height={400}>
+                        <BarChart data={prepareWinrateData(races.vcr_race_winrates)}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis 
+                            dataKey="race" 
+                            angle={-45} 
+                            textAnchor="end" 
+                            height={80}
+                            interval={0}
+                          />
+                          <YAxis label={{ value: 'Winrate (%)', angle: -90, position: 'insideLeft' }} />
+                          <Tooltip formatter={(value) => [`${value}%`, 'Winrate']} contentStyle={{ color: 'var(--coal-grey)' }} />
+                          <Bar dataKey="winrate" fill="#805AD5" label={{ fill: 'white', fontSize: 12, position: 'inside' }} />
+                        </BarChart>
+                      </ResponsiveContainer>
+                    ) : (
+                      <p>No hay datos de winrates</p>
+                    )}
+                  </div>
+                </>
+              )}
             </div>
           </div>
         ) : view === 'standings' ? (
@@ -681,8 +817,8 @@ const TournamentHistoryPage = () => {
                   <tr>
                     <th className={styles.posColumn}>Pos.</th>
                     <th className={styles.nameColumn}>Jugador</th>
-                    <th>Raza PB</th>
-                    <th>Raza BF</th>
+                    <th>{getRaceColumnLabels().libre}</th>
+                    <th>{getRaceColumnLabels().edition}</th>
                     <th>RJ</th>
                     <th>G</th>
                     <th>E</th>
@@ -696,6 +832,15 @@ const TournamentHistoryPage = () => {
                 <tbody>
                   {standings.map((standing) => {
                     const position = standing.final_position;
+                    const raceDisplay = isFormatSpecific 
+                      ? {
+                          libre: standing.race_libre,
+                          edition: standing.race_edition_vcr
+                        }
+                      : {
+                          libre: standing.race_pb,
+                          edition: standing.race_bf
+                        };
                     return (
                       <tr key={standing.id} className={position <= 3 ? styles.topThree : ''}>
                         <td className={styles.posColumn}>
@@ -712,8 +857,8 @@ const TournamentHistoryPage = () => {
                             {standing.player_name}
                           </button>
                         </td>
-                        <td>{standing.race_pb || '-'}</td>
-                        <td>{standing.race_bf || '-'}</td>
+                        <td>{raceDisplay.libre || '-'}</td>
+                        <td>{raceDisplay.edition || '-'}</td>
                         <td>{standing.matches_played}</td>
                         <td className={styles.winsColumn}>{standing.wins}</td>
                         <td className={styles.tiesColumn}>{standing.ties}</td>
@@ -734,8 +879,8 @@ const TournamentHistoryPage = () => {
               <h3>Leyenda</h3>
               <ul>
                 <li><strong>Pos:</strong> Posición Final</li>
-                <li><strong>Raza PB:</strong> Raza elegida en Primer Bloque</li>
-                <li><strong>Raza BF:</strong> Raza elegida en Bloque Furia</li>
+                <li><strong>{getRaceColumnLabels().libre}:</strong> {isFormatSpecific ? `Raza elegida en ${selectedTournament?.format === 'PB' ? 'Primer Bloque' : 'Bloque Furia'} - Libre` : 'Raza elegida en Primer Bloque'}</li>
+                <li><strong>{getRaceColumnLabels().edition}:</strong> {isFormatSpecific ? `Raza elegida en ${selectedTournament?.format === 'PB' ? 'Primer Bloque' : 'Bloque Furia'} - ${selectedTournament?.format === 'PB' ? 'Edición' : 'VCR'}` : 'Raza elegida en Bloque Furia'}</li>
                 <li><strong>RJ:</strong> Rondas Jugadas</li>
                 <li><strong>G:</strong> Rondas Ganadas</li>
                 <li><strong>E:</strong> Rondas Empatadas</li>

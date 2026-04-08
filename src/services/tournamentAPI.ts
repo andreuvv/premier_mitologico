@@ -6,6 +6,7 @@ export interface Tournament {
   month: string;
   year: number;
   type: string;
+  format?: string; // 'PB', 'BF', or null (both formats)
   start_date?: string;
   end_date?: string;
   created_at: string;
@@ -27,6 +28,8 @@ export interface TournamentStanding {
   final_position: number;
   race_pb: string | null;
   race_bf: string | null;
+  race_libre: string | null;
+  race_edition_vcr: string | null;
 }
 
 export interface TournamentMatch {
@@ -52,8 +55,12 @@ export interface TournamentRoundsResponse {
 export interface TournamentRacesResponse {
   pb_races: { [race: string]: number };
   bf_races: { [race: string]: number };
+  libre_races: { [race: string]: number };
+  vcr_races: { [race: string]: number };
   pb_race_winrates: { [race: string]: number };
   bf_race_winrates: { [race: string]: number };
+  libre_race_winrates?: { [race: string]: number };
+  vcr_race_winrates?: { [race: string]: number };
 }
 
 export interface GlobalStanding {
