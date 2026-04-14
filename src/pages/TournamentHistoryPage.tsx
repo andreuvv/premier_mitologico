@@ -116,8 +116,13 @@ const TournamentHistoryPage = () => {
   const loadTournamentData = async (id: number, viewType: string) => {
     try {
       if (viewType === 'standings') {
-        const data = await tournamentAPI.getTournamentStandings(id);
-        setStandings(data);
+        const [standingsData, roundsData] = await Promise.all([
+          tournamentAPI.getTournamentStandings(id),
+          tournamentAPI.getTournamentRounds(id),
+        ]);
+        setStandings(standingsData);
+        setRounds(roundsData.rounds);
+        setTournamentName(roundsData.tournament_name);
       } else if (viewType === 'rounds') {
         const data = await tournamentAPI.getTournamentRounds(id);
         setRounds(data.rounds);
@@ -175,6 +180,58 @@ const TournamentHistoryPage = () => {
     return ((roundPoints / totalRounds) * 100).toFixed(1);
   };
 
+  interface RecordByType {
+    libre: { wins: number; ties: number; losses: number };
+    edicion: { wins: number; ties: number; losses: number };
+  }
+
+  const calculateRecordByRoundType = (playerName: string): RecordByType => {
+    const record: RecordByType = {
+      libre: { wins: 0, ties: 0, losses: 0 },
+      edicion: { wins: 0, ties: 0, losses: 0 }
+    };
+
+    if (!rounds || rounds.length === 0) return record;
+
+    const LIBRE_VALUES = new Set(['libre', 'pbrl', 'bfrl']);
+    const EDICION_VALUES = new Set(['pbre', 'bfvcr', 'vcr', 'edición', 'edicion']);
+
+    rounds.forEach(round => {
+      const sub = (round.subformat || '').toLowerCase();
+      let isLibre: boolean;
+      if (sub) {
+        if (LIBRE_VALUES.has(sub)) {
+          isLibre = true;
+        } else if (EDICION_VALUES.has(sub)) {
+          isLibre = false;
+        } else {
+          // Unknown subformat, fallback to format field
+          isLibre = round.format === 'PB';
+        }
+      } else {
+        // No subformat: use format field. PB = libre, BF = edición
+        isLibre = round.format === 'PB';
+      }
+      const targetRecord = isLibre ? record.libre : record.edicion;
+
+      round.matches.forEach(match => {
+        if (match.score1 === null || match.score2 === null) return;
+
+        if (match.player1_name === playerName) {
+          if (match.score1 > match.score2) targetRecord.wins++;
+          else if (match.score1 < match.score2) targetRecord.losses++;
+          else targetRecord.ties++;
+        } else if (match.player2_name === playerName) {
+          if (match.score2 > match.score1) targetRecord.wins++;
+          else if (match.score2 < match.score1) targetRecord.losses++;
+          else targetRecord.ties++;
+        }
+      });
+    });
+
+    return record;
+  };
+
   const getPositionIcon = (position: number) => {
     if (position === 1) return <FaTrophy className={styles.goldIcon} />;
     if (position === 2) return <FaMedal className={styles.silverIcon} />;
@@ -199,6 +256,23 @@ const TournamentHistoryPage = () => {
     return {
       libre: 'Raza PB',
       edition: 'Raza BF',
+    };
+  };
+
+  const getRecordColumnLabels = () => {
+    if (isFormatSpecific) {
+      return {
+        libre: 'Record Libre',
+        libreTitle: 'Record en rondas Racial Libre (Victorias-Empates-Derrotas)',
+        edicion: 'Record Edición/VCR',
+        edicionTitle: 'Record en rondas Racial Edición/VCR (Victorias-Empates-Derrotas)',
+      };
+    }
+    return {
+      libre: 'Record PB',
+      libreTitle: 'Record en rondas de Primer Bloque (Victorias-Empates-Derrotas)',
+      edicion: 'Record BF',
+      edicionTitle: 'Record en rondas de Bloque Furia (Victorias-Empates-Derrotas)',
     };
   };
 
@@ -819,14 +893,16 @@ const TournamentHistoryPage = () => {
                     <th className={styles.nameColumn}>Jugador</th>
                     <th>{getRaceColumnLabels().libre}</th>
                     <th>{getRaceColumnLabels().edition}</th>
-                    <th>RJ</th>
-                    <th>G</th>
-                    <th>E</th>
-                    <th>P</th>
-                    <th>TPG</th>
-                    <th>MWR%</th>
-                    <th>RWR%</th>
-                    <th>Pts</th>
+                    <th title="Rondas Jugadas">RJ</th>
+                    <th title="Rondas Ganadas">G</th>
+                    <th title="Rondas Empatadas">E</th>
+                    <th title="Rondas Perdidas">P</th>
+                    <th title="Total Partidas Ganadas (partidas individuales ganadas)">TPG</th>
+                    <th title={getRecordColumnLabels().libreTitle}>{getRecordColumnLabels().libre}</th>
+                    <th title={getRecordColumnLabels().edicionTitle}>{getRecordColumnLabels().edicion}</th>
+                    <th title="Matches Win Rate: (Partidas ganadas / Partidas jugadas) * 100">MWR%</th>
+                    <th title="Rounds Win Rate: ((Rondas ganadas + Rondas empatadas * 0.5) / Rondas Jugadas) * 100">RWR%</th>
+                    <th title="Puntos (3 por victoria, 1 por empate)">Pts</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -841,6 +917,7 @@ const TournamentHistoryPage = () => {
                           libre: standing.race_pb,
                           edition: standing.race_bf
                         };
+                    const recordByType = calculateRecordByRoundType(standing.player_name);
                     return (
                       <tr key={standing.id} className={position <= 3 ? styles.topThree : ''}>
                         <td className={styles.posColumn}>
@@ -864,6 +941,20 @@ const TournamentHistoryPage = () => {
                         <td className={styles.tiesColumn}>{standing.ties}</td>
                         <td className={styles.lossesColumn}>{standing.losses}</td>
                         <td className={styles.totalVictoriesColumn}>{standing.total_points_scored}</td>
+                        <td className={styles.recordCell}>
+                          <span className={styles.recordWins}>{recordByType.libre.wins}</span>
+                          <span className={styles.recordSeparator}>-</span>
+                          <span className={styles.recordTies}>{recordByType.libre.ties}</span>
+                          <span className={styles.recordSeparator}>-</span>
+                          <span className={styles.recordLosses}>{recordByType.libre.losses}</span>
+                        </td>
+                        <td className={styles.recordCell}>
+                          <span className={styles.recordWins}>{recordByType.edicion.wins}</span>
+                          <span className={styles.recordSeparator}>-</span>
+                          <span className={styles.recordTies}>{recordByType.edicion.ties}</span>
+                          <span className={styles.recordSeparator}>-</span>
+                          <span className={styles.recordLosses}>{recordByType.edicion.losses}</span>
+                        </td>
                         <td className={styles.winRateColumn}>{calculateWinRate(standing)}%</td>
                         <td className={styles.winRateColumn}>{calculateRoundWinRate(standing)}%</td>
                         <td className={styles.pointsColumn}>{standing.points}</td>
@@ -886,6 +977,8 @@ const TournamentHistoryPage = () => {
                 <li><strong>E:</strong> Rondas Empatadas</li>
                 <li><strong>P:</strong> Rondas Perdidas</li>
                 <li><strong>TPG:</strong> Total Partidas Ganadas (partidas individuales ganadas)</li>
+                <li><strong>{getRecordColumnLabels().libre}:</strong> {getRecordColumnLabels().libreTitle}</li>
+                <li><strong>{getRecordColumnLabels().edicion}:</strong> {getRecordColumnLabels().edicionTitle}</li>
                 <li><strong>MWR%:</strong> Matches Win Rate ( (Partidas ganadas / Partidas jugadas) * 100 )</li>
                 <li><strong>RWR%:</strong> Rounds Win Rate ( ((Rondas ganadas + Rondas empatadas * 0.5) / Rondas Jugadas) * 100 )</li>
                 <li><strong>Pts:</strong> Puntos (3 por victoria, 1 por empate)</li>
@@ -912,6 +1005,7 @@ const TournamentHistoryPage = () => {
                   <summary className={styles.roundSummary}>
                     <span className={styles.roundTitle}>
                       Ronda {round.number} - {round.format === 'PB' ? 'Primer Bloque' : 'Bloque Furia'}
+                      {round.subformat ? ` (${round.subformat})` : ''}
                     </span>
                   </summary>
                   <div className={styles.matchesList}>

@@ -44,6 +44,7 @@ export interface TournamentMatch {
 export interface TournamentRound {
   number: number;
   format: string;
+  subformat?: string | null;
   matches: TournamentMatch[];
 }
 

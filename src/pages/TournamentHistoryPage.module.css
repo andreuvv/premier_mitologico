@@ -491,6 +491,34 @@
   font-size: 0.9rem;
 }
 
+.recordCell {
+  font-weight: 600;
+  white-space: nowrap;
+  font-size: 0.95rem;
+  letter-spacing: -0.5px;
+}
+
+.recordWins {
+  color: var(--sage-green) !important;
+  font-weight: 700;
+}
+
+.recordTies {
+  color: var(--ocher) !important;
+  font-weight: 700;
+}
+
+.recordLosses {
+  color: var(--brick-red) !important;
+  font-weight: 700;
+}
+
+.recordSeparator {
+  color: var(--beige);
+  opacity: 0.7;
+  margin: 0 0.15rem;
+}
+
 .pointsColumn {
   background-color: #3a3a3a;
   font-weight: 700;
