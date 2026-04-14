@@ -3,6 +3,74 @@
     "CardCatalog": {
       "cards": [
         {
+          "id": 12728,
+          "slug": "legado-de-fantina",
+          "name": "Legado de Fantina",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 337 P",
+          "effect": "Sólo puedes jugarlo cuando tu oponente juegue un Talismán. Copia el efecto de este Talismán.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://blog.myl.cl/wp-content/uploads/2026/04/LBF2_337.png",
+          "artist": "KABIAZ",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": [
+          ]
+        },
+        {
+          "id": 12727,
+          "slug": "diluvio-universal",
+          "name": "Diluvio Universal",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 358 P",
+          "effect": "Cuando lo juegues, Destiérralo. Reduce su coste en un Oro por cada Aliado en juego hasta un mínimo de 1. Destierra todos los Aliados en juego.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 7,
+          "attack": 0,
+          "imageUrl": "https://blog.myl.cl/wp-content/uploads/2026/04/LBF2_358.png",
+          "artist": "GENZO",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": [
+          ]
+        },
+        {
           "id": 12726,
           "slug": "necromancia",
           "name": "Necromancia",

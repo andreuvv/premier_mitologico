@@ -296,8 +296,29 @@
   font-size: 2.5rem;
   font-weight: 900;
   color: var(--beige);
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
   font-family: 'Cyrodiil', serif;
+}
+
+.formatSubtitle {
+  font-size: 1rem;
+  color: var(--beige);
+  opacity: 0.8;
+  margin: 0 0 2rem 0;
+  line-height: 1.5;
+}
+
+.formatLink {
+  color: var(--ocher);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border-bottom: 1px dotted rgba(234, 221, 207, 0.5);
+}
+
+.formatLink:hover {
+  opacity: 0.8;
+  border-bottom-color: var(--ocher);
 }
 
 .tableContainer {

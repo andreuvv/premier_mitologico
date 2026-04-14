@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useParams, useNavigate, useLocation, Link } from 'react-router-dom';
 import { tournamentAPI, Tournament, TournamentStanding, TournamentRound, TournamentRacesResponse, GlobalStanding } from '../services/tournamentAPI';
 import onlineTournamentService, { OnlineTournament } from '../services/onlineTournamentService';
 import OnlineTournamentPage from './OnlineTournamentPage';
@@ -274,6 +274,49 @@ const TournamentHistoryPage = () => {
       edicion: 'Record BF',
       edicionTitle: 'Record en rondas de Bloque Furia (Victorias-Empates-Derrotas)',
     };
+  };
+
+  const getFormatDescription = () => {
+    const format = selectedTournament?.format;
+    const sub = (selectedTournament?.subformat || '').toLowerCase();
+
+    // Determine which subformats to show
+    const isLibre = ['libre', 'pbrl', 'bfrl'].some(v => sub === v);
+    const isEdicion = ['pbre', 'bfvcr', 'vcr', 'edición', 'edicion'].some(v => sub === v) 
+                   || sub.includes('vcr') || sub.includes('edici');
+    const isBoth = !sub || sub === 'both' || (isLibre && isEdicion);
+    const showLibre = isBoth || isLibre;
+    const showEdicion = isBoth || isEdicion;
+
+    const pbLinks = [];
+    if (showLibre) pbLinks.push(<Link key="pbl" to="/game-formats/primerBloque/primerBloqueRacialLibre" className={styles.formatLink}>Primer Bloque Racial Libre</Link>);
+    if (showEdicion) pbLinks.push(<Link key="pbe" to="/game-formats/primerBloque/primerBloqueRacialEdicion" className={styles.formatLink}>Primer Bloque Racial Edición</Link>);
+
+    const bfLinks = [];
+    if (showLibre) bfLinks.push(<Link key="bfl" to="/game-formats/bloqueFuria/bloqueFuriaRacialLibre" className={styles.formatLink}>Bloque Furia Racial Libre</Link>);
+    if (showEdicion) bfLinks.push(<Link key="bfv" to="/game-formats/formatosEspeciales/vcr" className={styles.formatLink}>Bloque Furia Racial VCR</Link>);
+
+    let links: React.ReactNode[] = [];
+    if (!format) {
+      links = [...pbLinks, ...bfLinks];
+    } else if (format === 'PB') {
+      links = pbLinks;
+    } else if (format === 'BF') {
+      links = bfLinks;
+    }
+
+    if (links.length === 0) return null;
+
+    return (
+      <p className={styles.formatSubtitle}>
+        {links.map((link, i) => (
+          <span key={i}>
+            {i > 0 && ' \u2022 '}
+            {link}
+          </span>
+        ))}
+      </p>
+    );
   };
 
   const getColorForRace = (race: string, format: 'pb' | 'bf') => {
@@ -659,6 +702,7 @@ const TournamentHistoryPage = () => {
         ) : view === 'resumen' ? (
           <div className={styles.resumenView}>
             <h1 className={styles.pageTitle}>{selectedTournament?.name} - Resumen</h1>
+            {getFormatDescription()}
             <div className={styles.chartsContainer}>
               {shouldShowPB && !isFormatSpecific && (
                 <>
@@ -885,6 +929,7 @@ const TournamentHistoryPage = () => {
         ) : view === 'standings' ? (
           <div className={styles.standingsView}>
             <h1 className={styles.pageTitle}>{selectedTournament?.name} - Tabla Final</h1>
+            {getFormatDescription()}
             <div className={styles.tableContainer}>
               <table className={styles.standingsTable}>
                 <thead>
@@ -999,6 +1044,7 @@ const TournamentHistoryPage = () => {
         ) : (
           <div className={styles.roundsView}>
             <h1 className={styles.pageTitle}>{tournamentName} - Rondas</h1>
+            {getFormatDescription()}
             <div className={styles.roundsContainer}>
               {rounds.map((round) => (
                 <details key={round.number} className={styles.roundAccordion}>

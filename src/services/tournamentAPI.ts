@@ -6,7 +6,8 @@ export interface Tournament {
   month: string;
   year: number;
   type: string;
-  format?: string; // 'PB', 'BF', or null (both formats)
+  format?: string | null; // 'PB', 'BF', or null (both formats)
+  subformat?: string | null; // e.g. 'Libre', 'VCR', 'Edición', etc.
   start_date?: string;
   end_date?: string;
   created_at: string;
