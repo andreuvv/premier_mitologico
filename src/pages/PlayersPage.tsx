@@ -14,6 +14,8 @@ interface PlayerTournamentData {
   tournamentName: string;
   month: string;
   year: number;
+  format?: string | null;
+  subformat?: string | null;
   standing?: {
     final_position: number;
     matches_played: number;
@@ -26,6 +28,8 @@ interface PlayerTournamentData {
   races?: {
     race_pb?: string;
     race_bf?: string;
+    race_libre?: string;
+    race_edition_vcr?: string;
   };
   // Actual match data by format from backend
   pbWins?: number;
@@ -313,6 +317,76 @@ const PlayersPage = () => {
     })).filter(item => item.vecesUsada > 0); // Only show races that were actually used
   };
 
+  const getFormatLabels = (tournament: PlayerTournamentData) => {
+    const format = tournament.format;
+    const sub = (tournament.subformat || '').toLowerCase();
+    const isFormatSpecific = !!format; // PB or BF only
+
+    const isLibre = ['libre', 'pbrl', 'bfrl'].some(v => sub === v) || sub.includes('libre');
+    const isEdicion = ['pbre', 'bfvcr', 'vcr', 'edición', 'edicion'].some(v => sub === v)
+                   || sub.includes('vcr') || sub.includes('edici');
+    const isBoth = !sub || sub === 'both' || (isLibre && isEdicion);
+
+    const showPB = !format || format === 'PB';
+    const showBF = !format || format === 'BF';
+
+    const formatName = format === 'PB' ? 'PB' : format === 'BF' ? 'BF' : '';
+
+    // Build race rows: each has a label and a value
+    const rows: { label: string; value: string }[] = [];
+
+    if (isFormatSpecific) {
+      // Single format tournament: race_libre and race_edition_vcr hold the subformat races
+      if (isBoth) {
+        rows.push({ label: `Raza ${formatName} Libre`, value: tournament.races?.race_libre || 'No registrada' });
+        rows.push({ label: `Raza ${formatName} ${format === 'BF' ? 'VCR' : 'Edición'}`, value: tournament.races?.race_edition_vcr || 'No registrada' });
+      } else if (isLibre) {
+        rows.push({ label: `Raza ${formatName} Libre`, value: tournament.races?.race_libre || tournament.races?.race_pb || 'No registrada' });
+      } else if (isEdicion) {
+        rows.push({ label: `Raza ${formatName} ${format === 'BF' ? 'VCR' : 'Edición'}`, value: tournament.races?.race_edition_vcr || tournament.races?.race_pb || 'No registrada' });
+      } else {
+        rows.push({ label: `Raza ${formatName}`, value: tournament.races?.race_pb || tournament.races?.race_bf || 'No registrada' });
+      }
+    } else {
+      // Both formats tournament: race_pb = PB race, race_bf = BF race
+      if (isBoth) {
+        if (showPB) {
+          rows.push({ label: 'Raza PB Libre', value: tournament.races?.race_pb || 'No registrada' });
+          rows.push({ label: 'Raza PB Edición', value: tournament.races?.race_libre || 'No registrada' });
+        }
+        if (showBF) {
+          rows.push({ label: 'Raza BF Libre', value: tournament.races?.race_bf || 'No registrada' });
+          rows.push({ label: 'Raza BF VCR', value: tournament.races?.race_edition_vcr || 'No registrada' });
+        }
+      } else if (isLibre) {
+        if (showPB) rows.push({ label: 'Raza PB Libre', value: tournament.races?.race_pb || 'No registrada' });
+        if (showBF) rows.push({ label: 'Raza BF Libre', value: tournament.races?.race_bf || 'No registrada' });
+      } else if (isEdicion) {
+        if (showPB) rows.push({ label: 'Raza PB Edición', value: tournament.races?.race_pb || 'No registrada' });
+        if (showBF) rows.push({ label: 'Raza BF VCR', value: tournament.races?.race_bf || 'No registrada' });
+      } else {
+        if (showPB) rows.push({ label: 'Raza PB', value: tournament.races?.race_pb || 'No registrada' });
+        if (showBF) rows.push({ label: 'Raza BF', value: tournament.races?.race_bf || 'No registrada' });
+      }
+    }
+
+    return rows;
+  };
+
+  const getFormatBadge = (tournament: PlayerTournamentData) => {
+    const parts: string[] = [];
+    if (tournament.format) {
+      parts.push(tournament.format);
+    }
+    if (tournament.subformat) {
+      const sub = tournament.subformat.toLowerCase();
+      if (sub.includes('libre')) parts.push('Libre');
+      else if (sub.includes('vcr') || sub.includes('edici')) parts.push('Edición/VCR');
+      else parts.push(tournament.subformat);
+    }
+    return parts.length > 0 ? parts.join(' · ') : null;
+  };
+
   const handlePlayerClick = async (player: APIPlayer) => {
     // Navigate to player-specific URL using name
     navigate(`/players/${encodeURIComponent(player.name)}`);
@@ -339,6 +413,8 @@ const PlayersPage = () => {
         tournamentName: item.tournament_name,
         month: item.month,
         year: item.year,
+        format: item.format,
+        subformat: item.subformat,
         standing: {
           final_position: item.final_position,
           matches_played: item.matches_played,
@@ -351,6 +427,8 @@ const PlayersPage = () => {
         races: {
           race_pb: item.race_pb,
           race_bf: item.race_bf,
+          race_libre: item.race_libre,
+          race_edition_vcr: item.race_edition_vcr,
         },
         // Include actual match data by format
         pbWins: item.pb_wins,
@@ -592,6 +670,9 @@ const PlayersPage = () => {
                         <h3>{tournament.tournamentName}</h3>
                         <span className={styles.tournamentDate}>
                           {tournament.month} {tournament.year}
+                          {getFormatBadge(tournament) && (
+                            <span className={styles.formatBadge}> — {getFormatBadge(tournament)}</span>
+                          )}
                         </span>
                       </div>
                       <FaChevronDown 
@@ -624,22 +705,19 @@ const PlayersPage = () => {
                           </div>
                         )}
                         
-                        {tournament.races && (
-                          <div className={styles.racesInfo}>
-                            <div className={styles.infoRow}>
-                              <span className={styles.label}>Raza PB:</span>
-                              <span className={styles.value}>
-                                {tournament.races.race_pb || 'No registrada'}
-                              </span>
+                        {tournament.races && (() => {
+                          const rows = getFormatLabels(tournament);
+                          return (
+                            <div className={styles.racesInfo}>
+                              {rows.map((row, i) => (
+                                <div key={i} className={styles.infoRow}>
+                                  <span className={styles.label}>{row.label}:</span>
+                                  <span className={styles.value}>{row.value}</span>
+                                </div>
+                              ))}
                             </div>
-                            <div className={styles.infoRow}>
-                              <span className={styles.label}>Raza BF:</span>
-                              <span className={styles.value}>
-                                {tournament.races.race_bf || 'No registrada'}
-                              </span>
-                            </div>
-                          </div>
-                        )}
+                          );
+                        })()}
                       </div>
                     )}
                   </div>

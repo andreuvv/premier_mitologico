@@ -278,6 +278,11 @@
   color: var(--petrol-blue);
 }
 
+.formatBadge {
+  color: var(--sage-green);
+  font-style: italic;
+}
+
 .chevron {
   color: var(--sage-green);
   transition: transform 0.3s ease;
