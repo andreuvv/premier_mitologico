@@ -330,8 +330,8 @@ const PlayersPage = () => {
     const showPB = !format || format === 'PB';
     const showBF = !format || format === 'BF';
 
-    const formatName = format === 'PB' ? 'PB' : format === 'BF' ? 'BF' : '';
-
+    const formatName = format === 'PB' ? 'PB' : format === 'BF' ? 'FX' : '';
+    const edicionLabel = format === 'BF' ? 'VCR' : 'Edición';
     // Build race rows: each has a label and a value
     const rows: { label: string; value: string }[] = [];
 
@@ -339,11 +339,11 @@ const PlayersPage = () => {
       // Single format tournament: race_libre and race_edition_vcr hold the subformat races
       if (isBoth) {
         rows.push({ label: `Raza ${formatName} Libre`, value: tournament.races?.race_libre || 'No registrada' });
-        rows.push({ label: `Raza ${formatName} ${format === 'BF' ? 'VCR' : 'Edición'}`, value: tournament.races?.race_edition_vcr || 'No registrada' });
+        rows.push({ label: `Raza ${formatName} ${edicionLabel}`, value: tournament.races?.race_edition_vcr || 'No registrada' });
       } else if (isLibre) {
         rows.push({ label: `Raza ${formatName} Libre`, value: tournament.races?.race_libre || tournament.races?.race_pb || 'No registrada' });
       } else if (isEdicion) {
-        rows.push({ label: `Raza ${formatName} ${format === 'BF' ? 'VCR' : 'Edición'}`, value: tournament.races?.race_edition_vcr || tournament.races?.race_pb || 'No registrada' });
+        rows.push({ label: `Raza ${formatName} ${edicionLabel}`, value: tournament.races?.race_edition_vcr || tournament.races?.race_pb || 'No registrada' });
       } else {
         rows.push({ label: `Raza ${formatName}`, value: tournament.races?.race_pb || tournament.races?.race_bf || 'No registrada' });
       }
@@ -355,18 +355,18 @@ const PlayersPage = () => {
           rows.push({ label: 'Raza PB Edición', value: tournament.races?.race_libre || 'No registrada' });
         }
         if (showBF) {
-          rows.push({ label: 'Raza BF Libre', value: tournament.races?.race_bf || 'No registrada' });
-          rows.push({ label: 'Raza BF VCR', value: tournament.races?.race_edition_vcr || 'No registrada' });
+          rows.push({ label: 'Raza FX Libre', value: tournament.races?.race_bf || 'No registrada' });
+          rows.push({ label: 'Raza FX VCR', value: tournament.races?.race_edition_vcr || 'No registrada' });
         }
       } else if (isLibre) {
         if (showPB) rows.push({ label: 'Raza PB Libre', value: tournament.races?.race_pb || 'No registrada' });
-        if (showBF) rows.push({ label: 'Raza BF Libre', value: tournament.races?.race_bf || 'No registrada' });
+        if (showBF) rows.push({ label: 'Raza FX Libre', value: tournament.races?.race_bf || 'No registrada' });
       } else if (isEdicion) {
         if (showPB) rows.push({ label: 'Raza PB Edición', value: tournament.races?.race_pb || 'No registrada' });
-        if (showBF) rows.push({ label: 'Raza BF VCR', value: tournament.races?.race_bf || 'No registrada' });
+        if (showBF) rows.push({ label: 'Raza FX VCR', value: tournament.races?.race_bf || 'No registrada' });
       } else {
         if (showPB) rows.push({ label: 'Raza PB', value: tournament.races?.race_pb || 'No registrada' });
-        if (showBF) rows.push({ label: 'Raza BF', value: tournament.races?.race_bf || 'No registrada' });
+        if (showBF) rows.push({ label: 'Raza FX', value: tournament.races?.race_bf || 'No registrada' });
       }
     }
 
@@ -568,13 +568,13 @@ const PlayersPage = () => {
                     <span className={styles.summaryValue}>{playerSummary.winRatePB}%</span>
                   </div>
                   <div className={styles.summaryItem}>
-                    <span className={styles.summaryLabel}>Raza más jugada BF:</span>
+                    <span className={styles.summaryLabel}>Raza más jugada FX:</span>
                     <span className={styles.summaryValue}>
                       {playerSummary.mostPlayedRaceBF ? `${playerSummary.mostPlayedRaceBF} (${playerSummary.mostPlayedRaceBFPercentage}%)` : '-'}
                     </span>
                   </div>
                   <div className={styles.summaryItem}>
-                    <span className={styles.summaryLabel}>WinRate Global en BF:</span>
+                    <span className={styles.summaryLabel}>WinRate Global en FX:</span>
                     <span className={styles.summaryValue}>{playerSummary.winRateBF}%</span>
                   </div>
                 </div>
@@ -622,7 +622,7 @@ const PlayersPage = () => {
                       </div>
                     </div>
                     <div className={styles.chartSection}>
-                      <h4>Uso de Razas en Bloque Furia</h4>
+                      <h4>Uso de Razas en Furia Extendido</h4>
                       <div className={`${styles.tableContainer} ${tablesCompact ? styles.tableContainerCompact : ''}`}>
                         <table className={styles.raceTable}>
                           <thead>

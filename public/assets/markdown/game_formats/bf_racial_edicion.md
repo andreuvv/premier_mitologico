@@ -1,8 +1,8 @@
-# 🛡️ Bloque Furia Racial Limitado
+# 🛡️ Furia Extendido Racial Limitado
 
 ## 📋 Descripción General
 
-El formato **Bloque Furia Racial Limitado** es una variante más restrictiva que limita las cartas utilizables a ediciones específicas del Bloque Furia, enfocándose en las cartas obtenidas principalmente de sobres.
+El formato **Furia Extendido Racial Limitado** es una variante más restrictiva que limita las cartas utilizables a ediciones específicas del Furia Extendido, enfocándose en las cartas obtenidas principalmente de sobres.
 
 ---
 

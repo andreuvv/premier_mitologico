@@ -85,9 +85,9 @@ const BanlistPage = () => {
       case BanListFormat.PRIMER_BLOQUE_EDICION:
         return 'Primer Bloque Racial Edición';
       case BanListFormat.BLOQUE_FURIA_LIBRE:
-        return 'Bloque Furia Racial Libre';
+        return 'Furia Extendido Racial Libre';
       case BanListFormat.BLOQUE_FURIA_LIMITED:
-        return 'Bloque Furia Limitado';
+        return 'Furia Extendido Racial Limitado';
     }
   };
 

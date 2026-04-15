@@ -272,7 +272,7 @@ const TournamentHistoryPage = () => {
       libre: 'Record PB',
       libreTitle: 'Record en rondas de Primer Bloque (Victorias-Empates-Derrotas)',
       edicion: 'Record BF',
-      edicionTitle: 'Record en rondas de Bloque Furia (Victorias-Empates-Derrotas)',
+      edicionTitle: 'Record en rondas de Furia Extendido (Victorias-Empates-Derrotas)',
     };
   };
 
@@ -293,8 +293,8 @@ const TournamentHistoryPage = () => {
     if (showEdicion) pbLinks.push(<Link key="pbe" to="/game-formats/primerBloque/primerBloqueRacialEdicion" className={styles.formatLink}>Primer Bloque Racial Edición</Link>);
 
     const bfLinks = [];
-    if (showLibre) bfLinks.push(<Link key="bfl" to="/game-formats/bloqueFuria/bloqueFuriaRacialLibre" className={styles.formatLink}>Bloque Furia Racial Libre</Link>);
-    if (showEdicion) bfLinks.push(<Link key="bfv" to="/game-formats/formatosEspeciales/vcr" className={styles.formatLink}>Bloque Furia Racial VCR</Link>);
+    if (showLibre) bfLinks.push(<Link key="bfl" to="/game-formats/bloqueFuria/bloqueFuriaRacialLibre" className={styles.formatLink}>Furia Extendido Racial Libre</Link>);
+    if (showEdicion) bfLinks.push(<Link key="bfv" to="/game-formats/formatosEspeciales/vcr" className={styles.formatLink}>Furia Extendido Racial VCR</Link>);
 
     let links: React.ReactNode[] = [];
     if (!format) {
@@ -547,7 +547,7 @@ const TournamentHistoryPage = () => {
                     <th>🥈 2dos Lugares conseguidos</th>
                     <th>🥉 3eros Lugares conseguidos</th>
                     <th>Raza más usada PB (Winrate%)</th>
-                    <th>Raza más usada BF (Winrate%)</th>
+                    <th>Raza más usada FX (Winrate%)</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -624,7 +624,7 @@ const TournamentHistoryPage = () => {
                 )}
               </div>
               <div className={styles.chartSection}>
-                <h2>Uso de Razas en Bloque Furia</h2>
+                <h2>Uso de Razas en Furia Extendido</h2>
                 {globalRaces ? (
                   <ResponsiveContainer width="100%" height={400}>
                     <PieChart>
@@ -650,7 +650,7 @@ const TournamentHistoryPage = () => {
                     </PieChart>
                   </ResponsiveContainer>
                 ) : (
-                  <p>No hay datos de razas para Bloque Furia</p>
+                  <p>No hay datos de razas para Furia Extendido</p>
                 )}
               </div>
               <div className={styles.chartSection}>
@@ -676,7 +676,7 @@ const TournamentHistoryPage = () => {
                 )}
               </div>
               <div className={styles.chartSection}>
-                <h2>Winrate por Raza - Bloque Furia</h2>
+                <h2>Winrate por Raza - Furia Extendido</h2>
                 {globalRaces ? (
                   <ResponsiveContainer width="100%" height={400}>
                     <BarChart data={prepareWinrateData(globalRaces.bf_race_winrates)}>
@@ -694,7 +694,7 @@ const TournamentHistoryPage = () => {
                     </BarChart>
                   </ResponsiveContainer>
                 ) : (
-                  <p>No hay datos de winrates para Bloque Furia</p>
+                  <p>No hay datos de winrates para Furia Extendido</p>
                 )}
               </div>
             </div>
@@ -763,7 +763,7 @@ const TournamentHistoryPage = () => {
               {shouldShowBF && !isFormatSpecific && (
                 <>
                   <div className={styles.chartSection}>
-                    <h2>Uso de Razas en Bloque Furia</h2>
+                    <h2>Uso de Razas en Furia Extendido</h2>
                     {races ? (
                       <ResponsiveContainer width="100%" height={400}>
                         <PieChart>
@@ -789,11 +789,11 @@ const TournamentHistoryPage = () => {
                         </PieChart>
                       </ResponsiveContainer>
                     ) : (
-                      <p>No hay datos de razas para Bloque Furia</p>
+                      <p>No hay datos de razas para Furia Extendido</p>
                     )}
                   </div>
                   <div className={styles.chartSection}>
-                    <h2>Winrate por Raza - Bloque Furia</h2>
+                    <h2>Winrate por Raza - Furia Extendido</h2>
                     {races ? (
                       <ResponsiveContainer width="100%" height={400}>
                         <BarChart data={prepareWinrateData(races.bf_race_winrates)}>
@@ -811,7 +811,7 @@ const TournamentHistoryPage = () => {
                         </BarChart>
                       </ResponsiveContainer>
                     ) : (
-                      <p>No hay datos de winrates para Bloque Furia</p>
+                      <p>No hay datos de winrates para Furia Extendido</p>
                     )}
                   </div>
                 </>
@@ -1015,8 +1015,8 @@ const TournamentHistoryPage = () => {
               <h3>Leyenda</h3>
               <ul>
                 <li><strong>Pos:</strong> Posición Final</li>
-                <li><strong>{getRaceColumnLabels().libre}:</strong> {isFormatSpecific ? `Raza elegida en ${selectedTournament?.format === 'PB' ? 'Primer Bloque' : 'Bloque Furia'} - Libre` : 'Raza elegida en Primer Bloque'}</li>
-                <li><strong>{getRaceColumnLabels().edition}:</strong> {isFormatSpecific ? `Raza elegida en ${selectedTournament?.format === 'PB' ? 'Primer Bloque' : 'Bloque Furia'} - ${selectedTournament?.format === 'PB' ? 'Edición' : 'VCR'}` : 'Raza elegida en Bloque Furia'}</li>
+                <li><strong>{getRaceColumnLabels().libre}:</strong> {isFormatSpecific ? `Raza elegida en ${selectedTournament?.format === 'PB' ? 'Primer Bloque' : 'Furia Extendido'} - Libre` : 'Raza elegida en Primer Bloque'}</li>
+                <li><strong>{getRaceColumnLabels().edition}:</strong> {isFormatSpecific ? `Raza elegida en ${selectedTournament?.format === 'PB' ? 'Primer Bloque' : 'Furia Extendido'} - ${selectedTournament?.format === 'PB' ? 'Edición' : 'VCR'}` : 'Raza elegida en Furia Extendido'}</li>
                 <li><strong>RJ:</strong> Rondas Jugadas</li>
                 <li><strong>G:</strong> Rondas Ganadas</li>
                 <li><strong>E:</strong> Rondas Empatadas</li>
@@ -1050,7 +1050,7 @@ const TournamentHistoryPage = () => {
                 <details key={round.number} className={styles.roundAccordion}>
                   <summary className={styles.roundSummary}>
                     <span className={styles.roundTitle}>
-                      Ronda {round.number} - {round.format === 'PB' ? 'Primer Bloque' : 'Bloque Furia'}
+                      Ronda {round.number} - {round.format === 'PB' ? 'Primer Bloque' : 'Furia Extendido'}
                       {round.subformat ? ` (${round.subformat})` : ''}
                     </span>
                   </summary>

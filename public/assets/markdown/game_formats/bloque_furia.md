@@ -7,8 +7,8 @@ El **Bloque Furia _Extendido_** se compone de la unión de dos bloques: el **Blo
 Desde **2026** se podrán usar las cartas de las ediciones del **Bloque Furia** en conjunto con las cartas del formato **Furia Extendido**, con el lanzamiento de la edición **Leyendas Bloque Furia 2.0**.
 
 Para este formato existen dos tipos de formatos de juego oficiales:
-- **Bloque Furia Racial Libre**
-- **Bloque Furia Racial Limitado**
+- **Furia Extendido Racial Libre**
+- **Furia Extendido Racial Limitado**
 
 ---
 

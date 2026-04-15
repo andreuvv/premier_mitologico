@@ -1,8 +1,8 @@
-# ⚔️ Bloque Furia Racial Libre
+# ⚔️ Furia Extendido Racial Libre
 
 ## 📋 Descripción General
 
-El formato **Bloque Furia Racial Libre** permite construir mazos utilizando cartas de todas las ediciones y productos especiales del Bloque Furia, con la condición de mantener una identidad racial clara en tu mazo.
+El formato **Furia Extendido Racial Libre** permite construir mazos utilizando cartas de todas las ediciones y productos especiales del Furia Extendido, con la condición de mantener una identidad racial clara en tu mazo.
 
 ---
 
@@ -16,7 +16,7 @@ El formato **Bloque Furia Racial Libre** permite construir mazos utilizando cart
 
 ### 🛡️ Cartas de Soporte
 
-Las cartas de "soporte" pueden ser de **cualquier edición y/o productos especiales** del Bloque Furia:
+Las cartas de "soporte" pueden ser de **cualquier edición y/o productos especiales** del Furia Extendido:
 
 - ⚜️ **Oros**
 - 🔮 **Talismanes**
@@ -27,7 +27,7 @@ Las cartas de "soporte" pueden ser de **cualquier edición y/o productos especia
 
 ## 📚 Ediciones Permitidas
 
-Todas las ediciones y productos especiales del **Bloque Furia** están permitidos, incluyendo:
+Todas las ediciones y productos especiales del **Furia Extendido** están permitidos, incluyendo:
 
 - Ediciones principales del bloque
 - Leyendas Bloque Furia
@@ -50,7 +50,7 @@ Todas las ediciones y productos especiales del **Bloque Furia** están permitido
 ### ✅ Ventajas
 
 - **Amplia libertad** para construir tu mazo
-- Acceso a **todas las cartas** del Bloque Furia
+- Acceso a **todas las cartas** del Furia Extendido
 - Mayor **diversidad de estrategias** disponibles
 - Posibilidad de usar **cartas promocionales y especiales**
 

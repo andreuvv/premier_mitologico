@@ -1,6 +1,6 @@
 # 👑 Vasallo, Cortesano, Real (VCR)
 
-**Bloque Furia Racial Libre**
+**Furia Extendido Racial Libre**
 
 ## 📋 Descripción General
 
@@ -14,7 +14,7 @@ Las reglas de construcción de mazo son las mismas que en los formatos en los qu
 
 ### 📚 Base del Formato
 
-- Sigue todas las reglas de **Bloque Furia Racial Libre**
+- Sigue todas las reglas de **Furia Extendido Racial Libre**
 - Aplica las restricciones de rareza de **VCR**
 
 ---

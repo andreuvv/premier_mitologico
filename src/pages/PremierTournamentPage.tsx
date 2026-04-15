@@ -366,7 +366,7 @@ const PremierTournamentPage = () => {
                   <div>
                     <h1>
                       {currentRound && (currentRound.format === 'PB' ? <FaListOl className={styles.icon} /> : <FaFire className={styles.icon} />)}
-                      Ronda {selectedRound} - {currentRound?.format === 'PB' ? 'Primer Bloque' : 'Bloque Furia'}
+                      Ronda {selectedRound} - {currentRound?.format === 'PB' ? 'Primer Bloque' : 'Furia Extendido'}
                     </h1>
                     {currentRound?.subformat && (
                       <p className={styles.subformatText}>{getSubformatDisplayName(currentRound.subformat)}</p>
@@ -651,7 +651,7 @@ const PremierTournamentPage = () => {
                       </h3>
                       <div className={styles.formatRow}>
                         <p className={styles.roundFormat}>
-                          {fixtureData.rounds[carouselRoundIndex].format === 'PB' ? 'Primer Bloque' : 'Bloque Furia'}
+                          {fixtureData.rounds[carouselRoundIndex].format === 'PB' ? 'Primer Bloque' : 'Furia Extendido'}
                         </p>
                         {fixtureData.rounds[carouselRoundIndex].subformat && (
                           <p className={styles.roundSubformat}>

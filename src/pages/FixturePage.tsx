@@ -89,7 +89,7 @@ const FixturePage = () => {
             </button>
             <h1>
               {currentRound && (currentRound.format === 'PB' ? <FaDiceOne className={styles.icon} /> : <FaFire className={styles.icon} />)}
-              Ronda {selectedRound} - {currentRound?.format === 'PB' ? 'Primer Bloque' : 'Bloque Furia'}
+              Ronda {selectedRound} - {currentRound?.format === 'PB' ? 'Primer Bloque' : 'Furia Extendido'}
             </h1>
           </div>
 

@@ -14,7 +14,7 @@ export const formatSectionConfig: Record<FormatSection, {
     ],
   },
   [FormatSection.BLOQUE_FURIA]: {
-    title: 'Bloque Furia',
+    title: 'Furia Extendido',
     icon: 'FaFire',
     variants: [
       FormatVariant.BLOQUE_FURIA_RACIAL_LIBRE,
@@ -37,8 +37,8 @@ export const formatSectionConfig: Record<FormatSection, {
 export const formatVariantConfig: Record<FormatVariant, { title: string }> = {
   [FormatVariant.PRIMER_BLOQUE_RACIAL_LIBRE]: { title: 'Primer Bloque Racial Libre' },
   [FormatVariant.PRIMER_BLOQUE_RACIAL_EDICION]: { title: 'Primer Bloque Racial Edición' },
-  [FormatVariant.BLOQUE_FURIA_RACIAL_LIBRE]: { title: 'Bloque Furia Racial Libre' },
-  [FormatVariant.BLOQUE_FURIA_RACIAL_LIMITADO]: { title: 'Bloque Furia Racial Limitado' },
+  [FormatVariant.BLOQUE_FURIA_RACIAL_LIBRE]: { title: 'Furia Extendido Racial Libre' },
+  [FormatVariant.BLOQUE_FURIA_RACIAL_LIMITADO]: { title: 'Furia Extendido Racial Limitado' },
   [FormatVariant.INFANTERIA]: { title: 'Infantería' },
   [FormatVariant.VCR]: { title: 'Vasallo, Cortesano, Real (VCR)' },
   [FormatVariant.COMMANDER]: { title: 'Commander' },

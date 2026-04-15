@@ -45,7 +45,7 @@ Los dos jugadores con **mayor puntaje** al final de las rondas clasifican a la f
 
 Los formatos a jugar son:
 - **Primer Bloque**
-- **Bloque Furia**
+- **Furia Extendido**
 
 El formato se determina **al azar** junto con el emparejamiento, garantizando que:
 - Cada jugador juegue una vez contra cada oponente
@@ -56,7 +56,7 @@ El formato se determina **al azar** junto con el emparejamiento, garantizando qu
 #### 🪙 Primer Duelo
 El formato se determina **lanzando una moneda**:
 - **Cara** (Logo Dragón): **Primer Bloque**
-- **Sello** (Letras "Mitos y leyendas"): **Bloque Furia**
+- **Sello** (Letras "Mitos y leyendas"): **Furia Extendido**
 
 #### 🎯 Segundo Duelo
 El **perdedor del primer duelo** elige el formato.
