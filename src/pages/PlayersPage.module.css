@@ -225,9 +225,9 @@
 }
 
 .tournamentsList {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .tournamentCard {
@@ -278,9 +278,37 @@
   color: var(--petrol-blue);
 }
 
+.headerMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.formatBadges {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
 .formatBadge {
-  color: var(--sage-green);
-  font-style: italic;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.formatBadgePB {
+  background-color: rgba(212, 175, 55, 0.15);
+  color: var(--ocher);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.formatBadgeFX {
+  background-color: rgba(201, 67, 56, 0.15);
+  color: var(--brick-red);
+  border: 1px solid rgba(201, 67, 56, 0.3);
 }
 
 .chevron {
@@ -589,7 +617,7 @@
   }
 
   .tournamentsList {
-    grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
 
   .graphsContent {

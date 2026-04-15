@@ -373,18 +373,32 @@ const PlayersPage = () => {
     return rows;
   };
 
-  const getFormatBadge = (tournament: PlayerTournamentData) => {
-    const parts: string[] = [];
-    if (tournament.format) {
-      parts.push(tournament.format);
+  const getFormatBadges = (tournament: PlayerTournamentData): { label: string; type: 'pb' | 'fx' }[] => {
+    const format = tournament.format;
+    const sub = (tournament.subformat || '').toLowerCase();
+
+    const isLibre = ['libre', 'pbrl', 'bfrl'].some(v => sub === v) || sub.includes('libre');
+    const isEdicion = ['pbre', 'bfvcr', 'vcr', 'edición', 'edicion'].some(v => sub === v)
+                   || sub.includes('vcr') || sub.includes('edici');
+    const isBoth = !sub || sub === 'both' || (isLibre && isEdicion);
+
+    const showPB = !format || format === 'PB';
+    const showBF = !format || format === 'BF';
+
+    const badges: { label: string; type: 'pb' | 'fx' }[] = [];
+
+    if (showPB) {
+      if (isBoth || isLibre) badges.push({ label: 'PB Racial Libre', type: 'pb' });
+      if (isBoth || isEdicion) badges.push({ label: 'PB Racial Edición', type: 'pb' });
+      if (!isBoth && !isLibre && !isEdicion) badges.push({ label: 'PB', type: 'pb' });
     }
-    if (tournament.subformat) {
-      const sub = tournament.subformat.toLowerCase();
-      if (sub.includes('libre')) parts.push('Libre');
-      else if (sub.includes('vcr') || sub.includes('edici')) parts.push('Edición/VCR');
-      else parts.push(tournament.subformat);
+    if (showBF) {
+      if (isBoth || isLibre) badges.push({ label: 'FX Racial Libre', type: 'fx' });
+      if (isBoth || isEdicion) badges.push({ label: 'FX Racial VCR', type: 'fx' });
+      if (!isBoth && !isLibre && !isEdicion) badges.push({ label: 'FX', type: 'fx' });
     }
-    return parts.length > 0 ? parts.join(' · ') : null;
+
+    return badges;
   };
 
   const handlePlayerClick = async (player: APIPlayer) => {
@@ -438,6 +452,17 @@ const PlayersPage = () => {
         bfTies: item.bf_ties,
         bfMatches: item.bf_matches,
       }));
+
+      // Sort by date descending (newest first)
+      const monthOrder: Record<string, number> = {
+        'Enero': 1, 'Febrero': 2, 'Marzo': 3, 'Abril': 4,
+        'Mayo': 5, 'Junio': 6, 'Julio': 7, 'Agosto': 8,
+        'Septiembre': 9, 'Octubre': 10, 'Noviembre': 11, 'Diciembre': 12,
+      };
+      tournamentData.sort((a, b) => {
+        if (a.year !== b.year) return b.year - a.year;
+        return (monthOrder[b.month] || 0) - (monthOrder[a.month] || 0);
+      });
 
       setPlayerTournamentData(tournamentData);
       setError(null);
@@ -668,12 +693,16 @@ const PlayersPage = () => {
                     >
                       <div className={styles.headerContent}>
                         <h3>{tournament.tournamentName}</h3>
-                        <span className={styles.tournamentDate}>
-                          {tournament.month} {tournament.year}
-                          {getFormatBadge(tournament) && (
-                            <span className={styles.formatBadge}> — {getFormatBadge(tournament)}</span>
-                          )}
-                        </span>
+                        <div className={styles.headerMeta}>
+                          <span className={styles.tournamentDate}>
+                            {tournament.month} {tournament.year}
+                          </span>
+                          <div className={styles.formatBadges}>
+                            {getFormatBadges(tournament).map((badge, i) => (
+                              <span key={i} className={`${styles.formatBadge} ${badge.type === 'pb' ? styles.formatBadgePB : styles.formatBadgeFX}`}>{badge.label}</span>
+                            ))}
+                          </div>
+                        </div>
                       </div>
                       <FaChevronDown 
                         className={`${styles.chevron} ${expandedTournaments.has(tournament.tournamentId) ? styles.expanded : ''}`}
