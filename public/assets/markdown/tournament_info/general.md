@@ -1,12 +1,12 @@
-*Última actualización: 20 de Marzo 2026*
+*Última actualización: 15 de Abril 2026*
 
 
 # **📅** Siguiente Torneo
 
-- 📆 Fecha: **03 de Abril 2026**
-- 🕒 Hora de inicio: **14:30 hrs**
+- 📆 Fecha: **30 de Mayo 2026**
+- 🕒 Hora de inicio: **14:00 hrs**
 - 📍 Sede: **Donde Piter**
-- 🎮 Formatos: [Furia Extendido Racial Libre](https://andreuvv.github.io/premier_mitologico/game-formats/bloqueFuria/bloqueFuriaRacialLibre) y [Furia Extendido Racial VCR](https://andreuvv.github.io/premier_mitologico/game-formats/formatosEspeciales/vcr)
+- 🎮 Formatos: [Primer Bloque Racial Libre](https://andreuvv.github.io/premier_mitologico/game-formats/primerBloque/primerBloqueRacialLibre) y [Primer Bloque Racial Edición](https://andreuvv.github.io/premier_mitologico/game-formats/primerBloque/primerBloqueRacialEdicion)
 - ⚔️ Rondas: [Mejor de 3](https://andreuvv.github.io/premier_mitologico/tournament-info/tournamentSystem/md3)
 - 🔄 Mulligan: [Mulligan estándar + Mano Seca](https://andreuvv.github.io/premier_mitologico/tournament-info/gameRules/mulligan)
 
