@@ -685,8 +685,11 @@ const PlayersPage = () => {
                   Historial de Torneos
                 </h2>
                 <div className={styles.tournamentsList}>
-                {playerTournamentData.map(tournament => (
-                  <div key={tournament.tournamentId} className={styles.tournamentCard}>
+                {playerTournamentData.map(tournament => {
+                  const pos = tournament.standing?.final_position;
+                  const podiumClass = pos === 1 ? styles.cardGold : pos === 2 ? styles.cardSilver : pos === 3 ? styles.cardBronze : '';
+                  return (
+                  <div key={tournament.tournamentId} className={`${styles.tournamentCard} ${podiumClass}`}>
                     <button
                       className={styles.accordionHeader}
                       onClick={() => toggleTournamentExpand(tournament.tournamentId)}
@@ -704,9 +707,16 @@ const PlayersPage = () => {
                           </div>
                         </div>
                       </div>
-                      <FaChevronDown 
-                        className={`${styles.chevron} ${expandedTournaments.has(tournament.tournamentId) ? styles.expanded : ''}`}
-                      />
+                      <div className={styles.headerRight}>
+                        {pos && (
+                          <span className={`${styles.positionBadge} ${pos === 1 ? styles.posGold : pos === 2 ? styles.posSilver : pos === 3 ? styles.posBronze : ''}`}>
+                            {pos}°
+                          </span>
+                        )}
+                        <FaChevronDown 
+                          className={`${styles.chevron} ${expandedTournaments.has(tournament.tournamentId) ? styles.expanded : ''}`}
+                        />
+                      </div>
                     </button>
                     
                     {expandedTournaments.has(tournament.tournamentId) && (
@@ -750,7 +760,8 @@ const PlayersPage = () => {
                       </div>
                     )}
                   </div>
-                ))}
+                  );
+                })}
               </div>
               </>
             )}

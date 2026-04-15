@@ -233,15 +233,56 @@
 .tournamentCard {
   background: var(--dark-brown);
   border: 1px solid #444;
+  border-left: 3px solid #444;
   border-radius: 8px;
   padding: 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
   overflow: hidden;
 }
 
 .tournamentCard:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.cardGold {
+  border-color: #D4AF37;
+  border-left-width: 3px;
+}
+
+.cardSilver {
+  border-color: #C0C0C0;
+  border-left-width: 3px;
+}
+
+.cardBronze {
+  border-color: #CD7F32;
+  border-left-width: 3px;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.positionBadge {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #888;
+}
+
+.posGold {
+  color: #D4AF37;
+}
+
+.posSilver {
+  color: #C0C0C0;
+}
+
+.posBronze {
+  color: #CD7F32;
 }
 
 .accordionHeader {
