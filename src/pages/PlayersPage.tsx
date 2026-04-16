@@ -115,6 +115,31 @@ const PlayersPage = () => {
     return () => window.removeEventListener('resize', checkTableOverflow);
   }, [playerTournamentData, graphsExpanded]);
 
+  // Helper: extract all PB and BF races from a tournament considering format
+  // - Mixed (format=null): race_pb → PB, race_bf → BF
+  // - format='PB': race_libre → PB, race_edition_vcr → PB
+  // - format='BF': race_libre → BF, race_edition_vcr → BF
+  const getRacesForFormat = (tournament: PlayerTournamentData) => {
+    const pbRaces: string[] = [];
+    const bfRaces: string[] = [];
+
+    if (!tournament.format) {
+      // Mixed tournament
+      if (tournament.races?.race_pb) pbRaces.push(tournament.races.race_pb);
+      if (tournament.races?.race_bf) bfRaces.push(tournament.races.race_bf);
+    } else if (tournament.format === 'PB') {
+      // PB-only tournament: both subformat races count as PB
+      if (tournament.races?.race_libre) pbRaces.push(tournament.races.race_libre);
+      if (tournament.races?.race_edition_vcr) pbRaces.push(tournament.races.race_edition_vcr);
+    } else if (tournament.format === 'BF') {
+      // BF-only tournament: both subformat races count as BF
+      if (tournament.races?.race_libre) bfRaces.push(tournament.races.race_libre);
+      if (tournament.races?.race_edition_vcr) bfRaces.push(tournament.races.race_edition_vcr);
+    }
+
+    return { pbRaces, bfRaces };
+  };
+
   const playerSummary = useMemo(() => {
     const summary: PlayerSummary = {
       tournamentsPlayed: playerTournamentData.length,
@@ -177,17 +202,18 @@ const PlayersPage = () => {
     summary.winRatePB = totalPBMatches > 0 ? Math.min(100, Math.round(((totalPBWins + 0.5 * totalPBTies) / totalPBMatches) * 100)) : 0;
     summary.winRateBF = totalBFMatches > 0 ? Math.min(100, Math.round(((totalBFWins + 0.5 * totalBFTies) / totalBFMatches) * 100)) : 0;
 
-    // Find most played races
+    // Find most played races (considering format-specific tournaments)
     const racePBCount: Record<string, number> = {};
     const raceBFCount: Record<string, number> = {};
 
     playerTournamentData.forEach(tournament => {
-      if (tournament.races?.race_pb) {
-        racePBCount[tournament.races.race_pb] = (racePBCount[tournament.races.race_pb] || 0) + 1;
-      }
-      if (tournament.races?.race_bf) {
-        raceBFCount[tournament.races.race_bf] = (raceBFCount[tournament.races.race_bf] || 0) + 1;
-      }
+      const { pbRaces, bfRaces } = getRacesForFormat(tournament);
+      pbRaces.forEach(race => {
+        racePBCount[race] = (racePBCount[race] || 0) + 1;
+      });
+      bfRaces.forEach(race => {
+        raceBFCount[race] = (raceBFCount[race] || 0) + 1;
+      });
     });
 
     // Get most played race for each format
@@ -211,9 +237,10 @@ const PlayersPage = () => {
   const raceUsagePB = useMemo(() => {
     const count: { [race: string]: number } = {};
     playerTournamentData.forEach(tournament => {
-      if (tournament.races?.race_pb) {
-        count[tournament.races.race_pb] = (count[tournament.races.race_pb] || 0) + 1;
-      }
+      const { pbRaces } = getRacesForFormat(tournament);
+      pbRaces.forEach(race => {
+        count[race] = (count[race] || 0) + 1;
+      });
     });
     return count;
   }, [playerTournamentData]);
@@ -221,9 +248,10 @@ const PlayersPage = () => {
   const raceUsageBF = useMemo(() => {
     const count: { [race: string]: number } = {};
     playerTournamentData.forEach(tournament => {
-      if (tournament.races?.race_bf) {
-        count[tournament.races.race_bf] = (count[tournament.races.race_bf] || 0) + 1;
-      }
+      const { bfRaces } = getRacesForFormat(tournament);
+      bfRaces.forEach(race => {
+        count[race] = (count[race] || 0) + 1;
+      });
     });
     return count;
   }, [playerTournamentData]);
@@ -233,14 +261,21 @@ const PlayersPage = () => {
     const raceStats: { [race: string]: { wins: number; ties: number; total: number } } = {};
 
     playerTournamentData.forEach(tournament => {
-      if (tournament.races?.race_pb && tournament.pbMatches && tournament.pbMatches > 0) {
-        const race = tournament.races.race_pb;
-        if (!raceStats[race]) {
-          raceStats[race] = { wins: 0, ties: 0, total: 0 };
-        }
-        raceStats[race].wins += tournament.pbWins || 0;
-        raceStats[race].ties += tournament.pbTies || 0;
-        raceStats[race].total += tournament.pbMatches;
+      const { pbRaces } = getRacesForFormat(tournament);
+      // For PB stats: use pbMatches for mixed tournaments, or all matches (pb+bf) for PB-only tournaments
+      const wins = !tournament.format ? (tournament.pbWins || 0) : (tournament.pbWins || 0) + (tournament.bfWins || 0);
+      const ties = !tournament.format ? (tournament.pbTies || 0) : (tournament.pbTies || 0) + (tournament.bfTies || 0);
+      const total = !tournament.format ? (tournament.pbMatches || 0) : (tournament.pbMatches || 0) + (tournament.bfMatches || 0);
+
+      if (total > 0) {
+        pbRaces.forEach(race => {
+          if (!raceStats[race]) {
+            raceStats[race] = { wins: 0, ties: 0, total: 0 };
+          }
+          raceStats[race].wins += wins;
+          raceStats[race].ties += ties;
+          raceStats[race].total += total;
+        });
       }
     });
 
@@ -258,14 +293,21 @@ const PlayersPage = () => {
     const raceStats: { [race: string]: { wins: number; ties: number; total: number } } = {};
 
     playerTournamentData.forEach(tournament => {
-      if (tournament.races?.race_bf && tournament.bfMatches && tournament.bfMatches > 0) {
-        const race = tournament.races.race_bf;
-        if (!raceStats[race]) {
-          raceStats[race] = { wins: 0, ties: 0, total: 0 };
-        }
-        raceStats[race].wins += tournament.bfWins || 0;
-        raceStats[race].ties += tournament.bfTies || 0;
-        raceStats[race].total += tournament.bfMatches;
+      const { bfRaces } = getRacesForFormat(tournament);
+      // For BF stats: use bfMatches for mixed tournaments, or all matches (pb+bf) for BF-only tournaments
+      const wins = !tournament.format ? (tournament.bfWins || 0) : (tournament.pbWins || 0) + (tournament.bfWins || 0);
+      const ties = !tournament.format ? (tournament.bfTies || 0) : (tournament.pbTies || 0) + (tournament.bfTies || 0);
+      const total = !tournament.format ? (tournament.bfMatches || 0) : (tournament.pbMatches || 0) + (tournament.bfMatches || 0);
+
+      if (total > 0) {
+        bfRaces.forEach(race => {
+          if (!raceStats[race]) {
+            raceStats[race] = { wins: 0, ties: 0, total: 0 };
+          }
+          raceStats[race].wins += wins;
+          raceStats[race].ties += ties;
+          raceStats[race].total += total;
+        });
       }
     });
 
