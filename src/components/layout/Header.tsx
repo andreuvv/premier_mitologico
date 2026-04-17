@@ -73,6 +73,10 @@ const Header = () => {
                   <FaHammer className={styles.icon} />
                   Deck Builder
                 </button>
+                <button className={`${styles.cartasDropdownItem} ${styles.cartasDropdownDisabled}`} disabled>
+                  <FaBook className={styles.icon} />
+                  Colección
+                </button>
               </div>
             )}
           </div>
@@ -181,6 +185,10 @@ const Header = () => {
         >
           <FaHammer className={styles.icon} />
           Deck Builder
+        </button>
+        <button className={`${styles.mobileSubItem} ${styles.mobileSubItemDisabled}`} disabled>
+          <FaBook className={styles.icon} />
+          Colección
         </button>
         <Link to="/game-formats" onClick={() => setMobileMenuOpen(false)}>
           <FaGamepad className={styles.icon} />

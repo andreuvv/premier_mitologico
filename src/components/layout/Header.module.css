@@ -328,6 +328,16 @@
   .mobileSubItem:hover {
     background-color: rgba(255, 255, 255, 0.1);
   }
+
+  .mobileSubItemDisabled {
+    color: grey;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .mobileSubItemDisabled:hover {
+    background-color: transparent;
+  }
 }
 
 .blogNavItem {
@@ -387,6 +397,16 @@
 
 .cartasDropdownItem:hover {
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+.cartasDropdownDisabled {
+  color: grey;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.cartasDropdownDisabled:hover {
+  background-color: transparent;
 }
 
 .blogNavItem::after {
