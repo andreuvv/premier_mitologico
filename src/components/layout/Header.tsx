@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaHome, FaClipboardList, FaBan, FaGamepad, FaHammer, FaTrophy, FaHistory, FaUser, FaBlog, FaBook } from 'react-icons/fa';
+import { FaHome, FaClipboardList, FaBan, FaGamepad, FaHammer, FaTrophy, FaHistory, FaUser, FaBlog, FaBook, FaSignInAlt } from 'react-icons/fa';
 import LatestBlogCard from '../LatestBlogCard';
 import { getTournamentMonthYear } from '../../config/tournamentConfig';
 import styles from './Header.module.css';
@@ -137,7 +137,11 @@ const Header = () => {
         <button className={styles.loginButton} disabled>
         </button>
       </div>
-  
+
+      <button className={styles.desktopLoginButton} disabled>
+        <FaSignInAlt className={styles.icon} />
+        Iniciar Sesión
+      </button>
 
 
       {mobileMenuOpen && (
@@ -198,6 +202,11 @@ const Header = () => {
           <FaBlog className={styles.icon} />
           Blog
         </Link>
+        <div className={styles.mobileMenuSpacer} />
+        <button className={styles.mobileLoginButton} disabled>
+          <FaSignInAlt className={styles.icon} />
+          Iniciar Sesión
+        </button>
       </div>
     </header>
   );
