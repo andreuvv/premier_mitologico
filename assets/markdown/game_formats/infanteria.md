@@ -1,6 +1,6 @@
 # 🗡️ Infantería
 
-**Primer Bloque Racial Libre y Racial Edición | Bloque Furia Racial Libre y Racial Limitado**
+**Primer Bloque Racial Libre y Racial Edición | Furia Extendido Racial Libre y Racial Limitado**
 
 ## 📋 Descripción General
 

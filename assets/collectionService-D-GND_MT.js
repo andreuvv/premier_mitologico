@@ -1,0 +1,1 @@
+import{C as a}from"./collection-CTTR9qTJ.js";const r=async t=>{const s=t===a.PRIMER_BLOQUE?"cartas_pb.json":"cartas_fx.json",o=await fetch(`/premier_mitologico/assets/json/${s}`);if(!o.ok)throw new Error(`Failed to load collection: ${o.statusText}`);return o.json()};export{r as l};

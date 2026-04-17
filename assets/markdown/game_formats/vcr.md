@@ -1,6 +1,6 @@
 # 👑 Vasallo, Cortesano, Real (VCR)
 
-**Bloque Furia Racial Libre**
+**Furia Extendido Racial Libre**
 
 ## 📋 Descripción General
 
@@ -14,7 +14,7 @@ Las reglas de construcción de mazo son las mismas que en los formatos en los qu
 
 ### 📚 Base del Formato
 
-- Sigue todas las reglas de **Bloque Furia Racial Libre**
+- Sigue todas las reglas de **Furia Extendido Racial Libre**
 - Aplica las restricciones de rareza de **VCR**
 
 ---
@@ -24,17 +24,22 @@ Las reglas de construcción de mazo son las mismas que en los formatos en los qu
 | Tipo | Rarezas Permitidas |
 |------|-------------------|
 | **Aliados** | Vasallo, Cortesano, Real |
-| **Oros** | Todas (incluyendo con habilidad) |
+| **Oros** | Vasallo, Cortesano, Real (Incluyendo con habilidad) |
 | **Talismanes** | Vasallo, Cortesano, Real |
 | **Tótems** | Vasallo, Cortesano, Real |
 | **Armas** | Vasallo, Cortesano, Real |
-| **Rework** | ✅ Permitido |
+| **Rework** | ✅ Permitido (Mientras sean Vasallo, Cortesano o Real) |
 
 ---
 
 ## 🚫 Cartas Prohibidas
 
-- Aliados de rareza **Mayor** (Ultra Real, Legendario)
+- Cartas de rareza:
+  - Mega Real
+  - Ultra Real
+  - Legendaria
+  - Promocional
+- Cartas originales que hayan recibido rework
 - Banlist del formato
 
 ---

@@ -1,28 +1,32 @@
 {
-  "format": "Bloque Furia Racial Limitado",
-  "lastUpdated": "2026-02-04",
+  "format": "Furia Extendido Racial Limitado",
+  "lastUpdated": "2026-04-06",
   "banned": [
     {
       "name": "Procesión",
       "type": "Talisman",
-      "imageUrl": "https://api.myl.cl/static/cards/146/030.png"
+      "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/06-Daana/cartas/030-GUA-Procesion-MazosCL.webp",
+      "cardUrl": "https://mazos.cl/card/10632/procesion"
     },
     {
       "name": "Tridente de los Mares",
       "type": "Arma",
-      "imageUrl": "https://api.myl.cl/static/cards/114/071.png"
+      "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/071-TRO-Tridente-de-los-mares-MazosCL.webp",
+      "cardUrl": "https://mazos.cl/card/9976/tridente-de-los-mares"
     }
   ],
   "limitedX1": [
     {
       "name": "Merodeador",
       "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/146/036.png"
+      "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/06-Daana/cartas/036-GUA-Merodeador-MazosCL.webp",
+      "cardUrl": "https://mazos.cl/card/10638/merodeador"
     },
     {
       "name": "Morgause",
       "type": "Aliado",
-      "imageUrl": "https://api.myl.cl/static/cards/88/048.png"
+      "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/048-EXC-Morgause-MazosCL.webp",
+      "cardUrl": "https://mazos.cl/card/9575/morgause"
     }
   ],
   "limitedX2": [

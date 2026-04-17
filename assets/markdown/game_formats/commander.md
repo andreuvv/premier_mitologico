@@ -1,6 +1,6 @@
 # 🎭 Commander
 
-**Bloque Furia Racial Libre**
+**Furia Extendido Racial Libre**
 
 ## 📋 Descripción General
 
@@ -18,7 +18,7 @@ Una nueva zona en el tablero alberga la carta de "Commander" al iniciar la parti
 | **👑 Commander** | Aliado de rareza Ultra Real |
 | **🏛️ Alineación racial** | Todos los aliados deben tener la misma raza que el commander |
 | **⚖️ Cartas Únicas** | Todas las cartas se consideran Únicas |
-| **📚 Ediciones permitidas** | Todas las ediciones y promocionales del Bloque Furia |
+| **📚 Ediciones permitidas** | Todas las ediciones y promocionales de Furia Extendido |
 
 ---
 

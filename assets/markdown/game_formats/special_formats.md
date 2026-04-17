@@ -56,6 +56,17 @@ Formato de restricción única donde todas las cartas se consideran Únicas. Per
 
 ---
 
+## 🎁 Evento Especial
+
+### 🎁 Sellado
+
+**Disponible para:**
+- ✅ Universal (Ambos Bloques)
+
+Formato de evento especial donde cada jugador abre un producto y construye un mazo con un tiempo límite de 30 minutos. Perfecto para eventos comunitarios con igualdad de condiciones.
+
+---
+
 ## 📊 Comparativa de Formatos Especiales
 
 | Formato | Rarezas Permitidas | Rework | Oros con Habilidad | Complejidad | Jugadores |
@@ -64,6 +75,7 @@ Formato de restricción única donde todas las cartas se consideran Únicas. Per
 | **VCR** | Vasallo, Cortesano, Real | ✅ | ✅ | ⭐⭐ Media | 1v1 |
 | **Commander** | Todas las rarezas | ✅ | ✅ | ⭐⭐⭐ Alta | 4 jugadores (o 1v1) |
 | **Ragnarok** | Todas (Únicas) | ✅ | ✅ | ⭐⭐ Media | 1v1 |
+| **Sellado** | Todas (Limitado) | Limitado | Limitado | ⭐⭐ Media | 1v1 |
 
 ---
 
@@ -73,3 +85,4 @@ Formato de restricción única donde todas las cartas se consideran Únicas. Per
 - **¿Quieres más poder?** → 👑 **VCR**
 - **¿Buscas máxima diversidad?** → 🧌 **Ragnarok**
 - **¿Prefieres épica grupal?** → 🎭 **Commander**
+- **¿Quieres un evento comunitario?** → 🎁 **Sellado**

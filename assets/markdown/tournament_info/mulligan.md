@@ -2,19 +2,35 @@
 ### _✋ Cambio de mano_
 #### _(Estas reglas solo aplican a nuestros torneos, en premier oficiales se usa el mulligan estándar)_
 
-## 🆓 Para formatos Libres
+---
 
-_**Primer Bloque Racial Libre**_ y _**Bloque Furia Racial Libre**_:
+## 📋 Mulligan Estándar
 
 - 🎴 Ambos jugadores robarán una mano de **8 cartas**.
-- 🔀 Si un jugador no está satisfecho con su mano puede cambiarla, robando una carta menos, siguiendo el siguiente patrón de cartas en mano por cada _mulligan:_
-    - **8️ (primera mano) - 7️ - 7️ - 6️ - 6️ - 5️ - 5️ - 4️ - 4️ - 3️ - 3️ - 2️ - 2️ - 1️ carta(s).**
+- 🔀 Si un jugador no está satisfecho con su mano, puede cambiarla robando **una carta menos** por cada _mulligan_.
+- 📊 Patrón de cartas: **8 → 7 → 6 → 5 → 4 → 3 → 2 → 1 carta(s)**.
 
-## 🎯 Para formatos Limitados
+---
 
-_**Primer Bloque Racial Edición**_ y _**Bloque Furia Racial Limitado**_:
+## 🎲 Mulligan Doble (7-7-6-6-5-5-...)
 
-- 📜 Se jugará con el _mulligan_ **estándar de MyL**.
 - 🎴 Ambos jugadores robarán una mano de **8 cartas**.
-- 🔀 Si un jugador no está satisfecho con su mano puede cambiarla, robando **una carta menos** por cada _mulligan_.
-- 🏠 _**Regla de la casa:**_ Si ambos jugadores no están satisfechos con su **primera** mano, ambos vuelven a robar **8 cartas**.
+- 🔀 Si un jugador no está satisfecho con su mano, puede cambiarla robando una carta menos, pero cada valor se repite dos veces.
+- 📊 Patrón de cartas: **8 (primera mano) - 7 - 7 - 6 - 6 - 5 - 5 - 4 - 4 - 3 - 3 - 2 - 2 - 1 carta(s)**.
+
+---
+
+## 🏠 Regla de la Casa
+
+- ⚖️ Si **ambos jugadores** no están satisfechos con su **primera mano de 8 cartas**, pueden acordar un reinicio mutuo.
+- 🔄 En este caso, **ambos vuelven a robar 8 cartas nuevamente** y continúan desde ahí con el mulligan correspondiente de su formato.
+- 💭 Esta regla requiere consentimiento de ambos jugadores.
+
+---
+
+## ✨ Mano Seca
+
+- 🪙 Si durante la **primera mano** un jugador **no tiene ninguna carta Oro**, puede invocar la "mano seca".
+- 👀 El jugador **muestra la mano al oponente** para confirmar que no hay cartas Oro.
+- 🔄 Tras la confirmación, el jugador puede **cambiar su mano robando 8 cartas nuevamente**.
+- 📌 Solo aplica a la **primera mano** y solo si está completamente sin cartas Oro.
