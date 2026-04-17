@@ -9,6 +9,7 @@ const Header = () => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [blogHovered, setBlogHovered] = useState(false);
+  const [cartasHovered, setCartasHovered] = useState(false);
   const monthYear = getTournamentMonthYear();
 
   return (
@@ -48,13 +49,33 @@ const Header = () => {
             <FaBan className={styles.icon} />
             Ban List
           </Link>
-          <Link 
-            to="/coleccion" 
-            className={location.pathname === '/coleccion' ? styles.active : ''}
+          <div
+            className={styles.cartasNavItem}
+            onMouseEnter={() => setCartasHovered(true)}
+            onMouseLeave={() => setCartasHovered(false)}
           >
-            <FaBook className={styles.icon} />
-            Cartas
-          </Link>
+            <Link 
+              to="/coleccion" 
+              className={location.pathname === '/coleccion' || location.pathname.startsWith('/coleccion/') ? styles.active : ''}
+            >
+              <FaBook className={styles.icon} />
+              Cartas
+            </Link>
+            {cartasHovered && (
+              <div className={styles.cartasDropdown}>
+                <button
+                  className={styles.cartasDropdownItem}
+                  onClick={() => {
+                    window.open('https://mazos.cl/format-selection', '_blank');
+                    setCartasHovered(false);
+                  }}
+                >
+                  <FaHammer className={styles.icon} />
+                  Deck Builder
+                </button>
+              </div>
+            )}
+          </div>
           <Link 
             to="/tournament-history" 
             className={location.pathname.startsWith('/tournament-history') ? styles.active : ''}
@@ -113,14 +134,7 @@ const Header = () => {
         </button>
       </div>
   
-      {/* Acá poner un option que este justificado a la derecha, usar styles.loginButton */}
-      <button 
-        className={styles.loginButton}
-        onClick={() => window.open('https://mazos.cl/format-selection', '_blank')}
-      >
-        <FaHammer className={styles.icon} />
-        Deck Builder
-      </button>
+
 
       {mobileMenuOpen && (
         <div 
@@ -158,16 +172,8 @@ const Header = () => {
           <FaBook className={styles.icon} />
           Cartas
         </Link>
-        <Link to="/game-formats" onClick={() => setMobileMenuOpen(false)}>
-          <FaGamepad className={styles.icon} />
-          Formatos
-        </Link>
-        <Link to="/blog" onClick={() => setMobileMenuOpen(false)}>
-          <FaBlog className={styles.icon} />
-          Blog
-        </Link>
-        <button 
-          className={styles.mobileMenuLink}
+        <button
+          className={styles.mobileSubItem}
           onClick={() => {
             window.open('https://mazos.cl/format-selection', '_blank');
             setMobileMenuOpen(false);
@@ -176,6 +182,14 @@ const Header = () => {
           <FaHammer className={styles.icon} />
           Deck Builder
         </button>
+        <Link to="/game-formats" onClick={() => setMobileMenuOpen(false)}>
+          <FaGamepad className={styles.icon} />
+          Formatos
+        </Link>
+        <Link to="/blog" onClick={() => setMobileMenuOpen(false)}>
+          <FaBlog className={styles.icon} />
+          Blog
+        </Link>
       </div>
     </header>
   );
