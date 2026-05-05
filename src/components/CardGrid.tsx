@@ -21,9 +21,11 @@ interface CardGridProps {
   cards: SimpleCard[];
   format: string;
   cardsPerPage?: number;
+  ownedCardIds?: Set<number>;
+  onToggleOwned?: (cardId: number) => void;
 }
 
-export default function CardGrid({ cards, format, cardsPerPage = 100 }: CardGridProps) {
+export default function CardGrid({ cards, format, cardsPerPage = 100, ownedCardIds, onToggleOwned }: CardGridProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [paginatedCards, setPaginatedCards] = useState<SimpleCard[]>([]);
 
@@ -38,27 +40,41 @@ export default function CardGrid({ cards, format, cardsPerPage = 100 }: CardGrid
   return (
     <div className={styles.container}>
       <div className={styles.grid}>
-        {paginatedCards.map((card) => (
-          <Link
-            key={card.id}
-            to={`/coleccion/carta/${format}/${card.id}/${card.slug}`}
-            className={styles.cardItem}
-          >
-            {card.imageUrl ? (
-              <img 
-                src={card.imageUrl} 
-                alt={card.name}
-                className={styles.cardImage}
-              />
-            ) : (
-              <div className={styles.placeholder}>Sin imagen</div>
-            )}
-            <div className={styles.cardInfo}>
-              <h4>{card.name}</h4>
-              <span className={styles.cardCode}>{card.collectorCode}</span>
+        {paginatedCards.map((card) => {
+          const isOwned = ownedCardIds?.has(card.id) ?? false;
+          return (
+            <div key={card.id} className={`${styles.cardItem} ${isOwned ? styles.cardOwned : ''}`}>
+              <Link
+                to={`/coleccion/carta/${format}/${card.id}/${card.slug}`}
+                className={styles.cardLink}
+              >
+                {card.imageUrl ? (
+                  <img
+                    src={card.imageUrl}
+                    alt={card.name}
+                    className={styles.cardImage}
+                  />
+                ) : (
+                  <div className={styles.placeholder}>Sin imagen</div>
+                )}
+                <div className={styles.cardInfo}>
+                  <h4>{card.name}</h4>
+                  <span className={styles.cardCode}>{card.collectorCode}</span>
+                </div>
+              </Link>
+              {onToggleOwned && (
+                <button
+                  className={`${styles.ownedButton} ${isOwned ? styles.ownedButtonActive : ''}`}
+                  onClick={e => { e.preventDefault(); onToggleOwned(card.id); }}
+                  title={isOwned ? 'Quitar de mi colección' : 'Agregar a mi colección'}
+                  aria-label={isOwned ? 'Quitar de mi colección' : 'Agregar a mi colección'}
+                >
+                  {isOwned ? '★' : '☆'}
+                </button>
+              )}
             </div>
-          </Link>
-        ))}
+          );
+        })}
       </div>
 
       {totalPages > 1 && (

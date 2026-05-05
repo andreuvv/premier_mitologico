@@ -1,16 +1,23 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaHome, FaClipboardList, FaBan, FaGamepad, FaHammer, FaTrophy, FaHistory, FaUser, FaBlog, FaBook, FaSignInAlt } from 'react-icons/fa';
+import { FaHome, FaClipboardList, FaBan, FaGamepad, FaHammer, FaTrophy, FaHistory, FaUser, FaBlog, FaBook, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
 import LatestBlogCard from '../LatestBlogCard';
 import { getTournamentMonthYear } from '../../config/tournamentConfig';
+import { useAuth } from '../../hooks/useAuth';
+import AuthModal from '../auth/AuthModal';
 import styles from './Header.module.css';
 
 const Header = () => {
   const location = useLocation();
+  const { user, signOut } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [blogHovered, setBlogHovered] = useState(false);
   const [cartasHovered, setCartasHovered] = useState(false);
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [signOutConfirmOpen, setSignOutConfirmOpen] = useState(false);
   const monthYear = getTournamentMonthYear();
+
+  const username = user?.user_metadata?.username ?? user?.email?.split('@')[0] ?? 'Usuario';
 
   return (
     <header className={styles.header}>
@@ -134,14 +141,33 @@ const Header = () => {
         </button>
         {/* Aca poner un option si es que quieres un botón al lado del hambuger icon */}
         
-        <button className={styles.loginButton} disabled>
-        </button>
+        {user ? (
+          <Link to="/players" className={styles.loginButton} onClick={() => setMobileMenuOpen(false)}>
+            <FaUser className={styles.icon} />
+          </Link>
+        ) : (
+          <button className={styles.loginButton} onClick={() => setAuthModalOpen(true)}>
+            <FaSignInAlt className={styles.icon} />
+          </button>
+        )}
       </div>
 
-      <button className={styles.desktopLoginButton} disabled>
-        <FaSignInAlt className={styles.icon} />
-        Iniciar Sesión
-      </button>
+      {user ? (
+        <div className={styles.desktopAuthArea}>
+          <Link to="/players" className={`${styles.desktopLoginButton} ${styles.desktopLoginButtonActive}`}>
+            <FaUser className={styles.icon} />
+            {username}
+          </Link>
+          <button className={styles.desktopSignOutButton} onClick={() => setSignOutConfirmOpen(true)} title="Cerrar sesión">
+            <FaSignOutAlt className={styles.icon} />
+          </button>
+        </div>
+      ) : (
+        <button className={styles.desktopLoginButton} onClick={() => setAuthModalOpen(true)}>
+          <FaSignInAlt className={styles.icon} />
+          Iniciar Sesión
+        </button>
+      )}
 
 
       {mobileMenuOpen && (
@@ -203,11 +229,42 @@ const Header = () => {
           Blog
         </Link>
         <div className={styles.mobileMenuSpacer} />
-        <button className={styles.mobileLoginButton} disabled>
-          <FaSignInAlt className={styles.icon} />
-          Iniciar Sesión
-        </button>
+        {user ? (
+          <>
+            <Link to="/players" className={styles.mobileLoginButton} onClick={() => setMobileMenuOpen(false)}>
+              <FaUser className={styles.icon} />
+              {username}
+            </Link>
+            <button className={styles.mobileLoginButton} onClick={() => { setSignOutConfirmOpen(true); setMobileMenuOpen(false); }}>
+              <FaSignOutAlt className={styles.icon} />
+              Cerrar Sesión
+            </button>
+          </>
+        ) : (
+          <button className={styles.mobileLoginButton} onClick={() => { setAuthModalOpen(true); setMobileMenuOpen(false); }}>
+            <FaSignInAlt className={styles.icon} />
+            Iniciar Sesión
+          </button>
+        )}
       </div>
+
+      {authModalOpen && <AuthModal onClose={() => setAuthModalOpen(false)} />}
+
+      {signOutConfirmOpen && (
+        <div className={styles.signOutOverlay} onClick={() => setSignOutConfirmOpen(false)}>
+          <div className={styles.signOutModal} onClick={e => e.stopPropagation()}>
+            <p className={styles.signOutText}>¿Seguro que quieres cerrar sesión?</p>
+            <div className={styles.signOutActions}>
+              <button className={styles.signOutCancel} onClick={() => setSignOutConfirmOpen(false)}>
+                Cancelar
+              </button>
+              <button className={styles.signOutConfirm} onClick={() => { signOut(); setSignOutConfirmOpen(false); }}>
+                Cerrar sesión
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

@@ -16,19 +16,59 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-  cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
   border-radius: 12px;
   overflow: hidden;
   background-color: var(--beige);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  text-decoration: none;
-  color: inherit;
+  position: relative;
 }
 
 .cardItem:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cardOwned {
+  box-shadow: 0 0 0 2px var(--sage-green), 0 4px 12px rgba(126, 164, 112, 0.25);
+}
+
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.ownedButton {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(0, 0, 0, 0.55);
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+  transition: background 0.15s, color 0.15s, transform 0.15s;
+  z-index: 1;
+  line-height: 1;
+}
+
+.ownedButton:hover {
+  background: rgba(0, 0, 0, 0.75);
+  transform: scale(1.15);
+}
+
+.ownedButtonActive {
+  color: var(--ocher);
+  background: rgba(0, 0, 0, 0.65);
 }
 
 .cardImage {

@@ -4,10 +4,13 @@ import { CollectionFormat, CollectionCard, CollectionCatalog } from '../types/co
 import { loadCollectionCards } from '../services/collectionService';
 import CardGrid, { type SimpleCard } from '../components/CardGrid';
 import CollectionFilters, { type FilterParams } from '../components/CollectionFilters';
+import { useAuth } from '../hooks/useAuth';
+import { useUserCollection } from '../hooks/useUserCollection';
 import styles from './CollectionPage.module.css';
 
 const CollectionPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { user } = useAuth();
 
   const [selectedFormat, setSelectedFormat] = useState<CollectionFormat>(
     searchParams.get('format') === CollectionFormat.FURIA_EXTENDIDO
@@ -18,6 +21,9 @@ const CollectionPage = () => {
   const [filteredCards, setFilteredCards] = useState<SimpleCard[]>([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [showOnlyOwned, setShowOnlyOwned] = useState(false);
+
+  const { ownedCardIds, loadedFormat, loadCollection, toggleCard } = useUserCollection(selectedFormat);
 
   useEffect(() => {
     setLoading(true);
@@ -32,6 +38,16 @@ const CollectionPage = () => {
         setLoading(false);
       });
   }, [selectedFormat]);
+
+  // Load user collection when user or format changes
+  useEffect(() => {
+    if (user && loadedFormat !== selectedFormat) {
+      loadCollection();
+    }
+    if (!user) {
+      setShowOnlyOwned(false);
+    }
+  }, [user, selectedFormat, loadedFormat, loadCollection]);
 
   const handleFilterChange = (cards: CollectionCard[], params: FilterParams) => {
     const simpleCards = cards.map(card => ({
@@ -133,7 +149,27 @@ const CollectionPage = () => {
             initialRace={matchesFormat ? searchParams.get('race') : null}
             initialFreq={matchesFormat ? searchParams.get('freq') : null}
           />
-          <CardGrid cards={filteredCards} format={selectedFormat} />
+          <div className={styles.gridArea}>
+            {user && (
+              <div className={styles.collectionBar}>
+                <button
+                  className={`${styles.ownedToggle} ${showOnlyOwned ? styles.ownedToggleActive : ''}`}
+                  onClick={() => setShowOnlyOwned(v => !v)}
+                >
+                  {showOnlyOwned ? '★ Mi colección' : '☆ Mi colección'}
+                </button>
+                <span className={styles.ownedCount}>
+                  {ownedCardIds.size} / {allCards.length} cartas
+                </span>
+              </div>
+            )}
+            <CardGrid
+              cards={showOnlyOwned ? filteredCards.filter(c => ownedCardIds.has(c.id)) : filteredCards}
+              format={selectedFormat}
+              ownedCardIds={user ? ownedCardIds : undefined}
+              onToggleOwned={user ? toggleCard : undefined}
+            />
+          </div>
         </div>
       )}
 

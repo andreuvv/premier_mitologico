@@ -1,0 +1,187 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal {
+  background: var(--dark-brown);
+  border: none;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  top: 0.875rem;
+  right: 0.875rem;
+  background: none;
+  border: none;
+  color: var(--beige);
+  font-size: 1rem;
+  cursor: pointer;
+  opacity: 0.5;
+  line-height: 1;
+  padding: 0.25rem;
+  transition: opacity 0.2s;
+  font-family: 'Roboto', sans-serif;
+}
+
+.closeButton:hover {
+  opacity: 1;
+}
+
+.tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tab {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--beige);
+  font-size: 0.9rem;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  opacity: 0.45;
+  transition: opacity 0.2s;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.tab:hover {
+  opacity: 0.7;
+}
+
+.tabActive {
+  opacity: 1;
+  border-bottom-color: var(--ocher);
+  color: var(--ocher);
+  font-weight: 700;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.field label {
+  color: var(--beige);
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  opacity: 1;
+}
+
+.field input {
+  background: rgba(255, 255, 255, 0.06);
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px 4px 0 0;
+  color: var(--beige);
+  font-size: 0.9rem;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  padding: 0.6rem 0.75rem;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.field input:focus {
+  background: rgba(255, 255, 255, 0.09);
+  border-bottom-color: var(--sage-green);
+}
+
+.field input::placeholder {
+  opacity: 0.35;
+}
+
+.errorMessage {
+  color: var(--brick-red);
+  font-size: 0.82rem;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+.submitButton {
+  background: var(--sage-green);
+  color: var(--dark-brown);
+  border: none;
+  border-radius: 4px;
+  padding: 0.7rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  margin-top: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.submitButton:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+.submitButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.resendButton {
+  background: none;
+  border: none;
+  color: var(--ocher);
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 0.35rem;
+  text-decoration: underline;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+.resendButton:hover {
+  opacity: 1;
+}
+
+.successMessage {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: center;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.successMessage p {
+  color: var(--sage-green);
+  font-size: 0.9rem;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
