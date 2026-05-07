@@ -1,10 +1,15 @@
+import { useState } from 'react';
 import { tournamentConfig, isTournamentPast } from '../config/tournamentConfig';
+import { useAuth } from '../hooks/useAuth';
+import AuthModal from './auth/AuthModal';
 import styles from './MapCard.module.css';
 
 export default function MapCard() {
   const isPast = isTournamentPast();
   const hasLocation = tournamentConfig.location.name && tournamentConfig.location.address && tournamentConfig.location.googleMapsQuery;
   const showMap = !isPast && hasLocation;
+  const { user } = useAuth();
+  const [authModalOpen, setAuthModalOpen] = useState(false);
   
   const mapUrl = hasLocation 
     ? `https://www.google.com/maps/embed/v1/place?key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY || ''}&q=${tournamentConfig.location.googleMapsQuery}&zoom=16`
@@ -20,10 +25,10 @@ export default function MapCard() {
         <div className={styles.divider}></div>
         <div className={styles.locationInfo}>
           <p className={styles.locationName}>
-            {showMap ? tournamentConfig.location.name : 'TBD'}
+            {showMap ? (user ? tournamentConfig.location.name : '???') : 'TBD'}
           </p>
           <p className={styles.address}>
-            {showMap ? tournamentConfig.location.address : 'Ubicación de Torneo No Definida'}
+            {showMap ? (user ? tournamentConfig.location.address : '???') : 'Ubicación de Torneo No Definida'}
           </p>
         </div>
       </div>
@@ -42,6 +47,15 @@ export default function MapCard() {
           </div>
         )}
       </div>
+      {!user && showMap && (
+        <div className={styles.authOverlay}>
+          <p className={styles.authOverlayText}>Inicia sesión para ver la ubicación del torneo</p>
+          <button className={styles.authOverlayButton} onClick={() => setAuthModalOpen(true)}>
+            Iniciar Sesión
+          </button>
+        </div>
+      )}
+      {authModalOpen && <AuthModal onClose={() => setAuthModalOpen(false)} />}
     </div>
   );
 }

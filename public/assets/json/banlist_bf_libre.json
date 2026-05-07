@@ -1,6 +1,6 @@
 {
   "format": "Furia Extendido Racial Libre",
-  "lastUpdated": "2026-04-06",
+  "lastUpdated": "2026-05-07",
   "banned": [
     {
       "name": "Moñai",
@@ -65,6 +65,24 @@
   ],
   "limitedX1": [
     {
+      "name": "Lakshmi",
+      "type": "Aliado",
+      "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/10-Leyendas2/cartas-nombre/046-LBF2-Lakshmi-MazosCL.webp",
+      "cardUrl": "https://mitoxicos.cl/coleccion/carta/fx/12375/lakshmi"
+    },
+    {
+      "name": "Nammu",
+      "type": "Aliado",
+      "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/10-Leyendas2/cartas-nombre/047-LBF2-Nammu-MazosCL.webp",
+      "cardUrl": "https://mitoxicos.cl/coleccion/carta/fx/12376/nammu"
+    },
+    {
+      "name": "Vishnu Infinito",
+      "type": "Aliado",
+      "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/10-Leyendas2/cartas-nombre/096-LBF2-Vishnu-Infinito-MazosCL.webp",
+      "cardUrl": "https://mitoxicos.cl/coleccion/carta/fx/12425/vishnu-infinito"
+    },
+    {
       "name": "Morgause",
       "type": "Aliado",
       "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/048-EXC-Morgause-MazosCL.webp",
@@ -109,28 +127,10 @@
   ],
   "limitedX2": [
     {
-      "name": "Sinach",
-      "type": "Aliado",
-      "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/10-Leyendas2/cartas-nombre/110-LBF2-Sinach-MazosCL.webp",
-      "cardUrl": "https://mazos.cl/card/12439/sinach"
-    },
-    {
       "name": "An Torc Diabhalta",
       "type": "Aliado",
       "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/06-Daana/promos/219-GUA-An-Torc-Diabhalta-MazosCL.webp",
       "cardUrl": "https://mazos.cl/card/10896/an-torc-diabhalta"
-    },
-    {
-      "name": "Surt",
-      "type": "Aliado",
-      "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/10-Leyendas2/cartas-nombre/124-LBF2-Surt-MazosCL.webp",
-      "cardUrl": "https://mazos.cl/card/12453/surt"
-    },
-    {
-      "name": "Takam",
-      "type": "Aliado",
-      "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/10-Leyendas2/cartas-nombre/104-LBF2-Takam-MazosCL.webp",
-      "cardUrl": "https://mazos.cl/card/12433/takam"
     },
     {
       "name": "Cangrejo Cazador",

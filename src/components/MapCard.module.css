@@ -2,6 +2,7 @@
   background-color: var(--coal-grey);
   border-radius: 16px;
   overflow: hidden;
+  position: relative;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -81,6 +82,47 @@
   text-align: center;
   padding: 15px;
   margin: 0;
+}
+
+.authOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.76);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.25rem;
+  z-index: 3;
+}
+
+.authOverlayText {
+  margin: 0;
+  color: var(--beige);
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.authOverlayButton {
+  background: var(--ocher);
+  border: none;
+  border-radius: 6px;
+  color: var(--dark-brown);
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 0.6rem 1.5rem;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.authOverlayButton:hover {
+  filter: brightness(1.06);
 }
 
 @media (max-width: 600px) {
