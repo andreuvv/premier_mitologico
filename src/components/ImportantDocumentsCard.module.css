@@ -175,6 +175,62 @@
   opacity: 1;
 }
 
+.faqAccordion {
+  margin-top: 0.75rem;
+}
+
+.faqAccordionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: inherit;
+  font-family: inherit;
+  text-align: left;
+}
+
+.faqAccordionHeader:hover {
+  color: var(--ocher);
+}
+
+.faqAccordionTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--beige);
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+.faqAccordionIcon {
+  font-size: 0.85rem;
+  color: var(--ocher);
+  flex-shrink: 0;
+}
+
+.faqChevron {
+  font-size: 0.75rem;
+  color: var(--ocher);
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.faqChevronOpen {
+  transform: rotate(180deg);
+}
+
+.faqDocumentList {
+  padding: 0.6rem 0.85rem 0.75rem;
+}
+
 @media (max-width: 800px) {
   .card {
     padding: 1rem;

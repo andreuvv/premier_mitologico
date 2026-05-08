@@ -69,6 +69,21 @@
   font-weight: bold;
 }
 
+.navDisabledItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  color: var(--beige);
+  opacity: 0.4;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 24px;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .badge {
   position: absolute;
   bottom: -10px;
@@ -103,6 +118,14 @@
   background-color: rgba(255, 255, 255, 0.05);
 }
 
+.loginButtonLoggedOut {
+  color: var(--ocher);
+}
+
+.loginButtonLoggedOut:hover {
+  background-color: rgba(214, 156, 65, 0.12);
+}
+
 .desktopLoginButton {
   display: flex;
   align-items: center;
@@ -132,6 +155,18 @@
   opacity: 1;
   border-color: var(--sage-green);
   color: var(--sage-green);
+}
+
+.desktopLoginButtonLoggedOut {
+  color: var(--ocher);
+  border-color: rgba(214, 156, 65, 0.7);
+  opacity: 1;
+}
+
+.desktopLoginButtonLoggedOut:hover {
+  color: var(--dark-brown);
+  border-color: var(--ocher);
+  background: var(--ocher);
 }
 
 .desktopLoginButtonActive {
@@ -366,6 +401,20 @@
     margin-left: auto;
   }
 
+  .mobileNavDisabledItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 1rem 1.5rem;
+    color: var(--beige);
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
   .mobileDisabled {
     color: grey;
     text-decoration: line-through;
@@ -440,6 +489,17 @@
   .mobileLoginButton:hover {
     opacity: 1;
     color: var(--sage-green);
+  }
+
+  .mobileLoginButtonLoggedOut {
+    color: var(--ocher);
+    opacity: 1;
+    font-weight: 700;
+  }
+
+  .mobileLoginButtonLoggedOut:hover {
+    color: var(--dark-brown);
+    background: rgba(214, 156, 65, 0.95);
   }
 }
 

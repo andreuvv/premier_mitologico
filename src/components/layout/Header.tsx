@@ -34,21 +34,35 @@ const Header = () => {
             <FaHome className={styles.icon} />
             Inicio
           </Link>
-          <Link 
-            to="/torneo-premier" 
-            className={location.pathname === '/torneo-premier' || location.pathname.startsWith('/torneo-premier/') || location.pathname === '/fixture' || location.pathname === '/standings' ? styles.active : ''}
-          >
-            <FaTrophy className={styles.icon} />
-            Torneo Premier
-            {monthYear && <span className={styles.badge}>{monthYear}</span>}
-          </Link>
-          <Link 
-            to="/players" 
-            className={location.pathname.startsWith('/players') ? styles.active : ''}
-          >
-            <FaUser className={styles.icon} />
-            Jugadores
-          </Link>
+          {user ? (
+            <Link 
+              to="/torneo-premier" 
+              className={location.pathname === '/torneo-premier' || location.pathname.startsWith('/torneo-premier/') || location.pathname === '/fixture' || location.pathname === '/standings' ? styles.active : ''}
+            >
+              <FaTrophy className={styles.icon} />
+              Torneo Premier
+              {monthYear && <span className={styles.badge}>{monthYear}</span>}
+            </Link>
+          ) : (
+            <span className={styles.navDisabledItem}>
+              <FaTrophy className={styles.icon} />
+              Torneo Premier
+            </span>
+          )}
+          {user ? (
+            <Link 
+              to="/players" 
+              className={location.pathname.startsWith('/players') ? styles.active : ''}
+            >
+              <FaUser className={styles.icon} />
+              Jugadores
+            </Link>
+          ) : (
+            <span className={styles.navDisabledItem}>
+              <FaUser className={styles.icon} />
+              Jugadores
+            </span>
+          )}
           <Link 
             to="/banlist" 
             className={location.pathname === '/banlist' ? styles.active : ''}
@@ -87,20 +101,34 @@ const Header = () => {
               </div>
             )}
           </div>
-          <Link 
-            to="/tournament-history" 
-            className={location.pathname.startsWith('/tournament-history') ? styles.active : ''}
-          >
-            <FaHistory className={styles.icon} />
-            Historial
-          </Link>
-          <Link 
-            to="/tournament-info" 
-            className={location.pathname === '/tournament-info' ? styles.active : ''}
-          >
-            <FaClipboardList className={styles.icon} />
-            Info Torneo
-          </Link>
+          {user ? (
+            <Link 
+              to="/tournament-history" 
+              className={location.pathname.startsWith('/tournament-history') ? styles.active : ''}
+            >
+              <FaHistory className={styles.icon} />
+              Historial
+            </Link>
+          ) : (
+            <span className={styles.navDisabledItem}>
+              <FaHistory className={styles.icon} />
+              Historial
+            </span>
+          )}
+          {user ? (
+            <Link 
+              to="/tournament-info" 
+              className={location.pathname === '/tournament-info' ? styles.active : ''}
+            >
+              <FaClipboardList className={styles.icon} />
+              Info Torneo
+            </Link>
+          ) : (
+            <span className={styles.navDisabledItem}>
+              <FaClipboardList className={styles.icon} />
+              Info Torneo
+            </span>
+          )}
           <Link 
             to="/game-formats" 
             className={location.pathname === '/game-formats' ? styles.active : ''}
@@ -108,25 +136,32 @@ const Header = () => {
             <FaGamepad className={styles.icon} />
             Formatos
           </Link>
-          <div 
-            className={styles.blogNavItem}
-            onMouseEnter={() => setBlogHovered(true)}
-            onMouseLeave={() => setBlogHovered(false)}
-          >
-            <Link 
-              to="/blog" 
-              className={location.pathname.startsWith('/blog') ? styles.active : ''}
+          {user ? (
+            <div 
+              className={styles.blogNavItem}
+              onMouseEnter={() => setBlogHovered(true)}
+              onMouseLeave={() => setBlogHovered(false)}
             >
+              <Link 
+                to="/blog" 
+                className={location.pathname.startsWith('/blog') ? styles.active : ''}
+              >
+                <FaBlog className={styles.icon} />
+                Blog
+              </Link>
+              {blogHovered && (
+                <div className={styles.blogPopover}>
+                  <h3 className={styles.blogPopoverTitle}>Último Post</h3>
+                  <LatestBlogCard />
+                </div>
+              )}
+            </div>
+          ) : (
+            <span className={styles.navDisabledItem}>
               <FaBlog className={styles.icon} />
               Blog
-            </Link>
-            {blogHovered && (
-              <div className={styles.blogPopover}>
-                <h3 className={styles.blogPopoverTitle}>Último Post</h3>
-                <LatestBlogCard />
-              </div>
-            )}
-          </div>
+            </span>
+          )}
           {/* <button className={styles.navDisabled} disabled>
             <FaHammer className={styles.icon} />
             Deck Builder
@@ -146,7 +181,7 @@ const Header = () => {
             <FaUser className={styles.icon} />
           </Link>
         ) : (
-          <button className={styles.loginButton} onClick={() => setAuthModalOpen(true)}>
+          <button className={`${styles.loginButton} ${styles.loginButtonLoggedOut}`} onClick={() => setAuthModalOpen(true)}>
             <FaSignInAlt className={styles.icon} />
           </button>
         )}
@@ -163,7 +198,7 @@ const Header = () => {
           </button>
         </div>
       ) : (
-        <button className={styles.desktopLoginButton} onClick={() => setAuthModalOpen(true)}>
+        <button className={`${styles.desktopLoginButton} ${styles.desktopLoginButtonLoggedOut}`} onClick={() => setAuthModalOpen(true)}>
           <FaSignInAlt className={styles.icon} />
           Iniciar Sesión
         </button>
@@ -181,24 +216,50 @@ const Header = () => {
           <FaHome className={styles.icon} />
           Inicio
         </Link>
-        <Link to="/torneo-premier" onClick={() => setMobileMenuOpen(false)}>
-          <FaTrophy className={styles.icon} />
-          Torneo Premier
-          {monthYear && <span className={styles.mobileBadge}>{monthYear}</span>}
-        </Link>
-        <Link to="/tournament-history" onClick={() => setMobileMenuOpen(false)}>
-          <FaHistory className={styles.icon} />
-          Historial
-        </Link>
-        <Link to="/players" onClick={() => setMobileMenuOpen(false)}>
-          <FaUser className={styles.icon} />
-          Jugadores
-        </Link>
-        <Link to="/tournament-info" onClick={() => setMobileMenuOpen(false)}>
+        {user ? (
+          <Link to="/torneo-premier" onClick={() => setMobileMenuOpen(false)}>
+            <FaTrophy className={styles.icon} />
+            Torneo Premier
+            {monthYear && <span className={styles.mobileBadge}>{monthYear}</span>}
+          </Link>
+        ) : (
+          <span className={styles.mobileNavDisabledItem}>
+            <FaTrophy className={styles.icon} />
+            Torneo Premier
+          </span>
+        )}
+        {user ? (
+          <Link to="/tournament-history" onClick={() => setMobileMenuOpen(false)}>
+            <FaHistory className={styles.icon} />
+            Historial
+          </Link>
+        ) : (
+          <span className={styles.mobileNavDisabledItem}>
+            <FaHistory className={styles.icon} />
+            Historial
+          </span>
+        )}
+        {user ? (
+          <Link to="/players" onClick={() => setMobileMenuOpen(false)}>
+            <FaUser className={styles.icon} />
+            Jugadores
+          </Link>
+        ) : (
+          <span className={styles.mobileNavDisabledItem}>
+            <FaUser className={styles.icon} />
+            Jugadores
+          </span>
+        )}
+        {user ? (
+          <Link to="/tournament-info" onClick={() => setMobileMenuOpen(false)}>
           <FaClipboardList className={styles.icon} />
           Info Torneo
-        </Link>
-        <Link to="/banlist" onClick={() => setMobileMenuOpen(false)}>
+        </Link>        ) : (
+          <span className={styles.mobileNavDisabledItem}>
+            <FaClipboardList className={styles.icon} />
+            Info Torneo
+          </span>
+        )}        <Link to="/banlist" onClick={() => setMobileMenuOpen(false)}>
           <FaBan className={styles.icon} />
           Ban List
         </Link>
@@ -224,10 +285,17 @@ const Header = () => {
           <FaGamepad className={styles.icon} />
           Formatos
         </Link>
-        <Link to="/blog" onClick={() => setMobileMenuOpen(false)}>
-          <FaBlog className={styles.icon} />
-          Blog
-        </Link>
+        {user ? (
+          <Link to="/blog" onClick={() => setMobileMenuOpen(false)}>
+            <FaBlog className={styles.icon} />
+            Blog
+          </Link>
+        ) : (
+          <span className={styles.mobileNavDisabledItem}>
+            <FaBlog className={styles.icon} />
+            Blog
+          </span>
+        )}
         <div className={styles.mobileMenuSpacer} />
         {user ? (
           <>
@@ -241,7 +309,7 @@ const Header = () => {
             </button>
           </>
         ) : (
-          <button className={styles.mobileLoginButton} onClick={() => { setAuthModalOpen(true); setMobileMenuOpen(false); }}>
+          <button className={`${styles.mobileLoginButton} ${styles.mobileLoginButtonLoggedOut}`} onClick={() => { setAuthModalOpen(true); setMobileMenuOpen(false); }}>
             <FaSignInAlt className={styles.icon} />
             Iniciar Sesión
           </button>

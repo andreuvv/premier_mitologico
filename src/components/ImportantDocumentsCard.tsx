@@ -4,6 +4,11 @@ import styles from './ImportantDocumentsCard.module.css';
 
 const ImportantDocumentsCard = () => {
   const [isOpen, setIsOpen] = useState(true);
+  const [faqOpenMap, setFaqOpenMap] = useState<Record<number, boolean>>({});
+
+  const toggleFaq = (index: number) => {
+    setFaqOpenMap(prev => ({ ...prev, [index]: !prev[index] }));
+  };
   
   const sections = [
     {
@@ -13,14 +18,28 @@ const ImportantDocumentsCard = () => {
         { name: 'Racial Edición', link: 'https://andreuvv.github.io/premier_mitologico/game-formats/primerBloque/primerBloqueRacialEdicion' },
         { name: 'Racial Libre', link: 'https://andreuvv.github.io/premier_mitologico/game-formats/primerBloque/primerBloqueRacialLibre' },
       ],
+      faqDocuments: [
+        {
+            name: 'F.A.Q. - Mayo 2026',
+            link: 'https://drive.google.com/file/d/1GDDiu7p0vxFzmi9u3V_Yil2X_VJSesla/view',
+        },
+        {
+            name: 'F.A.Q. - Abril 2024',
+            link: 'https://drive.google.com/file/d/1l6W5Qnc_Xp93i52tOflLaz1E-wzF3NM2/view',
+        },
+        {
+            name: 'F.A.Q. - Septiembre 2023',
+            link: 'https://blog.myl.cl/wp-content/uploads/2023/09/Documento-de-Preguntas-Frecuentes-MyL-Primer-Bloque-Septiembre-2023.pdf',
+        },
+        {
+            name: 'F.A.Q. - Mayo 2023',
+            link: 'https://blog.myl.cl/wp-content/uploads/2023/05/Documento-de-Preguntas-Frecuentes-MyL-Primer-Bloque-Mayo-2023_ligero.pdf',
+        }
+      ],
       documents: [
         {
             name: 'Documento Actualizado de Reglas (D.A.R) - Julio 2021',
             link: 'https://drive.google.com/file/d/1vRDfyMMHdfy_qQrLX4zfAE83XYcH-IBH/view',
-        },
-        {
-            name: 'Documento de Preguntas Frecuentes (F.A.Q) - Abril 2024',
-            link: 'https://drive.google.com/file/d/1l6W5Qnc_Xp93i52tOflLaz1E-wzF3NM2/view',
         },
         {
             name: 'Oráculo Ra Aniversario',
@@ -47,14 +66,28 @@ const ImportantDocumentsCard = () => {
         { name: 'Racial Libre', link: 'https://andreuvv.github.io/premier_mitologico/game-formats/bloqueFuria/bloqueFuriaRacialLibre' },
         { name: 'Racial VCR', link: 'https://andreuvv.github.io/premier_mitologico/game-formats/formatosEspeciales/vcr' },
       ],
+      faqDocuments: [
+        {
+            name: 'F.A.Q. - Agosto 2025',
+            link: 'https://drive.google.com/file/d/1lalgtNHq-0QftFw26gLmV7Lzqfa2KmLC/view',
+        },
+        {
+            name: 'F.A.Q. - Julio 2024',
+            link: 'https://blog.myl.cl/wp-content/uploads/2024/07/FAQ-GDS.pdf',
+        },
+        {
+            name: 'F.A.Q. - Diciembre 2023',
+            link: 'https://blog.myl.cl/wp-content/uploads/2023/12/Documento-de-Preguntas-Frecuentes-MyL-Furia-Extendido-Diciembre2023.pdf',
+        },
+        {
+            name: 'F.A.Q. - Enero 2023',
+            link: 'https://blog.myl.cl/wp-content/uploads/2023/01/FAQ-ROMA.pdf',
+        }
+      ],
       documents: [
         {
             name: 'Documento Actualizado de Reglas (D.A.R.) - Julio 2024',
             link: 'https://drive.google.com/file/d/1DfwWgBAqdCpZZNDdQMB5XltZmn5T6lBL/view',
-        },
-        {
-            name: 'Documento de Preguntas Frecuentes (F.A.Q.) - Agosto 2025',
-            link: 'https://drive.google.com/file/d/1lalgtNHq-0QftFw26gLmV7Lzqfa2KmLC/view',
         },
         {
             name: 'Reworks LBF2026',
@@ -104,18 +137,54 @@ const ImportantDocumentsCard = () => {
               </div>
               <ul className={styles.documentList}>
                 {section.documents.map((doc, docIndex) => (
-                  <li key={docIndex} className={styles.documentItem}>
-                    <FaFileAlt className={styles.docIcon} />
-                    <a 
-                      href={doc.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className={styles.documentLink}
-                    >
-                      {doc.name}
-                      <FaExternalLinkAlt className={styles.externalIcon} />
-                    </a>
-                  </li>
+                  <>
+                    <li key={docIndex} className={styles.documentItem}>
+                      <FaFileAlt className={styles.docIcon} />
+                      <a 
+                        href={doc.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className={styles.documentLink}
+                      >
+                        {doc.name}
+                        <FaExternalLinkAlt className={styles.externalIcon} />
+                      </a>
+                    </li>
+                    {docIndex === 0 && section.faqDocuments.length > 0 && (
+                      <li className={styles.faqListItem}>
+                        <div className={styles.faqAccordion}>
+                          <button
+                            className={styles.faqAccordionHeader}
+                            onClick={() => toggleFaq(index)}
+                          >
+                            <span className={styles.faqAccordionTitle}>
+                              <FaFileAlt className={styles.docIcon} />
+                              Documentos de Preguntas Frecuentes (F.A.Q.)
+                            </span>
+                            <FaChevronDown className={`${styles.faqChevron} ${faqOpenMap[index] ? styles.faqChevronOpen : ''}`} />
+                          </button>
+                          {faqOpenMap[index] && (
+                            <ul className={`${styles.documentList} ${styles.faqDocumentList}`}>
+                              {section.faqDocuments.map((faqDoc, faqDocIndex) => (
+                                <li key={faqDocIndex} className={styles.documentItem}>
+                                  <FaFileAlt className={styles.docIcon} />
+                                  <a
+                                    href={faqDoc.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={styles.documentLink}
+                                  >
+                                    {faqDoc.name}
+                                    <FaExternalLinkAlt className={styles.externalIcon} />
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
+                      </li>
+                    )}
+                  </>
                 ))}
               </ul>
             </div>
