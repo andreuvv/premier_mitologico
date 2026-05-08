@@ -74,14 +74,44 @@
   align-items: center;
   gap: 6px;
   padding: 8px;
-  color: var(--beige);
-  opacity: 0.4;
+  color: rgba(234, 221, 207, 0.4);
   font-size: 14px;
   font-weight: 700;
   font-family: 'Roboto', sans-serif;
   border-radius: 24px;
   cursor: not-allowed;
+  position: relative;
+}
+
+.navDisabledItem::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(43, 37, 34, 0.97);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  padding: 8px 12px;
+  white-space: nowrap;
+  opacity: 0;
   pointer-events: none;
+  transition: opacity 0.2s;
+  backdrop-filter: blur(10px);
+  color: var(--beige);
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+}
+
+.navDisabledItem:hover::after {
+  opacity: 1;
+}
+
+.navDisabledItem:hover::after {
+  opacity: 1;
+  animation: slideDown 0.2s ease;
 }
 
 .badge {
@@ -406,13 +436,37 @@
     align-items: center;
     gap: 8px;
     padding: 1rem 1.5rem;
-    color: var(--beige);
+    color: rgba(234, 221, 207, 0.4);
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
     font-weight: 700;
-    opacity: 0.4;
     cursor: not-allowed;
+    position: relative;
+  }
+
+  .mobileNavDisabledItem::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 1.5rem;
+    background: rgba(43, 37, 34, 0.97);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    padding: 8px 12px;
+    white-space: nowrap;
+    opacity: 0;
     pointer-events: none;
+    transition: opacity 0.2s;
+    backdrop-filter: blur(10px);
+    color: var(--beige);
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .mobileNavDisabledItem:hover::after {
+    opacity: 1;
   }
 
   .mobileDisabled {
@@ -617,6 +671,17 @@
   to {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateX(0) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
   }
 }
 

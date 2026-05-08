@@ -44,7 +44,7 @@ const Header = () => {
               {monthYear && <span className={styles.badge}>{monthYear}</span>}
             </Link>
           ) : (
-            <span className={styles.navDisabledItem}>
+            <span className={styles.navDisabledItem} data-tooltip="Inicia Sesión para acceder">
               <FaTrophy className={styles.icon} />
               Torneo Premier
             </span>
@@ -58,7 +58,7 @@ const Header = () => {
               Jugadores
             </Link>
           ) : (
-            <span className={styles.navDisabledItem}>
+            <span className={styles.navDisabledItem} data-tooltip="Inicia Sesión para acceder">
               <FaUser className={styles.icon} />
               Jugadores
             </span>
@@ -110,7 +110,7 @@ const Header = () => {
               Historial
             </Link>
           ) : (
-            <span className={styles.navDisabledItem}>
+            <span className={styles.navDisabledItem} data-tooltip="Inicia Sesión para acceder">
               <FaHistory className={styles.icon} />
               Historial
             </span>
@@ -124,7 +124,7 @@ const Header = () => {
               Info Torneo
             </Link>
           ) : (
-            <span className={styles.navDisabledItem}>
+            <span className={styles.navDisabledItem} data-tooltip="Inicia Sesión para acceder">
               <FaClipboardList className={styles.icon} />
               Info Torneo
             </span>
@@ -157,7 +157,7 @@ const Header = () => {
               )}
             </div>
           ) : (
-            <span className={styles.navDisabledItem}>
+            <span className={styles.navDisabledItem} data-tooltip="Inicia Sesión para acceder">
               <FaBlog className={styles.icon} />
               Blog
             </span>
@@ -223,7 +223,7 @@ const Header = () => {
             {monthYear && <span className={styles.mobileBadge}>{monthYear}</span>}
           </Link>
         ) : (
-          <span className={styles.mobileNavDisabledItem}>
+          <span className={styles.mobileNavDisabledItem} data-tooltip="Inicia Sesión para acceder">
             <FaTrophy className={styles.icon} />
             Torneo Premier
           </span>
@@ -234,7 +234,7 @@ const Header = () => {
             Historial
           </Link>
         ) : (
-          <span className={styles.mobileNavDisabledItem}>
+          <span className={styles.mobileNavDisabledItem} data-tooltip="Inicia Sesión para acceder">
             <FaHistory className={styles.icon} />
             Historial
           </span>
@@ -245,21 +245,23 @@ const Header = () => {
             Jugadores
           </Link>
         ) : (
-          <span className={styles.mobileNavDisabledItem}>
+          <span className={styles.mobileNavDisabledItem} data-tooltip="Inicia Sesión para acceder">
             <FaUser className={styles.icon} />
             Jugadores
           </span>
         )}
         {user ? (
           <Link to="/tournament-info" onClick={() => setMobileMenuOpen(false)}>
-          <FaClipboardList className={styles.icon} />
-          Info Torneo
-        </Link>        ) : (
-          <span className={styles.mobileNavDisabledItem}>
+            <FaClipboardList className={styles.icon} />
+            Info Torneo
+          </Link>
+        ) : (
+          <span className={styles.mobileNavDisabledItem} data-tooltip="Inicia Sesión para acceder">
             <FaClipboardList className={styles.icon} />
             Info Torneo
           </span>
-        )}        <Link to="/banlist" onClick={() => setMobileMenuOpen(false)}>
+        )}
+        <Link to="/banlist" onClick={() => setMobileMenuOpen(false)}>
           <FaBan className={styles.icon} />
           Ban List
         </Link>
@@ -291,7 +293,7 @@ const Header = () => {
             Blog
           </Link>
         ) : (
-          <span className={styles.mobileNavDisabledItem}>
+          <span className={styles.mobileNavDisabledItem} data-tooltip="Inicia Sesión para acceder">
             <FaBlog className={styles.icon} />
             Blog
           </span>
