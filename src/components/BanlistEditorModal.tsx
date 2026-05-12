@@ -28,6 +28,13 @@ const getMonthLabel = (month: number): string => {
   return labels[month - 1] ?? String(month);
 };
 
+const getPreviousMonth = (year: number, month: number): { year: number; month: number } => {
+  if (month === 1) {
+    return { year: year - 1, month: 12 };
+  }
+  return { year, month: month - 1 };
+};
+
 const mergeWithoutDuplicates = (list: BanListCard[], newCard: BanListCard): BanListCard[] => {
   const exists = list.some(card => card.id === newCard.id || card.name.toLowerCase() === newCard.name.toLowerCase());
   if (exists) {
@@ -50,9 +57,13 @@ export default function BanlistEditorModal({ format, initialCategory, baseData, 
   const [allCards, setAllCards] = useState<CollectionCard[]>([]);
   const [loadingCards, setLoadingCards] = useState(false);
   const [loadingMonth, setLoadingMonth] = useState(false);
+  const [loadingPreviousMonth, setLoadingPreviousMonth] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hoverPreviewImage, setHoverPreviewImage] = useState<string | null>(null);
+  const [previousMonthData, setPreviousMonthData] = useState<BanListData | null>(null);
+
+  const previousMonth = useMemo(() => getPreviousMonth(year, month), [year, month]);
 
   const formatLabel = useMemo(() => {
     switch (format) {
@@ -97,6 +108,17 @@ export default function BanlistEditorModal({ format, initialCategory, baseData, 
       .finally(() => setLoadingMonth(false));
   }, [format, year, month]);
 
+  useEffect(() => {
+    setLoadingPreviousMonth(true);
+    getMonthlyBanlistByMonth(format, previousMonth.year, previousMonth.month)
+      .then(data => setPreviousMonthData(data))
+      .catch(err => {
+        console.error('Error loading previous monthly banlist:', err);
+        setPreviousMonthData(null);
+      })
+      .finally(() => setLoadingPreviousMonth(false));
+  }, [format, previousMonth.year, previousMonth.month]);
+
   const cardsInBanlist = useMemo(() => {
     const ids = new Set<number>();
     const names = new Set<string>();
@@ -140,6 +162,17 @@ export default function BanlistEditorModal({ format, initialCategory, baseData, 
     }
 
     setLimitedX2(prev => mergeWithoutDuplicates(prev, banlistCard));
+  };
+
+  const handleKeepPreviousMonthList = () => {
+    if (!previousMonthData) return;
+
+    setError(null);
+    setHoverPreviewImage(null);
+    setSearch('');
+    setBanned(previousMonthData.banned);
+    setLimitedX1(previousMonthData.limitedX1);
+    setLimitedX2(previousMonthData.limitedX2);
   };
 
   const removeCard = (category: BanListCategory, cardName: string) => {
@@ -219,6 +252,18 @@ export default function BanlistEditorModal({ format, initialCategory, baseData, 
               ))}
             </select>
           </label>
+          <button
+            type="button"
+            className={styles.keepPreviousButton}
+            onClick={handleKeepPreviousMonthList}
+            disabled={loadingPreviousMonth || !previousMonthData}
+          >
+            {loadingPreviousMonth
+              ? 'Cargando lista anterior...'
+              : previousMonthData
+                ? `Mantener lista de ${getMonthLabel(previousMonth.month)} ${previousMonth.year}`
+                : 'No hay lista anterior'}
+          </button>
           {loadingMonth && <p className={styles.helper}>Cargando datos del mes...</p>}
         </div>
 

@@ -69,6 +69,25 @@
   color: var(--beige);
 }
 
+.keepPreviousButton {
+  border: 1px solid var(--petrol-blue);
+  border-radius: 8px;
+  padding: 0.55rem 0.85rem;
+  background: rgba(75, 139, 163, 0.15);
+  color: var(--beige);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.keepPreviousButton:hover:not(:disabled) {
+  background: rgba(75, 139, 163, 0.25);
+}
+
+.keepPreviousButton:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
 .helper {
   margin: 0;
   color: var(--petrol-blue);
