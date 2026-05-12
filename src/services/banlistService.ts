@@ -1,4 +1,5 @@
 import { BanListFormat, BanListData } from '../types/banlist';
+import { getLatestMonthlyBanlist } from './monthlyBanlistService';
 
 const formatToFile: Record<BanListFormat, string> = {
   [BanListFormat.PRIMER_BLOQUE_LIBRE]: 'banlist_pb_libre.json',
@@ -8,6 +9,11 @@ const formatToFile: Record<BanListFormat, string> = {
 };
 
 export const loadBanlist = async (format: BanListFormat): Promise<BanListData> => {
+  const monthlyBanlist = await getLatestMonthlyBanlist(format);
+  if (monthlyBanlist) {
+    return monthlyBanlist;
+  }
+
   const filename = formatToFile[format];
   const response = await fetch(`${import.meta.env.BASE_URL}assets/json/${filename}`);
   if (!response.ok) {

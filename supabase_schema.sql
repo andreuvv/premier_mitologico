@@ -7,6 +7,7 @@
 CREATE TABLE public.allowed_emails (
   email       TEXT PRIMARY KEY,
   note        TEXT,                -- optional: e.g. "jugador torneo premier"
+  premier_id  SMALLINT,            -- ID único del jugador en el torneo premier
   added_at    TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
@@ -23,11 +24,12 @@ CREATE POLICY "Anyone can check if their email is whitelisted"
 
 -- 1. User profiles (extends Supabase auth.users)
 CREATE TABLE public.profiles (
-  id          UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
-  username    TEXT NOT NULL UNIQUE,
-  is_public   BOOLEAN NOT NULL DEFAULT true,
-  created_at  TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  updated_at  TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+  id                UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+  username          TEXT NOT NULL UNIQUE,
+  is_public         BOOLEAN NOT NULL DEFAULT true,
+  premier_player_id SMALLINT,       -- Copiado automáticamente de allowed_emails.premier_id al crear el perfil
+  created_at        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
 -- 2. User card collections
@@ -98,4 +100,88 @@ $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER on_profiles_updated
   BEFORE UPDATE ON public.profiles
+  FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
+
+-- ============================================================
+-- Auto-assign premier_player_id from allowed_emails on profile insert
+-- ============================================================
+CREATE OR REPLACE FUNCTION public.handle_profile_premier_id()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.premier_player_id := (
+    SELECT ae.premier_id
+    FROM public.allowed_emails ae
+    JOIN auth.users u ON u.email = ae.email
+    WHERE u.id = NEW.id
+  );
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER on_profile_insert_set_premier_id
+  BEFORE INSERT ON public.profiles
+  FOR EACH ROW EXECUTE FUNCTION public.handle_profile_premier_id();
+
+-- ============================================================
+-- Monthly banlists editable in app (admin only)
+-- ============================================================
+CREATE TABLE public.monthly_banlists (
+  id               BIGSERIAL PRIMARY KEY,
+  format           TEXT NOT NULL CHECK (format IN ('pb_libre', 'pb_edition', 'bf_libre', 'bf_limited')),
+  year             SMALLINT NOT NULL,
+  month            SMALLINT NOT NULL CHECK (month BETWEEN 1 AND 12),
+  banned_cards     JSONB NOT NULL DEFAULT '[]'::jsonb,
+  limited_x1_cards JSONB NOT NULL DEFAULT '[]'::jsonb,
+  limited_x2_cards JSONB NOT NULL DEFAULT '[]'::jsonb,
+  created_by       UUID DEFAULT auth.uid(),
+  updated_by       UUID,
+  created_at       TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at       TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  UNIQUE (format, year, month)
+);
+
+CREATE INDEX idx_monthly_banlists_format_date
+  ON public.monthly_banlists (format, year DESC, month DESC);
+
+ALTER TABLE public.monthly_banlists ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Anyone can read monthly banlists"
+  ON public.monthly_banlists FOR SELECT
+  USING (true);
+
+CREATE POLICY "Only admin can insert monthly banlists"
+  ON public.monthly_banlists FOR INSERT
+  WITH CHECK (
+    EXISTS (
+      SELECT 1
+      FROM public.profiles p
+      WHERE p.id = auth.uid()
+        AND p.premier_player_id = 1
+    )
+  );
+
+CREATE POLICY "Only admin can update monthly banlists"
+  ON public.monthly_banlists FOR UPDATE
+  USING (
+    EXISTS (
+      SELECT 1
+      FROM public.profiles p
+      WHERE p.id = auth.uid()
+        AND p.premier_player_id = 1
+    )
+  );
+
+CREATE POLICY "Only admin can delete monthly banlists"
+  ON public.monthly_banlists FOR DELETE
+  USING (
+    EXISTS (
+      SELECT 1
+      FROM public.profiles p
+      WHERE p.id = auth.uid()
+        AND p.premier_player_id = 1
+    )
+  );
+
+CREATE TRIGGER on_monthly_banlists_updated
+  BEFORE UPDATE ON public.monthly_banlists
   FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();

@@ -4,6 +4,9 @@ import { FaInfoCircle } from 'react-icons/fa';
 import { BanListFormat, BanListCategory, BanListData, BanListCard } from '../types/banlist';
 import { CollectionFormat } from '../types/collection';
 import { loadBanlist } from '../services/banlistService';
+import { useAuth } from '../hooks/useAuth';
+import { isCurrentUserBanlistAdmin } from '../services/monthlyBanlistService';
+import BanlistEditorModal from '../components/BanlistEditorModal';
 import FormatSummaryRow from '../components/FormatSummaryRow';
 import { banlistSummaries, lastUpdateMonth } from '../data/banlistSummary';
 import styles from './BanlistPage.module.css';
@@ -50,9 +53,26 @@ const getCardSlugFromUrl = (cardUrl?: string): string | null => {
   return match ? match[1] : null;
 };
 
+const getMonthYearLabel = (lastUpdated: string): string => {
+  const monthMatch = lastUpdated.match(/^(\d{4})-(\d{2})/);
+  if (monthMatch) {
+    const year = Number(monthMatch[1]);
+    const month = Number(monthMatch[2]);
+    const safeLocalDate = new Date(year, month - 1, 15);
+    return safeLocalDate
+      .toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })
+      .replace(/^\w/, c => c.toUpperCase());
+  }
+
+  return new Date(lastUpdated)
+    .toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })
+    .replace(/^\w/, c => c.toUpperCase());
+};
+
 const BanlistPage = () => {
   const { format: formatSlug, category: categorySlug } = useParams<{ format?: string; category?: string }>();
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   const [selectedFormat, setSelectedFormat] = useState<BanListFormat>(
     formatSlug && slugToFormat[formatSlug] ? slugToFormat[formatSlug] : BanListFormat.PRIMER_BLOQUE_LIBRE
@@ -62,8 +82,22 @@ const BanlistPage = () => {
   );
   const [banlistData, setBanlistData] = useState<BanListData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [showEditor, setShowEditor] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
   const [showInfoPopup, setShowInfoPopup] = useState(false);
   const [showAccordion, setShowAccordion] = useState(false);
+
+  useEffect(() => {
+    if (!user) {
+      setIsAdmin(false);
+      return;
+    }
+
+    isCurrentUserBanlistAdmin(user.id)
+      .then(setIsAdmin)
+      .catch(() => setIsAdmin(false));
+  }, [user]);
 
   useEffect(() => {
     setLoading(true);
@@ -76,7 +110,7 @@ const BanlistPage = () => {
         console.error('Error loading banlist:', err);
         setLoading(false);
       });
-  }, [selectedFormat]);
+  }, [selectedFormat, refreshKey]);
 
   const getFormatLabel = (format: BanListFormat): string => {
     switch (format) {
@@ -164,10 +198,19 @@ const BanlistPage = () => {
               </option>
             ))}
           </select>
+          {isAdmin && (
+            <button
+              type="button"
+              className={styles.editButton}
+              onClick={() => setShowEditor(true)}
+            >
+              Editar formato actual
+            </button>
+          )}
           {banlistData && (
             <div className={styles.lastUpdatedWrapper}>
               <p className={styles.lastUpdated}>
-                Última actualización: {new Date(banlistData.lastUpdated).toLocaleDateString('es-ES', { month: 'long', year: 'numeric' }).replace(/^\w/, c => c.toUpperCase())}
+                Última actualización: {getMonthYearLabel(banlistData.lastUpdated)}
               </p>
               <div className={styles.infoIconContainer}>
                 <FaInfoCircle 
@@ -252,6 +295,19 @@ const BanlistPage = () => {
             </div>
           </div>
         </div>
+      )}
+
+      {showEditor && banlistData && (
+        <BanlistEditorModal
+          format={selectedFormat}
+          initialCategory={selectedCategory}
+          baseData={banlistData}
+          onClose={() => setShowEditor(false)}
+          onSaved={() => {
+            setShowEditor(false);
+            setRefreshKey(prev => prev + 1);
+          }}
+        />
       )}
     </div>
   );

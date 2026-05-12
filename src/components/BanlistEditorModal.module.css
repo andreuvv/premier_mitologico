@@ -1,0 +1,289 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.58);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  padding: 1rem;
+}
+
+.modal {
+  width: min(980px, 100%);
+  max-height: 92vh;
+  overflow: auto;
+  background: var(--dark-brown);
+  border: 2px solid var(--ocher);
+  border-radius: 14px;
+  padding: 1rem;
+  color: var(--beige);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.header h3 {
+  margin: 0;
+  color: var(--beige);
+}
+
+.header button {
+  border: none;
+  background: transparent;
+  font-size: 1.75rem;
+  color: var(--beige);
+  cursor: pointer;
+}
+
+.header button:hover {
+  color: var(--ocher);
+}
+
+.monthControls {
+  display: flex;
+  gap: 1rem;
+  align-items: end;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.monthControls label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-weight: 600;
+  color: var(--beige);
+}
+
+.monthControls input,
+.monthControls select {
+  border: 1px solid var(--petrol-blue);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  background: var(--coal-grey);
+  color: var(--beige);
+}
+
+.helper {
+  margin: 0;
+  color: var(--petrol-blue);
+  font-size: 0.85rem;
+}
+
+.searchArea {
+  border: 1px solid rgba(75, 139, 163, 0.45);
+  border-radius: 10px;
+  padding: 0.8rem;
+  background: rgba(45, 45, 45, 0.55);
+  position: relative;
+}
+
+.searchArea input {
+  width: 100%;
+  border: 1px solid var(--petrol-blue);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.95rem;
+  background: var(--coal-grey);
+  color: var(--beige);
+}
+
+.statusRow {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.statusRow button {
+  border: 1px solid var(--petrol-blue);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--beige);
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+}
+
+.statusRow button:hover {
+  background-color: rgba(75, 139, 163, 0.15);
+}
+
+.activeStatus {
+  background: var(--petrol-blue) !important;
+  color: var(--beige) !important;
+}
+
+.results {
+  margin-top: 0.7rem;
+  max-height: 220px;
+  overflow: auto;
+  border: 1px solid rgba(75, 139, 163, 0.45);
+  border-radius: 8px;
+}
+
+.resultItem {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgba(75, 139, 163, 0.22);
+  background: rgba(45, 45, 45, 0.35);
+  padding: 0.55rem 0.7rem;
+  cursor: pointer;
+  text-align: left;
+}
+
+.resultItem:hover {
+  background: rgba(75, 139, 163, 0.2);
+}
+
+.resultCardInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.resultCardImage {
+  width: 68px;
+  height: 94px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--petrol-blue);
+  flex-shrink: 0;
+}
+
+.resultCardText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.resultCardText span {
+  font-weight: 600;
+  color: var(--beige);
+}
+
+.resultCardText small {
+  color: rgba(237, 230, 211, 0.72);
+}
+
+.hoverPreview {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  z-index: 2;
+  width: 250px;
+  border: 1px solid var(--petrol-blue);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  background: var(--coal-grey);
+}
+
+.hoverPreview img {
+  width: 100%;
+  display: block;
+}
+
+.sections {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.section {
+  background: rgba(45, 45, 45, 0.45);
+  border: 1px solid rgba(75, 139, 163, 0.45);
+  border-radius: 10px;
+  padding: 0.7rem;
+}
+
+.section h4 {
+  margin: 0 0 0.55rem;
+  color: var(--beige);
+}
+
+.cardList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.cardList li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.88rem;
+  color: var(--beige);
+}
+
+.cardList button {
+  border: 1px solid var(--brick-red);
+  background: rgba(196, 86, 73, 0.22);
+  color: #ffe2de;
+  border-radius: 7px;
+  padding: 0.18rem 0.45rem;
+  cursor: pointer;
+}
+
+.empty {
+  margin: 0;
+  font-size: 0.84rem;
+  color: rgba(237, 230, 211, 0.65);
+}
+
+.error {
+  color: #b32020;
+  margin: 0.9rem 0 0;
+}
+
+.actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+}
+
+.cancel,
+.save {
+  border-radius: 8px;
+  padding: 0.55rem 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cancel {
+  background: transparent;
+  border: 1px solid rgba(75, 139, 163, 0.7);
+  color: var(--beige);
+}
+
+.save {
+  background: var(--petrol-blue);
+  color: var(--beige);
+  border: 1px solid var(--petrol-blue);
+}
+
+.save:hover,
+.cancel:hover {
+  opacity: 0.92;
+}
+
+@media (max-width: 900px) {
+  .sections {
+    grid-template-columns: 1fr;
+  }
+
+  .hoverPreview {
+    display: none;
+  }
+}

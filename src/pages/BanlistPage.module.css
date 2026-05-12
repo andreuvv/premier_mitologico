@@ -110,6 +110,20 @@
   min-width: 250px;
 }
 
+.editButton {
+  border: 1px solid var(--petrol-blue);
+  background: var(--petrol-blue);
+  color: var(--beige);
+  border-radius: 8px;
+  padding: 0.5rem 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.editButton:hover {
+  opacity: 0.9;
+}
+
 .lastUpdated {
   margin: 0;
   margin-left: auto;
