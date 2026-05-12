@@ -1,6 +1,6 @@
 import { BanListFormat } from '../types/banlist';
 
-export type ChangeType = 'positive' | 'negative' | 'neutral';
+export type ChangeType = 'positive' | 'positiveSoft' | 'negative' | 'negativeSoft' | 'neutral';
 
 export interface FormatSummary {
   card: string;

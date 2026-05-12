@@ -77,12 +77,20 @@
   background-color: rgba(75, 139, 163, 0.08);
 }
 
-.rowPositive {
-  background-color: rgba(152, 185, 152, 0.41);
+.rowPositiveStrong {
+  background-color: rgba(101, 176, 118, 0.52);
 }
 
-.rowNegative {
-  background-color: rgba(196, 86, 73, 0.41);
+.rowPositiveSoft {
+  background-color: rgba(152, 185, 152, 0.34);
+}
+
+.rowNegativeStrong {
+  background-color: rgba(206, 64, 47, 0.52);
+}
+
+.rowNegativeSoft {
+  background-color: rgba(196, 86, 73, 0.34);
 }
 
 .rowNeutral {

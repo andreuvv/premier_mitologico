@@ -23,9 +23,13 @@ const formatLabels: Record<BanListFormat, string> = {
 const getRowClassName = (changeType?: ChangeType): string => {
   switch (changeType) {
     case 'positive':
-      return styles.rowPositive;
+      return styles.rowPositiveStrong;
+    case 'positiveSoft':
+      return styles.rowPositiveSoft;
     case 'negative':
-      return styles.rowNegative;
+      return styles.rowNegativeStrong;
+    case 'negativeSoft':
+      return styles.rowNegativeSoft;
     case 'neutral':
       return styles.rowNeutral;
     default:

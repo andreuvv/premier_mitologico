@@ -5,10 +5,10 @@ import { BanListFormat, BanListCategory, BanListData, BanListCard } from '../typ
 import { CollectionFormat } from '../types/collection';
 import { loadBanlist } from '../services/banlistService';
 import { useAuth } from '../hooks/useAuth';
-import { isCurrentUserBanlistAdmin } from '../services/monthlyBanlistService';
+import { getLatestTwoMonthlyBanlists, isCurrentUserBanlistAdmin, MonthlyBanlistSnapshot } from '../services/monthlyBanlistService';
 import BanlistEditorModal from '../components/BanlistEditorModal';
 import FormatSummaryRow from '../components/FormatSummaryRow';
-import { banlistSummaries, lastUpdateMonth } from '../data/banlistSummary';
+import { banlistSummaries, ChangeType, FormatSummary, lastUpdateMonth } from '../data/banlistSummary';
 import styles from './BanlistPage.module.css';
 
 const formatToSlug: Record<BanListFormat, string> = {
@@ -69,6 +69,97 @@ const getMonthYearLabel = (lastUpdated: string): string => {
     .replace(/^\w/, c => c.toUpperCase());
 };
 
+const formatDateFromYearMonth = (year: number, month: number): string => {
+  return getMonthYearLabel(`${year}-${String(month).padStart(2, '0')}-01`);
+};
+
+type RestrictionStatus = 'banned' | 'limitedX1' | 'limitedX2';
+
+const getRestrictionLabel = (status?: RestrictionStatus): string => {
+  if (!status) return 'Liberada';
+  if (status === 'banned') return 'Baneada';
+  if (status === 'limitedX1') return 'Limitada x1';
+  return 'Limitada x2';
+};
+
+const getStatusRank = (status?: RestrictionStatus): number => {
+  if (!status) return 0;
+  if (status === 'limitedX2') return 1;
+  if (status === 'limitedX1') return 2;
+  return 3;
+};
+
+const buildStatusMap = (banlist: BanListData): Map<string, { status: RestrictionStatus; card: BanListCard }> => {
+  const map = new Map<string, { status: RestrictionStatus; card: BanListCard }>();
+
+  banlist.banned.forEach(card => {
+    map.set(card.name.toLowerCase(), { status: 'banned', card });
+  });
+  banlist.limitedX1.forEach(card => {
+    map.set(card.name.toLowerCase(), { status: 'limitedX1', card });
+  });
+  banlist.limitedX2.forEach(card => {
+    map.set(card.name.toLowerCase(), { status: 'limitedX2', card });
+  });
+
+  return map;
+};
+
+const compareBanlistChanges = (previous: BanListData, current: BanListData): FormatSummary[] => {
+  const previousMap = buildStatusMap(previous);
+  const currentMap = buildStatusMap(current);
+  const allNames = new Set<string>([...previousMap.keys(), ...currentMap.keys()]);
+
+  const changes: FormatSummary[] = [];
+
+  allNames.forEach(nameKey => {
+    const prevEntry = previousMap.get(nameKey);
+    const currEntry = currentMap.get(nameKey);
+
+    if (prevEntry?.status === currEntry?.status) {
+      return;
+    }
+
+    let changeType: ChangeType;
+
+    if (!currEntry) {
+      // Any restriction -> liberated should always be positive.
+      changeType = 'positive';
+    } else if (currEntry.status === 'banned') {
+      // Any level -> banned should always be negative.
+      changeType = 'negative';
+    } else if (!prevEntry && currEntry.status === 'limitedX2') {
+      // Neutral only for liberated -> limited x2.
+      changeType = 'neutral';
+    } else if (!prevEntry && currEntry.status === 'limitedX1') {
+      changeType = 'negativeSoft';
+    } else {
+      const prevRank = getStatusRank(prevEntry?.status);
+      const currRank = getStatusRank(currEntry.status);
+      const diff = currRank - prevRank;
+
+      if (diff > 0) {
+        changeType = diff > 1 ? 'negative' : 'negativeSoft';
+      } else if (diff < 0) {
+        changeType = Math.abs(diff) > 1 ? 'positive' : 'positiveSoft';
+      } else {
+        changeType = 'neutral';
+      }
+    }
+
+    changes.push({
+      card: currEntry?.card.name ?? prevEntry?.card.name ?? nameKey,
+      pastMonth: getRestrictionLabel(prevEntry?.status),
+      currentMonth: getRestrictionLabel(currEntry?.status),
+      changeType,
+      imageUrl: currEntry?.card.imageUrl || prevEntry?.card.imageUrl,
+    });
+  });
+
+  changes.sort((a, b) => a.card.localeCompare(b.card, 'es'));
+  return changes;
+};
+
 const BanlistPage = () => {
   const { format: formatSlug, category: categorySlug } = useParams<{ format?: string; category?: string }>();
   const navigate = useNavigate();
@@ -87,6 +178,8 @@ const BanlistPage = () => {
   const [refreshKey, setRefreshKey] = useState(0);
   const [showInfoPopup, setShowInfoPopup] = useState(false);
   const [showAccordion, setShowAccordion] = useState(false);
+  const [computedSummaries, setComputedSummaries] = useState<Record<BanListFormat, FormatSummary[]>>(banlistSummaries);
+  const [computedSummaryMonth, setComputedSummaryMonth] = useState<string>(lastUpdateMonth);
 
   useEffect(() => {
     if (!user) {
@@ -111,6 +204,51 @@ const BanlistPage = () => {
         setLoading(false);
       });
   }, [selectedFormat, refreshKey]);
+
+  useEffect(() => {
+    const formats = Object.values(BanListFormat);
+
+    Promise.all(formats.map(async (format) => {
+      const snapshots = await getLatestTwoMonthlyBanlists(format);
+      return { format, snapshots };
+    }))
+      .then((results) => {
+        const nextSummaries: Record<BanListFormat, FormatSummary[]> = {
+          [BanListFormat.PRIMER_BLOQUE_LIBRE]: banlistSummaries[BanListFormat.PRIMER_BLOQUE_LIBRE],
+          [BanListFormat.PRIMER_BLOQUE_EDICION]: banlistSummaries[BanListFormat.PRIMER_BLOQUE_EDICION],
+          [BanListFormat.BLOQUE_FURIA_LIBRE]: banlistSummaries[BanListFormat.BLOQUE_FURIA_LIBRE],
+          [BanListFormat.BLOQUE_FURIA_LIMITED]: banlistSummaries[BanListFormat.BLOQUE_FURIA_LIMITED],
+        };
+
+        const latestByFormat = new Map<BanListFormat, MonthlyBanlistSnapshot>();
+
+        results.forEach(({ format, snapshots }) => {
+          if (snapshots.length > 0) {
+            latestByFormat.set(format, snapshots[0]);
+          }
+
+          if (snapshots.length < 2) {
+            return;
+          }
+
+          nextSummaries[format] = compareBanlistChanges(snapshots[1].data, snapshots[0].data);
+        });
+
+        setComputedSummaries(nextSummaries);
+
+        const selectedLatest = latestByFormat.get(selectedFormat);
+        if (selectedLatest) {
+          setComputedSummaryMonth(formatDateFromYearMonth(selectedLatest.year, selectedLatest.month));
+        } else {
+          setComputedSummaryMonth(lastUpdateMonth);
+        }
+      })
+      .catch((err) => {
+        console.error('Error loading dynamic banlist summaries:', err);
+        setComputedSummaries(banlistSummaries);
+        setComputedSummaryMonth(lastUpdateMonth);
+      });
+  }, [refreshKey, selectedFormat]);
 
   const getFormatLabel = (format: BanListFormat): string => {
     switch (format) {
@@ -168,13 +306,13 @@ const BanlistPage = () => {
           className={styles.accordionHeader} 
           onClick={() => setShowAccordion(!showAccordion)}
         >
-          <span>Resumen actualización {lastUpdateMonth}</span>
+          <span>Resumen actualización {computedSummaryMonth}</span>
           <span className={styles.accordionChevron}>{showAccordion ? '▾' : '▸'}</span>
         </button>
         {showAccordion && (
           <div className={styles.accordionBody}>
             <p className={styles.disclaimer}>Cartas no mencionadas mantienen restricciones del mes anterior</p>
-            <FormatSummaryRow summaries={banlistSummaries} />
+            <FormatSummaryRow summaries={computedSummaries} />
           </div>
         )}
       </div>

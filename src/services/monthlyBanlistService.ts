@@ -13,6 +13,13 @@ interface MonthlyBanlistRow {
   updated_at: string;
 }
 
+export interface MonthlyBanlistSnapshot {
+  format: BanListFormat;
+  year: number;
+  month: number;
+  data: BanListData;
+}
+
 const toBanListData = (row: MonthlyBanlistRow): BanListData => ({
   format: row.format,
   lastUpdated: `${row.year}-${String(row.month).padStart(2, '0')}-01`,
@@ -41,6 +48,34 @@ export const getLatestMonthlyBanlist = async (format: BanListFormat): Promise<Ba
   }
 
   return toBanListData(data as MonthlyBanlistRow);
+};
+
+export const getLatestTwoMonthlyBanlists = async (
+  format: BanListFormat
+): Promise<MonthlyBanlistSnapshot[]> => {
+  const { data, error } = await supabase
+    .from('monthly_banlists')
+    .select('*')
+    .eq('format', format)
+    .order('year', { ascending: false })
+    .order('month', { ascending: false })
+    .limit(2);
+
+  if (error) {
+    console.error('Error loading latest two monthly banlists:', error);
+    return [];
+  }
+
+  if (!data || data.length === 0) {
+    return [];
+  }
+
+  return (data as MonthlyBanlistRow[]).map(row => ({
+    format: row.format,
+    year: row.year,
+    month: row.month,
+    data: toBanListData(row),
+  }));
 };
 
 export const getMonthlyBanlistByMonth = async (
