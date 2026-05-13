@@ -91,6 +91,14 @@ const Header = () => {
             </Link>
             {cartasHovered && (
               <div className={styles.cartasDropdown}>
+                <Link
+                  to="/coleccion"
+                  className={styles.cartasDropdownItem}
+                  onClick={() => setCartasHovered(false)}
+                >
+                  <FaBook className={styles.icon} />
+                  Cartas
+                </Link>
                 <button
                   className={styles.cartasDropdownItem}
                   onClick={() => {
