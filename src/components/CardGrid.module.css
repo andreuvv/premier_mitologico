@@ -36,39 +36,97 @@
 .cardLink {
   display: flex;
   flex-direction: column;
-  cursor: pointer;
   text-decoration: none;
   color: inherit;
 }
 
-.ownedButton {
+.actionsOverlay {
   position: absolute;
-  top: 6px;
-  right: 6px;
-  background: rgba(0, 0, 0, 0.55);
-  border: none;
-  border-radius: 50%;
-  width: 28px;
-  height: 28px;
-  font-size: 1rem;
-  cursor: pointer;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.52);
+  padding: 0.6rem;
   display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.6);
-  transition: background 0.15s, color 0.15s, transform 0.15s;
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+  transition: opacity 0.18s, transform 0.18s;
   z-index: 1;
-  line-height: 1;
 }
 
-.ownedButton:hover {
-  background: rgba(0, 0, 0, 0.75);
-  transform: scale(1.15);
+.cardItem:hover .actionsOverlay {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
-.ownedButtonActive {
-  color: var(--ocher);
-  background: rgba(0, 0, 0, 0.65);
+.actionButton {
+  width: min(86%, 180px);
+  border: 1px solid transparent;
+  background: rgba(45, 45, 45, 0.88);
+  color: var(--beige);
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  padding: 0.42rem 0.5rem;
+  cursor: pointer;
+}
+
+.actionButton:hover:not(:disabled) {
+  filter: brightness(1.05);
+}
+
+.actionView {
+  background: var(--ocher);
+  border-color: var(--ocher);
+  color: var(--coal-grey);
+}
+
+.actionView:hover:not(:disabled) {
+  background: var(--ocher);
+}
+
+.actionAdd {
+  background: var(--sage-green);
+  border-color: var(--sage-green);
+  color: var(--beige);
+}
+
+.actionAdd:hover:not(:disabled) {
+  background: var(--sage-green);
+}
+
+.actionAdd:disabled {
+  background: #5b7c50;
+  border-color: #5b7c50;
+  color: rgba(241, 220, 174, 0.75);
+}
+
+.actionRemove {
+  background: var(--brick-red);
+  border-color: var(--brick-red);
+  color: var(--beige);
+}
+
+.actionRemove:hover:not(:disabled) {
+  background: var(--brick-red);
+}
+
+.actionRemove:disabled {
+  background: #7b4a43;
+  border-color: #7b4a43;
+  color: rgba(241, 220, 174, 0.75);
+}
+
+.actionButton:disabled {
+  opacity: 1;
+  cursor: not-allowed;
+  filter: grayscale(0.15);
 }
 
 .cardImage {

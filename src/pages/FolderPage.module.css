@@ -1,0 +1,104 @@
+.container {
+  min-height: 100vh;
+  padding: 2rem;
+  background: var(--coal-grey);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  margin: 0 0 0.5rem;
+  font-size: 2.5rem;
+  color: var(--beige);
+  font-family: 'Cyrodiil', serif;
+}
+
+.header p {
+  margin: 0;
+  color: var(--beige);
+  opacity: 0.7;
+}
+
+.formatTabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--ocher);
+}
+
+.tab {
+  padding: 1rem 2rem;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  color: var(--beige);
+  font-size: 1.05rem;
+  font-weight: 600;
+  position: relative;
+  bottom: -2px;
+}
+
+.tab:hover {
+  color: var(--ocher);
+}
+
+.tab.active {
+  color: var(--ocher);
+  border-bottom-color: var(--ocher);
+  background: rgba(214, 156, 65, 0.05);
+}
+
+.loading {
+  text-align: center;
+  color: var(--beige);
+  font-size: 1.1rem;
+  padding: 3rem;
+}
+
+.emptyState {
+  text-align: center;
+  background: var(--dark-brown);
+  border: 1px solid var(--ocher);
+  border-radius: 10px;
+  padding: 2rem;
+  color: var(--beige);
+}
+
+.emptyState h2,
+.emptyState h3 {
+  margin: 0 0 0.6rem;
+}
+
+.emptyState p {
+  margin: 0;
+  opacity: 0.8;
+}
+
+.stats {
+  margin-top: 1.5rem;
+  text-align: center;
+  padding: 1rem;
+  background: var(--dark-brown);
+  border-radius: 8px;
+  color: var(--beige);
+  border: 1px solid var(--ocher);
+}
+
+@media (max-width: 1200px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .tab {
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+  }
+}

@@ -77,7 +77,14 @@ const Header = () => {
           >
             <Link 
               to="/coleccion" 
-              className={location.pathname === '/coleccion' || location.pathname.startsWith('/coleccion/') ? styles.active : ''}
+              className={
+                location.pathname === '/coleccion'
+                || location.pathname.startsWith('/coleccion/')
+                || location.pathname === '/carpeta'
+                || location.pathname.startsWith('/carpeta/')
+                  ? styles.active
+                  : ''
+              }
             >
               <FaBook className={styles.icon} />
               Cartas
@@ -94,10 +101,21 @@ const Header = () => {
                   <FaHammer className={styles.icon} />
                   Deck Builder
                 </button>
-                <button className={`${styles.cartasDropdownItem} ${styles.cartasDropdownDisabled}`} disabled>
-                  <FaBook className={styles.icon} />
-                  Colección
-                </button>
+                {user ? (
+                  <Link
+                    to="/carpeta"
+                    className={styles.cartasDropdownItem}
+                    onClick={() => setCartasHovered(false)}
+                  >
+                    <FaBook className={styles.icon} />
+                    Carpeta
+                  </Link>
+                ) : (
+                  <button className={`${styles.cartasDropdownItem} ${styles.cartasDropdownDisabled}`} disabled>
+                    <FaBook className={styles.icon} />
+                    Carpeta
+                  </button>
+                )}
               </div>
             )}
           </div>
@@ -279,10 +297,17 @@ const Header = () => {
           <FaHammer className={styles.icon} />
           Deck Builder
         </button>
-        <button className={`${styles.mobileSubItem} ${styles.mobileSubItemDisabled}`} disabled>
-          <FaBook className={styles.icon} />
-          Colección
-        </button>
+        {user ? (
+          <Link to="/carpeta" className={styles.mobileSubItem} onClick={() => setMobileMenuOpen(false)}>
+            <FaBook className={styles.icon} />
+            Carpeta
+          </Link>
+        ) : (
+          <button className={`${styles.mobileSubItem} ${styles.mobileSubItemDisabled}`} disabled>
+            <FaBook className={styles.icon} />
+            Carpeta
+          </button>
+        )}
         <Link to="/game-formats" onClick={() => setMobileMenuOpen(false)}>
           <FaGamepad className={styles.icon} />
           Formatos

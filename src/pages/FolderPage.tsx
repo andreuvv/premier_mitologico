@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { CollectionFormat, CollectionCard, CollectionCatalog } from '../types/collection';
+import { CollectionCatalog, CollectionCard, CollectionFormat } from '../types/collection';
 import { loadCollectionCards } from '../services/collectionService';
 import CardGrid, { type SimpleCard } from '../components/CardGrid';
 import CollectionFilters, { type FilterParams } from '../components/CollectionFilters';
@@ -8,7 +8,24 @@ import { useAuth } from '../hooks/useAuth';
 import { useUserCollection } from '../hooks/useUserCollection';
 import styles from './CollectionPage.module.css';
 
-const CollectionPage = () => {
+const toSimpleCards = (cards: CollectionCard[]): SimpleCard[] => {
+  return cards.map(card => ({
+    id: card.id,
+    slug: card.slug,
+    name: card.name,
+    imageUrl: card.imageUrl,
+    collectorCode: card.collectorCode,
+    type: card.type,
+    cost: card.cost,
+    attack: card.attack,
+    effect: card.effect,
+    flavor: card.flavor,
+    artist: card.artist,
+    productName: card.product?.productName ?? card.edition?.name,
+  }));
+};
+
+const FolderPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { user } = useAuth();
 
@@ -26,40 +43,26 @@ const CollectionPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    setFilteredCards([]);
     loadCollectionCards(selectedFormat)
       .then((data: CollectionCatalog) => {
         setAllCards(data.data.CardCatalog.cards);
+        setFilteredCards(toSimpleCards(data.data.CardCatalog.cards));
         setLoading(false);
       })
       .catch(err => {
-        console.error('Error loading collection:', err);
+        console.error('Error loading cards for folder:', err);
         setLoading(false);
       });
   }, [selectedFormat]);
 
-  // Load user collection when user or format changes
   useEffect(() => {
     if (user && loadedFormat !== selectedFormat) {
       loadCollection();
     }
-  }, [user, selectedFormat, loadedFormat, loadCollection]);
+  }, [user, loadedFormat, selectedFormat, loadCollection]);
 
   const handleFilterChange = (cards: CollectionCard[], params: FilterParams) => {
-    const simpleCards = cards.map(card => ({
-      id: card.id,
-      slug: card.slug,
-      name: card.name,
-      imageUrl: card.imageUrl,
-      collectorCode: card.collectorCode,
-      type: card.type,
-      cost: card.cost,
-      attack: card.attack,
-      effect: card.effect,
-      flavor: card.flavor,
-      artist: card.artist,
-      productName: card.product?.productName ?? card.edition?.name,
-    }));
+    const simpleCards = toSimpleCards(cards);
     setFilteredCards(simpleCards);
 
     setSearchParams(p => {
@@ -75,19 +78,43 @@ const CollectionPage = () => {
     }, { replace: true });
   };
 
+  const ownedCards = useMemo(() => {
+    return filteredCards.filter(card => ownedCardIds.has(card.id));
+  }, [filteredCards, ownedCardIds]);
+
+  const ownedTotalByFormat = useMemo(() => {
+    return allCards.filter(card => ownedCardIds.has(card.id)).length;
+  }, [allCards, ownedCardIds]);
+
   const getFormatLabel = (format: CollectionFormat): string => {
     switch (format) {
-      case CollectionFormat.PRIMER_BLOQUE: return 'Primer Bloque';
-      case CollectionFormat.FURIA_EXTENDIDO: return 'Furia Extendido';
+      case CollectionFormat.PRIMER_BLOQUE:
+        return 'Primer Bloque';
+      case CollectionFormat.FURIA_EXTENDIDO:
+        return 'Furia Extendido';
     }
   };
 
-  // Only pass URL filter values back when the URL format matches the active tab.
+  if (!user) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.emptyState}>
+          <h2>Carpeta</h2>
+          <p>Inicia sesión para ver y administrar tu Carpeta de cartas.</p>
+        </div>
+      </div>
+    );
+  }
+
   const urlFormat = searchParams.get('format') ?? CollectionFormat.PRIMER_BLOQUE;
   const matchesFormat = urlFormat === selectedFormat;
 
   return (
     <div className={styles.container}>
+      <div className={styles.header}>
+        <h1>Carpeta</h1>
+        <p>Tu colección personal de cartas guardadas</p>
+      </div>
 
       <div className={styles.mobileHeader}>
         <button
@@ -114,7 +141,6 @@ const CollectionPage = () => {
             className={`${styles.tab} ${selectedFormat === format ? styles.active : ''}`}
             onClick={() => {
               setSelectedFormat(format);
-              setSidebarOpen(false);
               setSearchParams(() => {
                 const next = new URLSearchParams();
                 next.set('format', format);
@@ -128,11 +154,11 @@ const CollectionPage = () => {
       </div>
 
       {loading ? (
-        <div className={styles.loading}>Cargando cartas...</div>
+        <div className={styles.loading}>Cargando carpeta...</div>
       ) : (
         <div className={`${styles.content} ${styles.withSidebar}`}>
           <CollectionFilters
-            key={selectedFormat}
+            key={`folder-${selectedFormat}`}
             allCards={allCards}
             format={selectedFormat}
             isOpen={sidebarOpen}
@@ -146,21 +172,27 @@ const CollectionPage = () => {
             initialFreq={matchesFormat ? searchParams.get('freq') : null}
           />
           <div className={styles.gridArea}>
-            <CardGrid
-              cards={filteredCards}
-              format={selectedFormat}
-              ownedCardIds={user ? ownedCardIds : undefined}
-              onToggleOwned={user ? toggleCard : undefined}
-            />
+            {ownedCards.length === 0 ? (
+              <div className={styles.stats}>
+                No hay cartas en tu Carpeta para los filtros actuales en {getFormatLabel(selectedFormat)}.
+              </div>
+            ) : (
+              <CardGrid
+                cards={ownedCards}
+                format={selectedFormat}
+                ownedCardIds={ownedCardIds}
+                onToggleOwned={toggleCard}
+              />
+            )}
           </div>
         </div>
       )}
 
       <div className={styles.stats}>
-        Mostrando {filteredCards.length} de {allCards.length} cartas
+        Mostrando {ownedCards.length} de {ownedTotalByFormat} cartas en tu Carpeta ({getFormatLabel(selectedFormat)})
       </div>
     </div>
   );
 };
 
-export default CollectionPage;
+export default FolderPage;

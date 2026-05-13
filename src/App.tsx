@@ -11,6 +11,7 @@ const TournamentInfoPage = lazy(() => import('./pages/TournamentInfoPage'));
 const GameFormatsPage = lazy(() => import('./pages/GameFormatsPage'));
 const BanlistPage = lazy(() => import('./pages/BanlistPage'));
 const CollectionPage = lazy(() => import('./pages/CollectionPage'));
+const FolderPage = lazy(() => import('./pages/FolderPage'));
 const CardDetailPage = lazy(() => import('./pages/CardDetailPage'));
 const PremierTournamentPage = lazy(() => import('./pages/PremierTournamentPage'));
 const TournamentHistoryPage = lazy(() => import('./pages/TournamentHistoryPage'));
@@ -44,6 +45,7 @@ function App() {
             <Route path="/banlist" element={<BanlistPage />} />
             <Route path="/banlist/:format/:category" element={<BanlistPage />} />
             <Route path="/coleccion" element={<CollectionPage />} />
+            <Route path="/carpeta" element={<FolderPage />} />
             <Route path="/coleccion/carta/:format/:id/:slug" element={<CardDetailPage />} />
             <Route path="/torneo-premier" element={<PremierTournamentPage />} />
             <Route path="/torneo-premier/:tab" element={<PremierTournamentPage />} />

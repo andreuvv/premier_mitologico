@@ -42,12 +42,11 @@ export default function CardGrid({ cards, format, cardsPerPage = 100, ownedCardI
       <div className={styles.grid}>
         {paginatedCards.map((card) => {
           const isOwned = ownedCardIds?.has(card.id) ?? false;
+          const detailPath = `/coleccion/carta/${format}/${card.id}/${card.slug}`;
+          const showActions = Boolean(onToggleOwned);
           return (
             <div key={card.id} className={`${styles.cardItem} ${isOwned ? styles.cardOwned : ''}`}>
-              <Link
-                to={`/coleccion/carta/${format}/${card.id}/${card.slug}`}
-                className={styles.cardLink}
-              >
+              <Link to={detailPath} className={styles.cardLink}>
                 {card.imageUrl ? (
                   <img
                     src={card.imageUrl}
@@ -62,15 +61,27 @@ export default function CardGrid({ cards, format, cardsPerPage = 100, ownedCardI
                   <span className={styles.cardCode}>{card.collectorCode}</span>
                 </div>
               </Link>
-              {onToggleOwned && (
-                <button
-                  className={`${styles.ownedButton} ${isOwned ? styles.ownedButtonActive : ''}`}
-                  onClick={e => { e.preventDefault(); onToggleOwned(card.id); }}
-                  title={isOwned ? 'Quitar de mi colección' : 'Agregar a mi colección'}
-                  aria-label={isOwned ? 'Quitar de mi colección' : 'Agregar a mi colección'}
-                >
-                  {isOwned ? '★' : '☆'}
-                </button>
+
+              {showActions && (
+                <div className={styles.actionsOverlay}>
+                  <Link to={detailPath} className={`${styles.actionButton} ${styles.actionView}`}>
+                    Ver Carta
+                  </Link>
+                  <button
+                    className={`${styles.actionButton} ${styles.actionAdd}`}
+                    onClick={(e) => { e.preventDefault(); onToggleOwned?.(card.id); }}
+                    disabled={isOwned}
+                  >
+                    Agregar a Carpeta
+                  </button>
+                  <button
+                    className={`${styles.actionButton} ${styles.actionRemove}`}
+                    onClick={(e) => { e.preventDefault(); onToggleOwned?.(card.id); }}
+                    disabled={!isOwned}
+                  >
+                    Quitar de Carpeta
+                  </button>
+                </div>
               )}
             </div>
           );
