@@ -139,6 +139,21 @@
   border-color: var(--petrol-blue);
 }
 
+.toggleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--beige);
+  cursor: pointer;
+}
+
+.toggleRow input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--petrol-blue);
+}
+
 /* Type buttons — like BanlistPage categoryTabs */
 .typeButtons {
   display: grid;

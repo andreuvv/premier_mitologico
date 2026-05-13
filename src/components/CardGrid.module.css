@@ -33,6 +33,18 @@
   box-shadow: 0 0 0 2px var(--sage-green), 0 4px 12px rgba(126, 164, 112, 0.25);
 }
 
+.cardUnownedMuted .cardImage {
+  filter: grayscale(1);
+}
+
+.unownedOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.18);
+  pointer-events: none;
+  z-index: 0;
+}
+
 .cardLink {
   display: flex;
   flex-direction: column;
@@ -167,6 +179,14 @@
   color: var(--petrol-blue);
   font-weight: 500;
   letter-spacing: 0.03em;
+}
+
+.copyCount {
+  display: block;
+  margin-top: 0.28rem;
+  font-size: 0.74rem;
+  color: var(--dark-brown);
+  font-weight: 600;
 }
 
 .pagination {

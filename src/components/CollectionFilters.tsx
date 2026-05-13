@@ -13,6 +13,7 @@ export interface FilterParams {
   type: string | null;
   race: string | null;
   freq: string | null;
+  ownedOnly?: boolean;
 }
 
 interface CollectionFiltersProps {
@@ -27,11 +28,14 @@ interface CollectionFiltersProps {
   initialType?: string | null;
   initialRace?: string | null;
   initialFreq?: string | null;
+  showOwnedOnlyToggle?: boolean;
+  initialOwnedOnly?: boolean;
 }
 
 export default function CollectionFilters({
   allCards, format, isOpen, onClose, onFilterChange,
   initialEdition, initialProduct, initialSearch, initialType, initialRace, initialFreq,
+  showOwnedOnlyToggle = false, initialOwnedOnly = false,
 }: CollectionFiltersProps) {
   const [edition, setEdition] = useState(initialEdition || '');
   const [product, setProduct] = useState(initialProduct || '');
@@ -39,6 +43,7 @@ export default function CollectionFilters({
   const [type, setType] = useState(initialType || '');
   const [race, setRace] = useState(initialRace || '');
   const [freq, setFreq] = useState(initialFreq || '');
+  const [ownedOnly, setOwnedOnly] = useState(initialOwnedOnly);
   const appliedInitialRef = useRef(false);
 
   const isPB = format === CollectionFormat.PRIMER_BLOQUE;
@@ -67,7 +72,7 @@ export default function CollectionFilters({
   const normalizeStr = (s: string) =>
     s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
-  const applyFilters = (e: string, p: string, s: string, t: string, r: string, f: string) => {
+  const applyFilters = (e: string, p: string, s: string, t: string, r: string, f: string, o: boolean = ownedOnly) => {
     let filtered = allCards;
 
     if (isPB) {
@@ -89,6 +94,7 @@ export default function CollectionFilters({
       type: t || null,
       race: r || null,
       freq: f || null,
+      ownedOnly: o,
     });
   };
 
@@ -137,10 +143,16 @@ export default function CollectionFilters({
   const handleClear = () => {
     setEdition(''); setProduct(''); setSearch('');
     setType(''); setRace(''); setFreq('');
-    applyFilters('', '', '', '', '', '');
+    setOwnedOnly(false);
+    applyFilters('', '', '', '', '', '', false);
   };
 
-  const hasFilters = !!(edition || product || search || type || race || freq);
+  const handleOwnedOnlyChange = (checked: boolean) => {
+    setOwnedOnly(checked);
+    applyFilters(edition, product, search, type, race, freq, checked);
+  };
+
+  const hasFilters = !!(edition || product || search || type || race || freq || ownedOnly);
 
   return (
     <aside className={`${styles.panel} ${isOpen ? styles.open : ''}`}>
@@ -240,6 +252,19 @@ export default function CollectionFilters({
           ))}
         </select>
       </div>
+
+      {showOwnedOnlyToggle && (
+        <div className={styles.section}>
+          <label className={styles.toggleRow}>
+            <input
+              type="checkbox"
+              checked={ownedOnly}
+              onChange={e => handleOwnedOnlyChange(e.target.checked)}
+            />
+            <span>Solo las que tienes</span>
+          </label>
+        </div>
+      )}
     </aside>
   );
 }

@@ -22,7 +22,7 @@ const CollectionPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const { ownedCardIds, loadedFormat, loadCollection, toggleCard } = useUserCollection(selectedFormat);
+  const { ownedCardIds, cardCopies, loadedFormat, loadCollection, toggleCard } = useUserCollection(selectedFormat);
 
   useEffect(() => {
     setLoading(true);
@@ -150,6 +150,7 @@ const CollectionPage = () => {
               cards={filteredCards}
               format={selectedFormat}
               ownedCardIds={user ? ownedCardIds : undefined}
+              cardCopies={user ? cardCopies : undefined}
               onToggleOwned={user ? toggleCard : undefined}
             />
           </div>

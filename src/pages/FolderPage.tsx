@@ -38,8 +38,9 @@ const FolderPage = () => {
   const [filteredCards, setFilteredCards] = useState<SimpleCard[]>([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [showOwnedOnly, setShowOwnedOnly] = useState(searchParams.get('owned') === '1');
 
-  const { ownedCardIds, loadedFormat, loadCollection, toggleCard } = useUserCollection(selectedFormat);
+  const { ownedCardIds, cardCopies, loadedFormat, loadCollection, addCopy, removeCopy } = useUserCollection(selectedFormat);
 
   useEffect(() => {
     setLoading(true);
@@ -64,6 +65,7 @@ const FolderPage = () => {
   const handleFilterChange = (cards: CollectionCard[], params: FilterParams) => {
     const simpleCards = toSimpleCards(cards);
     setFilteredCards(simpleCards);
+    setShowOwnedOnly(params.ownedOnly === true);
 
     setSearchParams(p => {
       const next = new URLSearchParams(p);
@@ -74,6 +76,7 @@ const FolderPage = () => {
       if (params.type) next.set('type', params.type); else next.delete('type');
       if (params.race) next.set('race', params.race); else next.delete('race');
       if (params.freq) next.set('freq', params.freq); else next.delete('freq');
+      if (params.ownedOnly) next.set('owned', '1'); else next.delete('owned');
       return next;
     }, { replace: true });
   };
@@ -85,6 +88,13 @@ const FolderPage = () => {
   const ownedTotalByFormat = useMemo(() => {
     return allCards.filter(card => ownedCardIds.has(card.id)).length;
   }, [allCards, ownedCardIds]);
+
+  const visibleCards = useMemo(() => {
+    if (!showOwnedOnly) {
+      return filteredCards;
+    }
+    return filteredCards.filter(card => ownedCardIds.has(card.id));
+  }, [filteredCards, ownedCardIds, showOwnedOnly]);
 
   const getFormatLabel = (format: CollectionFormat): string => {
     switch (format) {
@@ -170,18 +180,24 @@ const FolderPage = () => {
             initialType={matchesFormat ? searchParams.get('type') : null}
             initialRace={matchesFormat ? searchParams.get('race') : null}
             initialFreq={matchesFormat ? searchParams.get('freq') : null}
+            initialOwnedOnly={matchesFormat ? searchParams.get('owned') === '1' : false}
+            showOwnedOnlyToggle={true}
           />
           <div className={styles.gridArea}>
-            {ownedCards.length === 0 ? (
+            {visibleCards.length === 0 ? (
               <div className={styles.stats}>
-                No hay cartas en tu Carpeta para los filtros actuales en {getFormatLabel(selectedFormat)}.
+                No hay cartas para los filtros actuales en {getFormatLabel(selectedFormat)}.
               </div>
             ) : (
               <CardGrid
-                cards={ownedCards}
+                cards={visibleCards}
                 format={selectedFormat}
                 ownedCardIds={ownedCardIds}
-                onToggleOwned={toggleCard}
+                cardCopies={cardCopies}
+                onAddCopy={addCopy}
+                onRemoveCopy={removeCopy}
+                showUnownedMuted={true}
+                showCopyCount={true}
               />
             )}
           </div>

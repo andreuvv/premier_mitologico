@@ -37,6 +37,7 @@ CREATE TABLE public.user_collections (
   id          BIGSERIAL PRIMARY KEY,
   user_id     UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
   card_id     INTEGER NOT NULL,
+  copy_count  INTEGER NOT NULL DEFAULT 1 CHECK (copy_count >= 1),
   format      TEXT NOT NULL CHECK (format IN ('primer-bloque', 'furia-extendido')),
   created_at  TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   UNIQUE (user_id, card_id, format)
