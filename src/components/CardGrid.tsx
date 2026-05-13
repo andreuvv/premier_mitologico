@@ -109,7 +109,7 @@ export default function CardGrid({
                 <div className={styles.cardInfo}>
                   <h4>{card.name}</h4>
                   <span className={styles.cardCode}>{card.collectorCode}</span>
-                  {showCopyCount && <span className={styles.copyCount}>Tienes {copyCount} copias</span>}
+                  {showCopyCount && <span className={styles.copyCount}>Tienes {copyCount} copias en tu Carpeta</span>}
                 </div>
               </Link>
 

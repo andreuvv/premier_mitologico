@@ -152,6 +152,7 @@ const CollectionPage = () => {
               ownedCardIds={user ? ownedCardIds : undefined}
               cardCopies={user ? cardCopies : undefined}
               onToggleOwned={user ? toggleCard : undefined}
+              showCopyCount={Boolean(user)}
             />
           </div>
         </div>
