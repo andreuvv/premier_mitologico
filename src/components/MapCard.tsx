@@ -33,7 +33,7 @@ export default function MapCard() {
         </div>
       </div>
       <div className={styles.mapContainer}>
-        {showMap ? (
+        {showMap && user ? (
           <iframe
             src={mapUrl}
             style={{ border: 0 }}
@@ -41,13 +41,13 @@ export default function MapCard() {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
-        ) : (
+        ) : !showMap ? (
           <div className={styles.noMapMessage}>
             <p className={styles.noMapText}>Ubicación de Torneo No Definida</p>
           </div>
-        )}
+        ) : null}
       </div>
-      {!user && showMap && (
+      {showMap && !user && (
         <div className={styles.authOverlay}>
           <p className={styles.authOverlayText}>Inicia sesión para ver la ubicación del torneo</p>
           <button className={styles.authOverlayButton} onClick={() => setAuthModalOpen(true)}>
