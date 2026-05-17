@@ -3,6 +3,398 @@
     "CardCatalog": {
       "cards": [
         {
+          "id": 12739,
+          "slug": "sabuesos-de-annwn",
+          "name": "Sabuesos de Annwn",
+          "gameId": 3,
+          "collectorCode": "★66",
+          "effect": "Cuando este Aliado entra en juego, puedes buscar una copia de este Aliado en tu Mazo Castillo y ponlo en tu mano. En tu Fase de Vigilia, puedes Descartar esta carta para que un Aliado de Raza Bestia gane 2 a la Fuerza hasta la Fase Final.",
+          "flavor": "La noche tiene mil ojos cazadores, y el día solo uno; cuando la luz del brillante mundo muere con el sol moribundo, ahí vuelven los perros cazadores de impenitentes y traicioneros.",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://api.myl.cl/static/cards/68/233.png",
+          "artist": "CRISTIAN HUERTA",
+          "frequency": "REAL",
+          "race": [
+            "BESTIA"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Promos Despertar Gótico",
+            "productCode": "★",
+            "productType": "Producto Especial"
+          },
+          "interactions": [
+          ]
+        },
+        {
+          "id": 12738,
+          "slug": "rudriage",
+          "name": "Rudriage",
+          "gameId": 3,
+          "collectorCode": "★65",
+          "effect": "Imbloqueable. Cuando este Aliado entra en juego, busca un Aliado de Raza Bárbaro de coste 1 o menos en tu Mazo Castillo y ponlo en tu mano. Luego, Descarta una carta.",
+          "flavor": "Enorme descendiente de Muintir Nemid, conquistador del Ulster. Ya que ningún hombre fue capaz de vencerlo, fue derrotado por la magia de la isla esmeralda.",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://api.myl.cl/static/cards/68/232.png",
+          "artist": "NITROX",
+          "frequency": "REAL",
+          "race": [
+            "BARBARO"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Promos Despertar Gótico",
+            "productCode": "★",
+            "productType": "Producto Especial"
+          },
+          "interactions": [
+          ]
+        },
+        {
+          "id": 12737,
+          "slug": "rey-de-annwn",
+          "name": "Rey de Annwn",
+          "gameId": 3,
+          "collectorCode": "★64",
+          "effect": "Cuando este Aliado entra en juego, Agrupa un Oro que controles. En tu Fase de Vigilia, una vez por turno, puedes Barajar una carta de tu mano para Robar una carta, si es un Tótem, en vez de eso, Roba dos cartas.",
+          "flavor": "En el reino de la noche, muerte y las tinieblas llegan hasta el rey del inframundo. Los espectros lo rodean tan fríos y amargados, cantando canciones mudas, que casi no puede oír.",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://api.myl.cl/static/cards/68/231.png",
+          "artist": "CRISTIAN HUERTA",
+          "frequency": "REAL",
+          "race": [
+            "ETERNO"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Promos Despertar Gótico",
+            "productCode": "★",
+            "productType": "Producto Especial"
+          },
+          "interactions": [
+          ]
+        },
+        {
+          "id": 12736,
+          "slug": "taliesin-ben-beirdd",
+          "name": "Taliesin Ben Beirdd",
+          "gameId": 3,
+          "collectorCode": "★63",
+          "effect": "Cuando este Aliado entra en juego, puedes buscar un Aliado de Raza Héroe en tu Mazo Castillo y ponlo en tu mano. Mientras esta carta esté en tu Línea de Defensa, los Aliados oponentes declarados atacantes pierden 1 a la Fuerza.",
+          "flavor": "Bebió de la poción de Cerridwen sin querer y se transformó en el bardo más poderoso del reino, cuya magia e inventiva no podía ser superada por juglar alguno.",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://api.myl.cl/static/cards/68/230.png",
+          "artist": "JOSÉ CANALES",
+          "frequency": "MEGA_REAL",
+          "race": [
+            "HEROE"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Promos Despertar Gótico",
+            "productCode": "★",
+            "productType": "Producto Especial"
+          },
+          "interactions": [
+          ]
+        },
+        {
+          "id": 12735,
+          "slug": "conaire-more-el-grande",
+          "name": "Conaire More, el Grande",
+          "gameId": 3,
+          "collectorCode": "★62",
+          "effect": "Cuando este Aliado entra en juego, mira las primeras cuatro cartas de tu Mazo Castillo, elige un Aliado de Raza Guerrero de coste 1 o menos de ahí y juégalo sin pagar su coste. En tu Fase de Vigilia, una vez por turno, tu oponente Bota una carta.",
+          "flavor": "Alto Rey que por treinta años gobernó con justicia y honestidad, fundador de la casa de Sil Conairi que tuvo raíces tanto en Irlanda como en Escocia.",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://api.myl.cl/static/cards/68/229.png",
+          "artist": "THOR ODENSON",
+          "frequency": "MEGA_REAL",
+          "race": [
+            "GUERRERO"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Promos Despertar Gótico",
+            "productCode": "★",
+            "productType": "Producto Especial"
+          },
+          "interactions": [
+          ]
+        },
+        {
+          "id": 12734,
+          "slug": "rey-brian-boru",
+          "name": "Rey Brian Boru",
+          "gameId": 3,
+          "collectorCode": "★61",
+          "effect": "Furia. Cuando este Aliado entra en juego Roba dos cartas. Luego, Descarta dos cartas o un Arma. En tu Fase de Vigilia, una vez por turno, puedes buscar en tu Mazo Castillo un Arma o un Aliado de Raza Caballero de coste 2 o menos y ponlo en tu mano.",
+          "flavor": "Brian levantó su espada contra los vikingos de Dublín y otros asentamientos que servían de base para sus incursiones al interior de Irlanda, la leyenda lo levantaría como el gran defensor de la Isla Esmeralda.",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://api.myl.cl/static/cards/68/228.png",
+          "artist": "MATIAS HABERT",
+          "frequency": "MEGA_REAL",
+          "race": [
+            "CABALLERO"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Promos Despertar Gótico",
+            "productCode": "★",
+            "productType": "Producto Especial"
+          },
+          "interactions": [
+          ]
+        },
+        {
+          "id": 12733,
+          "slug": "cenunos-ancestral",
+          "name": "Cenunos Ancestral",
+          "gameId": 3,
+          "collectorCode": "★60",
+          "effect": "Indestructible. En tu Fase de Vigilia, una vez por turno, puedes Desterrar un Aliado de Raza Ancestral de tu mano par aque tu oponente Descarte dos caras al azar de su mano. Luego, cada jugador Roba una carta.",
+          "flavor": "El sigiloso protector del bosque, patrono de los animales salvajes, las penumbras y los enigmas. Vigilante del gran verde, la fuera vital del mundo.",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://api.myl.cl/static/cards/68/227.png",
+          "artist": "LUIS SALAS",
+          "frequency": "MEGA_REAL",
+          "race": [
+            "ANCESTRAL"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Promos Despertar Gótico",
+            "productCode": "★",
+            "productType": "Producto Especial"
+          },
+          "interactions": [
+          ]
+        },
+        {
+          "id": 12732,
+          "slug": "paiste-la-ultima-serpiente",
+          "name": "Paiste, la Última Serpiente",
+          "gameId": 3,
+          "collectorCode": "★59",
+          "effect": "Cuando este Aliado entra en juego, si todos los Aliados que controlas son de Raza Dragón, busca un Oro sin habilidad y ponly en tu Zona de Oro Pagado. Luego Roba una Carta.",
+          "flavor": "La última serpiente de Irlanda arde en odio contra los humanos, pero es paciente y astuta, aguardará el momento justo para aniquilar aquella molesta especie.",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://api.myl.cl/static/cards/68/226.png",
+          "artist": "FEIG",
+          "frequency": "MEGA_REAL",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Promos Despertar Gótico",
+            "productCode": "★",
+            "productType": "Producto Especial"
+          },
+          "interactions": [
+          ]
+        },
+        {
+          "id": 12731,
+          "slug": "elier",
+          "name": "Elier",
+          "gameId": 3,
+          "collectorCode": "★58",
+          "effect": "Exhumar. Cuando entra en juego, busca un Aliado de Raza Sombra en tu Mazo Castillo y ponlo en tu Cementerio. El daño hecho por este Aliado es enviado al Destierro.",
+          "flavor": "El dios bello llegó silente, nos sentamos silenciosamente en nombre del amor; vimos morir las últimas brasas del día, y en el tembloroso azul verdoso del mar vi la futura guerra.",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://api.myl.cl/static/cards/68/225.png",
+          "artist": "JAVIER BAHAMONDE",
+          "frequency": "MEGA_REAL",
+          "race": [
+            "SOMBRA"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Promos Despertar Gótico",
+            "productCode": "★",
+            "productType": "Producto Especial"
+          },
+          "interactions": [
+          ]
+        },
+        {
+          "id": 12730,
+          "slug": "lanza-de-asal",
+          "name": "Lanza de Asal",
+          "gameId": 3,
+          "collectorCode": "★57",
+          "effect": "El portador gana 1 a la Fuerza. En tu Fase Final, si el portador no hizo daño este turno puedes Robar una carta.",
+          "flavor": "Uno de los cuatro tesoros de los Tuathta Dé Danann. El poeta Esras decía que venía de la Tierra de Gorias. Nadie podría ganar una batalla contra ella o contra quien la sostuviera.",
+          "type": "ARMA",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://api.myl.cl/static/cards/68/224.png",
+          "artist": "JOSÉ CANALES",
+          "frequency": "MEGA_REAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Promos Despertar Gótico",
+            "productCode": "★",
+            "productType": "Producto Especial"
+          },
+          "interactions": [
+          ]
+        },
+        {
+          "id": 12729,
+          "slug": "levantar-de-los-muertos",
+          "name": "Levantar de los Muertos",
+          "gameId": 3,
+          "collectorCode": "★56",
+          "effect": "Destruye hasta dos Aliados en juego. Si este Talismán está en tu Cementerio, puedes pagar un Oro y Desterrarlo para Destruir un Aliado oponente de Fuerza 2 o menos.",
+          "flavor": "¿Qué es lo que busca la oscuridad? Eso es fácil: aquel fulgor de esperanza, de futuro, eso que jamás podrá ser suyo.",
+          "type": "TALISMAN",
+          "cost": 4,
+          "attack": 0,
+          "imageUrl": "https://api.myl.cl/static/cards/68/223.png",
+          "artist": "MATIAS HABERT",
+          "frequency": "ULTRA_REAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Promos Despertar Gótico",
+            "productCode": "★",
+            "productType": "Producto Especial"
+          },
+          "interactions": [
+          ]
+        },
+        {
           "id": 12728,
           "slug": "legado-de-fantina",
           "name": "Legado de Fantina",
