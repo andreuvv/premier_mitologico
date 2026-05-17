@@ -3,7 +3,7 @@
     "CardCatalog": {
       "cards": [
         {
-          "id": 12739,
+          "id": 13010,
           "slug": "sabuesos-de-annwn",
           "name": "Sabuesos de Annwn",
           "gameId": 3,
@@ -39,7 +39,7 @@
           ]
         },
         {
-          "id": 12738,
+          "id": 13009,
           "slug": "rudriage",
           "name": "Rudriage",
           "gameId": 3,
@@ -75,7 +75,7 @@
           ]
         },
         {
-          "id": 12737,
+          "id": 13008,
           "slug": "rey-de-annwn",
           "name": "Rey de Annwn",
           "gameId": 3,
@@ -111,7 +111,7 @@
           ]
         },
         {
-          "id": 12736,
+          "id": 13007,
           "slug": "taliesin-ben-beirdd",
           "name": "Taliesin Ben Beirdd",
           "gameId": 3,
@@ -147,7 +147,7 @@
           ]
         },
         {
-          "id": 12735,
+          "id": 13006,
           "slug": "conaire-more-el-grande",
           "name": "Conaire More, el Grande",
           "gameId": 3,
@@ -183,7 +183,7 @@
           ]
         },
         {
-          "id": 12734,
+          "id": 13005,
           "slug": "rey-brian-boru",
           "name": "Rey Brian Boru",
           "gameId": 3,
@@ -219,7 +219,7 @@
           ]
         },
         {
-          "id": 12733,
+          "id": 13004,
           "slug": "cenunos-ancestral",
           "name": "Cenunos Ancestral",
           "gameId": 3,
@@ -255,7 +255,7 @@
           ]
         },
         {
-          "id": 12732,
+          "id": 13003,
           "slug": "paiste-la-ultima-serpiente",
           "name": "Paiste, la Última Serpiente",
           "gameId": 3,
@@ -291,7 +291,7 @@
           ]
         },
         {
-          "id": 12731,
+          "id": 13002,
           "slug": "elier",
           "name": "Elier",
           "gameId": 3,
@@ -327,7 +327,7 @@
           ]
         },
         {
-          "id": 12730,
+          "id": 13001,
           "slug": "lanza-de-asal",
           "name": "Lanza de Asal",
           "gameId": 3,
@@ -361,7 +361,7 @@
           ]
         },
         {
-          "id": 12729,
+          "id": 13000,
           "slug": "levantar-de-los-muertos",
           "name": "Levantar de los Muertos",
           "gameId": 3,
