@@ -47,7 +47,7 @@ const PremierTournamentPage = () => {
   // Modal and Carousel state
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [carouselRoundIndex, setCarouselRoundIndex] = useState(0);
-  const [timeRemaining45, setTimeRemaining45] = useState(45 * 60); // 45 minutes in seconds
+  const [timeRemaining45, setTimeRemaining45] = useState(40 * 60); // 40 minutes in seconds
   const [isCountdown45Running, setIsCountdown45Running] = useState(false);
   const [timeRemaining5, setTimeRemaining5] = useState(5 * 60); // 5 minutes in seconds
   const [isCountdown5Running, setIsCountdown5Running] = useState(false);
@@ -247,7 +247,7 @@ const PremierTournamentPage = () => {
 
   const handleReset45 = () => {
     setIsCountdown45Running(false);
-    setTimeRemaining45(45 * 60);
+    setTimeRemaining45(40 * 60);
     setFirstCountdownCompleted(false);
     setIsCountdown5Running(false);
     setTimeRemaining5(5 * 60);
@@ -265,7 +265,7 @@ const PremierTournamentPage = () => {
   const handleCompleteReset = () => {
     setIsCountdown45Running(false);
     setIsCountdown5Running(false);
-    setTimeRemaining45(45 * 60);
+    setTimeRemaining45(40 * 60);
     setTimeRemaining5(5 * 60);
     setFirstCountdownCompleted(false);
   };
