@@ -1,4 +1,4 @@
-import { API_BASE_URL, API_KEY } from '../config/api';
+import { API_BASE_URL } from '../config/api';
 
 export interface Tournament {
   id: number;
@@ -79,11 +79,7 @@ export interface GlobalStanding {
 
 export const tournamentAPI = {
   getTournaments: async (): Promise<Tournament[]> => {
-    const response = await fetch(`${API_BASE_URL}/tournaments`, {
-      headers: {
-        'X-API-Key': API_KEY,
-      },
-    });
+    const response = await fetch(`${API_BASE_URL}/tournaments`);
     if (!response.ok) {
       throw new Error(`Failed to fetch tournaments: ${response.statusText}`);
     }
@@ -91,11 +87,7 @@ export const tournamentAPI = {
   },
 
   getTournamentStandings: async (tournamentId: number): Promise<TournamentStanding[]> => {
-    const response = await fetch(`${API_BASE_URL}/tournaments/${tournamentId}/standings`, {
-      headers: {
-        'X-API-Key': API_KEY,
-      },
-    });
+    const response = await fetch(`${API_BASE_URL}/tournaments/${tournamentId}/standings`);
     if (!response.ok) {
       throw new Error(`Failed to fetch tournament standings: ${response.statusText}`);
     }
@@ -103,11 +95,7 @@ export const tournamentAPI = {
   },
 
   getTournamentRounds: async (tournamentId: number): Promise<TournamentRoundsResponse> => {
-    const response = await fetch(`${API_BASE_URL}/tournaments/${tournamentId}/rounds`, {
-      headers: {
-        'X-API-Key': API_KEY,
-      },
-    });
+    const response = await fetch(`${API_BASE_URL}/tournaments/${tournamentId}/rounds`);
     if (!response.ok) {
       throw new Error(`Failed to fetch tournament rounds: ${response.statusText}`);
     }
@@ -115,11 +103,7 @@ export const tournamentAPI = {
   },
 
   getTournamentRaces: async (tournamentId: number): Promise<TournamentRacesResponse> => {
-    const response = await fetch(`${API_BASE_URL}/tournaments/${tournamentId}/races`, {
-      headers: {
-        'X-API-Key': API_KEY,
-      },
-    });
+    const response = await fetch(`${API_BASE_URL}/tournaments/${tournamentId}/races`);
     if (!response.ok) {
       throw new Error(`Failed to fetch tournament races: ${response.statusText}`);
     }
@@ -127,11 +111,7 @@ export const tournamentAPI = {
   },
 
   getGlobalStandings: async (): Promise<GlobalStanding[]> => {
-    const response = await fetch(`${API_BASE_URL}/global-standings`, {
-      headers: {
-        'X-API-Key': API_KEY,
-      },
-    });
+    const response = await fetch(`${API_BASE_URL}/global-standings`);
     if (!response.ok) {
       throw new Error(`Failed to fetch global standings: ${response.statusText}`);
     }
@@ -139,11 +119,7 @@ export const tournamentAPI = {
   },
 
   getGlobalRaces: async (): Promise<TournamentRacesResponse> => {
-    const response = await fetch(`${API_BASE_URL}/global-races`, {
-      headers: {
-        'X-API-Key': API_KEY,
-      },
-    });
+    const response = await fetch(`${API_BASE_URL}/global-races`);
     if (!response.ok) {
       throw new Error(`Failed to fetch global races: ${response.statusText}`);
     }

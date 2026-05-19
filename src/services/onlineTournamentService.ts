@@ -1,4 +1,4 @@
-import { API_BASE_URL, API_KEY } from '../config/api';
+import { API_BASE_URL } from '../config/api';
 
 export interface OnlineTournament {
   id: number;
@@ -41,11 +41,7 @@ export interface OnlineMatch {
 const onlineTournamentService = {
   async getActiveTournaments(): Promise<OnlineTournament[]> {
     try {
-      const response = await fetch(`${API_BASE_URL}/tournaments/active`, {
-        headers: {
-          'X-API-Key': API_KEY,
-        },
-      });
+      const response = await fetch(`${API_BASE_URL}/tournaments/active`);
 
       if (!response.ok) {
         throw new Error(`Failed to fetch active tournaments: ${response.status}`);
@@ -63,12 +59,7 @@ const onlineTournamentService = {
   async getTournamentStandings(tournamentId: number): Promise<OnlineStanding[]> {
     try {
       const response = await fetch(
-        `${API_BASE_URL}/tournaments/online/${tournamentId}/standings`,
-        {
-          headers: {
-            'X-API-Key': API_KEY,
-          },
-        }
+        `${API_BASE_URL}/tournaments/online/${tournamentId}/standings`
       );
 
       if (!response.ok) {
@@ -85,12 +76,7 @@ const onlineTournamentService = {
   async getTournamentMatches(tournamentId: number): Promise<OnlineMatch[]> {
     try {
       const response = await fetch(
-        `${API_BASE_URL}/tournaments/online/${tournamentId}/matches`,
-        {
-          headers: {
-            'X-API-Key': API_KEY,
-          },
-        }
+        `${API_BASE_URL}/tournaments/online/${tournamentId}/matches`
       );
 
       if (!response.ok) {
@@ -107,12 +93,7 @@ const onlineTournamentService = {
   async getTournamentInfo(tournamentId: number): Promise<OnlineTournament | null> {
     try {
       const response = await fetch(
-        `${API_BASE_URL}/tournaments/online/${tournamentId}/info`,
-        {
-          headers: {
-            'X-API-Key': API_KEY,
-          },
-        }
+        `${API_BASE_URL}/tournaments/online/${tournamentId}/info`
       );
 
       if (!response.ok) {
