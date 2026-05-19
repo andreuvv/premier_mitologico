@@ -29,7 +29,7 @@ export interface TournamentConfig {
 export const tournamentConfig: TournamentConfig = {
   name: 'PREMIER DE LOS K - PB -',
   date: '2026-05-30',
-  time: '14:00',
+  time: '14:30',
   dateTentative: false, // Set to true to show the ribbon
   location: {
     name: "Weshes",
