@@ -82,7 +82,10 @@ export default function CollectionFilters({
       if (p) filtered = filtered.filter(c => c.product?.productName === p && c.product?.productType === 'Producto Especial');
     }
 
-    if (s.trim()) filtered = filtered.filter(c => c.name.toLowerCase().includes(s.trim().toLowerCase()));
+    if (s.trim()) filtered = filtered.filter(c =>
+      c.name.toLowerCase().includes(s.trim().toLowerCase()) ||
+      c.collectorCode.toLowerCase().includes(s.trim().toLowerCase())
+    );
     if (t) filtered = filtered.filter(c => c.type?.toUpperCase() === t.toUpperCase());
     if (r) filtered = filtered.filter(c => c.race?.some(cr => normalizeStr(cr) === normalizeStr(r)));
     if (f) filtered = filtered.filter(c => c.frequency === f);
@@ -202,7 +205,7 @@ export default function CollectionFilters({
         <input
           type="text"
           className={styles.searchInput}
-          placeholder="Nombre de carta..."
+          placeholder="Nombre o código..."
           value={search}
           onChange={e => handleSearch(e.target.value)}
         />
@@ -261,7 +264,7 @@ export default function CollectionFilters({
               checked={ownedOnly}
               onChange={e => handleOwnedOnlyChange(e.target.checked)}
             />
-            <span>Solo las que tienes</span>
+            <span>En Carpeta</span>
           </label>
         </div>
       )}
