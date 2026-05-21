@@ -128,6 +128,7 @@ export default function CardGrid({
 
   const goToPage = (page: number) => {
     onPageChange?.(page);
+    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
   const totalPages = Math.ceil(sortedCards.length / perPage);
