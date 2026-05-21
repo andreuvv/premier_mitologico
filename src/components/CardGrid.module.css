@@ -231,6 +231,46 @@
   text-align: center;
 }
 
+.perPageSelector {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--ocher);
+  font-weight: 500;
+  align-self: flex-end;
+}
+
+.perPageDivider {
+  color: var(--ocher);
+  font-weight: 400;
+  opacity: 0.5;
+  user-select: none;
+}
+
+.perPageOption {
+  background: none;
+  border: none;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ocher);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.perPageOption:hover {
+  background: var(--ocher);
+  color: var(--coal-grey);
+}
+
+.perPageActive {
+  background: var(--dark-brown);
+  color: var(--beige) !important;
+  border-radius: 4px;
+}
+
 /* Mobile Responsive */
 @media (max-width: 1200px) {
   .grid {

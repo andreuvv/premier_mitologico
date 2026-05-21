@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './CardGrid.module.css';
 
@@ -84,6 +84,15 @@ const compareByCollectorCode = (a: SimpleCard, b: SimpleCard): number => {
   return a.collectorCode.localeCompare(b.collectorCode, 'es', { sensitivity: 'base' });
 };
 
+const PAGE_SIZE_OPTIONS = [100, 200, 300, 400, 500] as const;
+type PageSizeOption = typeof PAGE_SIZE_OPTIONS[number];
+
+function readSavedPerPage(defaultSize: number): PageSizeOption {
+  const raw = localStorage.getItem('myl_cardsPerPage');
+  const n = raw ? parseInt(raw, 10) : NaN;
+  return (PAGE_SIZE_OPTIONS as readonly number[]).includes(n) ? (n as PageSizeOption) : (defaultSize as PageSizeOption);
+}
+
 export default function CardGrid({
   cards,
   format,
@@ -98,6 +107,7 @@ export default function CardGrid({
   currentPage = 1,
   onPageChange,
 }: CardGridProps) {
+  const [perPage, setPerPage] = useState<PageSizeOption>(() => readSavedPerPage(cardsPerPage));
   const [paginatedCards, setPaginatedCards] = useState<SimpleCard[]>([]);
 
   const sortedCards = useMemo(() => {
@@ -105,19 +115,40 @@ export default function CardGrid({
   }, [cards]);
 
   useEffect(() => {
-    const startIndex = (currentPage - 1) * cardsPerPage;
-    const endIndex = startIndex + cardsPerPage;
+    const startIndex = (currentPage - 1) * perPage;
+    const endIndex = startIndex + perPage;
     setPaginatedCards(sortedCards.slice(startIndex, endIndex));
-  }, [currentPage, sortedCards, cardsPerPage]);
+  }, [currentPage, sortedCards, perPage]);
+
+  const handlePerPageChange = (newPerPage: PageSizeOption) => {
+    localStorage.setItem('myl_cardsPerPage', newPerPage.toString());
+    setPerPage(newPerPage);
+    onPageChange?.(1);
+  };
 
   const goToPage = (page: number) => {
     onPageChange?.(page);
   };
 
-  const totalPages = Math.ceil(sortedCards.length / cardsPerPage);
+  const totalPages = Math.ceil(sortedCards.length / perPage);
 
   return (
     <div className={styles.container}>
+      <div className={styles.perPageSelector}>
+        <span>Mostrando</span>
+        {PAGE_SIZE_OPTIONS.map((n, i) => (
+          <Fragment key={n}>
+            {i > 0 && <span className={styles.perPageDivider}>|</span>}
+            <button
+              className={`${styles.perPageOption} ${perPage === n ? styles.perPageActive : ''}`}
+              onClick={() => handlePerPageChange(n)}
+            >
+              {n}
+            </button>
+          </Fragment>
+        ))}
+        <span>cartas por página</span>
+      </div>
       <div className={styles.grid}>
         {paginatedCards.map((card) => {
           const copyCount = cardCopies?.get(card.id) ?? ((ownedCardIds?.has(card.id) ?? false) ? 1 : 0);
