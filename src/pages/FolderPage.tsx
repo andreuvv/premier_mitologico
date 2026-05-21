@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { CollectionCatalog, CollectionCard, CollectionFormat } from '../types/collection';
 import { loadCollectionCards } from '../services/collectionService';
@@ -6,6 +6,7 @@ import CardGrid, { type SimpleCard } from '../components/CardGrid';
 import CollectionFilters, { type FilterParams } from '../components/CollectionFilters';
 import { useAuth } from '../hooks/useAuth';
 import { useUserCollection } from '../hooks/useUserCollection';
+import { useScrollRestore } from '../hooks/useScrollRestore';
 import styles from './CollectionPage.module.css';
 
 const toSimpleCards = (cards: CollectionCard[]): SimpleCard[] => {
@@ -39,11 +40,32 @@ const FolderPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [showOwnedOnly, setShowOwnedOnly] = useState(searchParams.get('owned') === '1');
+  // True once CollectionFilters has called onFilterChange at least once.
+  const [cardsReady, setCardsReady] = useState(false);
+  const isInitialFilterApplyRef = useRef(true);
 
   const { ownedCardIds, cardCopies, loadedFormat, loadCollection, addCopy, removeCopy } = useUserCollection(selectedFormat);
 
+  useScrollRestore(cardsReady);
+
+  // Page number is stored in the URL (?page=N) so browser history preserves it
+  // automatically when the user navigates back.
+  const pageFromUrl = Math.max(1, parseInt(searchParams.get('page') ?? '1', 10));
+
+  const handlePageChange = (page: number) => {
+    setSearchParams(p => {
+      const next = new URLSearchParams(p);
+      if (page <= 1) next.delete('page');
+      else next.set('page', page.toString());
+      return next;
+    }, { replace: true });
+  };
+
   useEffect(() => {
     setLoading(true);
+    setCardsReady(false);
+    setFilteredCards([]);
+    isInitialFilterApplyRef.current = true;
     loadCollectionCards(selectedFormat)
       .then((data: CollectionCatalog) => {
         setAllCards(data.data.CardCatalog.cards);
@@ -63,6 +85,7 @@ const FolderPage = () => {
   }, [user, loadedFormat, selectedFormat, loadCollection]);
 
   const handleFilterChange = (cards: CollectionCard[], params: FilterParams) => {
+    setCardsReady(true);
     const simpleCards = toSimpleCards(cards);
     setFilteredCards(simpleCards);
     setShowOwnedOnly(params.ownedOnly === true);
@@ -77,8 +100,10 @@ const FolderPage = () => {
       if (params.race) next.set('race', params.race); else next.delete('race');
       if (params.freq) next.set('freq', params.freq); else next.delete('freq');
       if (params.ownedOnly) next.set('owned', '1'); else next.delete('owned');
+      if (!isInitialFilterApplyRef.current) next.delete('page');
       return next;
     }, { replace: true });
+    isInitialFilterApplyRef.current = false;
   };
 
   const ownedCards = useMemo(() => {
@@ -155,7 +180,7 @@ const FolderPage = () => {
                 const next = new URLSearchParams();
                 next.set('format', format);
                 return next;
-              });
+              }, { replace: true });
             }}
           >
             {getFormatLabel(format)}
@@ -184,7 +209,7 @@ const FolderPage = () => {
             showOwnedOnlyToggle={true}
           />
           <div className={styles.gridArea}>
-            {visibleCards.length === 0 ? (
+            {!cardsReady ? null : visibleCards.length === 0 ? (
               <div className={styles.stats}>
                 No hay cartas para los filtros actuales en {getFormatLabel(selectedFormat)}.
               </div>
@@ -198,6 +223,8 @@ const FolderPage = () => {
                 onRemoveCopy={removeCopy}
                 showUnownedMuted={true}
                 showCopyCount={true}
+                currentPage={pageFromUrl}
+                onPageChange={handlePageChange}
               />
             )}
           </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { CollectionFormat, CollectionCard, CollectionCatalog } from '../types/collection';
 import { loadCollectionCards } from '../services/collectionService';
@@ -6,6 +6,7 @@ import CardGrid, { type SimpleCard } from '../components/CardGrid';
 import CollectionFilters, { type FilterParams } from '../components/CollectionFilters';
 import { useAuth } from '../hooks/useAuth';
 import { useUserCollection } from '../hooks/useUserCollection';
+import { useScrollRestore } from '../hooks/useScrollRestore';
 import styles from './CollectionPage.module.css';
 
 const CollectionPage = () => {
@@ -21,12 +22,35 @@ const CollectionPage = () => {
   const [filteredCards, setFilteredCards] = useState<SimpleCard[]>([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  // True once CollectionFilters has called onFilterChange at least once,
+  // meaning the final filtered card set is ready to display.
+  const [cardsReady, setCardsReady] = useState(false);
+  // True only for the very first handleFilterChange call after a format load.
+  // Used to avoid deleting ?page when cards first load (e.g. after back-navigation).
+  const isInitialFilterApplyRef = useRef(true);
 
   const { ownedCardIds, cardCopies, loadedFormat, loadCollection, toggleCard } = useUserCollection(selectedFormat);
 
+  useScrollRestore(cardsReady);
+
+  // Page number is stored in the URL (?page=N) so browser history preserves it
+  // automatically when the user navigates back.
+  const pageFromUrl = Math.max(1, parseInt(searchParams.get('page') ?? '1', 10));
+
+  const handlePageChange = (page: number) => {
+    setSearchParams(p => {
+      const next = new URLSearchParams(p);
+      if (page <= 1) next.delete('page');
+      else next.set('page', page.toString());
+      return next;
+    }, { replace: true });
+  };
+
   useEffect(() => {
     setLoading(true);
+    setCardsReady(false);
     setFilteredCards([]);
+    isInitialFilterApplyRef.current = true;
     loadCollectionCards(selectedFormat)
       .then((data: CollectionCatalog) => {
         setAllCards(data.data.CardCatalog.cards);
@@ -46,6 +70,7 @@ const CollectionPage = () => {
   }, [user, selectedFormat, loadedFormat, loadCollection]);
 
   const handleFilterChange = (cards: CollectionCard[], params: FilterParams) => {
+    setCardsReady(true);
     const simpleCards = cards.map(card => ({
       id: card.id,
       slug: card.slug,
@@ -71,8 +96,11 @@ const CollectionPage = () => {
       if (params.type) next.set('type', params.type); else next.delete('type');
       if (params.race) next.set('race', params.race); else next.delete('race');
       if (params.freq) next.set('freq', params.freq); else next.delete('freq');
+      // Reset to page 1 when the user changes filters, but not on initial load.
+      if (!isInitialFilterApplyRef.current) next.delete('page');
       return next;
     }, { replace: true });
+    isInitialFilterApplyRef.current = false;
   };
 
   const getFormatLabel = (format: CollectionFormat): string => {
@@ -119,7 +147,7 @@ const CollectionPage = () => {
                 const next = new URLSearchParams();
                 next.set('format', format);
                 return next;
-              });
+              }, { replace: true });
             }}
           >
             {getFormatLabel(format)}
@@ -146,14 +174,18 @@ const CollectionPage = () => {
             initialFreq={matchesFormat ? searchParams.get('freq') : null}
           />
           <div className={styles.gridArea}>
-            <CardGrid
-              cards={filteredCards}
-              format={selectedFormat}
-              ownedCardIds={user ? ownedCardIds : undefined}
-              cardCopies={user ? cardCopies : undefined}
-              onToggleOwned={user ? toggleCard : undefined}
-              showCopyCount={Boolean(user)}
-            />
+            {cardsReady && (
+              <CardGrid
+                cards={filteredCards}
+                format={selectedFormat}
+                ownedCardIds={user ? ownedCardIds : undefined}
+                cardCopies={user ? cardCopies : undefined}
+                onToggleOwned={user ? toggleCard : undefined}
+                showCopyCount={Boolean(user)}
+                currentPage={pageFromUrl}
+                onPageChange={handlePageChange}
+              />
+            )}
           </div>
         </div>
       )}

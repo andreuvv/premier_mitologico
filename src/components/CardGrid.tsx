@@ -28,6 +28,8 @@ interface CardGridProps {
   onRemoveCopy?: (cardId: number) => void;
   showUnownedMuted?: boolean;
   showCopyCount?: boolean;
+  currentPage?: number;
+  onPageChange?: (page: number) => void;
 }
 
 interface ParsedCollectorCode {
@@ -93,8 +95,9 @@ export default function CardGrid({
   onRemoveCopy,
   showUnownedMuted = false,
   showCopyCount = false,
+  currentPage = 1,
+  onPageChange,
 }: CardGridProps) {
-  const [currentPage, setCurrentPage] = useState(1);
   const [paginatedCards, setPaginatedCards] = useState<SimpleCard[]>([]);
 
   const sortedCards = useMemo(() => {
@@ -107,9 +110,9 @@ export default function CardGrid({
     setPaginatedCards(sortedCards.slice(startIndex, endIndex));
   }, [currentPage, sortedCards, cardsPerPage]);
 
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [sortedCards, cardsPerPage]);
+  const goToPage = (page: number) => {
+    onPageChange?.(page);
+  };
 
   const totalPages = Math.ceil(sortedCards.length / cardsPerPage);
 
@@ -187,7 +190,7 @@ export default function CardGrid({
       {totalPages > 1 && (
         <div className={styles.pagination}>
           <button 
-            onClick={() => setCurrentPage(1)}
+            onClick={() => goToPage(1)}
             disabled={currentPage === 1}
             className={styles.pageButton}
           >
@@ -195,7 +198,7 @@ export default function CardGrid({
           </button>
           
           <button 
-            onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+            onClick={() => goToPage(Math.max(1, currentPage - 1))}
             disabled={currentPage === 1}
             className={styles.pageButton}
           >
@@ -207,7 +210,7 @@ export default function CardGrid({
           </div>
 
           <button 
-            onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+            onClick={() => goToPage(Math.min(totalPages, currentPage + 1))}
             disabled={currentPage === totalPages}
             className={styles.pageButton}
           >
@@ -215,7 +218,7 @@ export default function CardGrid({
           </button>
 
           <button 
-            onClick={() => setCurrentPage(totalPages)}
+            onClick={() => goToPage(totalPages)}
             disabled={currentPage === totalPages}
             className={styles.pageButton}
           >
