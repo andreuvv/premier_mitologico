@@ -1,12 +1,12 @@
 .container {
   min-height: 100vh;
-  padding: 2rem;
+  padding: 1rem 2rem 2rem;
   background: var(--coal-grey);
 }
 
 .header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .header h1 {
@@ -28,7 +28,7 @@
 .formatTabs {
   display: flex;
   gap: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   border-bottom: 2px solid var(--ocher);
   padding-bottom: 0;
 }
@@ -236,7 +236,7 @@
 
   .header {
     margin: 0;
-    padding: 2rem;
+    padding: 0.75rem 2rem 0.25rem;
     margin-bottom: 0;
     order: 1;
   }
@@ -248,7 +248,7 @@
   .formatTabs {
     order: 2;
     margin-bottom: 0;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
     justify-content: center;
     border-bottom: 2px solid var(--ocher);
   }
@@ -258,67 +258,29 @@
     font-size: 0.95rem;
   }
 
+  /* Hamburger-based mobile header no longer needed — filter is always visible inline */
   .mobileHeader {
-    display: flex;
-    position: sticky;
-    top: 70px;
-    z-index: 50;
-    order: 3;
+    display: none;
   }
 
   .hamburger {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--sage-green);
-    border: none;
-    color: var(--beige);
-    padding: 0;
-    width: 44px;
-    height: 44px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    transition: all 0.2s ease;
-    flex-shrink: 0;
-  }
-
-  .hamburger:active {
-    background-color: var(--ocher);
-    color: var(--coal-grey);
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-    transform: scale(0.98);
+    display: none;
   }
 
   .overlay {
-    display: block;
-    z-index: 201;
-  }
-
-  .searchContainer {
-    order: 4;
+    display: none !important;
   }
 
   .content {
-    order: 5;
-  }
-
-  .stats {
-    order: 6;
-  }
-
-  .searchContainer {
-    margin-bottom: 1rem;
-    padding: 0 2rem;
-  }
-
-  .content {
+    order: 3;
     grid-template-columns: 1fr;
+    gap: 1rem;
     margin-bottom: 1rem;
+    padding: 1rem;
   }
 
   .stats {
-    margin: 0 2rem;
+    order: 4;
+    margin: 0 1rem 1rem;
   }
 }

@@ -155,6 +155,8 @@ export default function CollectionFilters({
     applyFilters(edition, product, search, type, race, freq, checked);
   };
 
+  const [collapsed, setCollapsed] = useState(false);
+
   const hasFilters = !!(edition || product || search || type || race || freq || ownedOnly);
 
   return (
@@ -166,39 +168,15 @@ export default function CollectionFilters({
             <button className={styles.clearButton} onClick={handleClear}>Limpiar</button>
           )}
           <button className={styles.closeButton} onClick={onClose} aria-label="Cerrar filtros">✕</button>
+          <button
+            className={`${styles.chevronButton} ${collapsed ? styles.chevronCollapsed : ''}`}
+            onClick={() => setCollapsed(c => !c)}
+            aria-label={collapsed ? 'Expandir filtros' : 'Colapsar filtros'}
+          >⌃</button>
         </div>
       </div>
 
-      <div className={styles.section}>
-        <label className={styles.label}>Edición</label>
-        <select
-          className={styles.select}
-          value={edition}
-          onChange={e => handleEditionChange(e.target.value)}
-        >
-          <option value="">Todas las ediciones</option>
-          {editionOptions.map(o => (
-            <option key={o} value={o}>{o}</option>
-          ))}
-        </select>
-      </div>
-
-      <div className={styles.section}>
-        <label className={`${styles.label} ${isPB ? styles.labelDisabled : ''}`}>
-          Producto Especial
-        </label>
-        <select
-          className={styles.select}
-          value={product}
-          disabled={isPB}
-          onChange={e => handleProductChange(e.target.value)}
-        >
-          <option value="">Todos los productos</option>
-          {fxProducts.map(p => (
-            <option key={p} value={p}>{p}</option>
-          ))}
-        </select>
-      </div>
+      <div className={`${styles.panelBody} ${collapsed ? styles.panelBodyCollapsed : ''}`}>
 
       <div className={styles.section}>
         <label className={styles.label}>Buscar</label>
@@ -209,6 +187,39 @@ export default function CollectionFilters({
           value={search}
           onChange={e => handleSearch(e.target.value)}
         />
+      </div>
+
+      <div className={styles.editionRow}>
+        <div className={styles.section}>
+          <label className={styles.label}>Edición</label>
+          <select
+            className={styles.select}
+            value={edition}
+            onChange={e => handleEditionChange(e.target.value)}
+          >
+            <option value="">Todas las ediciones</option>
+            {editionOptions.map(o => (
+              <option key={o} value={o}>{o}</option>
+            ))}
+          </select>
+        </div>
+
+        <div className={styles.section}>
+          <label className={`${styles.label} ${isPB ? styles.labelDisabled : ''}`}>
+            Producto Especial
+          </label>
+          <select
+            className={styles.select}
+            value={product}
+            disabled={isPB}
+            onChange={e => handleProductChange(e.target.value)}
+          >
+            <option value="">Todos los productos</option>
+            {fxProducts.map(p => (
+              <option key={p} value={p}>{p}</option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <div className={styles.section}>
@@ -268,6 +279,7 @@ export default function CollectionFilters({
           </label>
         </div>
       )}
+      </div>
     </aside>
   );
 }
