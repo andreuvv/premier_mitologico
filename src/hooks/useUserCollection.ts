@@ -3,10 +3,14 @@ import { supabase } from '../config/supabase';
 import { useAuth } from './useAuth';
 import type { CollectionFormat } from '../types/collection';
 
-type CollectionRow = {
-  card_id: number;
-  copy_count?: number | null;
-};
+// JSONB shape stored in user_collections_v2.cards: { "card_id": copy_count }
+type CardsJson = Record<string, number>;
+
+function mapToJson(copies: Map<number, number>): CardsJson {
+  const obj: CardsJson = {};
+  copies.forEach((count, id) => { obj[String(id)] = count; });
+  return obj;
+}
 
 export function useUserCollection(format: CollectionFormat) {
   const { user } = useAuth();
@@ -14,11 +18,10 @@ export function useUserCollection(format: CollectionFormat) {
   const [cardCopies, setCardCopies] = useState<Map<number, number>>(new Map());
   const [loadedFormat, setLoadedFormat] = useState<CollectionFormat | null>(null);
 
-  const hydrateCollection = useCallback((rows: CollectionRow[]) => {
+  const hydrateCollection = useCallback((cardsJson: CardsJson) => {
     const nextCopies = new Map<number, number>();
-    rows.forEach((row) => {
-      const copies = Math.max(1, row.copy_count ?? 1);
-      nextCopies.set(row.card_id, copies);
+    Object.entries(cardsJson).forEach(([cardId, count]) => {
+      nextCopies.set(Number(cardId), Math.max(1, count));
     });
     setCardCopies(nextCopies);
     setOwnedCardIds(new Set(nextCopies.keys()));
@@ -34,58 +37,41 @@ export function useUserCollection(format: CollectionFormat) {
     }
 
     const { data, error } = await supabase
-      .from('user_collections')
-      .select('card_id, copy_count')
+      .from('user_collections_v2')
+      .select('cards')
       .eq('user_id', user.id)
-      .eq('format', format);
+      .eq('format', format)
+      .single();
 
     if (!error && data) {
-      hydrateCollection(data as CollectionRow[]);
+      hydrateCollection((data.cards ?? {}) as CardsJson);
       return;
     }
 
-    // Backward compatibility for environments where copy_count column has not been added yet.
-    const { data: fallbackData, error: fallbackError } = await supabase
-      .from('user_collections')
-      .select('card_id')
-      .eq('user_id', user.id)
-      .eq('format', format);
-
-    if (!fallbackError && fallbackData) {
-      hydrateCollection((fallbackData as Array<{ card_id: number }>).map((row) => ({
-        card_id: row.card_id,
-        copy_count: 1,
-      })));
+    // PGRST116 = no rows found (new user with empty collection) — that's fine
+    if (error && error.code !== 'PGRST116') {
+      console.error('[useUserCollection] load error:', error);
     }
+    hydrateCollection({});
   }, [user, format, hydrateCollection]);
 
   const addCopy = useCallback(async (cardId: number) => {
     if (!user) return;
 
-    const currentCopies = cardCopies.get(cardId) ?? 0;
-    const nextCopies = currentCopies + 1;
+    const nextCopies = (cardCopies.get(cardId) ?? 0) + 1;
 
-    setCardCopies((prev) => {
-      const next = new Map(prev);
-      next.set(cardId, nextCopies);
-      return next;
-    });
-    setOwnedCardIds((prev) => {
-      const next = new Set(prev);
-      next.add(cardId);
-      return next;
-    });
+    // Build the updated map locally so we can pass it to both setState and Supabase
+    const newCopies = new Map(cardCopies);
+    newCopies.set(cardId, nextCopies);
+
+    setCardCopies(newCopies);
+    setOwnedCardIds((prev) => { const next = new Set(prev); next.add(cardId); return next; });
 
     const { error } = await supabase
-      .from('user_collections')
+      .from('user_collections_v2')
       .upsert(
-        {
-          user_id: user.id,
-          card_id: cardId,
-          format,
-          copy_count: nextCopies,
-        },
-        { onConflict: 'user_id,card_id,format' }
+        { user_id: user.id, format, cards: mapToJson(newCopies) },
+        { onConflict: 'user_id,format' }
       );
 
     if (error) {
@@ -102,45 +88,30 @@ export function useUserCollection(format: CollectionFormat) {
 
     const nextCopies = currentCopies - 1;
 
-    setCardCopies((prev) => {
-      const next = new Map(prev);
-      if (nextCopies <= 0) {
-        next.delete(cardId);
-      } else {
-        next.set(cardId, nextCopies);
-      }
-      return next;
-    });
-    setOwnedCardIds((prev) => {
-      const next = new Set(prev);
-      if (nextCopies <= 0) {
-        next.delete(cardId);
-      }
-      return next;
-    });
-
+    // Build the updated map locally so we can pass it to both setState and Supabase
+    const newCopies = new Map(cardCopies);
     if (nextCopies <= 0) {
-      const { error } = await supabase
-        .from('user_collections')
-        .delete()
-        .eq('user_id', user.id)
-        .eq('card_id', cardId)
-        .eq('format', format);
-      if (error) {
-        console.error('[useUserCollection] delete copy row error:', error);
-        await loadCollection();
-      }
-      return;
+      newCopies.delete(cardId);
+    } else {
+      newCopies.set(cardId, nextCopies);
     }
 
+    setCardCopies(newCopies);
+    setOwnedCardIds((prev) => {
+      const next = new Set(prev);
+      if (nextCopies <= 0) next.delete(cardId);
+      return next;
+    });
+
     const { error } = await supabase
-      .from('user_collections')
-      .update({ copy_count: nextCopies })
-      .eq('user_id', user.id)
-      .eq('card_id', cardId)
-      .eq('format', format);
+      .from('user_collections_v2')
+      .upsert(
+        { user_id: user.id, format, cards: mapToJson(newCopies) },
+        { onConflict: 'user_id,format' }
+      );
+
     if (error) {
-      console.error('[useUserCollection] update copy count error:', error);
+      console.error('[useUserCollection] remove copy error:', error);
       await loadCollection();
     }
   }, [user, cardCopies, format, loadCollection]);
