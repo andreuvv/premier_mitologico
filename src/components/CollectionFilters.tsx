@@ -14,6 +14,7 @@ export interface FilterParams {
   race: string | null;
   freq: string | null;
   ownedOnly?: boolean;
+  notOwnedOnly?: boolean;
 }
 
 interface CollectionFiltersProps {
@@ -30,12 +31,13 @@ interface CollectionFiltersProps {
   initialFreq?: string | null;
   showOwnedOnlyToggle?: boolean;
   initialOwnedOnly?: boolean;
+  initialNotOwnedOnly?: boolean;
 }
 
 export default function CollectionFilters({
   allCards, format, isOpen, onClose, onFilterChange,
   initialEdition, initialProduct, initialSearch, initialType, initialRace, initialFreq,
-  showOwnedOnlyToggle = false, initialOwnedOnly = false,
+  showOwnedOnlyToggle = false, initialOwnedOnly = false, initialNotOwnedOnly = false,
 }: CollectionFiltersProps) {
   const [edition, setEdition] = useState(initialEdition || '');
   const [product, setProduct] = useState(initialProduct || '');
@@ -44,6 +46,7 @@ export default function CollectionFilters({
   const [race, setRace] = useState(initialRace || '');
   const [freq, setFreq] = useState(initialFreq || '');
   const [ownedOnly, setOwnedOnly] = useState(initialOwnedOnly);
+  const [notOwnedOnly, setNotOwnedOnly] = useState(initialNotOwnedOnly);
   const appliedInitialRef = useRef(false);
 
   const isPB = format === CollectionFormat.PRIMER_BLOQUE;
@@ -72,7 +75,7 @@ export default function CollectionFilters({
   const normalizeStr = (s: string) =>
     s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
-  const applyFilters = (e: string, p: string, s: string, t: string, r: string, f: string, o: boolean = ownedOnly) => {
+  const applyFilters = (e: string, p: string, s: string, t: string, r: string, f: string, o: boolean = ownedOnly, no: boolean = notOwnedOnly) => {
     let filtered = allCards;
 
     if (isPB) {
@@ -98,6 +101,7 @@ export default function CollectionFilters({
       race: r || null,
       freq: f || null,
       ownedOnly: o,
+      notOwnedOnly: no,
     });
   };
 
@@ -146,18 +150,25 @@ export default function CollectionFilters({
   const handleClear = () => {
     setEdition(''); setProduct(''); setSearch('');
     setType(''); setRace(''); setFreq('');
-    setOwnedOnly(false);
-    applyFilters('', '', '', '', '', '', false);
+    setOwnedOnly(false); setNotOwnedOnly(false);
+    applyFilters('', '', '', '', '', '', false, false);
   };
 
   const handleOwnedOnlyChange = (checked: boolean) => {
     setOwnedOnly(checked);
-    applyFilters(edition, product, search, type, race, freq, checked);
+    if (checked) setNotOwnedOnly(false);
+    applyFilters(edition, product, search, type, race, freq, checked, false);
+  };
+
+  const handleNotOwnedOnlyChange = (checked: boolean) => {
+    setNotOwnedOnly(checked);
+    if (checked) setOwnedOnly(false);
+    applyFilters(edition, product, search, type, race, freq, false, checked);
   };
 
   const [collapsed, setCollapsed] = useState(false);
 
-  const hasFilters = !!(edition || product || search || type || race || freq || ownedOnly);
+  const hasFilters = !!(edition || product || search || type || race || freq || ownedOnly || notOwnedOnly);
 
   return (
     <aside className={`${styles.panel} ${isOpen ? styles.open : ''}`}>
@@ -237,38 +248,40 @@ export default function CollectionFilters({
         </div>
       </div>
 
-      {type === 'Aliado' && (
+      <div className={`${styles.raceFreqRow} ${type === 'Aliado' ? styles.raceFreqRowActive : ''}`}>
+        {type === 'Aliado' && (
+          <div className={styles.section}>
+            <label className={styles.label}>Raza</label>
+            <select
+              className={styles.select}
+              value={race}
+              onChange={e => handleRaceChange(e.target.value)}
+            >
+              <option value="">Todas las razas</option>
+              {races.map(r => (
+                <option key={r} value={r}>{r}</option>
+              ))}
+            </select>
+          </div>
+        )}
+
         <div className={styles.section}>
-          <label className={styles.label}>Raza</label>
+          <label className={styles.label}>Frecuencia</label>
           <select
             className={styles.select}
-            value={race}
-            onChange={e => handleRaceChange(e.target.value)}
+            value={freq}
+            onChange={e => handleFreqChange(e.target.value)}
           >
-            <option value="">Todas las razas</option>
-            {races.map(r => (
-              <option key={r} value={r}>{r}</option>
+            <option value="">Todas las frecuencias</option>
+            {frequencies.map(f => (
+              <option key={f} value={f}>{f}</option>
             ))}
           </select>
         </div>
-      )}
-
-      <div className={styles.section}>
-        <label className={styles.label}>Frecuencia</label>
-        <select
-          className={styles.select}
-          value={freq}
-          onChange={e => handleFreqChange(e.target.value)}
-        >
-          <option value="">Todas las frecuencias</option>
-          {frequencies.map(f => (
-            <option key={f} value={f}>{f}</option>
-          ))}
-        </select>
       </div>
 
       {showOwnedOnlyToggle && (
-        <div className={styles.section}>
+        <div className={`${styles.section} ${styles.togglesRow}`}>
           <label className={styles.toggleRow}>
             <input
               type="checkbox"
@@ -276,6 +289,14 @@ export default function CollectionFilters({
               onChange={e => handleOwnedOnlyChange(e.target.checked)}
             />
             <span>En Carpeta</span>
+          </label>
+          <label className={styles.toggleRow}>
+            <input
+              type="checkbox"
+              checked={notOwnedOnly}
+              onChange={e => handleNotOwnedOnlyChange(e.target.checked)}
+            />
+            <span>No en Carpeta</span>
           </label>
         </div>
       )}

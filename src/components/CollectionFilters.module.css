@@ -187,10 +187,23 @@
   cursor: pointer;
 }
 
+.togglesRow {
+  flex-direction: row;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 .toggleRow input {
   width: 16px;
   height: 16px;
   accent-color: var(--petrol-blue);
+}
+
+/* Race + Frequency row — column on desktop, row on mobile only when both are visible */
+.raceFreqRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
 }
 
 /* Edition + Product row — column on desktop, two columns side by side on mobile */
@@ -248,6 +261,12 @@
   }
 
   .editionRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .raceFreqRowActive {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.75rem;
