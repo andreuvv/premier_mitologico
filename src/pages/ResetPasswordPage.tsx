@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../config/supabase';
 
@@ -9,6 +9,19 @@ export default function ResetPasswordPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+  const [authorized, setAuthorized] = useState(false);
+
+  useEffect(() => {
+    // Security check: only allow access if user arrived via a PASSWORD_RECOVERY
+    // event (flag set by AuthCallbackPage). Prevents a logged-in user from
+    // navigating directly to this page to change their password without verification.
+    const isRecovery = sessionStorage.getItem('myl_password_recovery') === '1';
+    if (!isRecovery) {
+      navigate('/', { replace: true });
+      return;
+    }
+    setAuthorized(true);
+  }, [navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,6 +43,7 @@ export default function ResetPasswordPage() {
     if (error) {
       setError('No se pudo actualizar la contraseña. El enlace puede haber expirado.');
     } else {
+      sessionStorage.removeItem('myl_password_recovery');
       setSuccess(true);
       setTimeout(() => navigate('/'), 2500);
     }
@@ -98,6 +112,8 @@ export default function ResetPasswordPage() {
     opacity: loading ? 0.4 : 1,
     marginTop: '0.5rem',
   };
+
+  if (!authorized) return null;
 
   if (success) {
     return (
