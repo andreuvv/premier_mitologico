@@ -8,53 +8,61 @@ export default function AuthCallbackPage() {
 
   useEffect(() => {
     let handled = false;
+    let timeout: ReturnType<typeof setTimeout>;
 
-    // onAuthStateChange fires immediately with current state (covers both
-    // implicit hash-based flow and PKCE code flow after exchange).
+    const params = new URLSearchParams(window.location.search);
+    const isRecoveryUrl = params.get('type') === 'recovery';
+
+    const goToReset = (sub: { unsubscribe: () => void }) => {
+      handled = true;
+      sub.unsubscribe();
+      clearTimeout(timeout);
+      sessionStorage.setItem('myl_password_recovery', '1');
+      navigate('/reset-password', { replace: true });
+    };
+
+    const goToError = (sub: { unsubscribe: () => void }) => {
+      handled = true;
+      sub.unsubscribe();
+      clearTimeout(timeout);
+      setMessage('El enlace no es válido o ya expiró.');
+      supabase.auth.signOut();
+      setTimeout(() => navigate('/'), 3000);
+    };
+
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
       if (handled) return;
 
       if (event === 'PASSWORD_RECOVERY') {
-        handled = true;
-        subscription.unsubscribe();
-        // Mark this as a legitimate recovery session so ResetPasswordPage
-        // can verify the user arrived here via the reset email.
-        sessionStorage.setItem('myl_password_recovery', '1');
-        navigate('/reset-password', { replace: true });
-
+        goToReset(subscription);
       } else if (event === 'SIGNED_IN') {
-        handled = true;
-        subscription.unsubscribe();
-        setMessage('¡Cuenta confirmada! Redirigiendo...');
-        setTimeout(() => navigate('/'), 1500);
+        // With PKCE, Supabase sometimes fires SIGNED_IN instead of
+        // PASSWORD_RECOVERY for recovery links — use URL type as fallback.
+        if (isRecoveryUrl) {
+          goToReset(subscription);
+        } else {
+          handled = true;
+          subscription.unsubscribe();
+          clearTimeout(timeout);
+          setMessage('¡Cuenta confirmada! Redirigiendo...');
+          setTimeout(() => navigate('/'), 1500);
+        }
       }
     });
 
-    // For PKCE code-based flow: exchange the code explicitly.
-    // onAuthStateChange will then fire with the resulting event.
-    const code = new URLSearchParams(window.location.search).get('code');
+    const code = params.get('code');
     if (code) {
       supabase.auth.exchangeCodeForSession(window.location.href).then(({ error }) => {
         if (error && !handled) {
-          handled = true;
-          subscription.unsubscribe();
-          setMessage('El enlace no es válido o ya expiró.');
-          // Sign out in case the client auto-logged in via another mechanism.
-          supabase.auth.signOut();
-          setTimeout(() => navigate('/'), 3000);
+          goToError(subscription);
         }
+        // Success: onAuthStateChange will handle navigation
       });
     }
 
-    // Fallback: if neither event fires within 8 seconds, abort.
-    const timeout = setTimeout(() => {
-      if (!handled) {
-        handled = true;
-        subscription.unsubscribe();
-        setMessage('El enlace no es válido o ya expiró.');
-        supabase.auth.signOut();
-        setTimeout(() => navigate('/'), 3000);
-      }
+    // Fallback timeout
+    timeout = setTimeout(() => {
+      if (!handled) goToError(subscription);
     }, 8000);
 
     return () => {

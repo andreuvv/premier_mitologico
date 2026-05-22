@@ -55,8 +55,11 @@ export default function AuthModal({ onClose }: AuthModalProps) {
         redirectTo: `${window.location.origin}/auth/callback?type=recovery`,
       });
       if (error) {
-        setError('No se pudo enviar el correo. Intenta de nuevo.');
-      } else {
+        if (error.status === 429) {
+          setError('Demasiados intentos. Espera unos minutos e intenta de nuevo.');
+        } else {
+          setError('No se pudo enviar el correo. Intenta de nuevo.');
+        }      } else {
         setSuccessMessage('Te enviamos un correo con el enlace para restablecer tu contraseña. Revisa tu bandeja de entrada.');
       }
     }
