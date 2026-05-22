@@ -13,57 +13,57 @@ export default function AuthCallbackPage() {
     const params = new URLSearchParams(window.location.search);
     const isRecoveryUrl = params.get('type') === 'recovery';
 
-    const goToReset = (sub: { unsubscribe: () => void }) => {
+    const goToReset = () => {
+      if (handled) return;
       handled = true;
-      sub.unsubscribe();
+      subscription?.unsubscribe();
       clearTimeout(timeout);
       sessionStorage.setItem('myl_password_recovery', '1');
       navigate('/reset-password', { replace: true });
     };
 
-    const goToError = (sub: { unsubscribe: () => void }) => {
+    const goToConfirmed = () => {
+      if (handled) return;
       handled = true;
-      sub.unsubscribe();
+      subscription?.unsubscribe();
+      clearTimeout(timeout);
+      setMessage('¡Cuenta confirmada! Redirigiendo...');
+      setTimeout(() => navigate('/'), 1500);
+    };
+
+    const goToError = () => {
+      if (handled) return;
+      handled = true;
+      subscription?.unsubscribe();
       clearTimeout(timeout);
       setMessage('El enlace no es válido o ya expiró.');
       supabase.auth.signOut();
       setTimeout(() => navigate('/'), 3000);
     };
 
+    // Subscribe to catch events fired AFTER the component mounts.
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
       if (handled) return;
-
       if (event === 'PASSWORD_RECOVERY') {
-        goToReset(subscription);
+        goToReset();
       } else if (event === 'SIGNED_IN') {
-        // With PKCE, Supabase sometimes fires SIGNED_IN instead of
-        // PASSWORD_RECOVERY for recovery links — use URL type as fallback.
-        if (isRecoveryUrl) {
-          goToReset(subscription);
-        } else {
-          handled = true;
-          subscription.unsubscribe();
-          clearTimeout(timeout);
-          setMessage('¡Cuenta confirmada! Redirigiendo...');
-          setTimeout(() => navigate('/'), 1500);
-        }
+        // With PKCE, Supabase sometimes fires SIGNED_IN for recovery links.
+        if (isRecoveryUrl) goToReset();
+        else goToConfirmed();
       }
     });
 
-    const code = params.get('code');
-    if (code) {
-      supabase.auth.exchangeCodeForSession(window.location.href).then(({ error }) => {
-        if (error && !handled) {
-          goToError(subscription);
-        }
-        // Success: onAuthStateChange will handle navigation
-      });
-    }
+    // Fallback: with detectSessionInUrl=true (PKCE default), Supabase may have
+    // already auto-processed the ?code= and fired the event BEFORE this
+    // component mounted. Check the current session directly.
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (handled || !session) return;
+      if (isRecoveryUrl) goToReset();
+      else goToConfirmed();
+    });
 
-    // Fallback timeout
-    timeout = setTimeout(() => {
-      if (!handled) goToError(subscription);
-    }, 8000);
+    // Final fallback timeout
+    timeout = setTimeout(() => { if (!handled) goToError(); }, 8000);
 
     return () => {
       handled = true;
