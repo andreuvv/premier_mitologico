@@ -20,6 +20,7 @@ const OnlineTournamentPage = lazy(() => import('./pages/OnlineTournamentPage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 const AuthCallbackPage = lazy(() => import('./pages/AuthCallbackPage'));
+const ResetPasswordPage = lazy(() => import('./pages/ResetPasswordPage'));
 
 // Loading fallback component
 const PageLoader = () => (
@@ -60,6 +61,7 @@ function App() {
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog/:slug" element={<BlogPostPage />} />
             <Route path="/auth/callback" element={<AuthCallbackPage />} />
+            <Route path="/reset-password" element={<ResetPasswordPage />} />
           </Routes>
         </Suspense>
       </main>

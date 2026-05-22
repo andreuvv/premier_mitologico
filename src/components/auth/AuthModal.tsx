@@ -7,7 +7,7 @@ interface AuthModalProps {
   onClose: () => void;
 }
 
-type Mode = 'login' | 'register';
+type Mode = 'login' | 'register' | 'forgot';
 
 export default function AuthModal({ onClose }: AuthModalProps) {
   const { signIn, signUp } = useAuth();
@@ -18,6 +18,12 @@ export default function AuthModal({ onClose }: AuthModalProps) {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+
+  const switchMode = (next: Mode) => {
+    setMode(next);
+    setError(null);
+    setSuccessMessage(null);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,7 +37,7 @@ export default function AuthModal({ onClose }: AuthModalProps) {
       } else {
         onClose();
       }
-    } else {
+    } else if (mode === 'register') {
       if (username.trim().length < 3) {
         setError('El nombre de usuario debe tener al menos 3 caracteres.');
         setLoading(false);
@@ -42,6 +48,16 @@ export default function AuthModal({ onClose }: AuthModalProps) {
         setError(translateError(error));
       } else {
         setSuccessMessage('¡Cuenta creada! Revisa tu correo para confirmar tu email.');
+      }
+    } else {
+      // forgot password
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/auth/callback?type=recovery`,
+      });
+      if (error) {
+        setError('No se pudo enviar el correo. Intenta de nuevo.');
+      } else {
+        setSuccessMessage('Te enviamos un correo con el enlace para restablecer tu contraseña. Revisa tu bandeja de entrada.');
       }
     }
 
@@ -76,20 +92,29 @@ export default function AuthModal({ onClose }: AuthModalProps) {
       <div className={styles.modal} onClick={e => e.stopPropagation()}>
         <button className={styles.closeButton} onClick={onClose} aria-label="Cerrar">✕</button>
 
-        <div className={styles.tabs}>
-          <button
-            className={`${styles.tab} ${mode === 'login' ? styles.tabActive : ''}`}
-            onClick={() => { setMode('login'); setError(null); setSuccessMessage(null); }}
-          >
-            Iniciar Sesión
-          </button>
-          <button
-            className={`${styles.tab} ${mode === 'register' ? styles.tabActive : ''}`}
-            onClick={() => { setMode('register'); setError(null); setSuccessMessage(null); }}
-          >
-            Crear Cuenta
-          </button>
-        </div>
+        {mode !== 'forgot' && (
+          <div className={styles.tabs}>
+            <button
+              className={`${styles.tab} ${mode === 'login' ? styles.tabActive : ''}`}
+              onClick={() => switchMode('login')}
+            >
+              Iniciar Sesión
+            </button>
+            <button
+              className={`${styles.tab} ${mode === 'register' ? styles.tabActive : ''}`}
+              onClick={() => switchMode('register')}
+            >
+              Crear Cuenta
+            </button>
+          </div>
+        )}
+
+        {mode === 'forgot' && (
+          <div className={styles.forgotHeader}>
+            <button className={styles.backButton} onClick={() => switchMode('login')}>← Volver</button>
+            <p className={styles.forgotTitle}>Restablecer contraseña</p>
+          </div>
+        )}
 
         {successMessage ? (
           <div className={styles.successMessage}>
@@ -126,18 +151,30 @@ export default function AuthModal({ onClose }: AuthModalProps) {
               />
             </div>
 
-            <div className={styles.field}>
-              <label htmlFor="password">Contraseña</label>
-              <input
-                id="password"
-                type="password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                placeholder="Mínimo 6 caracteres"
-                autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
-                required
-              />
-            </div>
+            {mode !== 'forgot' && (
+              <div className={styles.field}>
+                <label htmlFor="password">Contraseña</label>
+                <input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  placeholder="Mínimo 6 caracteres"
+                  autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
+                  required
+                />
+              </div>
+            )}
+
+            {mode === 'login' && (
+              <button
+                type="button"
+                className={styles.forgotLink}
+                onClick={() => switchMode('forgot')}
+              >
+                ¿Olvidaste tu contraseña?
+              </button>
+            )}
 
             {error && (
               <div>
@@ -156,7 +193,7 @@ export default function AuthModal({ onClose }: AuthModalProps) {
             )}
 
             <button type="submit" className={styles.submitButton} disabled={loading}>
-              {loading ? 'Cargando...' : mode === 'login' ? 'Iniciar Sesión' : 'Crear Cuenta'}
+              {loading ? 'Cargando...' : mode === 'login' ? 'Iniciar Sesión' : mode === 'register' ? 'Crear Cuenta' : 'Enviar instrucciones'}
             </button>
           </form>
         )}
