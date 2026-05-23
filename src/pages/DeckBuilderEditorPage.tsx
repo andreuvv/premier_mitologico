@@ -4,6 +4,8 @@ import { CollectionCard, CollectionFormat } from '../types/collection';
 import { loadCollectionCards } from '../services/collectionService';
 import { useBanlist } from '../hooks/useBanlist';
 import { useDeckRules, DeckSubformat } from '../hooks/useDeckRules';
+import { useUserDecks } from '../hooks/useUserDecks';
+import { useAuth } from '../hooks/useAuth';
 import CardDetailModal from '../components/CardDetailModal';
 import styles from './DeckBuilderEditorPage.module.css';
 
@@ -54,10 +56,14 @@ export default function DeckBuilderEditorPage() {
       ? CollectionFormat.FURIA_EXTENDIDO
       : CollectionFormat.PRIMER_BLOQUE;
 
+  const { user } = useAuth();
+  const { saveDeck, saveStatus, saveError } = useUserDecks();
+
   const [allCards, setAllCards] = useState<CollectionCard[]>([]);
   const [loading, setLoading] = useState(true);
   const [deckCards, setDeckCards] = useState<Record<number, number>>({});
   const [name, setName] = useState(initialName);
+  const [deckId, setDeckId] = useState<string | null>(null);
 
   // For pb-edicion: user picks the edition from a dropdown in the editor header
   const [lockedEdition, setLockedEdition] = useState<string | null>(null);
@@ -152,6 +158,20 @@ export default function DeckBuilderEditorPage() {
       else next[cardId]--;
       return next;
     });
+  };
+
+  const handleSave = async () => {
+    if (!user) return;
+    const id = await saveDeck({
+      deckId,
+      userId: user.id,
+      name: name.trim() || 'Nuevo Mazo',
+      format: formatParam as 'pb' | 'fx',
+      subformat,
+      race,
+      cards: deckCards,
+    });
+    if (id && !deckId) setDeckId(id);
   };
 
   // ── Deck list (with card objects) ─────────────────────────────────────────
@@ -277,7 +297,14 @@ export default function DeckBuilderEditorPage() {
           >
             ← Cambiar selección
           </button>
-          <button className={styles.saveButton}>💾 Guardar</button>
+          <button
+            className={`${styles.saveButton} ${saveStatus === 'saved' ? styles.saveButtonSaved : saveStatus === 'error' ? styles.saveButtonError : ''}`}
+            onClick={handleSave}
+            disabled={saveStatus === 'saving' || !user}
+            title={!user ? 'Inicia sesión para guardar' : saveError ?? undefined}
+          >
+            {saveStatus === 'saving' ? '⏳ Guardando...' : saveStatus === 'saved' ? '✓ Guardado' : saveStatus === 'error' ? '✕ Error' : '💾 Guardar'}
+          </button>
         </div>
       </div>
 

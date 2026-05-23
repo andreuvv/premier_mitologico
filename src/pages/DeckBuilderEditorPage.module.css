@@ -185,11 +185,24 @@
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
-  transition: opacity 0.2s;
+  transition: background 0.2s, opacity 0.2s;
 }
 
-.saveButton:hover {
+.saveButton:hover:not(:disabled) {
   opacity: 0.85;
+}
+
+.saveButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.saveButtonSaved {
+  background: var(--sage-green) !important;
+}
+
+.saveButtonError {
+  background: #8b1a1a !important;
 }
 
 /* ── Main layout ─────────────────────────────────────────────────────────── */
