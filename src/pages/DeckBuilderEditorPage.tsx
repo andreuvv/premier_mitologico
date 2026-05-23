@@ -558,7 +558,7 @@ export default function DeckBuilderEditorPage() {
                           <span className={styles.deckCardCount}>{count}</span>
                           <button
                             className={styles.deckPlus}
-                            onClick={() => addCard(card.id)}
+                            onClick={() => addCard(card)}
                           >
                             +
                           </button>
