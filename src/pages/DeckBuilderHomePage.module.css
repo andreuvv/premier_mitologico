@@ -1,0 +1,360 @@
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 2rem 3rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* ─── Page Header ─────────────────────────────────────────────────────────── */
+
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.pageTitle {
+  margin: 0 0 0.25rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--beige);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.pageSubtitle {
+  margin: 0;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ─── Create Button ───────────────────────────────────────────────────────── */
+
+.createButton {
+  background: var(--ocher);
+  color: var(--dark-brown);
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.15s;
+}
+
+.createButton:hover {
+  opacity: 0.85;
+}
+
+/* ─── Tabs ────────────────────────────────────────────────────────────────── */
+
+.tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 2rem;
+}
+
+.tab,
+.tabActive {
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.tabActive {
+  color: var(--ocher);
+  border-bottom-color: var(--ocher);
+}
+
+.tab:hover {
+  color: var(--beige);
+}
+
+/* ─── Empty State ─────────────────────────────────────────────────────────── */
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 3rem;
+  opacity: 0.4;
+}
+
+.emptyText {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.95rem;
+}
+
+/* ─── Modal ───────────────────────────────────────────────────────────────── */
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal {
+  background: var(--dark-brown);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 1.75rem 2rem;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.modalClose {
+  position: absolute;
+  top: 0.9rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.25rem;
+}
+
+.modalClose:hover {
+  color: var(--beige);
+}
+
+.modalTitle {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--beige);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ─── Modal Fields ────────────────────────────────────────────────────────── */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.fieldLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.nameInput {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  color: var(--beige);
+  font-size: 0.9rem;
+  padding: 0.6rem 0.8rem;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+  transition: border-color 0.15s;
+}
+
+.nameInput:focus {
+  border-color: var(--ocher);
+}
+
+.nameInput::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* ─── Format Selector ─────────────────────────────────────────────────────── */
+
+.formatRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.formatBtn,
+.formatBtnActive {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.85rem 0.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.formatBtnActive {
+  border-color: var(--ocher);
+  background: rgba(var(--ocher-rgb, 205, 152, 55), 0.1);
+}
+
+.formatBtn:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.formatIcon {
+  font-size: 1.4rem;
+}
+
+.formatName {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--beige);
+  text-align: center;
+}
+
+/* ─── Subformat Selector ──────────────────────────────────────────────────── */
+
+.subformatRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.subformatBtn,
+.subformatBtnActive {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s, background 0.15s;
+  width: 100%;
+}
+
+.subformatBtnActive {
+  border-color: var(--petrol-blue);
+  background: rgba(75, 139, 163, 0.12);
+}
+
+.subformatBtn:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.subformatName {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--beige);
+}
+
+.subformatDesc {
+  font-size: 0.72rem;
+  color: rgba(234, 221, 207, 0.5);
+}
+
+/* ─── Race Grid ───────────────────────────────────────────────────────────── */
+
+.raceGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.raceBtn,
+.raceBtnActive {
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--beige);
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.12s, background 0.12s, color 0.12s;
+  font-family: inherit;
+}
+
+.raceBtnActive {
+  border-color: var(--ocher);
+  background: var(--ocher);
+  color: var(--dark-brown);
+  font-weight: 700;
+}
+
+.raceBtn:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ─── Modal Error / Confirm ───────────────────────────────────────────────── */
+
+.modalError {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--brick-red);
+}
+
+.confirmButton {
+  background: var(--sage-green);
+  color: var(--dark-brown);
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  font-family: inherit;
+}
+
+.confirmButton:hover {
+  opacity: 0.85;
+}
+
+/* ─── Mobile ──────────────────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem 1rem 2rem;
+  }
+
+  .pageHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .modal {
+    padding: 1.25rem 1.25rem;
+  }
+}

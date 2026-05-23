@@ -99,16 +99,14 @@ const Header = () => {
                   <FaBook className={styles.icon} />
                   Cartas
                 </Link>
-                <button
+                <Link
+                  to="/deck-builder"
                   className={styles.cartasDropdownItem}
-                  onClick={() => {
-                    window.open('https://mazos.cl/format-selection', '_blank');
-                    setCartasHovered(false);
-                  }}
+                  onClick={() => setCartasHovered(false)}
                 >
                   <FaHammer className={styles.icon} />
                   Deck Builder
-                </button>
+                </Link>
                 {user ? (
                   <Link
                     to="/carpeta"
@@ -188,10 +186,7 @@ const Header = () => {
               Blog
             </span>
           )}
-          {/* <button className={styles.navDisabled} disabled>
-            <FaHammer className={styles.icon} />
-            Deck Builder
-          </button> */}
+
         </nav>
 
         <button 
@@ -295,16 +290,14 @@ const Header = () => {
           <FaBook className={styles.icon} />
           Cartas
         </Link>
-        <button
+        <Link
+          to="/deck-builder"
           className={styles.mobileSubItem}
-          onClick={() => {
-            window.open('https://mazos.cl/format-selection', '_blank');
-            setMobileMenuOpen(false);
-          }}
+          onClick={() => setMobileMenuOpen(false)}
         >
           <FaHammer className={styles.icon} />
           Deck Builder
-        </button>
+        </Link>
         {user ? (
           <Link to="/carpeta" className={styles.mobileSubItem} onClick={() => setMobileMenuOpen(false)}>
             <FaBook className={styles.icon} />

@@ -35,6 +35,8 @@ export interface CollectionCard {
   game: CardGame;
   product?: CardProduct;
   interactions?: string[];
+  unique?: boolean;
+  moreThan3?: boolean;
   __typename: string;
 }
 
