@@ -117,6 +117,17 @@ export function useUserDecks() {
     return result.data.id as string;
   }, []);
 
+  /** Load a single deck by id. */
+  const loadDeck = useCallback(async (deckId: string): Promise<UserDeck | null> => {
+    const { data, error } = await supabase
+      .from('user_decks')
+      .select('*')
+      .eq('id', deckId)
+      .single();
+    if (error || !data) return null;
+    return parseRow(data as RawDeckRow);
+  }, []);
+
   /** Load all decks for a user. */
   const loadDecks = useCallback(async (userId: string): Promise<UserDeck[]> => {
     const { data, error } = await supabase
@@ -138,5 +149,5 @@ export function useUserDecks() {
     return !error;
   }, []);
 
-  return { saveDeck, loadDecks, deleteDeck, saveStatus, saveError };
+  return { saveDeck, loadDeck, loadDecks, deleteDeck, saveStatus, saveError };
 }

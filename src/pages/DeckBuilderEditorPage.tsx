@@ -5,8 +5,7 @@ import { loadCollectionCards } from '../services/collectionService';
 import { useBanlist } from '../hooks/useBanlist';
 import { useDeckRules, DeckSubformat } from '../hooks/useDeckRules';
 import { useUserDecks } from '../hooks/useUserDecks';
-import { useAuth } from '../hooks/useAuth';
-import CardDetailModal from '../components/CardDetailModal';
+import { useAuth } from '../hooks/useAuth';import CardDetailModal from '../components/CardDetailModal';
 import styles from './DeckBuilderEditorPage.module.css';
 
 const DECK_SIZE = 50;
@@ -50,6 +49,7 @@ export default function DeckBuilderEditorPage() {
   const subformat = (searchParams.get('subformat') ?? (formatParam === 'pb' ? 'pb-libre' : 'fx-libre')) as DeckSubformat;
   const race = searchParams.get('race') ?? '';
   const initialName = searchParams.get('name') ?? 'Nuevo Mazo';
+  const urlDeckId = searchParams.get('deckId') ?? null;
 
   const format =
     formatParam === 'fx'
@@ -57,13 +57,13 @@ export default function DeckBuilderEditorPage() {
       : CollectionFormat.PRIMER_BLOQUE;
 
   const { user } = useAuth();
-  const { saveDeck, saveStatus, saveError } = useUserDecks();
+  const { saveDeck, loadDeck, saveStatus, saveError } = useUserDecks();
 
   const [allCards, setAllCards] = useState<CollectionCard[]>([]);
   const [loading, setLoading] = useState(true);
   const [deckCards, setDeckCards] = useState<Record<number, number>>({});
   const [name, setName] = useState(initialName);
-  const [deckId, setDeckId] = useState<string | null>(null);
+  const [deckId, setDeckId] = useState<string | null>(urlDeckId);
 
   // For pb-edicion: user picks the edition from a dropdown in the editor header
   const [lockedEdition, setLockedEdition] = useState<string | null>(null);
@@ -89,6 +89,19 @@ export default function DeckBuilderEditorPage() {
       })
       .catch(() => setLoading(false));
   }, [format]);
+
+  // If editing an existing deck, load its cards once allCards are ready
+  useEffect(() => {
+    if (!urlDeckId || allCards.length === 0) return;
+    loadDeck(urlDeckId).then((deck) => {
+      if (deck) {
+        setDeckCards(deck.cards);
+        setName(deck.name);
+      }
+    });
+  // Run only once when allCards first become available
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [allCards.length === 0 ? '' : urlDeckId]);
 
   // Reset page when filters change
   useEffect(() => {

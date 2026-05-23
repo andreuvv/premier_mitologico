@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import { useUserDecks, UserDeck } from '../hooks/useUserDecks';
 import styles from './DeckBuilderHomePage.module.css';
 
 const PB_RACES = [
@@ -144,8 +145,38 @@ function NewDeckModal({ onClose, onCreate }: NewDeckModalProps) {
 export default function DeckBuilderHomePage() {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const { loadDecks, deleteDeck } = useUserDecks();
   const [tab, setTab] = useState<Tab>('myDecks');
   const [showModal, setShowModal] = useState(false);
+  const [decks, setDecks] = useState<UserDeck[]>([]);
+  const [decksLoading, setDecksLoading] = useState(false);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+
+  const fetchDecks = useCallback(async () => {
+    if (!user) return;
+    setDecksLoading(true);
+    const loaded = await loadDecks(user.id);
+    setDecks(loaded);
+    setDecksLoading(false);
+  }, [user, loadDecks]);
+
+  useEffect(() => {
+    fetchDecks();
+  }, [fetchDecks]);
+
+  const handleDelete = async (deckId: string) => {
+    if (!window.confirm('¿Eliminar este mazo? Esta acción no se puede deshacer.')) return;
+    setDeletingId(deckId);
+    await deleteDeck(deckId);
+    setDecks((prev) => prev.filter((d) => d.id !== deckId));
+    setDeletingId(null);
+  };
+
+  const handleEdit = (deck: UserDeck) => {
+    navigate(
+      `/deck-builder/editor?deckId=${deck.id}&format=${deck.format}&subformat=${encodeURIComponent(deck.subformat)}&race=${encodeURIComponent(deck.race)}&name=${encodeURIComponent(deck.name)}`
+    );
+  };
 
   const handleCreate = (format: Format, subformat: Subformat, race: string, name: string) => {
     navigate(
@@ -192,13 +223,58 @@ export default function DeckBuilderHomePage() {
             <div className={styles.emptyState}>
               <p className={styles.emptyText}>Inicia sesión para ver y crear tus mazos.</p>
             </div>
-          ) : (
+          ) : decksLoading ? (
+            <div className={styles.emptyState}>
+              <p className={styles.emptyText}>Cargando mazos...</p>
+            </div>
+          ) : decks.length === 0 ? (
             <div className={styles.emptyState}>
               <div className={styles.emptyIcon}>🃏</div>
               <p className={styles.emptyText}>No tienes mazos guardados todavía.</p>
               <button className={styles.createButton} onClick={() => setShowModal(true)}>
                 + Crear mi primer mazo
               </button>
+            </div>
+          ) : (
+            <div className={styles.deckGrid}>
+              {decks.map((deck) => {
+                const cardCount = Object.values(deck.cards).reduce((a, b) => a + b, 0);
+                const formatLabel = deck.format === 'fx' ? 'Furia Extendido' : 'Primer Bloque';
+                const subformatLabel =
+                  deck.subformat === 'pb-edicion' ? 'Racial Edición' :
+                  deck.subformat === 'pb-libre'   ? 'Racial Libre' :
+                  deck.subformat === 'fx-vcr'     ? 'VCR' : 'Racial Libre';
+                return (
+                  <div key={deck.id} className={styles.deckCard}>
+                    <div className={styles.deckCardHeader}>
+                      <h3 className={styles.deckCardName}>{deck.name}</h3>
+                      <span className={`${styles.deckCardCount} ${cardCount === 50 ? styles.deckCardCountFull : ''}`}>
+                        {cardCount}/50
+                      </span>
+                    </div>
+                    <div className={styles.deckCardMeta}>
+                      <span className={styles.deckCardTag}>{formatLabel}</span>
+                      <span className={styles.deckCardTag}>{subformatLabel}</span>
+                      {deck.race && <span className={styles.deckCardTag}>{deck.race}</span>}
+                    </div>
+                    <div className={styles.deckCardActions}>
+                      <button
+                        className={styles.deckEditBtn}
+                        onClick={() => handleEdit(deck)}
+                      >
+                        ✏️ Editar
+                      </button>
+                      <button
+                        className={styles.deckDeleteBtn}
+                        onClick={() => handleDelete(deck.id)}
+                        disabled={deletingId === deck.id}
+                      >
+                        {deletingId === deck.id ? '...' : '🗑'}
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           )}
         </>
