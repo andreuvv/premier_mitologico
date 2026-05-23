@@ -69613,6 +69613,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/145-GUE-Cabeza-Colosal-MazosCL.webp",
           "artist": "ENVAKENKAQTI",
           "frequency": "VASALLO",
+          "moreThan3": true,
           "race": [],
           "edition": {
             "name": "☀️ Guerreros del Sol",
