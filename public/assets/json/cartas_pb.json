@@ -16,6 +16,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Mercado-egipcio-rework.png-1774045041258",
           "artist": "Snoop",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -184,6 +185,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/29-Toolkit2026/cartas/002-Lobos-de-Zeus-JO.webp",
           "artist": "Genzo",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -238,6 +240,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/29-Toolkit2026/cartas/038-TKPB26-Nacimiento-de-Pegaso-MazosCL.webp",
           "artist": "Ikkitouch",
           "frequency": "SECRETA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -994,6 +997,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/29-Toolkit2026/cartas/012-TKPB26-Nacimiento-de-Pegaso-MazosCL.webp",
           "artist": "Ikkitouch",
           "frequency": "REWORK",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -1237,6 +1241,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/29-Toolkit2026/cartas/005-TKPB26-Desafiar-a-Arturo-MazosCL.webp",
           "artist": "Ikkitouch",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -2276,6 +2281,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/28-Lootbox25/cartas/007-LGPB25-Gran-Guardian-MazosCL.png",
           "artist": "ARTIST",
           "frequency": "SECRETA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -2303,6 +2309,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/28-Lootbox25/cartas/001-PBSEC-Toque-de-Persival-MazosCL.png",
           "artist": "ARTIST",
           "frequency": "SECRETA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -2384,6 +2391,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/28-Lootbox25/cartas/004-PBSEC-Nacimiento-de-Pegaso-MazosCL.png",
           "artist": "ARTIST",
           "frequency": "SECRETA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -2575,6 +2583,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/28-Lootbox25/cartas/029-LBPB25-Dinas-Emrys-MazosCL.png",
           "artist": "ARTIST",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -2629,6 +2638,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/28-Lootbox25/cartas/036-LBPB25-Codex-Arturicus-MazosCL.png",
           "artist": "ARTIST",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -3104,6 +3114,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/28-Lootbox25/cartas/011-LBPB25-Titan-Gorila-MazosCL.png",
           "artist": "ARTIST",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "TITAN"
           ],
@@ -4103,6 +4114,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/28-Lootbox25/cartas/015-LBPB25-Conla-MazosCL.png",
           "artist": "ARTIST",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "DEFENSOR"
           ],
@@ -4248,6 +4260,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/28-Lootbox25/cartas/022-LBPB25-Ra-MazosCL.png",
           "artist": "ARTIST",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -4708,6 +4721,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-ANIVERSARIO_09-Vouivre-MazosCL.png",
           "artist": "Waldo Retamales",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -4766,6 +4780,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-ANIVERSARIO_07-Rey-Arturo-Pendragon-MazosCL.png",
           "artist": "Juan Vasquez",
           "frequency": "REWORK",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -4824,6 +4839,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/27-Shogun4/cartas/042-APB4-Despertar-MazosCL.png",
           "artist": "",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -4907,6 +4923,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/27-Shogun4/cartas/035-APB4-Joya-Amatista-MazosCL.png",
           "artist": "",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -5015,6 +5032,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/27-Shogun4/cartas/020-APB4-Alas-de-Druida-MazosCL.png",
           "artist": "",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -5413,6 +5431,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/27-Shogun4/cartas/005-APB4-Cronos-MazosCL.png",
           "artist": "",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "TITAN"
           ],
@@ -5672,6 +5691,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/27-Shogun4/cartas/014-APB4-Expulsion-de-Titanes-MazosCL.png",
           "artist": "",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -5867,6 +5887,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Invocar-chacales-mega-real.png-1764283184423",
           "artist": "Carolina Eade",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -5950,6 +5971,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas/Romulo-y-remo-mega-real.png-1764282775091",
           "artist": "Abbay",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -6006,6 +6028,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas/Julio-cesar-real.png-1764282632791",
           "artist": "Francisco Sereno",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "HEROE"
           ],
@@ -6116,6 +6139,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Minas-de-gruash-promocional.png-1764282081470",
           "artist": "Carolina Eade",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -6170,6 +6194,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Colosos-hititas-promocional.png-1764282001838",
           "artist": "Pablo Santander",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -6309,6 +6334,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Felipe-ii-real.png-1764035983821",
           "artist": "Alejandro Catalán",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -7177,6 +7203,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas/El-gran-zeus-real.png-1764008980586",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "OLIMPICO"
           ],
@@ -7592,6 +7619,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/26-ColmillosPB/cartas/025-HLPB-Lobos-de-Zeus-MazosCL.png",
           "artist": null,
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -8538,6 +8566,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/379-ARA-Bennu-MazosCL.png",
           "artist": "Alejandro Catalán",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "SACERDOTE"
           ],
@@ -8932,6 +8961,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/009-ARAKIT-Relampago-Arcano-MazosCL.png",
           "artist": "Pablo Santander",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -9351,6 +9381,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/008-ARAKIT-Colosos-Hititas-MazosCL.png",
           "artist": "Snoop",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -9378,6 +9409,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Abismo-rework.png-1766594446103",
           "artist": "Maca Sainz",
           "frequency": "REWORK",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -9432,6 +9464,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/369-ARA-Corona-Faraonica-MazosCL.png",
           "artist": "Isadora Ignacio",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -9513,6 +9546,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/372-ARA-Piedra-Roseta-MazosCL.png",
           "artist": "Isadora Ignacio",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -9594,6 +9628,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/362-ARA-Libro-de-los-Muertos-MazosCL.png",
           "artist": "Gabriel Rodriguez",
           "frequency": "VASALLO",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -9621,6 +9656,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/363-ARA-Piedra-Roseta-MazosCL.png",
           "artist": "Isadora Ignacio",
           "frequency": "VASALLO",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -9864,6 +9900,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/361-ARA-Corona-Faraonica-MazosCL.png",
           "artist": "Isadora Ignacio",
           "frequency": "VASALLO",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -14970,6 +15007,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/153-ARA-Aullido-de-Furia-MazosCL.png",
           "artist": "Carolina Eade",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -15240,6 +15278,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/166-ARA-Islas-filas-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -15294,6 +15333,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/169-ARA-Kom-Ombo-MazosCL.png",
           "artist": "Waldo Retamales",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -15458,6 +15498,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/178-ARA-Bennu-MazosCL.png",
           "artist": "Andrés Silva",
           "frequency": "VASALLO",
+          "unique": true,
           "race": [
             "SACERDOTE"
           ],
@@ -15572,6 +15613,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/146-ARA-Venganza-MazosCL.png",
           "artist": "Gabriel Rodriguez",
           "frequency": "REWORK",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -16126,6 +16168,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/127-ARA-Akenathon-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "FARAON"
           ],
@@ -16300,6 +16343,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/135-ARA-Imoteph-MazosCL.png",
           "artist": "Juan Vásquez",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "SACERDOTE"
           ],
@@ -17691,6 +17735,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/082-ARA-Cleopatra-Vll-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "FARAON"
           ],
@@ -17977,6 +18022,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/057-ARA-Nemty-MazosCL.png",
           "artist": "Nitrox",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -18093,6 +18139,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/061-ARA-Amon-MazosCL.png",
           "artist": "Francisco Guerra",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -18180,6 +18227,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/065-ARA-Apophis-MazosCL.png",
           "artist": "JP Aguirre",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -18377,6 +18425,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/024-ARA-Colosos-Hititas-MazosCL.png",
           "artist": "Snoop",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -18688,6 +18737,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/039-ARA-Neferite-I-MazosCL.png",
           "artist": "Raúl Jimenez",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [
             "FARAON"
           ],
@@ -18854,6 +18904,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/049-ARA-Invocar-Chacales-MazosCL.png",
           "artist": "Carolina Eade",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -18881,6 +18932,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/052-ARA-Guiza-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -18962,6 +19014,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/028-ARA-Ramses-II-MazosCL.png",
           "artist": "Ikkitouch",
           "frequency": "REWORK",
+          "unique": true,
           "race": [
             "FARAON"
           ],
@@ -18991,6 +19044,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/029-ARA-Ra-MazosCL.png",
           "artist": "Ikkitouch",
           "frequency": "REWORK",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -19049,6 +19103,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/037-ARA-Ra-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REWORK",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -19078,6 +19133,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/040-ARA-Ramses-ll-MazosCL.png",
           "artist": "Heraldo Ortega",
           "frequency": "REWORK",
+          "unique": true,
           "race": [
             "FARAON"
           ],
@@ -19163,6 +19219,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/048-ARA-Gran-Guardian-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REWORK",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -19244,6 +19301,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/001-ARA-Ra-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -19412,6 +19470,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/007-ARA-Apophis-MazosCL.png",
           "artist": "Nitrox",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -19441,6 +19500,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/008-ARA-Amon-MazosCL.png",
           "artist": "Francisco Guerra",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -19499,6 +19559,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/010-ARA-Nemty-MazosCL.png",
           "artist": "Nitrox",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -19528,6 +19589,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/011-ARA-Ramses-II-MazosCL.png",
           "artist": "Alejandro Catalán",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "FARAON"
           ],
@@ -19557,6 +19619,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/012-ARA-Cleopatra-VII-MazosCL.png",
           "artist": "Nitrox",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "FARAON"
           ],
@@ -19756,6 +19819,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/019-ARA-Gran-Guardian-MazosCL.png",
           "artist": "Carlos Semper",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -19783,6 +19847,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/25-AniversarioRA/cartas/020-ARA-Invocar-Chacales-MazosCL.png",
           "artist": "Gonzalo Lotito",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -19947,6 +20012,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/24-ColeccionPremium/cartas/004-CLPB25-Caldero-de-la-Abundancia-MazosCL.png",
           "artist": "JP Aguirre",
           "frequency": "REWORK",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -20480,6 +20546,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/24-ColeccionPremium/cartas/028-CLPB-Ogham-MazosCL.png",
           "artist": "Gabriel Rodriguez",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -21467,6 +21534,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/reworks/400-AHD-Despertar-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REWORK",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -21660,6 +21728,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/relatos/036-AHDX-Joya-Amatista-MazosCL.png",
           "artist": "Alejandro Catalán",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -23532,6 +23601,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/22-Lootbox24/cartas/048-LB24-Neferite-I-MazosCL.png",
           "artist": "Raúl Jimenez",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "FARAON"
           ],
@@ -23648,6 +23718,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/22-Lootbox24/cartas/054-LB24-Cruz-Templaria-MazosCL.png",
           "artist": "Snoop",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -24693,6 +24764,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/22-Lootbox24/cartas/022-LB24-Codex-Arturicus-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "SECRETA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -24774,6 +24846,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/22-Lootbox24/cartas/025-LB24-Expulsion-de-Titanes-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "SECRETA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -24992,6 +25065,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/22-Lootbox24/cartas/031-LB24-Saladino-MazosCL.png",
           "artist": "Oxul",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -26607,6 +26681,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/401-AHD-Bran-MazosCL.png",
           "artist": "Pablo Santander",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "DEFENSOR"
           ],
@@ -26636,6 +26711,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/402-AHD-Letania-MazosCL.png",
           "artist": "Pablo Santander",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -26771,6 +26847,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/392-AHD-Ogham-MazosCL.png",
           "artist": "Peyeyo",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -26906,6 +26983,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/397-AHD-Minas-de-Gruash-MazosCL.png",
           "artist": "Rodo Alarcón",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -26962,6 +27040,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/365-AHD-Tuatha-de-Danaan-MazosCL.png",
           "artist": "Pablo Santander",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -26991,6 +27070,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/366-AHD-La-Serpiente-Negra-MazosCL.png",
           "artist": "Carlos Semper",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -30603,6 +30683,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/241-AHD-Semhain-MazosCL.png",
           "artist": "Pablo Santander",
           "frequency": "CORTESANO",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -33233,6 +33314,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/166-AHD-Exilio-MazosCL.png",
           "artist": "Abbay",
           "frequency": "REWORK",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -33569,6 +33651,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/100-AHD-Carro-Celta-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -35266,6 +35349,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/030-AHD-Balor-MazosCL.png",
           "artist": "Gabriel Rodriguez",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -35378,6 +35462,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/036-AHD-Macda-Tho-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -35436,6 +35521,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/038-AHD-La-Serpiente-Negra-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -35550,6 +35636,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/042-AHD-Ogham-MazosCL.png",
           "artist": "Gabriel Rodriguez",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -35631,6 +35718,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/045-AHD-Letania-MazosCL.png",
           "artist": "Pablo Santander",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -35658,6 +35746,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/046-AHD-Minas-de-Gruash-MazosCL.png",
           "artist": "Carolina Eade",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -35714,6 +35803,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/048-AHD-Conla-MazosCL.png",
           "artist": "Ikkitouch",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [
             "DEFENSOR"
           ],
@@ -35911,6 +36001,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/056-AHD-Manzana-Sidhe-MazosCL.png",
           "artist": "Nitrox",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -36286,6 +36377,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/075-AHD-La-Serpiente-Roja-MazosCL.png",
           "artist": "Gabriel Rodriguez",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -36630,6 +36722,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/091-AHD-Bola-de-Energia-MazosCL.png",
           "artist": "Waldo Retamales",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -36657,6 +36750,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/032-AHD-Caldero-de-la-Abundancia-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REWORK",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -37134,6 +37228,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/007-AHD-Daana-MazosCL.png",
           "artist": "Nitrox",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -37163,6 +37258,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/008-AHD-Lugh-MazosCL.png",
           "artist": "Mauricio Carrasco",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -37192,6 +37288,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/009-AHD-Macda-Tho-MazosCL.png",
           "artist": "Carlos Semper",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -37453,6 +37550,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/018-AHD-Caldero-de-la-Abundancia-MazosCL.png",
           "artist": "JP Aguirre",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -37507,6 +37605,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/020-AHD-Exilio-MazosCL.png",
           "artist": "Renzo Badilla",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -37588,6 +37687,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/023-AHD-Ogham-MazosCL.png",
           "artist": "Oxul",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -37615,6 +37715,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/024-AHD-Manzana-Sidhe-MazosCL.png",
           "artist": "GOTA",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -37696,6 +37797,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/028-AHD-Lugh-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -37725,6 +37827,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/027-AHD-Daana-MazosCL.png",
           "artist": "Waldo Retamales",
           "frequency": "REWORK",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -37783,6 +37886,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/002-AHD-Lugh-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -37841,6 +37945,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/20-AniversarioHD/cartas/000-AHD-Manzana-Sidhe-MazosCL.png",
           "artist": "Nitrox",
           "frequency": "SECRETA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -38739,6 +38844,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/342-AHE-Nacimiento-de-Pegaso-MazosCL.jpeg",
           "artist": "Juan Vásquez",
           "frequency": "REWORK",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -38847,6 +38953,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/346-AHE-La-Odisea-MazosCL.jpeg",
           "artist": "Mauricio Herrera",
           "frequency": "REWORK",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -38961,6 +39068,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/AHEX/008-AHEX-Locura-de-Amor-MazosCL.jpeg",
           "artist": null,
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -39440,6 +39548,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/321-LPB23-Cronos-MazosCL.png",
           "artist": "Ikkitouch",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "TITAN"
           ],
@@ -39469,6 +39578,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/322-LPB23-Romulo-y-Remo-MazosCL.png",
           "artist": "Abbay",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -39496,6 +39606,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/323-LPB23-Daana-MazosCL.png",
           "artist": "Nitrox",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -39525,6 +39636,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/324-LPB23-Tuatha-De-Danaan-MazosCL.png",
           "artist": "Collage MyL",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -39554,6 +39666,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/325-LPB23-Ra-MazosCL.png",
           "artist": "Ikkitouch",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -39583,6 +39696,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/326-LPB23-Apophis-MazosCL.png",
           "artist": "JP Aguirre",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -39612,6 +39726,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/327-LPB23-Guiza-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -39639,6 +39754,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/298-LPB23-Corona-Faraonica-MazosCL.png",
           "artist": "Isadora Ignacio",
           "frequency": "VASALLO",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -40765,6 +40881,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/296-LPB23-Piedra-Roseta-MazosCL.png",
           "artist": "Isadora Ignacio",
           "frequency": "VASALLO",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -40792,6 +40909,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/297-LPB23-Libro-De-Los-Muertos-MazosCL.png",
           "artist": "Gabriel Rodriguez",
           "frequency": "VASALLO",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -43104,6 +43222,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/158-LPB23-Bola-De-Energia-MazosCL.png",
           "artist": "Waldo Retamales",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -43158,6 +43277,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/160-LPB23-Carro-Celta-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -43212,6 +43332,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/162-LPB23-Ogham-MazosCL.png",
           "artist": "Gabriel Rodriguez",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -44336,6 +44457,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/092-LPB23-MacDa-Tho-MazosCL.png",
           "artist": "Carlos Semper",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -44423,6 +44545,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/095-LPB23-Balor-MazosCL.png",
           "artist": "Gabriel Rodriguez",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -45433,6 +45556,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/133-LPB23-Codex-Arturicus-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -45514,6 +45638,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/136-LPB23-El-Gran-Zeus-MazosCL.png",
           "artist": "Francisco Sereno",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "OLIMPICO"
           ],
@@ -45543,6 +45668,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/137-LPB23-Thanatos-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "OLIMPICO"
           ],
@@ -45939,6 +46065,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/040-LPB23-Cruz-Templaria-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -45966,6 +46093,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/041-LPB23-Marco-Antonio-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [
             "HEROE"
           ],
@@ -46082,6 +46210,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/045-LPB23-Lugh-MazosCL.png",
           "artist": "Mauricio Carrasco",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -46140,6 +46269,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/047-LPB23-La-Serpiente-Negra-MazosCL.png",
           "artist": "Carlos Semper",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -46169,6 +46299,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/048-LPB23-Conla-MazosCL.png",
           "artist": "Ikkitouch",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [
             "DEFENSOR"
           ],
@@ -46281,6 +46412,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/052-LPB23-Neferite-I-MazosCL.png",
           "artist": "Raúl Jimenez",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [
             "FARAON"
           ],
@@ -46366,6 +46498,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/055-LPB23-Relampago-Arcano-MazosCL.png",
           "artist": "Pablo Santander",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -46648,6 +46781,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/065-LPB23-Regan-MazosCL.png",
           "artist": null,
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -46936,6 +47070,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/075-LPB23-Toque-de-Persival-MazosCL.png",
           "artist": null,
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -47048,6 +47183,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/079-LPB23-Julio-Cesar-MazosCL.png",
           "artist": "Francisco Sereno",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "HEROE"
           ],
@@ -47164,6 +47300,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/083-LPB23-Helenica-MazosCL.png",
           "artist": "Collage MyL",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "TITAN"
           ],
@@ -47693,6 +47830,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/010-LPB23-Vouivre-MazosCL.png",
           "artist": null,
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -47776,6 +47914,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/013-LPB23-Dragon-Dorado-MazosCL.png",
           "artist": "Chaman",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -48104,6 +48243,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/025-LPB23-Manzana-Sidhe-MazosCL.png",
           "artist": "GOTA",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -48160,6 +48300,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/027-LPB23-Invocar-Chacales-MazosCL.png",
           "artist": "Carolina Eade",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -48243,6 +48384,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/030-LPB23-Purificar-El-Reino-MazosCL.png",
           "artist": null,
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -48270,6 +48412,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/031-LPB23-Forma-Estelar-MazosCL.png",
           "artist": null,
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -48297,6 +48440,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/032-LPB23-Alas-De-Druida-MazosCL.png",
           "artist": null,
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -48575,6 +48719,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/18-ToolkitPB24/cartas/005-TKPB24-Toque-de-Persival-MazosCL.png",
           "artist": null,
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -49034,6 +49179,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/18-ToolkitPB24/cartas/022-TKPB24-Manzana-Sidhe-MazosCL.png",
           "artist": "GOTA",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -49306,6 +49452,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/17-Lootbox3/cartas/058-Titan-Gorila-MazosCL.png",
           "artist": null,
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "TITAN"
           ],
@@ -49719,6 +49866,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/17-Lootbox3/cartas/044-Bennu-MazosCL.png",
           "artist": "Andrés Silva",
           "frequency": "VASALLO",
+          "unique": true,
           "race": [
             "SACERDOTE"
           ],
@@ -49997,6 +50145,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/17-Lootbox3/cartas/035-Piedra-Roseta-MazosCL.png",
           "artist": "Isadora Ignacio",
           "frequency": "VASALLO",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -50414,6 +50563,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/17-Lootbox3/cartas/020-Toque-de-persival-MazosCL.png",
           "artist": null,
           "frequency": "SECRETA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -50945,6 +51095,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/16-Dracula-Inferno/cartas/007-DRA-Forma-de-Niebla-MazosCL.png",
           "artist": null,
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧛 Drácula e Inferno",
@@ -51615,6 +51766,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/362-AHE-Marco-Antonio-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "HEROE"
           ],
@@ -51644,6 +51796,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/363-AHE-Helenica-MazosCL.png",
           "artist": "Collage MyL",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "TITAN"
           ],
@@ -51970,6 +52123,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/361-AHE-Cronos-MazosCL.png",
           "artist": "Ikkitouch",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "TITAN"
           ],
@@ -52227,6 +52381,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/336-AHE-Thanatos-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "OLIMPICO"
           ],
@@ -52428,6 +52583,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/335-AHE-Expulsion-de-Titanes-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REWORK",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -58237,6 +58393,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/125-AHE-Neptuno-MazosCL.png",
           "artist": "Abbay",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "OLIMPICO"
           ],
@@ -59347,6 +59504,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/091-AHE-Casco-de-Hades-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -59509,6 +59667,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/082-AHE-Invocar-Luz-MazosCL.png",
           "artist": "Juan Vásquez",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -59646,6 +59805,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/078-AHE-Expulsion-de-Titanes-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REWORK",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -59789,6 +59949,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/067-AHE-Orfeo-MazosCL.png",
           "artist": "Abbay",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "HEROE"
           ],
@@ -60334,6 +60495,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/049-AHE-Romulo-y-Remo-MazosCL.png",
           "artist": "Abbay",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -60361,6 +60523,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/050-AHE-Marco-Antonio-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [
             "HEROE"
           ],
@@ -60610,6 +60773,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/044-AHE-Julio-Cesar-MazosCL.png",
           "artist": "Francisco Sereno",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [
             "HEROE"
           ],
@@ -60811,6 +60975,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/028-AHE-El-Gran-Zeus-MazosCL.png",
           "artist": "Francisco Sereno",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [
             "OLIMPICO"
           ],
@@ -60898,6 +61063,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/031-AHE-Thanatos-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [
             "OLIMPICO"
           ],
@@ -61095,6 +61261,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/034-AHE-Cronos-MazosCL.png",
           "artist": "Ikkitouch",
           "frequency": "REWORK",
+          "unique": true,
           "race": [
             "TITAN"
           ],
@@ -61211,6 +61378,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/016-AHE-Romulo-y-Remo-MazosCL.png",
           "artist": "Abbay",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -61238,6 +61406,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/017-AHE-Marco-Antonio-MazosCL.png",
           "artist": "Ikkitouch",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "HEROE"
           ],
@@ -61690,6 +61859,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/008-AHE-El-Gran-Zeus-MazosCL.png",
           "artist": "Francisco Sereno",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "OLIMPICO"
           ],
@@ -61777,6 +61947,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/15-AniversarioHE/cartas/011-AHE-Julio-Cesar-MazosCL.png",
           "artist": "Francisco Sereno",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "HEROE"
           ],
@@ -62492,6 +62663,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/14-Raciales-2023/cartas/123-Neferite-I-MazosCL.png",
           "artist": "Raúl Jimenez",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "FARAON"
           ],
@@ -62836,6 +63008,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/14-Raciales-2023/cartas/110-Apophis-MazosCL.png",
           "artist": "JP Aguirre",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -62921,6 +63094,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/14-Raciales-2023/cartas/109-Ra-MazosCL.png",
           "artist": "Ikkitouch",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -63180,6 +63354,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/14-Raciales-2023/cartas/100-La-Serpiente-Negra-MazosCL.png",
           "artist": "Carlos Semper",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -63638,6 +63813,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/14-Raciales-2023/cartas/086-Lugh-MazosCL.png",
           "artist": "Mauricio Carrasco",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -63752,6 +63928,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/14-Raciales-2023/cartas/079-Conla-MazosCL.png",
           "artist": "Ikkitouch",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "DEFENSOR"
           ],
@@ -64239,6 +64416,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/14-Raciales-2023/cartas/061-Julio-César-MazosCL.png",
           "artist": "Francisco Sereno",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "HEROE"
           ],
@@ -64268,6 +64446,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/14-Raciales-2023/cartas/062-Marco-Antonio-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "HEROE"
           ],
@@ -64355,6 +64534,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/14-Raciales-2023/cartas/052-Helénica-MazosCL.png",
           "artist": "Collage MyL",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "TITAN"
           ],
@@ -64900,6 +65080,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/14-Raciales-2023/cartas/040-El-Gran-Zeus-MazosCL.png",
           "artist": "Francisco Sereno",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "OLIMPICO"
           ],
@@ -66274,6 +66455,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/031-AESX-Aulladores-Grises-MazosCL.png",
           "artist": null,
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -66751,6 +66933,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/018-AESX-Vouivre-MazosCL.png",
           "artist": null,
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -66917,6 +67100,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/014-AESX-Dragón-Demonio-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -66975,6 +67159,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/007-AESX-Crear-Caballero-Negro-MazosCL.png",
           "artist": null,
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -67338,6 +67523,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/020-Cruz-Templaria-foil-lluvia-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -67560,6 +67746,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/007-Dragon-Demonio-foil-lluvia-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -73155,6 +73342,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/155-Ataque-A-Traicion-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -74004,6 +74192,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/146-Cruzada-de-Los-Nios-MazosCL.png",
           "artist": null,
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -74852,6 +75041,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/097-Arca-de-La-Alianza-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -75526,6 +75716,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/056-Felipe-II-MazosCL.png",
           "artist": "Alejandro Catalán",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -75555,6 +75746,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/057-Saladino-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -75611,6 +75803,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/059-Cruz-Templaria-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -75924,6 +76117,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/045-Dragon-Demonio-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -76092,6 +76286,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/051-Dragon-Dorado-MazosCL.png",
           "artist": "Chaman",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -76146,6 +76341,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/053-Codex-Arturicus-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -76401,6 +76597,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/029-Cruz-Templaria-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -76484,6 +76681,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/032-Vouivre-MazosCL.png",
           "artist": null,
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -76627,6 +76825,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/037-Toque-de-Persival-MazosCL.png",
           "artist": null,
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -76994,6 +77193,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/016-Dragon-Demonio-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -77334,6 +77534,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/002-Dragon-Dorado-MazosCL.png",
           "artist": "Chaman",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -77504,6 +77705,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/336-Dragon-Dorado-MazosCL.png",
           "artist": "Chaman",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -77938,6 +78140,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Relampago-arcano-promocional.png-1763465826335",
           "artist": "Pablo Santander",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -78370,6 +78573,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Dragon-dorado-ultra-real.png-1763445248799",
           "artist": "Chamán",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -78424,6 +78628,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-KitExtension/cartas/080-Kabasha.png",
           "artist": "Juan Vásquez",
           "frequency": "REWORK",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -78451,6 +78656,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-KitExtension/cartas/078-Venganza.png",
           "artist": "Gabriel Rodriguez",
           "frequency": "REWORK",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -78864,6 +79070,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-KitExtension/cartas/061-Nemty.png",
           "artist": "Nitrox",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -79007,6 +79214,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-KitExtension/cartas/059-Exilio.png",
           "artist": "Abbay",
           "frequency": "REWORK",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -79507,6 +79715,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-KitExtension/cartas/039-Marco-Antonio.png",
           "artist": "Mauricio Herrera",
           "frequency": "REWORK",
+          "unique": true,
           "race": [
             "HEROE"
           ],
@@ -80430,6 +80639,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-KitExtension/cartas/09-Dinas-Emrys.png",
           "artist": null,
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -80656,6 +80866,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/312-macda-tho-MazosCL.png",
           "artist": "Carlos Semper",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -80685,6 +80896,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/306-caldero-de-la-abundancia-MazosCL.png",
           "artist": "JP Aguirre",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -80712,6 +80924,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/307-serpiente-roja-MazosCL.png",
           "artist": "Gabriel Rodriguez",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -80741,6 +80954,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/308-apophis-MazosCL.png",
           "artist": "JP Aguirre",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -80770,6 +80984,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/309-ra-MazosCL.png",
           "artist": "Ikkitouch",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -80799,6 +81014,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/310-ramses-ii-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "FARAON"
           ],
@@ -80857,6 +81073,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/305-romulo-y-remo-MazosCL.png",
           "artist": "Abbay",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -80911,6 +81128,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/301-dragon-demonio-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -80940,6 +81158,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/302-felipe-ii-MazosCL.png",
           "artist": "Alejandro Catalán",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -80969,6 +81188,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/303-saladino-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -81052,6 +81272,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/291-corona-faraonica-MazosCL.png",
           "artist": "Isadora Ignacio",
           "frequency": "VASALLO",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -81079,6 +81300,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/292-libro-de-los-muertos-MazosCL.png",
           "artist": "Gabriel Rodriguez",
           "frequency": "VASALLO",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -81106,6 +81328,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/293-piedra-roseta-MazosCL.png",
           "artist": "Isadora Ignacio",
           "frequency": "VASALLO",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -85307,6 +85530,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/125-codex-arturicus-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -85946,6 +86170,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/148-ogham-MazosCL.png",
           "artist": "Gabriel Rodriguez",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -85973,6 +86198,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/149-amon-MazosCL.png",
           "artist": "Francisco Guerra",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -86767,6 +86993,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/092-carro-celta-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -86875,6 +87102,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/086-julio-cesar-MazosCL.png",
           "artist": "Francisco Sereno",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "HEROE"
           ],
@@ -86989,6 +87217,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/090-bola-de-energia-MazosCL.png",
           "artist": "Waldo Retamales",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -87155,6 +87384,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/078-orfeo-MazosCL.png",
           "artist": "Abbay",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "HEROE"
           ],
@@ -87184,6 +87414,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/079-cronos-MazosCL.png",
           "artist": "Ikkitouch",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "TITAN"
           ],
@@ -87242,6 +87473,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/076-thanatos-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "OLIMPICO"
           ],
@@ -87358,6 +87590,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/075-el-gran-zeus-MazosCL.png",
           "artist": "Francisco Sereno",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "OLIMPICO"
           ],
@@ -87582,6 +87815,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/024-la-serpiente-negra-MazosCL.png",
           "artist": "Carlos Semper",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -87638,6 +87872,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/026-marco-antonio-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "HEROE"
           ],
@@ -87667,6 +87902,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/027-neferite-i-MazosCL.png",
           "artist": "Raúl Jimenez",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "FARAON"
           ],
@@ -87754,6 +87990,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/030-vouivre-MazosCL.png",
           "artist": null,
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -87870,6 +88107,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/034-conla-MazosCL.png",
           "artist": "Ikkitouch",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [
             "DEFENSOR"
           ],
@@ -88094,6 +88332,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/042-manzana-sidhe-MazosCL.png",
           "artist": "GOTA",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -88540,6 +88779,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/058-toque-de-percival-MazosCL.png",
           "artist": null,
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -88764,6 +89004,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/021-lugh-MazosCL.png",
           "artist": "Mauricio Carrasco",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -88793,6 +89034,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/022-balor-MazosCL.png",
           "artist": "Gabriel Rodriguez",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -88880,6 +89122,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/017-dragon-dorado-MazosCL.png",
           "artist": "Chaman",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -88961,6 +89204,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/11-Leyendas1PB/cartas/020-cruz-templaria-MazosCL.png",
           "artist": "Mauricio Herrera",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -89411,6 +89655,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/La-serpiente-negra-legendaria.webp-1762996625042",
           "artist": "Mauricio Herrera",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -89440,6 +89685,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas/Romulo-y-remo-legendaria.webp-1762996596768",
           "artist": "Abbay",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -89579,6 +89825,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas/El-gran-zeus-legendaria.webp-1762996480809",
           "artist": "Mauricio Herrera",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "OLIMPICO"
           ],
@@ -89608,6 +89855,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Dragon-dorado-legendaria.webp-1762996461101",
           "artist": "Chamán",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -89635,6 +89883,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Apophis-legendaria.webp-1762996429544",
           "artist": "Mauricio Herrera",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -89664,6 +89913,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/La-serpiente-negra-legendaria.png-1762995331794",
           "artist": "Mauricio Herrera",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -89693,6 +89943,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas/Romulo-y-remo-legendaria.png-1762995299731",
           "artist": "Abbay",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -89832,6 +90083,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas/El-gran-zeus-real.png-1762995119067",
           "artist": "Mauricio Herrera",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "OLIMPICO"
           ],
@@ -89861,6 +90113,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Dragon-dorado-real.png-1762995091395",
           "artist": "Chamán",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -89888,6 +90141,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Apophis-legendaria.png-1762994857019",
           "artist": "Mauricio Herrera",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -89917,6 +90171,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Guiza-real.png-1762948736900",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -89998,6 +90253,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Dragon-dorado-real.png-1762948623841",
           "artist": "Chamán",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -90052,6 +90308,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas/Marco-antonio-real.png-1762945926355",
           "artist": "Ikkitouch",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "HEROE"
           ],
@@ -90081,6 +90338,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Ramses-ll-promocional.png-1762945872632",
           "artist": "Heraldo Ortega",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "FARAON"
           ],
@@ -90110,6 +90368,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Ra-real.png-1762945842873",
           "artist": "JP Aguirre",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "SACERDOTE"
           ],
@@ -90139,6 +90398,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Apophis-real.png-1762945788354",
           "artist": "JP Aguirre",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -90168,6 +90428,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Macda-tho-real.png-1762945758765",
           "artist": "Ikkitouch",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -90197,6 +90458,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/La-serpiente-negra-real.png-1762945691262",
           "artist": "JP Aguirre",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -90253,6 +90515,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Balor-real.png-1762945501240",
           "artist": "Gianina Villagrán",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -90340,6 +90603,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas/Cronos-real.png-1762945311114",
           "artist": "Ikkitouch",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "TITAN"
           ],
@@ -90369,6 +90633,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas/El-gran-zeus-real.png-1762945273726",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "TITAN"
           ],
@@ -91049,6 +91314,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/10-Shogun/cartas/APB3_00.png",
           "artist": "Matías Novoa",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -91157,6 +91423,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/10-Shogun/cartas/APB2-14.png",
           "artist": "Mariola Quirland",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "TITAN"
           ],
@@ -91437,6 +91704,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/10-Shogun/cartas/APB2-06.png",
           "artist": "Francisco Sereno",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "TITAN"
           ],
@@ -91553,6 +91821,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/10-Shogun/cartas/011.png",
           "artist": "María Paz Arriagada",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "SACERDOTE"
           ],
@@ -91667,6 +91936,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/10-Shogun/cartas/009.png",
           "artist": "Mariola Quirland",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -91725,6 +91995,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/10-Shogun/cartas/006.png",
           "artist": "Francisco Sereno",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "HEROE"
           ],
@@ -91754,6 +92025,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/10-Shogun/cartas/007.png",
           "artist": "Franxo (Francisco Bahamondes)",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -92011,6 +92283,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/09-Raciales-2022/cartas/140.png",
           "artist": "Andrés Silva",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "SACERDOTE"
           ],
@@ -92181,6 +92454,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/09-Raciales-2022/cartas/121.png",
           "artist": "Waldo Retamales",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "FARAON"
           ],
@@ -92730,6 +93004,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/09-Raciales-2022/cartas/114.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -92904,6 +93179,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/09-Raciales-2022/cartas/109.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -93248,6 +93524,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/09-Raciales-2022/cartas/097.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -93625,6 +93902,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/09-Raciales-2022/cartas/081.png",
           "artist": "Pablo Santander",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "DEFENSOR"
           ],
@@ -93739,6 +94017,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/09-Raciales-2022/cartas/085.png",
           "artist": "Collage MyL",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -93768,6 +94047,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/09-Raciales-2022/cartas/086.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -93797,6 +94077,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/09-Raciales-2022/cartas/087.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -93942,6 +94223,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/09-Raciales-2022/cartas/063.png",
           "artist": "Gabriel Rodríguez",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "HEROE"
           ],
@@ -94317,6 +94599,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/09-Raciales-2022/cartas/055.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "TITAN"
           ],
@@ -94489,6 +94772,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/09-Raciales-2022/cartas/061.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "HEROE"
           ],
@@ -94980,6 +95264,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/09-Raciales-2022/cartas/038.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "OLIMPICO"
           ],
@@ -95009,6 +95294,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/09-Raciales-2022/cartas/039.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "OLIMPICO"
           ],
@@ -95614,6 +95900,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/09-Raciales-2022/cartas/014.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -96076,6 +96363,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/09-Raciales-2022/cartas/003.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -96402,6 +96690,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Relampago-arcano-promocional.png-1762836491643",
           "artist": "Pablo Santander",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -96591,6 +96880,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Carro-celta-real.png-1762835946847",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -96780,6 +97070,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Dragon-dorado-rework-rework.png-1762835071291",
           "artist": "Chaman",
           "frequency": "REWORK",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -96807,6 +97098,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Macda-tho-promocional.png-1762834849450",
           "artist": "Mauricio Herrera",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -96865,6 +97157,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Copia-de-ramses-ll-999-promocional.png-1762834769588",
           "artist": "Mauricio Herrera",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "FARAON"
           ],
@@ -96894,6 +97187,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Apophis-promocional.png-1762834735045",
           "artist": "Mauricio Herrera",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -96923,6 +97217,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Copia-de-la-serpiente-roja-864-promocional.png-1762834695805",
           "artist": "Gabriel Rodriguez",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -96952,6 +97247,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Caldero-de-la-abundancia-promocional.png-1762834460246",
           "artist": "Mauricio Herrera",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -97008,6 +97304,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Saladino-promocional.png-1762834339489",
           "artist": "Mauricio Herrera",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -97037,6 +97334,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Felipe-ii-promocional.png-1762834294350",
           "artist": "Mauricio Herrera",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -97066,6 +97364,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Dragon-demonio-promocional.png-1762834202045",
           "artist": "Mauricio Herrera",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -97095,6 +97394,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Ra-promocional.png-1762834140160",
           "artist": "Mauricio Herrera",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -97124,6 +97424,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Copia-de-tuatha-de-danaan-850-promocional.png-1762834024659",
           "artist": "Collage MyL",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -97321,6 +97622,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Daana-promocional.png-1762833390145",
           "artist": "Waldo Retamales",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -97350,6 +97652,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas/Romulo-y-remo-promocional.png-1762833343748",
           "artist": "Abbay",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -97433,6 +97736,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Dragon-dorado-promocional.png-1762833026965",
           "artist": "Chaman",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -97489,6 +97793,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/08-Encrucijada/237.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "FARAON"
           ],
@@ -97576,6 +97881,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/08-Encrucijada/240.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "HEROE"
           ],
@@ -97634,6 +97940,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/08-Encrucijada/242.png",
           "artist": "Waldo Retamales",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "FARAON"
           ],
@@ -97895,6 +98202,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/08-Encrucijada/251.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -98152,6 +98460,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/08-Encrucijada/260.png",
           "artist": "Carolina Eade",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -98179,6 +98488,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/08-Encrucijada/261.png",
           "artist": "Carolina Eade",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -98206,6 +98516,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/08-Encrucijada/262.png",
           "artist": "Carolina Eade",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -98368,6 +98679,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/08-Encrucijada/268.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -98395,6 +98707,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/08-Encrucijada/269.png",
           "artist": "Juan Vásquez",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -98449,6 +98762,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/08-Encrucijada/271.png",
           "artist": "Waldo Retamales",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -98476,6 +98790,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/08-Encrucijada/272.png",
           "artist": "Waldo Retamales",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -101179,6 +101494,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/001.png",
           "artist": "Waldo Retamales",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -101295,6 +101611,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/005.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -101353,6 +101670,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/007.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -101585,6 +101903,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/015.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "FARAON"
           ],
@@ -101643,6 +101962,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/017.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "FARAON"
           ],
@@ -101962,6 +102282,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/028.png",
           "artist": "Juan Vásquez",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "SACERDOTE"
           ],
@@ -102528,6 +102849,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/048.png",
           "artist": "Gabriel Rodriguez",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -103041,6 +103363,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/067.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -104303,6 +104626,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/184.png",
           "artist": "Andres Silva",
           "frequency": "VASALLO",
+          "unique": true,
           "race": [
             "SACERDOTE"
           ],
@@ -105283,6 +105607,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/220.png",
           "artist": "Genzo",
           "frequency": "VASALLO",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -107442,6 +107767,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/223.png",
           "artist": "Mauricio Herrera",
           "frequency": "ORO",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -107496,6 +107822,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/225.png",
           "artist": "Gabriel Rodriguez",
           "frequency": "ORO",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -107766,6 +108093,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/236.png",
           "artist": "Mauricio Herrera",
           "frequency": "ORO",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🪬 Dominios de Ra",
@@ -110334,6 +110662,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/06-Tierras-Altas/243.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -110479,6 +110808,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/06-Tierras-Altas/248.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -110508,6 +110838,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/06-Tierras-Altas/249.png",
           "artist": "Gabriel Rodriguez",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -111309,6 +111640,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/06-Tierras-Altas/278.png",
           "artist": "Gabriel Rodriguez",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -111593,6 +111925,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/001.png",
           "artist": "Waldo Retamales",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -111767,6 +112100,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/007.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -111999,6 +112333,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/015.png",
           "artist": "Gabriel Rodríguez",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -112942,6 +113277,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/048.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -113158,6 +113494,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/056.png",
           "artist": "Waldo Retamales",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -113320,6 +113657,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/063.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -117127,6 +117465,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/125.png",
           "artist": "Pablo Santander",
           "frequency": "CORTESANO",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🍀 Hijos de Daana",
@@ -118207,6 +118546,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Minas-de-gruash-promocional.png-1762827400427",
           "artist": "Collage MyL",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "DESAFIANTE"
           ],
@@ -118236,6 +118576,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Minas-de-gruash-promocional.png-1762827122241",
           "artist": "Collage MyL",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "DEFENSOR"
           ],
@@ -118373,6 +118714,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/04-Imperio/046.png",
           "artist": "Abbay",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -118508,6 +118850,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/04-Imperio/001.png",
           "artist": "Gabriel Rodriguez",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "HEROE"
           ],
@@ -118653,6 +118996,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/04-Imperio/006.png",
           "artist": "Abbay",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "OLIMPICO"
           ],
@@ -120165,6 +120509,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/004.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "OLIMPICO"
           ],
@@ -120339,6 +120684,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/010.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "OLIMPICO"
           ],
@@ -120629,6 +120975,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/020.png",
           "artist": "Abbay",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "HEROE"
           ],
@@ -120977,6 +121324,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/032.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "TITAN"
           ],
@@ -121427,6 +121775,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/048.png",
           "artist": "Juan Vásquez",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -121859,6 +122208,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/064.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Helénica",
@@ -126833,6 +127183,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/02-Cruzadas/003.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -126916,6 +127267,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/02-Cruzadas/006.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -126945,6 +127297,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/02-Cruzadas/007.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -127304,6 +127657,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/02-Cruzadas/020.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -127783,6 +128137,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/02-Cruzadas/063.png",
           "artist": "Mauricio Herrera",
           "frequency": "VASALLO",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -128399,6 +128754,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/02-Cruzadas/041.png",
           "artist": "Mauricio Herrera",
           "frequency": "CORTESANO",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -128588,6 +128944,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/221.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -132998,6 +133355,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Cruzada-de-los-ninos-promocional.png-1762829510730",
           "artist": "Mauricio Herrera",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -133518,6 +133876,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/018.png",
           "artist": "Mauricio Herrera",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -134347,6 +134706,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/047.png",
           "artist": "Chaman",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
