@@ -67545,6 +67545,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas-promo/204-GUE-Fe-sin-Limite-MazosCL.webp",
           "artist": "MARCOS VILLARROEL",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "☀️ Guerreros del Sol",
@@ -68393,6 +68394,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas-promo/199-GUE-Yggdrasil-MazosCL.webp",
           "artist": "MARCOS VILLARROEL",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "☀️ Guerreros del Sol",
@@ -68951,6 +68953,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/151-GUE-Trempulcahue-MazosCL.webp",
           "artist": "JOSÉ MUÑOZ",
           "frequency": "SECRETA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "☀️ Guerreros del Sol",
@@ -69111,6 +69114,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/156-GUE-Iqi-Balam-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "GUERRERO"
           ],
@@ -69145,6 +69149,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/157-GUE-Moctezuma-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -69179,6 +69184,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/158-GUE-Inti-Supremo-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -69213,6 +69219,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/159-GUE-Tezcatlipoca-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -69247,6 +69254,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/160-GUE-Quetzalcoatl-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -69281,6 +69289,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/161-GUE-Camazotz-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "BESTIA"
           ],
@@ -69315,6 +69324,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/162-GUE-Machitun-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "☀️ Guerreros del Sol",
@@ -73941,6 +73951,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/060-GUE-Las-Wangulen-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "☀️ Guerreros del Sol",
@@ -74101,6 +74112,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/065-GUE-Sacrificio-MazosCL.webp",
           "artist": "HERALDO ORTEGA",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "☀️ Guerreros del Sol",
@@ -75931,6 +75943,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/001-GUE-Kwanyip-MazosCL.webp",
           "artist": "IKKITOUCH",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "GUERRERO"
           ],
@@ -75965,6 +75978,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/002-GUE-Iqi-Balam-MazosCL.webp",
           "artist": "IKKITOUCH",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "GUERRERO"
           ],
@@ -75999,6 +76013,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/003-GUE-Moctezuma-MazosCL.webp",
           "artist": "IKKITOUCH",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -76033,6 +76048,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/004-GUE-Manco-Capac-MazosCL.webp",
           "artist": "IKKITOUCH",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -76067,6 +76083,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/005-GUE-Inti-Supremo-MazosCL.webp",
           "artist": "IKKITOUCH",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -76101,6 +76118,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/006-GUE-Huitzilopochtli-MazosCL.webp",
           "artist": "THOR",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -76135,6 +76153,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/007-GUE-Tezcatlipoca-MazosCL.webp",
           "artist": "THOR",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -76169,6 +76188,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/008-GUE-Ah-Puch-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -76203,6 +76223,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/009-GUE-Quetzalcoatl-MazosCL.webp",
           "artist": "IKKITOUCH",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -76237,6 +76258,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/010-GUE-Kukulcan-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -76271,6 +76293,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/011-GUE-Camazotz-MazosCL.webp",
           "artist": "PEYEYO",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "BESTIA"
           ],
@@ -76305,6 +76328,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/012-GUE-Camahueto-MazosCL.webp",
           "artist": "PEYEYO",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "BESTIA"
           ],
@@ -76339,6 +76363,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/013-GUE-Trempulcahue-MazosCL.webp",
           "artist": "JOSÉ MUÑOZ",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "☀️ Guerreros del Sol",
@@ -76371,6 +76396,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/014-GUE-Machitun-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "☀️ Guerreros del Sol",
@@ -76403,6 +76429,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/05-Guerreros/cartas/015-GUE-Tenochtitlan-MazosCL.webp",
           "artist": "HERALDO ORTEGA",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "☀️ Guerreros del Sol",
@@ -78881,6 +78908,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/especiales/007-LCF-Haiwatha-MazosCL.webp",
           "artist": "RODO ALARCÓN",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "Productos Especiales",
@@ -79679,6 +79707,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/218-TRO-Don-de-Gaia-MazosCL.webp",
           "artist": "KISSA",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🐴 Troya",
@@ -79841,6 +79870,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/211-TRO-Desleal-FOIL-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🐴 Troya",
@@ -80963,6 +80993,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/177-TRO-Trescientos-de-Esparta-FOIL-MazosCL.webp",
           "artist": "IKKITOUCH",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🐴 Troya",
@@ -81455,6 +81486,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/151-TRO-Don-de-Gaia-MazosCL.webp",
           "artist": "KISSA",
           "frequency": "SECRETA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🐴 Troya",
@@ -81487,6 +81519,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/152-TRO-Rayo-MazosCL.webp",
           "artist": "IKKITOUCH",
           "frequency": "SECRETA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🐴 Troya",
@@ -81615,6 +81648,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/156-TRO-Aquiles-Invencible-MazosCL.webp",
           "artist": "NITROX",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "GUERRERO"
           ],
@@ -81649,6 +81683,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/157-TRO-Heracles-MazosCL.webp",
           "artist": "NITROX",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -81683,6 +81718,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/158-TRO-Atenea-la-Sabia-MazosCL.webp",
           "artist": "NITROX",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -81717,6 +81753,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/159-TRO-Crono-Primigenio-MazosCL.webp",
           "artist": "NITROX",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -81751,6 +81788,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/160-TRO-Equidna-MazosCL.webp",
           "artist": "NITROX",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -81785,6 +81823,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/161-TRO-Fenix-Inmortal-MazosCL.webp",
           "artist": "NITROX",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "BESTIA"
           ],
@@ -81819,6 +81858,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/162-TRO-Olimpo-MazosCL.webp",
           "artist": "NITROX",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🐴 Troya",
@@ -88339,6 +88379,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/015-TRO-Olimpo-MazosCL.webp",
           "artist": "HERALDO ORTEGA",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🐴 Troya",
@@ -88831,6 +88872,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/006-TRO-Atenea-la-Sabia-MazosCL.webp",
           "artist": "ALEJANDRO CATALÁN",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -88865,6 +88907,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/007-TRO-Crono-Primigenio-MazosCL.webp",
           "artist": "IKKITOUCH",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -88899,6 +88942,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/008-TRO-Hades-del-Inframundo-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -88933,6 +88977,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/009-TRO-Equidna-MazosCL.webp",
           "artist": "PEYEYO",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -88967,6 +89012,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/010-TRO-Hidra-de-Lernea-MazosCL.webp",
           "artist": "PEYEYO",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -89001,6 +89047,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/011-TRO-Fenix-Inmortal-MazosCL.webp",
           "artist": "ALEJANDRO CATALÁN",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "BESTIA"
           ],
@@ -89035,6 +89082,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/012-TRO-Cerbero-MazosCL.webp",
           "artist": "PEYEYO",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "BESTIA"
           ],
@@ -89069,6 +89117,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/013-TRO-Don-de-Gaia-MazosCL.webp",
           "artist": "KISSA",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🐴 Troya",
@@ -89101,6 +89150,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/014-TRO-Rayo-MazosCL.webp",
           "artist": "IKKITOUCH",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🐴 Troya",
@@ -89133,6 +89183,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/004-TRO-Teseo-de-Atenas-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -89167,6 +89218,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/005-TRO-Zeus-de-Olimpia-MazosCL.webp",
           "artist": "IKKITOUCH",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -89201,6 +89253,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/001-TRO-Aquiles-Invencible-MazosCL.webp",
           "artist": "IKKITOUCH",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "GUERRERO"
           ],
@@ -89235,6 +89288,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/002-TRO-Odiseo-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "GUERRERO"
           ],
@@ -89269,6 +89323,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/04-Troya/cartas/003-TRO-Heracles-MazosCL.webp",
           "artist": "IKKITOUCH",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -89933,6 +89988,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas-mazos/030-MI-El-Gran-Zeus-MazosCL.webp",
           "artist": "MAURICIO HERRERA",
           "frequency": "REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -90001,6 +90057,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas-mazos/032-MI-Golpear-la-Tierra-MazosCL.webp",
           "artist": "DRACO",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "Productos Especiales",
@@ -91263,6 +91320,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas-ext/218-HM-Incinerar-MazosCL.webp",
           "artist": "IKKITOUCH",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🗡️ Excalibur",
@@ -91295,6 +91353,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas-ext/219-HM-Romulo-y-Remo-MazosCL.webp",
           "artist": "GOTA",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🗡️ Excalibur",
@@ -91327,6 +91386,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas-ext/220-HM-Ra-MazosCL.webp",
           "artist": "ALEJANDRO CATALÁN",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -91997,6 +92057,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/308-HM-Percival-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "Productos Especiales",
@@ -92029,6 +92090,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/309-HM-Pryderi-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "Productos Especiales",
@@ -92061,6 +92123,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/310-HM-Ra-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -92127,6 +92190,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/302-HM-Anubis-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "Productos Especiales",
@@ -92191,6 +92255,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/304-HM-Bola-de-Fuego-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "Productos Especiales",
@@ -92289,6 +92354,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/307-HM-Nanna-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "Productos Especiales",
@@ -92321,6 +92387,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/312-HM-Fe-sin-Limite-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "Productos Especiales",
@@ -92353,6 +92420,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/209-EXC-Ballesta-FOIL-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "Productos Especiales",
@@ -92385,6 +92453,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/210-EXC-Sargon-el-Grande-FOIL-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "GUERRERO"
           ],
@@ -92859,6 +92928,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/205-EXC-Ofion-FOIL-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -92893,6 +92963,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/206-EXC-Victoria-de-Hercules-FOIL-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "Productos Especiales",
@@ -93227,6 +93298,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/176-EXC-Haquika-FOIL-MazosCL.webp",
           "artist": "GIANINA VILLAGRÁN  ",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🗡️ Excalibur",
@@ -93291,6 +93363,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/Ebisu-promocional.png-1769004040250",
           "artist": "THOR",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🗡️ Excalibur",
@@ -93355,6 +93428,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/Anima-negra-promocional.png-1769003996460",
           "artist": "IKKITOUCH",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🗡️ Excalibur",
@@ -93689,6 +93763,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/171-EXC-Descanso-del-Rey-FOIL-MazosCL.webp",
           "artist": "NITROX",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🗡️ Excalibur",
@@ -94079,6 +94154,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/156-EXC-Rey-Arturo-MazosCL.webp",
           "artist": "GENZO",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -94113,6 +94189,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/157-EXC-Hengist-el-Sajon-MazosCL.webp",
           "artist": "IKKITOUCH",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "GUERRERO"
           ],
@@ -94147,6 +94224,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/158-EXC-Arawn-MazosCL.webp",
           "artist": "SARA CONTRERAS",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -94181,6 +94259,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/159-EXC-Morgana-MazosCL.webp",
           "artist": "NITROX",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -94215,6 +94294,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/160-EXC-Y-Ddraig-Goch-MazosCL.webp",
           "artist": "FRANCISCO GUERRA",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -94249,6 +94329,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/161-EXC-Grifo-Sacro-MazosCL.webp",
           "artist": "JOSE MUÑOZ",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "BESTIA"
           ],
@@ -94283,6 +94364,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/162-EXC-Merlin-Ambrosius-MazosCL.webp",
           "artist": "NITROX",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🗡️ Excalibur",
@@ -94315,6 +94397,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/151-EXC-Desleal-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "SECRETA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🗡️ Excalibur",
@@ -94347,6 +94430,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/152-EXC-Incinerar-MazosCL.webp",
           "artist": "GENZO",
           "frequency": "SECRETA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🗡️ Excalibur",
@@ -99659,6 +99743,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/069-EXC-Descanso-del-Rey-MazosCL.webp",
           "artist": "THOR",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🗡️ Excalibur",
@@ -101321,6 +101406,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/015-EXC-Incinerar-MazosCL.webp",
           "artist": "GENZO",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🗡️ Excalibur",
@@ -101353,6 +101439,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/013-EXC-Merlin-Ambrosius-MazosCL.webp",
           "artist": "GENZO",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🗡️ Excalibur",
@@ -101385,6 +101472,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/014-EXC-Desleal-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🗡️ Excalibur",
@@ -101417,6 +101505,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/011-EXC-Grifo-Sacro-MazosCL.webp",
           "artist": "GIANINA VILLAGRAN",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "BESTIA"
           ],
@@ -101451,6 +101540,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/012-EXC-Remora-Terrestre-MazosCL.webp",
           "artist": "GENZO",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "BESTIA"
           ],
@@ -101485,6 +101575,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/008-EXC-Mordred-MazosCL.webp",
           "artist": "PEYEYO",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -101519,6 +101610,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/009-EXC-Dragon-Dorado-MazosCL.webp",
           "artist": "CHAMÁN",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -101553,6 +101645,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/010-EXC-Y-Ddraig-Goch-MazosCL.webp",
           "artist": "JOSÉ MUÑOZ ",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -101587,6 +101680,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/002-EXC-Sir-Lancelot-MazosCL.webp",
           "artist": "NITROX",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -101621,6 +101715,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/003-EXC-Hengist-el-Sajon-MazosCL.webp",
           "artist": "HERALDO ORTEGA",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "GUERRERO"
           ],
@@ -101655,6 +101750,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/004-EXC-Cribewr-el-Gigante-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "GUERRERO"
           ],
@@ -101689,6 +101785,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/005-EXC-Arawn-MazosCL.webp",
           "artist": "MATÍAS HABERT",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -101723,6 +101820,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/006-EXC-Titania-MazosCL.webp",
           "artist": "MATÍAS HABERT",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -101757,6 +101855,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/007-EXC-Morgana-MazosCL.webp",
           "artist": "JP AGUIRRE",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -101791,6 +101890,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/03-Excalibur/cartas/001-EXC-Rey-Arturo-MazosCL.webp",
           "artist": "WALDO RETAMALES",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -101889,6 +101989,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/223-ROM-Llamar-a-la-Manada-MazosCL.webp",
           "artist": "Madeline Boni",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Roma",
@@ -101921,6 +102022,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/224-ROM-Devastador-MazosCL.webp",
           "artist": "Draco",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "BESTIA"
           ],
@@ -101987,6 +102089,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/226-ROM-Guillatun-MazosCL.webp",
           "artist": "Snoop",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Roma",
@@ -103419,6 +103522,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/218-ROM-Eastre-MazosCL.webp",
           "artist": "Carolina Eade",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -104049,6 +104153,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/156-ROM-Julio-Cesar-MazosCL.webp",
           "artist": "",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -104083,6 +104188,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/157-ROM-Espartaco-MazosCL.webp",
           "artist": "Nezt",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "GUERRERO"
           ],
@@ -104117,6 +104223,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/158-ROM-Marte-MazosCL.webp",
           "artist": "",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -104151,6 +104258,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/159-ROM-Pluton-MazosCL.webp",
           "artist": "",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -104185,6 +104293,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/160-ROM-Ofion-MazosCL.webp",
           "artist": "",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -104219,6 +104328,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/161-ROM-Luperca-MazosCL.webp",
           "artist": "",
           "frequency": "LEGENDARIA",
+          "unique": true,
           "race": [
             "BESTIA"
           ],
@@ -104253,6 +104363,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/151-ROM-Victoria-De-Hercules-MazosCL.webp",
           "artist": "",
           "frequency": "SECRETA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Roma",
@@ -104285,6 +104396,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/152-ROM-Romulo-Y-Remo-MazosCL.webp",
           "artist": "",
           "frequency": "SECRETA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Roma",
@@ -104317,6 +104429,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/153-ROM-Cruzar-El-Rubicon-MazosCL.webp",
           "artist": "",
           "frequency": "SECRETA",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Roma",
@@ -111267,6 +111380,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/009-ROM-Sybaris-MazosCL.webp",
           "artist": "",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -111301,6 +111415,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/010-ROM-Ofion-MazosCL.webp",
           "artist": "",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "DRAGON"
           ],
@@ -111335,6 +111450,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/011-ROM-Cetus-MazosCL.webp",
           "artist": "",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "BESTIA"
           ],
@@ -111369,6 +111485,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/012-ROM-Luperca-MazosCL.webp",
           "artist": "",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "BESTIA"
           ],
@@ -111403,6 +111520,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/013-ROM-Victoria-De-Hercules-MazosCL.webp",
           "artist": "",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Roma",
@@ -111435,6 +111553,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/014-ROM-Romulo-Y-Remo-MazosCL.webp",
           "artist": "",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Roma",
@@ -111467,6 +111586,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/015-ROM-Cruzar-El-Rubicon-MazosCL.webp",
           "artist": "",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🏛️ Roma",
@@ -111533,6 +111653,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/001-ROM-Julio-Cesar-MazosCL.webp",
           "artist": "",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -111567,6 +111688,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/002-ROM-Cesar-Augusto-MazosCL.webp",
           "artist": "",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -111601,6 +111723,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/003-ROM-Anibal-MazosCL.webp",
           "artist": "",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "GUERRERO"
           ],
@@ -111635,6 +111758,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/004-ROM-Espartaco-MazosCL.webp",
           "artist": "Nezt",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "GUERRERO"
           ],
@@ -111669,6 +111793,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/005-ROM-Jupiter-MazosCL.webp",
           "artist": "",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -111703,6 +111828,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/006-ROM-Marte-MazosCL.webp",
           "artist": "",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -111737,6 +111863,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/007-ROM-Pluton-MazosCL.webp",
           "artist": "",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -111771,6 +111898,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/02-Roma/cartas/008-ROM-Invidia-MazosCL.webp",
           "artist": "",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "SOMBRA"
           ],
@@ -111939,6 +112067,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/03-EstrellasFX/001-1FUSTR-Alejandro-Magno-MazosCL.webp",
           "artist": "JP Aguirre",
           "frequency": "REWORK",
+          "unique": true,
           "race": [
             "GUERRERO"
           ],
@@ -111973,6 +112102,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/03-EstrellasFX/006-1FUSTR-Arturo-de-Camelot-MazosCL.webp",
           "artist": "Waldo Retamales",
           "frequency": "REWORK",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
@@ -112007,6 +112137,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/03-EstrellasFX/007-1FUSTR-Thor-MazosCL.webp",
           "artist": "Genzo",
           "frequency": "REWORK",
+          "unique": true,
           "race": [
             "GUERRERO"
           ],
@@ -112041,6 +112172,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/03-EstrellasFX/008-1FUSTR-Thanatos-MazosCL.webp",
           "artist": "JP Aguirre",
           "frequency": "REWORK",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🔥 Furia",
@@ -112073,6 +112205,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/03-EstrellasFX/009-1FUSTR-Henry-II-MazosCL.webp",
           "artist": "Alejandro Rojas",
           "frequency": "REWORK",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🔥 Furia",
@@ -114771,6 +114904,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/cartas/207-1FU-Ebisu-MazosCL.webp",
           "artist": "Mauricio Herrera",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🔥 Furia",
@@ -114905,6 +115039,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/cartas/206-1FU-Nanna-MazosCL.webp",
           "artist": "Carolina Eade",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🔥 Furia",
@@ -114937,6 +115072,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/cartas/201-1FU-Alejandro-Magno-MazosCL.webp",
           "artist": "JP Aguirre",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "GUERRERO"
           ],
@@ -114971,6 +115107,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/cartas/202-1FU-Ra-MazosCL.webp",
           "artist": "Trejoe",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -115005,6 +115142,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/cartas/203-1FU-Nima-Negra-MazosCL.webp",
           "artist": "Brolo",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🔥 Furia",
@@ -115037,6 +115175,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/cartas/204-1FU-Ballesta-MazosCL.webp",
           "artist": "Felipe Gaona",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🔥 Furia",
@@ -115069,6 +115208,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/cartas/205-1FU-Hidromiel-MazosCL.webp",
           "artist": "Madeline Boni & Trejoe",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🔥 Furia",
@@ -119791,6 +119931,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/cartas/051-1FU-Llamar-a-la-Manada-MazosCL.webp",
           "artist": "Madeline Boni",
           "frequency": "REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🔥 Furia",
@@ -121111,6 +121252,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/cartas/008-1FU-Percival-MazosCL.webp",
           "artist": "Carolina Eade",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🔥 Furia",
@@ -121143,6 +121285,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/cartas/009-1FU-Pryderi-MazosCL.webp",
           "artist": "Trejoe",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🔥 Furia",
@@ -121175,6 +121318,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/cartas/010-1FU-Bola-de-Fuego-MazosCL.webp",
           "artist": "BadillaFloyd",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🔥 Furia",
@@ -121207,6 +121351,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/cartas/011-1FU-Haquika-MazosCL.webp",
           "artist": "Madeline Boni",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🔥 Furia",
@@ -121239,6 +121384,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/cartas/012-1FU-Fe-sin-Limites-MazosCL.webp",
           "artist": "",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🔥 Furia",
@@ -121271,6 +121417,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/cartas/013-1FU-Guillatun-MazosCL.webp",
           "artist": "Snoop",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🔥 Furia",
@@ -121303,6 +121450,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/cartas/014-1FU-Henry-II-MazosCL.webp",
           "artist": "Alejandro Rojas",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🔥 Furia",
@@ -121437,6 +121585,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/cartas/006-1FU-Anubis-MazosCL.webp",
           "artist": "Christian Aguirre",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🔥 Furia",
@@ -121469,6 +121618,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/cartas/007-1FU-Thanatos-MazosCL.webp",
           "artist": "JP Aguirre",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🔥 Furia",
@@ -121501,6 +121651,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/cartas/005-1FU-Xolotl-MazosCL.webp",
           "artist": "Brolo",
           "frequency": "MEGA_REAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🔥 Furia",
@@ -121533,6 +121684,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/cartas/002-1FU-Zeus-MazosCL.webp",
           "artist": "Mauricio Herrera",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "ETERNO"
           ],
@@ -121567,6 +121719,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/cartas/003-1FU-Thor-MazosCL.webp",
           "artist": "Genzo",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "GUERRERO"
           ],
@@ -121601,6 +121754,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/cartas/004-1FU-Devastador-MazosCL.webp",
           "artist": "Draco",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "BESTIA"
           ],
@@ -121635,6 +121789,7 @@
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/01-Furia/cartas/001-1FU-Arturo-de-Camelot-MazosCL.webp",
           "artist": "Waldo Retamales",
           "frequency": "ULTRA_REAL",
+          "unique": true,
           "race": [
             "CABALLERO"
           ],
