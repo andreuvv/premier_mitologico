@@ -146,6 +146,12 @@
   border-color: var(--ocher);
 }
 
+.editionPickerSelect:disabled {
+  opacity: 0.6;
+  cursor: default;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
 .editionPickerSelect option {
   background: #1e1e1e;
 }
@@ -509,6 +515,11 @@
 .btnPlus {
   background: var(--sage-green);
   color: #fff;
+}
+
+.btnPlus:disabled {
+  opacity: 0.3;
+  cursor: default;
 }
 
 .cardCountText {

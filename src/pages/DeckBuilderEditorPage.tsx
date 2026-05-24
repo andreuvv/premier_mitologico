@@ -11,6 +11,18 @@ import styles from './DeckBuilderEditorPage.module.css';
 const DECK_SIZE = 50;
 const CARDS_PER_PAGE = 75;
 
+// Auto-select edition for pb-edicion based on race
+const RACE_TO_EDITION: Record<string, string> = {
+  // Espada Sagrada
+  Faerie: 'espada-sagrada', Dragon: 'espada-sagrada', Caballero: 'espada-sagrada',
+  // Helénica
+  Titan: 'helenica', Olimpico: 'helenica', Heroe: 'helenica',
+  // Hijos de Daana
+  Desafiante: 'hijos-de-daana', Defensor: 'hijos-de-daana', Sombra: 'hijos-de-daana',
+  // Dominios de Ra
+  Eterno: 'dominios-de-ra', Sacerdote: 'dominios-de-ra', Faraon: 'dominios-de-ra',
+};
+
 const TYPE_TABS = [
   { value: '', label: 'Todos' },
   { value: 'Aliado', label: 'Aliados' },
@@ -66,7 +78,9 @@ export default function DeckBuilderEditorPage() {
   const [deckId, setDeckId] = useState<string | null>(urlDeckId);
 
   // For pb-edicion: user picks the edition from a dropdown in the editor header
-  const [lockedEdition, setLockedEdition] = useState<string | null>(null);
+  // Auto-select based on race if available
+  const autoEdition = subformat === 'pb-edicion' ? (RACE_TO_EDITION[race] ?? null) : null;
+  const [lockedEdition, setLockedEdition] = useState<string | null>(autoEdition);
 
   // Card detail modal
   const [selectedCard, setSelectedCard] = useState<CollectionCard | null>(null);
@@ -144,6 +158,15 @@ export default function DeckBuilderEditorPage() {
     if (attackFilter !== '') {
       cards = cards.filter((c) => c.attack === parseInt(attackFilter, 10));
     }
+    // Group same-name cards together so different designs/editions of the
+    // same card appear side by side. Sort by normalized name first, then
+    // by edition slug as a secondary key.
+    cards.sort((a, b) => {
+      const na = normalizeStr(a.name);
+      const nb = normalizeStr(b.name);
+      if (na !== nb) return na.localeCompare(nb);
+      return (a.edition?.slug ?? '').localeCompare(b.edition?.slug ?? '');
+    });
     return cards;
   }, [allCards, search, typeFilter, costFilter, attackFilter, rules.isCardVisible]);
 
@@ -294,6 +317,7 @@ export default function DeckBuilderEditorPage() {
                 className={styles.editionPickerSelect}
                 value={lockedEdition ?? ''}
                 onChange={(e) => setLockedEdition(e.target.value || null)}
+                disabled={autoEdition !== null}
               >
                 <option value="">— Selecciona una edición —</option>
                 {editionOptions.map((ed) => (
@@ -407,6 +431,7 @@ export default function DeckBuilderEditorPage() {
           <div className={styles.cardGrid}>
             {paginatedCards.map((card) => {
               const count = deckCards[card.id] ?? 0;
+              const groupCount = rules.getGroupCount(card);
               const hardMax = rules.getHardMax(card);
               const canAddMore = rules.canAdd(card);
               const isBanned = hardMax === 0;
@@ -435,8 +460,7 @@ export default function DeckBuilderEditorPage() {
                     )}
                     {count > 0 && (
                       <div className={styles.cardCountBadge}>{count}</div>
-                    )}
-                    {isBanned && (
+                    )}                    {isBanned && (
                       <div className={styles.bannedOverlay}>PROHIBIDA</div>
                     )}
                     {isUnique && (
@@ -452,7 +476,7 @@ export default function DeckBuilderEditorPage() {
                       −
                     </button>
                     <span className={styles.cardCountText}>
-                      {count}/{maxLabel}
+                      {groupCount}/{maxLabel}
                     </span>
                     <button
                       className={styles.btnPlus}

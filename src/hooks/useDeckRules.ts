@@ -7,6 +7,7 @@ export type DeckSubformat = 'pb-edicion' | 'pb-libre' | 'fx-vcr' | 'fx-libre';
 const DRACULA_EDITION_SLUG = 'dracula-inferno';
 const VCR_FREQUENCIES = new Set(['VASALLO', 'CORTESANO', 'REAL', 'ORO']);
 const MIN_ALIADOS = 16;
+const DECK_SIZE = 50;
 
 // ── Name normalization for cross-reprint matching ─────────────────────────────
 export function normalizeName(name: string): string {
@@ -66,6 +67,8 @@ export interface DeckRulesResult {
   availableToAdd: (card: CollectionCard) => number;
   /** Whether the + button should be enabled */
   canAdd: (card: CollectionCard) => boolean;
+  /** Total copies in deck of all cards sharing the same name+type */
+  getGroupCount: (card: CollectionCard) => number;
   /** Validation errors (must fix before saving) */
   errors: string[];
   /** Validation warnings (informational) */
@@ -136,6 +139,12 @@ export function useDeckRules({
     }
     return map;
   }, [deckEntries]);
+
+  // Total number of cards in deck (all copies)
+  const totalDeckCount = useMemo(
+    () => deckEntries.reduce((s, { count }) => s + count, 0),
+    [deckEntries],
+  );
 
   const deckNameTypeKeys = useMemo(
     () => new Set(countByNameType.keys()),
@@ -221,8 +230,15 @@ export function useDeckRules({
   }, [getHardMax, countByNameType]);
 
   const canAdd = useMemo(
-    () => (card: CollectionCard): boolean => availableToAdd(card) > 0,
-    [availableToAdd],
+    () => (card: CollectionCard): boolean =>
+      availableToAdd(card) > 0 && totalDeckCount < DECK_SIZE,
+    [availableToAdd, totalDeckCount],
+  );
+
+  const getGroupCount = useMemo(
+    () => (card: CollectionCard): number =>
+      countByNameType.get(cardKey(card.name, card.type)) ?? 0,
+    [countByNameType],
   );
 
   // ── Validation ────────────────────────────────────────────────────────────
@@ -326,6 +342,7 @@ export function useDeckRules({
     getHardMax,
     availableToAdd,
     canAdd,
+    getGroupCount,
     errors,
     warnings,
     deckNameTypeKeys,
