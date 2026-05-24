@@ -75,7 +75,7 @@ export default function DeckBuilderEditorPage() {
   const [loading, setLoading] = useState(true);
   const [deckCards, setDeckCards] = useState<Record<number, number>>({});
   const [name, setName] = useState(initialName);
-  const [deckId, setDeckId] = useState<string | null>(urlDeckId);
+  const [deckId] = useState<string | null>(urlDeckId);
 
   // For pb-edicion: user picks the edition from a dropdown in the editor header
   // Auto-select based on race if available
@@ -207,7 +207,9 @@ export default function DeckBuilderEditorPage() {
       race,
       cards: deckCards,
     });
-    if (id && !deckId) setDeckId(id);
+    if (id) {
+      navigate('/deck-builder');
+    }
   };
 
   // ── Deck list (with card objects) ─────────────────────────────────────────
@@ -344,6 +346,14 @@ export default function DeckBuilderEditorPage() {
           </button>
         </div>
       </div>
+
+      {/* ── Saving overlay ──────────────────────────────────────────────── */}
+      {saveStatus === 'saving' && (
+        <div className={styles.savingOverlay}>
+          <div className={styles.savingSpinner} />
+          <span>Guardando mazo...</span>
+        </div>
+      )}
 
       {/* ── Main layout ────────────────────────────────────────────────────── */}
       <div className={styles.layout}>
