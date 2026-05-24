@@ -1,8 +1,23 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
-import { useUserDecks, UserDeck } from '../hooks/useUserDecks';
+import { useUserDecks, UserDeck, PublicDeck } from '../hooks/useUserDecks';
 import styles from './DeckBuilderHomePage.module.css';
+
+const RACE_TO_EDITION: Record<string, string> = {
+  Faerie: 'espada-sagrada', Dragon: 'espada-sagrada', Caballero: 'espada-sagrada',
+  Titan: 'helenica', Olimpico: 'helenica', Heroe: 'helenica',
+  Desafiante: 'hijos-de-daana', Defensor: 'hijos-de-daana', Sombra: 'hijos-de-daana',
+  Eterno: 'dominios-de-ra', Sacerdote: 'dominios-de-ra', Faraon: 'dominios-de-ra',
+};
+
+const EDITION_LABELS: Record<string, string> = {
+  'espada-sagrada': 'Espada Sagrada',
+  'helenica': 'Helénica',
+  'hijos-de-daana': 'Hijos de Daana',
+  'dominios-de-ra': 'Dominios de Ra',
+  'dracula-inferno': 'Drácula & Infierno',
+};
 
 const PB_RACES = [
   'Caballero', 'Defensor', 'Desafiante', 'Dragon', 'Eterno',
@@ -145,12 +160,15 @@ function NewDeckModal({ onClose, onCreate }: NewDeckModalProps) {
 export default function DeckBuilderHomePage() {
   const { user } = useAuth();
   const navigate = useNavigate();
-  const { loadDecks, deleteDeck } = useUserDecks();
+  const { loadDecks, loadAllDecks, deleteDeck } = useUserDecks();
   const [tab, setTab] = useState<Tab>('myDecks');
   const [showModal, setShowModal] = useState(false);
   const [decks, setDecks] = useState<UserDeck[]>([]);
   const [decksLoading, setDecksLoading] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [exploreDecks, setExploreDecks] = useState<PublicDeck[]>([]);
+  const [exploreLoading, setExploreLoading] = useState(false);
+  const [exploreLoaded, setExploreLoaded] = useState(false);
 
   const fetchDecks = useCallback(async () => {
     if (!user) return;
@@ -163,6 +181,15 @@ export default function DeckBuilderHomePage() {
   useEffect(() => {
     fetchDecks();
   }, [fetchDecks]);
+
+  // Load explore decks only once when the tab is first opened
+  useEffect(() => {
+    if (tab !== 'explore' || exploreLoaded) return;
+    setExploreLoading(true);
+    loadAllDecks(user?.id)
+      .then((decks) => { setExploreDecks(decks); setExploreLoaded(true); })
+      .finally(() => setExploreLoading(false));
+  }, [tab, exploreLoaded, user?.id, loadAllDecks]);
 
   const handleDelete = async (deckId: string) => {
     if (!window.confirm('¿Eliminar este mazo? Esta acción no se puede deshacer.')) return;
@@ -286,10 +313,58 @@ export default function DeckBuilderHomePage() {
 
       {/* Tab: Explorar */}
       {tab === 'explore' && (
-        <div className={styles.emptyState}>
-          <div className={styles.emptyIcon}>🔍</div>
-          <p className={styles.emptyText}>Próximamente podrás explorar mazos de otros jugadores.</p>
-        </div>
+        <>
+          {exploreLoading ? (
+            <div className={styles.emptyState}>
+              <p className={styles.emptyText}>Cargando mazos...</p>
+            </div>
+          ) : exploreDecks.length === 0 ? (
+            <div className={styles.emptyState}>
+              <div className={styles.emptyIcon}>🔍</div>
+              <p className={styles.emptyText}>No hay mazos públicos todavía.</p>
+            </div>
+          ) : (
+            <div className={styles.deckGrid}>
+              {exploreDecks.map((deck) => {
+                const formatLabel = deck.format === 'fx' ? 'Furia Extendido' : 'Primer Bloque';
+                const subformatLabel =
+                  deck.subformat === 'pb-edicion' ? 'Racial Edición' :
+                  deck.subformat === 'pb-libre'   ? 'Racial Libre' :
+                  deck.subformat === 'fx-vcr'     ? 'VCR' : 'Racial Libre';
+                const editionSlug = deck.subformat === 'pb-edicion'
+                  ? (RACE_TO_EDITION[deck.race] ?? null)
+                  : null;
+                const editionLabel = editionSlug ? (EDITION_LABELS[editionSlug] ?? null) : null;
+                return (
+                  <div key={deck.id} className={styles.deckCard}>
+                    <div className={styles.deckCardHeader}>
+                      <h3 className={styles.deckCardName}>{deck.name}</h3>
+                      <span className={styles.exploreAuthor}>@{deck.authorName}</span>
+                    </div>
+                    <div className={styles.deckCardMeta}>
+                      <span className={styles.deckCardTag}>{formatLabel}</span>
+                      <span className={styles.deckCardTag}>{subformatLabel}</span>
+                      {deck.race && <span className={styles.deckCardTag}>{deck.race}</span>}
+                      {editionLabel && (
+                        <span className={`${styles.deckCardTag} ${styles.deckCardTagEdition}`}>
+                          {editionLabel}
+                        </span>
+                      )}
+                    </div>
+                    <div className={styles.deckCardActions}>
+                      <button
+                        className={styles.deckViewBtn}
+                        onClick={() => navigate(`/deck-builder/viewer?deckId=${deck.id}`)}
+                      >
+                        👁 Ver Mazo
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </>
       )}
 
       {/* Modal */}

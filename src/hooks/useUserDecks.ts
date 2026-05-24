@@ -13,6 +13,10 @@ export interface UserDeck {
   updated_at: string;
 }
 
+export interface PublicDeck extends UserDeck {
+  authorName: string;
+}
+
 interface RawDeckRow {
   id: string;
   user_id: string;
@@ -140,6 +144,37 @@ export function useUserDecks() {
     return (data as RawDeckRow[]).map(parseRow);
   }, []);
 
+  /** Load all public decks from other users, with author username. */
+  const loadAllDecks = useCallback(async (excludeUserId?: string): Promise<PublicDeck[]> => {
+    let query = supabase
+      .from('user_decks')
+      .select('*')
+      .order('updated_at', { ascending: false })
+      .limit(100);
+
+    if (excludeUserId) {
+      query = query.neq('user_id', excludeUserId);
+    }
+
+    const { data: decksData, error } = await query;
+    if (error || !decksData || decksData.length === 0) return [];
+
+    const userIds = [...new Set((decksData as RawDeckRow[]).map((d) => d.user_id))];
+    const { data: profilesData } = await supabase
+      .from('profiles')
+      .select('id, username')
+      .in('id', userIds);
+
+    const usernameMap = new Map<string, string>(
+      ((profilesData ?? []) as { id: string; username: string }[]).map((p) => [p.id, p.username]),
+    );
+
+    return (decksData as RawDeckRow[]).map((row) => ({
+      ...parseRow(row),
+      authorName: usernameMap.get(row.user_id) ?? 'Anónimo',
+    }));
+  }, []);
+
   /** Delete a deck by id. */
   const deleteDeck = useCallback(async (deckId: string): Promise<boolean> => {
     const { error } = await supabase
@@ -149,5 +184,5 @@ export function useUserDecks() {
     return !error;
   }, []);
 
-  return { saveDeck, loadDeck, loadDecks, deleteDeck, saveStatus, saveError };
+  return { saveDeck, loadDeck, loadDecks, loadAllDecks, deleteDeck, saveStatus, saveError };
 }

@@ -5,7 +5,7 @@ import { loadCollectionCards } from '../services/collectionService';
 import { useBanlist } from '../hooks/useBanlist';
 import { useDeckRules, DeckSubformat } from '../hooks/useDeckRules';
 import { useUserDecks, UserDeck } from '../hooks/useUserDecks';
-import { useAuth } from '../hooks/useAuth';
+import { supabase } from '../config/supabase';
 import CardDetailModal from '../components/CardDetailModal';
 import styles from './DeckViewerPage.module.css';
 
@@ -69,7 +69,6 @@ function isOroSinHabilidad(card: CollectionCard): boolean {
 export default function DeckViewerPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const { user } = useAuth();
   const { loadDeck } = useUserDecks();
 
   const deckId = searchParams.get('deckId') ?? '';
@@ -78,6 +77,7 @@ export default function DeckViewerPage() {
   const [allCards, setAllCards] = useState<CollectionCard[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedCard, setSelectedCard] = useState<CollectionCard | null>(null);
+  const [authorName, setAuthorName] = useState<string>('Anónimo');
 
   // Derived from deck
   const format = (deck?.format ?? 'pb') as 'pb' | 'fx';
@@ -99,6 +99,16 @@ export default function DeckViewerPage() {
         if (cancelled) return;
         if (!d) { setLoading(false); return; }
         setDeck(d);
+
+        // Fetch deck owner's username from profiles
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('username')
+          .eq('id', d.user_id)
+          .single();
+        if (!cancelled) {
+          setAuthorName((profile as { username: string } | null)?.username ?? 'Anónimo');
+        }
 
         const collectionFormat = d.format === 'fx'
           ? CollectionFormat.FURIA_EXTENDIDO
@@ -168,12 +178,7 @@ export default function DeckViewerPage() {
   const editionSlug = subformat === 'pb-edicion' ? (RACE_TO_EDITION[race] ?? null) : null;
   const editionLabel = editionSlug ? (EDITION_LABELS[editionSlug] ?? editionSlug) : null;
 
-  // Author display
-  const authorName =
-    user?.user_metadata?.full_name ??
-    user?.user_metadata?.name ??
-    user?.email ??
-    'Anónimo';
+  // authorName is set from profiles table in useEffect
 
   if (loading) {
     return (

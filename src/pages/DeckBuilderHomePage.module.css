@@ -196,6 +196,36 @@
   cursor: not-allowed;
 }
 
+.deckViewBtn {
+  flex: 1;
+  background: rgba(75, 139, 163, 0.12);
+  border: 1px solid var(--petrol-blue);
+  color: #a8d4e8;
+  border-radius: 6px;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.deckViewBtn:hover {
+  background: rgba(75, 139, 163, 0.28);
+}
+
+.deckCardTagEdition {
+  background: rgba(75, 139, 163, 0.12);
+  border-color: rgba(75, 139, 163, 0.4);
+  color: #a8d4e8;
+}
+
+.exploreAuthor {
+  font-size: 0.75rem;
+  color: rgba(234, 221, 207, 0.5);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
 /* ─── Empty State ─────────────────────────────────────────────────────────── */
 
 .emptyState {
