@@ -33,22 +33,31 @@ const TYPE_TABS = [
 ];
 
 const TYPE_STATS = [
-  { type: 'Aliado', label: 'Aliados' },
+  { type: 'Aliado',   label: 'Aliados' },
+  { type: 'Arma',     label: 'Armas' },
   { type: 'Talisman', label: 'Talismanes' },
-  { type: 'Arma', label: 'Armas' },
-  { type: 'Totem', label: 'Tótems' },
-  { type: 'Oro', label: 'Oros' },
+  { type: 'Totem',    label: 'Tótems' },
+  { type: 'Oro',      label: 'Oros' },
 ];
 
 const TYPE_DISPLAY: Record<string, string> = {
-  Aliado: 'Aliados',
+  Aliado:   'Aliados',
+  Arma:     'Armas',
   Talisman: 'Talismanes',
-  Arma: 'Armas',
-  Totem: 'Tótems',
-  Oro: 'Oros',
+  Totem:    'Tótems',
+  Oro:      'Oros',
 };
 
-const TYPE_ORDER = ['Aliado', 'Talisman', 'Arma', 'Totem', 'Oro'];
+const TYPE_ORDER = ['Aliado', 'Arma', 'Talisman', 'Totem', 'Oro'];
+
+function stripHtml(s: string): string {
+  return s.replace(/<[^>]*>/g, '').trim();
+}
+
+function isOroSinHabilidad(card: { effect?: string }): boolean {
+  const text = stripHtml(card.effect ?? '').toLowerCase();
+  return text === '' || text.includes('oro sin habilidad');
+}
 
 const normalizeStr = (s: string) =>
   s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
@@ -224,21 +233,29 @@ export default function DeckBuilderEditorPage() {
       if (count <= 0) continue;
       const card = cardById.get(Number(idStr));
       if (!card) continue;
-      const t = card.type ?? 'Otro';
+      const rawType = card.type ?? 'Otro';
+      const t = rawType.charAt(0).toUpperCase() + rawType.slice(1).toLowerCase();
       if (!groups[t]) groups[t] = [];
       groups[t].push({ card, count });
     }
-    // Sort cards within each type by name
-    for (const items of Object.values(groups)) {
-      items.sort((a, b) => a.card.name.localeCompare(b.card.name, 'es'));
+    // Sort: Oros con habilidad first, then sin habilidad; others alphabetically
+    for (const [type, items] of Object.entries(groups)) {
+      if (type === 'Oro') {
+        items.sort((a, b) => {
+          const aOro = isOroSinHabilidad(a.card) ? 1 : 0;
+          const bOro = isOroSinHabilidad(b.card) ? 1 : 0;
+          if (aOro !== bOro) return aOro - bOro;
+          return a.card.name.localeCompare(b.card.name, 'es');
+        });
+      } else {
+        items.sort((a, b) => a.card.name.localeCompare(b.card.name, 'es'));
+      }
     }
     return groups;
   }, [deckCards, cardById]);
 
   const countByType = (type: string) =>
-    Object.entries(deckCards)
-      .filter(([idStr]) => cardById.get(Number(idStr))?.type?.toUpperCase() === type.toUpperCase())
-      .reduce((sum, [, n]) => sum + n, 0);
+    deckByType[type]?.reduce((s, { count }) => s + count, 0) ?? 0;
 
   // ── Filter options ────────────────────────────────────────────────────────
   const costOptions = useMemo(

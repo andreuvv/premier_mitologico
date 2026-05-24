@@ -178,6 +178,10 @@ export default function DeckBuilderHomePage() {
     );
   };
 
+  const handleView = (deck: UserDeck) => {
+    navigate(`/deck-builder/viewer?deckId=${deck.id}`);
+  };
+
   const handleCreate = (format: Format, subformat: Subformat, race: string, name: string) => {
     navigate(
       `/deck-builder/editor?format=${format}&subformat=${subformat}&race=${encodeURIComponent(race)}&name=${encodeURIComponent(name)}`
@@ -245,7 +249,7 @@ export default function DeckBuilderHomePage() {
                   deck.subformat === 'pb-libre'   ? 'Racial Libre' :
                   deck.subformat === 'fx-vcr'     ? 'VCR' : 'Racial Libre';
                 return (
-                  <div key={deck.id} className={styles.deckCard}>
+                  <div key={deck.id} className={styles.deckCard} onClick={() => handleView(deck)} style={{ cursor: 'pointer' }}>
                     <div className={styles.deckCardHeader}>
                       <h3 className={styles.deckCardName}>{deck.name}</h3>
                       <span className={`${styles.deckCardCount} ${cardCount === 50 ? styles.deckCardCountFull : ''}`}>
@@ -260,13 +264,13 @@ export default function DeckBuilderHomePage() {
                     <div className={styles.deckCardActions}>
                       <button
                         className={styles.deckEditBtn}
-                        onClick={() => handleEdit(deck)}
+                        onClick={(e) => { e.stopPropagation(); handleEdit(deck); }}
                       >
                         ✏️ Editar
                       </button>
                       <button
                         className={styles.deckDeleteBtn}
-                        onClick={() => handleDelete(deck.id)}
+                        onClick={(e) => { e.stopPropagation(); handleDelete(deck.id); }}
                         disabled={deletingId === deck.id}
                       >
                         {deletingId === deck.id ? '...' : '🗑'}

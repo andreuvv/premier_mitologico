@@ -23,6 +23,7 @@ const AuthCallbackPage = lazy(() => import('./pages/AuthCallbackPage'));
 const ResetPasswordPage = lazy(() => import('./pages/ResetPasswordPage'));
 const DeckBuilderHomePage = lazy(() => import('./pages/DeckBuilderHomePage'));
 const DeckBuilderEditorPage = lazy(() => import('./pages/DeckBuilderEditorPage'));
+const DeckViewerPage = lazy(() => import('./pages/DeckViewerPage'));
 
 // Loading fallback component
 const PageLoader = () => (
@@ -66,6 +67,7 @@ function App() {
             <Route path="/reset-password" element={<ResetPasswordPage />} />
             <Route path="/deck-builder" element={<DeckBuilderHomePage />} />
             <Route path="/deck-builder/editor" element={<DeckBuilderEditorPage />} />
+            <Route path="/deck-builder/viewer" element={<DeckViewerPage />} />
           </Routes>
         </Suspense>
       </main>

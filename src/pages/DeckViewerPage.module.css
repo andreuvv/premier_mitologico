@@ -1,0 +1,396 @@
+/* ── Loading / error screen ───────────────────────────────────────────────── */
+
+.loadingScreen {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  color: var(--beige);
+  font-size: 1rem;
+}
+
+.spinner {
+  width: 44px;
+  height: 44px;
+  border: 4px solid rgba(255, 255, 255, 0.15);
+  border-top-color: var(--ocher);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Page ─────────────────────────────────────────────────────────────────── */
+
+.page {
+  min-height: 100vh;
+  background: var(--dark-brown);
+  color: var(--beige);
+  padding: 1.25rem 1.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ── Top bar ──────────────────────────────────────────────────────────────── */
+
+.topBar {
+  display: flex;
+  align-items: center;
+}
+
+.backBtn {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 0.45rem 1rem;
+  font-size: 0.88rem;
+  color: var(--beige);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.backBtn:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* ── Deck header ──────────────────────────────────────────────────────────── */
+
+.deckHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.deckHeaderMain {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.deckTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--ocher);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.badgesRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+  color: var(--beige);
+  font-weight: 500;
+}
+
+.badgeEdition {
+  background: rgba(75, 139, 163, 0.2);
+  border-color: var(--petrol-blue);
+  color: #a8d4e8;
+}
+
+.authorLabel {
+  font-size: 0.85rem;
+  color: rgba(234, 221, 207, 0.6);
+  white-space: nowrap;
+}
+
+.authorLabel strong {
+  color: var(--beige);
+}
+
+/* ── Content area ─────────────────────────────────────────────────────────── */
+
+.content {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+/* ── Card container (left) ────────────────────────────────────────────────── */
+
+.cardContainer {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.emptyDeck {
+  color: rgba(234, 221, 207, 0.45);
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+/* ── Type group ───────────────────────────────────────────────────────────── */
+
+.typeGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.typeHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.4rem;
+}
+
+.typeLabel {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ocher);
+}
+
+.typeCount {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(234, 221, 207, 0.5);
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 1px 8px;
+}
+
+/* ── Cards row ────────────────────────────────────────────────────────────── */
+
+.cardsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-end;
+}
+
+/* ── Card stack ───────────────────────────────────────────────────────────── */
+
+.cardStack {
+  position: relative;
+  height: 139px; /* CARD_WIDTH / 0.72 ≈ 139px */
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+
+.cardStack:hover {
+  transform: translateY(-6px);
+}
+
+.stackedCard {
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 139px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.15s;
+}
+
+.cardStack:hover .stackedCard {
+  box-shadow: -2px 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cardPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  text-align: center;
+  padding: 0.4rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.countBadge {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  z-index: 50;
+  background: var(--sage-green);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 1px 6px;
+  line-height: 1.6;
+  pointer-events: none;
+}
+
+/* ── Stats panel (right) ──────────────────────────────────────────────────── */
+
+.statsPanel {
+  width: 260px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+}
+
+.statsSection {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sectionTitle {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--beige);
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+}
+
+.statsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+.statRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  padding: 0.2rem 0;
+}
+
+.statLabel {
+  color: rgba(234, 221, 207, 0.7);
+}
+
+.statCount {
+  font-weight: 600;
+  color: rgba(234, 221, 207, 0.35);
+  min-width: 24px;
+  text-align: right;
+}
+
+.statCountActive {
+  color: var(--beige);
+}
+
+.progressArea {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.missingLabel {
+  font-size: 0.78rem;
+  color: rgba(234, 221, 207, 0.5);
+  text-align: center;
+}
+
+.overLabel {
+  font-size: 0.78rem;
+  color: var(--brick-red);
+  text-align: center;
+}
+
+.countBadge2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.3rem 1.25rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--beige);
+}
+
+.countBadgeFull {
+  background: rgba(126, 164, 112, 0.2);
+  border-color: var(--sage-green);
+  color: var(--sage-green);
+}
+
+.countBadgeOver {
+  background: rgba(201, 67, 56, 0.15);
+  border-color: var(--brick-red);
+  color: var(--brick-red);
+}
+
+/* ── Validation ───────────────────────────────────────────────────────────── */
+
+.validationSection {
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.validationError {
+  font-size: 0.78rem;
+  color: var(--brick-red);
+  background: rgba(201, 67, 56, 0.1);
+  border-radius: 6px;
+  padding: 0.35rem 0.6rem;
+}
+
+.validationWarning {
+  font-size: 0.78rem;
+  color: var(--ocher);
+  background: rgba(214, 156, 65, 0.1);
+  border-radius: 6px;
+  padding: 0.35rem 0.6rem;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .statsPanel {
+    width: 100%;
+  }
+
+  .page {
+    padding: 1rem;
+  }
+}
