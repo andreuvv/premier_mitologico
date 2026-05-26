@@ -36,6 +36,18 @@ const PB_SUBFORMATS: { value: Subformat; label: string; desc: string }[] = [
   { value: 'pb-edicion', label: 'Racial Edición', desc: 'Solo cartas de una misma edición' },
   { value: 'pb-libre',   label: 'Racial Libre',   desc: 'Cartas de todas las ediciones PB' },
 ];
+
+function getCoverImageStyle(zoom: number, posX: number, posY: number) {
+  const safeZoom = Math.max(1, zoom);
+  const clampedX = Math.min(100, Math.max(0, posX));
+  const clampedY = Math.min(100, Math.max(0, posY));
+  return {
+    backgroundSize: `${safeZoom * 100}% auto`,
+    backgroundPosition: `${clampedX}% ${clampedY}%`,
+    backgroundRepeat: 'no-repeat',
+    backgroundColor: '#101010',
+  };
+}
 const FX_SUBFORMATS: { value: Subformat; label: string; desc: string }[] = [
   { value: 'fx-vcr',   label: 'VCR',         desc: 'Solo cartas Vasallo, Cortesano o Real' },
   { value: 'fx-libre', label: 'Racial Libre', desc: 'Cartas de todas las ediciones FX' },
@@ -277,6 +289,18 @@ export default function DeckBuilderHomePage() {
                   deck.subformat === 'fx-vcr'     ? 'VCR' : 'Racial Libre';
                 return (
                   <div key={deck.id} className={styles.deckCard} onClick={() => handleView(deck)} style={{ cursor: 'pointer' }}>
+                    {deck.headerImageUrl && (
+                      <div className={styles.deckCardCover}>
+                        <div
+                          className={styles.deckCardCoverImg}
+                          style={{
+                            backgroundImage: `url(${deck.headerImageUrl})`,
+                            ...getCoverImageStyle(deck.headerZoom, deck.headerPosX, deck.headerPosY),
+                          }}
+                          aria-label="portada"
+                        />
+                      </div>
+                    )}
                     <div className={styles.deckCardHeader}>
                       <h3 className={styles.deckCardName}>{deck.name}</h3>
                       <span className={`${styles.deckCardCount} ${cardCount === 50 ? styles.deckCardCountFull : ''}`}>
@@ -342,6 +366,18 @@ export default function DeckBuilderHomePage() {
                 const editionLabel = editionSlug ? (EDITION_LABELS[editionSlug] ?? null) : null;
                 return (
                   <div key={deck.id} className={styles.deckCard}>
+                    {deck.headerImageUrl && (
+                      <div className={styles.deckCardCover}>
+                        <div
+                          className={styles.deckCardCoverImg}
+                          style={{
+                            backgroundImage: `url(${deck.headerImageUrl})`,
+                            ...getCoverImageStyle(deck.headerZoom, deck.headerPosX, deck.headerPosY),
+                          }}
+                          aria-label="portada"
+                        />
+                      </div>
+                    )}
                     <div className={styles.deckCardHeader}>
                       <h3 className={styles.deckCardName}>{deck.name}</h3>
                       <span className={styles.exploreAuthor}>@{deck.authorName}</span>

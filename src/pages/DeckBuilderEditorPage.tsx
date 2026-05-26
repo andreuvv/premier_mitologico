@@ -62,6 +62,18 @@ function isOroSinHabilidad(card: { effect?: string }): boolean {
 const normalizeStr = (s: string) =>
   s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
+function getCoverImageStyle(zoom: number, posX: number, posY: number) {
+  const safeZoom = Math.max(1, zoom);
+  const clampedX = Math.min(100, Math.max(0, posX));
+  const clampedY = Math.min(100, Math.max(0, posY));
+  return {
+    backgroundSize: `${safeZoom * 100}% auto`,
+    backgroundPosition: `${clampedX}% ${clampedY}%`,
+    backgroundRepeat: 'no-repeat',
+    backgroundColor: '#101010',
+  };
+}
+
 export default function DeckBuilderEditorPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -85,6 +97,10 @@ export default function DeckBuilderEditorPage() {
   const [deckCards, setDeckCards] = useState<Record<number, number>>({});
   const [name, setName] = useState(initialName);
   const [isPublic, setIsPublic] = useState(false);
+  const [headerImageUrl, setHeaderImageUrl] = useState<string | undefined>(undefined);
+  const [headerZoom, setHeaderZoom] = useState(1);
+  const [headerPosX, setHeaderPosX] = useState(50);
+  const [headerPosY, setHeaderPosY] = useState(50);
   const [deckId] = useState<string | null>(urlDeckId);
 
   // For pb-edicion: user picks the edition from a dropdown in the editor header
@@ -122,6 +138,10 @@ export default function DeckBuilderEditorPage() {
         setDeckCards(deck.cards);
         setName(deck.name);
         setIsPublic(deck.is_public ?? false);
+        setHeaderImageUrl(deck.headerImageUrl);
+        setHeaderZoom(deck.headerZoom ?? 1);
+        setHeaderPosX(deck.headerPosX ?? 50);
+        setHeaderPosY(deck.headerPosY ?? 50);
       }
     });
   // Run only once when allCards first become available
@@ -214,6 +234,10 @@ export default function DeckBuilderEditorPage() {
       userId: user.id,
       name: name.trim() || 'Nuevo Mazo',
       isPublic,
+      headerImageUrl,
+      headerZoom,
+      headerPosX,
+      headerPosY,
       format: formatParam as 'pb' | 'fx',
       subformat,
       race,
@@ -632,6 +656,69 @@ export default function DeckBuilderEditorPage() {
           {/* Deck card list */}
           <section className={styles.deckSection}>
             <h3 className={styles.sectionTitle}>🃏 Cartas del mazo</h3>
+            <p className={styles.coverHint}>
+              {headerImageUrl
+                ? 'Portada activa. Presiona ★ en otra carta para cambiarla o en la misma para quitarla.'
+                : 'Tip: presiona ★ en una carta del mazo para usarla como portada.'}
+            </p>
+            {headerImageUrl && (
+              <div className={styles.coverControls}>
+                <div className={styles.coverPreview}>
+                  <div
+                    className={styles.coverPreviewImage}
+                    style={{
+                      backgroundImage: `url(${headerImageUrl})`,
+                      ...getCoverImageStyle(headerZoom, headerPosX, headerPosY),
+                    }}
+                    aria-label="Vista previa portada"
+                  />
+                </div>
+                <label className={styles.coverControlRow}>
+                  <span>Zoom ({headerZoom.toFixed(2)}x)</span>
+                  <input
+                    type="range"
+                    min={1}
+                    max={2}
+                    step={0.01}
+                    value={headerZoom}
+                    onChange={(e) => setHeaderZoom(Number(e.target.value))}
+                  />
+                </label>
+                <label className={styles.coverControlRow}>
+                  <span>Posición horizontal ({Math.round(headerPosX)}%)</span>
+                  <input
+                    type="range"
+                    min={0}
+                    max={100}
+                    step={1}
+                    value={headerPosX}
+                    onChange={(e) => setHeaderPosX(Number(e.target.value))}
+                  />
+                </label>
+                <label className={styles.coverControlRow}>
+                  <span>Posición vertical ({Math.round(headerPosY)}%)</span>
+                  <input
+                    type="range"
+                    min={0}
+                    max={100}
+                    step={1}
+                    value={headerPosY}
+                    onChange={(e) => setHeaderPosY(Number(e.target.value))}
+                  />
+                </label>
+                <button
+                  type="button"
+                  className={styles.coverResetBtn}
+                  onClick={() => {
+                    setHeaderZoom(1);
+                    setHeaderPosX(50);
+                    setHeaderPosY(50);
+                  }}
+                >
+                  Reset portada
+                </button>
+              </div>
+            )}
             {sortedTypeKeys.length === 0 ? (
               <p className={styles.deckEmpty}>Agrega cartas desde la grilla</p>
             ) : (
@@ -644,31 +731,41 @@ export default function DeckBuilderEditorPage() {
                       <span>{TYPE_DISPLAY[type] ?? type}</span>
                       <span className={styles.deckTypeCount}>{groupCount}</span>
                     </div>
-                    {items.map(({ card, count }) => (
-                      <div key={card.id} className={styles.deckCardRow}>
-                        <img
-                          src={card.imageUrl}
-                          alt={card.name}
-                          className={styles.deckCardThumb}
-                        />
-                        <span className={styles.deckCardName}>{card.name}</span>
-                        <div className={styles.deckCardControls}>
+                    {items.map(({ card, count }) => {
+                      const isCover = headerImageUrl === card.imageUrl;
+                      return (
+                        <div key={card.id} className={`${styles.deckCardRow} ${isCover ? styles.deckCardRowCover : ''}`}>
+                          <img
+                            src={card.imageUrl}
+                            alt={card.name}
+                            className={styles.deckCardThumb}
+                          />
+                          <span className={styles.deckCardName}>{card.name}</span>
                           <button
-                            className={styles.deckMinus}
-                            onClick={() => removeCard(card.id)}
+                            className={`${styles.coverBtn} ${isCover ? styles.coverBtnActive : ''}`}
+                            title={isCover ? 'Quitar portada' : 'Usar como portada'}
+                            onClick={() => setHeaderImageUrl(isCover ? undefined : card.imageUrl)}
                           >
-                            −
+                            ★
                           </button>
-                          <span className={styles.deckCardCount}>{count}</span>
-                          <button
-                            className={styles.deckPlus}
-                            onClick={() => addCard(card)}
-                          >
-                            +
-                          </button>
+                          <div className={styles.deckCardControls}>
+                            <button
+                              className={styles.deckMinus}
+                              onClick={() => removeCard(card.id)}
+                            >
+                              −
+                            </button>
+                            <span className={styles.deckCardCount}>{count}</span>
+                            <button
+                              className={styles.deckPlus}
+                              onClick={() => addCard(card)}
+                            >
+                              +
+                            </button>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 );
               })

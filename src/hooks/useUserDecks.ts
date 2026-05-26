@@ -9,6 +9,10 @@ export interface UserDeck {
   format: 'pb' | 'fx';
   subformat: string;
   race: string;
+  headerImageUrl?: string;
+  headerZoom: number;
+  headerPosX: number;
+  headerPosY: number;
   cards: Record<number, number>;
   created_at: string;
   updated_at: string;
@@ -33,7 +37,14 @@ interface RawDeckRow {
 // { "_meta": { "subformat": "pb-edicion", "race": "Guerrero" }, "12345": 2, ... }
 function parseRow(row: RawDeckRow): UserDeck {
   const { _meta, ...cardEntries } = row.cards as Record<string, unknown>;
-  const meta = (_meta as { subformat?: string; race?: string }) ?? {};
+  const meta = (_meta as {
+    subformat?: string;
+    race?: string;
+    headerImageUrl?: string;
+    headerZoom?: number;
+    headerPosX?: number;
+    headerPosY?: number;
+  }) ?? {};
   const cards: Record<number, number> = {};
   for (const [k, v] of Object.entries(cardEntries)) {
     const id = Number(k);
@@ -47,6 +58,10 @@ function parseRow(row: RawDeckRow): UserDeck {
     format: row.format as 'pb' | 'fx',
     subformat: meta.subformat ?? '',
     race: meta.race ?? '',
+    headerImageUrl: meta.headerImageUrl,
+    headerZoom: typeof meta.headerZoom === 'number' ? meta.headerZoom : 1,
+    headerPosX: typeof meta.headerPosX === 'number' ? meta.headerPosX : 50,
+    headerPosY: typeof meta.headerPosY === 'number' ? meta.headerPosY : 50,
     cards,
     created_at: row.created_at,
     updated_at: row.updated_at,
@@ -57,9 +72,20 @@ function buildCardsJson(
   cards: Record<number, number>,
   subformat: string,
   race: string,
+  headerImageUrl?: string,
+  headerZoom = 1,
+  headerPosX = 50,
+  headerPosY = 50,
 ): Record<string, unknown> {
   const result: Record<string, unknown> = {
-    _meta: { subformat, race },
+    _meta: {
+      subformat,
+      race,
+      ...(headerImageUrl ? { headerImageUrl } : {}),
+      headerZoom,
+      headerPosX,
+      headerPosY,
+    },
   };
   for (const [id, count] of Object.entries(cards)) {
     if (count > 0) result[id] = count;
@@ -79,6 +105,10 @@ export function useUserDecks() {
     userId: string;
     name: string;
     isPublic: boolean;
+    headerImageUrl?: string;
+    headerZoom?: number;
+    headerPosX?: number;
+    headerPosY?: number;
     format: 'pb' | 'fx';
     subformat: string;
     race: string;
@@ -87,7 +117,15 @@ export function useUserDecks() {
     setSaveStatus('saving');
     setSaveError(null);
 
-    const cardsJson = buildCardsJson(options.cards, options.subformat, options.race);
+    const cardsJson = buildCardsJson(
+      options.cards,
+      options.subformat,
+      options.race,
+      options.headerImageUrl,
+      options.headerZoom,
+      options.headerPosX,
+      options.headerPosY,
+    );
 
     let result;
     if (options.deckId) {
