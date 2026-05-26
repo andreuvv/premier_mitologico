@@ -186,10 +186,10 @@ export default function DeckBuilderHomePage() {
   useEffect(() => {
     if (tab !== 'explore' || exploreLoaded) return;
     setExploreLoading(true);
-    loadAllDecks(user?.id)
+    loadAllDecks()
       .then((decks) => { setExploreDecks(decks); setExploreLoaded(true); })
       .finally(() => setExploreLoading(false));
-  }, [tab, exploreLoaded, user?.id, loadAllDecks]);
+  }, [tab, exploreLoaded, loadAllDecks]);
 
   const handleDelete = async (deckId: string) => {
     if (!window.confirm('¿Eliminar este mazo? Esta acción no se puede deshacer.')) return;
