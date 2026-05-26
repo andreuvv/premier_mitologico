@@ -5,6 +5,7 @@ export interface UserDeck {
   id: string;
   user_id: string;
   name: string;
+  is_public: boolean;
   format: 'pb' | 'fx';
   subformat: string;
   race: string;
@@ -21,6 +22,7 @@ interface RawDeckRow {
   id: string;
   user_id: string;
   name: string;
+  is_public?: boolean;
   format: string;
   cards: Record<string, unknown>;
   created_at: string;
@@ -41,6 +43,7 @@ function parseRow(row: RawDeckRow): UserDeck {
     id: row.id,
     user_id: row.user_id,
     name: row.name,
+    is_public: row.is_public ?? false,
     format: row.format as 'pb' | 'fx',
     subformat: meta.subformat ?? '',
     race: meta.race ?? '',
@@ -75,6 +78,7 @@ export function useUserDecks() {
     deckId: string | null;
     userId: string;
     name: string;
+    isPublic: boolean;
     format: 'pb' | 'fx';
     subformat: string;
     race: string;
@@ -90,7 +94,7 @@ export function useUserDecks() {
       // Update existing deck
       result = await supabase
         .from('user_decks')
-        .update({ name: options.name, cards: cardsJson })
+        .update({ name: options.name, cards: cardsJson, is_public: options.isPublic })
         .eq('id', options.deckId)
         .eq('user_id', options.userId)
         .select('id')
@@ -102,6 +106,7 @@ export function useUserDecks() {
         .insert({
           user_id: options.userId,
           name: options.name,
+          is_public: options.isPublic,
           format: options.format,
           cards: cardsJson,
         })

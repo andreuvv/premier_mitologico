@@ -213,10 +213,34 @@
   background: rgba(75, 139, 163, 0.28);
 }
 
+.privateDeckLabel {
+  flex: 1;
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(234, 221, 207, 0.58);
+  border: 1px dashed rgba(234, 221, 207, 0.28);
+  background: rgba(255, 255, 255, 0.03);
+}
+
 .deckCardTagEdition {
   background: rgba(75, 139, 163, 0.12);
   border-color: rgba(75, 139, 163, 0.4);
   color: #a8d4e8;
+}
+
+.deckCardTagPublic {
+  background: rgba(126, 164, 112, 0.16);
+  border-color: rgba(126, 164, 112, 0.45);
+  color: #b7d3ab;
+}
+
+.deckCardTagPrivate {
+  background: rgba(201, 67, 56, 0.13);
+  border-color: rgba(201, 67, 56, 0.42);
+  color: #efb2ac;
 }
 
 .exploreAuthor {

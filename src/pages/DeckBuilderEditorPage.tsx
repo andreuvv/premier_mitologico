@@ -84,6 +84,7 @@ export default function DeckBuilderEditorPage() {
   const [loading, setLoading] = useState(true);
   const [deckCards, setDeckCards] = useState<Record<number, number>>({});
   const [name, setName] = useState(initialName);
+  const [isPublic, setIsPublic] = useState(false);
   const [deckId] = useState<string | null>(urlDeckId);
 
   // For pb-edicion: user picks the edition from a dropdown in the editor header
@@ -120,6 +121,7 @@ export default function DeckBuilderEditorPage() {
       if (deck) {
         setDeckCards(deck.cards);
         setName(deck.name);
+        setIsPublic(deck.is_public ?? false);
       }
     });
   // Run only once when allCards first become available
@@ -211,6 +213,7 @@ export default function DeckBuilderEditorPage() {
       deckId,
       userId: user.id,
       name: name.trim() || 'Nuevo Mazo',
+      isPublic,
       format: formatParam as 'pb' | 'fx',
       subformat,
       race,
@@ -347,6 +350,16 @@ export default function DeckBuilderEditorPage() {
           )}
         </div>
         <div className={styles.headerRight}>
+          <label className={styles.publicToggle}>
+            <input
+              type="checkbox"
+              checked={isPublic}
+              onChange={(e) => setIsPublic(e.target.checked)}
+              disabled={saveStatus === 'saving'}
+            />
+            <span className={styles.publicToggleSlider} />
+            <span className={styles.publicToggleText}>{isPublic ? 'Público' : 'Privado'}</span>
+          </label>
           <button
             className={styles.backButton}
             onClick={() => navigate('/deck-builder')}

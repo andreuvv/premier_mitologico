@@ -164,6 +164,57 @@
   padding-top: 0.25rem;
 }
 
+.publicToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.publicToggle input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.publicToggleSlider {
+  width: 38px;
+  height: 22px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  position: relative;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.publicToggleSlider::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s;
+}
+
+.publicToggle input:checked + .publicToggleSlider {
+  background: rgba(75, 139, 163, 0.3);
+  border-color: var(--petrol-blue);
+}
+
+.publicToggle input:checked + .publicToggleSlider::after {
+  transform: translateX(16px);
+}
+
+.publicToggleText {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(234, 221, 207, 0.85);
+}
+
 .backButton {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.25);

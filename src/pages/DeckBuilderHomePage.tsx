@@ -284,6 +284,11 @@ export default function DeckBuilderHomePage() {
                       </span>
                     </div>
                     <div className={styles.deckCardMeta}>
+                      <span
+                        className={`${styles.deckCardTag} ${deck.is_public ? styles.deckCardTagPublic : styles.deckCardTagPrivate}`}
+                      >
+                        {deck.is_public ? 'Público' : 'Privado'}
+                      </span>
                       <span className={styles.deckCardTag}>{formatLabel}</span>
                       <span className={styles.deckCardTag}>{subformatLabel}</span>
                       {deck.race && <span className={styles.deckCardTag}>{deck.race}</span>}
@@ -352,12 +357,16 @@ export default function DeckBuilderHomePage() {
                       )}
                     </div>
                     <div className={styles.deckCardActions}>
-                      <button
-                        className={styles.deckViewBtn}
-                        onClick={() => navigate(`/deck-builder/viewer?deckId=${deck.id}`)}
-                      >
-                        👁 Ver Mazo
-                      </button>
+                      {deck.is_public ? (
+                        <button
+                          className={styles.deckViewBtn}
+                          onClick={() => navigate(`/deck-builder/viewer?deckId=${deck.id}`)}
+                        >
+                          👁 Ver Mazo
+                        </button>
+                      ) : (
+                        <span className={styles.privateDeckLabel}>Mazo Privado</span>
+                      )}
                     </div>
                   </div>
                 );
