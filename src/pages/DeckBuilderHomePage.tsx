@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { useUserDecks, UserDeck, PublicDeck } from '../hooks/useUserDecks';
+import { isCurrentUserBanlistAdmin } from '../services/monthlyBanlistService';
 import styles from './DeckBuilderHomePage.module.css';
 
 const RACE_TO_EDITION: Record<string, string> = {
@@ -226,6 +227,7 @@ export default function DeckBuilderHomePage() {
   const [exploreDecks, setExploreDecks] = useState<PublicDeck[]>([]);
   const [exploreLoading, setExploreLoading] = useState(false);
   const [exploreLoaded, setExploreLoaded] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [myFormatFilter, setMyFormatFilter] = useState<FormatFilter>('all');
   const [mySubformatFilter, setMySubformatFilter] = useState<SubformatFilter>('all');
   const [myRaceFilter, setMyRaceFilter] = useState('');
@@ -244,6 +246,17 @@ export default function DeckBuilderHomePage() {
   useEffect(() => {
     fetchDecks();
   }, [fetchDecks]);
+
+  useEffect(() => {
+    if (!user) {
+      setIsAdmin(false);
+      return;
+    }
+
+    isCurrentUserBanlistAdmin(user.id)
+      .then(setIsAdmin)
+      .catch(() => setIsAdmin(false));
+  }, [user]);
 
   // Load explore decks only once when the tab is first opened
   useEffect(() => {
@@ -367,11 +380,21 @@ export default function DeckBuilderHomePage() {
           <h1 className={styles.pageTitle}>Deck Builder</h1>
           <p className={styles.pageSubtitle}>Construye y gestiona tus mazos</p>
         </div>
-        {user && (
-          <button className={styles.createButton} onClick={() => setShowModal(true)}>
-            + Nuevo Mazo
-          </button>
-        )}
+        <div className={styles.headerActions}>
+          {isAdmin && (
+            <button
+              className={styles.localEditorButton}
+              onClick={() => navigate('/deck-builder/local-json-editor')}
+            >
+              Editor JSON Local
+            </button>
+          )}
+          {user && (
+            <button className={styles.createButton} onClick={() => setShowModal(true)}>
+              + Nuevo Mazo
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Tabs */}

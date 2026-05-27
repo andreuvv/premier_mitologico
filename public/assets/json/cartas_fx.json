@@ -35,8 +35,8 @@
             "productCode": "★",
             "productType": "Producto Especial"
           },
-          "interactions": [
-          ]
+          "interactions": [],
+          "isNewest": false
         },
         {
           "id": 13009,
@@ -71,8 +71,8 @@
             "productCode": "★",
             "productType": "Producto Especial"
           },
-          "interactions": [
-          ]
+          "interactions": [],
+          "isNewest": false
         },
         {
           "id": 13008,
@@ -107,8 +107,7 @@
             "productCode": "★",
             "productType": "Producto Especial"
           },
-          "interactions": [
-          ]
+          "interactions": []
         },
         {
           "id": 13007,
@@ -143,8 +142,8 @@
             "productCode": "★",
             "productType": "Producto Especial"
           },
-          "interactions": [
-          ]
+          "interactions": [],
+          "isNewest": false
         },
         {
           "id": 13006,
@@ -179,8 +178,8 @@
             "productCode": "★",
             "productType": "Producto Especial"
           },
-          "interactions": [
-          ]
+          "interactions": [],
+          "isNewest": false
         },
         {
           "id": 13005,
@@ -215,8 +214,8 @@
             "productCode": "★",
             "productType": "Producto Especial"
           },
-          "interactions": [
-          ]
+          "interactions": [],
+          "isNewest": false
         },
         {
           "id": 13004,
@@ -251,8 +250,8 @@
             "productCode": "★",
             "productType": "Producto Especial"
           },
-          "interactions": [
-          ]
+          "interactions": [],
+          "isNewest": false
         },
         {
           "id": 13003,
@@ -287,8 +286,8 @@
             "productCode": "★",
             "productType": "Producto Especial"
           },
-          "interactions": [
-          ]
+          "interactions": [],
+          "isNewest": false
         },
         {
           "id": 13002,
@@ -323,8 +322,7 @@
             "productCode": "★",
             "productType": "Producto Especial"
           },
-          "interactions": [
-          ]
+          "interactions": []
         },
         {
           "id": 13001,
@@ -357,8 +355,7 @@
             "productCode": "★",
             "productType": "Producto Especial"
           },
-          "interactions": [
-          ]
+          "interactions": []
         },
         {
           "id": 13000,
@@ -391,8 +388,8 @@
             "productCode": "★",
             "productType": "Producto Especial"
           },
-          "interactions": [
-          ]
+          "interactions": [],
+          "isNewest": false
         },
         {
           "id": 12728,
@@ -425,8 +422,7 @@
             "productCode": "LBF2",
             "productType": "Edición"
           },
-          "interactions": [
-          ]
+          "interactions": []
         },
         {
           "id": 12727,
@@ -459,8 +455,9 @@
             "productCode": "LBF2",
             "productType": "Edición"
           },
-          "interactions": [
-          ]
+          "interactions": [],
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12726,
@@ -493,8 +490,7 @@
             "productCode": "LBF2",
             "productType": "Edición"
           },
-          "interactions": [
-          ]
+          "interactions": []
         },
         {
           "id": 12725,
@@ -527,8 +523,7 @@
             "productCode": "LBF2",
             "productType": "Edición"
           },
-          "interactions": [
-          ]
+          "interactions": []
         },
         {
           "id": 12724,
@@ -561,8 +556,7 @@
             "productCode": "LBF2",
             "productType": "Edición"
           },
-          "interactions": [
-          ]
+          "interactions": []
         },
         {
           "id": 12741,
@@ -597,8 +591,7 @@
             "productCode": "CML",
             "productType": "Producto Especial"
           },
-          "interactions": [
-          ]
+          "interactions": []
         },
         {
           "id": 12740,
@@ -1052,7 +1045,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12638,
@@ -1086,7 +1081,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12639,
@@ -1120,7 +1117,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12640,
@@ -1154,7 +1153,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12641,
@@ -1188,7 +1189,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12642,
@@ -1220,7 +1223,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12643,
@@ -1318,7 +1323,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12646,
@@ -1386,7 +1393,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12648,
@@ -1420,7 +1429,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12649,
@@ -1454,7 +1465,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12650,
@@ -1486,7 +1499,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12651,
@@ -1521,7 +1536,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12652,
@@ -1555,7 +1571,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12653,
@@ -1589,7 +1606,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12654,
@@ -1623,7 +1641,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12655,
@@ -1657,7 +1676,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12656,
@@ -1725,7 +1745,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12658,
@@ -1759,7 +1780,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12659,
@@ -1924,7 +1946,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12587,
@@ -1958,7 +1981,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12588,
@@ -2026,7 +2050,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12590,
@@ -2060,7 +2085,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12591,
@@ -2196,7 +2222,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12595,
@@ -2230,7 +2258,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12596,
@@ -2332,7 +2361,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12599,
@@ -2366,7 +2396,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12600,
@@ -2400,7 +2431,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12601,
@@ -2434,7 +2466,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12602,
@@ -2468,7 +2501,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12603,
@@ -2536,7 +2570,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12605,
@@ -2604,7 +2639,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12607,
@@ -2672,7 +2708,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12609,
@@ -2706,7 +2743,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12610,
@@ -2774,7 +2812,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12612,
@@ -2972,7 +3011,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12618,
@@ -3228,7 +3268,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12626,
@@ -3292,7 +3333,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12628,
@@ -3339,7 +3381,7 @@
           "attack": 0,
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/10-Leyendas2/cartas-nombre/300-LBF2-Oro-Inicial-MazosCL.webp",
           "artist": "MYL",
-          "frequency": "VASALLO",
+          "frequency": "ORO",
           "race": [],
           "edition": {
             "name": "Productos Especiales",
@@ -3424,7 +3466,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12564,
@@ -3458,7 +3501,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12565,
@@ -3526,7 +3571,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12567,
@@ -3594,7 +3641,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12569,
@@ -3696,7 +3744,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12572,
@@ -3730,7 +3779,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12573,
@@ -3764,7 +3814,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12574,
@@ -3798,7 +3850,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12575,
@@ -3830,7 +3883,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12576,
@@ -3926,7 +3980,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12579,
@@ -3990,7 +4045,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12581,
@@ -4118,7 +4174,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12560,
@@ -4152,7 +4209,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12561,
@@ -4220,7 +4279,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12563,
@@ -4254,7 +4315,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12551,
@@ -4356,7 +4418,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12554,
@@ -4390,7 +4454,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12555,
@@ -4492,7 +4558,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12558,
@@ -4526,7 +4593,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12559,
@@ -4560,7 +4629,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12548,
@@ -4662,7 +4732,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12540,
@@ -4726,7 +4797,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12542,
@@ -4758,7 +4830,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12543,
@@ -4856,7 +4929,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12546,
@@ -4956,7 +5031,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12535,
@@ -5020,7 +5096,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12537,
@@ -5052,7 +5129,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12538,
@@ -5116,7 +5194,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12530,
@@ -5148,7 +5227,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12531,
@@ -5180,7 +5260,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12532,
@@ -5212,7 +5293,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12533,
@@ -5244,7 +5326,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12526,
@@ -5276,7 +5359,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12527,
@@ -5308,7 +5392,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12528,
@@ -5340,7 +5425,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12529,
@@ -5372,7 +5458,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12525,
@@ -5404,7 +5491,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12507,
@@ -5438,7 +5526,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12508,
@@ -5472,7 +5561,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12509,
@@ -5541,7 +5631,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12511,
@@ -5575,7 +5666,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12512,
@@ -5643,7 +5736,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12514,
@@ -5677,7 +5772,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12515,
@@ -5709,7 +5805,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12516,
@@ -5741,7 +5838,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12517,
@@ -5773,7 +5871,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12518,
@@ -5837,7 +5936,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12520,
@@ -5869,7 +5969,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12521,
@@ -5902,7 +6003,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12522,
@@ -5934,7 +6036,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12523,
@@ -5967,7 +6070,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12524,
@@ -6000,7 +6104,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12496,
@@ -6034,7 +6139,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12497,
@@ -6102,7 +6209,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12499,
@@ -6136,7 +6244,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12500,
@@ -6204,7 +6314,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12502,
@@ -6238,7 +6349,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12503,
@@ -6306,7 +6419,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12505,
@@ -6442,7 +6557,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12491,
@@ -6510,7 +6627,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12493,
@@ -6544,7 +6663,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12483,
@@ -6576,7 +6696,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12484,
@@ -6608,7 +6729,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12485,
@@ -6710,7 +6832,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12488,
@@ -6778,7 +6901,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12490,
@@ -6844,7 +6969,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12481,
@@ -6876,7 +7003,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12482,
@@ -6908,7 +7036,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12474,
@@ -6940,7 +7069,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12475,
@@ -6972,7 +7102,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12476,
@@ -7004,7 +7135,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12477,
@@ -7068,7 +7200,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12479,
@@ -7132,7 +7265,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12470,
@@ -7164,7 +7298,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12471,
@@ -7196,7 +7331,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12472,
@@ -7229,7 +7365,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12473,
@@ -7261,7 +7398,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12459,
@@ -7293,7 +7431,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12460,
@@ -7326,7 +7465,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12461,
@@ -7359,7 +7499,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12462,
@@ -7392,7 +7533,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12463,
@@ -7424,7 +7566,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12464,
@@ -7456,7 +7600,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12465,
@@ -7488,7 +7634,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12466,
@@ -7520,7 +7667,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12467,
@@ -7552,7 +7700,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12468,
@@ -7584,7 +7733,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12440,
@@ -7652,7 +7802,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12442,
@@ -7686,7 +7837,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12443,
@@ -7754,7 +7906,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12445,
@@ -7788,7 +7941,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12446,
@@ -7856,7 +8010,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12448,
@@ -7958,7 +8113,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12451,
@@ -7992,7 +8148,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12452,
@@ -8060,7 +8217,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12454,
@@ -8094,7 +8252,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12455,
@@ -8126,7 +8285,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12456,
@@ -8158,7 +8319,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12457,
@@ -8190,7 +8353,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12458,
@@ -8223,7 +8388,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12433,
@@ -8257,7 +8423,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12434,
@@ -8325,7 +8492,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12436,
@@ -8359,7 +8528,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12437,
@@ -8427,7 +8597,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12439,
@@ -8461,7 +8633,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12432,
@@ -8529,7 +8702,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12428,
@@ -8597,7 +8771,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12430,
@@ -8631,7 +8806,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12431,
@@ -8698,7 +8874,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12403,
@@ -8731,12 +8908,13 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12404,
           "slug": "fe-sin-limites",
-          "name": "Fe sin Límites",
+          "name": "Fe sin Limites",
           "gameId": 3,
           "collectorCode": "LBF2 - 075/300 M",
           "effect": "Única. Anula un Talismán oponente.",
@@ -8797,7 +8975,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12406,
@@ -8829,7 +9008,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12407,
@@ -8862,7 +9042,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12408,
@@ -8894,7 +9075,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12409,
@@ -8926,7 +9108,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12410,
@@ -8958,7 +9141,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12411,
@@ -9022,7 +9206,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12413,
@@ -9054,7 +9239,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12414,
@@ -9086,7 +9272,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12415,
@@ -9188,7 +9375,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12418,
@@ -9222,7 +9410,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12419,
@@ -9256,7 +9445,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12420,
@@ -9290,7 +9480,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12421,
@@ -9324,7 +9515,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12422,
@@ -9426,7 +9618,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12425,
@@ -9494,7 +9687,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12399,
@@ -9526,7 +9721,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12400,
@@ -9558,7 +9755,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12401,
@@ -9591,7 +9790,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12396,
@@ -9623,7 +9823,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12397,
@@ -9655,7 +9857,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12398,
@@ -9687,7 +9891,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12389,
@@ -9755,7 +9961,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12391,
@@ -9823,7 +10031,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12393,
@@ -9891,7 +10101,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12395,
@@ -9923,7 +10135,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12386,
@@ -9957,7 +10171,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12387,
@@ -10025,7 +10241,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12380,
@@ -10059,7 +10277,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12381,
@@ -10127,7 +10347,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12383,
@@ -10195,7 +10417,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12385,
@@ -10467,7 +10691,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12349,
@@ -10735,7 +10960,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12357,
@@ -10767,7 +10994,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12358,
@@ -10831,7 +11060,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12360,
@@ -10863,7 +11094,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12361,
@@ -10895,7 +11128,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12362,
@@ -10927,7 +11161,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12363,
@@ -10959,7 +11194,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12364,
@@ -10991,7 +11227,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12365,
@@ -11399,7 +11636,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12377,
@@ -11467,7 +11706,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12379,
@@ -11534,7 +11775,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12334,
@@ -11566,7 +11808,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12335,
@@ -11702,7 +11945,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12339,
@@ -11836,7 +12080,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12332,
@@ -11868,7 +12113,8 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12330,
@@ -11965,7 +12211,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12303,
@@ -11998,7 +12245,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12304,
@@ -12033,7 +12281,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12305,
@@ -12067,7 +12317,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12306,
@@ -12101,7 +12352,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12307,
@@ -12135,7 +12388,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12308,
@@ -12201,7 +12455,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12310,
@@ -12235,7 +12490,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12311,
@@ -12268,7 +12524,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12312,
@@ -12303,7 +12560,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12313,
@@ -12337,7 +12595,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12314,
@@ -12371,7 +12631,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12315,
@@ -12405,7 +12667,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12316,
@@ -12439,7 +12702,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12317,
@@ -12507,7 +12771,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12319,
@@ -12539,7 +12804,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12320,
@@ -12572,7 +12838,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12321,
@@ -12605,7 +12872,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12322,
@@ -12638,7 +12907,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12323,
@@ -12672,7 +12943,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12324,
@@ -12706,7 +12978,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12325,
@@ -12807,7 +13081,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12328,
@@ -12841,7 +13116,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12329,
@@ -12908,7 +13184,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12297,
@@ -12973,7 +13250,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12299,
@@ -13039,7 +13317,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12236,
@@ -13821,7 +14100,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12259,
@@ -14467,7 +14748,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12278,
@@ -14569,7 +14851,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12281,
@@ -14804,7 +15087,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12288,
@@ -14932,7 +15216,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12292,
@@ -15043,7 +15328,7 @@
           "attack": 0,
           "imageUrl": "https://cdn.mazos.cl/FURIA_EXT/09-Leyendas/cartas1-0/300-LBF1-Oro-Inicial-MazosCL.webp",
           "artist": "Collage MyL",
-          "frequency": "VASALLO",
+          "frequency": "ORO",
           "race": [],
           "edition": {
             "name": "Productos Especiales",
@@ -15401,7 +15686,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12182,
@@ -16421,7 +16707,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12212,
@@ -16455,7 +16742,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12213,
@@ -16591,7 +16879,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12217,
@@ -16853,7 +17142,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12225,
@@ -17141,7 +17431,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12234,
@@ -17275,7 +17566,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12086,
@@ -17377,7 +17669,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12089,
@@ -17411,7 +17705,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12090,
@@ -17445,7 +17741,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12091,
@@ -17479,7 +17776,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12092,
@@ -17513,7 +17811,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12093,
@@ -17581,7 +17880,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12095,
@@ -17615,7 +17915,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12096,
@@ -17682,7 +17984,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12098,
@@ -17749,7 +18053,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12100,
@@ -17953,7 +18259,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12106,
@@ -17987,7 +18295,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12107,
@@ -18021,7 +18330,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12108,
@@ -18055,7 +18366,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12109,
@@ -18156,7 +18468,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12112,
@@ -18191,7 +18505,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12113,
@@ -18259,7 +18575,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12115,
@@ -18293,7 +18610,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12116,
@@ -18361,7 +18680,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12118,
@@ -18566,7 +18887,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12124,
@@ -18951,7 +19273,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12136,
@@ -19016,7 +19340,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12138,
@@ -19048,7 +19374,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12139,
@@ -19178,7 +19505,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12143,
@@ -19243,7 +19572,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12145,
@@ -19339,7 +19669,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12148,
@@ -19531,7 +19863,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12154,
@@ -19595,7 +19928,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12156,
@@ -19660,7 +19995,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12158,
@@ -19724,7 +20061,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12160,
@@ -19788,7 +20127,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12162,
@@ -20088,7 +20428,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12171,
@@ -20122,7 +20463,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12172,
@@ -20156,7 +20498,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12006,
@@ -20191,7 +20534,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12007,
@@ -20261,12 +20605,14 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12009,
           "slug": "kraken-colosal",
-          "name": "Kraken Colosal",
+          "name": "Kraken Colosal *",
           "gameId": 3,
           "collectorCode": "LBF 014-300 U",
           "effect": "Furia. En la Fase Final, si hizo daño, puedes Robar una carta.",
@@ -20295,7 +20641,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12010,
@@ -20330,12 +20677,14 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12011,
           "slug": "odin-el-sabio",
-          "name": "Odin el Sabio",
+          "name": "Odin el Sabio *",
           "gameId": 3,
           "collectorCode": "LBF 016-300 U",
           "effect": "<p>Única. En tu Fase Final, puedes Agrupar todos los Oros que controles. Una vez por turno, puedes Desterrar un Aliado Eterno de tu Cementerio para Barajar un Aliado oponente.</p>",
@@ -20435,7 +20784,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12014,
@@ -20470,7 +20820,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12015,
@@ -20503,7 +20854,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12016,
@@ -20538,7 +20891,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12017,
@@ -20606,7 +20961,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12019,
@@ -20639,7 +20995,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12020,
@@ -20672,12 +21029,13 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12021,
           "slug": "encantamiento",
-          "name": "Encantamiento",
+          "name": "Encantamiento *",
           "gameId": 3,
           "collectorCode": "LBF 026-300 U",
           "effect": "Única. Destierra cuatro cartas del Cementerio oponente. Baraja cuatro cartas de tu Cementerio.",
@@ -20705,7 +21063,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12022,
@@ -20771,7 +21130,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12024,
@@ -20804,7 +21164,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12025,
@@ -20872,7 +21234,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12027,
@@ -20906,12 +21270,13 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12028,
           "slug": "bestla",
-          "name": "Bestla",
+          "name": "Bestla *",
           "gameId": 3,
           "collectorCode": "LBF 033-300 M",
           "effect": "Puedes Destruirlo para Anular un Aliado oponente de coste 3 o menos.",
@@ -20940,7 +21305,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12029,
@@ -20974,7 +21340,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12030,
@@ -21008,7 +21375,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12031,
@@ -21042,7 +21411,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12032,
@@ -21076,7 +21446,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12033,
@@ -21111,12 +21482,14 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12034,
           "slug": "ereskigal",
-          "name": "Ereskigal",
+          "name": "Ereskigal *",
           "gameId": 3,
           "collectorCode": "LBF 039-300 M",
           "effect": "Cuando entra en juego, puedes Destruir hasta dos Aliados oponentes de coste 2 o menos.",
@@ -21145,12 +21518,13 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12035,
           "slug": "hagbard",
-          "name": "Hagbard",
+          "name": "Hagbard *",
           "gameId": 3,
           "collectorCode": "LBF 040-300 M",
           "effect": "Imbloqueable. Cuando entra en juego, si tienes cuatro o menos cartas en tu mano, puedes Robar hasta dos cartas.",
@@ -21179,7 +21553,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12036,
@@ -21213,7 +21588,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12037,
@@ -21246,7 +21622,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12038,
@@ -21280,7 +21658,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12039,
@@ -21382,12 +21762,14 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12042,
           "slug": "magnus-iii",
-          "name": "Magnus III",
+          "name": "Magnus III *",
           "gameId": 3,
           "collectorCode": "LBF 047-300 M",
           "effect": "Indesterrable. tólo se puede declarar un Aliado atacante cada turno. Cuando ataca, si tólo controlas Aliados Héroe, puedes Robar una carta.",
@@ -21449,12 +21831,13 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12044,
           "slug": "ninurta",
-          "name": "Ninurta",
+          "name": "Ninurta *",
           "gameId": 3,
           "collectorCode": "LBF 049-300 M",
           "effect": "Indestructible. Cuando bloquea, tu oponente Descarta una carta.",
@@ -21483,12 +21866,13 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12045,
           "slug": "odin",
-          "name": "Odin",
+          "name": "Odin *",
           "gameId": 3,
           "collectorCode": "LBF 050-300 M",
           "effect": "Cuando entra en juego, puedes buscar en tu Castillo un Aliado Eterno y ponerlo en tu mano.",
@@ -21586,7 +21970,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12048,
@@ -21721,7 +22106,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12052,
@@ -21786,12 +22172,13 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12054,
           "slug": "monte-olimpo",
-          "name": "Monte Olimpo",
+          "name": "Monte Olimpo *",
           "gameId": 3,
           "collectorCode": "LBF 059-300 M",
           "effect": "En tu Vigilia, puedes pagar un Oro para Robar una carta.",
@@ -21818,7 +22205,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12055,
@@ -21887,7 +22275,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12057,
@@ -21922,7 +22311,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12058,
@@ -21956,7 +22346,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12059,
@@ -21990,7 +22382,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12060,
@@ -22024,7 +22418,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12061,
@@ -22058,7 +22453,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12062,
@@ -22195,7 +22592,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12066,
@@ -22228,7 +22626,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12067,
@@ -22262,7 +22661,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12068,
@@ -22432,7 +22833,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12073,
@@ -22466,7 +22868,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 12074,
@@ -22567,7 +22970,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12077,
@@ -22704,7 +23109,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12081,
@@ -22805,7 +23212,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11997,
@@ -22838,7 +23246,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11998,
@@ -22903,7 +23312,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12000,
@@ -22969,7 +23379,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12002,
@@ -23002,7 +23413,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12003,
@@ -23035,7 +23447,8 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 12004,
@@ -23068,7 +23481,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12005,
@@ -23103,7 +23518,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11995,
@@ -23135,7 +23552,9 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11977,
@@ -23203,7 +23622,9 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11979,
@@ -23269,7 +23690,9 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11981,
@@ -23371,7 +23794,8 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11984,
@@ -23406,7 +23830,8 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11985,
@@ -23473,7 +23898,8 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11987,
@@ -23506,7 +23932,8 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11988,
@@ -23540,7 +23967,8 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11989,
@@ -23574,7 +24002,8 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11990,
@@ -23608,7 +24037,9 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11991,
@@ -23642,7 +24073,8 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11992,
@@ -23709,7 +24141,9 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11994,
@@ -23742,7 +24176,8 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11956,
@@ -23777,7 +24212,8 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11957,
@@ -23812,7 +24248,9 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11958,
@@ -23847,7 +24285,9 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11959,
@@ -23881,7 +24321,9 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11960,
@@ -23948,7 +24390,9 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11962,
@@ -24046,7 +24490,8 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11965,
@@ -24179,7 +24624,8 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11969,
@@ -24214,7 +24660,8 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11970,
@@ -24248,7 +24695,9 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11971,
@@ -24315,7 +24764,9 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11973,
@@ -24348,7 +24799,8 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11974,
@@ -24481,7 +24933,8 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11944,
@@ -24719,7 +25172,8 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11951,
@@ -24751,7 +25205,8 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11952,
@@ -24883,7 +25338,8 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11941,
@@ -25115,7 +25571,8 @@
             "productName": "Midgard",
             "productCode": "MID",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11938,
@@ -25149,7 +25606,8 @@
             "productName": "Midgard",
             "productCode": "MID",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11930,
@@ -25285,7 +25743,8 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11934,
@@ -25349,7 +25808,8 @@
             "productName": "Sumeria",
             "productCode": "SU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11926,
@@ -25383,7 +25843,8 @@
             "productName": "Rebelión",
             "productCode": "XS",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11927,
@@ -25588,7 +26049,8 @@
             "productName": "Sumeria",
             "productCode": "SU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11924,
@@ -25653,7 +26115,9 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11920,
@@ -25720,7 +26184,8 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11916,
@@ -25753,7 +26218,8 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11917,
@@ -25787,7 +26253,8 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11918,
@@ -25821,7 +26288,9 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11913,
@@ -25891,7 +26360,8 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11904,
@@ -25925,7 +26395,9 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11905,
@@ -25960,7 +26432,9 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11906,
@@ -25994,7 +26468,9 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11907,
@@ -26028,7 +26504,9 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11908,
@@ -26061,7 +26539,8 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11909,
@@ -26095,7 +26574,8 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11910,
@@ -26128,7 +26608,9 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11911,
@@ -26161,7 +26643,8 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11912,
@@ -26194,7 +26677,8 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11895,
@@ -26262,7 +26746,8 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11897,
@@ -26330,7 +26815,9 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11899,
@@ -26364,7 +26851,8 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11900,
@@ -26434,7 +26922,8 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11902,
@@ -26468,7 +26957,8 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11903,
@@ -26502,7 +26992,9 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11886,
@@ -26535,7 +27027,8 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11887,
@@ -26600,7 +27093,9 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11889,
@@ -26635,7 +27130,9 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11890,
@@ -26670,7 +27167,9 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11891,
@@ -26705,7 +27204,9 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11892,
@@ -26807,7 +27308,9 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11881,
@@ -26840,7 +27343,8 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11882,
@@ -26873,7 +27377,8 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11883,
@@ -26906,7 +27411,8 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11884,
@@ -26974,7 +27480,8 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11879,
@@ -27074,7 +27581,9 @@
             "productName": "Reliquias del Dragón",
             "productCode": "XP",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11878,
@@ -27107,7 +27616,8 @@
             "productName": "Reliquias del Dragón",
             "productCode": "XP",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11876,
@@ -27140,7 +27650,9 @@
             "productName": "Reliquias del Dragón",
             "productCode": "XP",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11875,
@@ -27208,7 +27720,9 @@
             "productName": "Reliquias del Dragón",
             "productCode": "XP",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11870,
@@ -27242,7 +27756,9 @@
             "productName": "Reliquias del Dragón",
             "productCode": "XP",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11871,
@@ -27276,7 +27792,8 @@
             "productName": "Reliquias del Dragón",
             "productCode": "XP",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11872,
@@ -27478,7 +27995,9 @@
             "productName": "Tesoro Vikingo",
             "productCode": "TV",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11859,
@@ -27546,7 +28065,9 @@
             "productName": "Tesoro Vikingo",
             "productCode": "TV",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11861,
@@ -27580,7 +28101,9 @@
             "productName": "Tesoro Vikingo",
             "productCode": "TV",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11855,
@@ -27614,7 +28137,8 @@
             "productName": "Tesoro Vikingo",
             "productCode": "TV",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11856,
@@ -29516,7 +30040,8 @@
             "productName": "Midgard",
             "productCode": "MID",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11806,
@@ -29968,7 +30493,9 @@
             "productName": "Midgard",
             "productCode": "MID",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11787,
@@ -30524,7 +31051,9 @@
             "productName": "Midgard",
             "productCode": "MID",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11771,
@@ -30724,7 +31253,8 @@
             "productName": "Midgard",
             "productCode": "MID",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11764,
@@ -30822,7 +31352,8 @@
             "productName": "Midgard",
             "productCode": "MID",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11767,
@@ -31194,7 +31725,8 @@
             "productName": "Midgard",
             "productCode": "MID",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11758,
@@ -31331,7 +31863,8 @@
             "productName": "Midgard",
             "productCode": "MID",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11746,
@@ -31565,7 +32098,9 @@
             "productName": "Midgard",
             "productCode": "MID",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11742,
@@ -31665,7 +32200,8 @@
             "productName": "Midgard",
             "productCode": "MID",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11736,
@@ -31768,7 +32304,9 @@
             "productName": "Midgard",
             "productCode": "MID",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11733,
@@ -31802,7 +32340,9 @@
             "productName": "Midgard",
             "productCode": "MID",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11734,
@@ -31869,7 +32409,8 @@
             "productName": "Midgard",
             "productCode": "MID",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11729,
@@ -31902,7 +32443,8 @@
             "productName": "Midgard",
             "productCode": "MID",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11730,
@@ -31935,7 +32477,8 @@
             "productName": "Midgard",
             "productCode": "MID",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11727,
@@ -31968,7 +32511,9 @@
             "productName": "Midgard",
             "productCode": "MID",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11705,
@@ -33028,7 +33573,8 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11676,
@@ -34874,7 +35420,8 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11629,
@@ -35690,7 +36237,8 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11619,
@@ -36646,7 +37194,9 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11602,
@@ -36934,7 +37484,8 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11558,
@@ -37268,7 +37819,9 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11568,
@@ -37506,7 +38059,8 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11575,
@@ -37540,7 +38094,8 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11576,
@@ -37608,7 +38163,8 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11578,
@@ -37710,7 +38266,9 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11527,
@@ -37744,7 +38302,9 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11528,
@@ -37778,7 +38338,8 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11529,
@@ -37812,7 +38373,9 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11530,
@@ -37846,7 +38409,9 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11531,
@@ -38106,7 +38671,9 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11539,
@@ -38622,7 +39189,9 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11512,
@@ -38724,7 +39293,9 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11515,
@@ -38860,7 +39431,9 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11519,
@@ -38928,7 +39501,8 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11521,
@@ -38962,7 +39536,8 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11522,
@@ -38996,7 +39571,8 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11523,
@@ -39030,7 +39606,8 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11524,
@@ -39097,7 +39674,8 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11498,
@@ -39129,7 +39707,9 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11499,
@@ -39197,7 +39777,9 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11501,
@@ -39231,7 +39813,8 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11502,
@@ -39265,7 +39848,8 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11503,
@@ -39299,7 +39883,9 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11504,
@@ -39333,7 +39919,8 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11505,
@@ -39397,7 +39984,8 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11507,
@@ -39495,7 +40083,8 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11490,
@@ -39530,7 +40119,8 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11491,
@@ -39565,7 +40155,9 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11492,
@@ -39600,7 +40192,8 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11493,
@@ -39703,7 +40296,9 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11496,
@@ -39737,7 +40332,9 @@
             "productName": "Asgard",
             "productCode": "ASG",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11487,
@@ -39867,7 +40464,9 @@
             "productName": "Rebelión",
             "productCode": "XS",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11484,
@@ -39901,7 +40500,9 @@
             "productName": "Rebelión",
             "productCode": "XS",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11480,
@@ -42695,7 +43296,9 @@
             "productName": "Rebelión",
             "productCode": "XS",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11388,
@@ -42763,7 +43366,9 @@
             "productName": "Rebelión",
             "productCode": "XS",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11390,
@@ -43354,7 +43959,9 @@
             "productName": "Rebelión",
             "productCode": "XS",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11381,
@@ -43458,7 +44065,8 @@
             "productName": "Rebelión",
             "productCode": "XS",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11364,
@@ -43493,7 +44101,8 @@
             "productName": "Rebelión",
             "productCode": "XS",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11365,
@@ -43663,7 +44272,8 @@
             "productName": "Rebelión",
             "productCode": "XS",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11370,
@@ -43697,7 +44307,9 @@
             "productName": "Rebelión",
             "productCode": "XS",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11371,
@@ -43901,7 +44513,8 @@
             "productName": "Rebelión",
             "productCode": "XS",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11377,
@@ -44004,7 +44617,9 @@
             "productName": "Rebelión",
             "productCode": "XS",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11355,
@@ -44038,7 +44653,8 @@
             "productName": "Sumeria",
             "productCode": "SU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11356,
@@ -44070,7 +44686,8 @@
             "productName": "Sumeria",
             "productCode": "SU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11357,
@@ -44102,7 +44719,8 @@
             "productName": "Sumeria",
             "productCode": "SU",
             "productType": "Edición"
-          }
+          },
+          "isRework": true
         },
         {
           "id": 11359,
@@ -44166,7 +44784,8 @@
             "productName": "Sumeria",
             "productCode": "SU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11358,
@@ -45461,7 +46080,7 @@
         {
           "id": 11351,
           "slug": "ereskigal",
-          "name": "Ereskigal",
+          "name": "Ereskigal *",
           "gameId": 3,
           "collectorCode": "SU-227-256",
           "effect": "Cuando este Aliado entra en juego, puedes Destruir un Aliado oponente de coste 2 o menos.",
@@ -45490,7 +46109,8 @@
             "productName": "Sumeria",
             "productCode": "SU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11352,
@@ -46546,7 +47166,8 @@
             "productName": "Sumeria",
             "productCode": "SU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11271,
@@ -47418,7 +48039,8 @@
             "productName": "Sumeria",
             "productCode": "SU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11248,
@@ -49358,7 +49980,8 @@
             "productName": "Sumeria",
             "productCode": "SU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11187,
@@ -49764,7 +50387,9 @@
             "productName": "Sumeria",
             "productCode": "SU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11172,
@@ -50052,7 +50677,8 @@
             "productName": "Sumeria",
             "productCode": "SU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11185,
@@ -50212,7 +50838,8 @@
             "productName": "Sumeria",
             "productCode": "SU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11186,
@@ -50376,7 +51003,8 @@
             "productName": "Sumeria",
             "productCode": "SU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11162,
@@ -50440,7 +51068,8 @@
             "productName": "Sumeria",
             "productCode": "SU",
             "productType": "Edición"
-          }
+          },
+          "isRework": false
         },
         {
           "id": 11166,
@@ -50900,7 +51529,8 @@
             "productName": "Sumeria",
             "productCode": "SU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11150,
@@ -51308,7 +51938,9 @@
             "productName": "Sumeria",
             "productCode": "SU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11137,
@@ -51477,7 +52109,9 @@
             "productName": "Sumeria",
             "productCode": "SU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11132,
@@ -51576,7 +52210,8 @@
             "productName": "Sumeria",
             "productCode": "SU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11130,
@@ -51645,7 +52280,9 @@
             "productName": "Sumeria",
             "productCode": "SU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11126,
@@ -51680,7 +52317,9 @@
             "productName": "Sumeria",
             "productCode": "SU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11127,
@@ -51715,7 +52354,9 @@
             "productName": "Sumeria",
             "productCode": "SU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11128,
@@ -51750,7 +52391,9 @@
             "productName": "Sumeria",
             "productCode": "SU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11129,
@@ -52638,7 +53281,9 @@
             "productName": "Aniversario 25 Años",
             "productCode": "25 ANIVERSARIO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11023,
@@ -52672,7 +53317,9 @@
             "productName": "Aniversario 25 Años",
             "productCode": "25 ANIVERSARIO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": true
         },
         {
           "id": 11024,
@@ -52704,7 +53351,8 @@
             "productName": "Aniversario 25 Años",
             "productCode": "25 ANIVERSARIO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11025,
@@ -52737,7 +53385,8 @@
             "productName": "Aniversario 25 Años",
             "productCode": "25 ANIVERSARIO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11026,
@@ -52769,7 +53418,9 @@
             "productName": "Aniversario 25 Años",
             "productCode": "25 ANIVERSARIO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": true
         },
         {
           "id": 11027,
@@ -52801,7 +53452,8 @@
             "productName": "Aniversario 25 Años",
             "productCode": "25 ANIVERSARIO",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11019,
@@ -52901,7 +53553,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11016,
@@ -53037,7 +53690,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11010,
@@ -53369,7 +54023,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11000,
@@ -53401,7 +54056,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 11001,
@@ -53530,7 +54186,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10998,
@@ -53562,7 +54219,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10992,
@@ -53596,7 +54254,8 @@
             "productName": "Premier Promos",
             "productCode": "PREMIER",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10993,
@@ -53664,7 +54323,8 @@
             "productName": "Premier Promos",
             "productCode": "PREMIER",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10995,
@@ -53728,7 +54388,8 @@
             "productName": "Juez Furia Extendido",
             "productCode": "JFX",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10989,
@@ -53762,7 +54423,8 @@
             "productName": "Premier Promos",
             "productCode": "PREMIER",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10990,
@@ -53796,7 +54458,8 @@
             "productName": "Premier Promos",
             "productCode": "PREMIER",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10991,
@@ -53830,7 +54493,8 @@
             "productName": "Premier Promos",
             "productCode": "PREMIER",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10986,
@@ -53862,7 +54526,8 @@
             "productName": "Nacional Furia Extendido",
             "productCode": "NFX",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10987,
@@ -53894,7 +54559,8 @@
             "productName": "Nacional Furia Extendido",
             "productCode": "NFX",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10982,
@@ -54096,7 +54762,8 @@
             "productName": "Promos Casa MYL",
             "productCode": "CML",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10977,
@@ -54290,7 +54957,8 @@
             "productName": "Promos Casa MYL",
             "productCode": "CML",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10972,
@@ -54418,7 +55086,8 @@
             "productName": "Navidad Furia Extendido",
             "productCode": "NFX",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10953,
@@ -54452,7 +55121,9 @@
             "productName": "Toolkit Furia Extendido 2025",
             "productCode": "TKFX25",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": true
         },
         {
           "id": 10954,
@@ -54486,7 +55157,9 @@
             "productName": "Toolkit Furia Extendido 2025",
             "productCode": "TKFX25",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": true
         },
         {
           "id": 10955,
@@ -54520,7 +55193,8 @@
             "productName": "Toolkit Furia Extendido 2025",
             "productCode": "TKFX25",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10956,
@@ -54552,7 +55226,9 @@
             "productName": "Toolkit Furia Extendido 2025",
             "productCode": "TKFX25",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": true
         },
         {
           "id": 10957,
@@ -54584,7 +55260,8 @@
             "productName": "Toolkit Furia Extendido 2025",
             "productCode": "TKFX25",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10958,
@@ -54680,7 +55357,8 @@
             "productName": "Toolkit Furia Extendido 2025",
             "productCode": "TKFX25",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10961,
@@ -54744,7 +55422,9 @@
             "productName": "Toolkit Furia Extendido 2025",
             "productCode": "TKFX25",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": true
         },
         {
           "id": 10944,
@@ -54776,7 +55456,8 @@
             "productName": "Toolkit Furia Extendido 2025",
             "productCode": "TKFX25",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10945,
@@ -54872,7 +55553,8 @@
             "productName": "Toolkit Furia Extendido 2025",
             "productCode": "TKFX25",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10948,
@@ -54968,7 +55650,8 @@
             "productName": "Toolkit Furia Extendido 2025",
             "productCode": "TKFX25",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10951,
@@ -55000,7 +55683,8 @@
             "productName": "Toolkit Furia Extendido 2025",
             "productCode": "TKFX25",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10952,
@@ -55032,7 +55716,8 @@
             "productName": "Toolkit Furia Extendido 2025",
             "productCode": "TKFX25",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10938,
@@ -55064,7 +55749,8 @@
             "productName": "Toolkit Furia Extendido 2025",
             "productCode": "TKFX25",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10939,
@@ -55096,7 +55782,8 @@
             "productName": "Toolkit Furia Extendido 2025",
             "productCode": "TKFX25",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10940,
@@ -55130,7 +55817,9 @@
             "productName": "Toolkit Furia Extendido 2025",
             "productCode": "TKFX25",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": true
         },
         {
           "id": 10941,
@@ -55164,7 +55853,8 @@
             "productName": "Toolkit Furia Extendido 2025",
             "productCode": "TKFX25",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10942,
@@ -55198,7 +55888,8 @@
             "productName": "Toolkit Furia Extendido 2025",
             "productCode": "TKFX25",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10935,
@@ -55294,7 +55985,8 @@
             "productName": "Toolkit Furia Extendido 2025",
             "productCode": "TKFX25",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10932,
@@ -55652,7 +56344,8 @@
             "productName": "Aniversario 10 Años Furia",
             "productCode": "FURIA X",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10925,
@@ -55685,7 +56378,8 @@
             "productName": "Aniversario 10 Años Furia",
             "productCode": "FURIA X",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10926,
@@ -56058,7 +56752,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10912,
@@ -56091,7 +56786,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10898,
@@ -56289,7 +56985,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10904,
@@ -56389,7 +57086,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10907,
@@ -56421,7 +57119,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10908,
@@ -56453,7 +57152,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10909,
@@ -56486,7 +57186,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10910,
@@ -56519,7 +57220,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10893,
@@ -57281,7 +57983,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10865,
@@ -57441,7 +58144,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10870,
@@ -57473,7 +58177,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10871,
@@ -57699,7 +58404,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10855,
@@ -57797,7 +58503,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10858,
@@ -58332,7 +59039,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10837,
@@ -58365,7 +59073,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10838,
@@ -58398,7 +59107,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10839,
@@ -58431,7 +59141,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10840,
@@ -58529,7 +59240,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10843,
@@ -58561,7 +59273,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10844,
@@ -58836,7 +59549,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10820,
@@ -62396,7 +63110,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10715,
@@ -62430,7 +63145,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10716,
@@ -62668,7 +63384,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10700,
@@ -63688,7 +64405,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10669,
@@ -64778,7 +65496,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10650,
@@ -65280,7 +65999,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10632,
@@ -65408,7 +66128,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10625,
@@ -65440,7 +66161,9 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 10626,
@@ -65472,7 +66195,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10627,
@@ -65504,7 +66228,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10628,
@@ -65736,7 +66461,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10617,
@@ -65803,7 +66529,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10619,
@@ -65871,7 +66598,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10621,
@@ -65905,7 +66633,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10622,
@@ -65973,7 +66702,8 @@
             "productName": "Guardianes de Daana",
             "productCode": "GUA",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10608,
@@ -66621,7 +67351,8 @@
             "productName": "Reinos Perdidos: Vigilantes",
             "productCode": "VIG",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10602,
@@ -66654,7 +67385,8 @@
             "productName": "Reinos Perdidos: Vigilantes",
             "productCode": "VIG",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10579,
@@ -66718,7 +67450,8 @@
             "productName": "Toolkit Furia",
             "productCode": "TKF",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10581,
@@ -66783,7 +67516,8 @@
             "productName": "Toolkit Furia",
             "productCode": "TKF",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10583,
@@ -67040,7 +67774,8 @@
             "productName": "Toolkit Furia",
             "productCode": "TKF",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10591,
@@ -67170,7 +67905,8 @@
             "productName": "Toolkit Furia",
             "productCode": "TKF",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10574,
@@ -67431,7 +68167,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10572,
@@ -67628,7 +68365,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10562,
@@ -67852,7 +68590,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10544,
@@ -67916,7 +68655,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10546,
@@ -67948,7 +68688,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10547,
@@ -67980,7 +68721,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10548,
@@ -68014,7 +68756,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10549,
@@ -68378,7 +69121,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10560,
@@ -68411,7 +69155,9 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 10561,
@@ -68707,7 +69453,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10531,
@@ -68970,7 +69717,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10512,
@@ -69002,7 +69750,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10513,
@@ -69066,7 +69815,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10515,
@@ -69098,7 +69848,9 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 10516,
@@ -69341,7 +70093,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10491,
@@ -73188,7 +73941,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10380,
@@ -73222,7 +73976,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10381,
@@ -73732,7 +74487,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10396,
@@ -73766,7 +74522,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10397,
@@ -74386,7 +75143,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10359,
@@ -74954,7 +75712,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10315,
@@ -75050,7 +75809,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10318,
@@ -75082,7 +75842,9 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 10319,
@@ -75146,7 +75908,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10321,
@@ -75656,7 +76419,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10336,
@@ -76381,7 +77145,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10299,
@@ -76414,7 +77179,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10300,
@@ -76481,7 +77247,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10302,
@@ -76715,7 +77482,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10309,
@@ -76811,7 +77579,8 @@
             "productName": "Guerreros del Sol",
             "productCode": "GUE",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10283,
@@ -76875,7 +77644,8 @@
             "productName": "Kingdom Quest",
             "productCode": "KIN",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10285,
@@ -76907,7 +77677,8 @@
             "productName": "Kingdom Quest",
             "productCode": "KIN",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10282,
@@ -77039,7 +77810,8 @@
             "productName": "Kingdom Quest",
             "productCode": "KIN",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10278,
@@ -77373,7 +78145,8 @@
             "productName": "Kingdom Quest",
             "productCode": "KIN",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10269,
@@ -77895,7 +78668,8 @@
             "productName": "Troya Extensión",
             "productCode": "TEX",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10249,
@@ -78391,7 +79165,8 @@
             "productName": "Troya Extensión",
             "productCode": "TEX",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10237,
@@ -78757,7 +79532,8 @@
             "productName": "Troya Extensión",
             "productCode": "TEX",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10228,
@@ -78958,7 +79734,8 @@
             "productName": "Reinos Perdidos: La Cofradía",
             "productCode": "LCF",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10224,
@@ -79692,7 +80469,8 @@
             "productName": "Troya",
             "productCode": "TRO",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10198,
@@ -79725,7 +80503,8 @@
             "productName": "Troya",
             "productCode": "TRO",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10199,
@@ -79984,7 +80763,9 @@
             "productName": "Troya",
             "productCode": "TRO",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 10177,
@@ -80344,7 +81125,8 @@
             "productName": "Troya",
             "productCode": "TRO",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10188,
@@ -80378,7 +81160,8 @@
             "productName": "Troya",
             "productCode": "TRO",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10172,
@@ -80546,7 +81329,8 @@
             "productName": "Troya",
             "productCode": "TRO",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10161,
@@ -80578,7 +81362,8 @@
             "productName": "Troya",
             "productCode": "TRO",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10162,
@@ -81504,7 +82289,8 @@
             "productName": "Troya",
             "productCode": "TRO",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10132,
@@ -81601,7 +82387,8 @@
             "productName": "Troya",
             "productCode": "TRO",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 10135,
@@ -88300,7 +89087,9 @@
             "productName": "Troya",
             "productCode": "TRO",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 9936,
@@ -88665,7 +89454,8 @@
             "productName": "Troya",
             "productCode": "TRO",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9929,
@@ -88793,7 +89583,9 @@
             "productName": "Troya",
             "productCode": "TRO",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 9933,
@@ -89135,7 +89927,8 @@
             "productName": "Troya",
             "productCode": "TRO",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9919,
@@ -90139,7 +90932,8 @@
             "productName": "Mazos Preconstruidos",
             "productCode": "MI",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9886,
@@ -90173,7 +90967,9 @@
             "productName": "Mazos Preconstruidos",
             "productCode": "MI",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 9882,
@@ -90543,7 +91339,8 @@
             "productName": "Mazos Preconstruidos",
             "productCode": "MI",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9871,
@@ -91139,7 +91936,8 @@
             "productName": "Mazos Preconstruidos",
             "productCode": "MI",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9852,
@@ -91171,7 +91969,9 @@
             "productName": "Mazos Preconstruidos",
             "productCode": "MI",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 9853,
@@ -91338,7 +92138,8 @@
             "productName": "Excalibur",
             "productCode": "EXC",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9844,
@@ -91371,7 +92172,8 @@
             "productName": "Excalibur",
             "productCode": "EXC",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9845,
@@ -91440,7 +92242,8 @@
             "productName": "Excalibur",
             "productCode": "EXC",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9847,
@@ -91634,7 +92437,8 @@
             "productName": "Excalibur",
             "productCode": "EXC",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9836,
@@ -92075,7 +92879,9 @@
             "productName": "Reinos Perdidos: Leyendas del Metal",
             "productCode": "HM",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 9822,
@@ -92108,7 +92914,9 @@
             "productName": "Reinos Perdidos: Leyendas del Metal",
             "productCode": "HM",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 9823,
@@ -92208,7 +93016,9 @@
             "productName": "Reinos Perdidos: Leyendas del Metal",
             "productCode": "HM",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 9816,
@@ -92240,7 +93050,9 @@
             "productName": "Reinos Perdidos: Leyendas del Metal",
             "productCode": "HM",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 9817,
@@ -92273,7 +93085,8 @@
             "productName": "Reinos Perdidos: Leyendas del Metal",
             "productCode": "HM",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9818,
@@ -92372,7 +93185,8 @@
             "productName": "Reinos Perdidos: Leyendas del Metal",
             "productCode": "HM",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9814,
@@ -92473,7 +93287,8 @@
             "productName": "Reinos Perdidos: Wasteland",
             "productCode": "WAS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9813,
@@ -93013,7 +93828,9 @@
             "productName": "Reinos Perdidos: Wasteland",
             "productCode": "WAS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false,
+          "isRework": true
         },
         {
           "id": 9810,
@@ -93045,7 +93862,8 @@
             "productName": "Reinos Perdidos: Wasteland",
             "productCode": "WAS",
             "productType": "Producto Especial"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9788,
@@ -93316,7 +94134,9 @@
             "productName": "Excalibur",
             "productCode": "EXC",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 9779,
@@ -93381,7 +94201,8 @@
             "productName": "Excalibur",
             "productCode": "EXC",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9781,
@@ -93446,7 +94267,8 @@
             "productName": "Excalibur",
             "productCode": "EXC",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true
         },
         {
           "id": 9783,
@@ -93478,7 +94300,8 @@
             "productName": "Excalibur",
             "productCode": "EXC",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9784,
@@ -93909,7 +94732,8 @@
             "productName": "Excalibur",
             "productCode": "EXC",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9768,
@@ -94107,7 +94931,9 @@
             "productName": "Excalibur",
             "productCode": "EXC",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 9757,
@@ -94382,7 +95208,8 @@
             "productName": "Excalibur",
             "productCode": "EXC",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9753,
@@ -94448,7 +95275,8 @@
             "productName": "Excalibur",
             "productCode": "EXC",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9751,
@@ -99304,7 +100132,8 @@
             "productName": "Excalibur",
             "productCode": "EXC",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9602,
@@ -99891,7 +100720,9 @@
             "productName": "Excalibur",
             "productCode": "EXC",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 9588,
@@ -99923,7 +100754,8 @@
             "productName": "Excalibur",
             "productCode": "EXC",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9583,
@@ -101221,7 +102053,9 @@
             "productName": "Excalibur",
             "productCode": "EXC",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 9547,
@@ -101424,7 +102258,8 @@
             "productName": "Excalibur",
             "productCode": "EXC",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9540,
@@ -101457,7 +102292,8 @@
             "productName": "Excalibur",
             "productCode": "EXC",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9541,
@@ -101942,7 +102778,8 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9523,
@@ -102007,7 +102844,8 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9525,
@@ -102107,7 +102945,8 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9477,
@@ -102235,7 +103074,8 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9481,
@@ -102943,7 +103783,8 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9502,
@@ -103439,7 +104280,8 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9517,
@@ -103542,7 +104384,8 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9520,
@@ -103708,7 +104551,8 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9472,
@@ -103806,7 +104650,8 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9475,
@@ -104074,7 +104919,8 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9455,
@@ -104106,7 +104952,8 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9456,
@@ -104208,7 +105055,9 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 9459,
@@ -104414,7 +105263,8 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9454,
@@ -104447,7 +105297,9 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 9439,
@@ -104897,7 +105749,8 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9410,
@@ -106513,7 +107366,8 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9372,
@@ -109769,7 +110623,8 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9280,
@@ -110005,7 +110860,8 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9287,
@@ -110771,7 +111627,8 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9259,
@@ -110867,7 +111724,8 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9262,
@@ -111067,7 +111925,8 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9252,
@@ -111131,7 +111990,8 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9243,
@@ -111571,7 +112431,8 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9241,
@@ -111604,7 +112465,9 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 9242,
@@ -111778,7 +112641,9 @@
             "productName": "Roma",
             "productCode": "ROM",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 9231,
@@ -111950,7 +112815,8 @@
             "productName": "Furia Extensión",
             "productCode": "EF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9215,
@@ -113469,7 +114335,9 @@
             "productName": "Furia Extensión",
             "productCode": "EF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 9165,
@@ -114521,7 +115389,8 @@
             "productName": "Furia Extensión",
             "productCode": "EF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9136,
@@ -114617,7 +115486,9 @@
             "productName": "Furia Extensión",
             "productCode": "EF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 9134,
@@ -114787,7 +115658,8 @@
             "productName": "Furia Extensión",
             "productCode": "EF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9131,
@@ -114922,7 +115794,8 @@
             "productName": "Furia Extensión",
             "productCode": "EF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9124,
@@ -115057,7 +115930,8 @@
             "productName": "Furia Extensión",
             "productCode": "EF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9117,
@@ -115160,7 +116034,8 @@
             "productName": "Furia Extensión",
             "productCode": "EF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 9120,
@@ -115226,7 +116101,9 @@
             "productName": "Furia Extensión",
             "productCode": "EF",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 9112,
@@ -116932,7 +117809,9 @@
             "productName": "Furia",
             "productCode": "1FU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 9044,
@@ -119884,7 +120763,9 @@
             "productName": "Furia",
             "productCode": "1FU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 8966,
@@ -119949,7 +120830,8 @@
             "productName": "Furia",
             "productCode": "1FU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 8968,
@@ -120397,7 +121279,9 @@
             "productName": "Furia",
             "productCode": "1FU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 8960,
@@ -120525,7 +121409,9 @@
             "productName": "Furia",
             "productCode": "1FU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 8955,
@@ -120795,7 +121681,9 @@
             "productName": "Furia",
             "productCode": "1FU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 8937,
@@ -121067,7 +121955,9 @@
             "productName": "Furia",
             "productCode": "1FU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 8945,
@@ -121101,7 +121991,9 @@
             "productName": "Furia",
             "productCode": "1FU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 8946,
@@ -121237,7 +122129,9 @@
             "productName": "Furia",
             "productCode": "1FU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 8924,
@@ -121270,7 +122164,9 @@
             "productName": "Furia",
             "productCode": "1FU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 8925,
@@ -121303,7 +122199,9 @@
             "productName": "Furia",
             "productCode": "1FU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 8926,
@@ -121336,7 +122234,8 @@
             "productName": "Furia",
             "productCode": "1FU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 8927,
@@ -121369,7 +122268,9 @@
             "productName": "Furia",
             "productCode": "1FU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 8928,
@@ -121435,7 +122336,8 @@
             "productName": "Furia",
             "productCode": "1FU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         },
         {
           "id": 8930,
@@ -121468,7 +122370,9 @@
             "productName": "Furia",
             "productCode": "1FU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 8931,
@@ -121603,7 +122507,9 @@
             "productName": "Furia",
             "productCode": "1FU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 8923,
@@ -121636,7 +122542,9 @@
             "productName": "Furia",
             "productCode": "1FU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 8921,
@@ -121669,7 +122577,9 @@
             "productName": "Furia",
             "productCode": "1FU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 8918,
@@ -121809,7 +122719,8 @@
             "productName": "Furia",
             "productCode": "1FU",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false
         }
       ],
       "total": 3651,

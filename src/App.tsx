@@ -24,6 +24,7 @@ const ResetPasswordPage = lazy(() => import('./pages/ResetPasswordPage'));
 const DeckBuilderHomePage = lazy(() => import('./pages/DeckBuilderHomePage'));
 const DeckBuilderEditorPage = lazy(() => import('./pages/DeckBuilderEditorPage'));
 const DeckViewerPage = lazy(() => import('./pages/DeckViewerPage'));
+const LocalJsonEditorPage = lazy(() => import('./pages/LocalJsonEditorPage'));
 
 // Loading fallback component
 const PageLoader = () => (
@@ -68,6 +69,7 @@ function App() {
             <Route path="/deck-builder" element={<DeckBuilderHomePage />} />
             <Route path="/deck-builder/editor" element={<DeckBuilderEditorPage />} />
             <Route path="/deck-builder/viewer" element={<DeckViewerPage />} />
+            <Route path="/deck-builder/local-json-editor" element={<LocalJsonEditorPage />} />
           </Routes>
         </Suspense>
       </main>

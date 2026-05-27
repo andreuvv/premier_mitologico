@@ -15,6 +15,14 @@
   margin-bottom: 1.5rem;
 }
 
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 .pageTitle {
   margin: 0 0 0.25rem;
   font-size: 1.9rem;
@@ -48,6 +56,23 @@
 
 .createButton:hover {
   opacity: 0.85;
+}
+
+.localEditorButton {
+  background: rgba(214, 156, 65, 0.12);
+  color: var(--ocher);
+  border: 1px solid var(--ocher);
+  border-radius: 6px;
+  padding: 0.55rem 0.95rem;
+  font-size: 0.83rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.localEditorButton:hover {
+  background: rgba(214, 156, 65, 0.22);
 }
 
 /* ─── Tabs ────────────────────────────────────────────────────────────────── */
