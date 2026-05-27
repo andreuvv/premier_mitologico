@@ -37,6 +37,8 @@ export interface CollectionCard {
   interactions?: string[];
   unique?: boolean;
   moreThan3?: boolean;
+  isNewest?: boolean;
+  isRework?: boolean;
   __typename: string;
 }
 

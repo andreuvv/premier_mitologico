@@ -18,14 +18,15 @@ export function normalizeName(name: string): string {
     .trim();
 }
 
-// Strips trailing " *" markers from REWORK card names to find their base card
-function reworkBaseName(name: string): string {
-  return name.replace(/\s*\*+\s*$/, '').trim();
-}
-
 // Key used to identify "same card across reprints": normalized name + normalized type
 function cardKey(name: string, type: string): string {
   return `${normalizeName(name)}|${type.toUpperCase().trim()}`;
+}
+
+// Grouping key for visibility/legality rules.
+// Important: cards with trailing "*" are treated as a different group.
+function groupKey(name: string, type: string): string {
+  return cardKey(name, type);
 }
 
 // ── Build lookup structures from banlist data ─────────────────────────────────
@@ -94,18 +95,51 @@ export function useDeckRules({
     [allCards],
   );
 
+  // Group all cards by logical key (same normalized name+type).
+  const cardsByGroupKey = useMemo(() => {
+    const map = new Map<string, CollectionCard[]>();
+    for (const card of allCards) {
+      const gk = groupKey(card.name, card.type);
+      const list = map.get(gk) ?? [];
+      list.push(card);
+      map.set(gk, list);
+    }
+    return map;
+  }, [allCards]);
+
+  // If a group has at least one rework card, only rework cards from that group are valid.
+  const groupsWithRework = useMemo(() => {
+    const set = new Set<string>();
+    for (const [gk, cards] of cardsByGroupKey.entries()) {
+      if (cards.some((c) => c.isRework === true)) set.add(gk);
+    }
+    return set;
+  }, [cardsByGroupKey]);
+
   // Set of cards with Vasallo/Cortesano/Real frequency (used for VCR filter)
   // Key: cardKey(name, type). If a card has at least one VCR-freq version, all versions are allowed.
   const vcrEligibleKeys = useMemo(() => {
     if (subformat !== 'fx-vcr') return null;
     const eligible = new Set<string>();
-    for (const card of allCards) {
-      if (VCR_FREQUENCIES.has(card.frequency?.toUpperCase())) {
-        eligible.add(cardKey(card.name, card.type));
+
+    for (const [gk, cards] of cardsByGroupKey.entries()) {
+      // New rule: if there is a card marked as newest in the group,
+      // VCR eligibility is determined ONLY by that newest card frequency.
+      const newest = cards.find((c) => c.isNewest === true);
+      if (newest) {
+        if (VCR_FREQUENCIES.has(newest.frequency?.toUpperCase())) {
+          eligible.add(gk);
+        }
+        continue;
+      }
+
+      // Fallback behavior when group has no newest marker.
+      if (cards.some((c) => VCR_FREQUENCIES.has(c.frequency?.toUpperCase()))) {
+        eligible.add(gk);
       }
     }
     return eligible;
-  }, [allCards, subformat]);
+  }, [cardsByGroupKey, subformat]);
 
   // Set of cardKey(name, type) for cards present in non-Dracula editions (for pb-edicion reprint check)
   const nonDraculaCardKeys = useMemo(() => {
@@ -156,6 +190,12 @@ export function useDeckRules({
   const isCardVisible = useMemo(() => (card: CollectionCard): boolean => {
     const type = card.type?.toUpperCase();
     const normalizedRace = normalizeName(race);
+    const gk = groupKey(card.name, card.type);
+
+    // Global rule: if a logical group has a rework, non-rework versions are invalid.
+    if (groupsWithRework.has(gk) && card.isRework !== true) {
+      return false;
+    }
 
     // Aliado race filter: only show Aliados of the selected race
     if (type === 'ALIADO') {
@@ -168,12 +208,7 @@ export function useDeckRules({
     // VCR: only show cards that have at least one VCR-freq version.
     // REWORK cards are eligible if their base name (without " *") has a VCR-freq version.
     if (subformat === 'fx-vcr' && vcrEligibleKeys) {
-      const key = cardKey(card.name, card.type);
-      const baseKey =
-        card.frequency?.toUpperCase() === 'REWORK'
-          ? cardKey(reworkBaseName(card.name), card.type)
-          : key;
-      if (!vcrEligibleKeys.has(key) && !vcrEligibleKeys.has(baseKey)) return false;
+      if (!vcrEligibleKeys.has(gk)) return false;
     }
 
     // PB Racial Edición
@@ -193,7 +228,7 @@ export function useDeckRules({
     }
 
     return true;
-  }, [subformat, race, vcrEligibleKeys, nonDraculaCardKeys, lockedEdition]);
+  }, [subformat, race, groupsWithRework, vcrEligibleKeys, nonDraculaCardKeys, lockedEdition]);
 
   // ── getHardMax ────────────────────────────────────────────────────────────
 
@@ -272,6 +307,12 @@ export function useDeckRules({
 
     // Banlist violations (banned cards in deck)
     for (const { card } of deckEntries) {
+      const gk = groupKey(card.name, card.type);
+
+      if (groupsWithRework.has(gk) && card.isRework !== true) {
+        errs.push(`"${card.name}" no es válida: existe versión rework para esta carta`);
+      }
+
       const key = cardKey(card.name, card.type);
       if (banlistLookup.banned.has(key)) {
         errs.push(`"${card.name}" está prohibida`);
@@ -335,6 +376,7 @@ export function useDeckRules({
     subformat,
     lockedEdition,
     nonDraculaCardKeys,
+    groupsWithRework,
   ]);
 
   return {
