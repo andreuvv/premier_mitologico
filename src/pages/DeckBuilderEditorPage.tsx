@@ -114,6 +114,7 @@ export default function DeckBuilderEditorPage() {
   // Filters
   const [search, setSearch] = useState('');
   const [typeFilter, setTypeFilter] = useState('');
+  const [frequencyFilter, setFrequencyFilter] = useState('');
   const [costFilter, setCostFilter] = useState('');
   const [attackFilter, setAttackFilter] = useState('');
 
@@ -151,7 +152,7 @@ export default function DeckBuilderEditorPage() {
   // Reset page when filters change
   useEffect(() => {
     setPage(1);
-  }, [search, typeFilter, costFilter, attackFilter]);
+  }, [search, typeFilter, frequencyFilter, costFilter, attackFilter]);
 
   // Banlist
   const { banlist } = useBanlist(formatParam as 'pb' | 'fx', subformat);
@@ -183,6 +184,9 @@ export default function DeckBuilderEditorPage() {
         (c) => c.type?.toUpperCase() === typeFilter.toUpperCase(),
       );
     }
+    if (frequencyFilter) {
+      cards = cards.filter((c) => c.frequency === frequencyFilter);
+    }
     if (costFilter !== '') {
       cards = cards.filter((c) => c.cost === parseInt(costFilter, 10));
     }
@@ -199,7 +203,7 @@ export default function DeckBuilderEditorPage() {
       return (a.edition?.slug ?? '').localeCompare(b.edition?.slug ?? '');
     });
     return cards;
-  }, [allCards, search, typeFilter, costFilter, attackFilter, rules.isCardVisible]);
+  }, [allCards, search, typeFilter, frequencyFilter, costFilter, attackFilter, rules.isCardVisible]);
 
   const totalPages = Math.max(1, Math.ceil(filteredCards.length / CARDS_PER_PAGE));
   const paginatedCards = filteredCards.slice(
@@ -289,6 +293,14 @@ export default function DeckBuilderEditorPage() {
     () =>
       Array.from(new Set(allCards.map((c) => c.cost).filter((c) => c != null))).sort(
         (a, b) => a - b,
+      ),
+    [allCards],
+  );
+
+  const frequencyOptions = useMemo(
+    () =>
+      Array.from(new Set(allCards.map((c) => c.frequency).filter((f) => Boolean(f)))).sort(
+        (a, b) => a.localeCompare(b, 'es'),
       ),
     [allCards],
   );
@@ -465,6 +477,18 @@ export default function DeckBuilderEditorPage() {
 
           {/* Filters row */}
           <div className={styles.filtersRow}>
+            <select
+              className={styles.filterSelect}
+              value={frequencyFilter}
+              onChange={(e) => setFrequencyFilter(e.target.value)}
+            >
+              <option value="">Toda frecuencia</option>
+              {frequencyOptions.map((f) => (
+                <option key={f} value={f}>
+                  {f}
+                </option>
+              ))}
+            </select>
             <select
               className={styles.filterSelect}
               value={costFilter}

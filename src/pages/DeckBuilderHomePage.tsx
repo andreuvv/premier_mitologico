@@ -73,16 +73,22 @@ function matchesDeckFilters(
   deck: Pick<UserDeck, 'format' | 'subformat' | 'race'>,
   formatFilter: FormatFilter,
   subformatFilter: SubformatFilter,
-  raceSearch: string,
+  raceFilter: string,
 ) {
   if (formatFilter !== 'all' && deck.format !== formatFilter) return false;
   if (subformatFilter !== 'all' && deck.subformat !== subformatFilter) return false;
-  if (raceSearch.trim()) {
+  if (raceFilter.trim()) {
     const raceNorm = normalizeStr(deck.race ?? '');
-    const queryNorm = normalizeStr(raceSearch.trim());
-    if (!raceNorm.includes(queryNorm)) return false;
+    const queryNorm = normalizeStr(raceFilter.trim());
+    if (raceNorm !== queryNorm) return false;
   }
   return true;
+}
+
+function getVisibleRaces(formatFilter: FormatFilter) {
+  if (formatFilter === 'pb') return PB_RACES;
+  if (formatFilter === 'fx') return FX_RACES;
+  return [...new Set([...PB_RACES, ...FX_RACES])].sort((a, b) => a.localeCompare(b, 'es'));
 }
 
 function getSubformatLabel(subformat: string) {
@@ -222,10 +228,10 @@ export default function DeckBuilderHomePage() {
   const [exploreLoaded, setExploreLoaded] = useState(false);
   const [myFormatFilter, setMyFormatFilter] = useState<FormatFilter>('all');
   const [mySubformatFilter, setMySubformatFilter] = useState<SubformatFilter>('all');
-  const [myRaceSearch, setMyRaceSearch] = useState('');
+  const [myRaceFilter, setMyRaceFilter] = useState('');
   const [exploreFormatFilter, setExploreFormatFilter] = useState<FormatFilter>('all');
   const [exploreSubformatFilter, setExploreSubformatFilter] = useState<SubformatFilter>('all');
-  const [exploreRaceSearch, setExploreRaceSearch] = useState('');
+  const [exploreRaceFilter, setExploreRaceFilter] = useState('');
 
   const fetchDecks = useCallback(async () => {
     if (!user) return;
@@ -275,17 +281,17 @@ export default function DeckBuilderHomePage() {
   const filteredMyDecks = useMemo(
     () =>
       decks.filter((deck) =>
-        matchesDeckFilters(deck, myFormatFilter, mySubformatFilter, myRaceSearch),
+        matchesDeckFilters(deck, myFormatFilter, mySubformatFilter, myRaceFilter),
       ),
-    [decks, myFormatFilter, mySubformatFilter, myRaceSearch],
+    [decks, myFormatFilter, mySubformatFilter, myRaceFilter],
   );
 
   const filteredExploreDecks = useMemo(
     () =>
       exploreDecks.filter((deck) =>
-        matchesDeckFilters(deck, exploreFormatFilter, exploreSubformatFilter, exploreRaceSearch),
+        matchesDeckFilters(deck, exploreFormatFilter, exploreSubformatFilter, exploreRaceFilter),
       ),
-    [exploreDecks, exploreFormatFilter, exploreSubformatFilter, exploreRaceSearch],
+    [exploreDecks, exploreFormatFilter, exploreSubformatFilter, exploreRaceFilter],
   );
 
   const visibleMySubformats = useMemo(() => {
@@ -308,6 +314,12 @@ export default function DeckBuilderHomePage() {
     return ALL_SUBFORMATS;
   }, [exploreFormatFilter]);
 
+  const visibleMyRaces = useMemo(() => getVisibleRaces(myFormatFilter), [myFormatFilter]);
+  const visibleExploreRaces = useMemo(
+    () => getVisibleRaces(exploreFormatFilter),
+    [exploreFormatFilter],
+  );
+
   useEffect(() => {
     if (myFormatFilter === 'pb' && mySubformatFilter !== 'all' && !mySubformatFilter.startsWith('pb-')) {
       setMySubformatFilter('all');
@@ -316,6 +328,12 @@ export default function DeckBuilderHomePage() {
       setMySubformatFilter('all');
     }
   }, [myFormatFilter, mySubformatFilter]);
+
+  useEffect(() => {
+    if (myRaceFilter && !visibleMyRaces.includes(myRaceFilter)) {
+      setMyRaceFilter('');
+    }
+  }, [myRaceFilter, visibleMyRaces]);
 
   useEffect(() => {
     if (
@@ -333,6 +351,12 @@ export default function DeckBuilderHomePage() {
       setExploreSubformatFilter('all');
     }
   }, [exploreFormatFilter, exploreSubformatFilter]);
+
+  useEffect(() => {
+    if (exploreRaceFilter && !visibleExploreRaces.includes(exploreRaceFilter)) {
+      setExploreRaceFilter('');
+    }
+  }, [exploreRaceFilter, visibleExploreRaces]);
 
   return (
     <div className={styles.container}>
@@ -421,13 +445,18 @@ export default function DeckBuilderHomePage() {
                       </option>
                     ))}
                   </select>
-                  <input
-                    className={styles.filterInput}
-                    type="text"
-                    placeholder="Buscar por raza..."
-                    value={myRaceSearch}
-                    onChange={(e) => setMyRaceSearch(e.target.value)}
-                  />
+                  <select
+                    className={styles.filterSelect}
+                    value={myRaceFilter}
+                    onChange={(e) => setMyRaceFilter(e.target.value)}
+                  >
+                    <option value="">Todas las razas</option>
+                    {visibleMyRaces.map((race) => (
+                      <option key={race} value={race}>
+                        {race}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
 
@@ -441,6 +470,7 @@ export default function DeckBuilderHomePage() {
                 const cardCount = Object.values(deck.cards).reduce((a, b) => a + b, 0);
                 const formatLabel = deck.format === 'fx' ? 'Furia Extendido' : 'Primer Bloque';
                 const subformatLabel = getSubformatLabel(deck.subformat);
+                const formatTagClass = deck.format === 'fx' ? styles.deckCardTagFormatFx : styles.deckCardTagFormatPb;
                 return (
                   <div key={deck.id} className={styles.deckCard} onClick={() => handleView(deck)} style={{ cursor: 'pointer' }}>
                     {deck.headerImageUrl && (
@@ -467,9 +497,9 @@ export default function DeckBuilderHomePage() {
                       >
                         {deck.is_public ? 'Público' : 'Privado'}
                       </span>
-                      <span className={styles.deckCardTag}>{formatLabel}</span>
-                      <span className={styles.deckCardTag}>{subformatLabel}</span>
-                      {deck.race && <span className={styles.deckCardTag}>{deck.race}</span>}
+                      <span className={`${styles.deckCardTag} ${formatTagClass}`}>{formatLabel}</span>
+                      <span className={`${styles.deckCardTag} ${formatTagClass}`}>{subformatLabel}</span>
+                      {deck.race && <span className={`${styles.deckCardTag} ${styles.deckCardTagRace}`}>{deck.race}</span>}
                     </div>
                     <div className={styles.deckCardActions}>
                       <button
@@ -544,13 +574,18 @@ export default function DeckBuilderHomePage() {
                       </option>
                     ))}
                   </select>
-                  <input
-                    className={styles.filterInput}
-                    type="text"
-                    placeholder="Buscar por raza..."
-                    value={exploreRaceSearch}
-                    onChange={(e) => setExploreRaceSearch(e.target.value)}
-                  />
+                  <select
+                    className={styles.filterSelect}
+                    value={exploreRaceFilter}
+                    onChange={(e) => setExploreRaceFilter(e.target.value)}
+                  >
+                    <option value="">Todas las razas</option>
+                    {visibleExploreRaces.map((race) => (
+                      <option key={race} value={race}>
+                        {race}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
 
@@ -563,6 +598,7 @@ export default function DeckBuilderHomePage() {
                   {filteredExploreDecks.map((deck) => {
                 const formatLabel = deck.format === 'fx' ? 'Furia Extendido' : 'Primer Bloque';
                 const subformatLabel = getSubformatLabel(deck.subformat);
+                const formatTagClass = deck.format === 'fx' ? styles.deckCardTagFormatFx : styles.deckCardTagFormatPb;
                 const editionSlug = deck.subformat === 'pb-edicion'
                   ? (RACE_TO_EDITION[deck.race] ?? null)
                   : null;
@@ -586,9 +622,9 @@ export default function DeckBuilderHomePage() {
                       <span className={styles.exploreAuthor}>@{deck.authorName}</span>
                     </div>
                     <div className={styles.deckCardMeta}>
-                      <span className={styles.deckCardTag}>{formatLabel}</span>
-                      <span className={styles.deckCardTag}>{subformatLabel}</span>
-                      {deck.race && <span className={styles.deckCardTag}>{deck.race}</span>}
+                      <span className={`${styles.deckCardTag} ${formatTagClass}`}>{formatLabel}</span>
+                      <span className={`${styles.deckCardTag} ${formatTagClass}`}>{subformatLabel}</span>
+                      {deck.race && <span className={`${styles.deckCardTag} ${styles.deckCardTagRace}`}>{deck.race}</span>}
                       {editionLabel && (
                         <span className={`${styles.deckCardTag} ${styles.deckCardTagEdition}`}>
                           {editionLabel}

@@ -378,6 +378,24 @@
   color: #a8d4e8;
 }
 
+.deckCardTagFormatPb {
+  background: rgba(214, 156, 65, 0.12);
+  border-color: rgba(214, 156, 65, 0.3);
+  color: var(--ocher);
+}
+
+.deckCardTagFormatFx {
+  background: rgba(201, 67, 56, 0.13);
+  border-color: rgba(201, 67, 56, 0.42);
+  color: #efb2ac;
+}
+
+.deckCardTagRace {
+  background: rgba(126, 164, 112, 0.16);
+  border-color: rgba(126, 164, 112, 0.45);
+  color: #b7d3ab;
+}
+
 .deckCardTagPublic {
   background: rgba(126, 164, 112, 0.16);
   border-color: rgba(126, 164, 112, 0.45);
