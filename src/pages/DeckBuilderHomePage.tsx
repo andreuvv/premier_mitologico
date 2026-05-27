@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { useUserDecks, UserDeck, PublicDeck } from '../hooks/useUserDecks';
@@ -31,6 +31,8 @@ const FX_RACES = [
 type Tab = 'myDecks' | 'explore';
 type Format = 'pb' | 'fx';
 type Subformat = 'pb-edicion' | 'pb-libre' | 'fx-vcr' | 'fx-libre';
+type FormatFilter = 'all' | Format;
+type SubformatFilter = 'all' | Subformat;
 
 const PB_SUBFORMATS: { value: Subformat; label: string; desc: string }[] = [
   { value: 'pb-edicion', label: 'Racial Edición', desc: 'Solo cartas de una misma edición' },
@@ -52,6 +54,43 @@ const FX_SUBFORMATS: { value: Subformat; label: string; desc: string }[] = [
   { value: 'fx-vcr',   label: 'VCR',         desc: 'Solo cartas Vasallo, Cortesano o Real' },
   { value: 'fx-libre', label: 'Racial Libre', desc: 'Cartas de todas las ediciones FX' },
 ];
+
+const ALL_SUBFORMATS: { value: Subformat; label: string }[] = [
+  { value: 'pb-edicion', label: 'Racial Edición' },
+  { value: 'pb-libre', label: 'Racial Libre (PB)' },
+  { value: 'fx-vcr', label: 'VCR' },
+  { value: 'fx-libre', label: 'Racial Libre (FX)' },
+];
+
+function normalizeStr(s: string) {
+  return s
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+}
+
+function matchesDeckFilters(
+  deck: Pick<UserDeck, 'format' | 'subformat' | 'race'>,
+  formatFilter: FormatFilter,
+  subformatFilter: SubformatFilter,
+  raceSearch: string,
+) {
+  if (formatFilter !== 'all' && deck.format !== formatFilter) return false;
+  if (subformatFilter !== 'all' && deck.subformat !== subformatFilter) return false;
+  if (raceSearch.trim()) {
+    const raceNorm = normalizeStr(deck.race ?? '');
+    const queryNorm = normalizeStr(raceSearch.trim());
+    if (!raceNorm.includes(queryNorm)) return false;
+  }
+  return true;
+}
+
+function getSubformatLabel(subformat: string) {
+  if (subformat === 'pb-edicion') return 'Racial Edición';
+  if (subformat === 'pb-libre') return 'Racial Libre';
+  if (subformat === 'fx-vcr') return 'VCR';
+  return 'Racial Libre';
+}
 
 // ─── Modal ────────────────────────────────────────────────────────────────────
 
@@ -181,6 +220,12 @@ export default function DeckBuilderHomePage() {
   const [exploreDecks, setExploreDecks] = useState<PublicDeck[]>([]);
   const [exploreLoading, setExploreLoading] = useState(false);
   const [exploreLoaded, setExploreLoaded] = useState(false);
+  const [myFormatFilter, setMyFormatFilter] = useState<FormatFilter>('all');
+  const [mySubformatFilter, setMySubformatFilter] = useState<SubformatFilter>('all');
+  const [myRaceSearch, setMyRaceSearch] = useState('');
+  const [exploreFormatFilter, setExploreFormatFilter] = useState<FormatFilter>('all');
+  const [exploreSubformatFilter, setExploreSubformatFilter] = useState<SubformatFilter>('all');
+  const [exploreRaceSearch, setExploreRaceSearch] = useState('');
 
   const fetchDecks = useCallback(async () => {
     if (!user) return;
@@ -226,6 +271,68 @@ export default function DeckBuilderHomePage() {
       `/deck-builder/editor?format=${format}&subformat=${subformat}&race=${encodeURIComponent(race)}&name=${encodeURIComponent(name)}`
     );
   };
+
+  const filteredMyDecks = useMemo(
+    () =>
+      decks.filter((deck) =>
+        matchesDeckFilters(deck, myFormatFilter, mySubformatFilter, myRaceSearch),
+      ),
+    [decks, myFormatFilter, mySubformatFilter, myRaceSearch],
+  );
+
+  const filteredExploreDecks = useMemo(
+    () =>
+      exploreDecks.filter((deck) =>
+        matchesDeckFilters(deck, exploreFormatFilter, exploreSubformatFilter, exploreRaceSearch),
+      ),
+    [exploreDecks, exploreFormatFilter, exploreSubformatFilter, exploreRaceSearch],
+  );
+
+  const visibleMySubformats = useMemo(() => {
+    if (myFormatFilter === 'pb') {
+      return ALL_SUBFORMATS.filter((s) => s.value === 'pb-edicion' || s.value === 'pb-libre');
+    }
+    if (myFormatFilter === 'fx') {
+      return ALL_SUBFORMATS.filter((s) => s.value === 'fx-vcr' || s.value === 'fx-libre');
+    }
+    return ALL_SUBFORMATS;
+  }, [myFormatFilter]);
+
+  const visibleExploreSubformats = useMemo(() => {
+    if (exploreFormatFilter === 'pb') {
+      return ALL_SUBFORMATS.filter((s) => s.value === 'pb-edicion' || s.value === 'pb-libre');
+    }
+    if (exploreFormatFilter === 'fx') {
+      return ALL_SUBFORMATS.filter((s) => s.value === 'fx-vcr' || s.value === 'fx-libre');
+    }
+    return ALL_SUBFORMATS;
+  }, [exploreFormatFilter]);
+
+  useEffect(() => {
+    if (myFormatFilter === 'pb' && mySubformatFilter !== 'all' && !mySubformatFilter.startsWith('pb-')) {
+      setMySubformatFilter('all');
+    }
+    if (myFormatFilter === 'fx' && mySubformatFilter !== 'all' && !mySubformatFilter.startsWith('fx-')) {
+      setMySubformatFilter('all');
+    }
+  }, [myFormatFilter, mySubformatFilter]);
+
+  useEffect(() => {
+    if (
+      exploreFormatFilter === 'pb' &&
+      exploreSubformatFilter !== 'all' &&
+      !exploreSubformatFilter.startsWith('pb-')
+    ) {
+      setExploreSubformatFilter('all');
+    }
+    if (
+      exploreFormatFilter === 'fx' &&
+      exploreSubformatFilter !== 'all' &&
+      !exploreSubformatFilter.startsWith('fx-')
+    ) {
+      setExploreSubformatFilter('all');
+    }
+  }, [exploreFormatFilter, exploreSubformatFilter]);
 
   return (
     <div className={styles.container}>
@@ -279,14 +386,61 @@ export default function DeckBuilderHomePage() {
               </button>
             </div>
           ) : (
-            <div className={styles.deckGrid}>
-              {decks.map((deck) => {
+            <>
+              <div className={styles.filtersBar}>
+                <div className={styles.formatFilterGroup}>
+                  <button
+                    className={`${myFormatFilter === 'all' ? styles.filterChipActive : styles.filterChip} ${styles.filterChipAll}`}
+                    onClick={() => setMyFormatFilter('all')}
+                  >
+                    Todos
+                  </button>
+                  <button
+                    className={`${myFormatFilter === 'pb' ? styles.filterChipActive : styles.filterChip} ${styles.filterChipPb}`}
+                    onClick={() => setMyFormatFilter('pb')}
+                  >
+                    Primer Bloque
+                  </button>
+                  <button
+                    className={`${myFormatFilter === 'fx' ? styles.filterChipActive : styles.filterChip} ${styles.filterChipFx}`}
+                    onClick={() => setMyFormatFilter('fx')}
+                  >
+                    Furia Extendido
+                  </button>
+                </div>
+                <div className={styles.filtersInputsRow}>
+                  <select
+                    className={styles.filterSelect}
+                    value={mySubformatFilter}
+                    onChange={(e) => setMySubformatFilter(e.target.value as SubformatFilter)}
+                  >
+                    <option value="all">Todos los subformatos</option>
+                    {visibleMySubformats.map((sf) => (
+                      <option key={sf.value} value={sf.value}>
+                        {sf.label}
+                      </option>
+                    ))}
+                  </select>
+                  <input
+                    className={styles.filterInput}
+                    type="text"
+                    placeholder="Buscar por raza..."
+                    value={myRaceSearch}
+                    onChange={(e) => setMyRaceSearch(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              {filteredMyDecks.length === 0 ? (
+                <div className={styles.emptyStateInline}>
+                  <p className={styles.emptyText}>No se encontraron mazos con esos filtros.</p>
+                </div>
+              ) : (
+                <div className={styles.deckGrid}>
+                  {filteredMyDecks.map((deck) => {
                 const cardCount = Object.values(deck.cards).reduce((a, b) => a + b, 0);
                 const formatLabel = deck.format === 'fx' ? 'Furia Extendido' : 'Primer Bloque';
-                const subformatLabel =
-                  deck.subformat === 'pb-edicion' ? 'Racial Edición' :
-                  deck.subformat === 'pb-libre'   ? 'Racial Libre' :
-                  deck.subformat === 'fx-vcr'     ? 'VCR' : 'Racial Libre';
+                const subformatLabel = getSubformatLabel(deck.subformat);
                 return (
                   <div key={deck.id} className={styles.deckCard} onClick={() => handleView(deck)} style={{ cursor: 'pointer' }}>
                     {deck.headerImageUrl && (
@@ -334,8 +488,10 @@ export default function DeckBuilderHomePage() {
                     </div>
                   </div>
                 );
-              })}
-            </div>
+                  })}
+                </div>
+              )}
+            </>
           )}
         </>
       )}
@@ -353,13 +509,60 @@ export default function DeckBuilderHomePage() {
               <p className={styles.emptyText}>No hay mazos públicos todavía.</p>
             </div>
           ) : (
-            <div className={styles.deckGrid}>
-              {exploreDecks.map((deck) => {
+            <>
+              <div className={styles.filtersBar}>
+                <div className={styles.formatFilterGroup}>
+                  <button
+                    className={`${exploreFormatFilter === 'all' ? styles.filterChipActive : styles.filterChip} ${styles.filterChipAll}`}
+                    onClick={() => setExploreFormatFilter('all')}
+                  >
+                    Todos
+                  </button>
+                  <button
+                    className={`${exploreFormatFilter === 'pb' ? styles.filterChipActive : styles.filterChip} ${styles.filterChipPb}`}
+                    onClick={() => setExploreFormatFilter('pb')}
+                  >
+                    Primer Bloque
+                  </button>
+                  <button
+                    className={`${exploreFormatFilter === 'fx' ? styles.filterChipActive : styles.filterChip} ${styles.filterChipFx}`}
+                    onClick={() => setExploreFormatFilter('fx')}
+                  >
+                    Furia Extendido
+                  </button>
+                </div>
+                <div className={styles.filtersInputsRow}>
+                  <select
+                    className={styles.filterSelect}
+                    value={exploreSubformatFilter}
+                    onChange={(e) => setExploreSubformatFilter(e.target.value as SubformatFilter)}
+                  >
+                    <option value="all">Todos los subformatos</option>
+                    {visibleExploreSubformats.map((sf) => (
+                      <option key={sf.value} value={sf.value}>
+                        {sf.label}
+                      </option>
+                    ))}
+                  </select>
+                  <input
+                    className={styles.filterInput}
+                    type="text"
+                    placeholder="Buscar por raza..."
+                    value={exploreRaceSearch}
+                    onChange={(e) => setExploreRaceSearch(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              {filteredExploreDecks.length === 0 ? (
+                <div className={styles.emptyStateInline}>
+                  <p className={styles.emptyText}>No se encontraron mazos con esos filtros.</p>
+                </div>
+              ) : (
+                <div className={styles.deckGrid}>
+                  {filteredExploreDecks.map((deck) => {
                 const formatLabel = deck.format === 'fx' ? 'Furia Extendido' : 'Primer Bloque';
-                const subformatLabel =
-                  deck.subformat === 'pb-edicion' ? 'Racial Edición' :
-                  deck.subformat === 'pb-libre'   ? 'Racial Libre' :
-                  deck.subformat === 'fx-vcr'     ? 'VCR' : 'Racial Libre';
+                const subformatLabel = getSubformatLabel(deck.subformat);
                 const editionSlug = deck.subformat === 'pb-edicion'
                   ? (RACE_TO_EDITION[deck.race] ?? null)
                   : null;
@@ -406,8 +609,10 @@ export default function DeckBuilderHomePage() {
                     </div>
                   </div>
                 );
-              })}
-            </div>
+                  })}
+                </div>
+              )}
+            </>
           )}
         </>
       )}
