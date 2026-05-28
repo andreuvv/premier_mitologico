@@ -3676,7 +3676,9 @@
             "productName": "Leyendas Bloque Furia 2",
             "productCode": "LBF2",
             "productType": "Edición"
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12570,
@@ -42930,7 +42932,9 @@
             "productName": "Rebelión",
             "productCode": "XS",
             "productType": "Edición"
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11403,
