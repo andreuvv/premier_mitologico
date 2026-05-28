@@ -29,6 +29,10 @@ function groupKey(name: string, type: string): string {
   return cardKey(name, type);
 }
 
+function isReworkCard(card: CollectionCard): boolean {
+  return card.isRework === true || card.isReworked === true;
+}
+
 // ── Build lookup structures from banlist data ─────────────────────────────────
 interface BanlistLookup {
   banned: Set<string>;      // cardKey → banned
@@ -111,7 +115,7 @@ export function useDeckRules({
   const groupsWithRework = useMemo(() => {
     const set = new Set<string>();
     for (const [gk, cards] of cardsByGroupKey.entries()) {
-      if (cards.some((c) => c.isRework === true)) set.add(gk);
+      if (cards.some((c) => isReworkCard(c))) set.add(gk);
     }
     return set;
   }, [cardsByGroupKey]);
@@ -193,7 +197,7 @@ export function useDeckRules({
     const gk = groupKey(card.name, card.type);
 
     // Global rule: if a logical group has a rework, non-rework versions are invalid.
-    if (groupsWithRework.has(gk) && card.isRework !== true) {
+    if (groupsWithRework.has(gk) && !isReworkCard(card)) {
       return false;
     }
 
@@ -309,7 +313,7 @@ export function useDeckRules({
     for (const { card } of deckEntries) {
       const gk = groupKey(card.name, card.type);
 
-      if (groupsWithRework.has(gk) && card.isRework !== true) {
+      if (groupsWithRework.has(gk) && !isReworkCard(card)) {
         errs.push(`"${card.name}" no es válida: existe versión rework para esta carta`);
       }
 

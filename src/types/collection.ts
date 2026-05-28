@@ -39,6 +39,7 @@ export interface CollectionCard {
   moreThan3?: boolean;
   isNewest?: boolean;
   isRework?: boolean;
+  isReworked?: boolean;
   __typename: string;
 }
 
