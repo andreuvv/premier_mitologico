@@ -40253,7 +40253,7 @@
           "effect": "<p>El portador de Rhongomiant gana 1 a la fuerza. Si el portador de Rhongomiant hace daño de combate al Mazo Castillo oponente, puedes barajar un Tótem oponente en juego o barajar una carta de tu Cementerio en tu Mazo Castillo.</p>",
           "flavor": "Arturo no solo cuenta con Excalibur, también posee las armas sagradas que Dios le ha dado para defender su fe: Rhomgomiant, su lanza; Caledfwlch, su espada y Carnwennan, su daga.",
           "type": "ARMA",
-          "cost": 0,
+          "cost": 1,
           "attack": 0,
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/19-Leyendas3PB/cartas/264-LPB23-Rhongomiant-MazosCL.png",
           "artist": null,
@@ -44249,8 +44249,8 @@
           "name": "Sir Owen",
           "gameId": 1,
           "collectorCode": "LPB3-185-300",
-          "effect": "<p>En guerra de Talismanes, puedes pagar 2 de oro para que un Aliado oponente tenga fuerza 0 hasta el final del turno.</p>",
-          "flavor": "<p><em>El no está interesado en leyendas de caballería, no hay tiempo para esas cosas cuando se tiene una ciudad bajo su cuidado.</em></p>",
+          "effect": "Cuando Sir Owen entra en juego, roba 3 cartas y descarta 2.",
+          "flavor": "El no está interesado en leyendas de caballería, no hay tiempo para esas cosas cuando se tiene una ciudad bajo su cuidado.",
           "type": "ALIADO",
           "cost": 2,
           "attack": 2,
@@ -70560,8 +70560,8 @@
           "collectorCode": "AES-252-334",
           "effect": "<p>El portador de Rhongomiant gana 1 a la fuerza. Si el portador de Rhongomiant hace daño de combate al Mazo Castillo oponente, puedes barajar un Tótem oponente en juego o barajar una carta de tu Cementerio en tu Mazo Castillo.</p>",
           "flavor": "Arturo no solo cuenta con Excalibur, también posee las armas sagradas que Dios le ha dado para defender su fe: Rhomgomiant, su lanza; Caledfwlch, su espada y Carnwennan, su daga.",
-          "type": "ORO",
-          "cost": 0,
+          "type": "ARMA",
+          "cost": 1,
           "attack": 0,
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/12-AniversarioES/cartas/253-Rhongomiant-MazosCL.png",
           "artist": null,
@@ -74390,7 +74390,7 @@
           "artist": "Andrés Silva",
           "frequency": "REAL",
           "race": [
-            "DRAGON"
+            "CABALLERO"
           ],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
@@ -133813,6 +133813,7 @@
           "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Cruz-templaria-promocional.png-1762829197242",
           "artist": "Mauricio Herrera",
           "frequency": "PROMOCIONAL",
+          "unique": true,
           "race": [],
           "edition": {
             "name": "🧙‍♂️ Espada Sagrada",
