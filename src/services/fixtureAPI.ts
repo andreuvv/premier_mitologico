@@ -18,6 +18,7 @@ export interface APIFixtureRound {
   number: number;
   format: string;
   subformat?: string | null;
+  is_extra_round: boolean;
   matches: APIMatchDetail[];
 }
 

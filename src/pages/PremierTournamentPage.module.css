@@ -391,6 +391,42 @@
   font-weight: 600;
 }
 
+.standingsTable tbody tr.topFour {
+  font-weight: 600;
+}
+
+.standingsTable tbody tr.pos1 td {
+  background-color: rgba(212, 175, 55, 0.3);
+}
+
+.standingsTable tbody tr.pos1:hover td {
+  background-color: rgba(212, 175, 55, 0.4);
+}
+
+.standingsTable tbody tr.pos2 td {
+  background-color: rgba(192, 192, 192, 0.28);
+}
+
+.standingsTable tbody tr.pos2:hover td {
+  background-color: rgba(192, 192, 192, 0.38);
+}
+
+.standingsTable tbody tr.pos3 td {
+  background-color: rgba(205, 127, 50, 0.28);
+}
+
+.standingsTable tbody tr.pos3:hover td {
+  background-color: rgba(205, 127, 50, 0.38);
+}
+
+.standingsTable tbody tr.pos4 td {
+  background-color: rgba(100, 100, 100, 0.15);
+}
+
+.standingsTable tbody tr.pos4:hover td {
+  background-color: rgba(100, 100, 100, 0.25);
+}
+
 .standingsTable td {
   padding: 1rem 0.5rem;
   text-align: center;
@@ -444,6 +480,23 @@
   color: var(--brick-red) !important;
   font-weight: 600;
 }
+
+/* Position-specific highlights for G/E/P columns */
+.standingsTable tbody tr.pos1 td.winsColumn  { background-color: rgba(212, 175, 55, 0.35); }
+.standingsTable tbody tr.pos1 td.tiesColumn  { background-color: rgba(212, 175, 55, 0.35); }
+.standingsTable tbody tr.pos1 td.lossesColumn{ background-color: rgba(212, 175, 55, 0.35); }
+
+.standingsTable tbody tr.pos2 td.winsColumn  { background-color: rgba(192, 192, 192, 0.32); }
+.standingsTable tbody tr.pos2 td.tiesColumn  { background-color: rgba(192, 192, 192, 0.32); }
+.standingsTable tbody tr.pos2 td.lossesColumn{ background-color: rgba(192, 192, 192, 0.32); }
+
+.standingsTable tbody tr.pos3 td.winsColumn  { background-color: rgba(205, 127, 50, 0.35); }
+.standingsTable tbody tr.pos3 td.tiesColumn  { background-color: rgba(205, 127, 50, 0.35); }
+.standingsTable tbody tr.pos3 td.lossesColumn{ background-color: rgba(205, 127, 50, 0.35); }
+
+.standingsTable tbody tr.pos4 td.winsColumn  { background-color: rgba(100, 100, 100, 0.25); }
+.standingsTable tbody tr.pos4 td.tiesColumn  { background-color: rgba(100, 100, 100, 0.25); }
+.standingsTable tbody tr.pos4 td.lossesColumn{ background-color: rgba(100, 100, 100, 0.25); }
 
 .recordCell {
   font-weight: 600;
@@ -503,6 +556,42 @@
 .bronzeIcon {
   color: #cd7f32;
   font-size: 1.2rem;
+}
+
+.playoffIcon {
+  color: #e6c619;
+  font-size: 0.95rem;
+  filter: drop-shadow(0 0 4px rgba(230, 198, 25, 0.7));
+}
+
+.playoffIconBronze {
+  color: #cd7f32;
+  font-size: 0.95rem;
+  filter: drop-shadow(0 0 4px rgba(205, 127, 50, 0.7));
+}
+
+.playoffIconInline {
+  color: #e6c619;
+  font-size: 0.85rem;
+  vertical-align: middle;
+  margin-right: 0.2rem;
+}
+
+.playoffWinner td {
+}
+
+.extraRoundNotice {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, rgba(230, 198, 25, 0.15) 0%, rgba(230, 198, 25, 0.05) 100%);
+  border: 1px solid rgba(230, 198, 25, 0.4);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--beige);
+  font-size: 0.9rem;
+  line-height: 1.4;
 }
 
 .legend {

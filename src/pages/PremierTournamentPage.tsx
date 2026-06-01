@@ -3,10 +3,91 @@ import { useNavigate, useParams, Link } from 'react-router-dom';
 import { fixtureAPI, APIFixtureResponse, APIStanding } from '../services/fixtureAPI';
 import { getTournamentMonthYear, tournamentConfig } from '../config/tournamentConfig';
 import { usePreserveScroll } from '../hooks/usePreserveScroll';
-import { FaHandRock, FaFire, FaTrophy, FaMedal, FaThLarge, FaListOl, FaClock, FaChevronLeft, FaChevronRight, FaPlay, FaPause, FaRedo } from 'react-icons/fa';
+import { FaHandRock, FaFire, FaTrophy, FaMedal, FaThLarge, FaListOl, FaClock, FaChevronLeft, FaChevronRight, FaPlay, FaPause, FaRedo, FaStar } from 'react-icons/fa';
 import styles from './PremierTournamentPage.module.css';
 
 type Tab = 'fixture' | 'standings' | 'matriz';
+
+const sortStandingsData = (data: APIStanding[]): APIStanding[] => {
+  return [...data].sort((a, b) => {
+    if (a.points !== b.points) return b.points - a.points;
+    if (a.total_points_scored !== b.total_points_scored) return b.total_points_scored - a.total_points_scored;
+    if (a.wins !== b.wins) return b.wins - a.wins;
+    return 0;
+  });
+};
+
+const applyPlayoffPositions = (
+  standings: APIStanding[],
+  fixture: APIFixtureResponse
+): { standings: APIStanding[]; playoffWinners: Set<string> } => {
+  const extraRounds = fixture.rounds.filter(r => r.is_extra_round);
+  if (extraRounds.length === 0) return { standings, playoffWinners: new Set() };
+
+  const extraMatches = extraRounds
+    .flatMap(r => r.matches)
+    .filter(m => m.completed && m.score1 !== null && m.score2 !== null);
+
+  if (extraMatches.length === 0) return { standings, playoffWinners: new Set() };
+
+  const preExtraMap = new Map(standings.map(p => [p.name, { ...p }]));
+
+  for (const match of extraMatches) {
+    const p1 = preExtraMap.get(match.player1_name);
+    const p2 = preExtraMap.get(match.player2_name);
+    if (!p1 || !p2 || match.score1 === null || match.score2 === null) continue;
+    if (match.score1 > match.score2) {
+      p1.points -= 3; p1.wins -= 1;
+    } else if (match.score2 > match.score1) {
+      p2.points -= 3; p2.wins -= 1;
+    } else {
+      p1.points -= 1; p2.points -= 1; p1.ties -= 1; p2.ties -= 1;
+    }
+  }
+
+  const sortedPreExtra = sortStandingsData(Array.from(preExtraMap.values()));
+  const seedPosition = new Map<string, number>();
+  sortedPreExtra.forEach((p, i) => seedPosition.set(p.name, i + 1));
+
+  const positionOverrides = new Map<string, number>();
+  const playoffWinners = new Set<string>();
+
+  for (const match of extraMatches) {
+    const pos1 = seedPosition.get(match.player1_name) ?? 9999;
+    const pos2 = seedPosition.get(match.player2_name) ?? 9999;
+    const higherPos = Math.min(pos1, pos2);
+    const lowerPos = Math.max(pos1, pos2);
+    if (match.score1 !== null && match.score2 !== null) {
+      if (match.score1 > match.score2) {
+        positionOverrides.set(match.player1_name, higherPos);
+        positionOverrides.set(match.player2_name, lowerPos);
+        playoffWinners.add(match.player1_name);
+      } else if (match.score2 > match.score1) {
+        positionOverrides.set(match.player2_name, higherPos);
+        positionOverrides.set(match.player1_name, lowerPos);
+        playoffWinners.add(match.player2_name);
+      }
+    }
+  }
+
+  if (positionOverrides.size === 0) return { standings, playoffWinners };
+
+  const playoffPlayerNames = new Set(positionOverrides.keys());
+  const nonPlayoffPlayers = sortStandingsData(standings.filter(p => !playoffPlayerNames.has(p.name)));
+  const result: (APIStanding | null)[] = new Array(standings.length).fill(null);
+
+  for (const [name, pos] of positionOverrides.entries()) {
+    const player = standings.find(p => p.name === name);
+    if (player) result[pos - 1] = player;
+  }
+
+  let nonPlayoffIdx = 0;
+  for (let i = 0; i < result.length; i++) {
+    if (result[i] === null) result[i] = nonPlayoffPlayers[nonPlayoffIdx++] ?? null;
+  }
+
+  return { standings: result.filter((p): p is APIStanding => p !== null), playoffWinners };
+};
 
 const getSubformatDisplayName = (subformat: string | undefined | null): string => {
   if (!subformat) return '';
@@ -40,6 +121,8 @@ const PremierTournamentPage = () => {
 
   // Standings state
   const [standings, setStandings] = useState<APIStanding[]>([]);
+  const [playoffWinners, setPlayoffWinners] = useState<Set<string>>(new Set());
+  const [hasExtraRound, setHasExtraRound] = useState(false);
   const [standingsLoading, setStandingsLoading] = useState(true);
   const [standingsError, setStandingsError] = useState<string | null>(null);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
@@ -140,9 +223,25 @@ const PremierTournamentPage = () => {
     const fetchStandings = async () => {
       try {
         setStandingsLoading(true);
-        const data = await fixtureAPI.getStandings();
-        const sortedStandings = sortStandings(data);
-        setStandings(sortedStandings);
+        const [data, fixture] = await Promise.all([
+          fixtureAPI.getStandings(),
+          fixtureAPI.getFixture(),
+        ]);
+        const extraRoundExists = fixture.rounds.some(r => r.is_extra_round);
+        setHasExtraRound(extraRoundExists);
+        if (!fixtureData) setFixtureData(fixture);
+        let sorted: APIStanding[];
+        let winners: Set<string>;
+        if (extraRoundExists) {
+          const result = applyPlayoffPositions(data, fixture);
+          sorted = result.standings;
+          winners = result.playoffWinners;
+        } else {
+          sorted = sortStandingsData(data);
+          winners = new Set();
+        }
+        setStandings(sorted);
+        setPlayoffWinners(winners);
         setLastUpdated(new Date());
         setStandingsError(null);
       } catch (err) {
@@ -163,20 +262,7 @@ const PremierTournamentPage = () => {
     return () => clearInterval(intervalId);
   }, [withScrollPreservation]);
 
-  const sortStandings = (data: APIStanding[]): APIStanding[] => {
-    return [...data].sort((a, b) => {
-      if (a.points !== b.points) {
-        return b.points - a.points;
-      }
-      if (a.total_points_scored !== b.total_points_scored) {
-        return b.total_points_scored - a.total_points_scored;
-      }
-      if (a.wins !== b.wins) {
-        return b.wins - a.wins;
-      }
-      return 0;
-    });
-  };
+
 
   interface RecordByType {
     libre: { wins: number; ties: number; losses: number };
@@ -450,6 +536,7 @@ const PremierTournamentPage = () => {
                   <tbody>
                     {standings.map((player, index) => {
                       const position = index + 1;
+                      const isPlayoffWinner = playoffWinners.has(player.name);
                       const matchWinRate = player.total_matches > 0 
                         ? ((player.total_points_scored / player.total_matches) * 100).toFixed(1)
                         : '0.0';
@@ -462,11 +549,24 @@ const PremierTournamentPage = () => {
                       const recordByType = calculateRecordByRoundType(player.name);
                       
                       return (
-                        <tr key={player.id} className={position <= 3 ? styles.topThree : ''}>
+                        <tr key={player.id} className={[
+                          position === 1 ? styles.pos1 : '',
+                          position === 2 ? styles.pos2 : '',
+                          position === 3 ? styles.pos3 : '',
+                          position === 4 ? styles.pos4 : '',
+                          position <= 4 ? styles.topFour : '',
+                          isPlayoffWinner ? styles.playoffWinner : '',
+                        ].join(' ')}>
                           <td className={styles.posColumn}>
                             <div className={styles.posCell}>
                               {getPositionIcon(position)}
                               <span>{position}</span>
+                              {isPlayoffWinner && (
+                                <FaStar
+                                  className={position === 1 ? styles.playoffIcon : styles.playoffIconBronze}
+                                  title="Ganador de ronda de finales"
+                                />
+                              )}
                             </div>
                           </td>
                           <td className={styles.nameColumn}>
@@ -506,6 +606,17 @@ const PremierTournamentPage = () => {
                 </table>
               </div>
 
+              {hasExtraRound && (
+                <div className={styles.extraRoundNotice}>
+                  <FaStar className={styles.playoffIcon} />
+                  <span>
+                    Este torneo incluyó una <strong>ronda de finales</strong>. Las posiciones finales con{' '}
+                    <FaStar className={styles.playoffIconInline} /> fueron determinadas por el resultado
+                    de esa ronda, independientemente del puntaje acumulado.
+                  </span>
+                </div>
+              )}
+
               <div className={styles.legend}>
                 <h3>Leyenda</h3>
                 <ul>
@@ -519,6 +630,9 @@ const PremierTournamentPage = () => {
                   <li><strong>MWR%:</strong> Matches Win Rate ( (Partidas ganadas / Partidas jugadas) * 100 )</li>
                   <li><strong>RWR%:</strong> Rounds Win Rate ( ((Rondas ganadas + Rondas empatadas * 0.5) / Rondas Jugadas) * 100 )</li>
                   <li><strong>Pts:</strong> Puntos (3 por victoria, 1 por empate)</li>
+                  {hasExtraRound && (
+                    <li><FaStar className={styles.playoffIconInline} /> <strong>Ronda de finales:</strong> Posición determinada por resultado de ronda de finales</li>
+                  )}
                 </ul>
               </div>
 
