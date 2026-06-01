@@ -3,7 +3,7 @@
 
 # **📅** Siguiente Torneo
 
-- 📆 Fecha: **30 de Mayo 2026**
+- 📆 Fecha: **27 de Junio 2026**
 - 🕒 Hora de inicio: **14:30 hrs**
 - 🎮 Formatos: [Primer Bloque Racial Libre](https://andreuvv.github.io/premier_mitologico/game-formats/primerBloque/primerBloqueRacialLibre) y [Primer Bloque Racial Edición](https://andreuvv.github.io/premier_mitologico/game-formats/primerBloque/primerBloqueRacialEdicion)
 - ⚔️ Rondas: [Mejor de 3](https://andreuvv.github.io/premier_mitologico/tournament-info/tournamentSystem/md3)

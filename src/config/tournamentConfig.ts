@@ -27,20 +27,20 @@ export interface TournamentConfig {
 }
 
 export const tournamentConfig: TournamentConfig = {
-  name: 'PREMIER DE LOS K - PB -',
-  date: '2026-05-30',
+  name: 'PREMIER DE LOS K - FX -',
+  date: '2026-06-27',
   time: '14:30',
-  dateTentative: false, // Set to true to show the ribbon
-  location: {
+  dateTentative: true, // Set to true to show the ribbon
+  /* location: {
     name: "Weshes",
     address: 'Jorge Quevedo 5464, Macul, Santiago',
     googleMapsQuery: 'Jorge+Quevedo+5464,+Macul,+Santiago',
-  },
-  /* location: {
+  }, */
+  location: {
     name: "Casa de la Vale, los Gatos y el Piter.",
     address: 'Las Tórtolas 3273, Macul, Santiago',
     googleMapsQuery: 'Las+Tórtolas+3273,+Macul,+Santiago',
-  }, */
+  },
   formats: [
     {
       name: 'Primer Bloque Racial Libre',
