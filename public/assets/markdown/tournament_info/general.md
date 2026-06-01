@@ -1,4 +1,4 @@
-*Última actualización: 19 de Mayo 2026*
+*Última actualización: 01 de Junio 2026*
 
 
 # **📅** Siguiente Torneo
