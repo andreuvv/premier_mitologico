@@ -41,7 +41,7 @@ export const tournamentConfig: TournamentConfig = {
     address: 'Las Tórtolas 3273, Macul, Santiago',
     googleMapsQuery: 'Las+Tórtolas+3273,+Macul,+Santiago',
   },
-  formats: [
+  /* formats: [
     {
       name: 'Primer Bloque Racial Libre',
       shortName: 'PB Racial Libre',
@@ -51,6 +51,18 @@ export const tournamentConfig: TournamentConfig = {
       name: 'Primer Bloque Racial Edición',
       shortName: 'PB Racial Edición',
       link: '/game-formats/primerBloque/primerBloqueRacialEdicion',
+    },
+  ], */
+  formats: [
+    {
+      name: 'Furia Extendido Racial Libre',
+      shortName: 'FX Racial Libre',
+      link: '/game-formats/bloqueFuria/bloqueFuriaRacialLibre',
+    },
+    {
+      name: 'Furia Extendido Racial VCR',
+      shortName: 'FX Racial VCR',
+      link: '/game-formats/formatosEspeciales/vcr',
     },
   ],
   roundType: {
