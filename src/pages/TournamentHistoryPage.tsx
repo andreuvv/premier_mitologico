@@ -585,6 +585,7 @@ const TournamentHistoryPage = () => {
                     <th>🥇 1eros Lugares conseguidos</th>
                     <th>🥈 2dos Lugares conseguidos</th>
                     <th>🥉 3eros Lugares conseguidos</th>
+                    <th>Torneos Participados</th>
                     <th>Raza más usada PB (Winrate%)</th>
                     <th>Raza más usada FX (Winrate%)</th>
                   </tr>
@@ -619,6 +620,7 @@ const TournamentHistoryPage = () => {
                         <td className={styles.centerColumn}>{standing.first_place_count}</td>
                         <td className={styles.centerColumn}>{standing.second_place_count}</td>
                         <td className={styles.centerColumn}>{standing.third_place_count}</td>
+                        <td className={styles.centerColumn}>{standing.tournaments_participated}</td>
                         <td>{standing.most_played_race_pb ? `${standing.most_played_race_pb} (${standing.winrate_pb.toFixed(1)}%)` : '-'}</td>
                         <td>{standing.most_played_race_bf ? `${standing.most_played_race_bf} (${standing.winrate_bf.toFixed(1)}%)` : '-'}</td>
                       </tr>

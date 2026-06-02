@@ -72,6 +72,7 @@ export interface GlobalStanding {
   first_place_count: number;
   second_place_count: number;
   third_place_count: number;
+  tournaments_participated: number;
   most_played_race_pb: string | null;
   most_played_race_bf: string | null;
   winrate_pb: number;
