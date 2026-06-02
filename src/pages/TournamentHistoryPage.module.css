@@ -662,6 +662,58 @@
   font-family: 'Cyrodiil', serif;
 }
 
+.finalRoundBadge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(212, 175, 55, 0.18);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  color: var(--beige);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.extraRoundNotice {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.16) 0%, rgba(212, 175, 55, 0.06) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--beige);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.playoffIcon {
+  color: #ffd700;
+  font-size: 0.95rem;
+  filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.6));
+}
+
+.playoffIconBronze {
+  color: #cd7f32;
+  font-size: 0.95rem;
+  filter: drop-shadow(0 0 4px rgba(205, 127, 50, 0.6));
+}
+
+.playoffIconInline {
+  color: #ffd700;
+  font-size: 0.85rem;
+  vertical-align: middle;
+  margin-right: 0.2rem;
+}
+
+.playoffWinner td {
+  background-color: rgba(212, 175, 55, 0.08) !important;
+}
+
 .matchesList {
   padding: 1.5rem;
   display: grid;

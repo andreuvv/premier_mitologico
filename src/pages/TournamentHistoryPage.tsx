@@ -3,7 +3,7 @@ import { useParams, useNavigate, useLocation, Link } from 'react-router-dom';
 import { tournamentAPI, Tournament, TournamentStanding, TournamentRound, TournamentRacesResponse, GlobalStanding } from '../services/tournamentAPI';
 import onlineTournamentService, { OnlineTournament } from '../services/onlineTournamentService';
 import OnlineTournamentPage from './OnlineTournamentPage';
-import { FaTrophy, FaMedal } from 'react-icons/fa';
+import { FaTrophy, FaMedal, FaStar } from 'react-icons/fa';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 import styles from './TournamentHistoryPage.module.css';
 
@@ -30,6 +30,8 @@ const TournamentHistoryPage = () => {
   const [onlineTournaments, setOnlineTournaments] = useState<OnlineTournament[]>([]);
   const [expandedOnlineMonth, setExpandedOnlineMonth] = useState<string | null>(null);
   const [selectedOnlineTournament, setSelectedOnlineTournament] = useState<number | null>(null);
+  const [hasExtraRound, setHasExtraRound] = useState(false);
+  const [playoffWinners, setPlayoffWinners] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     loadTournaments();
@@ -115,6 +117,9 @@ const TournamentHistoryPage = () => {
 
   const loadTournamentData = async (id: number, viewType: string) => {
     try {
+      setHasExtraRound(false);
+      setPlayoffWinners(new Set());
+
       if (viewType === 'standings') {
         const [standingsData, roundsData] = await Promise.all([
           tournamentAPI.getTournamentStandings(id),
@@ -123,10 +128,44 @@ const TournamentHistoryPage = () => {
         setStandings(standingsData);
         setRounds(roundsData.rounds);
         setTournamentName(roundsData.tournament_name);
+
+        const extraRounds = roundsData.rounds.filter(round => round.is_extra_round);
+        if (extraRounds.length > 0) {
+          const winners = new Set<string>();
+          extraRounds.forEach(round => {
+            round.matches.forEach(match => {
+              if (match.score1 === null || match.score2 === null) return;
+              if (match.score1 > match.score2) {
+                winners.add(match.player1_name);
+              } else if (match.score2 > match.score1) {
+                winners.add(match.player2_name);
+              }
+            });
+          });
+          setHasExtraRound(true);
+          setPlayoffWinners(winners);
+        }
       } else if (viewType === 'rounds') {
         const data = await tournamentAPI.getTournamentRounds(id);
         setRounds(data.rounds);
         setTournamentName(data.tournament_name);
+
+        const extraRounds = data.rounds.filter(round => round.is_extra_round);
+        if (extraRounds.length > 0) {
+          const winners = new Set<string>();
+          extraRounds.forEach(round => {
+            round.matches.forEach(match => {
+              if (match.score1 === null || match.score2 === null) return;
+              if (match.score1 > match.score2) {
+                winners.add(match.player1_name);
+              } else if (match.score2 > match.score1) {
+                winners.add(match.player2_name);
+              }
+            });
+          });
+          setHasExtraRound(true);
+          setPlayoffWinners(winners);
+        }
       } else if (viewType === 'resumen') {
         const data = await tournamentAPI.getTournamentRaces(id);
         setRaces(data);
@@ -930,6 +969,16 @@ const TournamentHistoryPage = () => {
           <div className={styles.standingsView}>
             <h1 className={styles.pageTitle}>{selectedTournament?.name} - Tabla Final</h1>
             {getFormatDescription()}
+            {hasExtraRound && (
+              <div className={styles.extraRoundNotice}>
+                <FaStar className={styles.playoffIcon} />
+                <span>
+                  Este torneo incluyó una <strong>ronda de finales</strong>. Las posiciones finales con{' '}
+                  <FaStar className={styles.playoffIconInline} /> fueron determinadas por el resultado
+                  de esa ronda, independientemente del puntaje acumulado.
+                </span>
+              </div>
+            )}
             <div className={styles.tableContainer}>
               <table className={styles.standingsTable}>
                 <thead>
@@ -953,6 +1002,7 @@ const TournamentHistoryPage = () => {
                 <tbody>
                   {standings.map((standing) => {
                     const position = standing.final_position;
+                    const isPlayoffWinner = playoffWinners.has(standing.player_name);
                     const raceDisplay = isFormatSpecific 
                       ? {
                           libre: standing.race_libre,
@@ -964,11 +1014,20 @@ const TournamentHistoryPage = () => {
                         };
                     const recordByType = calculateRecordByRoundType(standing.player_name);
                     return (
-                      <tr key={standing.id} className={position <= 3 ? styles.topThree : ''}>
+                      <tr
+                        key={standing.id}
+                        className={`${position <= 3 ? styles.topThree : ''} ${isPlayoffWinner ? styles.playoffWinner : ''}`}
+                      >
                         <td className={styles.posColumn}>
                           <div className={styles.posCell}>
                             {getPositionIcon(position)}
                             <span>{position}</span>
+                            {isPlayoffWinner && (
+                              <FaStar
+                                className={position === 1 ? styles.playoffIcon : styles.playoffIconBronze}
+                                title="Ganador de ronda de finales"
+                              />
+                            )}
                           </div>
                         </td>
                         <td className={styles.nameColumn}>
@@ -1050,9 +1109,12 @@ const TournamentHistoryPage = () => {
                 <details key={round.number} className={styles.roundAccordion}>
                   <summary className={styles.roundSummary}>
                     <span className={styles.roundTitle}>
-                      Ronda {round.number} - {round.format === 'PB' ? 'Primer Bloque' : 'Furia Extendido'}
+                      {round.is_extra_round ? 'Ronda de finales' : `Ronda ${round.number} - ${round.format === 'PB' ? 'Primer Bloque' : 'Furia Extendido'}`}
                       {round.subformat ? ` (${round.subformat})` : ''}
                     </span>
+                    {round.is_extra_round && (
+                      <span className={styles.finalRoundBadge}>Finales</span>
+                    )}
                   </summary>
                   <div className={styles.matchesList}>
                     {round.matches.map((match) => (
