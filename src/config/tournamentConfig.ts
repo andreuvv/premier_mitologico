@@ -27,7 +27,7 @@ export interface TournamentConfig {
 }
 
 export const tournamentConfig: TournamentConfig = {
-  name: 'PREMIER DE LOS K - FX -',
+  name: 'APOCALIPSIS VIKINGO! - FX -',
   date: '2026-06-27',
   time: '14:30',
   dateTentative: true, // Set to true to show the ribbon
