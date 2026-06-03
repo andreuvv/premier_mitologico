@@ -60,9 +60,9 @@ export const tournamentConfig: TournamentConfig = {
       link: '/game-formats/bloqueFuria/bloqueFuriaRacialLibre',
     },
     {
-      name: 'Furia Extendido Racial VCR',
-      shortName: 'FX Racial VCR',
-      link: '/game-formats/formatosEspeciales/vcr',
+      name: 'Furia Extendido Racial Ragnarok',
+      shortName: 'FX Racial Ragnarok',
+      link: '/game-formats/formatosEspeciales/ragnarok',
     },
   ],
   roundType: {
