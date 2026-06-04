@@ -102,6 +102,34 @@ function getSubformatLabel(subformat: string) {
   return 'Racial Libre';
 }
 
+function formatDeckDate(dateString?: string | null): string {
+  if (!dateString) return 'Sin fecha';
+  const date = new Date(dateString);
+  if (Number.isNaN(date.getTime())) return 'Sin fecha';
+
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = date
+    .toLocaleDateString('es-ES', { month: 'long' })
+    .replace(/^\w/, (c) => c.toUpperCase());
+  const year = String(date.getFullYear());
+
+  return `${day} ${month} ${year}`;
+}
+
+function getDeckDateLabel(createdAt?: string, updatedAt?: string): string {
+  if (!updatedAt) return `Creado: ${formatDeckDate(createdAt)}`;
+  if (!createdAt) return `Modificado: ${formatDeckDate(updatedAt)}`;
+
+  const created = new Date(createdAt).getTime();
+  const updated = new Date(updatedAt).getTime();
+  if (Number.isNaN(created) || Number.isNaN(updated)) return `Modificado: ${formatDeckDate(updatedAt)}`;
+
+  if (updated - created > 60_000) {
+    return `Modificado: ${formatDeckDate(updatedAt)}`;
+  }
+  return `Creado: ${formatDeckDate(createdAt)}`;
+}
+
 // ─── Modal ────────────────────────────────────────────────────────────────────
 
 interface NewDeckModalProps {
@@ -496,6 +524,7 @@ export default function DeckBuilderHomePage() {
                 const cardCount = Object.values(deck.cards).reduce((a, b) => a + b, 0);
                 const formatLabel = deck.format === 'fx' ? 'Furia Extendido' : 'Primer Bloque';
                 const subformatLabel = getSubformatLabel(deck.subformat);
+                const dateLabel = getDeckDateLabel(deck.created_at, deck.updated_at);
                 const formatTagClass = deck.format === 'fx' ? styles.deckCardTagFormatFx : styles.deckCardTagFormatPb;
                 return (
                   <div key={deck.id} className={styles.deckCard} onClick={() => handleView(deck)} style={{ cursor: 'pointer' }}>
@@ -542,6 +571,7 @@ export default function DeckBuilderHomePage() {
                         {deletingId === deck.id ? '...' : '🗑'}
                       </button>
                     </div>
+                    <div className={styles.deckDateLabel}>{dateLabel}</div>
                   </div>
                 );
                   })}
@@ -624,6 +654,7 @@ export default function DeckBuilderHomePage() {
                   {filteredExploreDecks.map((deck) => {
                 const formatLabel = deck.format === 'fx' ? 'Furia Extendido' : 'Primer Bloque';
                 const subformatLabel = getSubformatLabel(deck.subformat);
+                const dateLabel = getDeckDateLabel(deck.created_at, deck.updated_at);
                 const formatTagClass = deck.format === 'fx' ? styles.deckCardTagFormatFx : styles.deckCardTagFormatPb;
                 const editionSlug = deck.subformat === 'pb-edicion'
                   ? (RACE_TO_EDITION[deck.race] ?? null)
@@ -669,6 +700,7 @@ export default function DeckBuilderHomePage() {
                         <span className={styles.privateDeckLabel}>Mazo Privado</span>
                       )}
                     </div>
+                    <div className={styles.deckDateLabel}>{dateLabel}</div>
                   </div>
                 );
                   })}

@@ -1,7 +1,7 @@
 .container {
-  max-width: 1100px;
+  max-width: 1500px;
   margin: 0 auto;
-  padding: 2rem 2rem 3rem;
+  padding: 1.25rem 1rem 2.25rem;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -329,6 +329,12 @@
   display: flex;
   gap: 0.5rem;
   margin-top: auto;
+}
+
+.deckDateLabel {
+  font-size: 0.72rem;
+  color: rgba(234, 221, 207, 0.5);
+  padding: 0 1.25rem 0.9rem;
 }
 
 .deckEditBtn {
@@ -705,7 +711,7 @@
 
 @media (max-width: 600px) {
   .container {
-    padding: 1rem 1rem 2rem;
+    padding: 0.85rem 0.75rem 1.5rem;
   }
 
   .filtersInputsRow {
