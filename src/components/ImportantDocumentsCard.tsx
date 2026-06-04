@@ -15,8 +15,8 @@ const ImportantDocumentsCard = () => {
       title: 'Primer Bloque',
       color: 'var(--ocher)',
       subtitle: [
-        { name: 'Racial Edición', link: 'https://andreuvv.github.io/premier_mitologico/game-formats/primerBloque/primerBloqueRacialEdicion' },
-        { name: 'Racial Libre', link: 'https://andreuvv.github.io/premier_mitologico/game-formats/primerBloque/primerBloqueRacialLibre' },
+        { name: 'Racial Edición', link: 'https://mitoxicos.cl/game-formats/primerBloque/primerBloqueRacialEdicion' },
+        { name: 'Racial Libre', link: 'https://mitoxicos.cl/game-formats/primerBloque/primerBloqueRacialLibre' },
       ],
       faqDocuments: [
         {
@@ -63,8 +63,8 @@ const ImportantDocumentsCard = () => {
       title: 'Furia Extendido',
       color: 'var(--brick-red)',
       subtitle: [
-        { name: 'Racial Libre', link: 'https://andreuvv.github.io/premier_mitologico/game-formats/bloqueFuria/bloqueFuriaRacialLibre' },
-        { name: 'Racial VCR', link: 'https://andreuvv.github.io/premier_mitologico/game-formats/formatosEspeciales/vcr' },
+        { name: 'Racial Libre', link: 'https://mitoxicos.cl/game-formats/bloqueFuria/bloqueFuriaRacialLibre' },
+        { name: 'Racial Ragnarok', link: 'https://mitoxicos.cl/game-formats/formatosEspeciales/ragnarok' },
       ],
       faqDocuments: [
         {
