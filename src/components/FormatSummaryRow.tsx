@@ -17,7 +17,7 @@ const formatLabels: Record<BanListFormat, string> = {
   [BanListFormat.PRIMER_BLOQUE_LIBRE]: 'PB Racial Libre',
   [BanListFormat.PRIMER_BLOQUE_EDICION]: 'PB Racial Edición',
   [BanListFormat.BLOQUE_FURIA_LIBRE]: 'BF Racial Libre',
-  [BanListFormat.BLOQUE_FURIA_LIMITED]: 'BF Limitado',
+  [BanListFormat.BLOQUE_FURIA_RAGNAROK]: 'BF Racial Ragnarok',
 };
 
 const getRowClassName = (changeType?: ChangeType): string => {

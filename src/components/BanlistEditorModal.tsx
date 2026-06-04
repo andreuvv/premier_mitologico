@@ -73,8 +73,8 @@ export default function BanlistEditorModal({ format, initialCategory, baseData, 
         return 'Primer Bloque Racial Edición';
       case BanListFormat.BLOQUE_FURIA_LIBRE:
         return 'Furia Extendido Racial Libre';
-      case BanListFormat.BLOQUE_FURIA_LIMITED:
-        return 'Furia Extendido Racial Limitado';
+      case BanListFormat.BLOQUE_FURIA_RAGNAROK:
+        return 'Furia Extendido Racial Ragnarok';
       default:
         return format;
     }

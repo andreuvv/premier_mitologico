@@ -2,7 +2,7 @@ export enum BanListFormat {
   PRIMER_BLOQUE_LIBRE = 'pb_libre',
   PRIMER_BLOQUE_EDICION = 'pb_edition',
   BLOQUE_FURIA_LIBRE = 'bf_libre',
-  BLOQUE_FURIA_LIMITED = 'bf_limited',
+  BLOQUE_FURIA_RAGNAROK = 'bf_ragnarok',
 }
 
 export enum BanListCategory {

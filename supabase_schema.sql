@@ -128,7 +128,7 @@ CREATE TRIGGER on_profile_insert_set_premier_id
 -- ============================================================
 CREATE TABLE public.monthly_banlists (
   id               BIGSERIAL PRIMARY KEY,
-  format           TEXT NOT NULL CHECK (format IN ('pb_libre', 'pb_edition', 'bf_libre', 'bf_limited')),
+  format           TEXT NOT NULL CHECK (format IN ('pb_libre', 'pb_edition', 'bf_libre', 'bf_ragnarok')),
   year             SMALLINT NOT NULL,
   month            SMALLINT NOT NULL CHECK (month BETWEEN 1 AND 12),
   banned_cards     JSONB NOT NULL DEFAULT '[]'::jsonb,

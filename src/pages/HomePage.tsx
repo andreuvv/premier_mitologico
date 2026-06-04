@@ -140,7 +140,7 @@ const HomePage = () => {
           [BanListFormat.PRIMER_BLOQUE_LIBRE]: banlistSummaries[BanListFormat.PRIMER_BLOQUE_LIBRE],
           [BanListFormat.PRIMER_BLOQUE_EDICION]: banlistSummaries[BanListFormat.PRIMER_BLOQUE_EDICION],
           [BanListFormat.BLOQUE_FURIA_LIBRE]: banlistSummaries[BanListFormat.BLOQUE_FURIA_LIBRE],
-          [BanListFormat.BLOQUE_FURIA_LIMITED]: banlistSummaries[BanListFormat.BLOQUE_FURIA_LIMITED],
+          [BanListFormat.BLOQUE_FURIA_RAGNAROK]: banlistSummaries[BanListFormat.BLOQUE_FURIA_RAGNAROK],
         };
 
         const latestByFormat = new Map<BanListFormat, MonthlyBanlistSnapshot>();

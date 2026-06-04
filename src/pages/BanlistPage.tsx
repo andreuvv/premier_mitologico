@@ -15,7 +15,7 @@ const formatToSlug: Record<BanListFormat, string> = {
   [BanListFormat.PRIMER_BLOQUE_LIBRE]: 'pb-libre',
   [BanListFormat.PRIMER_BLOQUE_EDICION]: 'pb-edition',
   [BanListFormat.BLOQUE_FURIA_LIBRE]: 'bf-libre',
-  [BanListFormat.BLOQUE_FURIA_LIMITED]: 'bf-limited',
+  [BanListFormat.BLOQUE_FURIA_RAGNAROK]: 'bf-ragnarok',
 };
 
 const slugToFormat = Object.entries(formatToSlug).reduce((acc, [format, slug]) => {
@@ -217,7 +217,7 @@ const BanlistPage = () => {
           [BanListFormat.PRIMER_BLOQUE_LIBRE]: banlistSummaries[BanListFormat.PRIMER_BLOQUE_LIBRE],
           [BanListFormat.PRIMER_BLOQUE_EDICION]: banlistSummaries[BanListFormat.PRIMER_BLOQUE_EDICION],
           [BanListFormat.BLOQUE_FURIA_LIBRE]: banlistSummaries[BanListFormat.BLOQUE_FURIA_LIBRE],
-          [BanListFormat.BLOQUE_FURIA_LIMITED]: banlistSummaries[BanListFormat.BLOQUE_FURIA_LIMITED],
+          [BanListFormat.BLOQUE_FURIA_RAGNAROK]: banlistSummaries[BanListFormat.BLOQUE_FURIA_RAGNAROK],
         };
 
         const latestByFormat = new Map<BanListFormat, MonthlyBanlistSnapshot>();
@@ -258,8 +258,8 @@ const BanlistPage = () => {
         return 'Primer Bloque Racial Edición';
       case BanListFormat.BLOQUE_FURIA_LIBRE:
         return 'Furia Extendido Racial Libre';
-      case BanListFormat.BLOQUE_FURIA_LIMITED:
-        return 'Furia Extendido Racial Limitado';
+      case BanListFormat.BLOQUE_FURIA_RAGNAROK:
+        return 'Furia Extendido Racial Ragnarok';
     }
   };
 

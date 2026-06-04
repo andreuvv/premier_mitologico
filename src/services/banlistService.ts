@@ -5,7 +5,7 @@ const formatToFile: Record<BanListFormat, string> = {
   [BanListFormat.PRIMER_BLOQUE_LIBRE]: 'banlist_pb_libre.json',
   [BanListFormat.PRIMER_BLOQUE_EDICION]: 'banlist_pb_edition.json',
   [BanListFormat.BLOQUE_FURIA_LIBRE]: 'banlist_bf_libre.json',
-  [BanListFormat.BLOQUE_FURIA_LIMITED]: 'banlist_bf_limited.json',
+  [BanListFormat.BLOQUE_FURIA_RAGNAROK]: 'banlist_bf_ragnarok.json',
 };
 
 export const loadBanlist = async (format: BanListFormat): Promise<BanListData> => {

@@ -56,10 +56,10 @@ export const banlistSummaries: Record<BanListFormat, FormatSummary[]> = {
       changeType: 'positive', 
       imageUrl: 'https://cdn.mazos.cl/FURIA_EXT/10-Leyendas2/cartas-nombre/110-LBF2-Sinach-MazosCL.webp'},
   ],
-  [BanListFormat.BLOQUE_FURIA_LIMITED]: [
+  [BanListFormat.BLOQUE_FURIA_RAGNAROK]: [
     //{ card: 'Ejemplo Carta 6', pastMonth: 'Limitada x1', currentMonth: 'Liberado' },
   ],
 };
 
 // This will be displayed in the accordion title
-export const lastUpdateMonth = 'Mayo 2026';
+export const lastUpdateMonth = 'Junio 2026';

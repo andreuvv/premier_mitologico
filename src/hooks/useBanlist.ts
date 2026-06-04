@@ -12,7 +12,7 @@ function toBanListFormat(format: DeckFormat, subformat: DeckSubformat): BanListF
       : BanListFormat.PRIMER_BLOQUE_LIBRE;
   } else {
     return subformat === 'fx-vcr'
-      ? BanListFormat.BLOQUE_FURIA_LIMITED
+      ? BanListFormat.BLOQUE_FURIA_RAGNAROK
       : BanListFormat.BLOQUE_FURIA_LIBRE;
   }
 }
