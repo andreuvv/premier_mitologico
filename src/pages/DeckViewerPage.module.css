@@ -354,6 +354,140 @@
   color: var(--brick-red);
 }
 
+.costChartSection {
+  margin-top: 0.9rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.costChartTitle {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ocher);
+  margin: 0 0 0.65rem;
+}
+
+.costChartHoverInfo {
+  min-height: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.72rem;
+  color: rgba(234, 221, 207, 0.82);
+}
+
+.costChart {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.45rem;
+  min-height: 150px;
+  padding: 0.4rem 0 0.35rem;
+}
+
+.costChartBarGroup {
+  flex: 1;
+  min-width: 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.costChartBarTrack {
+  width: 100%;
+  height: 112px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.costChartBar {
+  width: 100%;
+  max-width: 30px;
+  min-height: 8px;
+  border-radius: 8px 8px 4px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column-reverse;
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.12) inset;
+}
+
+.costChartSegment {
+  width: 100%;
+  cursor: help;
+  transition: filter 0.15s, opacity 0.15s;
+}
+
+.costChartSegment:hover {
+  filter: brightness(1.12);
+}
+
+.costChartSegmentOro {
+  background: var(--ocher);
+}
+
+.costChartSegmentAliado {
+  background: var(--sage-green);
+}
+
+.costChartSegmentTotem {
+  background: var(--petrol-blue);
+}
+
+.costChartSegmentTalisman {
+  background: var(--brick-red);
+}
+
+.costChartSegmentArma {
+  background: #7a5ad6;
+}
+
+.costChartCount {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--beige);
+  line-height: 1;
+}
+
+.costChartLabel {
+  font-size: 0.72rem;
+  color: rgba(234, 221, 207, 0.65);
+  line-height: 1;
+}
+
+.costChartEmpty {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.35);
+  padding: 0.35rem 0 0.1rem;
+}
+
+.costChartLegend {
+  margin-top: 0.65rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+}
+
+.costChartLegendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  font-size: 0.68rem;
+  color: rgba(234, 221, 207, 0.8);
+}
+
+.costChartLegendSwatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
 /* ── Validation ───────────────────────────────────────────────────────────── */
 
 .validationSection {

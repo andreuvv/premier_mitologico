@@ -42,6 +42,15 @@ const SUBFORMAT_LABELS: Record<string, string> = {
 };
 
 const TYPE_ORDER = ['Aliado', 'Arma', 'Talisman', 'Totem', 'Oro'];
+const COST_CHART_TYPES = ['Oro', 'Aliado', 'Totem', 'Talisman', 'Arma'] as const;
+type CostChartType = typeof COST_CHART_TYPES[number];
+const COST_CHART_SEGMENT_CLASS: Record<CostChartType, string> = {
+  Oro: 'costChartSegmentOro',
+  Aliado: 'costChartSegmentAliado',
+  Totem: 'costChartSegmentTotem',
+  Talisman: 'costChartSegmentTalisman',
+  Arma: 'costChartSegmentArma',
+};
 const TYPE_DISPLAY: Record<string, string> = {
   Aliado:   'Aliados',
   Arma:     'Armas',
@@ -67,6 +76,23 @@ function isOroSinHabilidad(card: CollectionCard): boolean {
   return text === '' || text.includes('oro sin habilidad');
 }
 
+function normalizeChartType(rawType?: string | null): CostChartType | null {
+  switch (rawType?.toUpperCase()) {
+    case 'ORO':
+      return 'Oro';
+    case 'ALIADO':
+      return 'Aliado';
+    case 'TOTEM':
+      return 'Totem';
+    case 'TALISMAN':
+      return 'Talisman';
+    case 'ARMA':
+      return 'Arma';
+    default:
+      return null;
+  }
+}
+
 export default function DeckViewerPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -79,6 +105,11 @@ export default function DeckViewerPage() {
   const [loading, setLoading] = useState(true);
   const [selectedCard, setSelectedCard] = useState<CollectionCard | null>(null);
   const [authorName, setAuthorName] = useState<string>('Anónimo');
+  const [hoveredCostSegment, setHoveredCostSegment] = useState<{
+    cost: number;
+    type: CostChartType;
+    count: number;
+  } | null>(null);
 
   // Derived from deck
   const format = (deck?.format ?? 'pb') as 'pb' | 'fx';
@@ -175,6 +206,32 @@ export default function DeckViewerPage() {
 
   const countByType = (type: string) =>
     deckByType[type]?.reduce((s, { count }) => s + count, 0) ?? 0;
+
+  const costDistribution = useMemo(() => {
+    const counts = new Map<number, { total: number; byType: Record<CostChartType, number> }>();
+    for (const [idStr, copies] of Object.entries(deckCards)) {
+      if (copies <= 0) continue;
+      const card = cardById.get(Number(idStr));
+      if (!card || card.cost == null) continue;
+      const byTypeDefault: Record<CostChartType, number> = {
+        Oro: 0,
+        Aliado: 0,
+        Totem: 0,
+        Talisman: 0,
+        Arma: 0,
+      };
+      const bucket = counts.get(card.cost) ?? { total: 0, byType: byTypeDefault };
+      bucket.total += copies;
+      const normalizedType = normalizeChartType(card.type);
+      if (normalizedType) bucket.byType[normalizedType] += copies;
+      counts.set(card.cost, bucket);
+    }
+    return Array.from(counts.entries())
+      .sort((a, b) => a[0] - b[0])
+      .map(([cost, data]) => ({ cost, count: data.total, byType: data.byType }));
+  }, [deckCards, cardById]);
+
+  const maxCostCount = Math.max(1, ...costDistribution.map((item) => item.count));
 
   // Edition badge (for pb-edicion only)
   const editionSlug = subformat === 'pb-edicion' ? (RACE_TO_EDITION[race] ?? null) : null;
@@ -325,6 +382,67 @@ export default function DeckViewerPage() {
                   : ''
               }`}>
                 {totalDeckCount} / {DECK_SIZE}
+              </div>
+            </div>
+
+            <div className={styles.costChartSection}>
+              <h4 className={styles.costChartTitle}>Distribución por costo</h4>
+              <div className={styles.costChartHoverInfo}>
+                {hoveredCostSegment
+                  ? `Costo ${hoveredCostSegment.cost} · ${hoveredCostSegment.type}: ${hoveredCostSegment.count}`
+                  : 'Pasa el cursor por un color para ver tipo y cantidad'}
+              </div>
+              {costDistribution.length === 0 ? (
+                <div className={styles.costChartEmpty}>Aún no hay cartas para mostrar.</div>
+              ) : (
+                <div className={styles.costChart}>
+                  {costDistribution.map(({ cost, count, byType }) => {
+                    const segments = COST_CHART_TYPES
+                      .map((type) => ({ type, count: byType[type] }))
+                      .filter((item) => item.count > 0);
+                    const breakdown = segments
+                      .map((item) => `${item.type}: ${item.count}`)
+                      .join(' | ');
+                    return (
+                      <div key={cost} className={styles.costChartBarGroup}>
+                        <div className={styles.costChartBarTrack}>
+                          <div
+                            className={styles.costChartBar}
+                            style={{ height: `${Math.max(8, (count / maxCostCount) * 100)}%` }}
+                            title={`Costo ${cost}: ${count} carta${count === 1 ? '' : 's'}${breakdown ? ` (${breakdown})` : ''}`}
+                            aria-label={`Costo ${cost}: ${count} carta${count === 1 ? '' : 's'}`}
+                          >
+                            {segments.map((item) => (
+                              <div
+                                key={`${cost}-${item.type}`}
+                                className={`${styles.costChartSegment} ${styles[COST_CHART_SEGMENT_CLASS[item.type]]}`}
+                                style={{ height: `${(item.count / count) * 100}%` }}
+                                title={`${item.type}: ${item.count}`}
+                                onMouseEnter={() =>
+                                  setHoveredCostSegment({ cost, type: item.type, count: item.count })
+                                }
+                                onMouseLeave={() => setHoveredCostSegment(null)}
+                              />
+                            ))}
+                          </div>
+                        </div>
+                        <span className={styles.costChartCount}>{count}</span>
+                        <span className={styles.costChartLabel}>{cost}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+              <div className={styles.costChartLegend}>
+                {COST_CHART_TYPES.map((type) => (
+                  <span key={type} className={styles.costChartLegendItem}>
+                    <span
+                      className={`${styles.costChartLegendSwatch} ${styles[COST_CHART_SEGMENT_CLASS[type]]}`}
+                      aria-hidden="true"
+                    />
+                    {type}
+                  </span>
+                ))}
               </div>
             </div>
           </section>

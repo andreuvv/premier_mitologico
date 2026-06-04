@@ -198,12 +198,11 @@ export function useUserDecks() {
     return (data as RawDeckRow[]).map(parseRow);
   }, []);
 
-  /** Load all public decks from other users, with author username. */
+  /** Load decks for Explore (including private/public), with author username. */
   const loadAllDecks = useCallback(async (excludeUserId?: string): Promise<PublicDeck[]> => {
     let query = supabase
       .from('user_decks')
       .select('*')
-      .eq('is_public', true)
       .order('updated_at', { ascending: false })
       .limit(100);
 

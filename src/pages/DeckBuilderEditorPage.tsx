@@ -935,7 +935,20 @@ export default function DeckBuilderEditorPage() {
                     {items.map(({ card, count }) => {
                       const isCover = headerImageUrl === card.imageUrl;
                       return (
-                        <div key={card.id} className={`${styles.deckCardRow} ${isCover ? styles.deckCardRowCover : ''}`}>
+                        <div
+                          key={card.id}
+                          className={`${styles.deckCardRow} ${isCover ? styles.deckCardRowCover : ''}`}
+                          onClick={() => setSelectedCard(card)}
+                          role="button"
+                          tabIndex={0}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault();
+                              setSelectedCard(card);
+                            }
+                          }}
+                          title="Ver detalle"
+                        >
                           <img
                             src={card.imageUrl}
                             alt={card.name}
@@ -945,21 +958,30 @@ export default function DeckBuilderEditorPage() {
                           <button
                             className={`${styles.coverBtn} ${isCover ? styles.coverBtnActive : ''}`}
                             title={isCover ? 'Quitar portada' : 'Usar como portada'}
-                            onClick={() => setHeaderImageUrl(isCover ? undefined : card.imageUrl)}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setHeaderImageUrl(isCover ? undefined : card.imageUrl);
+                            }}
                           >
                             ★
                           </button>
                           <div className={styles.deckCardControls}>
                             <button
                               className={styles.deckMinus}
-                              onClick={() => removeCard(card.id)}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                removeCard(card.id);
+                              }}
                             >
                               −
                             </button>
                             <span className={styles.deckCardCount}>{count}</span>
                             <button
                               className={styles.deckPlus}
-                              onClick={() => addCard(card)}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                addCard(card);
+                              }}
                             >
                               +
                             </button>
