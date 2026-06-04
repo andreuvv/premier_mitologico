@@ -5,6 +5,8 @@ import styles from './CardDetailModal.module.css';
 interface CardDetailModalProps {
   card: CollectionCard | null;
   onClose: () => void;
+  cards?: CollectionCard[];
+  onNavigate?: (card: CollectionCard) => void;
 }
 
 function stripHtml(value: string | undefined): string {
@@ -12,15 +14,26 @@ function stripHtml(value: string | undefined): string {
   return value.replace(/<[^>]*>/g, '').trim();
 }
 
-export default function CardDetailModal({ card, onClose }: CardDetailModalProps) {
+export default function CardDetailModal({ card, onClose, cards, onNavigate }: CardDetailModalProps) {
   // Close on Escape key
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
+      if (!card || !cards || !onNavigate) return;
+      const index = cards.findIndex((item) => item.id === card.id);
+      if (index < 0) return;
+      if (e.key === 'ArrowLeft' && index > 0) {
+        e.preventDefault();
+        onNavigate(cards[index - 1]);
+      }
+      if (e.key === 'ArrowRight' && index < cards.length - 1) {
+        e.preventDefault();
+        onNavigate(cards[index + 1]);
+      }
     };
     document.addEventListener('keydown', handleKey);
     return () => document.removeEventListener('keydown', handleKey);
-  }, [onClose]);
+  }, [card, cards, onClose, onNavigate]);
 
   // Prevent body scroll when open
   useEffect(() => {
@@ -33,6 +46,10 @@ export default function CardDetailModal({ card, onClose }: CardDetailModalProps)
   }, [card]);
 
   if (!card) return null;
+
+  const currentIndex = cards?.findIndex((item) => item.id === card.id) ?? -1;
+  const hasPrev = Boolean(cards && currentIndex > 0 && onNavigate);
+  const hasNext = Boolean(cards && currentIndex >= 0 && currentIndex < cards.length - 1 && onNavigate);
 
   const cardType = card.type?.toUpperCase();
   const isAliado = cardType === 'ALIADO';
@@ -49,6 +66,20 @@ export default function CardDetailModal({ card, onClose }: CardDetailModalProps)
       aria-modal="true"
       aria-label={`Detalle de ${card.name}`}
     >
+      {hasPrev && (
+        <button
+          className={`${styles.navBtn} ${styles.navBtnLeft}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            onNavigate?.(cards![currentIndex - 1]);
+          }}
+          aria-label="Carta anterior"
+          type="button"
+        >
+          ‹
+        </button>
+      )}
+
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <button className={styles.closeBtn} onClick={onClose} aria-label="Cerrar">
           ✕
@@ -139,6 +170,20 @@ export default function CardDetailModal({ card, onClose }: CardDetailModalProps)
           </div>
         </div>
       </div>
+
+      {hasNext && (
+        <button
+          className={`${styles.navBtn} ${styles.navBtnRight}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            onNavigate?.(cards![currentIndex + 1]);
+          }}
+          aria-label="Carta siguiente"
+          type="button"
+        >
+          ›
+        </button>
+      )}
     </div>
   );
 }

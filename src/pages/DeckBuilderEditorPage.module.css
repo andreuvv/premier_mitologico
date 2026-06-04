@@ -117,6 +117,12 @@
   color: var(--beige);
 }
 
+.draftTag {
+  background: rgba(75, 139, 163, 0.14);
+  border-color: rgba(75, 139, 163, 0.38);
+  color: #a8d4e8;
+}
+
 .editionPickerRow {
   display: flex;
   align-items: center;
@@ -210,6 +216,57 @@
 }
 
 .publicToggleText {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(234, 221, 207, 0.85);
+}
+
+.draftToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.draftToggle input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.draftToggleSlider {
+  width: 38px;
+  height: 22px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  position: relative;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.draftToggleSlider::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s;
+}
+
+.draftToggle input:checked + .draftToggleSlider {
+  background: rgba(75, 139, 163, 0.3);
+  border-color: var(--petrol-blue);
+}
+
+.draftToggle input:checked + .draftToggleSlider::after {
+  transform: translateX(16px);
+}
+
+.draftToggleText {
   font-size: 0.78rem;
   font-weight: 600;
   color: rgba(234, 221, 207, 0.85);
@@ -687,6 +744,19 @@
   padding-top: 0.5rem;
 }
 
+.draftNotice {
+  width: 100%;
+  margin-bottom: 0.25rem;
+  background: rgba(75, 139, 163, 0.12);
+  border: 1px solid rgba(75, 139, 163, 0.35);
+  color: #a8d4e8;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  border-radius: 8px;
+  padding: 0.7rem 0.8rem;
+  text-align: center;
+}
+
 .missingLabel {
   font-size: 0.78rem;
   color: var(--brick-red);
@@ -717,6 +787,140 @@
 .countBadgeOver {
   background: var(--ocher);
   color: var(--dark-brown);
+}
+
+.costChartSection {
+  margin-top: 0.9rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.costChartTitle {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ocher);
+  margin: 0 0 0.65rem;
+}
+
+.costChartHoverInfo {
+  min-height: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.72rem;
+  color: rgba(234, 221, 207, 0.82);
+}
+
+.costChart {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.45rem;
+  min-height: 150px;
+  padding: 0.4rem 0 0.35rem;
+}
+
+.costChartBarGroup {
+  flex: 1;
+  min-width: 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.costChartBarTrack {
+  width: 100%;
+  height: 112px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.costChartBar {
+  width: 100%;
+  max-width: 30px;
+  min-height: 8px;
+  border-radius: 8px 8px 4px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column-reverse;
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.12) inset;
+}
+
+.costChartSegment {
+  width: 100%;
+  cursor: help;
+  transition: filter 0.15s, opacity 0.15s;
+}
+
+.costChartSegment:hover {
+  filter: brightness(1.12);
+}
+
+.costChartSegmentOro {
+  background: var(--ocher);
+}
+
+.costChartSegmentAliado {
+  background: var(--sage-green);
+}
+
+.costChartSegmentTotem {
+  background: var(--petrol-blue);
+}
+
+.costChartSegmentTalisman {
+  background: var(--brick-red);
+}
+
+.costChartSegmentArma {
+  background: #7a5ad6;
+}
+
+.costChartCount {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--beige);
+  line-height: 1;
+}
+
+.costChartLabel {
+  font-size: 0.72rem;
+  color: rgba(234, 221, 207, 0.65);
+  line-height: 1;
+}
+
+.costChartEmpty {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.35);
+  padding: 0.35rem 0 0.1rem;
+}
+
+.costChartLegend {
+  margin-top: 0.65rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+}
+
+.costChartLegendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  font-size: 0.68rem;
+  color: rgba(234, 221, 207, 0.8);
+}
+
+.costChartLegendSwatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
 }
 
 /* Validation section */
@@ -971,7 +1175,27 @@
 
   .headerRight {
     width: 100%;
-    justify-content: flex-end;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    gap: 0.55rem;
+  }
+
+  .publicToggle,
+  .draftToggle,
+  .backButton,
+  .saveButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .publicToggle,
+  .draftToggle {
+    justify-content: flex-start;
+  }
+
+  .publicToggleText,
+  .draftToggleText {
+    white-space: nowrap;
   }
 
   .cardGrid {

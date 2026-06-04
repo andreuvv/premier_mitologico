@@ -94,6 +94,7 @@ const CollectionPage = () => {
       if (params.product) next.set('product', params.product); else next.delete('product');
       if (params.q) next.set('q', params.q); else next.delete('q');
       if (params.type) next.set('type', params.type); else next.delete('type');
+      if (params.oro) next.set('oro', params.oro); else next.delete('oro');
       if (params.race) next.set('race', params.race); else next.delete('race');
       if (params.freq) next.set('freq', params.freq); else next.delete('freq');
       // Reset to page 1 when the user changes filters, but not on initial load.
@@ -170,6 +171,7 @@ const CollectionPage = () => {
             initialProduct={matchesFormat ? searchParams.get('product') : null}
             initialSearch={matchesFormat ? searchParams.get('q') : null}
             initialType={matchesFormat ? searchParams.get('type') : null}
+            initialOro={matchesFormat ? (searchParams.get('oro') as 'all' | 'with' | 'without' | null) : null}
             initialRace={matchesFormat ? searchParams.get('race') : null}
             initialFreq={matchesFormat ? searchParams.get('freq') : null}
           />

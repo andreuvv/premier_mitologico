@@ -66,6 +66,7 @@ interface UseDeckRulesProps {
   allCards: CollectionCard[];
   deckCards: Record<number, number>;
   banlist: BanListData | null;
+  isDraft?: boolean;
   /** For pb-edicion: the edition slug the user has locked in (null = not locked yet) */
   lockedEdition: string | null;
 }
@@ -95,6 +96,7 @@ export function useDeckRules({
   allCards,
   deckCards,
   banlist,
+  isDraft = false,
   lockedEdition,
 }: UseDeckRulesProps): DeckRulesResult {
 
@@ -282,8 +284,8 @@ export function useDeckRules({
 
   const canAdd = useMemo(
     () => (card: CollectionCard): boolean =>
-      availableToAdd(card) > 0 && totalDeckCount < DECK_SIZE,
-    [availableToAdd, totalDeckCount],
+      availableToAdd(card) > 0 && (isDraft || totalDeckCount < DECK_SIZE),
+    [availableToAdd, totalDeckCount, isDraft],
   );
 
   const getGroupCount = useMemo(
@@ -370,10 +372,12 @@ export function useDeckRules({
     }
 
     // Deck size
-    if (totalCount < 50) {
-      warns.push(`Faltan ${50 - totalCount} cartas para completar el mazo (${totalCount}/50)`);
-    } else if (totalCount > 50) {
-      errs.push(`El mazo tiene ${totalCount} cartas (máximo 50)`);
+    if (!isDraft) {
+      if (totalCount < 50) {
+        warns.push(`Faltan ${50 - totalCount} cartas para completar el mazo (${totalCount}/50)`);
+      } else if (totalCount > 50) {
+        errs.push(`El mazo tiene ${totalCount} cartas (máximo 50)`);
+      }
     }
 
     return { errors: errs, warnings: warns };
@@ -384,6 +388,7 @@ export function useDeckRules({
     getHardMax,
     subformat,
     lockedEdition,
+    isDraft,
     nonDraculaCardKeys,
     groupsWithRework,
   ]);

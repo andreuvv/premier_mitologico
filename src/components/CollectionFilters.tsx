@@ -5,12 +5,16 @@ import styles from './CollectionFilters.module.css';
 const PB_RACES = ['Caballero', 'Defensor', 'Desafiante', 'Dragon', 'Eterno', 'Faerie', 'Faraon', 'Heroe', 'Olimpico', 'Sacerdote', 'Sombra', 'Titan'];
 const FX_RACES = ['Ancestral', 'Barbaro', 'Bestia', 'Caballero', 'Dragon', 'Eterno', 'Guerrero', 'Heroe', 'Sacerdote', 'Sombra'];
 const CARD_TYPES = ['Aliado', 'Arma', 'Totem', 'Talisman', 'Oro'];
+const ORO_FILTERS = ['all', 'with', 'without'] as const;
+
+type OroFilter = typeof ORO_FILTERS[number];
 
 export interface FilterParams {
   edition: string | null;
   product: string | null;
   q: string | null;
   type: string | null;
+  oro: OroFilter | null;
   race: string | null;
   freq: string | null;
   ownedOnly?: boolean;
@@ -27,6 +31,7 @@ interface CollectionFiltersProps {
   initialProduct?: string | null;
   initialSearch?: string | null;
   initialType?: string | null;
+  initialOro?: OroFilter | null;
   initialRace?: string | null;
   initialFreq?: string | null;
   showOwnedOnlyToggle?: boolean;
@@ -36,13 +41,14 @@ interface CollectionFiltersProps {
 
 export default function CollectionFilters({
   allCards, format, isOpen, onClose, onFilterChange,
-  initialEdition, initialProduct, initialSearch, initialType, initialRace, initialFreq,
+  initialEdition, initialProduct, initialSearch, initialType, initialOro, initialRace, initialFreq,
   showOwnedOnlyToggle = false, initialOwnedOnly = false, initialNotOwnedOnly = false,
 }: CollectionFiltersProps) {
   const [edition, setEdition] = useState(initialEdition || '');
   const [product, setProduct] = useState(initialProduct || '');
   const [search, setSearch] = useState(initialSearch || '');
   const [type, setType] = useState(initialType || '');
+  const [oro, setOro] = useState<OroFilter>(initialOro || 'all');
   const [race, setRace] = useState(initialRace || '');
   const [freq, setFreq] = useState(initialFreq || '');
   const [ownedOnly, setOwnedOnly] = useState(initialOwnedOnly);
@@ -75,7 +81,23 @@ export default function CollectionFilters({
   const normalizeStr = (s: string) =>
     s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
-  const applyFilters = (e: string, p: string, s: string, t: string, r: string, f: string, o: boolean = ownedOnly, no: boolean = notOwnedOnly) => {
+  const isOroSinHabilidad = (card: CollectionCard) => {
+    if (card.type?.toUpperCase() !== 'ORO') return false;
+    const text = (card.effect ?? '').replace(/<[^>]*>/g, '').trim().toLowerCase();
+    return text === '' || text.includes('oro sin habilidad');
+  };
+
+  const applyFilters = (
+    e: string,
+    p: string,
+    s: string,
+    t: string,
+    oFilter: OroFilter,
+    r: string,
+    f: string,
+    o: boolean = ownedOnly,
+    no: boolean = notOwnedOnly,
+  ) => {
     let filtered = allCards;
 
     if (isPB) {
@@ -90,6 +112,13 @@ export default function CollectionFilters({
       c.collectorCode.toLowerCase().includes(s.trim().toLowerCase())
     );
     if (t) filtered = filtered.filter(c => c.type?.toUpperCase() === t.toUpperCase());
+    if (t === 'Oro' && oFilter !== 'all') {
+      filtered = filtered.filter(c => {
+        if (c.type?.toUpperCase() !== 'ORO') return false;
+        const hasSkill = !isOroSinHabilidad(c);
+        return oFilter === 'with' ? hasSkill : !hasSkill;
+      });
+    }
     if (r) filtered = filtered.filter(c => c.race?.some(cr => normalizeStr(cr) === normalizeStr(r)));
     if (f) filtered = filtered.filter(c => c.frequency === f);
 
@@ -98,6 +127,7 @@ export default function CollectionFilters({
       product: p || null,
       q: s || null,
       type: t || null,
+      oro: t === 'Oro' ? oFilter : null,
       race: r || null,
       freq: f || null,
       ownedOnly: o,
@@ -109,66 +139,73 @@ export default function CollectionFilters({
   useEffect(() => {
     if (appliedInitialRef.current || allCards.length === 0) return;
     appliedInitialRef.current = true;
-    applyFilters(edition, product, search, type, race, freq);
+    applyFilters(edition, product, search, type, oro, race, freq);
   }, [allCards]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleEditionChange = (val: string) => {
     setEdition(val);
     setProduct('');
-    applyFilters(val, '', search, type, race, freq);
+    applyFilters(val, '', search, type, oro, race, freq);
   };
 
   const handleProductChange = (val: string) => {
     setProduct(val);
     setEdition('');
-    applyFilters('', val, search, type, race, freq);
+    applyFilters('', val, search, type, oro, race, freq);
   };
 
   const handleSearch = (val: string) => {
     setSearch(val);
-    applyFilters(edition, product, val, type, race, freq);
+    applyFilters(edition, product, val, type, oro, race, freq);
   };
 
   const handleTypeClick = (val: string) => {
     const newType = type === val ? '' : val;
     const newRace = newType !== 'Aliado' ? '' : race;
+    const newOro = newType !== 'Oro' ? 'all' : oro;
     setType(newType);
+    if (newType !== 'Oro') setOro('all');
     if (newType !== 'Aliado') setRace('');
-    applyFilters(edition, product, search, newType, newRace, freq);
+    applyFilters(edition, product, search, newType, newOro, newRace, freq);
+  };
+
+  const handleOroChange = (val: OroFilter) => {
+    setOro(val);
+    applyFilters(edition, product, search, type, val, race, freq);
   };
 
   const handleRaceChange = (val: string) => {
     setRace(val);
-    applyFilters(edition, product, search, type, val, freq);
+    applyFilters(edition, product, search, type, oro, val, freq);
   };
 
   const handleFreqChange = (val: string) => {
     setFreq(val);
-    applyFilters(edition, product, search, type, race, val);
+    applyFilters(edition, product, search, type, oro, race, val);
   };
 
   const handleClear = () => {
     setEdition(''); setProduct(''); setSearch('');
-    setType(''); setRace(''); setFreq('');
+    setType(''); setOro('all'); setRace(''); setFreq('');
     setOwnedOnly(false); setNotOwnedOnly(false);
-    applyFilters('', '', '', '', '', '', false, false);
+    applyFilters('', '', '', '', 'all', '', '', false, false);
   };
 
   const handleOwnedOnlyChange = (checked: boolean) => {
     setOwnedOnly(checked);
     if (checked) setNotOwnedOnly(false);
-    applyFilters(edition, product, search, type, race, freq, checked, false);
+    applyFilters(edition, product, search, type, oro, race, freq, checked, false);
   };
 
   const handleNotOwnedOnlyChange = (checked: boolean) => {
     setNotOwnedOnly(checked);
     if (checked) setOwnedOnly(false);
-    applyFilters(edition, product, search, type, race, freq, false, checked);
+    applyFilters(edition, product, search, type, oro, race, freq, false, checked);
   };
 
   const [collapsed, setCollapsed] = useState(false);
 
-  const hasFilters = !!(edition || product || search || type || race || freq || ownedOnly || notOwnedOnly);
+  const hasFilters = !!(edition || product || search || type || (type === 'Oro' && oro !== 'all') || race || freq || ownedOnly || notOwnedOnly);
 
   return (
     <aside className={`${styles.panel} ${isOpen ? styles.open : ''}`}>
@@ -261,6 +298,21 @@ export default function CollectionFilters({
               {races.map(r => (
                 <option key={r} value={r}>{r}</option>
               ))}
+            </select>
+          </div>
+        )}
+
+        {type === 'Oro' && (
+          <div className={styles.section}>
+            <label className={styles.label}>Habilidad</label>
+            <select
+              className={styles.select}
+              value={oro}
+              onChange={e => handleOroChange(e.target.value as OroFilter)}
+            >
+              <option value="all">Todos los oros</option>
+              <option value="with">Con habilidad</option>
+              <option value="without">Sin habilidad</option>
             </select>
           </div>
         )}

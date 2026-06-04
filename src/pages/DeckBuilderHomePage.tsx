@@ -552,6 +552,11 @@ export default function DeckBuilderHomePage() {
                       >
                         {deck.is_public ? 'Público' : 'Privado'}
                       </span>
+                      {deck.is_draft && (
+                        <span className={`${styles.deckCardTag} ${styles.deckCardTagDraft}`}>
+                          Borrador
+                        </span>
+                      )}
                       <span className={`${styles.deckCardTag} ${formatTagClass}`}>{formatLabel}</span>
                       <span className={`${styles.deckCardTag} ${formatTagClass}`}>{subformatLabel}</span>
                       {deck.race && <span className={`${styles.deckCardTag} ${styles.deckCardTagRace}`}>{deck.race}</span>}
@@ -681,6 +686,11 @@ export default function DeckBuilderHomePage() {
                     <div className={styles.deckCardMeta}>
                       <span className={`${styles.deckCardTag} ${formatTagClass}`}>{formatLabel}</span>
                       <span className={`${styles.deckCardTag} ${formatTagClass}`}>{subformatLabel}</span>
+                      {deck.is_draft && (
+                        <span className={`${styles.deckCardTag} ${styles.deckCardTagDraft}`}>
+                          Borrador
+                        </span>
+                      )}
                       {deck.race && <span className={`${styles.deckCardTag} ${styles.deckCardTagRace}`}>{deck.race}</span>}
                       {editionLabel && (
                         <span className={`${styles.deckCardTag} ${styles.deckCardTagEdition}`}>

@@ -6,6 +6,7 @@ export interface UserDeck {
   user_id: string;
   name: string;
   is_public: boolean;
+  is_draft: boolean;
   format: 'pb' | 'fx';
   subformat: string;
   race: string;
@@ -40,6 +41,7 @@ function parseRow(row: RawDeckRow): UserDeck {
   const meta = (_meta as {
     subformat?: string;
     race?: string;
+    draft?: boolean;
     headerImageUrl?: string;
     headerZoom?: number;
     headerPosX?: number;
@@ -55,6 +57,7 @@ function parseRow(row: RawDeckRow): UserDeck {
     user_id: row.user_id,
     name: row.name,
     is_public: row.is_public ?? false,
+    is_draft: meta.draft ?? false,
     format: row.format as 'pb' | 'fx',
     subformat: meta.subformat ?? '',
     race: meta.race ?? '',
@@ -72,6 +75,7 @@ function buildCardsJson(
   cards: Record<number, number>,
   subformat: string,
   race: string,
+  isDraft: boolean,
   headerImageUrl?: string,
   headerZoom = 1,
   headerPosX = 50,
@@ -81,6 +85,7 @@ function buildCardsJson(
     _meta: {
       subformat,
       race,
+      draft: isDraft,
       ...(headerImageUrl ? { headerImageUrl } : {}),
       headerZoom,
       headerPosX,
@@ -105,6 +110,7 @@ export function useUserDecks() {
     userId: string;
     name: string;
     isPublic: boolean;
+    isDraft: boolean;
     headerImageUrl?: string;
     headerZoom?: number;
     headerPosX?: number;
@@ -121,6 +127,7 @@ export function useUserDecks() {
       options.cards,
       options.subformat,
       options.race,
+      options.isDraft,
       options.headerImageUrl,
       options.headerZoom,
       options.headerPosX,
@@ -132,7 +139,11 @@ export function useUserDecks() {
       // Update existing deck
       result = await supabase
         .from('user_decks')
-        .update({ name: options.name, cards: cardsJson, is_public: options.isPublic })
+        .update({
+          name: options.name,
+          cards: cardsJson,
+          is_public: options.isDraft ? false : options.isPublic,
+        })
         .eq('id', options.deckId)
         .eq('user_id', options.userId)
         .select('id')
@@ -144,7 +155,7 @@ export function useUserDecks() {
         .insert({
           user_id: options.userId,
           name: options.name,
-          is_public: options.isPublic,
+          is_public: options.isDraft ? false : options.isPublic,
           format: options.format,
           cards: cardsJson,
         })
@@ -192,6 +203,7 @@ export function useUserDecks() {
     let query = supabase
       .from('user_decks')
       .select('*')
+      .eq('is_public', true)
       .order('updated_at', { ascending: false })
       .limit(100);
 

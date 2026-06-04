@@ -49,6 +49,15 @@ const TYPE_DISPLAY: Record<string, string> = {
 };
 
 const TYPE_ORDER = ['Aliado', 'Arma', 'Talisman', 'Totem', 'Oro'];
+const COST_CHART_TYPES = ['Oro', 'Aliado', 'Totem', 'Talisman', 'Arma'] as const;
+type CostChartType = typeof COST_CHART_TYPES[number];
+const COST_CHART_SEGMENT_CLASS: Record<CostChartType, string> = {
+  Oro: 'costChartSegmentOro',
+  Aliado: 'costChartSegmentAliado',
+  Totem: 'costChartSegmentTotem',
+  Talisman: 'costChartSegmentTalisman',
+  Arma: 'costChartSegmentArma',
+};
 
 function stripHtml(s: string): string {
   return s.replace(/<[^>]*>/g, '').trim();
@@ -57,6 +66,23 @@ function stripHtml(s: string): string {
 function isOroSinHabilidad(card: { effect?: string }): boolean {
   const text = stripHtml(card.effect ?? '').toLowerCase();
   return text === '' || text.includes('oro sin habilidad');
+}
+
+function normalizeChartType(rawType?: string | null): CostChartType | null {
+  switch (rawType?.toUpperCase()) {
+    case 'ORO':
+      return 'Oro';
+    case 'ALIADO':
+      return 'Aliado';
+    case 'TOTEM':
+      return 'Totem';
+    case 'TALISMAN':
+      return 'Talisman';
+    case 'ARMA':
+      return 'Arma';
+    default:
+      return null;
+  }
 }
 
 const normalizeStr = (s: string) =>
@@ -97,6 +123,7 @@ export default function DeckBuilderEditorPage() {
   const [deckCards, setDeckCards] = useState<Record<number, number>>({});
   const [name, setName] = useState(initialName);
   const [isPublic, setIsPublic] = useState(false);
+  const [isDraft, setIsDraft] = useState(false);
   const [headerImageUrl, setHeaderImageUrl] = useState<string | undefined>(undefined);
   const [headerZoom, setHeaderZoom] = useState(1);
   const [headerPosX, setHeaderPosX] = useState(50);
@@ -114,9 +141,15 @@ export default function DeckBuilderEditorPage() {
   // Filters
   const [search, setSearch] = useState('');
   const [typeFilter, setTypeFilter] = useState('');
+  const [oroFilter, setOroFilter] = useState<'all' | 'with' | 'without'>('all');
   const [frequencyFilter, setFrequencyFilter] = useState('');
   const [costFilter, setCostFilter] = useState('');
   const [attackFilter, setAttackFilter] = useState('');
+  const [hoveredCostSegment, setHoveredCostSegment] = useState<{
+    cost: number;
+    type: CostChartType;
+    count: number;
+  } | null>(null);
 
   // Pagination
   const [page, setPage] = useState(1);
@@ -139,6 +172,7 @@ export default function DeckBuilderEditorPage() {
         setDeckCards(deck.cards);
         setName(deck.name);
         setIsPublic(deck.is_public ?? false);
+        setIsDraft(deck.is_draft ?? false);
         setHeaderImageUrl(deck.headerImageUrl);
         setHeaderZoom(deck.headerZoom ?? 1);
         setHeaderPosX(deck.headerPosX ?? 50);
@@ -152,7 +186,7 @@ export default function DeckBuilderEditorPage() {
   // Reset page when filters change
   useEffect(() => {
     setPage(1);
-  }, [search, typeFilter, frequencyFilter, costFilter, attackFilter]);
+  }, [search, typeFilter, oroFilter, frequencyFilter, costFilter, attackFilter]);
 
   // Banlist
   const { banlist } = useBanlist(formatParam as 'pb' | 'fx', subformat);
@@ -164,6 +198,7 @@ export default function DeckBuilderEditorPage() {
     allCards,
     deckCards,
     banlist,
+    isDraft,
     lockedEdition,
   });
 
@@ -184,6 +219,13 @@ export default function DeckBuilderEditorPage() {
         (c) => c.type?.toUpperCase() === typeFilter.toUpperCase(),
       );
     }
+    if (typeFilter === 'Oro' && oroFilter !== 'all') {
+      cards = cards.filter((c) => {
+        if (c.type?.toUpperCase() !== 'ORO') return false;
+        const sinHabilidad = isOroSinHabilidad(c);
+        return oroFilter === 'with' ? !sinHabilidad : sinHabilidad;
+      });
+    }
     if (frequencyFilter) {
       cards = cards.filter((c) => c.frequency === frequencyFilter);
     }
@@ -203,7 +245,11 @@ export default function DeckBuilderEditorPage() {
       return (a.edition?.slug ?? '').localeCompare(b.edition?.slug ?? '');
     });
     return cards;
-  }, [allCards, search, typeFilter, frequencyFilter, costFilter, attackFilter, rules.isCardVisible]);
+  }, [allCards, search, typeFilter, oroFilter, frequencyFilter, costFilter, attackFilter, rules.isCardVisible]);
+
+  const navigateCardDetail = (card: CollectionCard) => {
+    setSelectedCard(card);
+  };
 
   const totalPages = Math.max(1, Math.ceil(filteredCards.length / CARDS_PER_PAGE));
   const paginatedCards = filteredCards.slice(
@@ -216,6 +262,12 @@ export default function DeckBuilderEditorPage() {
     () => Object.values(deckCards).reduce((a, b) => a + b, 0),
     [deckCards],
   );
+
+  useEffect(() => {
+    if (isDraft && isPublic) {
+      setIsPublic(false);
+    }
+  }, [isDraft, isPublic]);
 
   const addCard = (card: CollectionCard) => {
     if (!rules.canAdd(card)) return;
@@ -233,11 +285,15 @@ export default function DeckBuilderEditorPage() {
 
   const handleSave = async () => {
     if (!user) return;
+    if (!isDraft && totalDeckCount !== DECK_SIZE) {
+      return;
+    }
     const id = await saveDeck({
       deckId,
       userId: user.id,
       name: name.trim() || 'Nuevo Mazo',
-      isPublic,
+      isPublic: isDraft ? false : isPublic,
+      isDraft,
       headerImageUrl,
       headerZoom,
       headerPosX,
@@ -287,6 +343,34 @@ export default function DeckBuilderEditorPage() {
 
   const countByType = (type: string) =>
     deckByType[type]?.reduce((s, { count }) => s + count, 0) ?? 0;
+
+  const costDistribution = useMemo(() => {
+    const counts = new Map<number, { total: number; byType: Record<CostChartType, number> }>();
+    for (const [idStr, copies] of Object.entries(deckCards)) {
+      if (copies <= 0) continue;
+      const card = cardById.get(Number(idStr));
+      if (!card || card.cost == null) continue;
+      const byTypeDefault: Record<CostChartType, number> = {
+        Oro: 0,
+        Aliado: 0,
+        Totem: 0,
+        Talisman: 0,
+        Arma: 0,
+      };
+      const bucket = counts.get(card.cost) ?? { total: 0, byType: byTypeDefault };
+      bucket.total += copies;
+      const normalizedType = normalizeChartType(card.type);
+      if (normalizedType) {
+        bucket.byType[normalizedType] += copies;
+      }
+      counts.set(card.cost, bucket);
+    }
+    return Array.from(counts.entries())
+      .sort((a, b) => a[0] - b[0])
+      .map(([cost, data]) => ({ cost, count: data.total, byType: data.byType }));
+  }, [deckCards, cardById]);
+
+  const maxCostCount = Math.max(1, ...costDistribution.map((item) => item.count));
 
   // ── Filter options ────────────────────────────────────────────────────────
   const costOptions = useMemo(
@@ -368,6 +452,7 @@ export default function DeckBuilderEditorPage() {
             <span className={styles.tag}>🎮 <strong>{formatLabel}</strong></span>
             <span className={styles.tag}>📋 <strong>{subformatLabel}</strong></span>
             <span className={styles.tag}>🔖 Raza: <strong>{race}</strong></span>
+            {isDraft && <span className={`${styles.tag} ${styles.draftTag}`}>📝 Modo Borrador</span>}
           </div>
           {/* Edition picker for pb-edicion */}
           {subformat === 'pb-edicion' && (
@@ -391,12 +476,22 @@ export default function DeckBuilderEditorPage() {
           <label className={styles.publicToggle}>
             <input
               type="checkbox"
-              checked={isPublic}
+              checked={!isDraft && isPublic}
               onChange={(e) => setIsPublic(e.target.checked)}
-              disabled={saveStatus === 'saving'}
+              disabled={saveStatus === 'saving' || isDraft}
             />
             <span className={styles.publicToggleSlider} />
-            <span className={styles.publicToggleText}>{isPublic ? 'Público' : 'Privado'}</span>
+            <span className={styles.publicToggleText}>{!isDraft && isPublic ? 'Público' : 'Privado'}</span>
+          </label>
+          <label className={styles.draftToggle}>
+            <input
+              type="checkbox"
+              checked={isDraft}
+              onChange={(e) => setIsDraft(e.target.checked)}
+              disabled={saveStatus === 'saving'}
+            />
+            <span className={styles.draftToggleSlider} />
+            <span className={styles.draftToggleText}>Modo Borrador</span>
           </label>
           <button
             className={styles.backButton}
@@ -407,8 +502,8 @@ export default function DeckBuilderEditorPage() {
           <button
             className={`${styles.saveButton} ${saveStatus === 'saved' ? styles.saveButtonSaved : saveStatus === 'error' ? styles.saveButtonError : ''}`}
             onClick={handleSave}
-            disabled={saveStatus === 'saving' || !user}
-            title={!user ? 'Inicia sesión para guardar' : saveError ?? undefined}
+            disabled={saveStatus === 'saving' || !user || (!isDraft && totalDeckCount !== DECK_SIZE)}
+            title={!user ? 'Inicia sesión para guardar' : !isDraft && totalDeckCount !== DECK_SIZE ? 'El mazo debe tener 50 cartas para publicarse' : saveError ?? undefined}
           >
             {saveStatus === 'saving' ? '⏳ Guardando...' : saveStatus === 'saved' ? '✓ Guardado' : saveStatus === 'error' ? '✕ Error' : '💾 Guardar'}
           </button>
@@ -470,7 +565,10 @@ export default function DeckBuilderEditorPage() {
               <button
                 key={tab.value}
                 className={`${styles.typeTab} ${typeFilter === tab.value ? styles.typeTabActive : ''}`}
-                onClick={() => setTypeFilter(tab.value)}
+                onClick={() => {
+                  setTypeFilter(tab.value);
+                  if (tab.value !== 'Oro') setOroFilter('all');
+                }}
               >
                 {tab.label}
               </button>
@@ -479,6 +577,17 @@ export default function DeckBuilderEditorPage() {
 
           {/* Filters row */}
           <div className={styles.filtersRow}>
+            {typeFilter === 'Oro' && (
+              <select
+                className={styles.filterSelect}
+                value={oroFilter}
+                onChange={(e) => setOroFilter(e.target.value as 'all' | 'with' | 'without')}
+              >
+                <option value="all">Todos los oros</option>
+                <option value="with">Con habilidad</option>
+                <option value="without">Sin habilidad</option>
+              </select>
+            )}
             <select
               className={styles.filterSelect}
               value={frequencyFilter}
@@ -639,6 +748,11 @@ export default function DeckBuilderEditorPage() {
             </div>
 
             <div className={styles.progressArea}>
+              {isDraft && (
+                <div className={styles.draftNotice}>
+                  Modo borrador activo: puedes superar las 50 cartas, pero el mazo quedará privado.
+                </div>
+              )}
               {totalDeckCount < DECK_SIZE && (
                 <div className={styles.missingLabel}>
                   Falta {DECK_SIZE - totalDeckCount} para completar el mazo
@@ -659,6 +773,67 @@ export default function DeckBuilderEditorPage() {
                 }`}
               >
                 {totalDeckCount} / {DECK_SIZE}
+              </div>
+            </div>
+
+            <div className={styles.costChartSection}>
+              <h4 className={styles.costChartTitle}>Distribución por costo</h4>
+              <div className={styles.costChartHoverInfo}>
+                {hoveredCostSegment
+                  ? `Costo ${hoveredCostSegment.cost} · ${hoveredCostSegment.type}: ${hoveredCostSegment.count}`
+                  : 'Pasa el cursor por un color para ver tipo y cantidad'}
+              </div>
+              {costDistribution.length === 0 ? (
+                <div className={styles.costChartEmpty}>Aún no hay cartas para mostrar.</div>
+              ) : (
+                <div className={styles.costChart}>
+                  {costDistribution.map(({ cost, count, byType }) => {
+                    const segments = COST_CHART_TYPES
+                      .map((type) => ({ type, count: byType[type] }))
+                      .filter((item) => item.count > 0);
+                    const breakdown = segments
+                      .map((item) => `${item.type}: ${item.count}`)
+                      .join(' | ');
+                    return (
+                      <div key={cost} className={styles.costChartBarGroup}>
+                        <div className={styles.costChartBarTrack}>
+                          <div
+                            className={styles.costChartBar}
+                            style={{ height: `${Math.max(8, (count / maxCostCount) * 100)}%` }}
+                            title={`Costo ${cost}: ${count} carta${count === 1 ? '' : 's'}${breakdown ? ` (${breakdown})` : ''}`}
+                            aria-label={`Costo ${cost}: ${count} carta${count === 1 ? '' : 's'}`}
+                          >
+                            {segments.map((item) => (
+                              <div
+                                key={`${cost}-${item.type}`}
+                                className={`${styles.costChartSegment} ${styles[COST_CHART_SEGMENT_CLASS[item.type]]}`}
+                                style={{ height: `${(item.count / count) * 100}%` }}
+                                title={`${item.type}: ${item.count}`}
+                                onMouseEnter={() =>
+                                  setHoveredCostSegment({ cost, type: item.type, count: item.count })
+                                }
+                                onMouseLeave={() => setHoveredCostSegment(null)}
+                              />
+                            ))}
+                          </div>
+                        </div>
+                        <span className={styles.costChartCount}>{count}</span>
+                        <span className={styles.costChartLabel}>{cost}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+              <div className={styles.costChartLegend}>
+                {COST_CHART_TYPES.map((type) => (
+                  <span key={type} className={styles.costChartLegendItem}>
+                    <span
+                      className={`${styles.costChartLegendSwatch} ${styles[COST_CHART_SEGMENT_CLASS[type]]}`}
+                      aria-hidden="true"
+                    />
+                    {type}
+                  </span>
+                ))}
               </div>
             </div>
           </section>
@@ -804,6 +979,8 @@ export default function DeckBuilderEditorPage() {
       <CardDetailModal
         card={selectedCard}
         onClose={() => setSelectedCard(null)}
+        cards={filteredCards}
+        onNavigate={navigateCardDetail}
       />
     </div>
   );

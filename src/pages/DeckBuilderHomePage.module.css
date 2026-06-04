@@ -439,6 +439,12 @@
   color: #efb2ac;
 }
 
+.deckCardTagDraft {
+  background: rgba(75, 139, 163, 0.16);
+  border-color: rgba(75, 139, 163, 0.44);
+  color: #a8d4e8;
+}
+
 .exploreAuthor {
   font-size: 0.75rem;
   color: rgba(234, 221, 207, 0.5);

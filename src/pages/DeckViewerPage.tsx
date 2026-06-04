@@ -85,9 +85,10 @@ export default function DeckViewerPage() {
   const subformat = (deck?.subformat ?? 'pb-edicion') as DeckSubformat;
   const race = deck?.race ?? '';
   const deckCards = useMemo(() => deck?.cards ?? {}, [deck]);
+  const isDraft = deck?.is_draft ?? false;
 
   const { banlist } = useBanlist(format, subformat);
-  const rules = useDeckRules({ subformat, race, allCards, deckCards, banlist, lockedEdition: null });
+  const rules = useDeckRules({ subformat, race, allCards, deckCards, banlist, isDraft, lockedEdition: null });
 
   // Load deck then cards sequentially using async/await
   useEffect(() => {
@@ -218,6 +219,7 @@ export default function DeckViewerPage() {
             <div className={styles.badges}>
               <span className={styles.badge}>{FORMAT_LABELS[format] ?? format}</span>
               <span className={styles.badge}>{SUBFORMAT_LABELS[subformat] ?? subformat}</span>
+                {isDraft && <span className={styles.badge}>Borrador</span>}
               {race && <span className={styles.badge}>{race}</span>}
               {editionLabel && <span className={`${styles.badge} ${styles.badgeEdition}`}>{editionLabel}</span>}
             </div>
