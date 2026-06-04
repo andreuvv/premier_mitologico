@@ -100,6 +100,38 @@ function getCoverImageStyle(zoom: number, posX: number, posY: number) {
   };
 }
 
+function serializeDeckCards(cards: Record<number, number>): string {
+  return Object.entries(cards)
+    .filter(([, count]) => count > 0)
+    .sort((a, b) => Number(a[0]) - Number(b[0]))
+    .map(([id, count]) => `${id}:${count}`)
+    .join('|');
+}
+
+function buildEditorSnapshot(options: {
+  name: string;
+  isPublic: boolean;
+  isDraft: boolean;
+  headerImageUrl?: string;
+  headerZoom: number;
+  headerPosX: number;
+  headerPosY: number;
+  lockedEdition: string | null;
+  deckCards: Record<number, number>;
+}): string {
+  return [
+    options.name.trim(),
+    options.isPublic ? '1' : '0',
+    options.isDraft ? '1' : '0',
+    options.headerImageUrl ?? '',
+    options.headerZoom.toFixed(4),
+    options.headerPosX.toFixed(2),
+    options.headerPosY.toFixed(2),
+    options.lockedEdition ?? '',
+    serializeDeckCards(options.deckCards),
+  ].join('::');
+}
+
 export default function DeckBuilderEditorPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -129,6 +161,8 @@ export default function DeckBuilderEditorPage() {
   const [headerPosX, setHeaderPosX] = useState(50);
   const [headerPosY, setHeaderPosY] = useState(50);
   const [deckId] = useState<string | null>(urlDeckId);
+  const [showExitModal, setShowExitModal] = useState(false);
+  const [lastSavedSnapshot, setLastSavedSnapshot] = useState<string | null>(null);
 
   // For pb-edicion: user picks the edition from a dropdown in the editor header
   // Auto-select based on race if available
@@ -177,11 +211,73 @@ export default function DeckBuilderEditorPage() {
         setHeaderZoom(deck.headerZoom ?? 1);
         setHeaderPosX(deck.headerPosX ?? 50);
         setHeaderPosY(deck.headerPosY ?? 50);
+        setLastSavedSnapshot(
+          buildEditorSnapshot({
+            name: deck.name,
+            isPublic: deck.is_public ?? false,
+            isDraft: deck.is_draft ?? false,
+            headerImageUrl: deck.headerImageUrl,
+            headerZoom: deck.headerZoom ?? 1,
+            headerPosX: deck.headerPosX ?? 50,
+            headerPosY: deck.headerPosY ?? 50,
+            lockedEdition: autoEdition,
+            deckCards: deck.cards,
+          }),
+        );
       }
     });
   // Run only once when allCards first become available
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allCards.length === 0 ? '' : urlDeckId]);
+
+  const currentSnapshot = useMemo(
+    () =>
+      buildEditorSnapshot({
+        name,
+        isPublic,
+        isDraft,
+        headerImageUrl,
+        headerZoom,
+        headerPosX,
+        headerPosY,
+        lockedEdition,
+        deckCards,
+      }),
+    [name, isPublic, isDraft, headerImageUrl, headerZoom, headerPosX, headerPosY, lockedEdition, deckCards],
+  );
+
+  useEffect(() => {
+    if (loading) return;
+    if (lastSavedSnapshot !== null) return;
+    setLastSavedSnapshot(currentSnapshot);
+  }, [loading, lastSavedSnapshot, currentSnapshot]);
+
+  const hasUnsavedChanges = lastSavedSnapshot !== null && currentSnapshot !== lastSavedSnapshot;
+
+  useEffect(() => {
+    const onBeforeUnload = (event: BeforeUnloadEvent) => {
+      if (!hasUnsavedChanges) return;
+      event.preventDefault();
+      event.returnValue = '';
+    };
+    window.addEventListener('beforeunload', onBeforeUnload);
+    return () => window.removeEventListener('beforeunload', onBeforeUnload);
+  }, [hasUnsavedChanges]);
+
+  useEffect(() => {
+    const onPopState = () => {
+      if (hasUnsavedChanges) {
+        setShowExitModal(true);
+        window.history.pushState({ deckBuilderGuard: true }, '', window.location.href);
+        return;
+      }
+      navigate('/deck-builder');
+    };
+
+    window.history.pushState({ deckBuilderGuard: true }, '', window.location.href);
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, [hasUnsavedChanges, navigate]);
 
   // Reset page when filters change
   useEffect(() => {
@@ -304,6 +400,55 @@ export default function DeckBuilderEditorPage() {
       cards: deckCards,
     });
     if (id) {
+      setLastSavedSnapshot(currentSnapshot);
+      navigate('/deck-builder');
+    }
+  };
+
+  const handleExitRequest = () => {
+    if (!hasUnsavedChanges) {
+      navigate('/deck-builder');
+      return;
+    }
+    setShowExitModal(true);
+  };
+
+  const handleExitWithoutSaving = () => {
+    setShowExitModal(false);
+    navigate('/deck-builder');
+  };
+
+  const handleSaveDraftAndExit = async () => {
+    if (!user || saveStatus === 'saving') return;
+    const id = await saveDeck({
+      deckId,
+      userId: user.id,
+      name: name.trim() || 'Nuevo Mazo',
+      isPublic: false,
+      isDraft: true,
+      headerImageUrl,
+      headerZoom,
+      headerPosX,
+      headerPosY,
+      format: formatParam as 'pb' | 'fx',
+      subformat,
+      race,
+      cards: deckCards,
+    });
+    if (id) {
+      const draftSnapshot = buildEditorSnapshot({
+        name,
+        isPublic: false,
+        isDraft: true,
+        headerImageUrl,
+        headerZoom,
+        headerPosX,
+        headerPosY,
+        lockedEdition,
+        deckCards,
+      });
+      setLastSavedSnapshot(draftSnapshot);
+      setShowExitModal(false);
       navigate('/deck-builder');
     }
   };
@@ -495,7 +640,7 @@ export default function DeckBuilderEditorPage() {
           </label>
           <button
             className={styles.backButton}
-            onClick={() => navigate('/deck-builder')}
+            onClick={handleExitRequest}
           >
             ← Cambiar selección
           </button>
@@ -515,6 +660,55 @@ export default function DeckBuilderEditorPage() {
         <div className={styles.savingOverlay}>
           <div className={styles.savingSpinner} />
           <span>Guardando mazo...</span>
+        </div>
+      )}
+
+      {showExitModal && (
+        <div className={styles.exitConfirmOverlay} onClick={() => setShowExitModal(false)}>
+          <div className={styles.exitConfirmModal} onClick={(e) => e.stopPropagation()}>
+            <button
+              className={styles.exitConfirmClose}
+              onClick={() => setShowExitModal(false)}
+              aria-label="Cerrar"
+              type="button"
+            >
+              ✕
+            </button>
+            <h3 className={styles.exitConfirmTitle}>¿Seguro que quieres salir sin guardar?</h3>
+            <p className={styles.exitConfirmText}>
+              Tienes cambios sin guardar en este mazo.
+            </p>
+            {totalDeckCount !== DECK_SIZE && (
+              <p className={styles.exitConfirmWarning}>
+                El mazo no está completo: tienes {totalDeckCount} de {DECK_SIZE} cartas.
+                Si guardas al salir, se guardará como borrador privado.
+              </p>
+            )}
+            {!user && (
+              <p className={styles.exitConfirmWarning}>
+                No hay sesión iniciada. Solo podrás salir sin guardar.
+              </p>
+            )}
+            <div className={styles.exitConfirmActions}>
+              <button
+                type="button"
+                className={styles.exitWithoutSaveButton}
+                onClick={handleExitWithoutSaving}
+                disabled={saveStatus === 'saving'}
+              >
+                Salir sin Guardar
+              </button>
+              <button
+                type="button"
+                className={styles.saveDraftExitButton}
+                onClick={handleSaveDraftAndExit}
+                disabled={saveStatus === 'saving' || !user}
+                title={!user ? 'Inicia sesión para guardar como borrador' : undefined}
+              >
+                Guardar como Borrador y Salir
+              </button>
+            </div>
+          </div>
         </div>
       )}
 
