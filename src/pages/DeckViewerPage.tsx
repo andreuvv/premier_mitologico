@@ -38,6 +38,7 @@ const SUBFORMAT_LABELS: Record<string, string> = {
   'pb-libre':   'Racial Libre',
   'fx-vcr':     'VCR',
   'fx-libre':   'Racial Libre',
+  'fx-ragnarok': 'Racial Ragnarok',
 };
 
 const TYPE_ORDER = ['Aliado', 'Arma', 'Talisman', 'Totem', 'Oro'];

@@ -3,18 +3,20 @@ import { BanListData, BanListFormat } from '../types/banlist';
 import { getLatestMonthlyBanlist } from '../services/monthlyBanlistService';
 
 type DeckFormat = 'pb' | 'fx';
-type DeckSubformat = 'pb-edicion' | 'pb-libre' | 'fx-vcr' | 'fx-libre';
+type DeckSubformat = 'pb-edicion' | 'pb-libre' | 'fx-vcr' | 'fx-libre' | 'fx-ragnarok';
 
 function toBanListFormat(format: DeckFormat, subformat: DeckSubformat): BanListFormat {
   if (format === 'pb') {
     return subformat === 'pb-edicion'
       ? BanListFormat.PRIMER_BLOQUE_EDICION
       : BanListFormat.PRIMER_BLOQUE_LIBRE;
-  } else {
-    return subformat === 'fx-vcr'
-      ? BanListFormat.BLOQUE_FURIA_RAGNAROK
-      : BanListFormat.BLOQUE_FURIA_LIBRE;
   }
+
+  // FX: VCR continues to exist, but shares FX Libre banlist unless a dedicated one is added.
+  if (subformat === 'fx-ragnarok') {
+    return BanListFormat.BLOQUE_FURIA_RAGNAROK;
+  }
+  return BanListFormat.BLOQUE_FURIA_LIBRE;
 }
 
 export function useBanlist(format: DeckFormat, subformat: DeckSubformat) {

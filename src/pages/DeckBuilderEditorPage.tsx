@@ -316,8 +316,10 @@ export default function DeckBuilderEditorPage() {
   const formatLabel = formatParam === 'fx' ? 'Furia Extendido' : 'Primer Bloque';
   const subformatLabel =
     subformat === 'pb-edicion' ? 'Racial Edición' :
-    subformat === 'pb-libre'  ? 'Racial Libre' :
-    subformat === 'fx-vcr'    ? 'VCR' : 'Racial Libre';
+    subformat === 'pb-libre' ? 'Racial Libre' :
+    subformat === 'fx-vcr' ? 'VCR' :
+    subformat === 'fx-ragnarok' ? 'Racial Ragnarok' :
+    'Racial Libre';
 
   // Edition options for pb-edicion (derived from loaded cards, excluding Drácula)
   const editionOptions = useMemo(() => {

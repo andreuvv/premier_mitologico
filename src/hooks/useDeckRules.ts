@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { CollectionCard } from '../types/collection';
 import { BanListData } from '../types/banlist';
 
-export type DeckSubformat = 'pb-edicion' | 'pb-libre' | 'fx-vcr' | 'fx-libre';
+export type DeckSubformat = 'pb-edicion' | 'pb-libre' | 'fx-vcr' | 'fx-libre' | 'fx-ragnarok';
 
 const DRACULA_EDITION_SLUG = 'dracula-inferno';
 const VCR_FREQUENCIES = new Set(['VASALLO', 'CORTESANO', 'REAL', 'ORO']);
@@ -32,6 +32,12 @@ function groupKey(name: string, type: string): string {
 
 function isReworkCard(card: CollectionCard): boolean {
   return card.isRework === true || card.isReworked === true;
+}
+
+function isOroSinHabilidad(card: CollectionCard): boolean {
+  if (card.type?.toUpperCase() !== 'ORO') return false;
+  const text = (card.effect ?? '').replace(/<[^>]*>/g, '').trim().toLowerCase();
+  return text === '' || text.includes('oro sin habilidad');
 }
 
 // ── Build lookup structures from banlist data ─────────────────────────────────
@@ -245,6 +251,11 @@ export function useDeckRules({
     if (banlistLookup.limitedX1.has(key)) return 1;
     if (banlistLookup.limitedX2.has(key)) return 2;
 
+    // FX Racial Ragnarok: all cards are unique except Oro sin habilidad.
+    if (subformat === 'fx-ragnarok') {
+      return isOroSinHabilidad(card) ? Infinity : 1;
+    }
+
     // moreThan3: unlimited
     if (card.moreThan3) return Infinity;
 
@@ -253,7 +264,7 @@ export function useDeckRules({
 
     // Default
     return 3;
-  }, [banlistLookup]);
+  }, [banlistLookup, subformat]);
 
   // ── availableToAdd ────────────────────────────────────────────────────────
 
@@ -298,13 +309,6 @@ export function useDeckRules({
     }
 
     // Min 1 Oro sin habilidad — effect is literally "Oro sin habilidad." (or empty after stripping HTML)
-    const stripHtml = (s: string | null | undefined): string =>
-      (s ?? '').replace(/<[^>]*>/g, '').trim();
-    const isOroSinHabilidad = (card: CollectionCard) => {
-      if (card.type?.toUpperCase() !== 'ORO') return false;
-      const text = stripHtml(card.effect).toLowerCase();
-      return text === '' || text.includes('oro sin habilidad');
-    };
     const oroSinHabilidad = deckEntries.filter(({ card }) => isOroSinHabilidad(card));
     if (oroSinHabilidad.length === 0) {
       errs.push('Necesitas al menos 1 Oro sin habilidad');

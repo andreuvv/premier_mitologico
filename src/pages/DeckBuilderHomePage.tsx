@@ -31,7 +31,7 @@ const FX_RACES = [
 
 type Tab = 'myDecks' | 'explore';
 type Format = 'pb' | 'fx';
-type Subformat = 'pb-edicion' | 'pb-libre' | 'fx-vcr' | 'fx-libre';
+type Subformat = 'pb-edicion' | 'pb-libre' | 'fx-vcr' | 'fx-libre' | 'fx-ragnarok';
 type FormatFilter = 'all' | Format;
 type SubformatFilter = 'all' | Subformat;
 
@@ -54,6 +54,7 @@ function getCoverImageStyle(zoom: number, posX: number, posY: number) {
 const FX_SUBFORMATS: { value: Subformat; label: string; desc: string }[] = [
   { value: 'fx-vcr',   label: 'VCR',         desc: 'Solo cartas Vasallo, Cortesano o Real' },
   { value: 'fx-libre', label: 'Racial Libre', desc: 'Cartas de todas las ediciones FX' },
+  { value: 'fx-ragnarok', label: 'Racial Ragnarok', desc: 'Todas las cartas son únicas salvo Oros sin habilidad' },
 ];
 
 const ALL_SUBFORMATS: { value: Subformat; label: string }[] = [
@@ -61,6 +62,7 @@ const ALL_SUBFORMATS: { value: Subformat; label: string }[] = [
   { value: 'pb-libre', label: 'Racial Libre (PB)' },
   { value: 'fx-vcr', label: 'VCR' },
   { value: 'fx-libre', label: 'Racial Libre (FX)' },
+  { value: 'fx-ragnarok', label: 'Racial Ragnarok (FX)' },
 ];
 
 function normalizeStr(s: string) {
@@ -96,6 +98,7 @@ function getSubformatLabel(subformat: string) {
   if (subformat === 'pb-edicion') return 'Racial Edición';
   if (subformat === 'pb-libre') return 'Racial Libre';
   if (subformat === 'fx-vcr') return 'VCR';
+  if (subformat === 'fx-ragnarok') return 'Racial Ragnarok';
   return 'Racial Libre';
 }
 
@@ -312,7 +315,7 @@ export default function DeckBuilderHomePage() {
       return ALL_SUBFORMATS.filter((s) => s.value === 'pb-edicion' || s.value === 'pb-libre');
     }
     if (myFormatFilter === 'fx') {
-      return ALL_SUBFORMATS.filter((s) => s.value === 'fx-vcr' || s.value === 'fx-libre');
+      return ALL_SUBFORMATS.filter((s) => s.value === 'fx-vcr' || s.value === 'fx-libre' || s.value === 'fx-ragnarok');
     }
     return ALL_SUBFORMATS;
   }, [myFormatFilter]);
@@ -322,7 +325,7 @@ export default function DeckBuilderHomePage() {
       return ALL_SUBFORMATS.filter((s) => s.value === 'pb-edicion' || s.value === 'pb-libre');
     }
     if (exploreFormatFilter === 'fx') {
-      return ALL_SUBFORMATS.filter((s) => s.value === 'fx-vcr' || s.value === 'fx-libre');
+      return ALL_SUBFORMATS.filter((s) => s.value === 'fx-vcr' || s.value === 'fx-libre' || s.value === 'fx-ragnarok');
     }
     return ALL_SUBFORMATS;
   }, [exploreFormatFilter]);
