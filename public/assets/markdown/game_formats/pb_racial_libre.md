@@ -11,7 +11,7 @@ El formato **Primer Bloque Racial Libre** permite construir mazos utilizando car
 ### 👥 Requisito Racial
 
 - Debes elegir **una raza de Aliados** de cualquiera de las ediciones del bloque.
-- **No existe límite mínimo ni máximo** en cantidad de aliados por mazo.
+- Tu mazo debe contener **al menos 16 aliados de la misma raza**.
 - La raza elegida define la temática principal de tu estrategia.
 
 ### 🛡️ Cartas de Soporte
@@ -54,8 +54,6 @@ Se incluyen todos los productos y expansiones asociados a estas ediciones:
 
 - **Máxima libertad** para construir tu mazo
 - Acceso a **todas las cartas** del Primer Bloque
-- **Sin restricciones** en cantidad de aliados
-- Posibilidad de **combinar razas** (aunque se debe elegir una como principal)
 - Mayor **diversidad de estrategias** disponibles
 
 ### 🎲 Estilo de Juego
