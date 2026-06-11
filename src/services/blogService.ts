@@ -91,7 +91,8 @@ function getSlugFromFilename(filename: string): string {
 export async function fetchAllBlogPosts(): Promise<BlogPost[]> {
   try {
     const modules = import.meta.glob<string>('/src/../public/assets/markdown/blog/**/*.md', {
-      as: 'raw',
+      query: '?raw',
+      import: 'default',
     });
 
     const posts: BlogPost[] = [];
