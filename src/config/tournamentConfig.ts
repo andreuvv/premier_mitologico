@@ -29,8 +29,8 @@ export interface TournamentConfig {
 export const tournamentConfig: TournamentConfig = {
   name: 'APOCALIPSIS VIKINGO! - FX -',
   date: '2026-06-27',
-  time: '14:30',
-  dateTentative: true, // Set to true to show the ribbon
+  time: '15:00',
+  dateTentative: false, // Set to true to show the ribbon
   /* location: {
     name: "Weshes",
     address: 'Jorge Quevedo 5464, Macul, Santiago',
