@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "../../../myl_app_flutter"
+		},
+		{
+			"path": "../../../Mitoxicos_project"
 		}
 	],
 	"settings": {}
