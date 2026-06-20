@@ -4,6 +4,7 @@ import { CollectionCatalog, CollectionCard, CollectionFormat } from '../types/co
 import { loadCollectionCards } from '../services/collectionService';
 import CardGrid, { type SimpleCard } from '../components/CardGrid';
 import CollectionFilters, { type FilterParams } from '../components/CollectionFilters';
+import CardDetailModal from '../components/CardDetailModal';
 import { useAuth } from '../hooks/useAuth';
 import { useUserCollection } from '../hooks/useUserCollection';
 import { useScrollRestore } from '../hooks/useScrollRestore';
@@ -41,6 +42,7 @@ const FolderPage = () => {
   const [loading, setLoading] = useState(true);
   const [showOwnedOnly, setShowOwnedOnly] = useState(searchParams.get('owned') === '1');
   const [showNotOwnedOnly, setShowNotOwnedOnly] = useState(searchParams.get('notOwned') === '1');
+  const [selectedCard, setSelectedCard] = useState<CollectionCard | null>(null);
   // True once CollectionFilters has called onFilterChange at least once.
   const [cardsReady, setCardsReady] = useState(false);
   const isInitialFilterApplyRef = useRef(true);
@@ -122,6 +124,19 @@ const FolderPage = () => {
     if (showNotOwnedOnly) return filteredCards.filter(card => !ownedCardIds.has(card.id));
     return filteredCards;
   }, [filteredCards, ownedCardIds, showOwnedOnly, showNotOwnedOnly]);
+
+  const modalCards = useMemo(() => {
+    const cardsById = new Map(allCards.map((card) => [card.id, card]));
+    return visibleCards
+      .map((card) => cardsById.get(card.id))
+      .filter((card): card is CollectionCard => Boolean(card));
+  }, [allCards, visibleCards]);
+
+  const handleViewCard = (cardId: number) => {
+    const card = modalCards.find((item) => item.id === cardId) ?? allCards.find((item) => item.id === cardId);
+    if (!card) return;
+    setSelectedCard(card);
+  };
 
   const getFormatLabel = (format: CollectionFormat): string => {
     switch (format) {
@@ -222,6 +237,7 @@ const FolderPage = () => {
                 format={selectedFormat}
                 ownedCardIds={ownedCardIds}
                 cardCopies={cardCopies}
+                onViewCard={handleViewCard}
                 onAddCopy={addCopy}
                 onRemoveCopy={removeCopy}
                 showUnownedMuted={true}
@@ -237,6 +253,11 @@ const FolderPage = () => {
       <div className={styles.stats}>
         Mostrando {ownedCards.length} de {ownedTotalByFormat} cartas en tu Carpeta ({getFormatLabel(selectedFormat)})
       </div>
+
+      <CardDetailModal
+        card={selectedCard}
+        onClose={() => setSelectedCard(null)}
+      />
     </div>
   );
 };

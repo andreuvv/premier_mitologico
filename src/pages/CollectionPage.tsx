@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { CollectionFormat, CollectionCard, CollectionCatalog } from '../types/collection';
 import { loadCollectionCards } from '../services/collectionService';
@@ -7,6 +7,7 @@ import CollectionFilters, { type FilterParams } from '../components/CollectionFi
 import { useAuth } from '../hooks/useAuth';
 import { useUserCollection } from '../hooks/useUserCollection';
 import { useScrollRestore } from '../hooks/useScrollRestore';
+import CardDetailModal from '../components/CardDetailModal';
 import styles from './CollectionPage.module.css';
 
 const CollectionPage = () => {
@@ -22,6 +23,7 @@ const CollectionPage = () => {
   const [filteredCards, setFilteredCards] = useState<SimpleCard[]>([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [selectedCard, setSelectedCard] = useState<CollectionCard | null>(null);
   // True once CollectionFilters has called onFilterChange at least once,
   // meaning the final filtered card set is ready to display.
   const [cardsReady, setCardsReady] = useState(false);
@@ -29,7 +31,7 @@ const CollectionPage = () => {
   // Used to avoid deleting ?page when cards first load (e.g. after back-navigation).
   const isInitialFilterApplyRef = useRef(true);
 
-  const { ownedCardIds, cardCopies, loadedFormat, loadCollection, toggleCard } = useUserCollection(selectedFormat);
+  const { ownedCardIds, cardCopies, loadedFormat, loadCollection, addCopy, removeCopy } = useUserCollection(selectedFormat);
 
   useScrollRestore(cardsReady);
 
@@ -115,6 +117,19 @@ const CollectionPage = () => {
   const urlFormat = searchParams.get('format') ?? CollectionFormat.PRIMER_BLOQUE;
   const matchesFormat = urlFormat === selectedFormat;
 
+  const modalCards = useMemo(() => {
+    const cardsById = new Map(allCards.map((card) => [card.id, card]));
+    return filteredCards
+      .map((card) => cardsById.get(card.id))
+      .filter((card): card is CollectionCard => Boolean(card));
+  }, [allCards, filteredCards]);
+
+  const handleViewCard = (cardId: number) => {
+    const card = modalCards.find((item) => item.id === cardId) ?? allCards.find((item) => item.id === cardId);
+    if (!card) return;
+    setSelectedCard(card);
+  };
+
   return (
     <div className={styles.container}>
 
@@ -182,7 +197,9 @@ const CollectionPage = () => {
                 format={selectedFormat}
                 ownedCardIds={user ? ownedCardIds : undefined}
                 cardCopies={user ? cardCopies : undefined}
-                onToggleOwned={user ? toggleCard : undefined}
+                onViewCard={handleViewCard}
+                onAddCopy={user ? addCopy : undefined}
+                onRemoveCopy={user ? removeCopy : undefined}
                 showCopyCount={Boolean(user)}
                 currentPage={pageFromUrl}
                 onPageChange={handlePageChange}
@@ -195,6 +212,11 @@ const CollectionPage = () => {
       <div className={styles.stats}>
         Mostrando {filteredCards.length} de {allCards.length} cartas
       </div>
+
+      <CardDetailModal
+        card={selectedCard}
+        onClose={() => setSelectedCard(null)}
+      />
     </div>
   );
 };

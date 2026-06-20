@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, Fragment } from 'react';
+import { useState, useEffect, useMemo, Fragment, type MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './CardGrid.module.css';
 
@@ -23,6 +23,7 @@ interface CardGridProps {
   cardsPerPage?: number;
   ownedCardIds?: Set<number>;
   cardCopies?: Map<number, number>;
+  onViewCard?: (cardId: number) => void;
   onToggleOwned?: (cardId: number) => void;
   onAddCopy?: (cardId: number) => void;
   onRemoveCopy?: (cardId: number) => void;
@@ -99,6 +100,7 @@ export default function CardGrid({
   cardsPerPage = 100,
   ownedCardIds,
   cardCopies,
+  onViewCard,
   onToggleOwned,
   onAddCopy,
   onRemoveCopy,
@@ -156,11 +158,17 @@ export default function CardGrid({
           const isOwned = copyCount > 0;
           const detailPath = `/coleccion/carta/${format}/${card.id}/${card.slug}`;
           const showActions = Boolean(onToggleOwned || onAddCopy || onRemoveCopy);
-          const canManageCopies = Boolean(onAddCopy || onRemoveCopy);
           const isMutedUnowned = showUnownedMuted && !isOwned;
+
+          const handleViewCard = (e: MouseEvent<HTMLAnchorElement>) => {
+            if (!onViewCard) return;
+            e.preventDefault();
+            onViewCard(card.id);
+          };
+
           return (
             <div key={card.id} className={`${styles.cardItem} ${isOwned ? styles.cardOwned : ''} ${isMutedUnowned ? styles.cardUnownedMuted : ''}`}>
-              <Link to={detailPath} className={styles.cardLink}>
+              <Link to={detailPath} className={styles.cardLink} onClick={handleViewCard}>
                 {card.imageUrl ? (
                   <img
                     src={card.imageUrl}
@@ -181,7 +189,11 @@ export default function CardGrid({
 
               {showActions && (
                 <div className={styles.actionsOverlay}>
-                  <Link to={detailPath} className={`${styles.actionButton} ${styles.actionView}`}>
+                  <Link
+                    to={detailPath}
+                    className={`${styles.actionButton} ${styles.actionView}`}
+                    onClick={handleViewCard}
+                  >
                     Ver Carta
                   </Link>
                   <button
@@ -196,7 +208,7 @@ export default function CardGrid({
                     }}
                     disabled={!onAddCopy && !onToggleOwned}
                   >
-                    {canManageCopies ? 'Agregar copia' : 'Agregar a Carpeta'}
+                    {isOwned ? 'Agregar Copia' : 'Agregar a Carpeta'}
                   </button>
                   <button
                     className={`${styles.actionButton} ${styles.actionRemove}`}
@@ -210,7 +222,7 @@ export default function CardGrid({
                     }}
                     disabled={onRemoveCopy ? copyCount <= 0 : !isOwned}
                   >
-                    {canManageCopies ? 'Quitar copia' : 'Quitar de Carpeta'}
+                    {isOwned ? 'Quitar Copia' : 'Quitar de Carpeta'}
                   </button>
                 </div>
               )}
