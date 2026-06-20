@@ -1,13 +1,18 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { FaBook, FaFileAlt, FaExternalLinkAlt, FaChevronDown } from 'react-icons/fa';
 import styles from './ImportantDocumentsCard.module.css';
 
 const ImportantDocumentsCard = () => {
   const [isOpen, setIsOpen] = useState(true);
   const [faqOpenMap, setFaqOpenMap] = useState<Record<number, boolean>>({});
+  const [oracleOpenMap, setOracleOpenMap] = useState<Record<number, boolean>>({});
 
   const toggleFaq = (index: number) => {
     setFaqOpenMap(prev => ({ ...prev, [index]: !prev[index] }));
+  };
+
+  const toggleOracle = (index: number) => {
+    setOracleOpenMap(prev => ({ ...prev, [index]: !prev[index] }));
   };
   
   const sections = [
@@ -56,6 +61,10 @@ const ImportantDocumentsCard = () => {
         {
             name: 'Oráculo Toolkit PB 2026',
             link: 'https://blog.myl.cl/wp-content/uploads/2026/03/Oraculo-Toolkit-PB-2026.pdf',
+        },
+        {
+            name: 'Oráculo Leyendas PB 4.0',
+            link: 'https://drive.google.com/file/d/1j5aSLSNcw0qlXTmo8Uo8sAeF3w7k-J7x/view',
         },
       ],
     },
@@ -121,13 +130,13 @@ const ImportantDocumentsCard = () => {
       {isOpen && (
         <div className={styles.content}>
           {sections.map((section, index) => (
-            <div key={index} className={styles.section}>
+            <div key={section.title} className={styles.section}>
               <h4 className={styles.sectionTitle} style={{ color: section.color }}>
                 {section.title}
               </h4>
               <div className={styles.subtitle}>
                 {section.subtitle.map((sub, subIndex) => (
-                  <span key={subIndex}>
+                  <span key={sub.name}>
                     <a href={sub.link} target="_blank" rel="noopener noreferrer" className={styles.subtitleLink}>
                       {sub.name}
                     </a>
@@ -135,14 +144,22 @@ const ImportantDocumentsCard = () => {
                   </span>
                 ))}
               </div>
+              {/** Render FAQ justo debajo del primer documento visible (normalmente D.A.R.) */}
+              {/** Para Primer Bloque se excluyen Oráculo de la lista principal */}
+              {(() => {
+                const visibleDocuments = section.title === 'Primer Bloque'
+                  ? section.documents.filter((doc) => !doc.name.startsWith('Oráculo'))
+                  : section.documents;
+
+                return (
               <ul className={styles.documentList}>
-                {section.documents.map((doc, docIndex) => (
-                  <>
-                    <li key={docIndex} className={styles.documentItem}>
+                {visibleDocuments.map((doc, docIndex) => (
+                  <Fragment key={doc.name}>
+                    <li key={doc.name} className={styles.documentItem}>
                       <FaFileAlt className={styles.docIcon} />
-                      <a 
-                        href={doc.link} 
-                        target="_blank" 
+                      <a
+                        href={doc.link}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className={styles.documentLink}
                       >
@@ -150,12 +167,15 @@ const ImportantDocumentsCard = () => {
                         <FaExternalLinkAlt className={styles.externalIcon} />
                       </a>
                     </li>
+
                     {docIndex === 0 && section.faqDocuments.length > 0 && (
                       <li className={styles.faqListItem}>
                         <div className={styles.faqAccordion}>
                           <button
+                            type="button"
                             className={styles.faqAccordionHeader}
                             onClick={() => toggleFaq(index)}
+                            aria-expanded={Boolean(faqOpenMap[index])}
                           >
                             <span className={styles.faqAccordionTitle}>
                               <FaFileAlt className={styles.docIcon} />
@@ -165,8 +185,8 @@ const ImportantDocumentsCard = () => {
                           </button>
                           {faqOpenMap[index] && (
                             <ul className={`${styles.documentList} ${styles.faqDocumentList}`}>
-                              {section.faqDocuments.map((faqDoc, faqDocIndex) => (
-                                <li key={faqDocIndex} className={styles.documentItem}>
+                              {section.faqDocuments.map((faqDoc) => (
+                                <li key={faqDoc.name} className={styles.documentItem}>
                                   <FaFileAlt className={styles.docIcon} />
                                   <a
                                     href={faqDoc.link}
@@ -184,9 +204,51 @@ const ImportantDocumentsCard = () => {
                         </div>
                       </li>
                     )}
-                  </>
+                  </Fragment>
                 ))}
+
+                {section.title === 'Primer Bloque' &&
+                  section.documents.some((doc) => doc.name.startsWith('Oráculo')) && (
+                    <li className={styles.faqListItem}>
+                      <div className={styles.faqAccordion}>
+                        <button
+                          type="button"
+                          className={styles.faqAccordionHeader}
+                          onClick={() => toggleOracle(index)}
+                          aria-expanded={Boolean(oracleOpenMap[index])}
+                        >
+                          <span className={styles.faqAccordionTitle}>
+                            <FaFileAlt className={styles.docIcon} />
+                            Documentos Oráculo
+                          </span>
+                          <FaChevronDown className={`${styles.faqChevron} ${oracleOpenMap[index] ? styles.faqChevronOpen : ''}`} />
+                        </button>
+                        {oracleOpenMap[index] && (
+                          <ul className={`${styles.documentList} ${styles.faqDocumentList}`}>
+                            {section.documents
+                              .filter((doc) => doc.name.startsWith('Oráculo'))
+                              .map((oracleDoc) => (
+                                <li key={oracleDoc.name} className={styles.documentItem}>
+                                  <FaFileAlt className={styles.docIcon} />
+                                  <a
+                                    href={oracleDoc.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={styles.documentLink}
+                                  >
+                                    {oracleDoc.name}
+                                    <FaExternalLinkAlt className={styles.externalIcon} />
+                                  </a>
+                                </li>
+                              ))}
+                          </ul>
+                        )}
+                      </div>
+                    </li>
+                  )}
               </ul>
+                );
+              })()}
             </div>
           ))}
         </div>
