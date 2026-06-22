@@ -75,6 +75,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+  flex: 1;
 }
 
 /* Indicador "en Carpeta": franja superior verde + fondo tintado */
@@ -118,7 +119,7 @@
   display: flex;
   align-items: stretch;
   gap: 0;
-  margin: 0 -1rem -1rem;
+  margin: auto -1rem -1rem;
 }
 
 .stepperBtn {
@@ -293,7 +294,7 @@
   }
 
   .stepper {
-    margin: 0 -0.75rem -0.75rem;
+    margin: auto -0.75rem -0.75rem;
   }
 
   .stepperLabel,
