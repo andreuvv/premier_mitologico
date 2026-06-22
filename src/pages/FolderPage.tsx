@@ -43,6 +43,8 @@ const FolderPage = () => {
   const [loading, setLoading] = useState(true);
   const [showOwnedOnly, setShowOwnedOnly] = useState(searchParams.get('owned') === '1');
   const [showNotOwnedOnly, setShowNotOwnedOnly] = useState(searchParams.get('notOwned') === '1');
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(searchParams.get('fav') === '1');
+  const [showWishlistOnly, setShowWishlistOnly] = useState(searchParams.get('wish') === '1');
   const [selectedCard, setSelectedCard] = useState<CollectionCard | null>(null);
   // True once CollectionFilters has called onFilterChange at least once.
   const [cardsReady, setCardsReady] = useState(false);
@@ -111,6 +113,8 @@ const FolderPage = () => {
     setFilteredCards(simpleCards);
     setShowOwnedOnly(params.ownedOnly === true);
     setShowNotOwnedOnly(params.notOwnedOnly === true);
+    setShowFavoritesOnly(params.favoritesOnly === true);
+    setShowWishlistOnly(params.wishlistOnly === true);
 
     setSearchParams(p => {
       const next = new URLSearchParams(p);
@@ -123,6 +127,8 @@ const FolderPage = () => {
       if (params.freq) next.set('freq', params.freq); else next.delete('freq');
       if (params.ownedOnly) next.set('owned', '1'); else next.delete('owned');
       if (params.notOwnedOnly) next.set('notOwned', '1'); else next.delete('notOwned');
+      if (params.favoritesOnly) next.set('fav', '1'); else next.delete('fav');
+      if (params.wishlistOnly) next.set('wish', '1'); else next.delete('wish');
       if (!isInitialFilterApplyRef.current) next.delete('page');
       return next;
     }, { replace: true });
@@ -138,10 +144,13 @@ const FolderPage = () => {
   }, [allCards, ownedCardIds]);
 
   const visibleCards = useMemo(() => {
-    if (showOwnedOnly) return filteredCards.filter(card => ownedCardIds.has(card.id));
-    if (showNotOwnedOnly) return filteredCards.filter(card => !ownedCardIds.has(card.id));
-    return filteredCards;
-  }, [filteredCards, ownedCardIds, showOwnedOnly, showNotOwnedOnly]);
+    let result = filteredCards;
+    if (showOwnedOnly) result = result.filter(card => ownedCardIds.has(card.id));
+    else if (showNotOwnedOnly) result = result.filter(card => !ownedCardIds.has(card.id));
+    if (showFavoritesOnly) result = result.filter(card => favorites.cardIds.has(card.id));
+    if (showWishlistOnly) result = result.filter(card => wishlist.cardIds.has(card.id));
+    return result;
+  }, [filteredCards, ownedCardIds, showOwnedOnly, showNotOwnedOnly, showFavoritesOnly, showWishlistOnly, favorites.cardIds, wishlist.cardIds]);
 
   const modalCards = useMemo(() => {
     const cardsById = new Map(allCards.map((card) => [card.id, card]));
@@ -242,6 +251,8 @@ const FolderPage = () => {
             initialFreq={matchesFormat ? searchParams.get('freq') : null}
             initialOwnedOnly={matchesFormat ? searchParams.get('owned') === '1' : false}
             initialNotOwnedOnly={matchesFormat ? searchParams.get('notOwned') === '1' : false}
+            initialFavoritesOnly={matchesFormat ? searchParams.get('fav') === '1' : false}
+            initialWishlistOnly={matchesFormat ? searchParams.get('wish') === '1' : false}
             showOwnedOnlyToggle={true}
           />
           <div className={styles.gridArea}>

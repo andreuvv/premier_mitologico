@@ -19,6 +19,8 @@ export interface FilterParams {
   freq: string | null;
   ownedOnly?: boolean;
   notOwnedOnly?: boolean;
+  favoritesOnly?: boolean;
+  wishlistOnly?: boolean;
 }
 
 interface CollectionFiltersProps {
@@ -37,12 +39,15 @@ interface CollectionFiltersProps {
   showOwnedOnlyToggle?: boolean;
   initialOwnedOnly?: boolean;
   initialNotOwnedOnly?: boolean;
+  initialFavoritesOnly?: boolean;
+  initialWishlistOnly?: boolean;
 }
 
 export default function CollectionFilters({
   allCards, format, isOpen, onClose, onFilterChange,
   initialEdition, initialProduct, initialSearch, initialType, initialOro, initialRace, initialFreq,
   showOwnedOnlyToggle = false, initialOwnedOnly = false, initialNotOwnedOnly = false,
+  initialFavoritesOnly = false, initialWishlistOnly = false,
 }: CollectionFiltersProps) {
   const [edition, setEdition] = useState(initialEdition || '');
   const [product, setProduct] = useState(initialProduct || '');
@@ -53,6 +58,8 @@ export default function CollectionFilters({
   const [freq, setFreq] = useState(initialFreq || '');
   const [ownedOnly, setOwnedOnly] = useState(initialOwnedOnly);
   const [notOwnedOnly, setNotOwnedOnly] = useState(initialNotOwnedOnly);
+  const [favoritesOnly, setFavoritesOnly] = useState(initialFavoritesOnly);
+  const [wishlistOnly, setWishlistOnly] = useState(initialWishlistOnly);
   const appliedInitialRef = useRef(false);
 
   const isPB = format === CollectionFormat.PRIMER_BLOQUE;
@@ -97,6 +104,8 @@ export default function CollectionFilters({
     f: string,
     o: boolean = ownedOnly,
     no: boolean = notOwnedOnly,
+    fav: boolean = favoritesOnly,
+    wish: boolean = wishlistOnly,
   ) => {
     let filtered = allCards;
 
@@ -132,6 +141,8 @@ export default function CollectionFilters({
       freq: f || null,
       ownedOnly: o,
       notOwnedOnly: no,
+      favoritesOnly: fav,
+      wishlistOnly: wish,
     });
   };
 
@@ -188,24 +199,35 @@ export default function CollectionFilters({
     setEdition(''); setProduct(''); setSearch('');
     setType(''); setOro('all'); setRace(''); setFreq('');
     setOwnedOnly(false); setNotOwnedOnly(false);
-    applyFilters('', '', '', '', 'all', '', '', false, false);
+    setFavoritesOnly(false); setWishlistOnly(false);
+    applyFilters('', '', '', '', 'all', '', '', false, false, false, false);
   };
 
   const handleOwnedOnlyChange = (checked: boolean) => {
     setOwnedOnly(checked);
     if (checked) setNotOwnedOnly(false);
-    applyFilters(edition, product, search, type, oro, race, freq, checked, false);
+    applyFilters(edition, product, search, type, oro, race, freq, checked, false, favoritesOnly, wishlistOnly);
   };
 
   const handleNotOwnedOnlyChange = (checked: boolean) => {
     setNotOwnedOnly(checked);
     if (checked) setOwnedOnly(false);
-    applyFilters(edition, product, search, type, oro, race, freq, false, checked);
+    applyFilters(edition, product, search, type, oro, race, freq, false, checked, favoritesOnly, wishlistOnly);
+  };
+
+  const handleFavoritesOnlyChange = (checked: boolean) => {
+    setFavoritesOnly(checked);
+    applyFilters(edition, product, search, type, oro, race, freq, ownedOnly, notOwnedOnly, checked, wishlistOnly);
+  };
+
+  const handleWishlistOnlyChange = (checked: boolean) => {
+    setWishlistOnly(checked);
+    applyFilters(edition, product, search, type, oro, race, freq, ownedOnly, notOwnedOnly, favoritesOnly, checked);
   };
 
   const [collapsed, setCollapsed] = useState(false);
 
-  const hasFilters = !!(edition || product || search || type || (type === 'Oro' && oro !== 'all') || race || freq || ownedOnly || notOwnedOnly);
+  const hasFilters = !!(edition || product || search || type || (type === 'Oro' && oro !== 'all') || race || freq || ownedOnly || notOwnedOnly || favoritesOnly || wishlistOnly);
 
   return (
     <aside className={`${styles.panel} ${isOpen ? styles.open : ''}`}>
@@ -349,6 +371,22 @@ export default function CollectionFilters({
               onChange={e => handleNotOwnedOnlyChange(e.target.checked)}
             />
             <span>No en Carpeta</span>
+          </label>
+          <label className={styles.toggleRow}>
+            <input
+              type="checkbox"
+              checked={favoritesOnly}
+              onChange={e => handleFavoritesOnlyChange(e.target.checked)}
+            />
+            <span>Favoritos</span>
+          </label>
+          <label className={styles.toggleRow}>
+            <input
+              type="checkbox"
+              checked={wishlistOnly}
+              onChange={e => handleWishlistOnlyChange(e.target.checked)}
+            />
+            <span>Lista de Deseados</span>
           </label>
         </div>
       )}
