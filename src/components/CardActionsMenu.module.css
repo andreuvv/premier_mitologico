@@ -1,0 +1,64 @@
+.kebab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: rgba(45, 45, 45, 0.08);
+  color: var(--coal-grey);
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.kebab:hover {
+  background: var(--ocher);
+  border-color: var(--ocher);
+  color: var(--coal-grey);
+}
+
+.menu {
+  position: fixed;
+  z-index: 2000;
+  min-width: 210px;
+  background: var(--dark-brown);
+  border: 1px solid var(--ocher);
+  border-radius: 8px;
+  padding: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.menuItem {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 0.7rem;
+  color: var(--beige);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.menuItem:hover {
+  background: rgba(214, 156, 65, 0.18);
+  color: var(--ocher);
+}
+
+.menuItemDanger {
+  color: #e7a59c;
+}
+
+.menuItemDanger:hover {
+  background: rgba(155, 74, 64, 0.25);
+  color: #f0b9b0;
+}

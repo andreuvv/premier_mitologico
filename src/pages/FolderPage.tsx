@@ -7,6 +7,7 @@ import CollectionFilters, { type FilterParams } from '../components/CollectionFi
 import CardDetailModal from '../components/CardDetailModal';
 import { useAuth } from '../hooks/useAuth';
 import { useUserCollection } from '../hooks/useUserCollection';
+import { useUserCardList } from '../hooks/useUserCardList';
 import { useScrollRestore } from '../hooks/useScrollRestore';
 import styles from './CollectionPage.module.css';
 
@@ -47,7 +48,9 @@ const FolderPage = () => {
   const [cardsReady, setCardsReady] = useState(false);
   const isInitialFilterApplyRef = useRef(true);
 
-  const { ownedCardIds, cardCopies, loadedFormat, loadCollection, addCopy, removeCopy } = useUserCollection(selectedFormat);
+  const { ownedCardIds, cardCopies, loadedFormat, loadCollection, addCopy, removeCopy, setCopies } = useUserCollection(selectedFormat);
+  const favorites = useUserCardList('user_favorites_v2', selectedFormat);
+  const wishlist = useUserCardList('user_wishlist_v2', selectedFormat);
 
   useScrollRestore(cardsReady);
 
@@ -86,6 +89,21 @@ const FolderPage = () => {
       loadCollection();
     }
   }, [user, loadedFormat, selectedFormat, loadCollection]);
+
+  const { loadedFormat: favLoadedFormat, loadList: loadFavorites } = favorites;
+  const { loadedFormat: wishLoadedFormat, loadList: loadWishlist } = wishlist;
+
+  useEffect(() => {
+    if (user && favLoadedFormat !== selectedFormat) {
+      loadFavorites();
+    }
+  }, [user, selectedFormat, favLoadedFormat, loadFavorites]);
+
+  useEffect(() => {
+    if (user && wishLoadedFormat !== selectedFormat) {
+      loadWishlist();
+    }
+  }, [user, selectedFormat, wishLoadedFormat, loadWishlist]);
 
   const handleFilterChange = (cards: CollectionCard[], params: FilterParams) => {
     setCardsReady(true);
@@ -237,9 +255,14 @@ const FolderPage = () => {
                 format={selectedFormat}
                 ownedCardIds={ownedCardIds}
                 cardCopies={cardCopies}
+                favoriteCardIds={favorites.cardIds}
+                wishlistCardIds={wishlist.cardIds}
                 onViewCard={handleViewCard}
                 onAddCopy={addCopy}
                 onRemoveCopy={removeCopy}
+                onSetCopies={setCopies}
+                onToggleFavorite={favorites.toggle}
+                onToggleWishlist={wishlist.toggle}
                 showUnownedMuted={true}
                 showCopyCount={true}
                 currentPage={pageFromUrl}

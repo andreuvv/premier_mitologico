@@ -6,6 +6,7 @@ import CardGrid, { type SimpleCard } from '../components/CardGrid';
 import CollectionFilters, { type FilterParams } from '../components/CollectionFilters';
 import { useAuth } from '../hooks/useAuth';
 import { useUserCollection } from '../hooks/useUserCollection';
+import { useUserCardList } from '../hooks/useUserCardList';
 import { useScrollRestore } from '../hooks/useScrollRestore';
 import CardDetailModal from '../components/CardDetailModal';
 import styles from './CollectionPage.module.css';
@@ -31,7 +32,9 @@ const CollectionPage = () => {
   // Used to avoid deleting ?page when cards first load (e.g. after back-navigation).
   const isInitialFilterApplyRef = useRef(true);
 
-  const { ownedCardIds, cardCopies, loadedFormat, loadCollection, addCopy, removeCopy } = useUserCollection(selectedFormat);
+  const { ownedCardIds, cardCopies, loadedFormat, loadCollection, addCopy, removeCopy, setCopies } = useUserCollection(selectedFormat);
+  const favorites = useUserCardList('user_favorites_v2', selectedFormat);
+  const wishlist = useUserCardList('user_wishlist_v2', selectedFormat);
 
   useScrollRestore(cardsReady);
 
@@ -70,6 +73,22 @@ const CollectionPage = () => {
       loadCollection();
     }
   }, [user, selectedFormat, loadedFormat, loadCollection]);
+
+  // Load favorites / wishlist when user or format changes
+  const { loadedFormat: favLoadedFormat, loadList: loadFavorites } = favorites;
+  const { loadedFormat: wishLoadedFormat, loadList: loadWishlist } = wishlist;
+
+  useEffect(() => {
+    if (user && favLoadedFormat !== selectedFormat) {
+      loadFavorites();
+    }
+  }, [user, selectedFormat, favLoadedFormat, loadFavorites]);
+
+  useEffect(() => {
+    if (user && wishLoadedFormat !== selectedFormat) {
+      loadWishlist();
+    }
+  }, [user, selectedFormat, wishLoadedFormat, loadWishlist]);
 
   const handleFilterChange = (cards: CollectionCard[], params: FilterParams) => {
     setCardsReady(true);
@@ -197,9 +216,14 @@ const CollectionPage = () => {
                 format={selectedFormat}
                 ownedCardIds={user ? ownedCardIds : undefined}
                 cardCopies={user ? cardCopies : undefined}
+                favoriteCardIds={user ? favorites.cardIds : undefined}
+                wishlistCardIds={user ? wishlist.cardIds : undefined}
                 onViewCard={handleViewCard}
                 onAddCopy={user ? addCopy : undefined}
                 onRemoveCopy={user ? removeCopy : undefined}
+                onSetCopies={user ? setCopies : undefined}
+                onToggleFavorite={user ? favorites.toggle : undefined}
+                onToggleWishlist={user ? wishlist.toggle : undefined}
                 showCopyCount={Boolean(user)}
                 currentPage={pageFromUrl}
                 onPageChange={handlePageChange}

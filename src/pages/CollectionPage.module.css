@@ -93,21 +93,16 @@
 }
 
 .content {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   margin-bottom: 2rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 .content.withSidebar {
-  grid-template-columns: 280px 1fr;
-}
-
-@media (max-width: 1200px) {
-  .content.withSidebar {
-    grid-template-columns: 1fr;
-  }
+  display: flex;
+  flex-direction: column;
 }
 
 .stats {

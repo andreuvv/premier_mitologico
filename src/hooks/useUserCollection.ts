@@ -125,5 +125,39 @@ export function useUserCollection(format: CollectionFormat) {
     }
   }, [ownedCardIds, addCopy, removeCopy]);
 
-  return { ownedCardIds, cardCopies, loadedFormat, loadCollection, toggleCard, addCopy, removeCopy };
+  const setCopies = useCallback(async (cardId: number, count: number) => {
+    if (!user) return;
+
+    // Clamp to a non-negative integer; invalid values fall back to 0.
+    const safeCount = Number.isFinite(count) ? Math.max(0, Math.floor(count)) : 0;
+
+    const newCopies = new Map(cardCopies);
+    if (safeCount <= 0) {
+      newCopies.delete(cardId);
+    } else {
+      newCopies.set(cardId, safeCount);
+    }
+
+    setCardCopies(newCopies);
+    setOwnedCardIds((prev) => {
+      const next = new Set(prev);
+      if (safeCount <= 0) next.delete(cardId);
+      else next.add(cardId);
+      return next;
+    });
+
+    const { error } = await supabase
+      .from('user_collections_v2')
+      .upsert(
+        { user_id: user.id, format, cards: mapToJson(newCopies) },
+        { onConflict: 'user_id,format' }
+      );
+
+    if (error) {
+      console.error('[useUserCollection] set copies error:', error);
+      await loadCollection();
+    }
+  }, [user, cardCopies, format, loadCollection]);
+
+  return { ownedCardIds, cardCopies, loadedFormat, loadCollection, toggleCard, addCopy, removeCopy, setCopies };
 }

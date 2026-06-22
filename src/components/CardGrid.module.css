@@ -30,11 +30,18 @@
 }
 
 .cardOwned {
-  box-shadow: 0 0 0 2px var(--sage-green), 0 4px 12px rgba(126, 164, 112, 0.25);
+  box-shadow: 0 0 0 3px var(--sage-green), 0 4px 14px rgba(126, 164, 112, 0.35);
 }
 
 .cardUnownedMuted .cardImage {
   filter: grayscale(1);
+}
+
+.cardImageLink {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
 }
 
 .unownedOverlay {
@@ -42,103 +49,6 @@
   inset: 0;
   background: rgba(0, 0, 0, 0.18);
   pointer-events: none;
-  z-index: 0;
-}
-
-.cardLink {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: inherit;
-}
-
-.actionsOverlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.52);
-  padding: 0.6rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transform: translateY(6px);
-  pointer-events: none;
-  transition: opacity 0.18s, transform 0.18s;
-  z-index: 1;
-}
-
-.cardItem:hover .actionsOverlay {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.actionButton {
-  width: min(86%, 180px);
-  border: 1px solid transparent;
-  background: rgba(45, 45, 45, 0.88);
-  color: var(--beige);
-  border-radius: 8px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  text-align: center;
-  text-decoration: none;
-  padding: 0.42rem 0.5rem;
-  cursor: pointer;
-}
-
-.actionButton:hover:not(:disabled) {
-  filter: brightness(1.05);
-}
-
-.actionView {
-  background: var(--ocher);
-  border-color: var(--ocher);
-  color: var(--coal-grey);
-}
-
-.actionView:hover:not(:disabled) {
-  background: var(--ocher);
-}
-
-.actionAdd {
-  background: var(--sage-green);
-  border-color: var(--sage-green);
-  color: var(--beige);
-}
-
-.actionAdd:hover:not(:disabled) {
-  background: var(--sage-green);
-}
-
-.actionAdd:disabled {
-  background: #5b7c50;
-  border-color: #5b7c50;
-  color: rgba(241, 220, 174, 0.75);
-}
-
-.actionRemove {
-  background: var(--brick-red);
-  border-color: var(--brick-red);
-  color: var(--beige);
-}
-
-.actionRemove:hover:not(:disabled) {
-  background: var(--brick-red);
-}
-
-.actionRemove:disabled {
-  background: #7b4a43;
-  border-color: #7b4a43;
-  color: rgba(241, 220, 174, 0.75);
-}
-
-.actionButton:disabled {
-  opacity: 1;
-  cursor: not-allowed;
-  filter: grayscale(0.15);
 }
 
 .cardImage {
@@ -162,6 +72,28 @@
 
 .cardInfo {
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* Indicador "en Carpeta": franja superior verde + fondo tintado */
+.cardInfoOwned {
+  border-top: 4px solid var(--sage-green);
+  background: rgba(126, 164, 112, 0.18);
+}
+
+.cardInfoHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.cardTitleLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  min-width: 0;
 }
 
 .cardInfo h4 {
@@ -181,12 +113,82 @@
   letter-spacing: 0.03em;
 }
 
-.copyCount {
-  display: block;
-  margin-top: 0.28rem;
-  font-size: 0.74rem;
-  color: var(--dark-brown);
+/* Stepper de copias en Carpeta — se extiende hasta los bordes del contenedor */
+.stepper {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 0 -1rem -1rem;
+}
+
+.stepperBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 48px;
+  height: 38px;
+  border: none;
+  border-radius: 0;
+  color: var(--beige);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: filter 0.15s, opacity 0.15s;
+}
+
+.stepperBtnRemove {
+  background: var(--brick-red);
+}
+
+.stepperBtnAdd {
+  background: var(--sage-green);
+}
+
+.stepperBtn:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.stepperBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.stepperLabel {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+  background: transparent;
+  border: none;
+  padding: 0.25rem 0.4rem;
+  font-size: 0.78rem;
   font-weight: 600;
+  color: var(--dark-brown);
+  cursor: text;
+  transition: background 0.15s;
+}
+
+.stepperLabel:hover {
+  background: rgba(214, 156, 65, 0.15);
+}
+
+.stepperInput {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  text-align: center;
+  padding: 0.25rem 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--coal-grey);
+  background: var(--beige);
+  border: none;
+  box-sizing: border-box;
+}
+
+.stepperInput:focus {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--petrol-blue);
 }
 
 .pagination {
@@ -288,6 +290,21 @@
 
   .cardCode {
     font-size: 0.7rem;
+  }
+
+  .stepper {
+    margin: 0 -0.75rem -0.75rem;
+  }
+
+  .stepperLabel,
+  .stepperInput {
+    font-size: 0.68rem;
+  }
+
+  .stepperBtn {
+    flex-basis: 40px;
+    height: 34px;
+    font-size: 1.1rem;
   }
 
   .pagination {

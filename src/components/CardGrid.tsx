@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo, Fragment, type MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
+import CardActionsMenu from './CardActionsMenu';
 import styles from './CardGrid.module.css';
 
 export interface SimpleCard {
@@ -23,14 +24,87 @@ interface CardGridProps {
   cardsPerPage?: number;
   ownedCardIds?: Set<number>;
   cardCopies?: Map<number, number>;
+  favoriteCardIds?: Set<number>;
+  wishlistCardIds?: Set<number>;
   onViewCard?: (cardId: number) => void;
-  onToggleOwned?: (cardId: number) => void;
   onAddCopy?: (cardId: number) => void;
   onRemoveCopy?: (cardId: number) => void;
+  onSetCopies?: (cardId: number, count: number) => void;
+  onToggleFavorite?: (cardId: number) => void;
+  onToggleWishlist?: (cardId: number) => void;
   showUnownedMuted?: boolean;
   showCopyCount?: boolean;
   currentPage?: number;
   onPageChange?: (page: number) => void;
+}
+
+interface CopyStepperProps {
+  count: number;
+  onAdd: () => void;
+  onRemove: () => void;
+  onSet: (count: number) => void;
+}
+
+function CopyStepper({ count, onAdd, onRemove, onSet }: CopyStepperProps) {
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState(String(count));
+
+  const commit = () => {
+    const n = parseInt(draft, 10);
+    if (Number.isFinite(n) && n >= 0 && n !== count) {
+      onSet(n);
+    }
+    setEditing(false);
+  };
+
+  return (
+    <div className={styles.stepper}>
+      <button
+        type="button"
+        className={`${styles.stepperBtn} ${styles.stepperBtnRemove}`}
+        onClick={onRemove}
+        disabled={count <= 0}
+        aria-label="Quitar una copia"
+      >
+        −
+      </button>
+      {editing ? (
+        <input
+          type="number"
+          min={0}
+          className={styles.stepperInput}
+          value={draft}
+          autoFocus
+          onChange={(e) => setDraft(e.target.value)}
+          onBlur={commit}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') commit();
+            if (e.key === 'Escape') setEditing(false);
+          }}
+        />
+      ) : (
+        <button
+          type="button"
+          className={styles.stepperLabel}
+          onClick={() => {
+            setDraft(String(count));
+            setEditing(true);
+          }}
+          aria-label="Editar cantidad en Carpeta"
+        >
+          {count} en Carpeta
+        </button>
+      )}
+      <button
+        type="button"
+        className={`${styles.stepperBtn} ${styles.stepperBtnAdd}`}
+        onClick={onAdd}
+        aria-label="Agregar una copia"
+      >
+        +
+      </button>
+    </div>
+  );
 }
 
 interface ParsedCollectorCode {
@@ -100,10 +174,14 @@ export default function CardGrid({
   cardsPerPage = 100,
   ownedCardIds,
   cardCopies,
+  favoriteCardIds,
+  wishlistCardIds,
   onViewCard,
-  onToggleOwned,
   onAddCopy,
   onRemoveCopy,
+  onSetCopies,
+  onToggleFavorite,
+  onToggleWishlist,
   showUnownedMuted = false,
   showCopyCount = false,
   currentPage = 1,
@@ -157,8 +235,8 @@ export default function CardGrid({
           const copyCount = cardCopies?.get(card.id) ?? ((ownedCardIds?.has(card.id) ?? false) ? 1 : 0);
           const isOwned = copyCount > 0;
           const detailPath = `/coleccion/carta/${format}/${card.id}/${card.slug}`;
-          const showActions = Boolean(onToggleOwned || onAddCopy || onRemoveCopy);
           const isMutedUnowned = showUnownedMuted && !isOwned;
+          const showStepper = showCopyCount && Boolean(onSetCopies && onAddCopy && onRemoveCopy);
 
           const handleViewCard = (e: MouseEvent<HTMLAnchorElement>) => {
             if (!onViewCard) return;
@@ -168,7 +246,7 @@ export default function CardGrid({
 
           return (
             <div key={card.id} className={`${styles.cardItem} ${isOwned ? styles.cardOwned : ''} ${isMutedUnowned ? styles.cardUnownedMuted : ''}`}>
-              <Link to={detailPath} className={styles.cardLink} onClick={handleViewCard}>
+              <Link to={detailPath} className={styles.cardImageLink} onClick={handleViewCard}>
                 {card.imageUrl ? (
                   <img
                     src={card.imageUrl}
@@ -178,54 +256,35 @@ export default function CardGrid({
                 ) : (
                   <div className={styles.placeholder}>Sin imagen</div>
                 )}
-                <div className={styles.cardInfo}>
-                  <h4>{card.name}</h4>
-                  <span className={styles.cardCode}>{card.collectorCode}</span>
-                  {showCopyCount && <span className={styles.copyCount}>Tienes {copyCount} copias en tu Carpeta</span>}
-                </div>
+                {isMutedUnowned && <div className={styles.unownedOverlay} aria-hidden="true" />}
               </Link>
 
-              {isMutedUnowned && <div className={styles.unownedOverlay} aria-hidden="true" />}
-
-              {showActions && (
-                <div className={styles.actionsOverlay}>
-                  <Link
-                    to={detailPath}
-                    className={`${styles.actionButton} ${styles.actionView}`}
-                    onClick={handleViewCard}
-                  >
-                    Ver Carta
+              <div className={`${styles.cardInfo} ${isOwned ? styles.cardInfoOwned : ''}`}>
+                <div className={styles.cardInfoHeader}>
+                  <CardActionsMenu
+                    isOwned={isOwned}
+                    isFavorite={favoriteCardIds?.has(card.id) ?? false}
+                    isWishlisted={wishlistCardIds?.has(card.id) ?? false}
+                    onViewCard={onViewCard ? () => onViewCard(card.id) : undefined}
+                    onToggleFavorite={onToggleFavorite ? () => onToggleFavorite(card.id) : undefined}
+                    onToggleWishlist={onToggleWishlist ? () => onToggleWishlist(card.id) : undefined}
+                    onAddToFolder={onAddCopy ? () => onAddCopy(card.id) : undefined}
+                    onRemoveFromFolder={onSetCopies ? () => onSetCopies(card.id, 0) : undefined}
+                  />
+                  <Link to={detailPath} className={styles.cardTitleLink} onClick={handleViewCard}>
+                    <h4>{card.name}</h4>
+                    <span className={styles.cardCode}>{card.collectorCode}</span>
                   </Link>
-                  <button
-                    className={`${styles.actionButton} ${styles.actionAdd}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      if (onAddCopy) {
-                        onAddCopy(card.id);
-                        return;
-                      }
-                      onToggleOwned?.(card.id);
-                    }}
-                    disabled={!onAddCopy && !onToggleOwned}
-                  >
-                    {isOwned ? 'Agregar Copia' : 'Agregar a Carpeta'}
-                  </button>
-                  <button
-                    className={`${styles.actionButton} ${styles.actionRemove}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      if (onRemoveCopy) {
-                        onRemoveCopy(card.id);
-                        return;
-                      }
-                      onToggleOwned?.(card.id);
-                    }}
-                    disabled={onRemoveCopy ? copyCount <= 0 : !isOwned}
-                  >
-                    {isOwned ? 'Quitar Copia' : 'Quitar de Carpeta'}
-                  </button>
                 </div>
-              )}
+                {showStepper && onAddCopy && onRemoveCopy && onSetCopies && (
+                  <CopyStepper
+                    count={copyCount}
+                    onAdd={() => onAddCopy(card.id)}
+                    onRemove={() => onRemoveCopy(card.id)}
+                    onSet={(n) => onSetCopies(card.id, n)}
+                  />
+                )}
+              </div>
             </div>
           );
         })}
