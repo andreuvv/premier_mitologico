@@ -248,7 +248,7 @@ export default function CollectionFilters({
 
       <div className={`${styles.panelBody} ${collapsed ? styles.panelBodyCollapsed : ''}`}>
 
-      <div className={styles.section}>
+      <div className={`${styles.section} ${styles.fieldSearch}`}>
         <label className={styles.label}>Buscar</label>
         <input
           type="text"
@@ -260,7 +260,7 @@ export default function CollectionFilters({
       </div>
 
       <div className={styles.editionRow}>
-        <div className={styles.section}>
+        <div className={`${styles.section} ${styles.fieldEdition}`}>
           <label className={styles.label}>Edición</label>
           <select
             className={styles.select}
@@ -274,7 +274,7 @@ export default function CollectionFilters({
           </select>
         </div>
 
-        <div className={styles.section}>
+        <div className={`${styles.section} ${styles.fieldProduct}`}>
           <label className={`${styles.label} ${isPB ? styles.labelDisabled : ''}`}>
             Producto Especial
           </label>
@@ -292,7 +292,7 @@ export default function CollectionFilters({
         </div>
       </div>
 
-      <div className={styles.section}>
+      <div className={`${styles.section} ${styles.fieldType}`}>
         <label className={styles.label}>Tipo</label>
         <div className={styles.typeButtons}>
           {CARD_TYPES.map(t => (
@@ -309,7 +309,7 @@ export default function CollectionFilters({
 
       <div className={`${styles.raceFreqRow} ${type === 'Aliado' ? styles.raceFreqRowActive : ''}`}>
         {type === 'Aliado' && (
-          <div className={styles.section}>
+          <div className={`${styles.section} ${styles.fieldRace}`}>
             <label className={styles.label}>Raza</label>
             <select
               className={styles.select}
@@ -325,7 +325,7 @@ export default function CollectionFilters({
         )}
 
         {type === 'Oro' && (
-          <div className={styles.section}>
+          <div className={`${styles.section} ${styles.fieldOro}`}>
             <label className={styles.label}>Habilidad</label>
             <select
               className={styles.select}
@@ -339,7 +339,7 @@ export default function CollectionFilters({
           </div>
         )}
 
-        <div className={styles.section}>
+        <div className={`${styles.section} ${styles.fieldFreq}`}>
           <label className={styles.label}>Frecuencia</label>
           <select
             className={styles.select}

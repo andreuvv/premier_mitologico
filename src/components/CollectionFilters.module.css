@@ -243,29 +243,59 @@
   color: var(--beige);
 }
 
-/* Mobile / Tablet — bar stays at the top above the grid (not sticky to save space) */
+/* Mobile / Tablet — bar stays fixed below the header on scroll (like desktop) */
 @media (max-width: 1200px) {
   .panel {
     width: 100%;
     min-width: unset;
-    position: static;
+    position: sticky;
+    top: 70px;
+    z-index: 99;
     border-radius: 12px;
   }
 
+  /* Two-column grid:
+     - Row 1: Buscar | Edición
+     - Row 2: Producto Especial | Frecuencia
+     - Row 3: botones de Tipo (2 col) | checkboxes (2 col)
+     (Raza/Habilidad, cuando aparecen, se intercalan antes de Tipo) */
   .panelBody {
-    gap: 0.7rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    align-items: start;
   }
 
   .section {
-    flex: 1 1 140px;
-    min-width: 140px;
+    min-width: 0;
   }
+
+  .fieldSearch { order: 1; }
+  .fieldEdition { order: 2; }
+  .fieldProduct { order: 3; }
+  .fieldFreq { order: 4; }
+  .fieldRace,
+  .fieldOro { order: 5; }
+  .fieldType { order: 6; }
+  .togglesRow { order: 7; }
 
   .closeButton {
     display: none;
   }
 
+  /* Botones de tipo en dos columnas */
   .typeButtons {
-    flex: 1 1 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+  }
+
+  /* Checkboxes en dos columnas */
+  .togglesRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem 0.6rem;
+    align-self: start;
+    flex-wrap: unset;
   }
 }
