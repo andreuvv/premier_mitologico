@@ -12,8 +12,10 @@ function mapToJson(copies: Map<number, number>): CardsJson {
   return obj;
 }
 
-export function useUserCollection(format: CollectionFormat) {
+export function useUserCollection(format: CollectionFormat, targetUserId?: string | null) {
   const { user } = useAuth();
+  const effectiveUserId = targetUserId ?? user?.id ?? null;
+  const isOwner = Boolean(user && effectiveUserId && effectiveUserId === user.id);
   const [ownedCardIds, setOwnedCardIds] = useState<Set<number>>(new Set());
   const [cardCopies, setCardCopies] = useState<Map<number, number>>(new Map());
   const [loadedFormat, setLoadedFormat] = useState<CollectionFormat | null>(null);
@@ -29,7 +31,7 @@ export function useUserCollection(format: CollectionFormat) {
   }, [format]);
 
   const loadCollection = useCallback(async () => {
-    if (!user) {
+    if (!effectiveUserId) {
       setOwnedCardIds(new Set());
       setCardCopies(new Map());
       setLoadedFormat(null);
@@ -39,7 +41,7 @@ export function useUserCollection(format: CollectionFormat) {
     const { data, error } = await supabase
       .from('user_collections_v2')
       .select('cards')
-      .eq('user_id', user.id)
+      .eq('user_id', effectiveUserId)
       .eq('format', format)
       .single();
 
@@ -53,10 +55,10 @@ export function useUserCollection(format: CollectionFormat) {
       console.error('[useUserCollection] load error:', error);
     }
     hydrateCollection({});
-  }, [user, format, hydrateCollection]);
+  }, [effectiveUserId, format, hydrateCollection]);
 
   const addCopy = useCallback(async (cardId: number) => {
-    if (!user) return;
+    if (!isOwner || !user) return;
 
     const nextCopies = (cardCopies.get(cardId) ?? 0) + 1;
 
@@ -78,10 +80,10 @@ export function useUserCollection(format: CollectionFormat) {
       console.error('[useUserCollection] add copy error:', error);
       await loadCollection();
     }
-  }, [user, cardCopies, format, loadCollection]);
+  }, [isOwner, user, cardCopies, format, loadCollection]);
 
   const removeCopy = useCallback(async (cardId: number) => {
-    if (!user) return;
+    if (!isOwner || !user) return;
 
     const currentCopies = cardCopies.get(cardId) ?? 0;
     if (currentCopies <= 0) return;
@@ -114,7 +116,7 @@ export function useUserCollection(format: CollectionFormat) {
       console.error('[useUserCollection] remove copy error:', error);
       await loadCollection();
     }
-  }, [user, cardCopies, format, loadCollection]);
+  }, [isOwner, user, cardCopies, format, loadCollection]);
 
   const toggleCard = useCallback(async (cardId: number) => {
     const isOwned = ownedCardIds.has(cardId);
@@ -126,7 +128,7 @@ export function useUserCollection(format: CollectionFormat) {
   }, [ownedCardIds, addCopy, removeCopy]);
 
   const setCopies = useCallback(async (cardId: number, count: number) => {
-    if (!user) return;
+    if (!isOwner || !user) return;
 
     // Clamp to a non-negative integer; invalid values fall back to 0.
     const safeCount = Number.isFinite(count) ? Math.max(0, Math.floor(count)) : 0;
@@ -157,7 +159,17 @@ export function useUserCollection(format: CollectionFormat) {
       console.error('[useUserCollection] set copies error:', error);
       await loadCollection();
     }
-  }, [user, cardCopies, format, loadCollection]);
+  }, [isOwner, user, cardCopies, format, loadCollection]);
 
-  return { ownedCardIds, cardCopies, loadedFormat, loadCollection, toggleCard, addCopy, removeCopy, setCopies };
+  return {
+    ownedCardIds,
+    cardCopies,
+    loadedFormat,
+    loadCollection,
+    toggleCard,
+    addCopy,
+    removeCopy,
+    setCopies,
+    isOwner,
+  };
 }

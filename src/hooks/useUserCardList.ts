@@ -17,8 +17,10 @@ function setToJson(ids: Set<number>): CardsJson {
  * Mirrors useUserCollection but stores a Set membership instead of copy counts.
  * One row per (user_id, format); cards is a JSONB map { "card_id": 1 }.
  */
-export function useUserCardList(tableName: string, format: CollectionFormat) {
+export function useUserCardList(tableName: string, format: CollectionFormat, targetUserId?: string | null) {
   const { user } = useAuth();
+  const effectiveUserId = targetUserId ?? user?.id ?? null;
+  const isOwner = Boolean(user && effectiveUserId && effectiveUserId === user.id);
   const [cardIds, setCardIds] = useState<Set<number>>(new Set());
   const [loadedFormat, setLoadedFormat] = useState<CollectionFormat | null>(null);
 
@@ -28,7 +30,7 @@ export function useUserCardList(tableName: string, format: CollectionFormat) {
   }, [format]);
 
   const loadList = useCallback(async () => {
-    if (!user) {
+    if (!effectiveUserId) {
       setCardIds(new Set());
       setLoadedFormat(null);
       return;
@@ -37,7 +39,7 @@ export function useUserCardList(tableName: string, format: CollectionFormat) {
     const { data, error } = await supabase
       .from(tableName)
       .select('cards')
-      .eq('user_id', user.id)
+      .eq('user_id', effectiveUserId)
       .eq('format', format)
       .single();
 
@@ -51,10 +53,10 @@ export function useUserCardList(tableName: string, format: CollectionFormat) {
       console.error(`[useUserCardList:${tableName}] load error:`, error);
     }
     hydrate({});
-  }, [user, tableName, format, hydrate]);
+  }, [effectiveUserId, tableName, format, hydrate]);
 
   const persist = useCallback(async (nextIds: Set<number>) => {
-    if (!user) return;
+    if (!isOwner || !user) return;
     const { error } = await supabase
       .from(tableName)
       .upsert(
@@ -66,23 +68,23 @@ export function useUserCardList(tableName: string, format: CollectionFormat) {
       console.error(`[useUserCardList:${tableName}] persist error:`, error);
       await loadList();
     }
-  }, [user, tableName, format, loadList]);
+  }, [isOwner, user, tableName, format, loadList]);
 
   const add = useCallback(async (cardId: number) => {
-    if (!user) return;
+    if (!isOwner || !user) return;
     const nextIds = new Set(cardIds);
     nextIds.add(cardId);
     setCardIds(nextIds);
     await persist(nextIds);
-  }, [user, cardIds, persist]);
+  }, [isOwner, user, cardIds, persist]);
 
   const remove = useCallback(async (cardId: number) => {
-    if (!user) return;
+    if (!isOwner || !user) return;
     const nextIds = new Set(cardIds);
     nextIds.delete(cardId);
     setCardIds(nextIds);
     await persist(nextIds);
-  }, [user, cardIds, persist]);
+  }, [isOwner, user, cardIds, persist]);
 
   const toggle = useCallback(async (cardId: number) => {
     if (cardIds.has(cardId)) {
@@ -92,5 +94,5 @@ export function useUserCardList(tableName: string, format: CollectionFormat) {
     }
   }, [cardIds, add, remove]);
 
-  return { cardIds, loadedFormat, loadList, toggle, add, remove };
+  return { cardIds, loadedFormat, loadList, toggle, add, remove, isOwner };
 }

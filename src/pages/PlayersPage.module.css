@@ -158,6 +158,25 @@
   word-break: break-word;
 }
 
+.profileLinkBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  background: var(--petrol-blue);
+  color: var(--beige);
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.profileLinkBtn:hover {
+  opacity: 0.9;
+}
+
 .playerSummary {
   display: grid;
   grid-template-columns: 1fr 1fr;

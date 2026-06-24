@@ -1,23 +1,123 @@
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { FaHome, FaClipboardList, FaBan, FaGamepad, FaHammer, FaTrophy, FaHistory, FaUser, FaBlog, FaBook, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import {
+  FaHome, FaClipboardList, FaBan, FaGamepad, FaHammer, FaTrophy, FaHistory,
+  FaUser, FaBlog, FaBook, FaSignInAlt, FaSignOutAlt, FaChartPie,
+} from 'react-icons/fa';
 import LatestBlogCard from '../LatestBlogCard';
 import { getTournamentMonthYear } from '../../config/tournamentConfig';
 import { useAuth } from '../../hooks/useAuth';
+import { loadProfileById } from '../../hooks/useUserProfile';
+import { fixtureAPI } from '../../services/fixtureAPI';
 import AuthModal from '../auth/AuthModal';
 import styles from './Header.module.css';
 
 const Header = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { user, signOut } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [accountDrawerOpen, setAccountDrawerOpen] = useState(false);
+  const [accountMenuOpen, setAccountMenuOpen] = useState(false);
   const [blogHovered, setBlogHovered] = useState(false);
   const [cartasHovered, setCartasHovered] = useState(false);
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [signOutConfirmOpen, setSignOutConfirmOpen] = useState(false);
+  const [premierPlayerName, setPremierPlayerName] = useState<string | null>(null);
+  const accountMenuRef = useRef<HTMLDivElement>(null);
   const monthYear = getTournamentMonthYear();
 
   const username = user?.user_metadata?.username ?? user?.email?.split('@')[0] ?? 'Usuario';
+
+  useEffect(() => {
+    if (!user) {
+      setPremierPlayerName(null);
+      return;
+    }
+
+    let cancelled = false;
+
+    (async () => {
+      const profile = await loadProfileById(user.id);
+      if (cancelled || !profile?.premier_player_id) {
+        if (!cancelled) setPremierPlayerName(null);
+        return;
+      }
+
+      try {
+        const players = await fixtureAPI.getPremierPlayers();
+        const player = players.find((p) => p.id === profile.premier_player_id);
+        if (!cancelled) setPremierPlayerName(player?.name ?? null);
+      } catch {
+        if (!cancelled) setPremierPlayerName(null);
+      }
+    })();
+
+    return () => { cancelled = true; };
+  }, [user]);
+
+  useEffect(() => {
+    if (!accountMenuOpen) return;
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (accountMenuRef.current && !accountMenuRef.current.contains(event.target as Node)) {
+        setAccountMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [accountMenuOpen]);
+
+  const closeAccountMenus = useCallback(() => {
+    setAccountMenuOpen(false);
+    setAccountDrawerOpen(false);
+  }, []);
+
+  const handleSignOutClick = () => {
+    closeAccountMenus();
+    setMobileMenuOpen(false);
+    setSignOutConfirmOpen(true);
+  };
+
+  const handleStatsClick = () => {
+    if (!premierPlayerName) return;
+    closeAccountMenus();
+    setMobileMenuOpen(false);
+    navigate(`/players/${encodeURIComponent(premierPlayerName)}`);
+  };
+
+  const accountMenuItems = (
+    <>
+      <Link to="/perfil" className={styles.accountMenuItem} onClick={closeAccountMenus}>
+        <FaUser className={styles.icon} />
+        Ver Perfil
+      </Link>
+      <Link to="/deck-builder" className={styles.accountMenuItem} onClick={closeAccountMenus}>
+        <FaHammer className={styles.icon} />
+        Ver mis Mazos
+      </Link>
+      <Link to="/carpeta" className={styles.accountMenuItem} onClick={closeAccountMenus}>
+        <FaBook className={styles.icon} />
+        Ver mi Colección
+      </Link>
+      {premierPlayerName ? (
+        <button type="button" className={styles.accountMenuItem} onClick={handleStatsClick}>
+          <FaChartPie className={styles.icon} />
+          Ver mis Estadísticas
+        </button>
+      ) : (
+        <button type="button" className={`${styles.accountMenuItem} ${styles.accountMenuItemDisabled}`} disabled>
+          <FaChartPie className={styles.icon} />
+          Ver mis Estadísticas
+        </button>
+      )}
+      <button type="button" className={styles.accountMenuItem} onClick={handleSignOutClick}>
+        <FaSignOutAlt className={styles.icon} />
+        Cerrar Sesión
+      </button>
+    </>
+  );
 
   return (
     <header className={styles.header}>
@@ -195,12 +295,16 @@ const Header = () => {
         >
           ☰
         </button>
-        {/* Aca poner un option si es que quieres un botón al lado del hambuger icon */}
         
         {user ? (
-          <Link to="/players" className={styles.loginButton} onClick={() => setMobileMenuOpen(false)}>
+          <button
+            type="button"
+            className={styles.loginButton}
+            onClick={() => setAccountDrawerOpen(true)}
+            aria-label="Menú de cuenta"
+          >
             <FaUser className={styles.icon} />
-          </Link>
+          </button>
         ) : (
           <button className={`${styles.loginButton} ${styles.loginButtonLoggedOut}`} onClick={() => setAuthModalOpen(true)}>
             <FaSignInAlt className={styles.icon} />
@@ -209,14 +313,22 @@ const Header = () => {
       </div>
 
       {user ? (
-        <div className={styles.desktopAuthArea}>
-          <Link to="/players" className={`${styles.desktopLoginButton} ${styles.desktopLoginButtonActive}`}>
+        <div className={styles.desktopAuthArea} ref={accountMenuRef}>
+          <button
+            type="button"
+            className={`${styles.desktopLoginButton} ${styles.desktopLoginButtonActive} ${accountMenuOpen ? styles.desktopLoginButtonOpen : ''}`}
+            onClick={() => setAccountMenuOpen((open) => !open)}
+            aria-expanded={accountMenuOpen}
+            aria-haspopup="true"
+          >
             <FaUser className={styles.icon} />
             {username}
-          </Link>
-          <button className={styles.desktopSignOutButton} onClick={() => setSignOutConfirmOpen(true)} title="Cerrar sesión">
-            <FaSignOutAlt className={styles.icon} />
           </button>
+          {accountMenuOpen && (
+            <div className={styles.accountDropdown}>
+              {accountMenuItems}
+            </div>
+          )}
         </div>
       ) : (
         <button className={`${styles.desktopLoginButton} ${styles.desktopLoginButtonLoggedOut}`} onClick={() => setAuthModalOpen(true)}>
@@ -325,23 +437,23 @@ const Header = () => {
           </span>
         )}
         <div className={styles.mobileMenuSpacer} />
-        {user ? (
-          <>
-            <Link to="/players" className={styles.mobileLoginButton} onClick={() => setMobileMenuOpen(false)}>
-              <FaUser className={styles.icon} />
-              {username}
-            </Link>
-            <button className={styles.mobileLoginButton} onClick={() => { setSignOutConfirmOpen(true); setMobileMenuOpen(false); }}>
-              <FaSignOutAlt className={styles.icon} />
-              Cerrar Sesión
-            </button>
-          </>
-        ) : (
+        {!user && (
           <button className={`${styles.mobileLoginButton} ${styles.mobileLoginButtonLoggedOut}`} onClick={() => { setAuthModalOpen(true); setMobileMenuOpen(false); }}>
             <FaSignInAlt className={styles.icon} />
             Iniciar Sesión
           </button>
         )}
+      </div>
+
+      {accountDrawerOpen && (
+        <div className={styles.overlay} onClick={() => setAccountDrawerOpen(false)} />
+      )}
+      <div className={`${styles.accountDrawer} ${accountDrawerOpen ? styles.accountDrawerOpen : ''}`}>
+        <div className={styles.accountDrawerHeader}>
+          <FaUser className={styles.icon} />
+          <span>{username}</span>
+        </div>
+        {accountMenuItems}
       </div>
 
       {authModalOpen && <AuthModal onClose={() => setAuthModalOpen(false)} />}
@@ -366,4 +478,3 @@ const Header = () => {
 };
 
 export default Header;
-

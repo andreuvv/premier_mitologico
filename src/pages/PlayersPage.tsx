@@ -1,8 +1,9 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { fixtureAPI, APIPlayer } from '../services/fixtureAPI';
 import { API_BASE_URL } from '../config/api';
-import { FaUser, FaChevronDown, FaChartPie, FaTrophy, FaHistory } from 'react-icons/fa';
+import { getProfileUsernameForPlayerId } from '../hooks/useUserProfile';
+import { FaUser, FaChevronDown, FaChartPie, FaTrophy, FaHistory, FaIdCard } from 'react-icons/fa';
 import styles from './PlayersPage.module.css';
 
 interface PlayerDetail extends APIPlayer {
@@ -69,6 +70,7 @@ const PlayersPage = () => {
   const [expandedTournaments, setExpandedTournaments] = useState<Set<number>>(new Set());
   const [graphsExpanded, setGraphsExpanded] = useState(false);
   const [tablesCompact, setTablesCompact] = useState(false);
+  const [profileUsername, setProfileUsername] = useState<string | null>(null);
   const tableContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -89,6 +91,20 @@ const PlayersPage = () => {
       setPlayerTournamentData([]);
     }
   }, [playerName, players]);
+
+  useEffect(() => {
+    if (!selectedPlayer) {
+      setProfileUsername(null);
+      return;
+    }
+
+    let cancelled = false;
+    getProfileUsernameForPlayerId(selectedPlayer.id).then((username) => {
+      if (!cancelled) setProfileUsername(username);
+    });
+
+    return () => { cancelled = true; };
+  }, [selectedPlayer]);
 
   // Detect when tables need horizontal scrolling and make them compact
   useEffect(() => {
@@ -589,6 +605,15 @@ const PlayersPage = () => {
                   )}
                 </div>
                 <h1 className={styles.playerName}>{selectedPlayer.name}</h1>
+                {profileUsername && (
+                  <Link
+                    to={`/perfil/${encodeURIComponent(profileUsername)}`}
+                    className={styles.profileLinkBtn}
+                  >
+                    <FaIdCard />
+                    Ver perfil
+                  </Link>
+                )}
                 {playerTournamentData.length > 0 && (
                   <div className={styles.trophySection}>
                     <div>
