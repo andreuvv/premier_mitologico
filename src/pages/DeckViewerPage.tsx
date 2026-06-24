@@ -396,6 +396,11 @@ export default function DeckViewerPage() {
                 <div className={styles.costChartEmpty}>Aún no hay cartas para mostrar.</div>
               ) : (
                 <div className={styles.costChart}>
+                  <div className={styles.costChartHeaderRow}>
+                    <span className={styles.costChartColHeader}>Costo</span>
+                    <span className={styles.costChartColHeaderSpacer} aria-hidden />
+                    <span className={styles.costChartColHeader} title="Cantidad">Cant.</span>
+                  </div>
                   {costDistribution.map(({ cost, count, byType }) => {
                     const segments = COST_CHART_TYPES
                       .map((type) => ({ type, count: byType[type] }))
@@ -405,10 +410,11 @@ export default function DeckViewerPage() {
                       .join(' | ');
                     return (
                       <div key={cost} className={styles.costChartBarGroup}>
+                        <span className={styles.costChartLabel}>{cost}</span>
                         <div className={styles.costChartBarTrack}>
                           <div
                             className={styles.costChartBar}
-                            style={{ height: `${Math.max(8, (count / maxCostCount) * 100)}%` }}
+                            style={{ width: `${Math.max(8, (count / maxCostCount) * 100)}%` }}
                             title={`Costo ${cost}: ${count} carta${count === 1 ? '' : 's'}${breakdown ? ` (${breakdown})` : ''}`}
                             aria-label={`Costo ${cost}: ${count} carta${count === 1 ? '' : 's'}`}
                           >
@@ -416,7 +422,7 @@ export default function DeckViewerPage() {
                               <div
                                 key={`${cost}-${item.type}`}
                                 className={`${styles.costChartSegment} ${styles[COST_CHART_SEGMENT_CLASS[item.type]]}`}
-                                style={{ height: `${(item.count / count) * 100}%` }}
+                                style={{ width: `${(item.count / count) * 100}%` }}
                                 title={`${item.type}: ${item.count}`}
                                 onMouseEnter={() =>
                                   setHoveredCostSegment({ cost, type: item.type, count: item.count })
@@ -427,7 +433,6 @@ export default function DeckViewerPage() {
                           </div>
                         </div>
                         <span className={styles.costChartCount}>{count}</span>
-                        <span className={styles.costChartLabel}>{cost}</span>
                       </div>
                     );
                   })}

@@ -316,42 +316,36 @@ export function useDeckRules({
       errs.push('Necesitas al menos 1 Oro sin habilidad');
     }
 
-    // Banlist violations (banned cards in deck)
+    // Per-cardKey violations (deduped across reprints)
+    const representativeByKey = new Map<string, CollectionCard>();
+    for (const { card } of deckEntries) {
+      const key = cardKey(card.name, card.type);
+      if (!representativeByKey.has(key)) representativeByKey.set(key, card);
+    }
+
+    const reworkWarnedGroups = new Set<string>();
     for (const { card } of deckEntries) {
       const gk = groupKey(card.name, card.type);
-
-      if (groupsWithRework.has(gk) && !isReworkCard(card)) {
+      if (groupsWithRework.has(gk) && !isReworkCard(card) && !reworkWarnedGroups.has(gk)) {
+        reworkWarnedGroups.add(gk);
         errs.push(`"${card.name}" no es válida: existe versión rework para esta carta`);
       }
+    }
 
-      const key = cardKey(card.name, card.type);
+    for (const [key, card] of representativeByKey) {
+      const total = countByNameType.get(key) ?? 0;
+
       if (banlistLookup.banned.has(key)) {
         errs.push(`"${card.name}" está prohibida`);
       } else if (banlistLookup.limitedX1.has(key)) {
-        const total = countByNameType.get(key) ?? 0;
         if (total > 1) errs.push(`"${card.name}" está limitada a 1 copia (tienes ${total})`);
       } else if (banlistLookup.limitedX2.has(key)) {
-        const total = countByNameType.get(key) ?? 0;
         if (total > 2) errs.push(`"${card.name}" está limitada a 2 copias (tienes ${total})`);
-      }
-    }
-
-    // Unique violations
-    for (const { card } of deckEntries) {
-      if (card.unique) {
-        const key = cardKey(card.name, card.type);
-        const total = countByNameType.get(key) ?? 0;
+      } else if (card.unique) {
         if (total > 1) {
           errs.push(`"${card.name}" es única (solo 1 copia permitida, tienes ${total})`);
         }
-      }
-    }
-
-    // Default max 3 violations
-    for (const { card } of deckEntries) {
-      if (!card.unique && !card.moreThan3) {
-        const key = cardKey(card.name, card.type);
-        const total = countByNameType.get(key) ?? 0;
+      } else if (!card.moreThan3) {
         const hardMax = getHardMax(card);
         if (total > hardMax && hardMax > 0) {
           errs.push(`"${card.name}": máximo ${hardMax} copias (tienes ${total})`);
@@ -361,7 +355,11 @@ export function useDeckRules({
 
     // PB Racial Edición: edition consistency
     if (subformat === 'pb-edicion' && lockedEdition) {
+      const editionWarned = new Set<string>();
       for (const { card } of deckEntries) {
+        const key = cardKey(card.name, card.type);
+        if (editionWarned.has(key)) continue;
+        editionWarned.add(key);
         const isDraculaReprint =
           card.edition?.slug === DRACULA_EDITION_SLUG &&
           nonDraculaCardKeys?.has(cardKey(card.name, card.type));
