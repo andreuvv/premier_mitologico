@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo, useRef } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { fixtureAPI, APIPlayer } from '../services/fixtureAPI';
 import { API_BASE_URL } from '../config/api';
-import { getProfileUsernameForPlayerId } from '../hooks/useUserProfile';
+import { loadProfileByPremierPlayerId } from '../hooks/useUserProfile';
 import { FaUser, FaChevronDown, FaChartPie, FaTrophy, FaHistory, FaIdCard } from 'react-icons/fa';
 import styles from './PlayersPage.module.css';
 
@@ -71,6 +71,7 @@ const PlayersPage = () => {
   const [graphsExpanded, setGraphsExpanded] = useState(false);
   const [tablesCompact, setTablesCompact] = useState(false);
   const [profileUsername, setProfileUsername] = useState<string | null>(null);
+  const [profileAvatarUrl, setProfileAvatarUrl] = useState<string | null>(null);
   const tableContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -95,12 +96,15 @@ const PlayersPage = () => {
   useEffect(() => {
     if (!selectedPlayer) {
       setProfileUsername(null);
+      setProfileAvatarUrl(null);
       return;
     }
 
     let cancelled = false;
-    getProfileUsernameForPlayerId(selectedPlayer.id).then((username) => {
-      if (!cancelled) setProfileUsername(username);
+    loadProfileByPremierPlayerId(selectedPlayer.id).then((profile) => {
+      if (cancelled) return;
+      setProfileUsername(profile?.username ?? null);
+      setProfileAvatarUrl(profile?.avatar_url ?? null);
     });
 
     return () => { cancelled = true; };
@@ -594,11 +598,11 @@ const PlayersPage = () => {
             <div className={styles.playerHeader}>
               <div className={styles.playerInfoColumn}>
                 <div className={styles.playerProfilePicture}>
-                  {selectedPlayer.name === 'Troke' ? (
-                    <img 
-                      src={`${import.meta.env.BASE_URL}assets/images/simon-andre.jpeg`}
+                  {profileAvatarUrl ? (
+                    <img
+                      src={profileAvatarUrl}
                       alt={`${selectedPlayer.name} profile`}
-                      className={styles.trokeImage}
+                      className={styles.playerImage}
                     />
                   ) : (
                     <span>{selectedPlayer.name.charAt(0).toUpperCase()}</span>

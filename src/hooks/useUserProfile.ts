@@ -52,15 +52,20 @@ export async function loadProfileByUsername(username: string): Promise<UserProfi
 }
 
 export async function getProfileUsernameForPlayerId(playerId: number): Promise<string | null> {
+  const profile = await loadProfileByPremierPlayerId(playerId);
+  return profile?.username ?? null;
+}
+
+export async function loadProfileByPremierPlayerId(playerId: number): Promise<UserProfile | null> {
   const { data, error } = await supabase
     .from('profiles')
-    .select('username')
+    .select('*')
     .eq('premier_player_id', playerId)
     .eq('is_public', true)
     .maybeSingle();
 
   if (error || !data) return null;
-  return data.username as string;
+  return parseProfile(data as Record<string, unknown>);
 }
 
 export function useUserProfile() {
@@ -105,11 +110,20 @@ export function useUserProfile() {
     }
 
     const ext = file.name.split('.').pop()?.toLowerCase() || 'jpg';
-    const path = `${user.id}/avatar.${ext}`;
+    const safeExt = ext === 'jpeg' ? 'jpg' : ext;
+    const folder = user.id;
+    const path = `${folder}/avatar.${safeExt}`;
+
+    // Remove previous avatar files so re-uploads work reliably (upsert + mobile same-file pick).
+    const { data: existing } = await supabase.storage.from('avatars').list(folder);
+    if (existing && existing.length > 0) {
+      const toRemove = existing.map((f) => `${folder}/${f.name}`);
+      await supabase.storage.from('avatars').remove(toRemove);
+    }
 
     const { error: uploadError } = await supabase.storage
       .from('avatars')
-      .upload(path, file, { upsert: true, contentType: file.type });
+      .upload(path, file, { upsert: true, contentType: file.type, cacheControl: '3600' });
 
     if (uploadError) return { url: null, error: uploadError.message };
 

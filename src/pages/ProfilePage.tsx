@@ -65,7 +65,7 @@ const ProfilePage = () => {
   const [profileError, setProfileError] = useState<string | null>(null);
   const [decks, setDecks] = useState<UserDeck[]>([]);
   const [premierPlayerName, setPremierPlayerName] = useState<string | null>(null);
-  const [deckSidebarOpen, setDeckSidebarOpen] = useState(false);
+  const [decksExpanded, setDecksExpanded] = useState(false);
 
   const [selectedFormat, setSelectedFormat] = useState<CollectionFormat>(
     searchParams.get('format') === CollectionFormat.FURIA_EXTENDIDO
@@ -269,6 +269,13 @@ const ProfilePage = () => {
     setTimeout(() => setSaveMessage(null), 2500);
   };
 
+  const handleAvatarButtonClick = () => {
+    const input = avatarInputRef.current;
+    if (!input) return;
+    input.value = '';
+    input.click();
+  };
+
   const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -360,7 +367,7 @@ const ProfilePage = () => {
         <Link
           to={`/deck-builder/viewer?id=${deck.id}`}
           className={`${styles.deckLink} ${formatClass}`}
-          onClick={() => setDeckSidebarOpen(false)}
+          onClick={() => setDecksExpanded(false)}
         >
           <div className={styles.deckNameRow}>
             <span className={styles.deckName}>{deck.name}</span>
@@ -393,11 +400,7 @@ const ProfilePage = () => {
 
   return (
     <div className={styles.container}>
-      {deckSidebarOpen && (
-        <div className={styles.overlay} onClick={() => setDeckSidebarOpen(false)} />
-      )}
-
-      <aside className={`${styles.sidebar} ${deckSidebarOpen ? styles.sidebarOpen : ''}`}>
+      <aside className={styles.sidebar}>
         <div className={styles.sidebarContent}>
           <h2 className={styles.sidebarTitle}>
             <FaHammer style={{ color: 'var(--sage-green)' }} />
@@ -416,14 +419,6 @@ const ProfilePage = () => {
       </aside>
 
       <main className={styles.main}>
-        <button
-          type="button"
-          className={styles.mobileDeckToggle}
-          onClick={() => setDeckSidebarOpen(true)}
-        >
-          Ver mazos ({decks.length})
-        </button>
-
         <div className={styles.profileHeader}>
           <div className={styles.avatarSection}>
             <div className={`${styles.avatarWrapper} ${avatarAccentClass}`}>
@@ -448,7 +443,7 @@ const ProfilePage = () => {
                   type="button"
                   className={styles.avatarUploadBtn}
                   disabled={avatarUploading || saving}
-                  onClick={() => avatarInputRef.current?.click()}
+                  onClick={handleAvatarButtonClick}
                 >
                   {avatarUploading ? 'Subiendo...' : 'Cambiar foto'}
                 </button>
@@ -591,6 +586,34 @@ const ProfilePage = () => {
           </div>
         </div>
 
+        <div className={styles.mobileDecksPanel}>
+          <button
+            type="button"
+            className={styles.mobileDecksToggle}
+            onClick={() => setDecksExpanded((open) => !open)}
+            aria-expanded={decksExpanded}
+          >
+            <FaHammer style={{ color: 'var(--sage-green)' }} />
+            Mazos ({decks.length})
+            <span className={styles.mobileDecksChevron} aria-hidden>
+              {decksExpanded ? '▲' : '▼'}
+            </span>
+          </button>
+          {decksExpanded && (
+            <div className={styles.mobileDecksContent}>
+              {decks.length === 0 ? (
+                <p className={styles.mobileDecksEmpty}>
+                  {isOwner ? 'Aún no tienes mazos guardados.' : 'No hay mazos públicos.'}
+                </p>
+              ) : (
+                <ul className={`${styles.deckList} ${styles.deckListHorizontal}`}>
+                  {decks.map(renderDeckItem)}
+                </ul>
+              )}
+            </div>
+          )}
+        </div>
+
         <div className={styles.sectionTabs}>
           {(['collection', 'favorites', 'wishlist'] as CardSection[]).map((section) => (
             <button
@@ -651,6 +674,7 @@ const ProfilePage = () => {
                 allCards={allCards}
                 format={selectedFormat}
                 isOpen={false}
+                defaultCollapsed
                 onClose={() => {}}
                 onFilterChange={handleFilterChange}
                 initialEdition={matchesFormat ? searchParams.get('edition') : null}

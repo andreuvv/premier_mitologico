@@ -41,6 +41,7 @@ interface CollectionFiltersProps {
   initialNotOwnedOnly?: boolean;
   initialFavoritesOnly?: boolean;
   initialWishlistOnly?: boolean;
+  defaultCollapsed?: boolean;
 }
 
 export default function CollectionFilters({
@@ -48,6 +49,7 @@ export default function CollectionFilters({
   initialEdition, initialProduct, initialSearch, initialType, initialOro, initialRace, initialFreq,
   showOwnedOnlyToggle = false, initialOwnedOnly = false, initialNotOwnedOnly = false,
   initialFavoritesOnly = false, initialWishlistOnly = false,
+  defaultCollapsed = false,
 }: CollectionFiltersProps) {
   const [edition, setEdition] = useState(initialEdition || '');
   const [product, setProduct] = useState(initialProduct || '');
@@ -225,7 +227,7 @@ export default function CollectionFilters({
     applyFilters(edition, product, search, type, oro, race, freq, ownedOnly, notOwnedOnly, favoritesOnly, checked);
   };
 
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(defaultCollapsed);
 
   const hasFilters = !!(edition || product || search || type || (type === 'Oro' && oro !== 'all') || race || freq || ownedOnly || notOwnedOnly || favoritesOnly || wishlistOnly);
 
