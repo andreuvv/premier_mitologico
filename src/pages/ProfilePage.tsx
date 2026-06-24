@@ -365,7 +365,7 @@ const ProfilePage = () => {
     return (
       <li key={deck.id} className={styles.deckItem}>
         <Link
-          to={`/deck-builder/viewer?id=${deck.id}`}
+          to={`/deck-builder/viewer?deckId=${deck.id}`}
           className={`${styles.deckLink} ${formatClass}`}
           onClick={() => setDecksExpanded(false)}
         >
