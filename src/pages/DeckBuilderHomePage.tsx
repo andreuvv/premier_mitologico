@@ -28,6 +28,14 @@ const FX_RACES = [
   'Ancestral', 'Barbaro', 'Bestia', 'Caballero', 'Dragon',
   'Eterno', 'Guerrero', 'Heroe', 'Sacerdote', 'Sombra',
 ];
+const FX_TOTEM_RACE = 'Tótem';
+
+function getFxRacesForSubformat(subformat: Subformat): string[] {
+  if (subformat === 'fx-libre' || subformat === 'fx-ragnarok') {
+    return [...FX_RACES, FX_TOTEM_RACE];
+  }
+  return FX_RACES;
+}
 
 type Tab = 'myDecks' | 'explore';
 type Format = 'pb' | 'fx';
@@ -90,8 +98,8 @@ function matchesDeckFilters(
 
 function getVisibleRaces(formatFilter: FormatFilter) {
   if (formatFilter === 'pb') return PB_RACES;
-  if (formatFilter === 'fx') return FX_RACES;
-  return [...new Set([...PB_RACES, ...FX_RACES])].sort((a, b) => a.localeCompare(b, 'es'));
+  if (formatFilter === 'fx') return [...FX_RACES, FX_TOTEM_RACE];
+  return [...new Set([...PB_RACES, ...FX_RACES, FX_TOTEM_RACE])].sort((a, b) => a.localeCompare(b, 'es'));
 }
 
 function getSubformatLabel(subformat: string) {
@@ -144,13 +152,18 @@ function NewDeckModal({ onClose, onCreate }: NewDeckModalProps) {
   const [name, setName] = useState('');
   const [error, setError] = useState<string | null>(null);
 
-  const races = format === 'pb' ? PB_RACES : FX_RACES;
+  const races = format === 'pb' ? PB_RACES : getFxRacesForSubformat(subformat);
   const subformats = format === 'pb' ? PB_SUBFORMATS : FX_SUBFORMATS;
 
   const handleFormatChange = (f: Format) => {
     setFormat(f);
     setSubformat(f === 'pb' ? 'pb-edicion' : 'fx-vcr');
     setRace('');
+  };
+
+  const handleSubformatChange = (sf: Subformat) => {
+    setSubformat(sf);
+    if (race === FX_TOTEM_RACE && sf === 'fx-vcr') setRace('');
   };
 
   const handleCreate = () => {
@@ -209,7 +222,7 @@ function NewDeckModal({ onClose, onCreate }: NewDeckModalProps) {
               <button
                 key={sf.value}
                 className={subformat === sf.value ? styles.subformatBtnActive : styles.subformatBtn}
-                onClick={() => setSubformat(sf.value)}
+                onClick={() => handleSubformatChange(sf.value)}
               >
                 <span className={styles.subformatName}>{sf.label}</span>
                 <span className={styles.subformatDesc}>{sf.desc}</span>

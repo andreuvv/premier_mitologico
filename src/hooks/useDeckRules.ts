@@ -7,7 +7,30 @@ export type DeckSubformat = 'pb-edicion' | 'pb-libre' | 'fx-vcr' | 'fx-libre' | 
 const DRACULA_EDITION_SLUG = 'dracula-inferno';
 const VCR_FREQUENCIES = new Set(['VASALLO', 'CORTESANO', 'REAL', 'ORO']);
 const MIN_ALIADOS = 16;
+const MIN_TOTEMS = 16;
 const DECK_SIZE = 50;
+
+const TOTEM_SUBFORMATS: DeckSubformat[] = ['fx-libre', 'fx-ragnarok'];
+
+export function isTotemDeckRace(race: string): boolean {
+  return normalizeName(race) === 'totem';
+}
+
+function isTotemSubformat(subformat: DeckSubformat): boolean {
+  return TOTEM_SUBFORMATS.includes(subformat);
+}
+
+/** First ally in deck locks ally race for Tótem decks (uses first race on the card). */
+function getLockedAllyRace(
+  deckEntries: { card: CollectionCard; count: number }[],
+): string | null {
+  for (const { card } of deckEntries) {
+    if (card.type?.toUpperCase() !== 'ALIADO') continue;
+    const firstRace = card.race?.[0];
+    if (firstRace) return normalizeName(firstRace);
+  }
+  return null;
+}
 
 // ── Name normalization for cross-reprint matching ─────────────────────────────
 export function normalizeName(name: string): string {
@@ -198,6 +221,13 @@ export function useDeckRules({
     [countByNameType],
   );
 
+  const isTotemDeck = isTotemDeckRace(race) && isTotemSubformat(subformat);
+
+  const lockedAllyRace = useMemo(
+    () => (isTotemDeck ? getLockedAllyRace(deckEntries) : null),
+    [isTotemDeck, deckEntries],
+  );
+
   // ── isCardVisible ─────────────────────────────────────────────────────────
 
   const isCardVisible = useMemo(() => (card: CollectionCard): boolean => {
@@ -210,12 +240,22 @@ export function useDeckRules({
       return false;
     }
 
-    // Aliado race filter: only show Aliados of the selected race
+    // Ally visibility by race
     if (type === 'ALIADO') {
-      const matchesRace = card.race?.some(
-        (r) => normalizeName(r) === normalizedRace,
-      );
-      if (!matchesRace) return false;
+      if (isTotemDeck) {
+        // Tótem deck: any ally until the first ally locks a race, then only that race.
+        if (lockedAllyRace) {
+          const matchesLocked = card.race?.some(
+            (r) => normalizeName(r) === lockedAllyRace,
+          );
+          if (!matchesLocked) return false;
+        }
+      } else {
+        const matchesRace = card.race?.some(
+          (r) => normalizeName(r) === normalizedRace,
+        );
+        if (!matchesRace) return false;
+      }
     }
 
     // VCR: only show cards that have at least one VCR-freq version.
@@ -241,7 +281,7 @@ export function useDeckRules({
     }
 
     return true;
-  }, [subformat, race, groupsWithRework, vcrEligibleKeys, nonDraculaCardKeys, lockedEdition]);
+  }, [subformat, race, isTotemDeck, lockedAllyRace, groupsWithRework, vcrEligibleKeys, nonDraculaCardKeys, lockedEdition]);
 
   // ── getHardMax ────────────────────────────────────────────────────────────
 
@@ -302,12 +342,37 @@ export function useDeckRules({
 
     const totalCount = deckEntries.reduce((s, { count }) => s + count, 0);
 
-    // Min aliados
+    // Min aliados (skipped for Tótem decks — replaced by min tótems)
     const aliadoCount = deckEntries
       .filter(({ card }) => card.type?.toUpperCase() === 'ALIADO')
       .reduce((s, { count }) => s + count, 0);
-    if (aliadoCount < MIN_ALIADOS) {
+    if (!isTotemDeck && aliadoCount < MIN_ALIADOS) {
       errs.push(`Necesitas al menos ${MIN_ALIADOS} Aliados (tienes ${aliadoCount})`);
+    }
+
+    // Tótem deck (FX Racial Libre / Ragnarok): min 16 tótems replaces min aliados + ally race lock
+    if (isTotemDeck) {
+      const totemCount = deckEntries
+        .filter(({ card }) => card.type?.toUpperCase() === 'TOTEM')
+        .reduce((s, { count }) => s + count, 0);
+      if (totemCount < MIN_TOTEMS) {
+        errs.push(`Necesitas al menos ${MIN_TOTEMS} Tótems (tienes ${totemCount})`);
+      }
+
+      if (lockedAllyRace) {
+        const allyRaceWarned = new Set<number>();
+        for (const { card } of deckEntries) {
+          if (card.type?.toUpperCase() !== 'ALIADO') continue;
+          if (allyRaceWarned.has(card.id)) continue;
+          allyRaceWarned.add(card.id);
+          const matchesLocked = card.race?.some(
+            (r) => normalizeName(r) === lockedAllyRace,
+          );
+          if (!matchesLocked) {
+            errs.push(`"${card.name}" no es de la raza de aliados elegida`);
+          }
+        }
+      }
     }
 
     // Min 1 Oro sin habilidad — effect is literally "Oro sin habilidad." (or empty after stripping HTML)
@@ -389,6 +454,8 @@ export function useDeckRules({
     isDraft,
     nonDraculaCardKeys,
     groupsWithRework,
+    isTotemDeck,
+    lockedAllyRace,
   ]);
 
   return {

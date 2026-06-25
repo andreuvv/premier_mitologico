@@ -3,6 +3,503 @@
     "CardCatalog": {
       "cards": [
         {
+          "id": 13023,
+          "slug": "dominar-el-caos",
+          "name": "Dominar el Caos",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 336 P",
+          "effect": "Cuando lo jueges, Destiérralo. Anula una carta de coste 2 o menos que no sea Aliado.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 1,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/CINCO_ANILLOS/LBF2_336_Dominar_el_Caos.webp",
+          "artist": "FRANCISCO SERENO",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13022,
+          "slug": "cueva-de-jorogumo",
+          "name": "Cueva de Jorogumo",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 335 P",
+          "effect": "Cuando una carta que controles salga del juego por una carta oponente, puedes Destruir una carta oponente del mismo tipo.",
+          "flavor": "La araña demoníaca espera paciente, entre engaños tejidos atrapa a los incautos que se acercan a su red.",
+          "type": "TALISMAN",
+          "cost": 3,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/CINCO_ANILLOS/LBF2_335_Cueva_de_Jorogumo.webp",
+          "artist": "SERGIO QUIJADA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13021,
+          "slug": "ninjitsu",
+          "name": "Ninjutsu",
+          "gameId": 3,
+          "collectorCode": "CIN-13",
+          "effect": "Cuando lo juegues, Destierralo. Sube un Aliado que controles a tu mano. Luego, muestra un Aliado de tu mano, con igual o menor coste y distinto nombre y ponlo en juego.",
+          "flavor": "El arte secreto del ninja combina astucia, velocidad y precisión mortal en silencio absoluto. Sombras y sigilo guían cada uno de sus pasos.",
+          "type": "TALISMAN",
+          "cost": 1,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/CINCO_ANILLOS/CIN_13_Ninjutsu.webp",
+          "artist": "SERGIO PINCHEIRA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Cinco Anillos",
+            "productCode": "CIN",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13022,
+          "slug": "yoshino",
+          "name": "Yoshino",
+          "gameId": 3,
+          "collectorCode": "CIN-12",
+          "effect": "Cuando entra en juego, Roba dos cartas. Puedes Desterrarlo para Barajar y/o Desterrar hasta cuatro cartas de los Cementerios.",
+          "flavor": "Entre montañas y sakuras, la ciudad resplandece. Un santuario de historia y paz donde el pasado y la naturaleza se entrelazan.",
+          "type": "TOTEM",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/CINCO_ANILLOS/CIN_12_Yoshino.webp",
+          "artist": "FRANCISCO GUERRA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Cinco Anillos",
+            "productCode": "CIN",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13021,
+          "slug": "wakizashi",
+          "name": "Wakizashi",
+          "gameId": 3,
+          "collectorCode": "CIN-11",
+          "effect": "El portador gana 1 de Fuerza. En la Fase Final, puedes Robar una carta. Tu oponente debe pagar un Oro adicional para afectar a este Aliado.",
+          "flavor": "El compañero silencioso de la katana guarda secretos y ejecuta con precisión letal. Su filo corto define el duelo en un destello.",
+          "type": "ARMA",
+          "cost": 1,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/CINCO_ANILLOS/CIN_11_Wakizashi.webp",
+          "artist": "FRANCISCO GUERRA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Cinco Anillos",
+            "productCode": "CIN",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13020,
+          "slug": "katana",
+          "name": "Katana",
+          "gameId": 3,
+          "collectorCode": "CIN-10",
+          "effect": "Exhumar. El portador gana 2 de Fuerza. Una vez por turno, puedes Descartar una carta para buscar en ut Castillo un Arma de coste 2 o menos y jugarla sin pagar su coste.",
+          "flavor": "La espada del samurái refleja la voluntad y el espíritu del guerrero que la empuña. Filo y honor entrelazados.",
+          "type": "ARMA",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/CINCO_ANILLOS/CIN_10_Katana.webp",
+          "artist": "FRANCISCO GUERRA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Cinco Anillos",
+            "productCode": "CIN",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13019,
+          "slug": "ken-nage",
+          "name": "Ken Nage",
+          "gameId": 3,
+          "collectorCode": "CIN-09",
+          "effect": "Cada Jugador Descarta cartas hasta tener cuatro cartas en su mano.",
+          "flavor": "La katana se convierte en extensión del brazo, dictando justicia con velocidad letal. Un rápido giro, el vuelo del adero, silencio absoluto.",
+          "type": "TALISMAN",
+          "cost": 3,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/CINCO_ANILLOS/CIN_09_Ken_Nage.webp",
+          "artist": "FRANCISCO SERENO",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Cinco Anillos",
+            "productCode": "CIN",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13018,
+          "slug": "kenjutsu",
+          "name": "Kenjutsu",
+          "gameId": 3,
+          "collectorCode": "CIN-08",
+          "effect": "Baraja hasta dos Armas de coste 1 o más que controles. Luego, Baraja esa misma cantidad de Aliados oponentes y Roba esa misma cantidad de cartas.",
+          "flavor": "El arte de la espada une la disciplina y el espíritu en una danza de precisión mortal.",
+          "type": "TALISMAN",
+          "cost": 1,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/CINCO_ANILLOS/CIN_08_Kenjutsu.webp",
+          "artist": "FRANCISCO SERENO",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Cinco Anillos",
+            "productCode": "CIN",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13017,
+          "slug": "duelo-en-el-tejado",
+          "name": "Duelo en el Tejado",
+          "gameId": 3,
+          "collectorCode": "CIN-07",
+          "effect": "Cada jugador elige el Aliado con mayor Fuerza que controle y Destruye el resto.",
+          "flavor": "Bajo la luna y el acero cruzado, los guerreros miden su fortuna en un instante. Dos destinos suspendidos entre la vida y la muerte.",
+          "type": "TALISMAN",
+          "cost": 3,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/CINCO_ANILLOS/CIN_07_Duelo_en_el_Tejado.webp",
+          "artist": "CARLOS SEMPER",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Cinco Anillos",
+            "productCode": "CIN",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13016,
+          "slug": "anillo-de-vacio",
+          "name": "Anillo de Vacío",
+          "gameId": 3,
+          "collectorCode": "CIN-06",
+          "effect": "Si controlas Aliados Ancestral o Sombra, reduce su coste en un Oro. Cada jugador Descarta una carta de su mano. Roba una carta.",
+          "flavor": "En silencio y con comprensión absoluta, la técnica trasciende forma y pensamiento, alcanzando la esencia pura del ser.",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/CINCO_ANILLOS/CIN_06_Anillo_de_Vacío.webp",
+          "artist": "RIVE MANGA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Cinco Anillos",
+            "productCode": "CIN",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13015,
+          "slug": "anillo-de-viento",
+          "name": "Anillo de Viento",
+          "gameId": 3,
+          "collectorCode": "CIN-05",
+          "effect": "Si controlas Aliados Eterno o Sacerdote, reduce su coste en un Oro. Baraja hasta cuatro cartas de los Cementerios. Roba una carta.",
+          "flavor": "Ligero y veloz como el soplo del cielo, la técnica esquiva y ataca con gracia, dejando solo el eco del movimiento.",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/CINCO_ANILLOS/CIN_05_Anillo_de_Viento.webp",
+          "artist": "RIVE MANGA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Cinco Anillos",
+            "productCode": "CIN",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13014,
+          "slug": "anillo-de-fuego",
+          "name": "Anillo de Fuego",
+          "gameId": 3,
+          "collectorCode": "CIN-04",
+          "effect": "Si controlas Aliados Dragón o Bestia, reduce su costo en un Oro. Los Aliados que controlas ganan 1 de Fuerza por el turno. Roba una carta.",
+          "flavor": "Con un impulso ardiente y voluntad indomable, la técnica consume dudas y transforma la furia en fuerza pura y decisiva.",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/CINCO_ANILLOS/CIN_04_Anillo_de_Fuego.webp",
+          "artist": "RIVE MANGA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Cinco Anillos",
+            "productCode": "CIN",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13013,
+          "slug": "anillo-de-agua",
+          "name": "Anillo de Agua",
+          "gameId": 3,
+          "collectorCode": "CIN-03",
+          "effect": "Si controlas Aliados Caballero o Héroe, reduce su coste en un Oro. Cancela el ataque de los Aliados oponentes de coste 2 o menos. Roba una carta.",
+          "flavor": "Fluido y cambiante como la corriente, la técnica fluye sin resistencia, adaptándose al rito del adversario.",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/CINCO_ANILLOS/CIN_03_Anillo_de_Agua.webp",
+          "artist": "RIVE MANGA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Cinco Anillos",
+            "productCode": "CIN",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13012,
+          "slug": "anillo-de-tierra",
+          "name": "Anillo de Tierra",
+          "gameId": 3,
+          "collectorCode": "CIN-02",
+          "effect": "Si controlas Aliados Bárbaro o Guerrero, reduce su coste en un Oro. Baraja un Aliado atacante o bloqueador, de coste 2 o menos. Roba una carta.",
+          "flavor": "Firme como la roca y con una precisión mortal, la técnica encarna equilibrio y fuerza, uniendo cuerpo y espíritu en un solo golpe.",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/CINCO_ANILLOS/CIN_02_Anillo_de_Tierra.webp",
+          "artist": "RIVE MANGA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Cinco Anillos",
+            "productCode": "CIN",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13011,
+          "slug": "shinmen-musashi",
+          "name": "Shinmen Musashi",
+          "gameId": 3,
+          "collectorCode": "CIN-01",
+          "effect": "Furia. Puede portar dos Armas. Cuando entra en juego, puedes buscar en tu Castillo y/o Cementerio una Katana y/o una Wakizashi y portarlas a este Aliado. Cuando ataca, Destruye un Aliado oponente de igual o menor Fuerza.",
+          "flavor": "Dos espadas guían su destino. El maestro guerrero perfeccionó el arte del combate y la soledad como camino a la verdad.",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/CINCO_ANILLOS/CIN_01_Shinmen_Musashi.webp",
+          "artist": "CARLOS SEMPER",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "CABALLERO"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Cinco Anillos",
+            "productCode": "CIN",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
           "id": 13010,
           "slug": "sabuesos-de-annwn",
           "name": "Sabuesos de Annwn",
