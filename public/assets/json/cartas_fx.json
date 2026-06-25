@@ -3,6 +3,241 @@
     "CardCatalog": {
       "cards": [
         {
+          "id": 13038,
+          "slug": "tesalia",
+          "name": "Tesalia",
+          "gameId": 3,
+          "collectorCode": "RFX 15-50",
+          "effect": "Cuando entra en juego, busca en tu Castillo un Tótem que no sea Tesalia y ponlo en tu mano. En tu Fase Final, puedes mostrar un Tótem de tu mano para que tu oponente Bote dos cartas o para Barajar hasta tres cartas de tu Cementerio.",
+          "flavor": "Tierra de caballos veloces, montañas antiguas y linajes orgullosos. Allí los vientos traen cantos de guerra, y cada valle recuerda juramentos olvidados.",
+          "type": "TOTEM",
+          "cost": 1,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_15_Tesalia.webp",
+          "artist": "HIRUNDO",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13037,
+          "slug": "maza-de-heracles",
+          "name": "Maza de Heracles",
+          "gameId": 3,
+          "collectorCode": "RFX 14-50",
+          "effect": "Si está en tu Cementerio y controlas un Aliado Heracles, gana Exhumar. El portador gana 3 de Fuerza. Cuando el portador haga daño, puedes buscar un Aliado en tu Castillo y ponerlo en tu mano.",
+          "flavor": "No nació en fragua regia, sino en la rudeza del combate. En sus golpes retumba la justicia brutal con que los héroes corrigen al monstruo.",
+          "type": "ARMA",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_14_Maza_de_Heracles.webp",
+          "artist": "RAY OF SAND",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13036,
+          "slug": "liberar-a-prometeo",
+          "name": "Liberar a Prometeo",
+          "gameId": 3,
+          "collectorCode": "RFX 13-50",
+          "effect": "Elige uno, si no controlas Aliados de coste 2 o menos, elige dos; Busca en tu Castillo un Oro y ponlo en tu mano, Roba una carta, Cancela el ataque de un Aliado o Baraja hasta tres Cartas de tu Cementerio.",
+          "flavor": "Aquel que robó el fuego soportó siglos de tormento. Pero incluso las cadenas forjadas para titanes ceden cuando un héroe decide desafiar al castigo eterno.",
+          "type": "TALISMAN",
+          "cost": 1,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_13_Liberar_a_Prometeo.webp",
+          "artist": "IKKITOUCH",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13035,
+          "slug": "vencer-al-leon",
+          "name": "Vencer al León",
+          "gameId": 3,
+          "collectorCode": "RFX 12-50",
+          "effect": "No puede ser Anulada. Una carta oponente, que no sea Oro, pierde su habilidad y es Desterrada.",
+          "flavor": "Ninguna hoja pudo herirlo, ningún bronce perforó su piel. Sólo la fuerza desnuda del héroe logró arrancarle a Nemea su invencible terror.",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_12_Vencer_al_Leon.webp",
+          "artist": "IKKITOUCH",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13034,
+          "slug": "rescatar-a-teseo",
+          "name": "Rescatar a Teseo",
+          "gameId": 3,
+          "collectorCode": "RFX 11-50",
+          "effect": "Exhumar. Anularla cuesta un Oro adicional. Un Aliado gana 2 de Fuerza permanentemente. Luego, un Aliado gana 1 de Fuerza por el turno.",
+          "flavor": "ni la piedra del Hades ni el peso del destino bastaron para retenerlo. El héroe descendió a la sombra y arrancó a su amigo de la muerte.",
+          "type": "TALISMAN",
+          "cost": 1,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_11_Rescatar_a_Teseo.webp",
+          "artist": "IKKITOUCH",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13033,
+          "slug": "heracles-invencible",
+          "name": "Heracles Invencible",
+          "gameId": 3,
+          "collectorCode": "RFX 10-50",
+          "effect": "Furia. Los Aliados Guardián que controles pueden bloquear Aliados Imbloqueables. Cuando un ALiado que controles ataque o bloquee solo, jugar Talismanes cuesta dos Oros Adicionales por el turno.",
+          "flavor": "León, río y gigante cedieron ante su paso. Donde otros vieron imposible, él alzó la maza y enseñó que la voluntad también puede ser un arma.",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_10_Heracles_Invencible.webp",
+          "artist": "IKKITOUCH",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "HEROE"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13032,
+          "slug": "heracles-impuro",
+          "name": "Heracles Impuro",
+          "gameId": 3,
+          "collectorCode": "RFX 09-50",
+          "effect": "Duplica los bonificadores de Fuerza aplicados a este Aliado. Cuando haga daño, puedes elegir Barajar o Desterrar cartas de los Cementerios igual a su Fuerza.",
+          "flavor": "Antes de la gloria fue furia, antes del canto fue culpa. Cargó fuerza divina en manos manchadas, y el mundo temió aquello que aún no había sido redimido.",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_09_Heracles_Impuro.webp",
+          "artist": "IKKITOUCH",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "GUERRERO"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
           "id": 13031,
           "slug": "neso",
           "name": "Neso",
