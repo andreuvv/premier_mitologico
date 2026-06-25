@@ -3,6 +3,836 @@
     "CardCatalog": {
       "cards": [
         {
+          "id": 13062,
+          "slug": "uthred-el-audaz",
+          "name": "Uthred el Audaz",
+          "gameId": 3,
+          "collectorCode": "RFX 39-50",
+          "effect": "Una vez en tu turno, puedes Buscar en tu Castillo un Aliado de coste 3 o más y ponerlo en tu mano. Si buscaste un Aliado de coste 4 o más, genera dos Oros para jugar Aliados de coste 4 o más.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_39_Uthred_el_Audaz.webp",
+          "artist": "LORETO DIAZ",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "GUERRERO"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13061,
+          "slug": "principe-alfred",
+          "name": "Principe Alfred",
+          "gameId": 3,
+          "collectorCode": "RFX 38-50",
+          "effect": "Guardián. En tu Vigilia, una vez por turno, puedes elegir un Aliado Guardián para que pueda atacar este turno. Ese Aliado gana 2 de Fuerza por el turno y cuando ataque puedes Robar una carta.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 1,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_38_Principe_Alfred.webp",
+          "artist": "JOSE CANALES",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "HEROE"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13060,
+          "slug": "abadesa-ethelgiva",
+          "name": "Abadesa Ethelgiva",
+          "gameId": 3,
+          "collectorCode": "RFX 37-50",
+          "effect": "Imbloqueable. Cuando botes cartas por una carta oponente de coste 2 o más, puedes Barajar una carta de tu Cementerio. Cuando salga del juego por una carta oponente, puedes buscar en tu Castillo un Aliado de Fuerza 2 y jugarlo sin pagar su coste.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 1,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_37_Abadesa_Ethelgiva.webp",
+          "artist": "LORETO DIAZ",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "SACERDOTE"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13059,
+          "slug": "gulthrum",
+          "name": "Gulthrum",
+          "gameId": 3,
+          "collectorCode": "RFX 36-50",
+          "effect": "Furia. Hasta dos veces por turno, cuando tu oponente Robe o busque una carta, gana 1 de Fuerza permanentemente. Cuando haga daño, cada jugador puede Robar una carta y Descartar una carta.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_36_Gulthrum.webp",
+          "artist": "FRANCISCO GUERRA",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "BARBARO"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13058,
+          "slug": "ivar-the-boneless",
+          "name": "Ivar the Boneless",
+          "gameId": 3,
+          "collectorCode": "RFX 35-50",
+          "effect": "Furia. Cuando un Aliado que controles haga daño, este Aliado gana 1 de Fuerza permanentemente. Una vez por turno, cuando fuera a ser Destruido y Desterrado, puedes Desterrar otra carta que controles para prevenirlo.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_35_Ivar_the_Boneless.webp",
+          "artist": "FRANCISCO GUERRA",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "BARBARO"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13057,
+          "slug": "halfdan-ragnarsson",
+          "name": "Halfdan Ragnarsson",
+          "gameId": 3,
+          "collectorCode": "RFX 34-50",
+          "effect": "Cuando un Aliado que controles salga del juego, gana 2 de Fuerza permanentemente. En tu Fase Final, puedes Descartar una carta para Robar una carta, Si Descartaste un carta de coste 1, Roba una carta adicional.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_34_Halfdan_Ragnarsson.webp",
+          "artist": "FRANCISCO GUERRA",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "BARBARO"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13056,
+          "slug": "edward-de-wessex",
+          "name": "Edward de Wessex",
+          "gameId": 3,
+          "collectorCode": "RFX 33-50",
+          "effect": "Imbloqueable. Anular Aliados Caballero cuesta un Oro Adicional. Una vez por turno, cuando este u otro Aliado o Arma entre en juego bajo tu control, puedes Barajar o Desterrar una carta de un Cementerio para Robar una carta.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_33_Edward_de_Wessex.webp",
+          "artist": "SEBA GUTIERREZ",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "CABALLERO"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13055,
+          "slug": "ethelfleda-de-mercia",
+          "name": "Ethelfleda de Mercia",
+          "gameId": 3,
+          "collectorCode": "RFX 32-50",
+          "effect": "Imbloqueable. Cuando entra en juego, puedes poner un Arma de tu mano en juego. Luego bota cartas igual al coste de esa Arma. Una vez en tu turno, puedes Barajar una carta que controles para Barajar una carta oponente del mismo o menor coste.",
+          "flavor": "Dama de Hierro y llama de frontera. Donde otros esperaban un señor, surgió una gobernante capaz de sostener reinos con coraje y disciplina.",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_32_Ethelfleda_de_Mercia.webp",
+          "artist": "LORETO DIAZ",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "CABALLERO"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13054,
+          "slug": "alfred-el-grande",
+          "name": "Alfred el Grande",
+          "gameId": 3,
+          "collectorCode": "RFX 31-50",
+          "effect": "Furia. Imbloqueable. Cuando entra en juego, puedes poner una carta oponente, que no sea Oro, en la parte inferior del Castillo de su dueño. Cuando entre en juego, puedes Robar una carta y Generar un Oro para jugar Armas.",
+          "flavor": "Rey de Wessex, muro contra el invierno danés y forjador de esperanza inglesa. Su espada defendió la tierra; su mente comenzó a darle futuro.",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 4,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_31_Alfred_el_Grande.webp",
+          "artist": "JOSE CANALES",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "CABALLERO"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13053,
+          "slug": "templo-de-apsu",
+          "name": "Templo de Apsu",
+          "gameId": 3,
+          "collectorCode": "RFX 30-50",
+          "effect": "Una vez en tu Vigilia, puedes jugar un Aliado Bestia de tu Cementerio reduciendo su coste en un Oro, hasta un mínimo de 1.",
+          "flavor": "Santuario erigido sobre memorias de aguas profundas. Sus muros guardan el eco del origen, y en su penumbra aún susurran antiguos poderes sumergidos.",
+          "type": "TOTEM",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_30_Templo_de_Apsu.webp",
+          "artist": "HIRUNDO",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13052,
+          "slug": "arco-de-marduk",
+          "name": "Arco de Marduk",
+          "gameId": 3,
+          "collectorCode": "RFX 29-50",
+          "effect": "El portador gana 2 de Fuerza. Tu oponente debe Desterrar las primeras dos cartas de su castillo como coste adicional para jugar Talismanes de coste 2 o menos.",
+          "flavor": "Curvado con la autoridad del cielo, lanza muerte contra monstruos y rebeldes. Cada flecha suya prolonga el mandato con que se ordenó el universo.",
+          "type": "ARMA",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_29_Arco_de_Marduk.webp",
+          "artist": "RAY OF SAND",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13051,
+          "slug": "flechazo-mortal",
+          "name": "Flechazo Mortal",
+          "gameId": 3,
+          "collectorCode": "RFX 28-50",
+          "effect": "Puedes Desterrar las primeras dos cartas de tu Castillo para jugarla sin pagar su coste. Si lo haces, no puedes juhgar más Flechazo Mortal este turno. Busca en el Castillo oponente hasta dos cartas con distinto nombre y Destiérralas.",
+          "flavor": "Un disparo basta cuando el destino guía la cuerda. La saeta cruza la batalla como juicio, y en su herida florece la muerte inevitable.",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_28_Flechazo_Mortal.webp",
+          "artist": "IKKITOUCH",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13050,
+          "slug": "campeon-de-dioses",
+          "name": "Campeón de Dioses",
+          "gameId": 3,
+          "collectorCode": "RFX 27-50",
+          "effect": "Prevén que un Aliado sea afectado por un Talismán o habilidad oponente. Si esa carta era un Talismán, puedes Desterrarlo y buscar en el Castillo oponente todas las copias de esa carta y Desterrarlas.",
+          "flavor": "No lucha por trono propio, sino por el equilibrio del firmamento. Su victoria sostiene altares, estaciones y la paz frágil del mundo creado.",
+          "type": "TALISMAN",
+          "cost": 1,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_27_Campeon_de_Dioses.webp",
+          "artist": "SEBA GUTIERREZ",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13049,
+          "slug": "ejecucion-de-apsu",
+          "name": "Ejecución de Apsu",
+          "gameId": 3,
+          "collectorCode": "RFX 26-50",
+          "effect": "Anularla cuesta un Oro adicional. Al comienzo de tu Vigilia, puedes Barajar una carta de tu mano para subirlo de tu Cementerio a tu mano. Destierra una carta oponente que no sea Oro.",
+          "flavor": "La vieja quietud cayó bajo la astucia del dios joven. Con su muerte terminó el reposo primero, y comenzó la larga política de los cielos.",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_26_Ejecucion_de_Apsu.webp",
+          "artist": "GOTA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13048,
+          "slug": "nabu-del-orden",
+          "name": "Nabú del Orden",
+          "gameId": 3,
+          "collectorCode": "RFX 25-50",
+          "effect": "Una vez por turno, puedes Destruir un Aliado que controles para Desterrar una carta oponente de coste 2 o menos. Cuando salga del juego, puedes Barajar hasta dos cartas de tu Cementerio.",
+          "flavor": "Escriba de destinos y custodio de la palabra precisa. Allí donde el mundo amenaza con romperse, su estilete vuelve a trazar la forma justa.",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_25_Nabu_del_Orden.webp",
+          "artist": "GOTA",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "SACERDOTE"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13047,
+          "slug": "uanna-el-sabio",
+          "name": "Uanna el Sabio",
+          "gameId": 3,
+          "collectorCode": "RFX 24-50",
+          "effect": "Una vez en tu Vigilia, puedes mirar las primeras dos cartas de tu Castillo. Pon una en tu mano y Destierra la otra. Cuando salga del juego, puedes Desterrar hasta tres cartas del Cementerio oponente.",
+          "flavor": "Primer maestro surgido de las aguas, portador de ciencia, escritura y ley. Enseñó a los hombres que la civilización también es don sagrado.",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_24_Uanna_el_Sabio.webp",
+          "artist": "PEYEYO",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "SACERDOTE"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13046,
+          "slug": "mushussu",
+          "name": "Mushussu",
+          "gameId": 3,
+          "collectorCode": "RFX 23-50",
+          "effect": "Furia. Cuando ataca, gana 2 de Fuerza por cada otro Aliado atacante de coste 1. Puedes Destruirlo para buscar en tu Castillo un Aliado Dragón de coste 1 y ponerlo en juego.",
+          "flavor": "Bestia de escamas sagradas, cuello serpentino y porte de dominio. Se mueve junto al rey divino como emblema viviente del poder sobre el caos.",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 1,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_23_Mushussu.webp",
+          "artist": "PEYEYO",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13045,
+          "slug": "marduk-vengador",
+          "name": "Marduk Vengador",
+          "gameId": 3,
+          "collectorCode": "RFX 22-50",
+          "effect": "Guardian. Errante. Cuando entra en juego, puedes buscar en tu Castillo un Aliado Guardián de coste 1, que no sea Marduk Vengador y ponerlo en juego. En tu Fase Final, si controlas dos o más Aliados, puedes Robar una carta.",
+          "flavor": "Cuando la madre del caos desató su huestes, él respondió con tormenta y sentencia. En sus manos la guerra se volvió juicio contra la desmesura primordial.",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 4,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_22_Marduk_Vengador.webp",
+          "artist": "GOTA",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "HEROE"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13044,
+          "slug": "anshar-el-patriarca",
+          "name": "Anshar el Patriarca",
+          "gameId": 3,
+          "collectorCode": "RFX 21-50",
+          "effect": "Indestructible. Una vez por turno, puedes buscar en tu Castillo un Aliado y ponerlo en tu Cementerio para Robar una carta.",
+          "flavor": "Antiguo como el firmamento que cobija a los dioses. Desde su trono remoto contempla generaciones divinas alzarse y caer bajo designios inmutables.",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_21_Anshar_el_Patriarca.webp",
+          "artist": "GOTA",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "ETERNO"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13043,
+          "slug": "marduk-rey-eterno",
+          "name": "Marduk Rey Eterno",
+          "gameId": 3,
+          "collectorCode": "RFX 20-50",
+          "effect": "Reduce su costo en un Oro por cada Aliado que controles, hasta un mínimo de 1. Cuando entra en juego, puedes Desterrar una carta oponente de coste 2 o menos, que no sea Oro. Si lo haces, Roba una carta.",
+          "flavor": "Se alzó cuando los dioses vacilaron, y del caos hizo reino. Su nombre fue puesto sobre coronas, templos y ciudades nacidas bajo orden victorioso.",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_20_Marduk_Rey_Eterno.webp",
+          "artist": "SEBA GUTIERREZ",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "ETERNO"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13042,
+          "slug": "ea-nudimmud",
+          "name": "Ea Nudimmud",
+          "gameId": 3,
+          "collectorCode": "RFX 19-50",
+          "effect": "Indestructible. Una vez por turno, puedes Desterrar un Aliado de coste 3 o menos de un Cementerio. Este Aliado se convierte en una copia de ese Aliado por el turno y gana Indestructible.",
+          "flavor": "Sabio entre los sabios, señor de las artes ocultas y las aguas profundas. Donde otros empuñan armas, él vence mediante palabra, astucia y secreto.",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_19_Ea_Nudimmud.webp",
+          "artist": "IKKITOUCH",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "ETERNO"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13041,
+          "slug": "kingu-comandante",
+          "name": "Kingu Comandante",
+          "gameId": 3,
+          "collectorCode": "RFX 18-50",
+          "effect": "Furia. No puede ser Anulado. Cuando ataca, nombra un tipo de carta. Tu oponente muestra la primera carta de su Castillo y si es de ese tipo, puedes jugarla sin pagar su coste.",
+          "flavor": "Elegido por la tempestad para guiar a los ejércitos del caos. Recibió las Tablas del Destino, y con ellas el peso terrible del mando.",
+          "type": "ALIADO",
+          "cost": 4,
+          "attack": 5,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_18_Kingu_Comandante.webp",
+          "artist": "PEYEYO",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "ANCESTRAL"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13040,
+          "slug": "apsu-primordial",
+          "name": "Apsu Primordial",
+          "gameId": 3,
+          "collectorCode": "RFX 17-50",
+          "effect": "Furia. Imbloqueable. Cuando ataca, elige un número. Tu oponente muestra la primera carta de su Castillo y si es de ese coste, Destiérrala y Roba una carta.",
+          "flavor": "Silencio de aguas dulces, profundidad anterior al tiempo. En su reposo latía el origen, hasta que la agitación de los dioses jóvenes despertó su ira.",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_17_Apsu_Primordial.webp",
+          "artist": "PEYEYO",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "ANCESTRAL"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13039,
+          "slug": "tiamat-primordial",
+          "name": "Tiamat Primordial",
+          "gameId": 3,
+          "collectorCode": "RFX 16-50",
+          "effect": "Furia. Anularlo cuesta un Oro adicional. Cuando ataca, elige par o impar. Tu oponente muestra la primera carta de su Castillo y si es de ese coste, puedes subir hasta una carta de tu Cementerio a tu mano.",
+          "flavor": "Madre de abismos y criaturas monstruosas. En su vientre nació el caos primero, y de su furia se alzaron mares capaces de devorar a los dioses.",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_16_Tiamat_Primordial.webp",
+          "artist": "IKKITOUCH",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "ANCESTRAL"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
           "id": 13038,
           "slug": "tesalia",
           "name": "Tesalia",
