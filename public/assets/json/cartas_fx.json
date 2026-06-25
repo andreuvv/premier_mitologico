@@ -3,6 +3,286 @@
     "CardCatalog": {
       "cards": [
         {
+          "id": 13031,
+          "slug": "neso",
+          "name": "Neso",
+          "gameId": 3,
+          "collectorCode": "RFX 08-50",
+          "effect": "Exhumar. Una vez por turno, una carta oponente pierde su habilidad hasta tu próximo turno. Puedes Desterrarlo de tu Cementerio para que una carta pierda su habilidad hasta tu próximo turno.",
+          "flavor": "Centauro de deseo vil y violencia antigua. Su sangre, aun derramada, siguió matando, pues hay odios que sobreviven al cuerpo que los engendró.",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_08_Neso.webp",
+          "artist": "IKKITOUCH",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "SOMBRA"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13030,
+          "slug": "gerion",
+          "name": "Gerion",
+          "gameId": 3,
+          "collectorCode": "RFX 07-50",
+          "effect": "Furia. Puedes Desterrarlo de tu Cementerio para buscar en tu Castillo un Aliado de coste 2 o menos y ponerlo en tu mano. Su daño es Desterrado.",
+          "flavor": "Gigante de fuerza multiplicada, pastor de rebaños rojos y tierras remotas. Tres veces cae sobre sus enemigos, y tres veces vuelve a levantarse.",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_07_Gerion.webp",
+          "artist": "IKKITOUCH",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "SOMBRA"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13029,
+          "slug": "el-oscuro-hades",
+          "name": "El Oscuro Hades",
+          "gameId": 3,
+          "collectorCode": "RFX 06-50",
+          "effect": "Exhumar. Cuando entra en juego, puedes subir una carta, que no sea Talismán, de tu Cementerio a tu mano. Cuando sea puesto en tu Destierro, tu oponente Destierra las primeras dos cartas de su Castillo.",
+          "flavor": "Señor de las riquezas subterráneas y del reino callado. No grita ni suplica: espera, inmóvil, a que todo cuanto vive acabe por pertenecerle.",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_06_El_Oscuro_Hades.webp",
+          "artist": "GOTA",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "SOMBRA"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13028,
+          "slug": "dragon-de-las-hesperides",
+          "name": "Dragón de las Hesperides",
+          "gameId": 3,
+          "collectorCode": "RFX 05-50",
+          "effect": "Furia. Cuando entra en juego, puedes jugar un Aliado de tu Cementerio de coste 1 sin pagar su coste. Puedes Desterrarlo de tu Cementerio para Subir un Aliado de coste 1 de tu Cementerio a tu mano.",
+          "flavor": "Enroscado en torno al árbol dorado, vigila frutos que ningún mortal merece. Sus ojos no duermen y su aliento custodia la codicia de los dioses.",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_05_Dragón_de_las_Hesperides.webp",
+          "artist": "PEYEYO",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13027,
+          "slug": "hidra-despiadada",
+          "name": "Hidra Despiadada",
+          "gameId": 3,
+          "collectorCode": "RFX 04-50",
+          "effect": "Furia. Cuando tu oponente juegue una carta, gana 1 de Fuerza permanentemente. Cuando fuera a salir del juego por una carta oponente, tu oponente Bota cartas igual a su Fuerza.",
+          "flavor": "Cada cabeza caída anunca otra sed, otro veneno, otra muerte. Su cuerpo serpentino arrastra el castigo de los dioses sobre los héroes demsiado confiados.",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 1,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_04_Hidra_Despiadada.webp",
+          "artist": "JOSE MUÑOZ",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13026,
+          "slug": "jabali-de-erimanto",
+          "name": "Jabalí de Erimanto",
+          "gameId": 3,
+          "collectorCode": "RFX 03-50",
+          "effect": "Furia. Cuando entra o sale del juego, puedes buscar un Oro, en tu Castillo y ponerlo en tu mano. Puedes Desterrarlo para prevenir que otro Aliado que controles sea Destruido.",
+          "flavor": "Furia de la montaña, colmillo de nieve y barro. Donde irrumpe, los bosques se abren como carne, y los cazadores aprenden el verdadero nombre del miedo.",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_03_Jabali_de_Erimanto.webp",
+          "artist": "JOSE MUÑOZ",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "BESTIA"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13025,
+          "slug": "cerbero-guardian",
+          "name": "Cerbero Guardián",
+          "gameId": 3,
+          "collectorCode": "RFX 02-50",
+          "effect": "Furia. Los demás Aliados que controlas son Indesterrables. Los Aliados Cerbero, Cancerbero y Cerby reducen su coste en un Oro, hasta un mínimo de 1 y ganan Furia.",
+          "flavor": "Can infernal de tres gargantas, centinela del umbral sin retorno. Ningún muerto escapa a su vigilancia, y ningún vivo lo enfrenta sin dejar atrás la esperanza.",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_02_Cerbero_Guardian.webp",
+          "artist": "DANIEL BERNAL",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "BESTIA"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13024,
+          "slug": "toro-de-carga",
+          "name": "Toro de Creta",
+          "gameId": 3,
+          "collectorCode": "RFX 01-50",
+          "effect": "Furia. Cuando entra en juego, puedes Descartar una carta para Destruir una carta oponente de coste 3 o menos, que no sea Oro. Si lo haces, puedes Robar una carta.",
+          "flavor": "Bestia nacida para humillar reyes y quebrar murallas. Su resoplido huele a mar antiguo, y bajo sus pezuñas tiemblan los altares de la orgullosa Creta.",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_01_Toro_de_Creta.webp",
+          "artist": "JOSE MUÑOZ",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "BESTIA"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
           "id": 13023,
           "slug": "dominar-el-caos",
           "name": "Dominar el Caos",
