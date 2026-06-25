@@ -3,6 +3,721 @@
     "CardCatalog": {
       "cards": [
         {
+          "id": 13097,
+          "slug": "ra",
+          "name": "Ra",
+          "gameId": 3,
+          "collectorCode": "JO26-21",
+          "effect": "Errante. Cuando entra en juego, puedes subir un Aliado que controles a tu mano para Barajar hasta dos cartas oponentes que no sean Oro. Esta habilidad no puede ser Cancelada. Una vez en tu Vigilia, puedes Robar una carta.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 4,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/JO26/JO26_21_Ra.webp",
+          "artist": "IKKITOUCH",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "ETERNO"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Juego Organizado 2026",
+            "productCode": "JO26",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13096,
+          "slug": "mercaderes",
+          "name": "Mercaderes",
+          "gameId": 3,
+          "collectorCode": "JO26-20",
+          "effect": "Al final de cada Vigilia, puedes convertirlo en un Aliado por el turno, con Raza a tu elección y Fuerza 2. Cuando vuelva a ser un Oro, muévelo a tu Oro Pagado.",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/JO26/JO26_20_Mercaderes.webp",
+          "artist": "HIRUNDO",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Juego Organizado 2026",
+            "productCode": "JO26",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13095,
+          "slug": "nodachi",
+          "name": "Nodachi",
+          "gameId": 3,
+          "collectorCode": "JO26-19",
+          "effect": "El portador gana 2 de Fuerza y es Indesterrable. Buscar cartas en los Castillos cuesta dos Oros adicionales.",
+          "flavor": "",
+          "type": "ARMA",
+          "cost": 1,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/JO26/JO26_19_Nodachi.webp",
+          "artist": "RAY OF SAND",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Juego Organizado 2026",
+            "productCode": "JO26",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13094,
+          "slug": "londinium",
+          "name": "Londinium",
+          "gameId": 3,
+          "collectorCode": "JO26-18",
+          "effect": "Buscar cartas en los Castillos cuesta un Oro adicional. Una vez en tu Vigilia, puedes Barajar cartas de tu Cementerio igual al coste de un Tótem que controles. Si barajaste tes o más cartas, puedes Robar una carta.",
+          "flavor": "",
+          "type": "TOTEM",
+          "cost": 3,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/JO26/JO26_18_Londinium.webp",
+          "artist": "HIRUNDO",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Juego Organizado 2026",
+            "productCode": "JO26",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13093,
+          "slug": "templo-de-marduk",
+          "name": "Templo de Marduk",
+          "gameId": 3,
+          "collectorCode": "JO26-17",
+          "effect": "Anular Tótems cuesta un Oro adicional. Los Aliados no pueden atacar a menos que su controlador pague un Oro por ada Aliado que va a atacar. Una vez en tu turno, tu oponente Bota cartas igual al coste de un Tótem que controles.",
+          "flavor": "",
+          "type": "TOTEM",
+          "cost": 3,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/JO26/JO26_17_Templo_de_Marduk.webp",
+          "artist": "HIRUNDO",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Juego Organizado 2026",
+            "productCode": "JO26",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13092,
+          "slug": "lluvia-de-flechas",
+          "name": "Lluvia de Flechas",
+          "gameId": 3,
+          "collectorCode": "JO26-16",
+          "effect": "Exhumar. Tu oponente Bota una carta por cada carta que controles, que no sea Oro. Luego, tú Barajas hasta una carta por cada carta que controle tu oponente que no sea Oro.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/JO26/JO26_16_Lluvia_de_Flechas.webp",
+          "artist": "RAY OF SAND",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Juego Organizado 2026",
+            "productCode": "JO26",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13091,
+          "slug": "plaga-de-tiamat",
+          "name": "Plaga de Tiamat",
+          "gameId": 3,
+          "collectorCode": "JO26-15",
+          "effect": "Elige uno; Busca en tu Castillo hasta dos Aliados de coste 1, con distinto nombre y juégalos sin pagar su coste o Busca en tu Castillo un Aliado Tiamat y juégalo sin pagar su coste.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/JO26/JO26_15_Plaga_de_Tiamat.webp",
+          "artist": "RAY OF SAND",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Juego Organizado 2026",
+            "productCode": "JO26",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13090,
+          "slug": "ascension-al-olimpo",
+          "name": "Ascensión al Olimpo",
+          "gameId": 3,
+          "collectorCode": "JO26-14",
+          "effect": "Si no controlas Oros con habilidad, busca en tu Castillo hasta tres Oros y ponlos en tu mano. Luego, puedes Desterrar cualquier cantidad de Ascensión al Olimpo de tu Cementerio y generar esa misma cantidad de Oros.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/JO26/JO26_14_Ascension_al_Olimpo.webp",
+          "artist": "HIRUNDO",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Juego Organizado 2026",
+            "productCode": "JO26",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13089,
+          "slug": "saqueo",
+          "name": "¡Saqueo!",
+          "gameId": 3,
+          "collectorCode": "JO26-13",
+          "effect": "Anularla cuesta un Oro adicional. Los Aliados que controles ganan Furia por el turno. Luego, ganan 1 de Fuerza permanentemente por cada ¡Saqueo! en tu Cementerio.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/JO26/JO26_13_Saqueo.webp",
+          "artist": "HIRUNDO",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Juego Organizado 2026",
+            "productCode": "JO26",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13088,
+          "slug": "proteccion-de-pazuzu",
+          "name": "Protección de Pazuzu",
+          "gameId": 3,
+          "collectorCode": "JO26-12",
+          "effect": "Juégalo en respuesta a que fuera a recibir daño. Prevén ese daño. Si lo haces puedes Barajar hasta dos cartas de tu Cementerio o Robar hasta dos cartas.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/JO26/JO26_12_Proteccion_de_Pazuzu.webp",
+          "artist": "GOTA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Juego Organizado 2026",
+            "productCode": "JO26",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13087,
+          "slug": "tunica-envenenada",
+          "name": "Túnica Envenenada",
+          "gameId": 3,
+          "collectorCode": "JO26-11",
+          "effect": "Anularla cuesta un Oro adicional. Destierra una carta oponente que no sea Oro, ignorando todos los efectos aplicados sobre esa carta.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/JO26/JO26_11_Tunica_Envenenada.webp",
+          "artist": "HIRUNDO",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Juego Organizado 2026",
+            "productCode": "JO26",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13086,
+          "slug": "sombra-de-hera",
+          "name": "Sombra de Hera",
+          "gameId": 3,
+          "collectorCode": "JO26-10",
+          "effect": "Imbloqueable. Una vez por turno, puedes Destruir un Aliado que controles para que tu oponente Destierre cartas de la parte superior de su Castillo igual al coste de ese Aliado. Si lo haces, un Aliado gana 2 de Fuerza por el turno.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/JO26/JO26_10_Sombra_de_Hera.webp",
+          "artist": "FRANCISCO GUERRA",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "SOMBRA"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Juego Organizado 2026",
+            "productCode": "JO26",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13085,
+          "slug": "heahmund",
+          "name": "Heahmund",
+          "gameId": 3,
+          "collectorCode": "JO26-09",
+          "effect": "Imbloqueable. Cuando ataca puedes Robar dos cartas. Puedes Desterrarlo para cancelar la habilidad de un Aliado de coste 2 o menos.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/JO26/JO26_09_Heahmund.webp",
+          "artist": "FRANCISCO GUERRA",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "SACERDOTE"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Juego Organizado 2026",
+            "productCode": "JO26",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13084,
+          "slug": "yolao-de-tebas",
+          "name": "Yolao de Tebas",
+          "gameId": 3,
+          "collectorCode": "JO26-08",
+          "effect": "Guardián. Cuando entra en juego, puedes elegir otro Aliado, que no sea Yolao de Tebas para que no pueda salir del juego mientras este Aliado esté en juego.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/JO26/JO26_08_Yolao_de_Tebas.webp",
+          "artist": "MALAGUEÑO",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "HEROE"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Juego Organizado 2026",
+            "productCode": "JO26",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13083,
+          "slug": "william-longsword",
+          "name": "William Longsword",
+          "gameId": 3,
+          "collectorCode": "JO26-07",
+          "effect": "Furia. Cuado entra en juego, Destruye una carta oponente, que no sea Oro. Una vez en tu turno, tu oponente Bota una carta por cada carta en su mano.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/JO26/JO26_07_William_Longsword.webp",
+          "artist": "DANIEL BERNAL",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "GUERRERO"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Juego Organizado 2026",
+            "productCode": "JO26",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13082,
+          "slug": "ellil",
+          "name": "Ellil",
+          "gameId": 3,
+          "collectorCode": "JO26-06",
+          "effect": "Indesterrable. Cuando entra en juego, puedes Agrupar hasta un Oro y buscar en tu Castillo o Cementerio, una carta de coste 3, que no sea Ellil y ponerla en tu mano. Tu oponente no puede Desterrar cartas de tu Cementerio.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/JO26/JO26_06_Ellil.webp",
+          "artist": "GOTA",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "ETERNO"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Juego Organizado 2026",
+            "productCode": "JO26",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13081,
+          "slug": "usumgallu",
+          "name": "Usumgallu",
+          "gameId": 3,
+          "collectorCode": "JO26-05",
+          "effect": "Furia. Una ver en tu turno, puedes Desterrar cartas de la parte superior de tu Castillo igual al coste de un Aliado de tu Cementerio, que no sea Usumgallu, para jugar ese Aliado sin pagar su coste.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 5,
+          "attack": 5,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/JO26/JO26_05_Usumgallu.webp",
+          "artist": "DANIEL BERNAL",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Juego Organizado 2026",
+            "productCode": "JO26",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13080,
+          "slug": "guillermo-i",
+          "name": "Guillermo I",
+          "gameId": 3,
+          "collectorCode": "JO26-04",
+          "effect": "Imbloqueable. Una vez por turno, puedes mover tres Aliados que controles a tu Línea de Ataque para Anular un Aliado oponente. Esta habilidad no puede ser cancelada.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/JO26/JO26_04_Guillermo_I.webp",
+          "artist": "JP AGUIRRE",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "CABALLERO"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Juego Organizado 2026",
+            "productCode": "JO26",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13079,
+          "slug": "minotauro-de-creta",
+          "name": "Minotauro de Creta",
+          "gameId": 3,
+          "collectorCode": "JO26-03",
+          "effect": "Indestructible. Cuando entra en juego, por cada Aliado que controle, puedes Barajar hasta una carta de tu Cementerio o hacer que tu oponente Bote una carta. Luego, Roba una carta.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/JO26/JO26_03_Minotauro_de_Creta.webp",
+          "artist": "GOTA",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "BESTIA"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Juego Organizado 2026",
+            "productCode": "JO26",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13078,
+          "slug": "bjorn-ironside",
+          "name": "Bjorn Ironside",
+          "gameId": 3,
+          "collectorCode": "JO26-02",
+          "effect": "Furia. Imbloqueable. Anularlo cuesta 1 oro adicional. Cuando entra en juego, puedes jugar un Aliado Bárbaro, de coste 2 o menos de tu Cementerio sin pagar su coste.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/JO26/JO26_02_Bjorn_Ironside.webp",
+          "artist": "NITROX",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "BARBARO"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Juego Organizado 2026",
+            "productCode": "JO26",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13077,
+          "slug": "ereshkigal-oscura",
+          "name": "Ereshkigal Oscura",
+          "gameId": 3,
+          "collectorCode": "JO26-01",
+          "effect": "Cuando entra en juego, Destruye un Aliado oponente de coste 3 o menos. Una vez en tu Vigilia, puedes subir un Aliado de tu Cementerio a tu mano.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 4,
+          "attack": 4,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/JO26/JO26_01_Ereshkigal_Oscura.webp",
+          "artist": "JP AGUIRRE",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "ANCESTRAL"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Juego Organizado 2026",
+            "productCode": "JO26",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
           "id": 13076,
           "slug": "corona-de-wessex",
           "name": "Corona de Wessex",
@@ -10116,7 +10831,8 @@
             "productCode": "LBF2",
             "productType": "Edición"
           },
-          "isNewest": true
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12445,
@@ -14770,7 +15486,8 @@
             "productCode": "LBF",
             "productType": "Edición"
           },
-          "isNewest": false
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12313,
@@ -22994,7 +23711,8 @@
             "productCode": "LBF",
             "productType": "Edición"
           },
-          "isNewest": false
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 12014,
@@ -28463,7 +29181,8 @@
             "productCode": "PROMO",
             "productType": "Producto Especial"
           },
-          "isNewest": false
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11918,
@@ -28784,7 +29503,8 @@
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
           },
-          "isNewest": false
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11910,
@@ -42402,7 +43122,8 @@
             "productCode": "ASG",
             "productType": "Edición"
           },
-          "isNewest": false
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11493,
@@ -58100,7 +58821,8 @@
             "productCode": "TKFX25",
             "productType": "Producto Especial"
           },
-          "isNewest": false
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 10935,
