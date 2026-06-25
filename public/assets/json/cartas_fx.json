@@ -3,6 +3,336 @@
     "CardCatalog": {
       "cards": [
         {
+          "id": 13076,
+          "slug": "corona-de-wessex",
+          "name": "Corona de Wessex",
+          "gameId": 3,
+          "collectorCode": "RFX 50-50",
+          "effect": "Cuando entra en juego, nombra una carta que no sea Oro. Hasta tu próximo turno, las cartas en juego con ese nombre pierden su habilidad y jugar cartas con ese nombre cuesta un Oro adicional.",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_50_Corona_de_Wessex.webp",
+          "artist": "MALAGUEÑO",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13075,
+          "slug": "deshonrar",
+          "name": "Deshonrar",
+          "gameId": 3,
+          "collectorCode": "RFX 49-50",
+          "effect": "No puede ser Anulada. Si una carta oponente te hace Descartar o Desterrar esta u otra carta de tu mano, puedes jugarla sin pagar su coste y Robar una carta. Robas dos cartas.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_49_Deshonrar.webp",
+          "artist": "HERALDO ORTEGA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13074,
+          "slug": "nace-inglaterra",
+          "name": "Nace Inglaterra",
+          "gameId": 3,
+          "collectorCode": "RFX 48-50",
+          "effect": "Reduce su coste en un Oro por cada Aliado oponente, hasta un mínimo de 1. Juega un Tótem de tu Cementerio sin pagar su coste.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 4,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_48_Nace_Inglaterra.webp",
+          "artist": "MALAGUEÑO",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13073,
+          "slug": "creacion-del-mundo",
+          "name": "Creación del Mundo",
+          "gameId": 3,
+          "collectorCode": "RFX 47-50",
+          "effect": "Anularla cuesta un Oro adicional. Mira las primeras cuatro cartas de tu Castillo. Pon cualquier cantidad de esas cartas en tu mano y destierra las demás. Por cada carta desterrada de esta manera. Roba una carta.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_47_Creacion_del_Mundo.webp",
+          "artist": "HERALDO ORTEGA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13072,
+          "slug": "purificar",
+          "name": "Purificar",
+          "gameId": 3,
+          "collectorCode": "RFX 46-50",
+          "effect": "Reduce su coste en un Oro por cada Tótem y Arma en juego, hasta un mínimo de 1. Baraja todas las Armas y Tótem en juego.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 4,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_46_Purificar.webp",
+          "artist": "HERALDO ORTEGA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13071,
+          "slug": "winchester",
+          "name": "Winchester",
+          "gameId": 3,
+          "collectorCode": "RFX 45-50",
+          "effect": "En tu Vigilia, una vez por turno, puedes Descarta un Oro o Tótem de tu mano para Robar do cartas. Si tienes 7 o más cartas en mano, tu oponente no puede declarar ataque.",
+          "flavor": "",
+          "type": "TOTEM",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_45_Winchester.webp",
+          "artist": "RAY OF SAND",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13070,
+          "slug": "escudo-anglosajon",
+          "name": "Escudo Anglosajón",
+          "gameId": 3,
+          "collectorCode": "RFX 44-50",
+          "effect": "Exhumar. Si controlas un Arma, reduce su coste en un Oro. El portador gana 1 de Fuerza por cada Aliado que controles.",
+          "flavor": "",
+          "type": "ARMA",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_44_Escudo_Anglosajon.webp",
+          "artist": "RAY OF SAND",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13069,
+          "slug": "muralla-de-escudos",
+          "name": "Muralla de Escudos",
+          "gameId": 3,
+          "collectorCode": "RFX 43-50",
+          "effect": "Busca en tu Castillo un Arma o Tótem y ponlo en tu mano. Genera un Oro para jugar Tótems o Armas y el próximo Tótem o Arma que juegues este turno, no puede ser Anulado.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_43_Muralla_de_Escudos.webp",
+          "artist": "RAY OF SAND",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13068,
+          "slug": "coronacion-del-rey",
+          "name": "Coronación del Rey",
+          "gameId": 3,
+          "collectorCode": "RFX 42-50",
+          "effect": "Baraja un Aliado que controles. Si lo haces, muestra cartas de la parte superior de tu Castillo hasata mostrar un Aliado de igual o mayor coste, juégalo sin pagar su coste y Baraja el resto.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_42_Coronacion_del_Rey.webp",
+          "artist": "JOSE CANALES",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13067,
+          "slug": "batalla-de-edington",
+          "name": "Batalla de Edington",
+          "gameId": 3,
+          "collectorCode": "RFX 41-50",
+          "effect": "Anularlo cuesta dos Oros adicionales. Elige un número y tu oponente Baraja todas las cartas que controle de ese coste. Luego, Roba una carta por cada carta barajada de esta manera.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 3,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_41_Batalla_de_Edington.webp",
+          "artist": "HIRUNDO",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Relatos Furia Extendido",
+            "productCode": "RFX",
+            "productType": "Producto Especial"
+          },
+          "interactions": []
+        },
+        {
           "id": 13066,
           "slug": "duque-rollo",
           "name": "Duque Rollo",
@@ -11,10 +341,10 @@
           "effect": "Cuando entra en juego, puedes Destruir una carta oponente, que no sea Oro. Si lo haces, puedes jugar un Aliado de tu Cementerio de igual o menor coste que el de esa carta.",
           "flavor": "",
           "type": "ALIADO",
-          "cost": 2,
+          "cost": 3,
           "attack": 3,
           "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/RELATOS_FX/RFX_40_Duque_Rollo.webp",
-          "artist": "LORETO DIAZ",
+          "artist": "IKKITOUCH",
           "frequency": "PROMOCIONAL",
           "race": [
             "GUERRERO"
