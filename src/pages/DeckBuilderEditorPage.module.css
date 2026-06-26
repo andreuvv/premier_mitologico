@@ -583,6 +583,21 @@
   line-height: 1.6;
 }
 
+.collectionBadge {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  background: var(--sage-green);
+  color: var(--beige);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-radius: 4px;
+  padding: 2px 6px;
+  line-height: 1.4;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
 .cardControls {
   display: flex;
   align-items: center;

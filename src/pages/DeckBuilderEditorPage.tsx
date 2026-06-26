@@ -5,7 +5,9 @@ import { loadCollectionCards } from '../services/collectionService';
 import { useBanlist } from '../hooks/useBanlist';
 import { useDeckRules, DeckSubformat } from '../hooks/useDeckRules';
 import { useUserDecks } from '../hooks/useUserDecks';
-import { useAuth } from '../hooks/useAuth';import CardDetailModal from '../components/CardDetailModal';
+import { useAuth } from '../hooks/useAuth';
+import { useUserCollection } from '../hooks/useUserCollection';
+import CardDetailModal from '../components/CardDetailModal';
 import styles from './DeckBuilderEditorPage.module.css';
 
 const DECK_SIZE = 50;
@@ -149,6 +151,7 @@ export default function DeckBuilderEditorPage() {
 
   const { user } = useAuth();
   const { saveDeck, loadDeck, saveStatus, saveError } = useUserDecks();
+  const { ownedCardIds, loadedFormat: collectionLoadedFormat, loadCollection } = useUserCollection(format);
 
   const [allCards, setAllCards] = useState<CollectionCard[]>([]);
   const [loading, setLoading] = useState(true);
@@ -174,6 +177,7 @@ export default function DeckBuilderEditorPage() {
 
   // Filters
   const [search, setSearch] = useState('');
+  const [editionFilter, setEditionFilter] = useState('');
   const [typeFilter, setTypeFilter] = useState('');
   const [oroFilter, setOroFilter] = useState<'all' | 'with' | 'without'>('all');
   const [frequencyFilter, setFrequencyFilter] = useState('');
@@ -279,10 +283,22 @@ export default function DeckBuilderEditorPage() {
     return () => window.removeEventListener('popstate', onPopState);
   }, [hasUnsavedChanges, navigate]);
 
+  useEffect(() => {
+    if (user && collectionLoadedFormat !== format) {
+      loadCollection();
+    }
+  }, [user, format, collectionLoadedFormat, loadCollection]);
+
   // Reset page when filters change
   useEffect(() => {
     setPage(1);
-  }, [search, typeFilter, oroFilter, frequencyFilter, costFilter, attackFilter]);
+  }, [search, editionFilter, typeFilter, oroFilter, frequencyFilter, costFilter, attackFilter]);
+
+  const showEditionBrowserFilter = subformat !== 'pb-edicion';
+
+  useEffect(() => {
+    if (!showEditionBrowserFilter) setEditionFilter('');
+  }, [showEditionBrowserFilter]);
 
   // Banlist
   const { banlist } = useBanlist(formatParam as 'pb' | 'fx', subformat);
@@ -315,6 +331,17 @@ export default function DeckBuilderEditorPage() {
         (c) => c.type?.toUpperCase() === typeFilter.toUpperCase(),
       );
     }
+    if (editionFilter) {
+      if (format === CollectionFormat.PRIMER_BLOQUE) {
+        cards = cards.filter((c) => c.edition?.name === editionFilter);
+      } else {
+        cards = cards.filter(
+          (c) =>
+            c.product?.productName === editionFilter &&
+            c.product?.productType === 'Edición',
+        );
+      }
+    }
     if (typeFilter === 'Oro' && oroFilter !== 'all') {
       cards = cards.filter((c) => {
         if (c.type?.toUpperCase() !== 'ORO') return false;
@@ -341,7 +368,7 @@ export default function DeckBuilderEditorPage() {
       return (a.edition?.slug ?? '').localeCompare(b.edition?.slug ?? '');
     });
     return cards;
-  }, [allCards, search, typeFilter, oroFilter, frequencyFilter, costFilter, attackFilter, rules.isCardVisible]);
+  }, [allCards, search, editionFilter, format, typeFilter, oroFilter, frequencyFilter, costFilter, attackFilter, rules.isCardVisible]);
 
   const navigateCardDetail = (card: CollectionCard) => {
     setSelectedCard(card);
@@ -518,6 +545,25 @@ export default function DeckBuilderEditorPage() {
   const maxCostCount = Math.max(1, ...costDistribution.map((item) => item.count));
 
   // ── Filter options ────────────────────────────────────────────────────────
+  const browserEditionOptions = useMemo(() => {
+    if (format === CollectionFormat.PRIMER_BLOQUE) {
+      return Array.from(
+        new Map(
+          allCards
+            .filter((c) => c.edition?.name)
+            .map((c) => [c.edition!.name, c.edition!.name]),
+        ).values(),
+      ).sort((a, b) => a.localeCompare(b, 'es'));
+    }
+    return Array.from(
+      new Map(
+        allCards
+          .filter((c) => c.product?.productType === 'Edición')
+          .map((c) => [c.product!.productName, c.product!.productName]),
+      ).values(),
+    ).sort((a, b) => a.localeCompare(b, 'es'));
+  }, [allCards, format]);
+
   const costOptions = useMemo(
     () =>
       Array.from(new Set(allCards.map((c) => c.cost).filter((c) => c != null))).sort(
@@ -771,6 +817,20 @@ export default function DeckBuilderEditorPage() {
 
           {/* Filters row */}
           <div className={styles.filtersRow}>
+            {showEditionBrowserFilter && (
+              <select
+                className={styles.filterSelect}
+                value={editionFilter}
+                onChange={(e) => setEditionFilter(e.target.value)}
+              >
+                <option value="">Todas las ediciones</option>
+                {browserEditionOptions.map((edition) => (
+                  <option key={edition} value={edition}>
+                    {edition}
+                  </option>
+                ))}
+              </select>
+            )}
             {typeFilter === 'Oro' && (
               <select
                 className={styles.filterSelect}
@@ -829,6 +889,7 @@ export default function DeckBuilderEditorPage() {
               const canAddMore = rules.canAdd(card);
               const isBanned = hardMax === 0;
               const isUnique = card.unique === true;
+              const isInCollection = Boolean(user && ownedCardIds.has(card.id));
               const maxLabel = hardMax === Infinity ? '∞' : String(hardMax);
               return (
                 <div
@@ -853,11 +914,15 @@ export default function DeckBuilderEditorPage() {
                     )}
                     {count > 0 && (
                       <div className={styles.cardCountBadge}>{count}</div>
-                    )}                    {isBanned && (
+                    )}
+                    {isBanned && (
                       <div className={styles.bannedOverlay}>PROHIBIDA</div>
                     )}
                     {isUnique && (
                       <div className={styles.uniqueBadge}>ÚNICA</div>
+                    )}
+                    {isInCollection && (
+                      <div className={styles.collectionBadge}>En colección</div>
                     )}
                   </div>
                   <div className={styles.cardControls}>

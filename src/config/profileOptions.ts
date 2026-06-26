@@ -15,11 +15,12 @@ export const FAVORITE_FORMATS: FavoriteFormatOption[] = [
 export const PB_RACES = [
   'Faerie', 'Caballero', 'Dragón', 'Héroe', 'Titán', 'Olímpico',
   'Defensor', 'Desafiante', 'Sombra', 'Eterno', 'Sacerdote', 'Faraón',
+  'Tótem',
 ];
 
 export const FX_RACES = [
   'Dragón', 'Bestia', 'Sombra', 'Eterno', 'Guerrero', 'Caballero',
-  'Sacerdote', 'Ancestral', 'Héroe', 'Bárbaro',
+  'Sacerdote', 'Ancestral', 'Héroe', 'Bárbaro', 'Tótem',
 ];
 
 export type FavoriteRacesMap = Partial<Record<FavoriteFormatId, string>>;
