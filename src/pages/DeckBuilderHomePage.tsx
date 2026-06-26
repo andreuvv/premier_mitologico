@@ -42,6 +42,7 @@ type Format = 'pb' | 'fx';
 type Subformat = 'pb-edicion' | 'pb-libre' | 'fx-vcr' | 'fx-libre' | 'fx-ragnarok';
 type FormatFilter = 'all' | Format;
 type SubformatFilter = 'all' | Subformat;
+type ExploreSortBy = 'updated' | 'created';
 
 const PB_SUBFORMATS: { value: Subformat; label: string; desc: string }[] = [
   { value: 'pb-edicion', label: 'Racial Edición', desc: 'Solo cartas de una misma edición' },
@@ -136,6 +137,24 @@ function getDeckDateLines(createdAt?: string | null, updatedAt?: string | null):
   }
 
   return lines;
+}
+
+function getDeckSortTimestamp(
+  deck: Pick<UserDeck, 'created_at' | 'updated_at'>,
+  sortBy: ExploreSortBy,
+): number {
+  const raw = sortBy === 'created' ? deck.created_at : deck.updated_at;
+  const time = new Date(raw ?? 0).getTime();
+  return Number.isNaN(time) ? 0 : time;
+}
+
+function sortDecksByDate<T extends Pick<UserDeck, 'created_at' | 'updated_at'>>(
+  decks: T[],
+  sortBy: ExploreSortBy,
+): T[] {
+  return [...decks].sort(
+    (a, b) => getDeckSortTimestamp(b, sortBy) - getDeckSortTimestamp(a, sortBy),
+  );
 }
 
 function getTabFromPath(pathname: string): Tab {
@@ -283,6 +302,7 @@ export default function DeckBuilderHomePage() {
   const [exploreFormatFilter, setExploreFormatFilter] = useState<FormatFilter>('all');
   const [exploreSubformatFilter, setExploreSubformatFilter] = useState<SubformatFilter>('all');
   const [exploreRaceFilter, setExploreRaceFilter] = useState('');
+  const [exploreSortBy, setExploreSortBy] = useState<ExploreSortBy>('updated');
 
   const fetchDecks = useCallback(async () => {
     if (!user) return;
@@ -348,13 +368,12 @@ export default function DeckBuilderHomePage() {
     [decks, myFormatFilter, mySubformatFilter, myRaceFilter],
   );
 
-  const filteredExploreDecks = useMemo(
-    () =>
-      exploreDecks.filter((deck) =>
-        matchesDeckFilters(deck, exploreFormatFilter, exploreSubformatFilter, exploreRaceFilter),
-      ),
-    [exploreDecks, exploreFormatFilter, exploreSubformatFilter, exploreRaceFilter],
-  );
+  const filteredExploreDecks = useMemo(() => {
+    const filtered = exploreDecks.filter((deck) =>
+      matchesDeckFilters(deck, exploreFormatFilter, exploreSubformatFilter, exploreRaceFilter),
+    );
+    return sortDecksByDate(filtered, exploreSortBy);
+  }, [exploreDecks, exploreFormatFilter, exploreSubformatFilter, exploreRaceFilter, exploreSortBy]);
 
   const visibleMySubformats = useMemo(() => {
     if (myFormatFilter === 'pb') {
@@ -644,7 +663,7 @@ export default function DeckBuilderHomePage() {
                     Furia Extendido
                   </button>
                 </div>
-                <div className={styles.filtersInputsRow}>
+                <div className={`${styles.filtersInputsRow} ${styles.filtersInputsRowExplore}`}>
                   <select
                     className={styles.filterSelect}
                     value={exploreSubformatFilter}
@@ -668,6 +687,15 @@ export default function DeckBuilderHomePage() {
                         {race}
                       </option>
                     ))}
+                  </select>
+                  <select
+                    className={styles.filterSelect}
+                    value={exploreSortBy}
+                    onChange={(e) => setExploreSortBy(e.target.value as ExploreSortBy)}
+                    aria-label="Ordenar mazos"
+                  >
+                    <option value="updated">Modificado recientemente</option>
+                    <option value="created">Creado recientemente</option>
                   </select>
                 </div>
               </div>

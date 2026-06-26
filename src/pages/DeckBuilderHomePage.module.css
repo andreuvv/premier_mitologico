@@ -183,6 +183,10 @@
   gap: 0.55rem;
 }
 
+.filtersInputsRowExplore {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
 .filterSelect,
 .filterInput {
   background: rgba(255, 255, 255, 0.05);
