@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { useUserDecks, UserDeck, PublicDeck } from '../hooks/useUserDecks';
 import { isCurrentUserBanlistAdmin } from '../services/monthlyBanlistService';
@@ -124,18 +124,22 @@ function formatDeckDate(dateString?: string | null): string {
   return `${day} ${month} ${year}`;
 }
 
-function getDeckDateLabel(createdAt?: string, updatedAt?: string): string {
-  if (!updatedAt) return `Creado: ${formatDeckDate(createdAt)}`;
-  if (!createdAt) return `Modificado: ${formatDeckDate(updatedAt)}`;
+function getDeckDateLines(createdAt?: string | null, updatedAt?: string | null): string[] {
+  const lines: string[] = [`Creado: ${formatDeckDate(createdAt)}`];
 
-  const created = new Date(createdAt).getTime();
-  const updated = new Date(updatedAt).getTime();
-  if (Number.isNaN(created) || Number.isNaN(updated)) return `Modificado: ${formatDeckDate(updatedAt)}`;
-
-  if (updated - created > 60_000) {
-    return `Modificado: ${formatDeckDate(updatedAt)}`;
+  if (createdAt && updatedAt) {
+    const created = new Date(createdAt).getTime();
+    const updated = new Date(updatedAt).getTime();
+    if (!Number.isNaN(created) && !Number.isNaN(updated) && updated - created > 60_000) {
+      lines.push(`Modificado: ${formatDeckDate(updatedAt)}`);
+    }
   }
-  return `Creado: ${formatDeckDate(createdAt)}`;
+
+  return lines;
+}
+
+function getTabFromPath(pathname: string): Tab {
+  return pathname.endsWith('/explorar') ? 'explore' : 'myDecks';
 }
 
 // ─── Modal ────────────────────────────────────────────────────────────────────
@@ -262,8 +266,9 @@ function NewDeckModal({ onClose, onCreate }: NewDeckModalProps) {
 export default function DeckBuilderHomePage() {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const tab = getTabFromPath(location.pathname);
   const { loadDecks, loadAllDecks, deleteDeck } = useUserDecks();
-  const [tab, setTab] = useState<Tab>('myDecks');
   const [showModal, setShowModal] = useState(false);
   const [decks, setDecks] = useState<UserDeck[]>([]);
   const [decksLoading, setDecksLoading] = useState(false);
@@ -442,19 +447,19 @@ export default function DeckBuilderHomePage() {
       </div>
 
       {/* Tabs */}
-      <div className={styles.tabs}>
-        <button
-          className={tab === 'myDecks' ? styles.tabActive : styles.tab}
-          onClick={() => setTab('myDecks')}
+      <div className={styles.navTabs}>
+        <Link
+          to="/deck-builder/mis-mazos"
+          className={`${styles.navTab} ${tab === 'myDecks' ? styles.navTabMyDecksActive : ''}`}
         >
           Mis Mazos
-        </button>
-        <button
-          className={tab === 'explore' ? styles.tabActive : styles.tab}
-          onClick={() => setTab('explore')}
+        </Link>
+        <Link
+          to="/deck-builder/explorar"
+          className={`${styles.navTab} ${tab === 'explore' ? styles.navTabExploreActive : ''}`}
         >
           Explorar
-        </button>
+        </Link>
       </div>
 
       {/* Tab: Mis Mazos */}
@@ -537,7 +542,7 @@ export default function DeckBuilderHomePage() {
                 const cardCount = Object.values(deck.cards).reduce((a, b) => a + b, 0);
                 const formatLabel = deck.format === 'fx' ? 'Furia Extendido' : 'Primer Bloque';
                 const subformatLabel = getSubformatLabel(deck.subformat);
-                const dateLabel = getDeckDateLabel(deck.created_at, deck.updated_at);
+                const dateLines = getDeckDateLines(deck.created_at, deck.updated_at);
                 const formatTagClass = deck.format === 'fx' ? styles.deckCardTagFormatFx : styles.deckCardTagFormatPb;
                 return (
                   <div key={deck.id} className={styles.deckCard} onClick={() => handleView(deck)} style={{ cursor: 'pointer' }}>
@@ -589,7 +594,11 @@ export default function DeckBuilderHomePage() {
                         {deletingId === deck.id ? '...' : '🗑'}
                       </button>
                     </div>
-                    <div className={styles.deckDateLabel}>{dateLabel}</div>
+                    <div className={styles.deckDateBlock}>
+                      {dateLines.map((line) => (
+                        <span key={line} className={styles.deckDateLabel}>{line}</span>
+                      ))}
+                    </div>
                   </div>
                 );
                   })}
@@ -672,7 +681,7 @@ export default function DeckBuilderHomePage() {
                   {filteredExploreDecks.map((deck) => {
                 const formatLabel = deck.format === 'fx' ? 'Furia Extendido' : 'Primer Bloque';
                 const subformatLabel = getSubformatLabel(deck.subformat);
-                const dateLabel = getDeckDateLabel(deck.created_at, deck.updated_at);
+                const dateLines = getDeckDateLines(deck.created_at, deck.updated_at);
                 const formatTagClass = deck.format === 'fx' ? styles.deckCardTagFormatFx : styles.deckCardTagFormatPb;
                 const editionSlug = deck.subformat === 'pb-edicion'
                   ? (RACE_TO_EDITION[deck.race] ?? null)
@@ -723,7 +732,11 @@ export default function DeckBuilderHomePage() {
                         <span className={styles.privateDeckLabel}>Mazo Privado</span>
                       )}
                     </div>
-                    <div className={styles.deckDateLabel}>{dateLabel}</div>
+                    <div className={styles.deckDateBlock}>
+                      {dateLines.map((line) => (
+                        <span key={line} className={styles.deckDateLabel}>{line}</span>
+                      ))}
+                    </div>
                   </div>
                 );
                   })}

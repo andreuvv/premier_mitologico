@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -67,7 +67,9 @@ function App() {
             <Route path="/blog/:slug" element={<BlogPostPage />} />
             <Route path="/auth/callback" element={<AuthCallbackPage />} />
             <Route path="/reset-password" element={<ResetPasswordPage />} />
-            <Route path="/deck-builder" element={<DeckBuilderHomePage />} />
+            <Route path="/deck-builder" element={<Navigate to="/deck-builder/mis-mazos" replace />} />
+            <Route path="/deck-builder/mis-mazos" element={<DeckBuilderHomePage />} />
+            <Route path="/deck-builder/explorar" element={<DeckBuilderHomePage />} />
             <Route path="/deck-builder/editor" element={<DeckBuilderEditorPage />} />
             <Route path="/deck-builder/viewer" element={<DeckViewerPage />} />
             <Route path="/deck-builder/local-json-editor" element={<LocalJsonEditorPage />} />
