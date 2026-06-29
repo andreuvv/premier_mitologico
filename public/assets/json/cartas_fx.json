@@ -3,6 +3,105 @@
     "CardCatalog": {
       "cards": [
         {
+          "id": 13116,
+          "slug": "corona-florentina",
+          "name": "Corona Florentina",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 355 P",
+          "effect": "Si controlas Aliados Héroe, puedes Desterrarlo de tu Reserva para Destruir una carta oponente, de coste 2 o menos, que no sea Oro.",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/corona-florentina.webp",
+          "artist": "EL KALKU",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13115,
+          "slug": "corona-benkan",
+          "name": "Corona Benkan",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 354 P",
+          "effect": "Si controlas Aliados Guerrero, puedes Desterrarlo de tu Reserva para subir una carta de coste 2 o más de tu Cementerio a tu mano.",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/corona-benkan.webp",
+          "artist": "EL KALKU",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13114,
+          "slug": "corona-siniestra",
+          "name": "Corona Siniestra",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 357 P",
+          "effect": "Si controlas Aliados Sombra, puedes Desterrarlo de tu Reserva para que un Aliado tengo Fuerza 0 permanentemente.",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/corona-siniestra.webp",
+          "artist": "EL KALKU",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": []
+        },
+        {
           "id": 13113,
           "slug": "walkirias",
           "name": "Walkirias",
