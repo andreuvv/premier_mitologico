@@ -3,6 +3,534 @@
     "CardCatalog": {
       "cards": [
         {
+          "id": 13113,
+          "slug": "walkirias",
+          "name": "Walkirias",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 343 P",
+          "effect": "Única. Cuando juegues este Talismán, Destiérralo. Anula una carta oponente que no sea Oro.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/walkirias_juez.webp",
+          "artist": "MARIOLA QUIRLAND",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13112,
+          "slug": "tronoo-de-violencia",
+          "name": "Trono de Violencia",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 345 P",
+          "effect": "Cuando entra en juego, puedes Desterrar un Aliado Bárbaro de tu Cementerio para que hasta dos Aliados ganen 2 de Fuerza por el turno.",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/Trono-de-violencia-promocional.webp",
+          "artist": "HERALDO ORTEGA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13111,
+          "slug": "tronoo-de-origen",
+          "name": "Trono de Origen",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 344 P",
+          "effect": "Cuando entra en juego, puedes Desterrar un Aliado Ancestral de tu Cementerio para mirar la mano de tu oponente y Desterrar un Talismán de coste 2 o menos de ahí.",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/Trono-de-origen-promocional.webp",
+          "artist": "HERALDO ORTEGA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13110,
+          "slug": "tronoo-de-divinidad",
+          "name": "Trono de Divinidad",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 347 P",
+          "effect": "Cuando entra en juego, puedes Desterrar un Aliado Sacerdote de tu Cementerio para Barajar y/o Desterrar hasta tres cartas de los Cementerios.",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/Trono-de-divinidad-promocional.webp",
+          "artist": "HERALDO ORTEGA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13109,
+          "slug": "tronoo-de-conocimiento",
+          "name": "Trono de Conocimiento",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 346 P",
+          "effect": "Cuando entra en juego, puedes Desterrar un Aliado Héroe de tu Cementerio para que un Aliado haga doble daño de combate este turno.",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/Trono-de-conocimiento-promocional.webp",
+          "artist": "HERALDO ORTEGA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13108,
+          "slug": "corona-mukut",
+          "name": "Corona Mukut",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 348 P",
+          "effect": "Si controlas Aliados Ancestral, puedes Desterrarlo de tu Reserva para Anular una carta oponente que fuera a Cancelar la habilidad de un Aliado que controlas o Anular un Aliado Ancestral.",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/Corona-mukut-promocional.webp",
+          "artist": "EL KALKU",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13107,
+          "slug": "corona-feral",
+          "name": "Corona Feral",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 350 P",
+          "effect": "Si controlas Aliados Bestia, puedes Desterrarlo de tu Reserva para que un Aliado de tu Cementerio gane Exhumar por el turno.",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/Corona-feral-promocional.webp",
+          "artist": "EL KALKU",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13106,
+          "slug": "corona-de-jade",
+          "name": "Corona de Jade",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 352 P",
+          "effect": "Si controlas Aliados Dragón, puedes Desterrarlo de tu Reserva para Destruir un Tótem o Arma oponente.",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/Corona-de-jade-promocional.webp",
+          "artist": "EL KALKU",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13105,
+          "slug": "toque-divino",
+          "name": "Toque Divino",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 386 P",
+          "effect": "Roba dos cartas. Puedes pagar un Oro y Desterrarlo de tu Cementerio para Robar dos cartas.",
+          "flavor": "Su contacto despierta esperanza sagrada, entrega fuerza inmortal y deja un rastro de luz eterna en los corazones.",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/toque_divino.webp",
+          "artist": "EL GOTA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13104,
+          "slug": "reina-de-los-mares",
+          "name": "Reina de los Mares",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 340 P",
+          "effect": "Anularlo cuesta un Oro adicional. Cuando lo juegues, Destiérralo. Baraja un Aliado oponente. Luego puedes subir un Aliado de tu Cementerio a tu mano.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/Reina-de-los-mares-promocional.webp",
+          "artist": "LUIS INZUNZA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13103,
+          "slug": "flecha-de-nott",
+          "name": "Flecha de Nott",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 353 P",
+          "effect": "Si fueras a Robar una carta, en vez de eso puedes subir esta carta de tu Cementerio a tu mano. Tu oponente Bota tres cartas.",
+          "flavor": "Vuela ligera y certera hacia el destino marcado, atravesando sombras y alcanzando su objetivo sin error ni demora.",
+          "type": "TALISMAN",
+          "cost": 1,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/flecha_de_nott.webp",
+          "artist": "WALDO RETAMALES",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13102,
+          "slug": "ciudad-sumergida",
+          "name": "Ciudad Sumergida",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 365 P",
+          "effect": "Exhumar. Si no controlas Aliados de coste 2 o menos, no puede ser Anulado. Puedes Destruirlo para cancelar el ataque oponente.",
+          "flavor": "Torres, calles y hogares bajo el mar. El pasado perdido susurra secretos de un reino olvidado entre las corrientes y sombras azules.",
+          "type": "TOTEM",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/ciudad_sumergida.webp",
+          "artist": "EL GOTA",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13101,
+          "slug": "cañon-de-asedio",
+          "name": "Cañón de Asedio ",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 364 P",
+          "effect": "Exhumar. El portador gana 2 de Fuerza. Puedes Desterrarla para cancelar la habilidad de un Aliado",
+          "flavor": "Creado para arrasar muros y ejércitos, deja sólo ruinas donde antes hubo una defensa. Hierro y pólvora resuenan en el campo de batalla.",
+          "type": "ARMA",
+          "cost": 1,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/cañon_de_asedio.webp",
+          "artist": "OXUL",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13100,
+          "slug": "torta-de-dragon",
+          "name": "Torta de Dragón",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 359 P",
+          "effect": "Si es tu cumpleaños, puedes jugarla sin pagar su coste y Desterrarla. Busca una carta en tu Castillo y ponla en tu mano.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/torta_de_dragon.webp",
+          "artist": "ARGUS",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13099,
+          "slug": "manteo",
+          "name": "Manteo",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 360 P",
+          "effect": "Si es tu cumpleaños, reduce su coste en dos Oros y Destiérrala. Destruye hasta tres cartas oponentes que no sean Oro, cuyos costes sumen hasta 4.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 3,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/manteo.webp",
+          "artist": "ARGUS",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": []
+        },
+        {
+          "id": 13098,
+          "slug": "cantico-de-cumpleaños",
+          "name": "Cántico de Cumpleaños",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 361 P",
+          "effect": "Si es tu cumpleaños, reduce su coste en dos Oros y Destiérrala. Los Aliados que controlas ganan 2 de Fuerza y Furia, por el turno. Roba dos cartas.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 3,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/cantico_de_cumpleaños.webp",
+          "artist": "ARGUS",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición"
+          },
+          "interactions": []
+        },
+        {
           "id": 13097,
           "slug": "ra",
           "name": "Ra",
@@ -2468,7 +2996,7 @@
           "collectorCode": "LBF2 - 335 P",
           "effect": "Cuando una carta que controles salga del juego por una carta oponente, puedes Destruir una carta oponente del mismo tipo.",
           "flavor": "La araña demoníaca espera paciente, entre engaños tejidos atrapa a los incautos que se acercan a su red.",
-          "type": "TALISMAN",
+          "type": "TOTEM",
           "cost": 3,
           "attack": 0,
           "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/CINCO_ANILLOS/LBF2_335_Cueva_de_Jorogumo.webp",
