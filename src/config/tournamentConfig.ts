@@ -27,10 +27,10 @@ export interface TournamentConfig {
 }
 
 export const tournamentConfig: TournamentConfig = {
-  name: 'APOCALIPSIS VIKINGO! - FX -',
-  date: '2026-06-27',
+  name: 'ESPADA SAGRADA EXTENDIDO - PB -',
+  date: '2026-07-18',
   time: '15:00',
-  dateTentative: false, // Set to true to show the ribbon
+  dateTentative: true, // Set to true to show the ribbon
   /* location: {
     name: "Weshes",
     address: 'Jorge Quevedo 5464, Macul, Santiago',
@@ -41,7 +41,7 @@ export const tournamentConfig: TournamentConfig = {
     address: 'Las Tórtolas 3273, Macul, Santiago',
     googleMapsQuery: 'Las+Tórtolas+3273,+Macul,+Santiago',
   },
-  /* formats: [
+  formats: [
     {
       name: 'Primer Bloque Racial Libre',
       shortName: 'PB Racial Libre',
@@ -52,19 +52,19 @@ export const tournamentConfig: TournamentConfig = {
       shortName: 'PB Racial Edición',
       link: '/game-formats/primerBloque/primerBloqueRacialEdicion',
     },
-  ], */
-  formats: [
+  ],
+  /* formats: [
     {
       name: 'Furia Extendido Racial Libre',
       shortName: 'FX Racial Libre',
       link: '/game-formats/bloqueFuria/bloqueFuriaRacialLibre',
     },
     {
-      name: 'Furia Extendido Racial Ragnarok',
+      name: 'Furia Extendido Racial Libre',
       shortName: 'FX Racial Ragnarok',
       link: '/game-formats/formatosEspeciales/ragnarok',
     },
-  ],
+  ], */
   roundType: {
     name: 'Mejor de 3',
     link: '/tournament-info/tournamentSystem/md3',
