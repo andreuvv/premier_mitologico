@@ -662,7 +662,9 @@
             "productCode": "JO26",
             "productType": "Producto Especial"
           },
-          "interactions": []
+          "interactions": [],
+          "isRework": true,
+          "isNewest": true
         },
         {
           "id": 13096,
@@ -4006,7 +4008,7 @@
           },
           "interactions": [],
           "isNewest": false,
-          "isRework": false
+          "isRework": true
         },
         {
           "id": 12726,
@@ -24302,7 +24304,9 @@
             "productName": "Leyendas Bloque Furia",
             "productCode": "LBF",
             "productType": "Edición"
-          }
+          },
+          "isRework": false,
+          "isNewest": false
         },
         {
           "id": 12013,
@@ -28556,7 +28560,9 @@
             "productName": "PROMOS ★",
             "productCode": "PROMO",
             "productType": "Producto Especial"
-          }
+          },
+          "isRework": false,
+          "isNewest": false
         },
         {
           "id": 11946,
@@ -31003,7 +31009,9 @@
             "productName": "Aniversario 20 Años",
             "productCode": "20-ANOS",
             "productType": "Producto Especial"
-          }
+          },
+          "isRework": false,
+          "isNewest": false
         },
         {
           "id": 11885,
@@ -56842,7 +56850,7 @@
             "productType": "Producto Especial"
           },
           "isNewest": false,
-          "isRework": false
+          "isRework": true
         },
         {
           "id": 11023,
@@ -95768,7 +95776,9 @@
             "productName": "Excalibur",
             "productCode": "EXC",
             "productType": "Edición"
-          }
+          },
+          "isRework": false,
+          "isNewest": false
         },
         {
           "id": 9846,
@@ -96511,7 +96521,9 @@
             "productName": "Reinos Perdidos: Leyendas del Metal",
             "productCode": "HM",
             "productType": "Producto Especial"
-          }
+          },
+          "isRework": false,
+          "isNewest": false
         },
         {
           "id": 9824,
@@ -119561,7 +119573,9 @@
             "productName": "Furia Extensión",
             "productCode": "EF",
             "productType": "Edición"
-          }
+          },
+          "isRework": false,
+          "isNewest": false
         },
         {
           "id": 9119,
