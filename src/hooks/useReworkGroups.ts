@@ -2,8 +2,10 @@ import { useMemo } from 'react';
 import { CollectionCard } from '../types/collection';
 import {
   groupKey,
-  isReworkCard,
+  isOldVersionCard,
+  isReworkVersionCard,
   normalizeName,
+  sortReworkVersions,
   sortVersionsByIdDesc,
 } from '../utils/cardGrouping';
 
@@ -33,10 +35,10 @@ function buildReworkGroups(allCards: CollectionCard[]): ReworkGroup[] {
   const groups: ReworkGroup[] = [];
 
   for (const [key, cards] of byGroup.entries()) {
-    const reworkVersions = sortVersionsByIdDesc(cards.filter((c) => isReworkCard(c)));
+    const reworkVersions = sortReworkVersions(cards.filter((c) => isReworkVersionCard(c)));
     if (reworkVersions.length === 0) continue;
 
-    const oldVersions = sortVersionsByIdDesc(cards.filter((c) => !isReworkCard(c)));
+    const oldVersions = sortVersionsByIdDesc(cards.filter((c) => isOldVersionCard(c)));
     const sample = reworkVersions[0];
 
     groups.push({

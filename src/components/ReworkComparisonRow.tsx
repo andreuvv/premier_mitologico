@@ -25,6 +25,7 @@ export default function ReworkComparisonRow({ group, onViewCard }: ReworkCompari
         title="Rework"
         versions={group.reworkVersions}
         onViewCard={onViewCard}
+        showNewestBadge
       />
     </article>
   );

@@ -1,14 +1,21 @@
 import { useState } from 'react';
 import { CollectionCard } from '../types/collection';
+import { isNewestCard } from '../utils/cardGrouping';
 import styles from './ReworkVersionColumn.module.css';
 
 interface ReworkVersionColumnProps {
   title: string;
   versions: CollectionCard[];
   onViewCard?: (card: CollectionCard) => void;
+  showNewestBadge?: boolean;
 }
 
-export default function ReworkVersionColumn({ title, versions, onViewCard }: ReworkVersionColumnProps) {
+export default function ReworkVersionColumn({
+  title,
+  versions,
+  onViewCard,
+  showNewestBadge = false,
+}: ReworkVersionColumnProps) {
   const [index, setIndex] = useState(0);
   const safeIndex = versions.length > 0 ? Math.min(index, versions.length - 1) : 0;
   const card = versions[safeIndex];
@@ -23,18 +30,23 @@ export default function ReworkVersionColumn({ title, versions, onViewCard }: Rew
 
       <div className={styles.imageSlot}>
         {card ? (
-          <button
-            type="button"
-            className={styles.imageButton}
-            onClick={() => onViewCard?.(card)}
-            aria-label={`Ver detalle de ${card.name}`}
-          >
-            {card.imageUrl ? (
-              <img src={card.imageUrl} alt={card.name} className={styles.image} />
-            ) : (
-              <div className={styles.placeholder}>Sin imagen</div>
+          <div className={styles.imageWrap}>
+            <button
+              type="button"
+              className={styles.imageButton}
+              onClick={() => onViewCard?.(card)}
+              aria-label={`Ver detalle de ${card.name}`}
+            >
+              {card.imageUrl ? (
+                <img src={card.imageUrl} alt={card.name} className={styles.image} />
+              ) : (
+                <div className={styles.placeholder}>Sin imagen</div>
+              )}
+            </button>
+            {showNewestBadge && isNewestCard(card) && (
+              <span className={styles.newestBadge}>Carta más Nueva</span>
             )}
-          </button>
+          </div>
         ) : (
           <div className={styles.emptyImage} aria-hidden="true" />
         )}
