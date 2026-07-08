@@ -5114,7 +5114,8 @@
             "slug": "primer-bloque",
             "__typename": "Game"
           },
-          "__typename": "Card"
+          "__typename": "Card",
+          "isRework": true
         },
         {
           "id": 13957,
@@ -5387,7 +5388,8 @@
             "slug": "primer-bloque",
             "__typename": "Game"
           },
-          "__typename": "Card"
+          "__typename": "Card",
+          "isRework": true
         },
         {
           "id": 13947,
@@ -5862,7 +5864,8 @@
             "slug": "primer-bloque",
             "__typename": "Game"
           },
-          "__typename": "Card"
+          "__typename": "Card",
+          "isRework": true
         },
         {
           "id": 13918,
@@ -17141,7 +17144,8 @@
             "slug": "primer-bloque",
             "__typename": "Game"
           },
-          "__typename": "Card"
+          "__typename": "Card",
+          "isRework": true
         },
         {
           "id": 5054,
@@ -26463,7 +26467,7 @@
             "__typename": "Game"
           },
           "__typename": "Card",
-          "isRework": false
+          "isRework": true
         },
         {
           "id": 4725,
@@ -29341,7 +29345,7 @@
             "__typename": "Game"
           },
           "__typename": "Card",
-          "isRework": false
+          "isRework": true
         },
         {
           "id": 4595,
@@ -111732,7 +111736,8 @@
             "slug": "primer-bloque",
             "__typename": "Game"
           },
-          "__typename": "Card"
+          "__typename": "Card",
+          "isRework": false
         },
         {
           "id": 1173,
