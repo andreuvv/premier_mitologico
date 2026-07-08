@@ -232,6 +232,17 @@ const Header = () => {
             {mitoxicosHovered && (
               <div className={styles.cartasDropdown}>
                 {user ? (
+                  <Link to="/mitoxicos" className={styles.cartasDropdownItem} onClick={() => setMitoxicosHovered(false)}>
+                    <FaUsers className={styles.icon} />
+                    Mitoxicos
+                  </Link>
+                ) : (
+                  <button className={`${styles.cartasDropdownItem} ${styles.cartasDropdownDisabled}`} disabled>
+                    <FaUsers className={styles.icon} />
+                    Mitoxicos
+                  </button>
+                )}
+                {user ? (
                   <Link to="/torneo-premier" className={styles.cartasDropdownItem} onClick={() => setMitoxicosHovered(false)}>
                     <FaTrophy className={styles.icon} />
                     Torneo Premier
@@ -400,6 +411,17 @@ const Header = () => {
             Mitoxicos
             <FaChevronDown className={styles.mobileGroupChevron} />
           </span>
+        )}
+        {user ? (
+          <Link to="/mitoxicos" className={styles.mobileSubItem} onClick={() => setMobileMenuOpen(false)}>
+            <FaUsers className={styles.icon} />
+            Mitoxicos
+          </Link>
+        ) : (
+          <button className={`${styles.mobileSubItem} ${styles.mobileSubItemDisabled}`} disabled>
+            <FaUsers className={styles.icon} />
+            Mitoxicos
+          </button>
         )}
         {user ? (
           <Link to="/torneo-premier" className={styles.mobileSubItem} onClick={() => setMobileMenuOpen(false)}>
