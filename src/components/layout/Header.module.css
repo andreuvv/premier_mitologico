@@ -19,13 +19,56 @@
   height: 70px;
 }
 
+.logoGroup {
+  position: absolute;
+  left: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+  z-index: 1;
+}
+
 .logo {
   display: flex;
   align-items: center;
   height: 100%;
   padding: 0.5rem 0;
-  position: absolute;
-  left: 2rem;
+}
+
+.mitoxicosNavDesktop {
+  display: flex;
+}
+
+.mitoxicosNavDesktop a,
+.mitoxicosNavDesktop .navDisabledItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  color: var(--beige);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 24px;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.mitoxicosNavDesktop a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.mitoxicosNavDesktop a.active {
+  color: var(--beige);
+  background-color: var(--petrol-blue);
+  font-weight: bold;
+}
+
+.mitoxicosNavDesktop .cartasDropdown {
+  left: 0;
+  transform: none;
 }
 
 .logo img {
@@ -138,7 +181,7 @@
   display: none;
   align-items: center;
   gap: 6px;
-  padding: 8px;
+  padding: 8px 12px;
   background: transparent;
   border: none;
   color: var(--beige);
@@ -154,12 +197,28 @@
   background-color: rgba(255, 255, 255, 0.05);
 }
 
+.loginButtonActive {
+  background: var(--sage-green);
+  color: var(--coal-grey);
+}
+
+.loginButtonActive:hover {
+  background: #8fa888;
+  color: var(--coal-grey);
+}
+
+.loginButtonOpen .accountChevron {
+  transform: rotate(180deg);
+}
+
 .loginButtonLoggedOut {
-  color: var(--ocher);
+  background: var(--ocher);
+  color: var(--dark-brown);
 }
 
 .loginButtonLoggedOut:hover {
-  background-color: rgba(214, 156, 65, 0.12);
+  background: #c4923a;
+  color: var(--dark-brown);
 }
 
 .desktopLoginButton {
@@ -167,15 +226,14 @@
   align-items: center;
   gap: 6px;
   padding: 8px 14px;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--beige);
+  background: var(--sage-green);
+  border: none;
+  color: var(--coal-grey);
   font-size: 14px;
   font-weight: 700;
   font-family: 'Roboto', sans-serif;
   border-radius: 24px;
   cursor: pointer;
-  opacity: 0.8;
   position: absolute;
   right: 2rem;
   top: 50%;
@@ -188,27 +246,34 @@
 }
 
 .desktopLoginButton:hover {
-  opacity: 1;
-  border-color: var(--sage-green);
-  color: var(--sage-green);
+  background: #8fa888;
+  color: var(--coal-grey);
 }
 
 .desktopLoginButtonLoggedOut {
-  color: var(--ocher);
-  border-color: rgba(214, 156, 65, 0.7);
-  opacity: 1;
+  background: var(--ocher);
+  border: none;
+  color: var(--dark-brown);
 }
 
 .desktopLoginButtonLoggedOut:hover {
+  background: #c4923a;
   color: var(--dark-brown);
-  border-color: var(--ocher);
-  background: var(--ocher);
 }
 
 .desktopLoginButtonActive {
-  border-color: var(--sage-green);
-  color: var(--sage-green);
-  opacity: 1;
+  background: var(--sage-green);
+  color: var(--coal-grey);
+}
+
+.accountChevron {
+  font-size: 10px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.desktopLoginButtonOpen .accountChevron {
+  transform: rotate(180deg);
 }
 
 .desktopAuthArea {
@@ -308,6 +373,10 @@
 
   .logo {
     position: static;
+  }
+
+  .mitoxicosNavDesktop {
+    display: none;
   }
 
   .nav {
@@ -565,14 +634,19 @@
   }
 
   .mobileLoginButtonLoggedOut {
-    color: var(--ocher);
+    background: var(--ocher);
+    color: var(--dark-brown);
     opacity: 1;
     font-weight: 700;
+    border-top: none;
+    margin: 0.75rem 1rem 1rem;
+    border-radius: 24px;
+    justify-content: center;
   }
 
   .mobileLoginButtonLoggedOut:hover {
+    background: #c4923a;
     color: var(--dark-brown);
-    background: rgba(214, 156, 65, 0.95);
   }
 }
 
@@ -840,8 +914,7 @@
 }
 
 .desktopLoginButtonOpen {
-  border-color: var(--sage-green);
-  background: rgba(126, 164, 112, 0.12);
+  background: #8fa888;
 }
 
 .accountDrawer {
@@ -893,3 +966,8 @@
   }
 }
 
+@media (max-width: 1250px) {
+  .logoGroup .cartasNavItem.mitoxicosNavDesktop {
+    display: none;
+  }
+}

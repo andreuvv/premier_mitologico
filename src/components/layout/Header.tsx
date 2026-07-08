@@ -98,6 +98,102 @@ const Header = () => {
     navigate(`/players/${encodeURIComponent(premierPlayerName)}`);
   };
 
+  const mitoxicosNavItem = (
+    <div
+      className={`${styles.cartasNavItem} ${styles.mitoxicosNavDesktop}`}
+      onMouseEnter={() => setMitoxicosHovered(true)}
+      onMouseLeave={() => setMitoxicosHovered(false)}
+    >
+      {user ? (
+        <Link
+          to="/mitoxicos"
+          className={isMitoxicosActive ? styles.active : ''}
+        >
+          <FaUsers className={styles.icon} />
+          Mitoxicos
+          <FaChevronDown className={styles.chevron} />
+        </Link>
+      ) : (
+        <span className={styles.navDisabledItem} data-tooltip="Inicia Sesión para acceder">
+          <FaUsers className={styles.icon} />
+          Mitoxicos
+          <FaChevronDown className={styles.chevron} />
+        </span>
+      )}
+      {mitoxicosHovered && (
+        <div className={styles.cartasDropdown}>
+          {user ? (
+            <Link to="/mitoxicos" className={styles.cartasDropdownItem} onClick={() => setMitoxicosHovered(false)}>
+              <FaUsers className={styles.icon} />
+              Mitoxicos
+            </Link>
+          ) : (
+            <button className={`${styles.cartasDropdownItem} ${styles.cartasDropdownDisabled}`} disabled>
+              <FaUsers className={styles.icon} />
+              Mitoxicos
+            </button>
+          )}
+          {user ? (
+            <Link to="/torneo-premier" className={styles.cartasDropdownItem} onClick={() => setMitoxicosHovered(false)}>
+              <FaTrophy className={styles.icon} />
+              Torneo Premier
+              {monthYear && <span className={styles.badge}>{monthYear}</span>}
+            </Link>
+          ) : (
+            <button className={`${styles.cartasDropdownItem} ${styles.cartasDropdownDisabled}`} disabled>
+              <FaTrophy className={styles.icon} />
+              Torneo Premier
+            </button>
+          )}
+          {user ? (
+            <Link to="/players" className={styles.cartasDropdownItem} onClick={() => setMitoxicosHovered(false)}>
+              <FaUser className={styles.icon} />
+              Jugadores
+            </Link>
+          ) : (
+            <button className={`${styles.cartasDropdownItem} ${styles.cartasDropdownDisabled}`} disabled>
+              <FaUser className={styles.icon} />
+              Jugadores
+            </button>
+          )}
+          {user ? (
+            <Link to="/tournament-history" className={styles.cartasDropdownItem} onClick={() => setMitoxicosHovered(false)}>
+              <FaHistory className={styles.icon} />
+              Historial
+            </Link>
+          ) : (
+            <button className={`${styles.cartasDropdownItem} ${styles.cartasDropdownDisabled}`} disabled>
+              <FaHistory className={styles.icon} />
+              Historial
+            </button>
+          )}
+          {user ? (
+            <Link to="/tournament-info" className={styles.cartasDropdownItem} onClick={() => setMitoxicosHovered(false)}>
+              <FaClipboardList className={styles.icon} />
+              Info Torneo
+            </Link>
+          ) : (
+            <button className={`${styles.cartasDropdownItem} ${styles.cartasDropdownDisabled}`} disabled>
+              <FaClipboardList className={styles.icon} />
+              Info Torneo
+            </button>
+          )}
+          {user ? (
+            <Link to="/blog" className={styles.cartasDropdownItem} onClick={() => setMitoxicosHovered(false)}>
+              <FaBlog className={styles.icon} />
+              Blog
+            </Link>
+          ) : (
+            <button className={`${styles.cartasDropdownItem} ${styles.cartasDropdownDisabled}`} disabled>
+              <FaBlog className={styles.icon} />
+              Blog
+            </button>
+          )}
+        </div>
+      )}
+    </div>
+  );
+
   const accountMenuItems = (
     <>
       <Link to="/perfil" className={styles.accountMenuItem} onClick={closeAccountMenus}>
@@ -133,10 +229,13 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <Link to="/" className={styles.logo}>
-          <img src={`${import.meta.env.BASE_URL}assets/images/logo_app(1).svg`} alt="MYL Premier" />
-        </Link>
-        
+        <div className={styles.logoGroup}>
+          <Link to="/" className={styles.logo}>
+            <img src={`${import.meta.env.BASE_URL}assets/images/logo_app(1).svg`} alt="MYL Premier" />
+          </Link>
+          {mitoxicosNavItem}
+        </div>
+
         <nav className={styles.nav}>
           <Link 
             to="/" 
@@ -208,99 +307,6 @@ const Header = () => {
               </div>
             )}
           </div>
-          <div
-            className={styles.cartasNavItem}
-            onMouseEnter={() => setMitoxicosHovered(true)}
-            onMouseLeave={() => setMitoxicosHovered(false)}
-          >
-            {user ? (
-              <Link
-                to="/mitoxicos"
-                className={isMitoxicosActive ? styles.active : ''}
-              >
-                <FaUsers className={styles.icon} />
-                Mitoxicos
-                <FaChevronDown className={styles.chevron} />
-              </Link>
-            ) : (
-              <span className={styles.navDisabledItem} data-tooltip="Inicia Sesión para acceder">
-                <FaUsers className={styles.icon} />
-                Mitoxicos
-                <FaChevronDown className={styles.chevron} />
-              </span>
-            )}
-            {mitoxicosHovered && (
-              <div className={styles.cartasDropdown}>
-                {user ? (
-                  <Link to="/mitoxicos" className={styles.cartasDropdownItem} onClick={() => setMitoxicosHovered(false)}>
-                    <FaUsers className={styles.icon} />
-                    Mitoxicos
-                  </Link>
-                ) : (
-                  <button className={`${styles.cartasDropdownItem} ${styles.cartasDropdownDisabled}`} disabled>
-                    <FaUsers className={styles.icon} />
-                    Mitoxicos
-                  </button>
-                )}
-                {user ? (
-                  <Link to="/torneo-premier" className={styles.cartasDropdownItem} onClick={() => setMitoxicosHovered(false)}>
-                    <FaTrophy className={styles.icon} />
-                    Torneo Premier
-                    {monthYear && <span className={styles.badge}>{monthYear}</span>}
-                  </Link>
-                ) : (
-                  <button className={`${styles.cartasDropdownItem} ${styles.cartasDropdownDisabled}`} disabled>
-                    <FaTrophy className={styles.icon} />
-                    Torneo Premier
-                  </button>
-                )}
-                {user ? (
-                  <Link to="/players" className={styles.cartasDropdownItem} onClick={() => setMitoxicosHovered(false)}>
-                    <FaUser className={styles.icon} />
-                    Jugadores
-                  </Link>
-                ) : (
-                  <button className={`${styles.cartasDropdownItem} ${styles.cartasDropdownDisabled}`} disabled>
-                    <FaUser className={styles.icon} />
-                    Jugadores
-                  </button>
-                )}
-                {user ? (
-                  <Link to="/tournament-history" className={styles.cartasDropdownItem} onClick={() => setMitoxicosHovered(false)}>
-                    <FaHistory className={styles.icon} />
-                    Historial
-                  </Link>
-                ) : (
-                  <button className={`${styles.cartasDropdownItem} ${styles.cartasDropdownDisabled}`} disabled>
-                    <FaHistory className={styles.icon} />
-                    Historial
-                  </button>
-                )}
-                {user ? (
-                  <Link to="/tournament-info" className={styles.cartasDropdownItem} onClick={() => setMitoxicosHovered(false)}>
-                    <FaClipboardList className={styles.icon} />
-                    Info Torneo
-                  </Link>
-                ) : (
-                  <button className={`${styles.cartasDropdownItem} ${styles.cartasDropdownDisabled}`} disabled>
-                    <FaClipboardList className={styles.icon} />
-                    Info Torneo
-                  </button>
-                )}
-                {user ? (
-                  <Link to="/blog" className={styles.cartasDropdownItem} onClick={() => setMitoxicosHovered(false)}>
-                    <FaBlog className={styles.icon} />
-                    Blog
-                  </Link>
-                ) : (
-                  <button className={`${styles.cartasDropdownItem} ${styles.cartasDropdownDisabled}`} disabled>
-                    <FaBlog className={styles.icon} />
-                    Blog
-                  </button>
-                )}
-              </div>
-            )}
-          </div>
           <Link 
             to="/game-formats" 
             className={location.pathname === '/game-formats' ? styles.active : ''}
@@ -321,11 +327,13 @@ const Header = () => {
         {user ? (
           <button
             type="button"
-            className={styles.loginButton}
+            className={`${styles.loginButton} ${styles.loginButtonActive} ${accountDrawerOpen ? styles.loginButtonOpen : ''}`}
             onClick={() => setAccountDrawerOpen(true)}
             aria-label="Menú de cuenta"
+            aria-expanded={accountDrawerOpen}
           >
             <FaUser className={styles.icon} />
+            <FaChevronDown className={styles.accountChevron} />
           </button>
         ) : (
           <button className={`${styles.loginButton} ${styles.loginButtonLoggedOut}`} onClick={() => setAuthModalOpen(true)}>
@@ -345,6 +353,7 @@ const Header = () => {
           >
             <FaUser className={styles.icon} />
             {username}
+            <FaChevronDown className={styles.accountChevron} />
           </button>
           {accountMenuOpen && (
             <div className={styles.accountDropdown}>

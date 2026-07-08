@@ -10,7 +10,7 @@ interface LatestBlogCardProps {
   defaultOpen?: boolean;
 }
 
-const LatestBlogCard = ({ collapsible = false, defaultOpen = false }: LatestBlogCardProps) => {
+const LatestBlogCard = ({ collapsible = false, defaultOpen = true }: LatestBlogCardProps) => {
   const [latestPost, setLatestPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
   const [isOpen, setIsOpen] = useState(defaultOpen);

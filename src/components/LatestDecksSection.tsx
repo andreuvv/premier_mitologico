@@ -53,7 +53,6 @@ function formatDeckDate(dateString?: string | null): string {
 
 interface LatestDecksSectionProps {
   showTitle?: boolean;
-  layout?: 'grid' | 'stacked';
   contained?: boolean;
 }
 
@@ -106,7 +105,7 @@ const DeckCard = ({ deck }: { deck: PublicDeck }) => {
   );
 };
 
-const LatestDecksSection = ({ showTitle = true, layout = 'grid', contained = false }: LatestDecksSectionProps) => {
+const LatestDecksSection = ({ showTitle = true, contained = false }: LatestDecksSectionProps) => {
   const { loadAllDecks } = useUserDecks();
   const [latestPb, setLatestPb] = useState<PublicDeck | null>(null);
   const [latestFx, setLatestFx] = useState<PublicDeck | null>(null);
@@ -137,7 +136,7 @@ const LatestDecksSection = ({ showTitle = true, layout = 'grid', contained = fal
   const body = loading ? (
     <p className={styles.stateText}>Cargando mazos...</p>
   ) : (
-    <div className={`${styles.deckGrid} ${layout === 'stacked' ? styles.deckGridStacked : ''}`}>
+    <div className={styles.deckGrid}>
       <div className={styles.deckSlot}>
         <span className={styles.slotLabel}>Primer Bloque</span>
         {latestPb ? (

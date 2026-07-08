@@ -1,5 +1,6 @@
 .section {
   width: 100%;
+  container-type: inline-size;
 }
 
 .wrapper {
@@ -10,6 +11,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  container-type: inline-size;
 }
 
 .header {
@@ -44,12 +46,8 @@
 
 .deckGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem;
-}
-
-.deckGridStacked {
-  grid-template-columns: 1fr;
 }
 
 .deckSlot {
@@ -85,6 +83,7 @@
   display: flex;
   flex-direction: column;
   gap: 0;
+  min-width: 0;
   transition: border-color 0.15s;
 }
 
@@ -117,9 +116,9 @@
   padding-top: 0.9rem;
   padding-bottom: 0;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: 0.15rem;
 }
 
 .deckCardName {
@@ -129,14 +128,15 @@
   color: var(--beige);
   margin: 0;
   line-height: 1.3;
-  word-break: break-word;
+  min-width: 0;
+  width: 100%;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .exploreAuthor {
   font-size: 0.75rem;
   color: rgba(234, 221, 207, 0.5);
-  white-space: nowrap;
-  flex-shrink: 0;
 }
 
 .deckCardMeta {
@@ -220,8 +220,98 @@
   color: rgba(234, 221, 207, 0.5);
 }
 
-@media (max-width: 700px) {
+/* Sidebar / narrow containers: always 2 columns, scaled down */
+@container (max-width: 900px) {
   .deckGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+
+  .wrapper {
+    padding: 0.75rem;
+  }
+
+  .deckCardCover {
+    height: 100px;
+  }
+
+  .deckCardHeader,
+  .deckCardMeta,
+  .deckCardActions {
+    padding-left: 0.55rem;
+    padding-right: 0.55rem;
+  }
+
+  .deckCardHeader {
+    padding-top: 0.5rem;
+  }
+
+  .deckCardName {
+    font-size: 0.78rem;
+    line-height: 1.2;
+  }
+
+  .exploreAuthor {
+    font-size: 0.62rem;
+  }
+
+  .deckCardMeta {
+    gap: 0.18rem;
+    padding-top: 0.3rem;
+  }
+
+  .deckCardTag {
+    font-size: 0.52rem;
+    padding: 0.08rem 0.3rem;
+    letter-spacing: 0.01em;
+  }
+
+  .deckCardActions {
+    padding-top: 0.3rem;
+    padding-bottom: 0.55rem;
+  }
+
+  .deckViewBtn {
+    font-size: 0.62rem;
+    padding: 0.28rem 0.35rem;
+  }
+
+  .deckDateBlock {
+    padding: 0 0.55rem 0.5rem;
+  }
+
+  .deckDateLabel {
+    font-size: 0.58rem;
+  }
+
+  .slotLabel {
+    font-size: 0.62rem;
+  }
+
+  .emptySlot {
+    padding: 1rem 0.5rem;
+    font-size: 0.72rem;
+  }
+}
+
+@container (max-width: 520px) {
+  .deckGrid {
+    gap: 0.45rem;
+  }
+
+  .deckCardCover {
+    height: 85px;
+  }
+
+  .deckCardName {
+    font-size: 0.72rem;
+  }
+
+  .deckCardTag {
+    font-size: 0.48rem;
+  }
+
+  .deckViewBtn {
+    font-size: 0.58rem;
   }
 }
