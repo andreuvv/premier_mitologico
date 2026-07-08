@@ -3,6 +3,7 @@ import { useParams, useNavigate, useLocation, Link } from 'react-router-dom';
 import { tournamentAPI, Tournament, TournamentStanding, TournamentRound, TournamentRacesResponse, GlobalStanding } from '../services/tournamentAPI';
 import onlineTournamentService, { OnlineTournament } from '../services/onlineTournamentService';
 import OnlineTournamentPage from './OnlineTournamentPage';
+import GlobalStandingsTable from '../components/GlobalStandingsTable';
 import { FaTrophy, FaMedal, FaStar } from 'react-icons/fa';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 import styles from './TournamentHistoryPage.module.css';
@@ -574,62 +575,7 @@ const TournamentHistoryPage = () => {
             <p>Usa el menú lateral para navegar por el historial de torneos</p>
           </div>
         ) : view === 'global-standings' ? (
-          <div className={styles.globalStandingsView}>
-            <h1 className={styles.pageTitle}>Ranking Global</h1>
-            <div className={styles.tableContainer}>
-              <table className={styles.globalStandingsTable}>
-                <thead>
-                  <tr>
-                    <th className={styles.positionColumn}>#</th>
-                    <th className={styles.nameColumn}>Jugador</th>
-                    <th>🥇 1eros Lugares conseguidos</th>
-                    <th>🥈 2dos Lugares conseguidos</th>
-                    <th>🥉 3eros Lugares conseguidos</th>
-                    <th>Torneos Participados</th>
-                    <th>Raza más usada PB (Winrate%)</th>
-                    <th>Raza más usada FX (Winrate%)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {globalStandings.map((standing, index) => {
-                    let medalClass = '';
-                    let positionBadge = '';
-                    // Only the top 3 in the overall ranking get colors
-                    if (index === 0) {
-                      medalClass = styles.goldMedalRow;
-                      positionBadge = '🏆';
-                    } else if (index === 1) {
-                      medalClass = styles.silverMedalRow;
-                      positionBadge = '🥈';
-                    } else if (index === 2) {
-                      medalClass = styles.bronzeMedalRow;
-                      positionBadge = '🥉';
-                    }
-                    
-                    return (
-                      <tr key={standing.player_id} className={medalClass}>
-                        <td className={styles.positionColumn}>{index + 1}</td>
-                        <td className={styles.nameColumn}>
-                          <button 
-                            className={styles.playerLink}
-                            onClick={() => navigate(`/players/${encodeURIComponent(standing.player_name)}`)}
-                          >
-                            {positionBadge ? `${positionBadge} ` : ''}{standing.player_name}
-                          </button>
-                        </td>
-                        <td className={styles.centerColumn}>{standing.first_place_count}</td>
-                        <td className={styles.centerColumn}>{standing.second_place_count}</td>
-                        <td className={styles.centerColumn}>{standing.third_place_count}</td>
-                        <td className={styles.centerColumn}>{standing.tournaments_participated}</td>
-                        <td>{standing.most_played_race_pb ? `${standing.most_played_race_pb} (${standing.winrate_pb.toFixed(1)}%)` : '-'}</td>
-                        <td>{standing.most_played_race_bf ? `${standing.most_played_race_bf} (${standing.winrate_bf.toFixed(1)}%)` : '-'}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <GlobalStandingsTable standings={globalStandings} />
         ) : view === 'global-races' ? (
           <div className={styles.resumenView}>
             <h1 className={styles.pageTitle}>Razas Global - Todos los Torneos</h1>

@@ -1,0 +1,266 @@
+/* Shared building blocks */
+.logoSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  min-height: 400px;
+  aspect-ratio: auto;
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.logoContainer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at center, transparent 0%, transparent 60%, rgba(43, 37, 34, 0.4) 100%);
+  pointer-events: none;
+}
+
+.mainLogo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.contentSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.eventBadge {
+  background-color: var(--ocher);
+  color: var(--coal-grey);
+  padding: 0.35rem 0.75rem;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  width: fit-content;
+}
+
+.title {
+  font-size: 42px;
+  font-weight: 900;
+  font-family: 'Cyrodiil', serif;
+  color: var(--beige);
+  margin: 0 0 1rem 0;
+  text-align: left;
+}
+
+.description {
+  text-align: left;
+  font-family: 'Cyrodiil', serif;
+  color: var(--beige);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.formatBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.formatBadge {
+  color: var(--beige);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  backdrop-filter: blur(4px);
+  transition: background-color 0.2s;
+}
+
+.formatBadgeFX {
+  background-color: rgba(180, 60, 50, 0.45);
+  border: 1px solid rgba(180, 60, 50, 0.7);
+}
+
+.formatBadgeFX:hover {
+  background-color: rgba(180, 60, 50, 0.65);
+}
+
+.formatBadgePB {
+  background-color: rgba(214, 156, 65, 0.35);
+  border: 1px solid rgba(214, 156, 65, 0.65);
+}
+
+.formatBadgePB:hover {
+  background-color: rgba(214, 156, 65, 0.55);
+}
+
+.formatBadgeRound {
+  background-color: rgba(30, 100, 120, 0.4);
+  border: 1px solid rgba(30, 100, 120, 0.7);
+}
+
+.formatBadgeRound:hover {
+  background-color: rgba(30, 100, 120, 0.6);
+}
+
+.cardsRow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.cardWrapper {
+  min-width: 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.cardsRow .cardWrapper {
+  border: none;
+  border-radius: 0;
+}
+
+.undefinedRibbon {
+  position: absolute;
+  top: 80px;
+  right: -100px;
+  width: 400px;
+  padding: 1rem 0;
+  background-color: var(--brick-red);
+  color: var(--beige);
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transform: rotate(45deg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  letter-spacing: 0.05em;
+}
+
+/* Desktop variant */
+.mainContentTop {
+  display: flex;
+  flex-direction: column;
+  background: var(--dark-brown);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.mainHeroSection {
+  position: relative;
+  min-height: 480px;
+}
+
+.mainHeroSection .logoSection {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  min-height: auto;
+  background-color: transparent;
+}
+
+.mainHeroSection .logoContainer::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.5) 55%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+}
+
+.mainHeroSection .contentSection {
+  position: relative;
+  z-index: 2;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 480px;
+}
+
+.mainContentTop .cardsRow {
+  padding: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Mobile variant (always single column, hero always visible) */
+.mobileMainContentTop {
+  display: block;
+  background: var(--dark-brown);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.mobileHeroSection {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  min-height: 380px;
+}
+
+.mobileHeroSection .logoSection {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  min-height: 100%;
+  background-color: transparent;
+}
+
+.mobileHeroSection .logoContainer::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.25) 0%,
+    rgba(0, 0, 0, 0.55) 55%,
+    rgba(0, 0, 0, 0.78) 100%
+  );
+}
+
+.mobileHeroSection .contentSection {
+  position: relative;
+  z-index: 2;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 380px;
+  width: 100%;
+}
+
+.mobileMainContentTop .cardsRow {
+  padding: 1rem;
+  grid-template-columns: 1fr;
+}
+
+.mobileHeroSection .eventBadge {
+  position: static;
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 32px;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+}

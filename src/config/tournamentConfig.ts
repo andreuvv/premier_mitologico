@@ -30,16 +30,21 @@ export const tournamentConfig: TournamentConfig = {
   name: 'ESPADA SAGRADA EXTENDIDO - PB -',
   date: '2026-07-18',
   time: '15:00',
-  dateTentative: true, // Set to true to show the ribbon
+  dateTentative: false, // Set to true to show the ribbon
   /* location: {
     name: "Weshes",
     address: 'Jorge Quevedo 5464, Macul, Santiago',
     googleMapsQuery: 'Jorge+Quevedo+5464,+Macul,+Santiago',
   }, */
-  location: {
+  /* location: {
     name: "Casa de la Vale, los Gatos y el Piter.",
     address: 'Las Tórtolas 3273, Macul, Santiago',
     googleMapsQuery: 'Las+Tórtolas+3273,+Macul,+Santiago',
+  }, */
+  location: {
+    name: "Timmy TCG.",
+    address: 'Julio Montebruno 406, La Reina, Santiago',
+    googleMapsQuery: 'Julio+Montebruno+406,+La+Reina,+Santiago',
   },
   formats: [
     {

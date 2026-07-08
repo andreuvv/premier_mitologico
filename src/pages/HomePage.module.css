@@ -10,6 +10,10 @@
   align-items: start;
 }
 
+.bannerSection {
+  grid-column: 1 / -1;
+}
+
 /* Mobile Tabs Styles - Base */
 .mobileTabsContainer {
   display: none;
@@ -149,6 +153,11 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
+  }
+
+  .bannerSection {
+    grid-column: 1;
+    order: -2;
   }
 
   .mobileTabsContainer {
@@ -539,7 +548,6 @@
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  grid-column: 1 / -1;
 }
 
 .banlistHeader {

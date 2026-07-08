@@ -521,6 +521,12 @@
     background-color: transparent;
   }
 
+  .mobileGroupChevron {
+    font-size: 12px;
+    margin-left: auto;
+    opacity: 0.6;
+  }
+
   .desktopLoginButton {
     display: none;
   }
@@ -580,6 +586,16 @@
   position: relative;
   display: flex;
   align-items: center;
+}
+
+.chevron {
+  font-size: 10px;
+  margin-left: 2px;
+  transition: transform 0.2s ease;
+}
+
+.cartasNavItem:hover .chevron {
+  transform: rotate(180deg);
 }
 
 .cartasNavItem::after {

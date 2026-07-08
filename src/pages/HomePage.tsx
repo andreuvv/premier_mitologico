@@ -1,17 +1,13 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import CountdownCard from '../components/CountdownCard';
-import MapCard from '../components/MapCard';
-import LatestBlogCard from '../components/LatestBlogCard';
+import { Link } from 'react-router-dom';
 import ImportantDocumentsCard from '../components/ImportantDocumentsCard';
 import FormatSummaryRow from '../components/FormatSummaryRow';
-import OnlineTournamentBanner from '../components/OnlineTournamentBanner';
-import {FaTrophy, FaBook, FaBlog, FaGavel } from 'react-icons/fa';
+import FormatBanner from '../components/FormatBanner';
+import { FaBook, FaGavel } from 'react-icons/fa';
 import { BanListCard, BanListData, BanListFormat } from '../types/banlist';
 import { getLatestTwoMonthlyBanlists, MonthlyBanlistSnapshot } from '../services/monthlyBanlistService';
 import { banlistSummaries, lastUpdateMonth } from '../data/banlistSummary';
 import { ChangeType, FormatSummary } from '../data/banlistSummary';
-import { tournamentConfig, isTournamentPast, getTournamentMonthYear } from '../config/tournamentConfig';
 import styles from './HomePage.module.css';
 
 type RestrictionStatus = 'banned' | 'limitedX1' | 'limitedX2';
@@ -119,14 +115,9 @@ const formatDateFromYearMonth = (year: number, month: number): string => {
 };
 
 const HomePage = () => {
-  const navigate = useNavigate();
-  const [showSummaries, setShowSummaries] = useState(false);
-  const [activeTab, setActiveTab] = useState<'torneo' | 'documentos' | 'blog' | 'banlist'>('torneo');
+  const [activeTab, setActiveTab] = useState<'documentos' | 'banlist'>('documentos');
   const [computedSummaries, setComputedSummaries] = useState<Record<BanListFormat, FormatSummary[]>>(banlistSummaries);
   const [computedSummaryMonth, setComputedSummaryMonth] = useState<string>(lastUpdateMonth);
-  const isPast = isTournamentPast();
-  /* const isTodayTournament = isTournamentDay(); */
-  const monthYear = getTournamentMonthYear();
 
   useEffect(() => {
     const formats = Object.values(BanListFormat);
@@ -175,237 +166,53 @@ const HomePage = () => {
 
   return (
     <div className={styles.container}>
-      <OnlineTournamentBanner />
       <div className={styles.pageLayout}>
-        {/*<h2 className={styles.pageTitle}>Próximo Torneo Premier</h2>*/}
-        
-        {/* Mobile/Tablet Tab Navigation */}
+        <div className={styles.bannerSection}>
+          <FormatBanner />
+        </div>
+
         <div className={styles.mobileTabsContainer}>
-          <button 
-            className={`${styles.tabButton} ${activeTab === 'torneo' ? styles.active : ''}`}
-            onClick={() => setActiveTab('torneo')}
-          >
-            <FaTrophy className={styles.tabIcon} />
-            <span className={styles.tabLabel}>Torneo Premier</span>
-          </button>
-          <button 
+          <button
             className={`${styles.tabButton} ${activeTab === 'documentos' ? styles.active : ''}`}
             onClick={() => setActiveTab('documentos')}
           >
             <FaBook className={styles.tabIcon} />
             <span className={styles.tabLabel}>Docs Oficiales</span>
           </button>
-          <button 
+          <button
             className={`${styles.tabButton} ${activeTab === 'banlist' ? styles.active : ''}`}
             onClick={() => setActiveTab('banlist')}
           >
             <FaGavel className={styles.tabIcon} />
             <span className={styles.tabLabel}>Resumen BanList</span>
           </button>
-          <button 
-            className={`${styles.tabButton} ${activeTab === 'blog' ? styles.active : ''}`}
-            onClick={() => setActiveTab('blog')}
-          >
-            <FaBlog className={styles.tabIcon} />
-            <span className={styles.tabLabel}>Último Blog</span>
-          </button>
         </div>
 
-        <div className={styles.banlistSection}>
-          <div className={styles.banlistHeader}>
-            <h3 className={styles.banlistTitle}>Resumen Actualización Ban List {computedSummaryMonth}</h3>
-            <button 
-              className={styles.toggleButton}
-              onClick={() => setShowSummaries(!showSummaries)}
-            >
-              {showSummaries ? 'Ocultar' : 'Mostrar'}
-            </button>
-          </div>
-          {showSummaries && (
-            <>
+        <div className={styles.mainContent}>
+          <div className={styles.desktopView}>
+            <div className={styles.banlistSection}>
+              <div className={styles.banlistHeader}>
+                <h3 className={styles.banlistTitle}>Resumen Actualización Ban List {computedSummaryMonth}</h3>
+              </div>
               <p className={styles.disclaimer}>Cartas no mencionadas mantienen restricciones del mes anterior</p>
               <FormatSummaryRow summaries={computedSummaries} />
               <Link to="/banlist" className={styles.banlistLink}>
                 Ver Ban List completa
               </Link>
-            </>
-          )}
-        </div>
-
-        <div className={styles.mainContent}>
-          {/* Desktop Layout */}
-          <div className={styles.desktopView}>
-            <div className={styles.mainContentTop}>
-            <div className={styles.mainHeroSection} onClick={() => navigate('/torneo-premier')} style={{ cursor: 'pointer' }}>
-            {tournamentConfig.dateTentative && (
-              <div className={styles.undefinedRibbon}>
-                Fecha y Ubicación aún NO definidas
-              </div>
-            )}
-            <div className={styles.logoSection}>
-              <div className={styles.logoContainer}>
-                <img 
-                  src={`${import.meta.env.BASE_URL}assets/images/premier_image.png`} 
-                  alt="Premier Tournament Image" 
-                  className={styles.mainLogo}
-                />
-              </div>
-            </div>
-            
-            <div className={styles.contentSection}>
-              <div className={styles.eventBadge}>Torneo Premier</div>
-              <h1 className={styles.title}>
-                {tournamentConfig.name} {isPast ? (
-                  <span style={{ fontWeight: 'bold', fontStyle: 'italic' }}>TBD</span>
-                ) : (
-                  monthYear && <span>{monthYear}</span>
-                )}
-              </h1>
-              <p className={styles.description}>
-                Prepara tus mazos para el torneo más esperado del reino. Gloria y premios esperan a los mejores duelistas.
-              </p>
-              
-              <div className={styles.formatBadges}>
-                {tournamentConfig.formats.map((format) => {
-                  const name = format.shortName || format.name;
-                  const colorClass = name.startsWith('FX') ? styles.formatBadgeFX
-                    : name.startsWith('PB') ? styles.formatBadgePB
-                    : styles.formatBadge;
-                  return (
-                    <Link key={format.name} to={format.link} className={`${styles.formatBadge} ${colorClass}`} onClick={(e) => e.stopPropagation()}>
-                      {name}
-                    </Link>
-                  );
-                })}
-                <Link to={tournamentConfig.roundType.link} className={`${styles.formatBadge} ${styles.formatBadgeRound}`} onClick={(e) => e.stopPropagation()}>
-                  {tournamentConfig.roundType.name}
-                </Link>
-              </div>
-
-              
-              {/* {isTodayTournament && (
-                <div className={styles.quickAccess}>
-                  <Link to="/fixture" className={styles.quickCard} style={{ backgroundColor: 'var(--sage-green)' }} onClick={(e) => e.stopPropagation()}>
-                    <FaChartBar className={styles.cardIcon} />
-                    <span className={styles.cardText}>Fixture {monthYear}</span>
-                    <span className={styles.cardSubtext}>Ver Emparejamientos</span>
-                  </Link>
-                  <Link to="/standings" className={styles.quickCard} style={{ backgroundColor: 'var(--petrol-blue)' }} onClick={(e) => e.stopPropagation()}>
-                    <FaTrophy className={styles.cardIcon} />
-                    <span className={styles.cardText}>Standings {monthYear}</span>
-                    <span className={styles.cardSubtext}>Ver Tabla de Posiciones</span>
-                  </Link>
-                </div>
-              )} */}
-              
-            </div>
-            </div>
-
-            <div className={styles.cardsRow}>
-              <div className={styles.cardWrapper}>
-                <CountdownCard />
-              </div>
-              <div className={styles.cardWrapper}>
-                <MapCard />
-              </div>
-            </div>
             </div>
           </div>
         </div>
 
-        {/* Desktop Sidebar */}
         <div className={styles.desktopSidebar}>
           <div className={styles.cardWrapper}>
             <ImportantDocumentsCard />
           </div>
         </div>
 
-        {/* Mobile/Tablet Tab Content */}
         <div className={styles.mobileTabContent}>
-          {activeTab === 'torneo' && (
-            <div className={styles.mobileMainContentTop}>
-              {tournamentConfig.dateTentative && (
-                <div className={styles.undefinedRibbon}>
-                  Fecha y Ubicación aún NO definidas
-                </div>
-              )}
-
-              <div className={styles.mobileHeroSection} onClick={() => navigate('/torneo-premier')} style={{ cursor: 'pointer' }}>
-                <div className={styles.logoSection}>
-                  <div className={styles.logoContainer}>
-                    <img 
-                      src={`${import.meta.env.BASE_URL}assets/images/premier_image.png`} 
-                      alt="Premier Tournament Image" 
-                      className={styles.mainLogo}
-                    />
-                  </div>
-                </div>
-
-                <div className={styles.contentSection}>
-                  <div className={styles.eventBadge}>Torneo Premier</div>
-                  <h1 className={styles.title}>
-                    {tournamentConfig.name} {isPast ? (
-                      <span style={{ fontWeight: 'bold', fontStyle: 'italic' }}>TBD</span>
-                    ) : (
-                      monthYear && <span>{monthYear}</span>
-                    )}
-                  </h1>
-                  <p className={styles.description}>
-                    Prepara tus mazos para el torneo más esperado del reino. Gloria y premios esperan a los mejores duelistas.
-                  </p>
-
-                  <div className={styles.formatBadges}>
-                    {tournamentConfig.formats.map((format) => {
-                      const name = format.shortName || format.name;
-                      const colorClass = name.startsWith('FX') ? styles.formatBadgeFX
-                        : name.startsWith('PB') ? styles.formatBadgePB
-                        : styles.formatBadge;
-                      return (
-                        <Link key={format.name} to={format.link} className={`${styles.formatBadge} ${colorClass}`} onClick={(e) => e.stopPropagation()}>
-                          {name}
-                        </Link>
-                      );
-                    })}
-                    <Link to={tournamentConfig.roundType.link} className={`${styles.formatBadge} ${styles.formatBadgeRound}`} onClick={(e) => e.stopPropagation()}>
-                      {tournamentConfig.roundType.name}
-                    </Link>
-                  </div>
-
-                  {/* {isTodayTournament && (
-                    <div className={styles.quickAccess}>
-                      <Link to="/fixture" className={styles.quickCard} style={{ backgroundColor: 'var(--sage-green)' }} onClick={(e) => e.stopPropagation()}>
-                        <FaChartBar className={styles.cardIcon} />
-                        <span className={styles.cardText}>Fixture {monthYear}</span>
-                        <span className={styles.cardSubtext}>Ver Emparejamientos</span>
-                      </Link>
-                      <Link to="/standings" className={styles.quickCard} style={{ backgroundColor: 'var(--petrol-blue)' }} onClick={(e) => e.stopPropagation()}>
-                        <FaTrophy className={styles.cardIcon} />
-                        <span className={styles.cardText}>Standings {monthYear}</span>
-                        <span className={styles.cardSubtext}>Ver Tabla de Posiciones</span>
-                      </Link>
-                    </div>
-                  )} */}
-                </div>
-              </div>
-
-              <div className={styles.cardsRow}>
-                <div className={styles.cardWrapper}>
-                  <CountdownCard />
-                </div>
-                <div className={styles.cardWrapper}>
-                  <MapCard />
-                </div>
-              </div>
-            </div>
-          )}
           {activeTab === 'documentos' && (
             <div className={styles.cardWrapper}>
               <ImportantDocumentsCard />
-            </div>
-          )}
-          {activeTab === 'blog' && (
-            <div className={styles.cardWrapper}>
-              <LatestBlogCard />
             </div>
           )}
           {activeTab === 'banlist' && (
@@ -421,7 +228,6 @@ const HomePage = () => {
             </div>
           )}
         </div>
-
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import styles from './App.module.css';
 
 // Lazy load page components
 const HomePage = lazy(() => import('./pages/HomePage'));
+const MitoxicosHomePage = lazy(() => import('./pages/MitoxicosHomePage'));
 const TournamentInfoPage = lazy(() => import('./pages/TournamentInfoPage'));
 const GameFormatsPage = lazy(() => import('./pages/GameFormatsPage'));
 const BanlistPage = lazy(() => import('./pages/BanlistPage'));
@@ -42,6 +43,7 @@ function App() {
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/mitoxicos" element={<MitoxicosHomePage />} />
             <Route path="/tournament-info" element={<TournamentInfoPage />} />
             <Route path="/tournament-info/:section" element={<TournamentInfoPage />} />
             <Route path="/tournament-info/:section/:subsection" element={<TournamentInfoPage />} />

@@ -2,9 +2,8 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   FaHome, FaClipboardList, FaBan, FaGamepad, FaHammer, FaTrophy, FaHistory,
-  FaUser, FaBlog, FaBook, FaSignInAlt, FaSignOutAlt, FaChartPie,
+  FaUser, FaBlog, FaBook, FaSignInAlt, FaSignOutAlt, FaChartPie, FaChevronDown, FaUsers,
 } from 'react-icons/fa';
-import LatestBlogCard from '../LatestBlogCard';
 import { getTournamentMonthYear } from '../../config/tournamentConfig';
 import { useAuth } from '../../hooks/useAuth';
 import { loadProfileById } from '../../hooks/useUserProfile';
@@ -19,13 +18,25 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [accountDrawerOpen, setAccountDrawerOpen] = useState(false);
   const [accountMenuOpen, setAccountMenuOpen] = useState(false);
-  const [blogHovered, setBlogHovered] = useState(false);
   const [cartasHovered, setCartasHovered] = useState(false);
+  const [mitoxicosHovered, setMitoxicosHovered] = useState(false);
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [signOutConfirmOpen, setSignOutConfirmOpen] = useState(false);
   const [premierPlayerName, setPremierPlayerName] = useState<string | null>(null);
   const accountMenuRef = useRef<HTMLDivElement>(null);
   const monthYear = getTournamentMonthYear();
+
+  const isMitoxicosActive =
+    location.pathname === '/mitoxicos'
+    || location.pathname.startsWith('/mitoxicos/')
+    || location.pathname === '/torneo-premier'
+    || location.pathname.startsWith('/torneo-premier/')
+    || location.pathname === '/fixture'
+    || location.pathname === '/standings'
+    || location.pathname.startsWith('/players')
+    || location.pathname.startsWith('/tournament-history')
+    || location.pathname === '/tournament-info'
+    || location.pathname.startsWith('/blog');
 
   const username = user?.user_metadata?.username ?? user?.email?.split('@')[0] ?? 'Usuario';
 
@@ -134,35 +145,6 @@ const Header = () => {
             <FaHome className={styles.icon} />
             Inicio
           </Link>
-          {user ? (
-            <Link 
-              to="/torneo-premier" 
-              className={location.pathname === '/torneo-premier' || location.pathname.startsWith('/torneo-premier/') || location.pathname === '/fixture' || location.pathname === '/standings' ? styles.active : ''}
-            >
-              <FaTrophy className={styles.icon} />
-              Torneo Premier
-              {monthYear && <span className={styles.badge}>{monthYear}</span>}
-            </Link>
-          ) : (
-            <span className={styles.navDisabledItem} data-tooltip="Inicia Sesión para acceder">
-              <FaTrophy className={styles.icon} />
-              Torneo Premier
-            </span>
-          )}
-          {user ? (
-            <Link 
-              to="/players" 
-              className={location.pathname.startsWith('/players') ? styles.active : ''}
-            >
-              <FaUser className={styles.icon} />
-              Jugadores
-            </Link>
-          ) : (
-            <span className={styles.navDisabledItem} data-tooltip="Inicia Sesión para acceder">
-              <FaUser className={styles.icon} />
-              Jugadores
-            </span>
-          )}
           <Link 
             to="/banlist" 
             className={location.pathname === '/banlist' ? styles.active : ''}
@@ -188,6 +170,7 @@ const Header = () => {
             >
               <FaBook className={styles.icon} />
               Cartas
+              <FaChevronDown className={styles.chevron} />
             </Link>
             {cartasHovered && (
               <div className={styles.cartasDropdown}>
@@ -225,34 +208,88 @@ const Header = () => {
               </div>
             )}
           </div>
-          {user ? (
-            <Link 
-              to="/tournament-history" 
-              className={location.pathname.startsWith('/tournament-history') ? styles.active : ''}
-            >
-              <FaHistory className={styles.icon} />
-              Historial
-            </Link>
-          ) : (
-            <span className={styles.navDisabledItem} data-tooltip="Inicia Sesión para acceder">
-              <FaHistory className={styles.icon} />
-              Historial
-            </span>
-          )}
-          {user ? (
-            <Link 
-              to="/tournament-info" 
-              className={location.pathname === '/tournament-info' ? styles.active : ''}
-            >
-              <FaClipboardList className={styles.icon} />
-              Info Torneo
-            </Link>
-          ) : (
-            <span className={styles.navDisabledItem} data-tooltip="Inicia Sesión para acceder">
-              <FaClipboardList className={styles.icon} />
-              Info Torneo
-            </span>
-          )}
+          <div
+            className={styles.cartasNavItem}
+            onMouseEnter={() => setMitoxicosHovered(true)}
+            onMouseLeave={() => setMitoxicosHovered(false)}
+          >
+            {user ? (
+              <Link
+                to="/mitoxicos"
+                className={isMitoxicosActive ? styles.active : ''}
+              >
+                <FaUsers className={styles.icon} />
+                Mitoxicos
+                <FaChevronDown className={styles.chevron} />
+              </Link>
+            ) : (
+              <span className={styles.navDisabledItem} data-tooltip="Inicia Sesión para acceder">
+                <FaUsers className={styles.icon} />
+                Mitoxicos
+                <FaChevronDown className={styles.chevron} />
+              </span>
+            )}
+            {mitoxicosHovered && (
+              <div className={styles.cartasDropdown}>
+                {user ? (
+                  <Link to="/torneo-premier" className={styles.cartasDropdownItem} onClick={() => setMitoxicosHovered(false)}>
+                    <FaTrophy className={styles.icon} />
+                    Torneo Premier
+                    {monthYear && <span className={styles.badge}>{monthYear}</span>}
+                  </Link>
+                ) : (
+                  <button className={`${styles.cartasDropdownItem} ${styles.cartasDropdownDisabled}`} disabled>
+                    <FaTrophy className={styles.icon} />
+                    Torneo Premier
+                  </button>
+                )}
+                {user ? (
+                  <Link to="/players" className={styles.cartasDropdownItem} onClick={() => setMitoxicosHovered(false)}>
+                    <FaUser className={styles.icon} />
+                    Jugadores
+                  </Link>
+                ) : (
+                  <button className={`${styles.cartasDropdownItem} ${styles.cartasDropdownDisabled}`} disabled>
+                    <FaUser className={styles.icon} />
+                    Jugadores
+                  </button>
+                )}
+                {user ? (
+                  <Link to="/tournament-history" className={styles.cartasDropdownItem} onClick={() => setMitoxicosHovered(false)}>
+                    <FaHistory className={styles.icon} />
+                    Historial
+                  </Link>
+                ) : (
+                  <button className={`${styles.cartasDropdownItem} ${styles.cartasDropdownDisabled}`} disabled>
+                    <FaHistory className={styles.icon} />
+                    Historial
+                  </button>
+                )}
+                {user ? (
+                  <Link to="/tournament-info" className={styles.cartasDropdownItem} onClick={() => setMitoxicosHovered(false)}>
+                    <FaClipboardList className={styles.icon} />
+                    Info Torneo
+                  </Link>
+                ) : (
+                  <button className={`${styles.cartasDropdownItem} ${styles.cartasDropdownDisabled}`} disabled>
+                    <FaClipboardList className={styles.icon} />
+                    Info Torneo
+                  </button>
+                )}
+                {user ? (
+                  <Link to="/blog" className={styles.cartasDropdownItem} onClick={() => setMitoxicosHovered(false)}>
+                    <FaBlog className={styles.icon} />
+                    Blog
+                  </Link>
+                ) : (
+                  <button className={`${styles.cartasDropdownItem} ${styles.cartasDropdownDisabled}`} disabled>
+                    <FaBlog className={styles.icon} />
+                    Blog
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
           <Link 
             to="/game-formats" 
             className={location.pathname === '/game-formats' ? styles.active : ''}
@@ -260,32 +297,6 @@ const Header = () => {
             <FaGamepad className={styles.icon} />
             Formatos
           </Link>
-          {user ? (
-            <div 
-              className={styles.blogNavItem}
-              onMouseEnter={() => setBlogHovered(true)}
-              onMouseLeave={() => setBlogHovered(false)}
-            >
-              <Link 
-                to="/blog" 
-                className={location.pathname.startsWith('/blog') ? styles.active : ''}
-              >
-                <FaBlog className={styles.icon} />
-                Blog
-              </Link>
-              {blogHovered && (
-                <div className={styles.blogPopover}>
-                  <h3 className={styles.blogPopoverTitle}>Último Post</h3>
-                  <LatestBlogCard />
-                </div>
-              )}
-            </div>
-          ) : (
-            <span className={styles.navDisabledItem} data-tooltip="Inicia Sesión para acceder">
-              <FaBlog className={styles.icon} />
-              Blog
-            </span>
-          )}
 
         </nav>
 
@@ -349,51 +360,6 @@ const Header = () => {
           <FaHome className={styles.icon} />
           Inicio
         </Link>
-        {user ? (
-          <Link to="/torneo-premier" onClick={() => setMobileMenuOpen(false)}>
-            <FaTrophy className={styles.icon} />
-            Torneo Premier
-            {monthYear && <span className={styles.mobileBadge}>{monthYear}</span>}
-          </Link>
-        ) : (
-          <span className={styles.mobileNavDisabledItem} data-tooltip="Inicia Sesión para acceder">
-            <FaTrophy className={styles.icon} />
-            Torneo Premier
-          </span>
-        )}
-        {user ? (
-          <Link to="/tournament-history" onClick={() => setMobileMenuOpen(false)}>
-            <FaHistory className={styles.icon} />
-            Historial
-          </Link>
-        ) : (
-          <span className={styles.mobileNavDisabledItem} data-tooltip="Inicia Sesión para acceder">
-            <FaHistory className={styles.icon} />
-            Historial
-          </span>
-        )}
-        {user ? (
-          <Link to="/players" onClick={() => setMobileMenuOpen(false)}>
-            <FaUser className={styles.icon} />
-            Jugadores
-          </Link>
-        ) : (
-          <span className={styles.mobileNavDisabledItem} data-tooltip="Inicia Sesión para acceder">
-            <FaUser className={styles.icon} />
-            Jugadores
-          </span>
-        )}
-        {user ? (
-          <Link to="/tournament-info" onClick={() => setMobileMenuOpen(false)}>
-            <FaClipboardList className={styles.icon} />
-            Info Torneo
-          </Link>
-        ) : (
-          <span className={styles.mobileNavDisabledItem} data-tooltip="Inicia Sesión para acceder">
-            <FaClipboardList className={styles.icon} />
-            Info Torneo
-          </span>
-        )}
         <Link to="/banlist" onClick={() => setMobileMenuOpen(false)}>
           <FaBan className={styles.icon} />
           Ban List
@@ -401,6 +367,7 @@ const Header = () => {
         <Link to="/coleccion" onClick={() => setMobileMenuOpen(false)}>
           <FaBook className={styles.icon} />
           Cartas
+          <FaChevronDown className={styles.mobileGroupChevron} />
         </Link>
         <Link
           to="/deck-builder"
@@ -421,21 +388,79 @@ const Header = () => {
             Carpeta
           </button>
         )}
-        <Link to="/game-formats" onClick={() => setMobileMenuOpen(false)}>
-          <FaGamepad className={styles.icon} />
-          Formatos
-        </Link>
         {user ? (
-          <Link to="/blog" onClick={() => setMobileMenuOpen(false)}>
+          <Link to="/mitoxicos" onClick={() => setMobileMenuOpen(false)}>
+            <FaUsers className={styles.icon} />
+            Mitoxicos
+            <FaChevronDown className={styles.mobileGroupChevron} />
+          </Link>
+        ) : (
+          <span className={styles.mobileNavDisabledItem} data-tooltip="Inicia Sesión para acceder">
+            <FaUsers className={styles.icon} />
+            Mitoxicos
+            <FaChevronDown className={styles.mobileGroupChevron} />
+          </span>
+        )}
+        {user ? (
+          <Link to="/torneo-premier" className={styles.mobileSubItem} onClick={() => setMobileMenuOpen(false)}>
+            <FaTrophy className={styles.icon} />
+            Torneo Premier
+            {monthYear && <span className={styles.mobileBadge}>{monthYear}</span>}
+          </Link>
+        ) : (
+          <button className={`${styles.mobileSubItem} ${styles.mobileSubItemDisabled}`} disabled>
+            <FaTrophy className={styles.icon} />
+            Torneo Premier
+          </button>
+        )}
+        {user ? (
+          <Link to="/players" className={styles.mobileSubItem} onClick={() => setMobileMenuOpen(false)}>
+            <FaUser className={styles.icon} />
+            Jugadores
+          </Link>
+        ) : (
+          <button className={`${styles.mobileSubItem} ${styles.mobileSubItemDisabled}`} disabled>
+            <FaUser className={styles.icon} />
+            Jugadores
+          </button>
+        )}
+        {user ? (
+          <Link to="/tournament-history" className={styles.mobileSubItem} onClick={() => setMobileMenuOpen(false)}>
+            <FaHistory className={styles.icon} />
+            Historial
+          </Link>
+        ) : (
+          <button className={`${styles.mobileSubItem} ${styles.mobileSubItemDisabled}`} disabled>
+            <FaHistory className={styles.icon} />
+            Historial
+          </button>
+        )}
+        {user ? (
+          <Link to="/tournament-info" className={styles.mobileSubItem} onClick={() => setMobileMenuOpen(false)}>
+            <FaClipboardList className={styles.icon} />
+            Info Torneo
+          </Link>
+        ) : (
+          <button className={`${styles.mobileSubItem} ${styles.mobileSubItemDisabled}`} disabled>
+            <FaClipboardList className={styles.icon} />
+            Info Torneo
+          </button>
+        )}
+        {user ? (
+          <Link to="/blog" className={styles.mobileSubItem} onClick={() => setMobileMenuOpen(false)}>
             <FaBlog className={styles.icon} />
             Blog
           </Link>
         ) : (
-          <span className={styles.mobileNavDisabledItem} data-tooltip="Inicia Sesión para acceder">
+          <button className={`${styles.mobileSubItem} ${styles.mobileSubItemDisabled}`} disabled>
             <FaBlog className={styles.icon} />
             Blog
-          </span>
+          </button>
         )}
+        <Link to="/game-formats" onClick={() => setMobileMenuOpen(false)}>
+          <FaGamepad className={styles.icon} />
+          Formatos
+        </Link>
         <div className={styles.mobileMenuSpacer} />
         {!user && (
           <button className={`${styles.mobileLoginButton} ${styles.mobileLoginButtonLoggedOut}`} onClick={() => { setAuthModalOpen(true); setMobileMenuOpen(false); }}>

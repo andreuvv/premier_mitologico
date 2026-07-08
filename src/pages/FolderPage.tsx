@@ -5,6 +5,7 @@ import { loadCollectionCards } from '../services/collectionService';
 import CardGrid, { type SimpleCard } from '../components/CardGrid';
 import CollectionFilters, { type FilterParams } from '../components/CollectionFilters';
 import CardDetailModal from '../components/CardDetailModal';
+import FormatBanner from '../components/FormatBanner';
 import { useAuth } from '../hooks/useAuth';
 import { useUserCollection } from '../hooks/useUserCollection';
 import { useUserCardList } from '../hooks/useUserCardList';
@@ -165,6 +166,16 @@ const FolderPage = () => {
     setSelectedCard(card);
   };
 
+  const handleFormatChange = (format: CollectionFormat) => {
+    setSelectedFormat(format);
+    setSidebarOpen(false);
+    setSearchParams(() => {
+      const next = new URLSearchParams();
+      next.set('format', format);
+      return next;
+    }, { replace: true });
+  };
+
   const getFormatLabel = (format: CollectionFormat): string => {
     switch (format) {
       case CollectionFormat.PRIMER_BLOQUE:
@@ -213,23 +224,12 @@ const FolderPage = () => {
         />
       )}
 
-      <div className={styles.formatTabs}>
-        {Object.values(CollectionFormat).map(format => (
-          <button
-            key={format}
-            className={`${styles.tab} ${selectedFormat === format ? styles.active : ''}`}
-            onClick={() => {
-              setSelectedFormat(format);
-              setSearchParams(() => {
-                const next = new URLSearchParams();
-                next.set('format', format);
-                return next;
-              }, { replace: true });
-            }}
-          >
-            {getFormatLabel(format)}
-          </button>
-        ))}
+      <div className={styles.formatBannerWrap}>
+        <FormatBanner
+          variant="select"
+          selectedFormat={selectedFormat}
+          onFormatChange={handleFormatChange}
+        />
       </div>
 
       {loading ? (

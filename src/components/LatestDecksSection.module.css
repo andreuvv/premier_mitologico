@@ -1,0 +1,227 @@
+.section {
+  width: 100%;
+}
+
+.wrapper {
+  width: 100%;
+  background: var(--dark-brown);
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.headerIcon {
+  font-size: 1.2rem;
+  color: var(--ocher);
+  flex-shrink: 0;
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 900;
+  font-family: 'Cyrodiil', serif;
+  color: var(--beige);
+  margin: 0;
+}
+
+.section > .sectionTitle {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.stateText {
+  color: var(--beige);
+  opacity: 0.7;
+}
+
+.deckGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.deckGridStacked {
+  grid-template-columns: 1fr;
+}
+
+.deckSlot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.slotLabel {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ocher);
+}
+
+.emptySlot {
+  background: var(--dark-brown);
+  border: 1px dashed rgba(214, 156, 65, 0.35);
+  border-radius: 10px;
+  padding: 2rem 1.25rem;
+  text-align: center;
+  color: rgba(234, 221, 207, 0.6);
+  font-size: 0.9rem;
+}
+
+.deckCard {
+  background: var(--dark-brown);
+  border: 1px solid rgba(214, 156, 65, 0.35);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transition: border-color 0.15s;
+}
+
+.deckCard:hover {
+  border-color: var(--ocher);
+}
+
+.deckCardCover {
+  width: 100%;
+  height: 230px;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.deckCardCoverImg {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.deckCardHeader,
+.deckCardMeta,
+.deckCardActions {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.deckCardHeader {
+  padding-top: 0.9rem;
+  padding-bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.deckCardName {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: 'Cyrodiil', serif;
+  color: var(--beige);
+  margin: 0;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.exploreAuthor {
+  font-size: 0.75rem;
+  color: rgba(234, 221, 207, 0.5);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.deckCardMeta {
+  padding-top: 0.5rem;
+  padding-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.deckCardTag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(214, 156, 65, 0.12);
+  border: 1px solid rgba(214, 156, 65, 0.3);
+  color: var(--ocher);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.deckCardTagEdition {
+  background: rgba(75, 139, 163, 0.12);
+  border-color: rgba(75, 139, 163, 0.4);
+  color: #a8d4e8;
+}
+
+.deckCardTagFormatPb {
+  background: rgba(214, 156, 65, 0.12);
+  border-color: rgba(214, 156, 65, 0.3);
+  color: var(--ocher);
+}
+
+.deckCardTagFormatFx {
+  background: rgba(201, 67, 56, 0.13);
+  border-color: rgba(201, 67, 56, 0.42);
+  color: #efb2ac;
+}
+
+.deckCardTagRace {
+  background: rgba(126, 164, 112, 0.16);
+  border-color: rgba(126, 164, 112, 0.45);
+  color: #b7d3ab;
+}
+
+.deckCardActions {
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.deckViewBtn {
+  flex: 1;
+  background: rgba(75, 139, 163, 0.12);
+  border: 1px solid var(--petrol-blue);
+  color: #a8d4e8;
+  border-radius: 6px;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.deckViewBtn:hover {
+  background: rgba(75, 139, 163, 0.28);
+}
+
+.deckDateBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0 1.25rem 0.9rem;
+}
+
+.deckDateLabel {
+  font-size: 0.72rem;
+  color: rgba(234, 221, 207, 0.5);
+}
+
+@media (max-width: 700px) {
+  .deckGrid {
+    grid-template-columns: 1fr;
+  }
+}

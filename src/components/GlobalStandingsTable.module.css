@@ -1,0 +1,184 @@
+.globalStandingsView {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.pageTitle {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--beige);
+  margin-bottom: 0.5rem;
+  font-family: 'Cyrodiil', serif;
+}
+
+.emptyState {
+  background: var(--dark-brown);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  color: var(--beige);
+  opacity: 0.8;
+}
+
+.tableContainer {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+  background: var(--dark-brown);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  -webkit-overflow-scrolling: touch;
+}
+
+.globalStandingsTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.globalStandingsTable thead {
+  background: linear-gradient(135deg, var(--petrol-blue) 0%, var(--sage-green) 100%);
+  color: var(--beige);
+}
+
+.globalStandingsTable th {
+  padding: 1rem 0.5rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.globalStandingsTable td {
+  padding: 1rem 0.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--beige);
+}
+
+.globalStandingsTable tbody tr {
+  border-bottom: 1px solid #4a4a4a;
+  transition: background-color 0.2s ease;
+}
+
+.globalStandingsTable tbody tr:hover {
+  background-color: #3a3a3a;
+}
+
+.goldMedalRow {
+  background-color: rgba(212, 175, 55, 0.3);
+}
+
+.goldMedalRow:hover {
+  background-color: rgba(212, 175, 55, 0.4);
+}
+
+.silverMedalRow {
+  background-color: rgba(192, 192, 192, 0.28);
+}
+
+.silverMedalRow:hover {
+  background-color: rgba(192, 192, 192, 0.38);
+}
+
+.bronzeMedalRow {
+  background-color: rgba(205, 127, 50, 0.28);
+}
+
+.bronzeMedalRow:hover {
+  background-color: rgba(205, 127, 50, 0.38);
+}
+
+.positionColumn {
+  width: 50px;
+  text-align: center !important;
+  font-weight: 700;
+  color: var(--coal-grey);
+}
+
+.nameColumn {
+  text-align: left !important;
+  font-weight: 600;
+  min-width: 150px;
+}
+
+.centerColumn {
+  font-weight: 600;
+  color: var(--ocher);
+}
+
+.playerLink {
+  background: none;
+  border: none;
+  color: var(--beige);
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+  text-decoration: none;
+  padding: 0;
+  text-align: left;
+  display: inline;
+}
+
+.playerLink:hover {
+  color: var(--petrol-blue);
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .pageTitle {
+    font-size: 1.5rem;
+  }
+
+  .globalStandingsTable th {
+    padding: 0.5rem 0.2rem;
+    font-size: 0.65rem;
+  }
+
+  .globalStandingsTable td {
+    padding: 0.5rem 0.2rem;
+    font-size: 0.7rem;
+  }
+
+  .positionColumn {
+    width: 30px;
+  }
+
+  .nameColumn {
+    min-width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pageTitle {
+    font-size: 1.25rem;
+    padding: 0 0.5rem;
+  }
+
+  .globalStandingsTable {
+    font-size: 0.6rem;
+  }
+
+  .globalStandingsTable th {
+    padding: 0.35rem 0.15rem;
+    font-size: 0.55rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .globalStandingsTable td {
+    padding: 0.35rem 0.15rem;
+    font-size: 0.6rem;
+  }
+
+  .positionColumn {
+    width: 25px;
+  }
+
+  .nameColumn {
+    min-width: 60px;
+  }
+}
