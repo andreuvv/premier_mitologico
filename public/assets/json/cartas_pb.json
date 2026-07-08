@@ -3927,7 +3927,8 @@
             "slug": "primer-bloque",
             "__typename": "Game"
           },
-          "__typename": "Card"
+          "__typename": "Card",
+          "isRework": true
         },
         {
           "id": 13997,
@@ -6033,7 +6034,8 @@
             "slug": "primer-bloque",
             "__typename": "Game"
           },
-          "__typename": "Card"
+          "__typename": "Card",
+          "isRework": true
         },
         {
           "id": 12756,
