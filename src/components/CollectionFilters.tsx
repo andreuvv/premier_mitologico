@@ -110,6 +110,7 @@ export default function CollectionFilters({
     wish: boolean = wishlistOnly,
   ) => {
     let filtered = allCards;
+    const normalizedSearch = normalizeStr(s.trim());
 
     if (isPB) {
       if (e) filtered = filtered.filter(c => c.edition?.name === e);
@@ -118,9 +119,9 @@ export default function CollectionFilters({
       if (p) filtered = filtered.filter(c => c.product?.productName === p && c.product?.productType === 'Producto Especial');
     }
 
-    if (s.trim()) filtered = filtered.filter(c =>
-      c.name.toLowerCase().includes(s.trim().toLowerCase()) ||
-      c.collectorCode.toLowerCase().includes(s.trim().toLowerCase())
+    if (normalizedSearch) filtered = filtered.filter(c =>
+      normalizeStr(c.name).includes(normalizedSearch) ||
+      normalizeStr(c.collectorCode).includes(normalizedSearch)
     );
     if (t) filtered = filtered.filter(c => c.type?.toUpperCase() === t.toUpperCase());
     if (t === 'Oro' && oFilter !== 'all') {
