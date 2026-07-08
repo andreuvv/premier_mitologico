@@ -1,0 +1,33 @@
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.4rem;
+  padding: 0.65rem;
+  background: var(--dark-brown);
+  border: 1px solid rgba(214, 156, 65, 0.35);
+  border-radius: 12px;
+  height: 100%;
+  min-width: 0;
+}
+
+.arrow {
+  flex-shrink: 0;
+  align-self: center;
+  font-size: 1.1rem;
+  color: var(--ocher);
+  font-weight: 700;
+  line-height: 1;
+  padding: 0 0.1rem;
+}
+
+@media (min-width: 769px) {
+  .row {
+    gap: 0.35rem;
+    padding: 0.5rem;
+  }
+
+  .arrow {
+    font-size: 1rem;
+  }
+}

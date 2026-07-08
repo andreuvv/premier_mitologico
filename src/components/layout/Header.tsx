@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   FaHome, FaClipboardList, FaBan, FaGamepad, FaHammer, FaTrophy, FaHistory,
   FaUser, FaBlog, FaBook, FaSignInAlt, FaSignOutAlt, FaChartPie, FaChevronDown, FaUsers,
+  FaExchangeAlt,
 } from 'react-icons/fa';
 import { getTournamentMonthYear } from '../../config/tournamentConfig';
 import { useAuth } from '../../hooks/useAuth';
@@ -263,6 +264,7 @@ const Header = () => {
                 || location.pathname.startsWith('/coleccion/')
                 || location.pathname === '/carpeta'
                 || location.pathname.startsWith('/carpeta/')
+                || location.pathname === '/reworks'
                   ? styles.active
                   : ''
               }
@@ -288,6 +290,14 @@ const Header = () => {
                 >
                   <FaHammer className={styles.icon} />
                   Deck Builder
+                </Link>
+                <Link
+                  to="/reworks"
+                  className={styles.cartasDropdownItem}
+                  onClick={() => setCartasHovered(false)}
+                >
+                  <FaExchangeAlt className={styles.icon} />
+                  Reworks
                 </Link>
                 {user ? (
                   <Link
@@ -396,6 +406,14 @@ const Header = () => {
         >
           <FaHammer className={styles.icon} />
           Deck Builder
+        </Link>
+        <Link
+          to="/reworks"
+          className={styles.mobileSubItem}
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          <FaExchangeAlt className={styles.icon} />
+          Reworks
         </Link>
         {user ? (
           <Link to="/carpeta" className={styles.mobileSubItem} onClick={() => setMobileMenuOpen(false)}>

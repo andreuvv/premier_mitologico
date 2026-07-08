@@ -26,6 +26,7 @@ const DeckBuilderHomePage = lazy(() => import('./pages/DeckBuilderHomePage'));
 const DeckBuilderEditorPage = lazy(() => import('./pages/DeckBuilderEditorPage'));
 const DeckViewerPage = lazy(() => import('./pages/DeckViewerPage'));
 const LocalJsonEditorPage = lazy(() => import('./pages/LocalJsonEditorPage'));
+const ReworkPage = lazy(() => import('./pages/ReworkPage'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage'));
 
 // Loading fallback component
@@ -53,6 +54,7 @@ function App() {
             <Route path="/banlist" element={<BanlistPage />} />
             <Route path="/banlist/:format/:category" element={<BanlistPage />} />
             <Route path="/coleccion" element={<CollectionPage />} />
+            <Route path="/reworks" element={<ReworkPage />} />
             <Route path="/carpeta" element={<FolderPage />} />
             <Route path="/coleccion/carta/:format/:id/:slug" element={<CardDetailPage />} />
             <Route path="/torneo-premier" element={<PremierTournamentPage />} />

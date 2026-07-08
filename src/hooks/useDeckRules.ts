@@ -1,6 +1,14 @@
 import { useMemo } from 'react';
 import { CollectionCard } from '../types/collection';
 import { BanListData } from '../types/banlist';
+import {
+  normalizeName,
+  cardKey,
+  groupKey,
+  isReworkCard,
+} from '../utils/cardGrouping';
+
+export { normalizeName } from '../utils/cardGrouping';
 
 export type DeckSubformat = 'pb-edicion' | 'pb-libre' | 'fx-vcr' | 'fx-libre' | 'fx-ragnarok';
 
@@ -30,31 +38,6 @@ function getLockedAllyRace(
     if (firstRace) return normalizeName(firstRace);
   }
   return null;
-}
-
-// ── Name normalization for cross-reprint matching ─────────────────────────────
-export function normalizeName(name: string): string {
-  return name
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[.,]/g, '')
-    .toLowerCase()
-    .trim();
-}
-
-// Key used to identify "same card across reprints": normalized name + normalized type
-function cardKey(name: string, type: string): string {
-  return `${normalizeName(name)}|${type.toUpperCase().trim()}`;
-}
-
-// Grouping key for visibility/legality rules.
-// Important: cards with trailing "*" are treated as a different group.
-function groupKey(name: string, type: string): string {
-  return cardKey(name, type);
-}
-
-function isReworkCard(card: CollectionCard): boolean {
-  return card.isRework === true || card.isReworked === true;
 }
 
 function isOroSinHabilidad(card: CollectionCard): boolean {

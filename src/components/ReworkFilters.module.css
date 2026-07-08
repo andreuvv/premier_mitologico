@@ -1,0 +1,155 @@
+.overlay {
+  display: none;
+}
+
+.panel {
+  width: 100%;
+  background: var(--dark-brown);
+  border: 1px solid var(--ocher);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  position: sticky;
+  top: 70px;
+  z-index: 99;
+}
+
+.panelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(214, 156, 65, 0.3);
+}
+
+.panelTitle {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--beige);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.panelActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.clearButton,
+.closeButton {
+  background: none;
+  border: 1px solid rgba(214, 156, 65, 0.4);
+  color: var(--beige);
+  border-radius: 6px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.closeButton {
+  display: none;
+}
+
+.panelBody {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.7rem 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 180px;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(241, 220, 174, 0.75);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.input {
+  padding: 0.55rem 0.75rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(214, 156, 65, 0.4);
+  border-radius: 6px;
+  color: var(--beige);
+  font-size: 0.95rem;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--ocher);
+}
+
+.typeButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.typeBtn {
+  padding: 0.35rem 0.65rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(214, 156, 65, 0.35);
+  border-radius: 16px;
+  color: var(--beige);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.typeBtn:hover {
+  border-color: var(--ocher);
+}
+
+.typeBtnActive {
+  background: rgba(214, 156, 65, 0.2);
+  border-color: var(--ocher);
+  color: var(--ocher);
+}
+
+@media (max-width: 768px) {
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 200;
+  }
+
+  .panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(320px, 85vw);
+    z-index: 201;
+    border-radius: 0;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    overflow-y: auto;
+  }
+
+  .panelOpen {
+    transform: translateX(0);
+  }
+
+  .closeButton {
+    display: inline-flex;
+  }
+
+  .panelBody {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
