@@ -29,9 +29,10 @@ Para otra ruta: `node scripts/merge-cards.mjs pb API_JSON="ruta/al/api.json"`.
 
 Que hace:
 - Matchea por `id`.
-- Existentes: refresca `slug,name,collectorCode,effect,flavor,type,cost,attack,imageUrl,artist,frequency,race` y sincroniza `unique` desde `isUnique`.
-- Preserva: `product, interactions, moreThan3, isNewest, isRework, isReworked` y los `edition/game` curados (emojis).
-- Nuevas: se construyen con el esquema local y se anteponen ordenadas por id desc.
+- Existentes: solo sincroniza `cardCategory` desde el API (null cuando no tiene).
+- Preserva todo lo demas local (incl. `imageUrl` en Bunny, `product`, `interactions`,
+  `moreThan3`, `isNewest`, `isRework`, `isReworked`, `unique`, edition/game curados).
+- Nuevas: se construyen con el esquema local + `cardCategory`, anteponidas por id desc.
 
 ## 2. Migrar imagenes a BunnyCDN
 

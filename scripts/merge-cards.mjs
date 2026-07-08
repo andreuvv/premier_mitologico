@@ -1,9 +1,8 @@
 // Merge the mazos.cl API export into the local cartas_<format>.json.
 //
 // - Matches cards by `id`.
-// - Existing cards: refresh a whitelist of fields from the API while preserving
-//   manually curated fields (product, interactions, moreThan3, isNewest,
-//   isRework, isReworked) and the curated edition/game display names (emojis).
+// - Existing cards: only sync `cardCategory` from the API (null when absent).
+//   All other local fields (including imageUrl on BunnyCDN) are preserved.
 // - New cards (id only in the API): built into the local schema, resolving
 //   edition/game from the curated local maps by slug.
 //
@@ -23,20 +22,15 @@ import {
   hasFlag,
 } from './lib/io.mjs';
 
-const REFRESH_FIELDS = [
-  'slug',
-  'name',
-  'collectorCode',
-  'effect',
-  'flavor',
-  'type',
-  'cost',
-  'attack',
-  'imageUrl',
-  'artist',
-  'frequency',
-  'race',
-];
+function cleanCardCategory(cardCategory) {
+  if (!cardCategory) return null;
+  return {
+    id: cardCategory.id,
+    name: cardCategory.name ?? '',
+    sortOrder: cardCategory.sortOrder ?? 0,
+    __typename: 'CardCategory',
+  };
+}
 
 function cleanEdition(edition) {
   if (!edition) return { name: '', slug: '', __typename: 'Edition' };
@@ -71,6 +65,7 @@ function buildLocalCard(apiCard, editionBySlug, gameBySlug) {
   card.race = Array.isArray(apiCard.race) ? apiCard.race : [];
   card.edition = edition;
   card.game = game;
+  card.cardCategory = cleanCardCategory(apiCard.cardCategory);
   card.__typename = 'Card';
   return card;
 }
@@ -109,10 +104,9 @@ async function main() {
     if (c.game?.slug && !gameBySlug.has(c.game.slug)) gameBySlug.set(c.game.slug, c.game);
   }
 
-  // Refresh existing cards in place (preserves key order -> minimal diff).
-  let refreshed = 0;
-  let uniqueAdded = 0;
-  let uniqueRemoved = 0;
+  // Sync cardCategory on existing cards (preserves key order -> minimal diff).
+  let categorySynced = 0;
+  let categoryNull = 0;
   let missingInApi = 0;
   for (const card of localCards) {
     const apiCard = apiById.get(card.id);
@@ -120,20 +114,9 @@ async function main() {
       missingInApi++;
       continue;
     }
-    for (const field of REFRESH_FIELDS) {
-      const value = apiCard[field];
-      if (value !== undefined && value !== null) card[field] = value;
-    }
-    if (apiCard.isUnique === true) {
-      if (card.unique !== true) {
-        card.unique = true;
-        uniqueAdded++;
-      }
-    } else if ('unique' in card) {
-      delete card.unique;
-      uniqueRemoved++;
-    }
-    refreshed++;
+    card.cardCategory = cleanCardCategory(apiCard.cardCategory);
+    categorySynced++;
+    if (card.cardCategory === null) categoryNull++;
   }
 
   // Build new cards (present in API, missing locally).
@@ -160,12 +143,11 @@ async function main() {
   console.log('\n--- Resumen del merge ---');
   console.log(`Cartas locales previas:   ${localIds.size}`);
   console.log(`Cartas en API:            ${apiCards.length}`);
-  console.log(`Refrescadas (existentes): ${refreshed}`);
-  console.log(`Nuevas agregadas:         ${newCards.length}`);
-  console.log(`Total final:              ${local.data.CardCatalog.total}`);
-  console.log(`unique agregado:          ${uniqueAdded}`);
-  console.log(`unique removido:          ${uniqueRemoved}`);
-  console.log(`Locales sin match en API: ${missingInApi}`);
+  console.log(`cardCategory sincronizado: ${categorySynced}`);
+  console.log(`cardCategory null:         ${categoryNull}`);
+  console.log(`Nuevas agregadas:          ${newCards.length}`);
+  console.log(`Total final:               ${local.data.CardCatalog.total}`);
+  console.log(`Locales sin match en API:  ${missingInApi}`);
   if (unknownEditionSlugs.size) {
     console.log(
       `Ediciones nuevas (slug sin curar localmente): ${[...unknownEditionSlugs].join(', ')}`,
