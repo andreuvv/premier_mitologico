@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { useUserDecks, UserDeck, PublicDeck } from '../hooks/useUserDecks';
 import { isCurrentUserBanlistAdmin } from '../services/monthlyBanlistService';
+import SectionLoader from '../components/loading/SectionLoader';
 import styles from './DeckBuilderHomePage.module.css';
 
 const RACE_TO_EDITION: Record<string, string> = {
@@ -489,9 +490,7 @@ export default function DeckBuilderHomePage() {
               <p className={styles.emptyText}>Inicia sesión para ver y crear tus mazos.</p>
             </div>
           ) : decksLoading ? (
-            <div className={styles.emptyState}>
-              <p className={styles.emptyText}>Cargando mazos...</p>
-            </div>
+            <SectionLoader message="Cargando mazos..." />
           ) : decks.length === 0 ? (
             <div className={styles.emptyState}>
               <div className={styles.emptyIcon}>🃏</div>
@@ -632,9 +631,7 @@ export default function DeckBuilderHomePage() {
       {tab === 'explore' && (
         <>
           {exploreLoading ? (
-            <div className={styles.emptyState}>
-              <p className={styles.emptyText}>Cargando mazos...</p>
-            </div>
+            <SectionLoader message="Cargando mazos..." />
           ) : exploreDecks.length === 0 ? (
             <div className={styles.emptyState}>
               <div className={styles.emptyIcon}>🔍</div>

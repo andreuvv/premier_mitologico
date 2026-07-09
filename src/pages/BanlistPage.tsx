@@ -8,6 +8,7 @@ import { useAuth } from '../hooks/useAuth';
 import { getLatestTwoMonthlyBanlists, isCurrentUserBanlistAdmin, MonthlyBanlistSnapshot } from '../services/monthlyBanlistService';
 import BanlistEditorModal from '../components/BanlistEditorModal';
 import FormatSummaryRow from '../components/FormatSummaryRow';
+import SectionLoader from '../components/loading/SectionLoader';
 import { banlistSummaries, ChangeType, FormatSummary, lastUpdateMonth } from '../data/banlistSummary';
 import styles from './BanlistPage.module.css';
 
@@ -385,7 +386,7 @@ const BanlistPage = () => {
       </div>
 
       {loading ? (
-        <div className={styles.loading}>Cargando...</div>
+        <SectionLoader message="Cargando lista..." />
       ) : (
         <div className={styles.cardsGrid}>
           {cards.map((card, index) => (

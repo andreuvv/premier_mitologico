@@ -1,11 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import { CollectionFormat } from '../types/collection';
+import {
+  FORMAT_BANNER_FX_BG,
+  FORMAT_BANNER_FX_IMAGE,
+  FORMAT_BANNER_PB_BG,
+  FORMAT_BANNER_PB_IMAGE,
+} from '../config/loadingAssets';
 import styles from './FormatBanner.module.css';
 
-const PB_IMAGE = `${import.meta.env.BASE_URL}assets/images/primer_bloque_banner.png`;
-const FX_IMAGE = `${import.meta.env.BASE_URL}assets/images/furia_extendido_banner.png`;
-const PB_BG = `${import.meta.env.BASE_URL}assets/images/primer_bloque_bg.jpg`;
-const FX_BG = `${import.meta.env.BASE_URL}assets/images/furia_aniversario.webp`;
+const PB_IMAGE = FORMAT_BANNER_PB_IMAGE;
+const FX_IMAGE = FORMAT_BANNER_FX_IMAGE;
+const PB_BG = FORMAT_BANNER_PB_BG;
+const FX_BG = FORMAT_BANNER_FX_BG;
 
 interface FormatBannerProps {
   variant?: 'navigate' | 'select';

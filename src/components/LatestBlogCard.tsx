@@ -8,20 +8,33 @@ import styles from './LatestBlogCard.module.css';
 interface LatestBlogCardProps {
   collapsible?: boolean;
   defaultOpen?: boolean;
+  preloadedPost?: BlogPost | null;
+  skipFetch?: boolean;
 }
 
-const LatestBlogCard = ({ collapsible = false, defaultOpen = true }: LatestBlogCardProps) => {
-  const [latestPost, setLatestPost] = useState<BlogPost | null>(null);
-  const [loading, setLoading] = useState(true);
+const LatestBlogCard = ({
+  collapsible = false,
+  defaultOpen = true,
+  preloadedPost,
+  skipFetch = false,
+}: LatestBlogCardProps) => {
+  const [latestPost, setLatestPost] = useState<BlogPost | null>(preloadedPost ?? null);
+  const [loading, setLoading] = useState(!skipFetch);
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (skipFetch) {
+      setLatestPost(preloadedPost ?? null);
+      setLoading(false);
+      return;
+    }
+
     const loadLatestPost = async () => {
       try {
         const posts = await fetchAllBlogPosts();
         if (posts.length > 0) {
-          setLatestPost(posts[0]); // Already sorted by date (newest first)
+          setLatestPost(posts[0]);
         }
       } catch (error) {
         console.error('Error loading latest blog post:', error);
@@ -31,7 +44,7 @@ const LatestBlogCard = ({ collapsible = false, defaultOpen = true }: LatestBlogC
     };
 
     loadLatestPost();
-  }, []);
+  }, [skipFetch, preloadedPost]);
 
   if (loading) {
     if (collapsible) {

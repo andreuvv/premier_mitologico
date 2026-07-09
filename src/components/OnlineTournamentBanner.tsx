@@ -4,22 +4,34 @@ import { FaCalendar } from 'react-icons/fa';
 import onlineTournamentService, { OnlineTournament } from '../services/onlineTournamentService';
 import styles from './OnlineTournamentBanner.module.css';
 
-const OnlineTournamentBanner = () => {
-  const [tournament, setTournament] = useState<OnlineTournament | null>(null);
-  const [loading, setLoading] = useState(true);
+interface OnlineTournamentBannerProps {
+  preloadedTournament?: OnlineTournament | null;
+}
+
+const OnlineTournamentBanner = ({ preloadedTournament }: OnlineTournamentBannerProps) => {
+  const [tournament, setTournament] = useState<OnlineTournament | null>(
+    preloadedTournament !== undefined ? preloadedTournament : null,
+  );
+  const [loading, setLoading] = useState(preloadedTournament === undefined);
 
   useEffect(() => {
+    if (preloadedTournament !== undefined) {
+      setTournament(preloadedTournament);
+      setLoading(false);
+      return;
+    }
+
     const fetchTournaments = async () => {
       setLoading(true);
       const tournaments = await onlineTournamentService.getActiveTournaments();
       if (tournaments.length > 0) {
-        setTournament(tournaments[0]); // Get the first active online tournament
+        setTournament(tournaments[0]);
       }
       setLoading(false);
     };
 
     fetchTournaments();
-  }, []);
+  }, [preloadedTournament]);
 
   if (loading || !tournament) {
     return null;

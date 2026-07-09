@@ -3,6 +3,8 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import MitoxicosLoader from './components/loading/MitoxicosLoader';
+import LoadingOverlay from './components/loading/LoadingOverlay';
 import styles from './App.module.css';
 
 // Lazy load page components
@@ -29,11 +31,10 @@ const LocalJsonEditorPage = lazy(() => import('./pages/LocalJsonEditorPage'));
 const ReworkPage = lazy(() => import('./pages/ReworkPage'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage'));
 
-// Loading fallback component
 const PageLoader = () => (
-  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh' }}>
-    <div>Cargando...</div>
-  </div>
+  <LoadingOverlay visible>
+    <MitoxicosLoader indeterminate size="lg" />
+  </LoadingOverlay>
 );
 
 function App() {
