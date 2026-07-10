@@ -81,12 +81,15 @@ const compareBanlistChanges = (previous: BanListData, current: BanListData): For
       }
     }
 
+    const banListCard = currEntry?.card ?? prevEntry?.card;
+
     changes.push({
-      card: currEntry?.card.name ?? prevEntry?.card.name ?? nameKey,
+      card: banListCard?.name ?? nameKey,
       pastMonth: getRestrictionLabel(prevEntry?.status),
       currentMonth: getRestrictionLabel(currEntry?.status),
       changeType,
       imageUrl: currEntry?.card.imageUrl || prevEntry?.card.imageUrl,
+      cardId: banListCard?.id,
     });
   });
 

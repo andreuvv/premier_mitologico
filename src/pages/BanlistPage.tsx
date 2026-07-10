@@ -1,15 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { FaInfoCircle } from 'react-icons/fa';
+import { FaInfoCircle, FaList, FaImages } from 'react-icons/fa';
 import { BanListFormat, BanListCategory, BanListData, BanListCard } from '../types/banlist';
-import { CollectionFormat } from '../types/collection';
+import { CollectionCard, CollectionFormat } from '../types/collection';
 import { loadBanlist } from '../services/banlistService';
+import { loadCollectionCards } from '../services/collectionService';
 import { useAuth } from '../hooks/useAuth';
 import { getLatestTwoMonthlyBanlists, isCurrentUserBanlistAdmin, MonthlyBanlistSnapshot } from '../services/monthlyBanlistService';
 import BanlistEditorModal from '../components/BanlistEditorModal';
 import FormatSummaryRow from '../components/FormatSummaryRow';
+import BanlistMarqueeCarousel from '../components/BanlistMarqueeCarousel';
+import CardDetailModal from '../components/CardDetailModal';
 import { banlistSummaries, ChangeType, FormatSummary, lastUpdateMonth } from '../data/banlistSummary';
 import styles from './BanlistPage.module.css';
+
+type ViewMode = 'carousel' | 'grid';
 
 const formatToSlug: Record<BanListFormat, string> = {
   [BanListFormat.PRIMER_BLOQUE_LIBRE]: 'pb-libre',
@@ -23,35 +28,18 @@ const slugToFormat = Object.entries(formatToSlug).reduce((acc, [format, slug]) =
   return acc;
 }, {} as Record<string, BanListFormat>);
 
-const categoryToSlug: Record<BanListCategory, string> = {
-  [BanListCategory.BANNED]: 'baneadas',
-  [BanListCategory.LIMITED_X1]: 'limitadas-x1',
-  [BanListCategory.LIMITED_X2]: 'limitadas-x2',
-};
+const FORMAT_TABS: { format: BanListFormat; labelLine1: string; labelLine2: string; isPb: boolean }[] = [
+  { format: BanListFormat.PRIMER_BLOQUE_EDICION, labelLine1: 'PB Racial', labelLine2: 'Edición', isPb: true },
+  { format: BanListFormat.PRIMER_BLOQUE_LIBRE, labelLine1: 'PB Racial', labelLine2: 'Libre', isPb: true },
+  { format: BanListFormat.BLOQUE_FURIA_LIBRE, labelLine1: 'FX Racial', labelLine2: 'Libre', isPb: false },
+  { format: BanListFormat.BLOQUE_FURIA_RAGNAROK, labelLine1: 'FX Racial', labelLine2: 'Ragnarok', isPb: false },
+];
 
-const slugToCategory = Object.entries(categoryToSlug).reduce((acc, [category, slug]) => {
-  acc[slug] = category as BanListCategory;
-  return acc;
-}, {} as Record<string, BanListCategory>);
-
-const getCollectionFormatFromBanListFormat = (banListFormat: BanListFormat): string => {
-  if (banListFormat === BanListFormat.PRIMER_BLOQUE_LIBRE || banListFormat === BanListFormat.PRIMER_BLOQUE_EDICION) {
-    return CollectionFormat.PRIMER_BLOQUE;
-  }
-  return CollectionFormat.FURIA_EXTENDIDO;
-};
-
-const getCardIdFromUrl = (cardUrl?: string): number | null => {
-  if (!cardUrl) return null;
-  const match = cardUrl.match(/\/card\/(\d+)\//);
-  return match ? parseInt(match[1], 10) : null;
-};
-
-const getCardSlugFromUrl = (cardUrl?: string): string | null => {
-  if (!cardUrl) return null;
-  const match = cardUrl.match(/\/card\/\d+\/(.+?)(?:\?|$)/);
-  return match ? match[1] : null;
-};
+const CATEGORY_SECTIONS: { category: BanListCategory; label: string; key: keyof Pick<BanListData, 'banned' | 'limitedX1' | 'limitedX2'> }[] = [
+  { category: BanListCategory.BANNED, label: 'Baneadas', key: 'banned' },
+  { category: BanListCategory.LIMITED_X1, label: 'Limitadas x1', key: 'limitedX1' },
+  { category: BanListCategory.LIMITED_X2, label: 'Limitadas x2', key: 'limitedX2' },
+];
 
 const getMonthYearLabel = (lastUpdated: string): string => {
   const monthMatch = lastUpdated.match(/^(\d{4})-(\d{2})/);
@@ -123,13 +111,10 @@ const compareBanlistChanges = (previous: BanListData, current: BanListData): For
     let changeType: ChangeType;
 
     if (!currEntry) {
-      // Any restriction -> liberated should always be positive.
       changeType = 'positive';
     } else if (currEntry.status === 'banned') {
-      // Any level -> banned should always be negative.
       changeType = 'negative';
     } else if (!prevEntry && currEntry.status === 'limitedX2') {
-      // Neutral only for liberated -> limited x2.
       changeType = 'neutral';
     } else if (!prevEntry && currEntry.status === 'limitedX1') {
       changeType = 'negativeSoft';
@@ -147,12 +132,15 @@ const compareBanlistChanges = (previous: BanListData, current: BanListData): For
       }
     }
 
+    const banListCard = currEntry?.card ?? prevEntry?.card;
+
     changes.push({
-      card: currEntry?.card.name ?? prevEntry?.card.name ?? nameKey,
+      card: banListCard?.name ?? nameKey,
       pastMonth: getRestrictionLabel(prevEntry?.status),
       currentMonth: getRestrictionLabel(currEntry?.status),
       changeType,
       imageUrl: currEntry?.card.imageUrl || prevEntry?.card.imageUrl,
+      cardId: banListCard?.id,
     });
   });
 
@@ -161,16 +149,14 @@ const compareBanlistChanges = (previous: BanListData, current: BanListData): For
 };
 
 const BanlistPage = () => {
-  const { format: formatSlug, category: categorySlug } = useParams<{ format?: string; category?: string }>();
+  const { format: formatSlug } = useParams<{ format?: string; category?: string }>();
   const navigate = useNavigate();
   const { user } = useAuth();
 
   const [selectedFormat, setSelectedFormat] = useState<BanListFormat>(
-    formatSlug && slugToFormat[formatSlug] ? slugToFormat[formatSlug] : BanListFormat.PRIMER_BLOQUE_LIBRE
+    formatSlug && slugToFormat[formatSlug] ? slugToFormat[formatSlug] : BanListFormat.PRIMER_BLOQUE_EDICION,
   );
-  const [selectedCategory, setSelectedCategory] = useState<BanListCategory>(
-    categorySlug && slugToCategory[categorySlug] ? slugToCategory[categorySlug] : BanListCategory.BANNED
-  );
+  const [viewMode, setViewMode] = useState<ViewMode>('carousel');
   const [banlistData, setBanlistData] = useState<BanListData | null>(null);
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -180,6 +166,48 @@ const BanlistPage = () => {
   const [showAccordion, setShowAccordion] = useState(false);
   const [computedSummaries, setComputedSummaries] = useState<Record<BanListFormat, FormatSummary[]>>(banlistSummaries);
   const [computedSummaryMonth, setComputedSummaryMonth] = useState<string>(lastUpdateMonth);
+  const [allCards, setAllCards] = useState<CollectionCard[]>([]);
+  const [selectedCard, setSelectedCard] = useState<CollectionCard | null>(null);
+  const [modalCards, setModalCards] = useState<CollectionCard[]>([]);
+
+  const cardsById = useMemo(
+    () => new Map(allCards.map((card) => [card.id, card])),
+    [allCards],
+  );
+
+  const cardsByName = useMemo(() => {
+    const map = new Map<string, CollectionCard>();
+    allCards.forEach((card) => {
+      map.set(card.name.toLowerCase(), card);
+    });
+    return map;
+  }, [allCards]);
+
+  const resolveCollectionCard = useCallback(
+    (card: BanListCard): CollectionCard | null => {
+      if (card.id) {
+        const byId = cardsById.get(card.id);
+        if (byId) return byId;
+      }
+
+      const byName = cardsByName.get(card.name.toLowerCase());
+      if (byName) return byName;
+
+      if (card.imageUrl) {
+        const byImage = allCards.find((collectionCard) => collectionCard.imageUrl === card.imageUrl);
+        if (byImage) return byImage;
+      }
+
+      return null;
+    },
+    [allCards, cardsById, cardsByName],
+  );
+
+  useEffect(() => {
+    if (formatSlug && slugToFormat[formatSlug]) {
+      setSelectedFormat(slugToFormat[formatSlug]);
+    }
+  }, [formatSlug]);
 
   useEffect(() => {
     if (!user) {
@@ -191,6 +219,29 @@ const BanlistPage = () => {
       .then(setIsAdmin)
       .catch(() => setIsAdmin(false));
   }, [user]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    Promise.all([
+      loadCollectionCards(CollectionFormat.PRIMER_BLOQUE),
+      loadCollectionCards(CollectionFormat.FURIA_EXTENDIDO),
+    ])
+      .then(([pbCatalog, fxCatalog]) => {
+        if (cancelled) return;
+        setAllCards([
+          ...pbCatalog.data.CardCatalog.cards,
+          ...fxCatalog.data.CardCatalog.cards,
+        ]);
+      })
+      .catch((error) => {
+        console.error('Error loading collection cards for banlist page:', error);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -250,60 +301,33 @@ const BanlistPage = () => {
       });
   }, [refreshKey, selectedFormat]);
 
-  const getFormatLabel = (format: BanListFormat): string => {
-    switch (format) {
-      case BanListFormat.PRIMER_BLOQUE_LIBRE:
-        return 'Primer Bloque Racial Libre';
-      case BanListFormat.PRIMER_BLOQUE_EDICION:
-        return 'Primer Bloque Racial Edición';
-      case BanListFormat.BLOQUE_FURIA_LIBRE:
-        return 'Furia Extendido Racial Libre';
-      case BanListFormat.BLOQUE_FURIA_RAGNAROK:
-        return 'Furia Extendido Racial Ragnarok';
-    }
+  const handleFormatChange = (format: BanListFormat) => {
+    setSelectedFormat(format);
+    navigate(`/banlist/${formatToSlug[format]}`);
   };
 
-  const getCategoryLabel = (category: BanListCategory): string => {
-    switch (category) {
-      case BanListCategory.BANNED:
-        return 'Baneadas';
-      case BanListCategory.LIMITED_X1:
-        return 'Limitadas x1';
-      case BanListCategory.LIMITED_X2:
-        return 'Limitadas x2';
-    }
+  const handleCardClick = (card: BanListCard, sectionCards: BanListCard[]) => {
+    const resolved = resolveCollectionCard(card);
+    if (!resolved) return;
+
+    const resolvedSectionCards = sectionCards
+      .map((sectionCard) => resolveCollectionCard(sectionCard))
+      .filter((sectionResolved): sectionResolved is CollectionCard => sectionResolved !== null);
+
+    setModalCards(resolvedSectionCards);
+    setSelectedCard(resolved);
   };
 
-  const getCurrentCards = (): BanListCard[] => {
-    if (!banlistData) return [];
-    switch (selectedCategory) {
-      case BanListCategory.BANNED:
-        return banlistData.banned;
-      case BanListCategory.LIMITED_X1:
-        return banlistData.limitedX1;
-      case BanListCategory.LIMITED_X2:
-        return banlistData.limitedX2;
-    }
+  const handleCloseModal = () => {
+    setSelectedCard(null);
+    setModalCards([]);
   };
-
-  const handleCardClick = (card: BanListCard) => {
-    const cardId = card.id || getCardIdFromUrl(card.cardUrl);
-    const cardSlug = getCardSlugFromUrl(card.cardUrl);
-    if (!cardId || !cardSlug) {
-      console.warn('No card ID or slug found');
-      return;
-    }
-    const collectionFormat = getCollectionFormatFromBanListFormat(selectedFormat);
-    navigate(`/coleccion/carta/${collectionFormat}/${cardId}/${cardSlug}`);
-  };
-
-  const cards = getCurrentCards();
 
   return (
     <div className={styles.container}>
       <div className={styles.accordion}>
-        <button 
-          className={styles.accordionHeader} 
+        <button
+          className={styles.accordionHeader}
           onClick={() => setShowAccordion(!showAccordion)}
         >
           <span>Resumen actualización {computedSummaryMonth}</span>
@@ -318,40 +342,40 @@ const BanlistPage = () => {
       </div>
 
       <div className={styles.controls}>
-        <div className={styles.formatSelector}>
-          <label>Formato:</label>
-          <select 
-            value={selectedFormat} 
-            onChange={(e) => {
-              const newFormat = e.target.value as BanListFormat;
-              setSelectedFormat(newFormat);
-              const formatSlug = formatToSlug[newFormat];
-              const categorySlug = categoryToSlug[selectedCategory];
-              navigate(`/banlist/${formatSlug}/${categorySlug}`);
-            }}
-          >
-            {Object.values(BanListFormat).map(format => (
-              <option key={format} value={format}>
-                {getFormatLabel(format)}
-              </option>
-            ))}
-          </select>
-          {isAdmin && (
+        <div className={styles.formatTabs}>
+          {FORMAT_TABS.map(({ format, labelLine1, labelLine2, isPb }) => (
             <button
+              key={format}
               type="button"
-              className={styles.editButton}
-              onClick={() => setShowEditor(true)}
+              className={`${styles.formatTab} ${selectedFormat === format ? styles.formatTabActive : ''} ${selectedFormat === format ? (isPb ? styles.formatTabPb : styles.formatTabFx) : ''}`}
+              onClick={() => handleFormatChange(format)}
+              aria-label={`${labelLine1} ${labelLine2}`}
             >
-              Editar formato actual
+              <span className={styles.formatTabLabel}>
+                <span>{labelLine1}</span>
+                <span>{labelLine2}</span>
+              </span>
             </button>
-          )}
+          ))}
+        </div>
+
+        <div className={styles.metaRow}>
           {banlistData && (
             <div className={styles.lastUpdatedWrapper}>
               <p className={styles.lastUpdated}>
                 Última actualización: {getMonthYearLabel(banlistData.lastUpdated)}
               </p>
+              {isAdmin && (
+                <button
+                  type="button"
+                  className={styles.editButton}
+                  onClick={() => setShowEditor(true)}
+                >
+                  Editar formato actual
+                </button>
+              )}
               <div className={styles.infoIconContainer}>
-                <FaInfoCircle 
+                <FaInfoCircle
                   className={styles.infoIcon}
                   onClick={(e) => {
                     e.stopPropagation();
@@ -359,55 +383,84 @@ const BanlistPage = () => {
                   }}
                 />
                 <div className={styles.tooltip}>
-                   Información importante de las restricciones.
+                  Información importante de las restricciones.
                 </div>
               </div>
             </div>
           )}
-        </div>
 
-        <div className={styles.categoryTabs}>
-          {Object.values(BanListCategory).map(category => (
+          <div className={styles.viewToggle}>
             <button
-              key={category}
-              className={selectedCategory === category ? styles.activeTab : ''}
-              onClick={() => {
-                setSelectedCategory(category);
-                const formatSlug = formatToSlug[selectedFormat];
-                const categorySlug = categoryToSlug[category];
-                navigate(`/banlist/${formatSlug}/${categorySlug}`);
-              }}
+              type="button"
+              className={`${styles.viewToggleButton} ${viewMode === 'carousel' ? styles.viewToggleActive : ''}`}
+              onClick={() => setViewMode('carousel')}
+              aria-pressed={viewMode === 'carousel'}
+              aria-label="Vista carrusel"
+              title="Vista carrusel"
             >
-              {getCategoryLabel(category)}
+              <FaImages />
             </button>
-          ))}
+            <button
+              type="button"
+              className={`${styles.viewToggleButton} ${viewMode === 'grid' ? styles.viewToggleActive : ''}`}
+              onClick={() => setViewMode('grid')}
+              aria-pressed={viewMode === 'grid'}
+              aria-label="Vista grilla"
+              title="Vista grilla"
+            >
+              <FaList />
+            </button>
+          </div>
         </div>
       </div>
 
       {loading ? (
         <div className={styles.loading}>Cargando...</div>
-      ) : (
-        <div className={styles.cardsGrid}>
-          {cards.map((card, index) => (
-            <div 
-              key={index} 
-              className={styles.card}
-              onClick={() => handleCardClick(card)}
-              style={{ cursor: 'pointer' }}
-            >
-              {card.imageUrl ? (
-                <img src={card.imageUrl} alt={card.name} />
-              ) : (
-                <div className={styles.placeholder}>Sin imagen</div>
-              )}
-              <div className={styles.cardInfo}>
-                <h3>{card.name}</h3>
-                <p>{card.type}</p>
-              </div>
-            </div>
-          ))}
+      ) : banlistData ? (
+        <div className={styles.categoriesContainer}>
+          {CATEGORY_SECTIONS.map(({ label, key }) => {
+            const sectionCards = banlistData[key];
+
+            return (
+              <section key={key} className={styles.categorySection}>
+                <h3 className={styles.categoryTitle}>
+                  {label}
+                </h3>
+
+                {viewMode === 'carousel' ? (
+                  <BanlistMarqueeCarousel
+                    cards={sectionCards}
+                    onCardClick={(card) => handleCardClick(card, sectionCards)}
+                  />
+                ) : (
+                  <div className={styles.cardsGrid}>
+                    {sectionCards.length === 0 ? (
+                      <p className={styles.emptySection}>Sin cartas</p>
+                    ) : (
+                      sectionCards.map((card, index) => (
+                        <button
+                          key={`${card.name}-${index}`}
+                          type="button"
+                          className={styles.gridCard}
+                          onClick={() => handleCardClick(card, sectionCards)}
+                          aria-label={`Ver detalle de ${card.name}`}
+                        >
+                          {card.imageUrl ? (
+                            <img src={card.imageUrl} alt={card.name} />
+                          ) : (
+                            <div className={styles.placeholder}>Sin imagen</div>
+                          )}
+                          <span className={styles.gridCardName}>{card.name}</span>
+                        </button>
+                      ))
+                    )}
+                  </div>
+                )}
+              </section>
+            );
+          })}
         </div>
-      )}
+      ) : null}
 
       {showInfoPopup && (
         <div className={styles.popupOverlay} onClick={() => setShowInfoPopup(false)}>
@@ -438,13 +491,22 @@ const BanlistPage = () => {
       {showEditor && banlistData && (
         <BanlistEditorModal
           format={selectedFormat}
-          initialCategory={selectedCategory}
+          initialCategory={BanListCategory.BANNED}
           baseData={banlistData}
           onClose={() => setShowEditor(false)}
           onSaved={() => {
             setShowEditor(false);
             setRefreshKey(prev => prev + 1);
           }}
+        />
+      )}
+
+      {selectedCard && (
+        <CardDetailModal
+          card={selectedCard}
+          cards={modalCards.length > 1 ? modalCards : undefined}
+          onNavigate={modalCards.length > 1 ? setSelectedCard : undefined}
+          onClose={handleCloseModal}
         />
       )}
     </div>

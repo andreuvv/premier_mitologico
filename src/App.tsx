@@ -52,6 +52,7 @@ function App() {
             <Route path="/game-formats/:section" element={<GameFormatsPage />} />
             <Route path="/game-formats/:section/:variant" element={<GameFormatsPage />} />
             <Route path="/banlist" element={<BanlistPage />} />
+            <Route path="/banlist/:format" element={<BanlistPage />} />
             <Route path="/banlist/:format/:category" element={<BanlistPage />} />
             <Route path="/coleccion" element={<CollectionPage />} />
             <Route path="/reworks" element={<ReworkPage />} />

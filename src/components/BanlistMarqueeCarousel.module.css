@@ -1,0 +1,119 @@
+.marqueeViewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.marqueeTrack {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  width: max-content;
+  padding: 0.25rem 0;
+}
+
+.marqueeTrackAnimated {
+  animation: marqueePingPong var(--marquee-duration, 30s) ease-in-out infinite;
+}
+
+.marqueeTrackAnimated:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marqueePingPong {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(var(--max-scroll, 0px));
+  }
+}
+
+.marqueeCard {
+  flex: 0 0 auto;
+  width: 130px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.marqueeCard:hover {
+  transform: translateY(-4px);
+}
+
+.cardImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
+}
+
+.cardPlaceholder {
+  width: 100%;
+  aspect-ratio: 5 / 7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(234, 221, 207, 0.08);
+  border: 1px dashed rgba(234, 221, 207, 0.25);
+  border-radius: 8px;
+  color: var(--beige);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.cardName {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--beige);
+  text-align: center;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.empty {
+  margin: 0;
+  padding: 0.75rem 0;
+  text-align: left;
+  color: var(--beige);
+  opacity: 0.55;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marqueeTrackAnimated {
+    animation: none;
+  }
+
+  .marqueeViewport {
+    overflow-x: auto;
+  }
+
+  .marqueeTrack {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 800px) {
+  .marqueeCard {
+    width: 105px;
+  }
+
+  .marqueeTrack {
+    gap: 1.25rem;
+  }
+
+  .cardName {
+    font-size: 0.7rem;
+  }
+}

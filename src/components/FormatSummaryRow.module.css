@@ -5,6 +5,47 @@
   margin: 0.75rem 0 1rem 0;
 }
 
+.wrapper {
+  width: 100%;
+  position: relative;
+  padding-top: 2.5rem;
+}
+
+.viewToggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  gap: 0.35rem;
+  z-index: 1;
+}
+
+.viewToggleButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  background-color: rgba(234, 221, 207, 0.15);
+  color: var(--beige);
+  border: 1px solid rgba(234, 221, 207, 0.35);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.viewToggleButton:hover {
+  background-color: rgba(234, 221, 207, 0.25);
+}
+
+.viewToggleActive {
+  background-color: var(--petrol-blue);
+  border-color: var(--petrol-blue);
+  color: var(--beige);
+}
+
 .card {
   background-color: var(--beige);
   color: var(--coal-grey);
@@ -97,6 +138,214 @@
   background-color: rgba(213, 165, 103, 0.41);
 }
 
+.carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 320px;
+}
+
+.carouselViewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carouselTrack {
+  display: flex;
+  width: 100%;
+  will-change: transform;
+}
+
+.carouselSlide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+
+.cardImageButton {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: transform 0.2s ease;
+}
+
+.cardImageButton:disabled {
+  cursor: default;
+}
+
+.cardImageButton:not(:disabled):hover {
+  transform: scale(1.02);
+}
+
+.carouselCardImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+}
+
+.cardPlaceholder {
+  width: 100%;
+  aspect-ratio: 5 / 7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(45, 45, 45, 0.08);
+  border: 1px dashed rgba(45, 45, 45, 0.25);
+  border-radius: 6px;
+  color: var(--coal-grey);
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.carouselCardName {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--coal-grey);
+  line-height: 1.2;
+}
+
+.changeGrid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 0.5rem;
+  row-gap: 0.25rem;
+  align-items: center;
+  margin-top: 0.35rem;
+}
+
+.changeLabelBefore {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.changeLabelAfter {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.changeValueBefore {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.changeColumnArrows {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.25rem;
+  min-height: 3.5rem;
+}
+
+.changeValueAfter {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.changeLabelBefore,
+.changeLabelAfter {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--coal-grey);
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.changeValueBefore,
+.changeValueAfter {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--coal-grey);
+  line-height: 1.2;
+  word-break: break-word;
+  text-align: center;
+}
+
+.arrowIcon {
+  font-size: 2.5rem;
+}
+
+.arrowIconDouble {
+  font-size: 3.2rem;
+}
+
+.arrowIconTriple {
+  width: 3.4rem;
+  height: auto;
+}
+
+.arrowPositiveStrong {
+  color: #3d8a52;
+}
+
+.arrowPositiveSoft {
+  color: #6fa87a;
+}
+
+.arrowNegativeStrong {
+  color: #b83228;
+}
+
+.arrowNegativeSoft {
+  color: #c45649;
+}
+
+.arrowNeutral {
+  color: #b07d3b;
+  font-weight: 700;
+}
+
+.carouselControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.carouselArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--petrol-blue);
+  color: var(--beige);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.carouselArrow:hover {
+  background-color: var(--ocher);
+  transform: scale(1.05);
+}
+
+.carouselCounter {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--coal-grey);
+  opacity: 0.75;
+  min-width: 3rem;
+  text-align: center;
+}
+
 @media (max-width: 800px) {
   .row {
     grid-template-columns: repeat(2, 1fr);
@@ -134,6 +383,51 @@
   .table td:first-child {
     max-width: 80px;
     white-space: normal;
+  }
+
+  .carouselCardName {
+    font-size: 0.8rem;
+  }
+
+  .changeGrid {
+    column-gap: 0.35rem;
+    row-gap: 0.2rem;
+  }
+
+  .changeLabelBefore,
+  .changeLabelAfter {
+    font-size: 0.58rem;
+  }
+
+  .changeValueBefore,
+  .changeValueAfter {
+    font-size: 0.62rem;
+  }
+
+  .changeColumnArrows {
+    min-height: 2.75rem;
+  }
+
+  .arrowIcon {
+    font-size: 2rem;
+  }
+
+  .arrowIconDouble {
+    font-size: 2.6rem;
+  }
+
+  .arrowIconTriple {
+    width: 2.8rem;
+  }
+
+  .wrapper {
+    padding-top: 2.25rem;
+  }
+
+  .viewToggleButton {
+    width: 1.85rem;
+    height: 1.85rem;
+    font-size: 0.8rem;
   }
 }
 
