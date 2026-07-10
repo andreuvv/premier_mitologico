@@ -10,6 +10,7 @@ import { useUserCardList } from '../hooks/useUserCardList';
 import { useScrollRestore } from '../hooks/useScrollRestore';
 import CardDetailModal from '../components/CardDetailModal';
 import FormatBanner from '../components/FormatBanner';
+import SectionLoader from '../components/loading/SectionLoader';
 import styles from './CollectionPage.module.css';
 
 const CollectionPage = () => {
@@ -189,10 +190,8 @@ const CollectionPage = () => {
         />
       </div>
 
-      {loading ? (
-        <div className={styles.loading}>Cargando cartas...</div>
-      ) : (
-        <div className={`${styles.content} ${styles.withSidebar}`}>
+      <div className={`${styles.content} ${styles.withSidebar}`}>
+          {!loading && (
           <CollectionFilters
             key={selectedFormat}
             allCards={allCards}
@@ -208,8 +207,11 @@ const CollectionPage = () => {
             initialRace={matchesFormat ? searchParams.get('race') : null}
             initialFreq={matchesFormat ? searchParams.get('freq') : null}
           />
+          )}
           <div className={styles.gridArea}>
-            {cardsReady && (
+            {loading ? (
+              <SectionLoader message="Cargando cartas..." />
+            ) : cardsReady ? (
               <CardGrid
                 cards={filteredCards}
                 format={selectedFormat}
@@ -227,14 +229,15 @@ const CollectionPage = () => {
                 currentPage={pageFromUrl}
                 onPageChange={handlePageChange}
               />
-            )}
+            ) : null}
           </div>
         </div>
-      )}
 
+      {!loading && (
       <div className={styles.stats}>
         Mostrando {filteredCards.length} de {allCards.length} cartas
       </div>
+      )}
 
       <CardDetailModal
         card={selectedCard}

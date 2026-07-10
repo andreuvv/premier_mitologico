@@ -79,7 +79,12 @@ export default function CollectionFilters({
     allCards.filter(c => c.product?.productType === 'Producto Especial').map(c => [c.product!.productName, c.product!.productName])
   ).values()).sort();
 
+  const pbProducts = Array.from(new Map(
+    allCards.filter(c => c.cardCategory?.name).map(c => [c.cardCategory!.name, c.cardCategory!.name])
+  ).values()).sort();
+
   const editionOptions = isPB ? pbEditions : fxEditions;
+  const productOptions = isPB ? pbProducts : fxProducts;
 
   const frequencies = Array.from(new Set(
     allCards.filter(c => c.frequency).map(c => c.frequency)
@@ -114,6 +119,7 @@ export default function CollectionFilters({
 
     if (isPB) {
       if (e) filtered = filtered.filter(c => c.edition?.name === e);
+      if (p) filtered = filtered.filter(c => c.cardCategory?.name === p);
     } else {
       if (e) filtered = filtered.filter(c => c.product?.productName === e && c.product?.productType === 'Edición');
       if (p) filtered = filtered.filter(c => c.product?.productName === p && c.product?.productType === 'Producto Especial');
@@ -158,14 +164,14 @@ export default function CollectionFilters({
 
   const handleEditionChange = (val: string) => {
     setEdition(val);
-    setProduct('');
-    applyFilters(val, '', search, type, oro, race, freq);
+    if (!isPB) setProduct('');
+    applyFilters(val, isPB ? product : '', search, type, oro, race, freq);
   };
 
   const handleProductChange = (val: string) => {
     setProduct(val);
-    setEdition('');
-    applyFilters('', val, search, type, oro, race, freq);
+    if (!isPB) setEdition('');
+    applyFilters(isPB ? edition : '', val, search, type, oro, race, freq);
   };
 
   const handleSearch = (val: string) => {
@@ -278,17 +284,16 @@ export default function CollectionFilters({
         </div>
 
         <div className={`${styles.section} ${styles.fieldProduct}`}>
-          <label className={`${styles.label} ${isPB ? styles.labelDisabled : ''}`}>
-            Producto Especial
+          <label className={styles.label}>
+            {isPB ? 'Producto' : 'Producto Especial'}
           </label>
           <select
             className={styles.select}
             value={product}
-            disabled={isPB}
             onChange={e => handleProductChange(e.target.value)}
           >
             <option value="">Todos los productos</option>
-            {fxProducts.map(p => (
+            {productOptions.map(p => (
               <option key={p} value={p}>{p}</option>
             ))}
           </select>

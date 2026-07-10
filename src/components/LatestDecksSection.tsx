@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaLayerGroup } from 'react-icons/fa';
-import { useUserDecks, PublicDeck } from '../hooks/useUserDecks';
+import { PublicDeck, useUserDecks } from '../hooks/useUserDecks';
 import styles from './LatestDecksSection.module.css';
 
 const RACE_TO_EDITION: Record<string, string> = {
@@ -54,6 +54,9 @@ function formatDeckDate(dateString?: string | null): string {
 interface LatestDecksSectionProps {
   showTitle?: boolean;
   contained?: boolean;
+  preloadedPb?: PublicDeck | null;
+  preloadedFx?: PublicDeck | null;
+  skipFetch?: boolean;
 }
 
 const DeckCard = ({ deck }: { deck: PublicDeck }) => {
@@ -105,13 +108,26 @@ const DeckCard = ({ deck }: { deck: PublicDeck }) => {
   );
 };
 
-const LatestDecksSection = ({ showTitle = true, contained = false }: LatestDecksSectionProps) => {
+const LatestDecksSection = ({
+  showTitle = true,
+  contained = false,
+  preloadedPb,
+  preloadedFx,
+  skipFetch = false,
+}: LatestDecksSectionProps) => {
   const { loadAllDecks } = useUserDecks();
-  const [latestPb, setLatestPb] = useState<PublicDeck | null>(null);
-  const [latestFx, setLatestFx] = useState<PublicDeck | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [latestPb, setLatestPb] = useState<PublicDeck | null>(preloadedPb ?? null);
+  const [latestFx, setLatestFx] = useState<PublicDeck | null>(preloadedFx ?? null);
+  const [loading, setLoading] = useState(!skipFetch);
 
   useEffect(() => {
+    if (skipFetch) {
+      setLatestPb(preloadedPb ?? null);
+      setLatestFx(preloadedFx ?? null);
+      setLoading(false);
+      return;
+    }
+
     let cancelled = false;
     setLoading(true);
     loadAllDecks()
@@ -131,7 +147,7 @@ const LatestDecksSection = ({ showTitle = true, contained = false }: LatestDecks
         if (!cancelled) setLoading(false);
       });
     return () => { cancelled = true; };
-  }, [loadAllDecks]);
+  }, [loadAllDecks, skipFetch, preloadedPb, preloadedFx]);
 
   const body = loading ? (
     <p className={styles.stateText}>Cargando mazos...</p>

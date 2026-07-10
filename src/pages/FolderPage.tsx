@@ -6,6 +6,7 @@ import CardGrid, { type SimpleCard } from '../components/CardGrid';
 import CollectionFilters, { type FilterParams } from '../components/CollectionFilters';
 import CardDetailModal from '../components/CardDetailModal';
 import FormatBanner from '../components/FormatBanner';
+import SectionLoader from '../components/loading/SectionLoader';
 import { useAuth } from '../hooks/useAuth';
 import { useUserCollection } from '../hooks/useUserCollection';
 import { useUserCardList } from '../hooks/useUserCardList';
@@ -232,10 +233,8 @@ const FolderPage = () => {
         />
       </div>
 
-      {loading ? (
-        <div className={styles.loading}>Cargando carpeta...</div>
-      ) : (
-        <div className={`${styles.content} ${styles.withSidebar}`}>
+      <div className={`${styles.content} ${styles.withSidebar}`}>
+          {!loading && (
           <CollectionFilters
             key={`folder-${selectedFormat}`}
             allCards={allCards}
@@ -255,8 +254,11 @@ const FolderPage = () => {
             initialWishlistOnly={matchesFormat ? searchParams.get('wish') === '1' : false}
             showOwnedOnlyToggle={true}
           />
+          )}
           <div className={styles.gridArea}>
-            {!cardsReady ? null : visibleCards.length === 0 ? (
+            {loading ? (
+              <SectionLoader message="Cargando carpeta..." />
+            ) : !cardsReady ? null : visibleCards.length === 0 ? (
               <div className={styles.stats}>
                 No hay cartas para los filtros actuales en {getFormatLabel(selectedFormat)}.
               </div>
@@ -282,11 +284,12 @@ const FolderPage = () => {
             )}
           </div>
         </div>
-      )}
 
+      {!loading && (
       <div className={styles.stats}>
         Mostrando {ownedCards.length} de {ownedTotalByFormat} cartas en tu Carpeta ({getFormatLabel(selectedFormat)})
       </div>
+      )}
 
       <CardDetailModal
         card={selectedCard}

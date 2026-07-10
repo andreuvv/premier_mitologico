@@ -16,6 +16,13 @@ export interface CardGame {
   __typename: string;
 }
 
+export interface CardCategory {
+  id: number;
+  name: string;
+  sortOrder: number;
+  __typename: string;
+}
+
 export interface CollectionCard {
   id: number;
   slug: string;
@@ -33,6 +40,7 @@ export interface CollectionCard {
   race: string[];
   edition: CardEdition;
   game: CardGame;
+  cardCategory?: CardCategory | null;
   product?: CardProduct;
   interactions?: string[];
   unique?: boolean;

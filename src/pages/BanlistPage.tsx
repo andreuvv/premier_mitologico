@@ -11,6 +11,7 @@ import BanlistEditorModal from '../components/BanlistEditorModal';
 import FormatSummaryRow from '../components/FormatSummaryRow';
 import BanlistMarqueeCarousel from '../components/BanlistMarqueeCarousel';
 import CardDetailModal from '../components/CardDetailModal';
+import SectionLoader from '../components/loading/SectionLoader';
 import { banlistSummaries, ChangeType, FormatSummary, lastUpdateMonth } from '../data/banlistSummary';
 import styles from './BanlistPage.module.css';
 
@@ -415,7 +416,7 @@ const BanlistPage = () => {
       </div>
 
       {loading ? (
-        <div className={styles.loading}>Cargando...</div>
+        <SectionLoader message="Cargando lista..." />
       ) : banlistData ? (
         <div className={styles.categoriesContainer}>
           {CATEGORY_SECTIONS.map(({ label, key }) => {

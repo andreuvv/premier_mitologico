@@ -1,52 +1,46 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FaTable, FaTrophy, FaLayerGroup, FaBlog } from 'react-icons/fa';
 import { useAuth } from '../hooks/useAuth';
+import { useMitoxicosHomeLoad } from '../hooks/useMitoxicosHomeLoad';
 import OnlineTournamentBanner from '../components/OnlineTournamentBanner';
 import FormatBanner from '../components/FormatBanner';
 import ActiveTournamentSection from '../components/ActiveTournamentSection';
 import GlobalStandingsTable from '../components/GlobalStandingsTable';
 import LatestDecksSection from '../components/LatestDecksSection';
 import LatestBlogCard from '../components/LatestBlogCard';
-import { tournamentAPI, GlobalStanding } from '../services/tournamentAPI';
+import MitoxicosLoader from '../components/loading/MitoxicosLoader';
+import LoadingOverlay from '../components/loading/LoadingOverlay';
 import styles from './MitoxicosHomePage.module.css';
 
 type MitoxicosTab = 'global' | 'torneo' | 'mazos' | 'blog';
 
-const MitoxicosHomePage = () => {
-  const { user } = useAuth();
+const MitoxicosHomeContent = () => {
   const [activeTab, setActiveTab] = useState<MitoxicosTab>('global');
-  const [globalStandings, setGlobalStandings] = useState<GlobalStanding[]>([]);
+  const {
+    isReady,
+    progress,
+    globalStandings,
+    tournament,
+    latestPb,
+    latestFx,
+    latestPost,
+  } = useMitoxicosHomeLoad();
 
-  useEffect(() => {
-    if (!user) return;
-    let cancelled = false;
-    tournamentAPI.getGlobalStandings()
-      .then((standings) => {
-        if (!cancelled) setGlobalStandings(standings);
-      })
-      .catch((err) => console.error('Error loading global standings:', err));
-    return () => { cancelled = true; };
-  }, [user]);
-
-  if (!user) {
+  if (!isReady) {
     return (
-      <div className={styles.container}>
-        <div className={styles.gate}>
-          <h1 className={styles.gateTitle}>Zona Mitóxicos</h1>
-          <p className={styles.gateText}>Inicia sesión para acceder a la sección Mitóxicos.</p>
-        </div>
-      </div>
+      <LoadingOverlay visible>
+        <MitoxicosLoader progress={progress} message="Cargando..." size="lg" />
+      </LoadingOverlay>
     );
   }
 
   return (
     <div className={styles.container}>
-      <OnlineTournamentBanner />
+      <OnlineTournamentBanner preloadedTournament={tournament} />
       <div className={styles.bannerSection}>
         <FormatBanner />
       </div>
 
-      {/* Mobile/Tablet Tab Navigation */}
       <div className={styles.mobileTabsContainer}>
         <button
           className={`${styles.tabButton} ${activeTab === 'global' ? styles.active : ''}`}
@@ -78,15 +72,19 @@ const MitoxicosHomePage = () => {
         </button>
       </div>
 
-      {/* Desktop layout */}
       <div className={styles.desktopView}>
         <div className={styles.desktopTopRow}>
           <section className={styles.tournamentColumn}>
             <ActiveTournamentSection variant="desktop" />
           </section>
           <aside className={styles.sidebarColumn}>
-            <LatestDecksSection contained />
-            <LatestBlogCard collapsible />
+            <LatestDecksSection
+              contained
+              skipFetch
+              preloadedPb={latestPb}
+              preloadedFx={latestFx}
+            />
+            <LatestBlogCard collapsible skipFetch preloadedPost={latestPost} />
           </aside>
         </div>
         <section className={styles.standingsRow}>
@@ -94,7 +92,6 @@ const MitoxicosHomePage = () => {
         </section>
       </div>
 
-      {/* Mobile/Tablet tab content */}
       <div className={styles.mobileTabContent}>
         {activeTab === 'global' && (
           <GlobalStandingsTable standings={globalStandings} />
@@ -103,14 +100,36 @@ const MitoxicosHomePage = () => {
           <ActiveTournamentSection variant="mobile" />
         )}
         {activeTab === 'mazos' && (
-          <LatestDecksSection contained />
+          <LatestDecksSection
+            contained
+            skipFetch
+            preloadedPb={latestPb}
+            preloadedFx={latestFx}
+          />
         )}
         {activeTab === 'blog' && (
-          <LatestBlogCard collapsible />
+          <LatestBlogCard collapsible skipFetch preloadedPost={latestPost} />
         )}
       </div>
     </div>
   );
+};
+
+const MitoxicosHomePage = () => {
+  const { user } = useAuth();
+
+  if (!user) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.gate}>
+          <h1 className={styles.gateTitle}>Zona Mitóxicos</h1>
+          <p className={styles.gateText}>Inicia sesión para acceder a la sección Mitóxicos.</p>
+        </div>
+      </div>
+    );
+  }
+
+  return <MitoxicosHomeContent />;
 };
 
 export default MitoxicosHomePage;
