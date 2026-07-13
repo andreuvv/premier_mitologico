@@ -104,8 +104,8 @@ export function hasActiveCatalogFilters(params: FilterParams): boolean {
 
 export function hasActiveFolderFilters(params: FilterParams): boolean {
   return hasActiveCatalogFilters(params) ||
-    params.ownedOnly ||
-    params.notOwnedOnly ||
-    params.favoritesOnly ||
-    params.wishlistOnly;
+    Boolean(params.ownedOnly) ||
+    Boolean(params.notOwnedOnly) ||
+    Boolean(params.favoritesOnly) ||
+    Boolean(params.wishlistOnly);
 }
