@@ -148,7 +148,9 @@ const FolderPage = () => {
   }, [filteredCards, ownedCardIds, showOwnedOnly, showNotOwnedOnly, showFavoritesOnly, showWishlistOnly, favorites.cardIds, wishlist.cardIds]);
 
   const sortByCategoryOrder = useMemo(
-    () => selectedFormat === CollectionFormat.PRIMER_BLOQUE && !hasActiveFolderFilters(filterParams),
+    () =>
+      !hasActiveFolderFilters(filterParams) &&
+      (selectedFormat === CollectionFormat.PRIMER_BLOQUE || selectedFormat === CollectionFormat.FURIA_EXTENDIDO),
     [selectedFormat, filterParams],
   );
 

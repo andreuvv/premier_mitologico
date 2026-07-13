@@ -146,7 +146,9 @@ const CollectionPage = () => {
   const matchesFormat = urlFormat === selectedFormat;
 
   const sortByCategoryOrder = useMemo(
-    () => selectedFormat === CollectionFormat.PRIMER_BLOQUE && !hasActiveCatalogFilters(filterParams),
+    () =>
+      !hasActiveCatalogFilters(filterParams) &&
+      (selectedFormat === CollectionFormat.PRIMER_BLOQUE || selectedFormat === CollectionFormat.FURIA_EXTENDIDO),
     [selectedFormat, filterParams],
   );
 

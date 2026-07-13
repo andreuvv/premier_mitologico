@@ -86,7 +86,7 @@ export function toSimpleCard(card: CollectionCard): SimpleCard {
     flavor: card.flavor,
     artist: card.artist,
     productName: card.product?.productName ?? card.edition?.name,
-    categorySortOrder: card.cardCategory?.sortOrder,
+    categorySortOrder: card.cardCategory?.sortOrder ?? card.product?.sortOrder,
   };
 }
 

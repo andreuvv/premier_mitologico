@@ -2,6 +2,7 @@ export interface CardProduct {
   productName: string;
   productCode: string;
   productType: string;
+  sortOrder?: number;
 }
 
 export interface CardEdition {
