@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo, Fragment, type MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 import CardActionsMenu from './CardActionsMenu';
+import { sortSimpleCards } from '../utils/cardSorting';
 import styles from './CardGrid.module.css';
 
 export interface SimpleCard {
@@ -16,6 +17,7 @@ export interface SimpleCard {
   flavor?: string;
   artist: string;
   productName?: string;
+  categorySortOrder?: number;
 }
 
 interface CardGridProps {
@@ -36,6 +38,7 @@ interface CardGridProps {
   showCopyCount?: boolean;
   currentPage?: number;
   onPageChange?: (page: number) => void;
+  sortByCategoryOrder?: boolean;
 }
 
 interface CopyStepperProps {
@@ -107,58 +110,6 @@ function CopyStepper({ count, onAdd, onRemove, onSet }: CopyStepperProps) {
   );
 }
 
-interface ParsedCollectorCode {
-  priorityGroup: number;
-  editionCode: string;
-  number: number;
-  suffix: string;
-}
-
-const parseCollectorCode = (code: string): ParsedCollectorCode => {
-  const original = (code || '').toUpperCase().trim();
-  const cleaned = original.replace(/\s+[A-Z]+\s*$/, '').trim();
-  const startsWithNumber = /^\d/.test(cleaned);
-
-  const dashIndex = cleaned.indexOf('-');
-  const editionCode = dashIndex >= 0 ? cleaned.slice(0, dashIndex).trim() : cleaned.replace(/\d.*$/, '').trim();
-  const remainder = dashIndex >= 0 ? cleaned.slice(dashIndex + 1).trim() : cleaned;
-  const cardNumberText = remainder.split('/')[0].trim();
-  const cardNumberMatch = cardNumberText.match(/^\d+/);
-  const number = cardNumberMatch ? Number(cardNumberMatch[0]) : Number.MAX_SAFE_INTEGER;
-  const suffix = remainder.split('/')[1]?.trim() ?? '';
-
-  return {
-    priorityGroup: startsWithNumber ? 0 : 1,
-    editionCode,
-    number,
-    suffix,
-  };
-};
-
-const compareByCollectorCode = (a: SimpleCard, b: SimpleCard): number => {
-  const aParsed = parseCollectorCode(a.collectorCode);
-  const bParsed = parseCollectorCode(b.collectorCode);
-
-  if (aParsed.priorityGroup !== bParsed.priorityGroup) {
-    return aParsed.priorityGroup - bParsed.priorityGroup;
-  }
-
-  const editionComparison = aParsed.editionCode.localeCompare(bParsed.editionCode, 'es', { sensitivity: 'base' });
-  if (editionComparison !== 0) {
-    return editionComparison;
-  }
-
-  if (aParsed.number !== bParsed.number) {
-    return aParsed.number - bParsed.number;
-  }
-
-  if (aParsed.suffix !== bParsed.suffix) {
-    return aParsed.suffix.localeCompare(bParsed.suffix, 'es', { sensitivity: 'base' });
-  }
-
-  return a.collectorCode.localeCompare(b.collectorCode, 'es', { sensitivity: 'base' });
-};
-
 const PAGE_SIZE_OPTIONS = [100, 200, 300, 400, 500] as const;
 type PageSizeOption = typeof PAGE_SIZE_OPTIONS[number];
 
@@ -186,13 +137,14 @@ export default function CardGrid({
   showCopyCount = false,
   currentPage = 1,
   onPageChange,
+  sortByCategoryOrder = false,
 }: CardGridProps) {
   const [perPage, setPerPage] = useState<PageSizeOption>(() => readSavedPerPage(cardsPerPage));
   const [paginatedCards, setPaginatedCards] = useState<SimpleCard[]>([]);
 
   const sortedCards = useMemo(() => {
-    return [...cards].sort(compareByCollectorCode);
-  }, [cards]);
+    return sortSimpleCards(cards, sortByCategoryOrder);
+  }, [cards, sortByCategoryOrder]);
 
   useEffect(() => {
     const startIndex = (currentPage - 1) * perPage;

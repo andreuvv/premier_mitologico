@@ -2,9 +2,10 @@ import { useState, useEffect, useMemo, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { CollectionFormat, CollectionCard, CollectionCatalog } from '../types/collection';
 import { loadCollectionCards } from '../services/collectionService';
-import CardGrid, { type SimpleCard } from '../components/CardGrid';
+import CardGrid from '../components/CardGrid';
 import CollectionFilters, { type FilterParams } from '../components/CollectionFilters';
 import { useAuth } from '../hooks/useAuth';
+import { hasActiveCatalogFilters, toSimpleCard } from '../utils/cardSorting';
 import { useUserCollection } from '../hooks/useUserCollection';
 import { useUserCardList } from '../hooks/useUserCardList';
 import { useScrollRestore } from '../hooks/useScrollRestore';
@@ -23,7 +24,16 @@ const CollectionPage = () => {
       : CollectionFormat.PRIMER_BLOQUE
   );
   const [allCards, setAllCards] = useState<CollectionCard[]>([]);
-  const [filteredCards, setFilteredCards] = useState<SimpleCard[]>([]);
+  const [filteredCards, setFilteredCards] = useState<ReturnType<typeof toSimpleCard>[]>([]);
+  const [filterParams, setFilterParams] = useState<FilterParams>({
+    edition: null,
+    product: null,
+    q: null,
+    type: null,
+    oro: null,
+    race: null,
+    freq: null,
+  });
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [selectedCard, setSelectedCard] = useState<CollectionCard | null>(null);
@@ -94,21 +104,8 @@ const CollectionPage = () => {
 
   const handleFilterChange = (cards: CollectionCard[], params: FilterParams) => {
     setCardsReady(true);
-    const simpleCards = cards.map(card => ({
-      id: card.id,
-      slug: card.slug,
-      name: card.name,
-      imageUrl: card.imageUrl,
-      collectorCode: card.collectorCode,
-      type: card.type,
-      cost: card.cost,
-      attack: card.attack,
-      effect: card.effect,
-      flavor: card.flavor,
-      artist: card.artist,
-      productName: card.product?.productName ?? card.edition?.name,
-    }));
-    setFilteredCards(simpleCards);
+    setFilterParams(params);
+    setFilteredCards(cards.map(toSimpleCard));
 
     setSearchParams(p => {
       const next = new URLSearchParams(p);
@@ -147,6 +144,11 @@ const CollectionPage = () => {
   // Only pass URL filter values back when the URL format matches the active tab.
   const urlFormat = searchParams.get('format') ?? CollectionFormat.PRIMER_BLOQUE;
   const matchesFormat = urlFormat === selectedFormat;
+
+  const sortByCategoryOrder = useMemo(
+    () => selectedFormat === CollectionFormat.PRIMER_BLOQUE && !hasActiveCatalogFilters(filterParams),
+    [selectedFormat, filterParams],
+  );
 
   const modalCards = useMemo(() => {
     const cardsById = new Map(allCards.map((card) => [card.id, card]));
@@ -228,6 +230,7 @@ const CollectionPage = () => {
                 showCopyCount={Boolean(user)}
                 currentPage={pageFromUrl}
                 onPageChange={handlePageChange}
+                sortByCategoryOrder={sortByCategoryOrder}
               />
             ) : null}
           </div>

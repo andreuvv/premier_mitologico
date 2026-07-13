@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { CollectionCatalog, CollectionCard, CollectionFormat } from '../types/collection';
 import { loadCollectionCards } from '../services/collectionService';
-import CardGrid, { type SimpleCard } from '../components/CardGrid';
+import CardGrid from '../components/CardGrid';
 import CollectionFilters, { type FilterParams } from '../components/CollectionFilters';
 import CardDetailModal from '../components/CardDetailModal';
 import FormatBanner from '../components/FormatBanner';
@@ -11,24 +11,8 @@ import { useAuth } from '../hooks/useAuth';
 import { useUserCollection } from '../hooks/useUserCollection';
 import { useUserCardList } from '../hooks/useUserCardList';
 import { useScrollRestore } from '../hooks/useScrollRestore';
+import { hasActiveFolderFilters, toSimpleCard } from '../utils/cardSorting';
 import styles from './CollectionPage.module.css';
-
-const toSimpleCards = (cards: CollectionCard[]): SimpleCard[] => {
-  return cards.map(card => ({
-    id: card.id,
-    slug: card.slug,
-    name: card.name,
-    imageUrl: card.imageUrl,
-    collectorCode: card.collectorCode,
-    type: card.type,
-    cost: card.cost,
-    attack: card.attack,
-    effect: card.effect,
-    flavor: card.flavor,
-    artist: card.artist,
-    productName: card.product?.productName ?? card.edition?.name,
-  }));
-};
 
 const FolderPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -40,7 +24,16 @@ const FolderPage = () => {
       : CollectionFormat.PRIMER_BLOQUE
   );
   const [allCards, setAllCards] = useState<CollectionCard[]>([]);
-  const [filteredCards, setFilteredCards] = useState<SimpleCard[]>([]);
+  const [filteredCards, setFilteredCards] = useState<ReturnType<typeof toSimpleCard>[]>([]);
+  const [filterParams, setFilterParams] = useState<FilterParams>({
+    edition: null,
+    product: null,
+    q: null,
+    type: null,
+    oro: null,
+    race: null,
+    freq: null,
+  });
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [showOwnedOnly, setShowOwnedOnly] = useState(searchParams.get('owned') === '1');
@@ -79,7 +72,7 @@ const FolderPage = () => {
     loadCollectionCards(selectedFormat)
       .then((data: CollectionCatalog) => {
         setAllCards(data.data.CardCatalog.cards);
-        setFilteredCards(toSimpleCards(data.data.CardCatalog.cards));
+        setFilteredCards(data.data.CardCatalog.cards.map(toSimpleCard));
         setLoading(false);
       })
       .catch(err => {
@@ -111,8 +104,8 @@ const FolderPage = () => {
 
   const handleFilterChange = (cards: CollectionCard[], params: FilterParams) => {
     setCardsReady(true);
-    const simpleCards = toSimpleCards(cards);
-    setFilteredCards(simpleCards);
+    setFilterParams(params);
+    setFilteredCards(cards.map(toSimpleCard));
     setShowOwnedOnly(params.ownedOnly === true);
     setShowNotOwnedOnly(params.notOwnedOnly === true);
     setShowFavoritesOnly(params.favoritesOnly === true);
@@ -153,6 +146,11 @@ const FolderPage = () => {
     if (showWishlistOnly) result = result.filter(card => wishlist.cardIds.has(card.id));
     return result;
   }, [filteredCards, ownedCardIds, showOwnedOnly, showNotOwnedOnly, showFavoritesOnly, showWishlistOnly, favorites.cardIds, wishlist.cardIds]);
+
+  const sortByCategoryOrder = useMemo(
+    () => selectedFormat === CollectionFormat.PRIMER_BLOQUE && !hasActiveFolderFilters(filterParams),
+    [selectedFormat, filterParams],
+  );
 
   const modalCards = useMemo(() => {
     const cardsById = new Map(allCards.map((card) => [card.id, card]));
@@ -280,6 +278,7 @@ const FolderPage = () => {
                 showCopyCount={true}
                 currentPage={pageFromUrl}
                 onPageChange={handlePageChange}
+                sortByCategoryOrder={sortByCategoryOrder}
               />
             )}
           </div>
