@@ -359,7 +359,9 @@ export default function FormatSummaryRow({ summaries }: Props) {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.viewToggle}>
+      <div className={styles.summaryToolbar}>
+        <p className={styles.disclaimer}>Cartas no mencionadas mantienen restricciones del mes anterior</p>
+        <div className={styles.viewToggle}>
         <button
           type="button"
           className={`${styles.viewToggleButton} ${viewMode === 'carousel' ? styles.viewToggleActive : ''}`}
@@ -380,6 +382,7 @@ export default function FormatSummaryRow({ summaries }: Props) {
         >
           <FaList />
         </button>
+      </div>
       </div>
 
       <div className={styles.row}>

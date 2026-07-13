@@ -1,6 +1,20 @@
 .marqueeViewport {
   width: 100%;
   overflow: hidden;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.marqueeViewportDraggable {
+  cursor: grab;
+}
+
+.marqueeViewportDraggable .marqueeCard {
+  cursor: grab;
+}
+
+.marqueeViewportDraggable:active .marqueeCard {
+  cursor: grabbing;
 }
 
 .marqueeTrack {
@@ -8,25 +22,8 @@
   align-items: flex-start;
   gap: 2rem;
   width: max-content;
-  padding: 0.25rem 0;
-}
-
-.marqueeTrackAnimated {
-  animation: marqueePingPong var(--marquee-duration, 30s) ease-in-out infinite;
-}
-
-.marqueeTrackAnimated:hover {
-  animation-play-state: paused;
-}
-
-@keyframes marqueePingPong {
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(var(--max-scroll, 0px));
-  }
+  padding: 0.25rem 0 0.5rem;
+  will-change: transform;
 }
 
 .marqueeCard {
@@ -53,6 +50,7 @@
   display: block;
   border-radius: 8px;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
 }
 
 .cardPlaceholder {
@@ -67,6 +65,7 @@
   color: var(--beige);
   font-size: 2rem;
   font-weight: 700;
+  pointer-events: none;
 }
 
 .cardName {
@@ -76,6 +75,7 @@
   text-align: center;
   line-height: 1.2;
   word-break: break-word;
+  pointer-events: none;
 }
 
 .empty {
@@ -89,18 +89,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marqueeTrackAnimated {
-    animation: none;
-  }
-
   .marqueeViewport {
     overflow-x: auto;
+    cursor: auto;
   }
 
   .marqueeTrack {
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    transform: none !important;
   }
 }
 

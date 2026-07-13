@@ -8,14 +8,19 @@
 .wrapper {
   width: 100%;
   position: relative;
-  padding-top: 2.5rem;
+}
+
+.summaryToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 .viewToggle {
-  position: absolute;
-  top: 0;
-  right: 0;
   display: flex;
+  flex-shrink: 0;
   gap: 0.35rem;
   z-index: 1;
 }
@@ -77,12 +82,15 @@
 }
 
 .disclaimer {
-  margin: 0.75rem 0 0 0;
-  text-align: center;
-  color: var(--coal-grey);
-  opacity: 0.5;
-  font-size: 0.7rem;
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  color: var(--beige);
+  opacity: 0.6;
+  font-size: 0.75rem;
   font-style: italic;
+  line-height: 1.3;
 }
 
 .table {
@@ -421,7 +429,16 @@
   }
 
   .wrapper {
-    padding-top: 2.25rem;
+    padding-top: 0;
+  }
+
+  .summaryToolbar {
+    gap: 0.5rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .disclaimer {
+    font-size: 0.65rem;
   }
 
   .viewToggleButton {

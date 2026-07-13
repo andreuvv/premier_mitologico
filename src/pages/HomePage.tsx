@@ -10,7 +10,7 @@ import { useHomePageLoad } from '../hooks/useHomePageLoad';
 import styles from './HomePage.module.css';
 
 const HomePage = () => {
-  const [activeTab, setActiveTab] = useState<'documentos' | 'banlist'>('documentos');
+  const [activeTab, setActiveTab] = useState<'documentos' | 'banlist'>('banlist');
   const { isReady, progress, summaries, summaryMonth } = useHomePageLoad();
 
   if (!isReady) {
@@ -30,18 +30,18 @@ const HomePage = () => {
 
         <div className={styles.mobileTabsContainer}>
           <button
-            className={`${styles.tabButton} ${activeTab === 'documentos' ? styles.active : ''}`}
-            onClick={() => setActiveTab('documentos')}
-          >
-            <FaBook className={styles.tabIcon} />
-            <span className={styles.tabLabel}>Docs Oficiales</span>
-          </button>
-          <button
             className={`${styles.tabButton} ${activeTab === 'banlist' ? styles.active : ''}`}
             onClick={() => setActiveTab('banlist')}
           >
             <FaGavel className={styles.tabIcon} />
             <span className={styles.tabLabel}>Resumen BanList</span>
+          </button>
+          <button
+            className={`${styles.tabButton} ${activeTab === 'documentos' ? styles.active : ''}`}
+            onClick={() => setActiveTab('documentos')}
+          >
+            <FaBook className={styles.tabIcon} />
+            <span className={styles.tabLabel}>Docs Oficiales</span>
           </button>
         </div>
 
@@ -51,7 +51,6 @@ const HomePage = () => {
               <div className={styles.banlistHeader}>
                 <h3 className={styles.banlistTitle}>Resumen Actualización Ban List {summaryMonth}</h3>
               </div>
-              <p className={styles.disclaimer}>Cartas no mencionadas mantienen restricciones del mes anterior</p>
               <FormatSummaryRow summaries={summaries} />
               <Link to="/banlist" className={styles.banlistLink}>
                 Ver Ban List completa
@@ -77,7 +76,6 @@ const HomePage = () => {
               <div className={styles.banlistHeader}>
                 <h3 className={styles.banlistTitle}>Resumen Actualización Ban List {summaryMonth}</h3>
               </div>
-              <p className={styles.disclaimer}>Cartas no mencionadas mantienen restricciones del mes anterior</p>
               <FormatSummaryRow summaries={summaries} />
               <Link to="/banlist" className={styles.banlistLink}>
                 Ver Ban List completa

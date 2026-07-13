@@ -29,17 +29,52 @@ const slugToFormat = Object.entries(formatToSlug).reduce((acc, [format, slug]) =
   return acc;
 }, {} as Record<string, BanListFormat>);
 
-const FORMAT_TABS: { format: BanListFormat; labelLine1: string; labelLine2: string; isPb: boolean }[] = [
-  { format: BanListFormat.PRIMER_BLOQUE_EDICION, labelLine1: 'PB Racial', labelLine2: 'Edición', isPb: true },
-  { format: BanListFormat.PRIMER_BLOQUE_LIBRE, labelLine1: 'PB Racial', labelLine2: 'Libre', isPb: true },
-  { format: BanListFormat.BLOQUE_FURIA_LIBRE, labelLine1: 'FX Racial', labelLine2: 'Libre', isPb: false },
-  { format: BanListFormat.BLOQUE_FURIA_RAGNAROK, labelLine1: 'FX Racial', labelLine2: 'Ragnarok', isPb: false },
+const FORMAT_TABS: {
+  format: BanListFormat;
+  label: string;
+  labelLine1: string;
+  labelLine2: string;
+  isPb: boolean;
+}[] = [
+  {
+    format: BanListFormat.PRIMER_BLOQUE_EDICION,
+    label: 'Primer Bloque Racial Edición',
+    labelLine1: 'PB Racial',
+    labelLine2: 'Edición',
+    isPb: true,
+  },
+  {
+    format: BanListFormat.PRIMER_BLOQUE_LIBRE,
+    label: 'Primer Bloque Racial Libre',
+    labelLine1: 'PB Racial',
+    labelLine2: 'Libre',
+    isPb: true,
+  },
+  {
+    format: BanListFormat.BLOQUE_FURIA_LIBRE,
+    label: 'Furia Extendido Racial Libre',
+    labelLine1: 'FX Racial',
+    labelLine2: 'Libre',
+    isPb: false,
+  },
+  {
+    format: BanListFormat.BLOQUE_FURIA_RAGNAROK,
+    label: 'Furia Extendido Racial Ragnarok',
+    labelLine1: 'FX Racial',
+    labelLine2: 'Ragnarok',
+    isPb: false,
+  },
 ];
 
-const CATEGORY_SECTIONS: { category: BanListCategory; label: string; key: keyof Pick<BanListData, 'banned' | 'limitedX1' | 'limitedX2'> }[] = [
-  { category: BanListCategory.BANNED, label: 'Baneadas', key: 'banned' },
-  { category: BanListCategory.LIMITED_X1, label: 'Limitadas x1', key: 'limitedX1' },
-  { category: BanListCategory.LIMITED_X2, label: 'Limitadas x2', key: 'limitedX2' },
+const CATEGORY_SECTIONS: {
+  category: BanListCategory;
+  label: string;
+  key: keyof Pick<BanListData, 'banned' | 'limitedX1' | 'limitedX2'>;
+  panelClass: string;
+}[] = [
+  { category: BanListCategory.BANNED, label: 'Baneadas', key: 'banned', panelClass: 'categoryPanelBanned' },
+  { category: BanListCategory.LIMITED_X1, label: 'Limitadas x1', key: 'limitedX1', panelClass: 'categoryPanelLimitedX1' },
+  { category: BanListCategory.LIMITED_X2, label: 'Limitadas x2', key: 'limitedX2', panelClass: 'categoryPanelLimitedX2' },
 ];
 
 const getMonthYearLabel = (lastUpdated: string): string => {
@@ -336,7 +371,6 @@ const BanlistPage = () => {
         </button>
         {showAccordion && (
           <div className={styles.accordionBody}>
-            <p className={styles.disclaimer}>Cartas no mencionadas mantienen restricciones del mes anterior</p>
             <FormatSummaryRow summaries={computedSummaries} />
           </div>
         )}
@@ -344,15 +378,16 @@ const BanlistPage = () => {
 
       <div className={styles.controls}>
         <div className={styles.formatTabs}>
-          {FORMAT_TABS.map(({ format, labelLine1, labelLine2, isPb }) => (
+          {FORMAT_TABS.map(({ format, label, labelLine1, labelLine2, isPb }) => (
             <button
               key={format}
               type="button"
               className={`${styles.formatTab} ${selectedFormat === format ? styles.formatTabActive : ''} ${selectedFormat === format ? (isPb ? styles.formatTabPb : styles.formatTabFx) : ''}`}
               onClick={() => handleFormatChange(format)}
-              aria-label={`${labelLine1} ${labelLine2}`}
+              aria-label={label}
             >
-              <span className={styles.formatTabLabel}>
+              <span className={styles.formatTabLabelDesktop}>{label}</span>
+              <span className={styles.formatTabLabelMobile}>
                 <span>{labelLine1}</span>
                 <span>{labelLine2}</span>
               </span>
@@ -419,44 +454,44 @@ const BanlistPage = () => {
         <SectionLoader message="Cargando lista..." />
       ) : banlistData ? (
         <div className={styles.categoriesContainer}>
-          {CATEGORY_SECTIONS.map(({ label, key }) => {
+          {CATEGORY_SECTIONS.map(({ label, key, panelClass }) => {
             const sectionCards = banlistData[key];
+            const panelStyleClass = styles[panelClass as keyof typeof styles];
 
             return (
               <section key={key} className={styles.categorySection}>
-                <h3 className={styles.categoryTitle}>
-                  {label}
-                </h3>
-
-                {viewMode === 'carousel' ? (
-                  <BanlistMarqueeCarousel
-                    cards={sectionCards}
-                    onCardClick={(card) => handleCardClick(card, sectionCards)}
-                  />
-                ) : (
-                  <div className={styles.cardsGrid}>
-                    {sectionCards.length === 0 ? (
-                      <p className={styles.emptySection}>Sin cartas</p>
-                    ) : (
-                      sectionCards.map((card, index) => (
-                        <button
-                          key={`${card.name}-${index}`}
-                          type="button"
-                          className={styles.gridCard}
-                          onClick={() => handleCardClick(card, sectionCards)}
-                          aria-label={`Ver detalle de ${card.name}`}
-                        >
-                          {card.imageUrl ? (
-                            <img src={card.imageUrl} alt={card.name} />
-                          ) : (
-                            <div className={styles.placeholder}>Sin imagen</div>
-                          )}
-                          <span className={styles.gridCardName}>{card.name}</span>
-                        </button>
-                      ))
-                    )}
-                  </div>
-                )}
+                <div className={`${styles.categoryPanel} ${panelStyleClass}`}>
+                  <h3 className={styles.categoryTitle}>{label}</h3>
+                  {viewMode === 'carousel' ? (
+                    <BanlistMarqueeCarousel
+                      cards={sectionCards}
+                      onCardClick={(card) => handleCardClick(card, sectionCards)}
+                    />
+                  ) : (
+                    <div className={styles.cardsGrid}>
+                      {sectionCards.length === 0 ? (
+                        <p className={styles.emptySection}>Sin cartas</p>
+                      ) : (
+                        sectionCards.map((card, index) => (
+                          <button
+                            key={`${card.name}-${index}`}
+                            type="button"
+                            className={styles.gridCard}
+                            onClick={() => handleCardClick(card, sectionCards)}
+                            aria-label={`Ver detalle de ${card.name}`}
+                          >
+                            {card.imageUrl ? (
+                              <img src={card.imageUrl} alt={card.name} />
+                            ) : (
+                              <div className={styles.placeholder}>Sin imagen</div>
+                            )}
+                            <span className={styles.gridCardName}>{card.name}</span>
+                          </button>
+                        ))
+                      )}
+                    </div>
+                  )}
+                </div>
               </section>
             );
           })}

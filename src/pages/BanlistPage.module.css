@@ -57,32 +57,45 @@
 }
 
 .formatTabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
   margin-bottom: 1rem;
 }
 
 .formatTab {
-  background: none;
-  border: none;
+  background: var(--coal-grey);
+  border: 1px solid rgba(45, 45, 45, 0.85);
   border-bottom: 2px solid transparent;
-  border-radius: 0;
-  padding: 0 0 0.3rem 0;
+  border-radius: 8px;
+  padding: 0.65rem 0.75rem;
   font-family: 'Cyrodiil', serif;
-  font-size: 1.15rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--beige);
-  opacity: 0.6;
+  opacity: 0.78;
   cursor: pointer;
-  transition: opacity 0.2s ease, border-color 0.2s ease;
+  transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   text-align: center;
   line-height: 1.2;
-  flex: 0 0 auto;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.28);
+  min-width: 0;
 }
 
-.formatTabLabel {
-  display: flex;
+.formatTabLabelDesktop {
+  display: block;
+  white-space: nowrap;
+}
+
+@media (min-width: 801px) {
+  .formatTab {
+    font-size: clamp(0.72rem, 0.95vw, 0.92rem);
+    padding: 0.7rem 0.55rem;
+  }
+}
+
+.formatTabLabelMobile {
+  display: none;
   flex-direction: column;
   align-items: center;
   gap: 0.1rem;
@@ -90,7 +103,8 @@
 }
 
 .formatTab:hover {
-  opacity: 0.85;
+  opacity: 0.92;
+  transform: translateY(-1px);
 }
 
 .formatTabActive {
@@ -103,6 +117,22 @@
 
 .formatTabFx {
   border-bottom-color: var(--brick-red);
+}
+
+.formatTabActive.formatTabPb {
+  border-color: rgba(214, 156, 65, 0.5);
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.28),
+    0 0 6px 1px rgba(214, 156, 65, 0.38),
+    0 0 12px 2px rgba(214, 156, 65, 0.18);
+}
+
+.formatTabActive.formatTabFx {
+  border-color: rgba(201, 67, 56, 0.5);
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.28),
+    0 0 6px 1px rgba(201, 67, 56, 0.38),
+    0 0 12px 2px rgba(201, 67, 56, 0.18);
 }
 
 .metaRow {
@@ -223,6 +253,40 @@
 
 .categorySection {
   padding: 0;
+}
+
+.categoryPanel {
+  padding: 0.85rem 1rem 1.25rem;
+  border-radius: 12px 12px 0 0;
+  overflow: visible;
+  box-shadow: 0 -6px 18px rgba(0, 0, 0, 0.32);
+}
+
+.categoryPanelBanned {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, #922f28 30%, var(--coal-grey)) 0%,
+    color-mix(in srgb, #922f28 12%, var(--coal-grey)) 50%,
+    var(--coal-grey) 100%
+  );
+}
+
+.categoryPanelLimitedX1 {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, #9d7229 30%, var(--coal-grey)) 0%,
+    color-mix(in srgb, #9d7229 12%, var(--coal-grey)) 50%,
+    var(--coal-grey) 100%
+  );
+}
+
+.categoryPanelLimitedX2 {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, #587a4e 30%, var(--coal-grey)) 0%,
+    color-mix(in srgb, #587a4e 12%, var(--coal-grey)) 50%,
+    var(--coal-grey) 100%
+  );
 }
 
 .categoryTitle {
@@ -384,16 +448,21 @@
   }
 
   .formatTabs {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.35rem 0.5rem;
+    gap: 0.4rem;
     margin-bottom: 0.75rem;
   }
 
   .formatTab {
-    font-size: 0.85rem;
-    flex: unset;
-    padding: 0 0.1rem 0.3rem;
+    font-size: 0.78rem;
+    padding: 0.5rem 0.35rem;
+  }
+
+  .formatTabLabelDesktop {
+    display: none;
+  }
+
+  .formatTabLabelMobile {
+    display: flex;
   }
 
   .metaRow {
@@ -408,6 +477,12 @@
   .viewToggle {
     margin-left: 0;
     justify-content: flex-end;
+  }
+
+  .categoryPanel {
+    padding: 0.75rem 0.85rem 1rem;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.28);
   }
 
   .cardsGrid {
