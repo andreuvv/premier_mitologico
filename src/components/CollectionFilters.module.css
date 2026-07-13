@@ -1,15 +1,31 @@
 .panel {
   width: 100%;
   background: var(--dark-brown);
-  border: 1px solid var(--ocher);
+  border: none;
   border-radius: 10px;
   padding: 0.75rem 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
   position: sticky;
-  top: 70px; /* justo debajo del header (height 70px) */
-  z-index: 99; /* debajo del header (100), encima del grid */
+  top: 70px;
+  z-index: 99;
+  align-self: flex-start;
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.32),
+    0 2px 6px rgba(0, 0, 0, 0.22);
+  transition: border-radius 0.2s ease, box-shadow 0.2s ease;
+}
+
+.panelStuck {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  border-radius: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.38),
+    0 2px 8px rgba(0, 0, 0, 0.24);
 }
 
 .panelHeader {
@@ -17,8 +33,6 @@
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
-  padding-bottom: 0.6rem;
-  border-bottom: 1px solid rgba(214, 156, 65, 0.3);
 }
 
 .panelTitle {
@@ -40,18 +54,24 @@
   border: none;
   color: var(--beige);
   cursor: pointer;
-  font-size: 1rem;
   line-height: 1;
-  padding: 0 0.1rem;
-  opacity: 0.7;
-  transition: transform 0.25s ease, opacity 0.2s;
+  padding: 0.15rem;
+  opacity: 0.85;
+  transition: transform 0.25s ease, opacity 0.2s, color 0.2s;
   transform: rotate(0deg);
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.chevronIcon {
+  width: 1.15rem;
+  height: 1.15rem;
 }
 
 .chevronButton:hover {
   opacity: 1;
+  color: var(--ocher);
 }
 
 .chevronCollapsed {
@@ -83,21 +103,20 @@
   font-weight: 600;
   background: var(--brick-red);
   color: var(--beige);
-  border: 1px solid var(--brick-red);
+  border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .clearButton:hover {
-  background: transparent;
-  color: var(--brick-red);
+  filter: brightness(1.1);
 }
 
 .closeButton {
   display: none;
   background: none;
-  border: 1px solid #555;
+  border: none;
   color: var(--beige);
   width: 28px;
   height: 28px;
@@ -106,11 +125,10 @@
   font-size: 0.85rem;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s;
+  transition: color 0.2s;
 }
 
 .closeButton:hover {
-  border-color: var(--brick-red);
   color: var(--brick-red);
 }
 
@@ -135,40 +153,37 @@
   opacity: 0.35;
 }
 
-/* Selects — same style as BanlistPage formatSelector */
 .select {
   padding: 0.35rem 0.5rem;
-  border: 1px solid var(--ocher);
+  border: none;
   border-radius: 6px;
   background-color: var(--coal-grey);
   color: var(--beige);
   font-size: 0.8rem;
   cursor: pointer;
   width: 100%;
-  transition: border-color 0.2s;
+  transition: box-shadow 0.2s;
 }
 
 .select:focus {
   outline: none;
-  border-color: var(--petrol-blue);
+  box-shadow: 0 0 0 2px rgba(75, 139, 163, 0.55);
 }
 
 .select:disabled {
   opacity: 0.35;
   cursor: not-allowed;
-  border-color: #555;
 }
 
-/* Search input */
 .searchInput {
   padding: 0.35rem 0.5rem;
   background: var(--coal-grey);
-  border: 1px solid var(--ocher);
+  border: none;
   border-radius: 6px;
   color: var(--beige);
   font-size: 0.8rem;
   width: 100%;
-  transition: border-color 0.2s;
+  transition: box-shadow 0.2s;
   box-sizing: border-box;
 }
 
@@ -178,7 +193,7 @@
 
 .searchInput:focus {
   outline: none;
-  border-color: var(--petrol-blue);
+  box-shadow: 0 0 0 2px rgba(75, 139, 163, 0.55);
 }
 
 .toggleRow {
@@ -203,17 +218,14 @@
   accent-color: var(--petrol-blue);
 }
 
-/* Race + Frequency — flow inline within the horizontal bar */
 .raceFreqRow {
   display: contents;
 }
 
-/* Edition + Product — flow inline within the horizontal bar */
 .editionRow {
   display: contents;
 }
 
-/* Type buttons — like BanlistPage categoryTabs */
 .typeButtons {
   display: flex;
   flex-wrap: wrap;
@@ -222,43 +234,44 @@
 
 .typeButton {
   padding: 0.3rem 0.6rem;
-  border: 1px solid var(--petrol-blue);
+  border: none;
   border-radius: 5px;
-  background: transparent;
+  background: var(--coal-grey);
   color: var(--beige);
   font-size: 0.75rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: background 0.2s, box-shadow 0.2s, color 0.2s;
   text-align: center;
   white-space: nowrap;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.28),
+    0 1px 3px rgba(0, 0, 0, 0.18);
 }
 
 .typeButton:hover {
-  background: rgba(75, 139, 163, 0.15);
+  background: rgba(75, 139, 163, 0.35);
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.32),
+    0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .typeButtonActive {
   background: var(--petrol-blue);
   color: var(--beige);
+  box-shadow:
+    0 3px 10px rgba(75, 139, 163, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.22);
 }
 
-/* Mobile / Tablet — bar stays fixed below the header on scroll (like desktop) */
-@media (max-width: 1200px) {
-  .panel {
-    width: 100%;
-    min-width: unset;
-    position: sticky;
-    top: 70px;
-    z-index: 99;
-    border-radius: 12px;
+@media (min-width: 1201px) {
+  .panelStuck {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
+}
 
-  /* Two-column grid:
-     - Row 1: Buscar | Edición
-     - Row 2: Producto Especial | Frecuencia
-     - Row 3: botones de Tipo (2 col) | checkboxes (2 col)
-     (Raza/Habilidad, cuando aparecen, se intercalan antes de Tipo) */
+@media (max-width: 1200px) {
   .panelBody {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -283,14 +296,12 @@
     display: none;
   }
 
-  /* Botones de tipo en dos columnas */
   .typeButtons {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.4rem;
   }
 
-  /* Checkboxes en dos columnas */
   .togglesRow {
     display: grid;
     grid-template-columns: 1fr 1fr;

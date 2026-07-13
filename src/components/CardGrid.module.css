@@ -19,18 +19,34 @@
   transition: transform 0.2s, box-shadow 0.2s;
   border-radius: 12px;
   overflow: hidden;
-  background-color: var(--beige);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--dark-brown);
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.32),
+    0 2px 6px rgba(0, 0, 0, 0.22);
   position: relative;
 }
 
 .cardItem:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.38),
+    0 4px 10px rgba(0, 0, 0, 0.26);
 }
 
 .cardOwned {
-  box-shadow: 0 0 0 3px var(--sage-green), 0 4px 14px rgba(126, 164, 112, 0.35);
+  box-shadow:
+    0 0 8px rgba(126, 164, 112, 0.75),
+    0 0 18px rgba(126, 164, 112, 0.4),
+    0 4px 14px rgba(0, 0, 0, 0.32),
+    0 2px 6px rgba(0, 0, 0, 0.22);
+}
+
+.cardOwned:hover {
+  box-shadow:
+    0 0 10px rgba(126, 164, 112, 0.85),
+    0 0 24px rgba(126, 164, 112, 0.45),
+    0 8px 22px rgba(0, 0, 0, 0.38),
+    0 4px 10px rgba(0, 0, 0, 0.26);
 }
 
 .cardUnownedMuted .cardImage {
@@ -76,12 +92,12 @@
   flex-direction: column;
   gap: 0.6rem;
   flex: 1;
+  background-color: var(--dark-brown);
 }
 
-/* Indicador "en Carpeta": franja superior verde + fondo tintado */
+/* "En Carpeta" se indica con el glow en .cardOwned; fondo igual al resto */
 .cardInfoOwned {
-  border-top: 4px solid var(--sage-green);
-  background: rgba(126, 164, 112, 0.18);
+  background-color: var(--dark-brown);
 }
 
 .cardInfoHeader {
@@ -90,17 +106,29 @@
   gap: 0.5rem;
 }
 
+.cardInfoHeader > button {
+  background: rgba(234, 221, 207, 0.1);
+  color: var(--beige);
+  border-color: rgba(234, 221, 207, 0.15);
+}
+
+.cardInfoHeader > button:hover {
+  background: var(--ocher);
+  color: var(--coal-grey);
+  border-color: var(--ocher);
+}
+
 .cardTitleLink {
   display: block;
   text-decoration: none;
-  color: inherit;
+  color: var(--beige);
   min-width: 0;
 }
 
 .cardInfo h4 {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--coal-grey);
+  color: var(--beige);
   font-weight: 600;
   line-height: 1.3;
 }
@@ -109,7 +137,7 @@
   display: block;
   margin-top: 0.25rem;
   font-size: 0.75rem;
-  color: var(--petrol-blue);
+  color: var(--ocher);
   font-weight: 500;
   letter-spacing: 0.03em;
 }
@@ -164,13 +192,13 @@
   padding: 0.25rem 0.4rem;
   font-size: 0.78rem;
   font-weight: 600;
-  color: var(--dark-brown);
+  color: var(--beige);
   cursor: text;
   transition: background 0.15s;
 }
 
 .stepperLabel:hover {
-  background: rgba(214, 156, 65, 0.15);
+  background: rgba(234, 221, 207, 0.1);
 }
 
 .stepperInput {
@@ -181,15 +209,15 @@
   padding: 0.25rem 0.4rem;
   font-size: 0.78rem;
   font-weight: 600;
-  color: var(--coal-grey);
-  background: var(--beige);
+  color: var(--beige);
+  background: rgba(0, 0, 0, 0.25);
   border: none;
   box-sizing: border-box;
 }
 
 .stepperInput:focus {
   outline: none;
-  box-shadow: inset 0 0 0 2px var(--petrol-blue);
+  box-shadow: inset 0 0 0 2px var(--ocher);
 }
 
 .pagination {
@@ -244,6 +272,16 @@
   align-self: flex-end;
 }
 
+.perPageButtons {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.perPageSelect {
+  display: none;
+}
+
 .perPageDivider {
   color: var(--ocher);
   font-weight: 400;
@@ -276,6 +314,37 @@
 
 /* Mobile Responsive */
 @media (max-width: 1200px) {
+  .perPageSelector {
+    align-self: stretch;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .perPageButtons {
+    display: none;
+  }
+
+  .perPageSelect {
+    display: block;
+    padding: 0.35rem 1.75rem 0.35rem 0.5rem;
+    border: 1px solid var(--ocher);
+    border-radius: 6px;
+    background-color: var(--coal-grey);
+    color: var(--beige);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23D69C41' d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+  }
+
+  .perPageSelect:focus {
+    outline: none;
+    border-color: var(--petrol-blue);
+  }
+
   .grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 1rem;

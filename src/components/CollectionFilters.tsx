@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { FaChevronUp } from 'react-icons/fa';
 import { CollectionCard, CollectionFormat } from '../types/collection';
 import styles from './CollectionFilters.module.css';
 
@@ -235,11 +236,44 @@ export default function CollectionFilters({
   };
 
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
+  const [isStuck, setIsStuck] = useState(false);
+  const panelRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const panel = panelRef.current;
+    if (!panel) return;
+
+    const headerOffset = 70;
+    let rafId = 0;
+
+    const update = () => {
+      rafId = 0;
+      const rect = panel.getBoundingClientRect();
+      setIsStuck(rect.top <= headerOffset + 1 && rect.bottom > headerOffset + 1);
+    };
+
+    const scheduleUpdate = () => {
+      if (!rafId) rafId = requestAnimationFrame(update);
+    };
+
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate);
+    scheduleUpdate();
+
+    return () => {
+      window.removeEventListener('scroll', scheduleUpdate);
+      window.removeEventListener('resize', scheduleUpdate);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, []);
 
   const hasFilters = !!(edition || product || search || type || (type === 'Oro' && oro !== 'all') || race || freq || ownedOnly || notOwnedOnly || favoritesOnly || wishlistOnly);
 
   return (
-    <aside className={`${styles.panel} ${isOpen ? styles.open : ''}`}>
+    <aside
+      ref={panelRef}
+      className={`${styles.panel} ${isStuck ? styles.panelStuck : ''} ${isOpen ? styles.open : ''}`}
+    >
       <div className={styles.panelHeader}>
         <span className={styles.panelTitle}>Filtros</span>
         <div className={styles.panelActions}>
@@ -248,10 +282,13 @@ export default function CollectionFilters({
           )}
           <button className={styles.closeButton} onClick={onClose} aria-label="Cerrar filtros">✕</button>
           <button
+            type="button"
             className={`${styles.chevronButton} ${collapsed ? styles.chevronCollapsed : ''}`}
             onClick={() => setCollapsed(c => !c)}
             aria-label={collapsed ? 'Expandir filtros' : 'Colapsar filtros'}
-          >⌃</button>
+          >
+            <FaChevronUp className={styles.chevronIcon} aria-hidden="true" />
+          </button>
         </div>
       </div>
 
