@@ -42,11 +42,16 @@
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
   display: block;
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.32),
+    0 2px 6px rgba(0, 0, 0, 0.22);
 }
 
 .imageButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.38),
+    0 4px 10px rgba(0, 0, 0, 0.26);
 }
 
 .newestBadge {
@@ -58,7 +63,7 @@
   padding: 0.2rem 0.45rem;
   border-radius: 999px;
   background: rgba(30, 70, 65, 0.92);
-  border: 1px solid var(--ocher);
+  border: none;
   color: var(--beige);
   font-size: 0.55rem;
   font-weight: 700;
@@ -66,6 +71,7 @@
   letter-spacing: 0.03em;
   white-space: nowrap;
   pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .image {
@@ -82,13 +88,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px dashed rgba(214, 156, 65, 0.35);
+  background: var(--coal-grey);
+  border: none;
   border-radius: 6px;
   color: rgba(241, 220, 174, 0.55);
   font-size: 0.65rem;
   text-align: center;
   padding: 0.25rem;
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.32),
+    0 2px 6px rgba(0, 0, 0, 0.22);
 }
 
 .meta {
@@ -116,7 +125,7 @@
 }
 
 .code {
-  color: rgba(241, 220, 174, 0.65);
+  color: var(--ocher);
   font-size: 0.6rem;
   line-height: 1.2;
   word-break: break-all;
@@ -146,18 +155,24 @@
   width: 1.35rem;
   height: 1.35rem;
   border-radius: 50%;
-  border: 1px solid var(--ocher);
-  background: rgba(214, 156, 65, 0.12);
+  border: none;
+  background: var(--coal-grey);
   color: var(--beige);
   font-size: 0.95rem;
   line-height: 1;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, box-shadow 0.2s;
   flex-shrink: 0;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.28),
+    0 1px 3px rgba(0, 0, 0, 0.18);
 }
 
 .navBtn:hover:not(:disabled) {
-  background: rgba(214, 156, 65, 0.25);
+  background: rgba(75, 139, 163, 0.35);
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.32),
+    0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .navBtn:disabled {

@@ -1,11 +1,7 @@
-.overlay {
-  display: none;
-}
-
 .panel {
   width: 100%;
   background: var(--dark-brown);
-  border: 1px solid var(--ocher);
+  border: none;
   border-radius: 10px;
   padding: 0.75rem 1rem;
   display: flex;
@@ -14,6 +10,22 @@
   position: sticky;
   top: 70px;
   z-index: 99;
+  align-self: flex-start;
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.32),
+    0 2px 6px rgba(0, 0, 0, 0.22);
+  transition: border-radius 0.2s ease, box-shadow 0.2s ease;
+}
+
+.panelStuck {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  border-radius: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.38),
+    0 2px 8px rgba(0, 0, 0, 0.24);
 }
 
 .panelHeader {
@@ -21,8 +33,6 @@
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
-  padding-bottom: 0.6rem;
-  border-bottom: 1px solid rgba(214, 156, 65, 0.3);
 }
 
 .panelTitle {
@@ -39,19 +49,33 @@
   gap: 0.5rem;
 }
 
-.clearButton,
-.closeButton {
+.chevronButton {
   background: none;
-  border: 1px solid rgba(214, 156, 65, 0.4);
+  border: none;
   color: var(--beige);
-  border-radius: 6px;
-  padding: 0.25rem 0.6rem;
-  font-size: 0.8rem;
   cursor: pointer;
+  line-height: 1;
+  padding: 0.15rem;
+  opacity: 0.85;
+  transition: transform 0.25s ease, opacity 0.2s, color 0.2s;
+  transform: rotate(0deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.closeButton {
-  display: none;
+.chevronIcon {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.chevronButton:hover {
+  opacity: 1;
+  color: var(--ocher);
+}
+
+.chevronCollapsed {
+  transform: rotate(180deg);
 }
 
 .panelBody {
@@ -60,35 +84,69 @@
   flex-wrap: wrap;
   align-items: flex-end;
   gap: 0.7rem 1rem;
+  overflow: hidden;
+  max-height: 1000px;
+  transition: max-height 0.3s ease, opacity 0.25s ease;
+  opacity: 1;
 }
 
-.field {
+.panelBodyCollapsed {
+  max-height: 0;
+  opacity: 0;
+  padding: 0;
+}
+
+.clearButton {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: var(--brick-red);
+  color: var(--beige);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clearButton:hover {
+  filter: brightness(1.1);
+}
+
+.section {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
-  min-width: 180px;
+  gap: 0.3rem;
+  min-width: 150px;
 }
 
 .label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: rgba(241, 220, 174, 0.75);
+  font-size: 0.68rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.07em;
+  color: var(--beige);
+  opacity: 0.75;
 }
 
-.input {
-  padding: 0.55rem 0.75rem;
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(214, 156, 65, 0.4);
+.searchInput {
+  padding: 0.35rem 0.5rem;
+  background: var(--coal-grey);
+  border: none;
   border-radius: 6px;
   color: var(--beige);
-  font-size: 0.95rem;
+  font-size: 0.8rem;
+  width: 100%;
+  transition: box-shadow 0.2s;
+  box-sizing: border-box;
 }
 
-.input:focus {
+.searchInput::placeholder {
+  color: rgba(241, 220, 174, 0.5);
+}
+
+.searchInput:focus {
   outline: none;
-  border-color: var(--ocher);
+  box-shadow: 0 0 0 2px rgba(75, 139, 163, 0.55);
 }
 
 .typeButtons {
@@ -97,59 +155,63 @@
   gap: 0.4rem;
 }
 
-.typeBtn {
-  padding: 0.35rem 0.65rem;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(214, 156, 65, 0.35);
-  border-radius: 16px;
+.typeButton {
+  padding: 0.3rem 0.6rem;
+  border: none;
+  border-radius: 5px;
+  background: var(--coal-grey);
   color: var(--beige);
-  font-size: 0.82rem;
+  font-size: 0.75rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s, border-color 0.2s;
+  transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.28),
+    0 1px 3px rgba(0, 0, 0, 0.18);
 }
 
-.typeBtn:hover {
-  border-color: var(--ocher);
+.typeButton:hover {
+  background: rgba(75, 139, 163, 0.35);
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.32),
+    0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
-.typeBtnActive {
-  background: rgba(214, 156, 65, 0.2);
-  border-color: var(--ocher);
-  color: var(--ocher);
+.typeButtonActive {
+  background: var(--petrol-blue);
+  color: var(--beige);
+  box-shadow:
+    0 3px 10px rgba(75, 139, 163, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.22);
 }
 
-@media (max-width: 768px) {
-  .overlay {
-    display: block;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 200;
+@media (min-width: 1201px) {
+  .panelStuck {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
+}
 
-  .panel {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: min(320px, 85vw);
-    z-index: 201;
-    border-radius: 0;
-    transform: translateX(-100%);
-    transition: transform 0.25s ease;
-    overflow-y: auto;
-  }
-
-  .panelOpen {
-    transform: translateX(0);
-  }
-
-  .closeButton {
-    display: inline-flex;
-  }
-
+@media (max-width: 1200px) {
   .panelBody {
-    flex-direction: column;
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    align-items: start;
+  }
+
+  .section {
+    min-width: 0;
+  }
+
+  .fieldSearch { order: 1; }
+  .fieldType { order: 2; }
+
+  .typeButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
   }
 }

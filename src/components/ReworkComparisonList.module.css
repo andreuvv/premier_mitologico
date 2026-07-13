@@ -30,8 +30,11 @@
   padding: 3rem 1.5rem;
   color: rgba(241, 220, 174, 0.7);
   background: var(--dark-brown);
-  border: 1px dashed rgba(214, 156, 65, 0.35);
+  border: none;
   border-radius: 12px;
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.32),
+    0 2px 6px rgba(0, 0, 0, 0.22);
 }
 
 .sentinel {

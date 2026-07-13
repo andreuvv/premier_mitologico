@@ -22,7 +22,6 @@ const ReworkPage = () => {
   const selectedFormat = parseFormatParam(searchParams.get('format'));
   const [allCards, setAllCards] = useState<CollectionCard[]>([]);
   const [loading, setLoading] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState<CollectionCard | null>(null);
   const [filtersReady, setFiltersReady] = useState(false);
   const [filters, setFilters] = useState<ReworkFilterParams>({ q: null, type: null });
@@ -59,7 +58,6 @@ const ReworkPage = () => {
   }, [selectedFormat]);
 
   const handleFormatChange = (format: CollectionFormat) => {
-    setSidebarOpen(false);
     setSearchParams(() => {
       const next = new URLSearchParams();
       next.set('format', format);
@@ -100,19 +98,6 @@ const ReworkPage = () => {
         <p>Compara versiones antiguas y reworks de las cartas del juego.</p>
       </div>
 
-      <div className={styles.mobileHeader}>
-        {selectedFormat && (
-          <button
-            type="button"
-            className={styles.hamburger}
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-            aria-label="Abrir filtros"
-          >
-            ☰
-          </button>
-        )}
-      </div>
-
       <div className={styles.formatBannerWrap}>
         <FormatBanner
           variant="select"
@@ -132,8 +117,6 @@ const ReworkPage = () => {
         <div className={styles.content}>
           <ReworkFilters
             key={selectedFormat}
-            isOpen={sidebarOpen}
-            onClose={() => setSidebarOpen(false)}
             onFilterChange={handleFilterChange}
             initialSearch={matchesFormat ? searchParams.get('q') : null}
             initialType={matchesFormat ? searchParams.get('type') : null}
