@@ -16,6 +16,7 @@ import {
   ensureDir,
   localCardsPath,
   assignStorageKeys,
+  isOurCdnUrl,
   fetchRetry,
   pool,
   positional,
@@ -34,20 +35,23 @@ async function main() {
   const local = await readJson(localPath);
   const cards = local.data.CardCatalog.cards;
 
-  // Unique cdn.mazos.cl image URLs actually used by the catalog.
+  // Unique image URLs not already on our Bunny pull zone.
   const urls = [...new Set(cards.map((c) => c.imageUrl).filter(Boolean))];
-  const keyMap = assignStorageKeys(urls);
+  const externalUrls = urls.filter((url) => !isOurCdnUrl(url));
+  const keyMap = assignStorageKeys(externalUrls);
 
   const entries = [];
   for (const [url, info] of keyMap.entries()) {
     entries.push({ url, key: info.key, ext: info.ext, status: 'pending', bytes: 0, error: null });
   }
 
-  const nonCdn = urls.length - keyMap.size;
+  const alreadyMigrated = urls.length - externalUrls.length;
+  const skippedParse = externalUrls.length - keyMap.size;
   console.log(`Formato:        ${format}`);
   console.log(`URLs unicas:    ${urls.length}`);
-  console.log(`En cdn.mazos.cl:${keyMap.size}`);
-  console.log(`Fuera de CDN:   ${nonCdn} (se dejan sin tocar)`);
+  console.log(`Ya en nuestro CDN: ${alreadyMigrated}`);
+  console.log(`A migrar:       ${keyMap.size}`);
+  console.log(`Sin parsear:    ${skippedParse}`);
   console.log(`Destino:        ${IMAGES_DIR}`);
 
   await ensureDir(IMAGES_DIR);

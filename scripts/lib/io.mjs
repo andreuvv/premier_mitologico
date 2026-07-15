@@ -100,7 +100,26 @@ export async function fetchRetry(url, options = {}, { retries = 3, backoffMs = 8
 }
 
 const CDN_HOST = 'cdn.mazos.cl';
+const DEFAULT_OUR_CDN_HOST = 'mitoxicos.b-cdn.net';
 const IMG_EXT = /\.(png|webp|jpe?g|gif|avif)(?:-(\d+))?$/i;
+
+export function ourCdnHosts() {
+  const hosts = new Set([DEFAULT_OUR_CDN_HOST]);
+  const pull = process.env.BUNNY_PULLZONE_HOST;
+  if (pull) {
+    hosts.add(pull.replace(/^https?:\/\//, '').replace(/\/+$/, '').split('/')[0]);
+  }
+  return hosts;
+}
+
+export function isOurCdnUrl(rawUrl) {
+  if (!rawUrl || typeof rawUrl !== 'string') return false;
+  try {
+    return ourCdnHosts().has(new URL(rawUrl).hostname);
+  } catch {
+    return false;
+  }
+}
 
 // Replace characters that are illegal in Windows file names or structural in
 // URLs (?, #). Path separators are preserved; accented/unicode chars are kept.
@@ -120,6 +139,35 @@ export function contentTypeFor(ext) {
   if (e === 'gif') return 'image/gif';
   if (e === 'avif') return 'image/avif';
   return 'application/octet-stream';
+}
+
+// Parse any external image URL into a storage key. Returns null for empty URLs
+// or images already hosted on our Bunny pull zone.
+export function parseImageUrlForMigration(rawUrl) {
+  const mazos = parseCdnImageUrl(rawUrl);
+  if (mazos) return mazos;
+  if (!rawUrl || typeof rawUrl !== 'string') return null;
+  if (isOurCdnUrl(rawUrl)) return null;
+
+  let u;
+  try {
+    u = new URL(rawUrl);
+  } catch {
+    return null;
+  }
+
+  const pathname = decodeURIComponent(u.pathname).replace(/^\/+/, '');
+  const match = pathname.match(IMG_EXT);
+  const ext = match ? match[1].toLowerCase() : '';
+  const timestamp = match?.[2] ?? null;
+  const cleanKey = sanitizeKey(`FURIA_EXTENDIDO/migrated/${u.hostname}/${pathname}`);
+  return {
+    url: rawUrl,
+    rawPath: pathname,
+    ext,
+    timestamp,
+    cleanKey,
+  };
 }
 
 // Parse a cdn.mazos.cl image URL into a clean storage key (path preserved, the
@@ -153,14 +201,14 @@ export function parseCdnImageUrl(rawUrl) {
   };
 }
 
-// Assign collision-free storage keys for a list of cdn URLs.
+// Assign collision-free storage keys for a list of external image URLs.
 // Two different URLs that normalize to the same clean key get the timestamp
 // re-inserted before the extension to stay unique.
 export function assignStorageKeys(urls) {
   const used = new Map(); // cleanKey -> url that claimed it
   const map = new Map(); // url -> { key, ext, timestamp }
   for (const url of urls) {
-    const parsed = parseCdnImageUrl(url);
+    const parsed = parseImageUrlForMigration(url);
     if (!parsed) continue;
     let key = parsed.cleanKey;
     if (used.has(key) && used.get(key) !== url) {

@@ -10,6 +10,7 @@ import {
   readJson,
   writeJson,
   exists,
+  isOurCdnUrl,
   localCardsPath,
   positional,
   hasFlag,
@@ -41,7 +42,7 @@ async function main() {
     if (imageMap[url]) {
       card.imageUrl = imageMap[url];
       replaced++;
-    } else if (url.includes('cdn.mazos.cl')) {
+    } else if (!isOurCdnUrl(url)) {
       unmapped.push({ id: card.id, name: card.name, url });
     } else {
       alreadyMigrated++;
@@ -59,7 +60,7 @@ async function main() {
   console.log(`Sin mapeo (CDN):     ${unmapped.length}`);
   console.log(`Escrito en:          ${outPath}${dry ? ' (modo --dry)' : ''}`);
   if (unmapped.length) {
-    console.log('\nCartas con imagen cdn.mazos.cl sin mapear (subelas a Bunny y reintenta):');
+    console.log('\nCartas con imagen externa sin mapear (subelas a Bunny y reintenta):');
     for (const u of unmapped.slice(0, 30)) console.log(`  #${u.id} ${u.name} -> ${u.url}`);
   }
 }
