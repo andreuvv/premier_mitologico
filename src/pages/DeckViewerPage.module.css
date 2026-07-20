@@ -116,6 +116,189 @@
   border-radius: 16px;
 }
 
+/* ── Screen-format sizing applied only during export capture ──────────────── */
+
+.ratioDesktop {
+  width: 1280px;
+}
+
+.ratioTablet {
+  width: 834px;
+}
+
+.ratioMobile {
+  width: 430px;
+}
+
+.ratioMobile .content {
+  flex-direction: column;
+}
+
+.ratioMobile .rightColumn {
+  width: 100%;
+}
+
+/* ── Export options modal ─────────────────────────────────────────────────── */
+
+.exportModalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.exportModal {
+  background: var(--dark-brown);
+  border: 1px solid var(--ocher);
+  border-radius: 12px;
+  padding: 1.75rem 2rem;
+  width: 100%;
+  max-width: 440px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  font-family: 'Roboto', sans-serif;
+  animation: exportModalSlideUp 0.18s ease;
+}
+
+@keyframes exportModalSlideUp {
+  from { transform: translateY(12px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.exportModalClose {
+  position: absolute;
+  top: 0.9rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.25rem;
+}
+
+.exportModalClose:hover:not(:disabled) {
+  color: var(--beige);
+}
+
+.exportModalTitle {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--beige);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.exportField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.exportFieldLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.optionRow {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.optionBtn {
+  flex: 1;
+  min-width: 0;
+  padding: 0.6rem 0.5rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--coal-grey);
+  color: var(--beige);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.28),
+    0 1px 3px rgba(0, 0, 0, 0.18);
+  transition: background 0.15s, box-shadow 0.15s, color 0.15s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.optionBtn:hover:not(:disabled) {
+  background: rgba(214, 156, 65, 0.2);
+}
+
+.optionBtnActive,
+.optionBtnActive:hover {
+  background: var(--ocher);
+  color: var(--dark-brown);
+  font-weight: 700;
+  box-shadow:
+    0 0 0 2px var(--ocher),
+    0 3px 10px rgba(214, 156, 65, 0.35);
+}
+
+.exportModalFooter {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: flex-end;
+  margin-top: 0.25rem;
+}
+
+.exportCancelBtn {
+  background: transparent;
+  border: 1px solid rgba(234, 221, 207, 0.3);
+  border-radius: 6px;
+  padding: 0.6rem 1.1rem;
+  color: var(--beige);
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.85rem;
+  transition: background 0.15s;
+}
+
+.exportCancelBtn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.exportConfirmBtn {
+  background: var(--ocher);
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.3rem;
+  color: var(--coal-grey);
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.85rem;
+  transition: filter 0.2s, opacity 0.2s;
+}
+
+.exportConfirmBtn:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.exportConfirmBtn:disabled,
+.exportCancelBtn:disabled,
+.optionBtn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
 .backBtn {
   background: var(--dark-brown);
   border: 1px solid var(--ocher);

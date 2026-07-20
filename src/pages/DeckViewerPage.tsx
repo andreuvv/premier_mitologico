@@ -114,6 +114,9 @@ export default function DeckViewerPage() {
   } | null>(null);
   const [viewMode, setViewMode] = useState<'grouped' | 'grid'>('grouped');
   const [exporting, setExporting] = useState(false);
+  const [showExportModal, setShowExportModal] = useState(false);
+  const [exportView, setExportView] = useState<'grouped' | 'grid'>('grid');
+  const [exportRatio, setExportRatio] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
   const exportRef = useRef<HTMLDivElement>(null);
 
   // Derived from deck
@@ -311,9 +314,9 @@ export default function DeckViewerPage() {
   const handleExport = useCallback(async () => {
     const node = exportRef.current;
     if (!node || exporting) return;
-    // Setting `exporting` forces the grid layout for the capture (see render below)
+    // Setting `exporting` applies the chosen view + screen format to the node (see render)
     setExporting(true);
-    // Wait for React to commit and the browser to paint the grid layout
+    // Wait for React to commit and the browser to paint the export layout
     await new Promise((resolve) =>
       requestAnimationFrame(() => requestAnimationFrame(() => resolve(null))),
     );
@@ -332,8 +335,15 @@ export default function DeckViewerPage() {
       console.error('No se pudo exportar la imagen del mazo', err);
     } finally {
       setExporting(false);
+      setShowExportModal(false);
     }
   }, [exporting, deck]);
+
+  const openExportModal = () => {
+    setExportView(viewMode);
+    setExportRatio('desktop');
+    setShowExportModal(true);
+  };
 
   // authorName is set from profiles table in useEffect
 
@@ -357,8 +367,13 @@ export default function DeckViewerPage() {
     );
   }
 
-  // The export is always rendered as a flat grid, regardless of the on-screen view
-  const effectiveViewMode = exporting ? 'grid' : viewMode;
+  // While exporting, render using the options chosen in the export modal
+  const effectiveViewMode = exporting ? exportView : viewMode;
+  const exportRatioClass = exportRatio === 'desktop'
+    ? styles.ratioDesktop
+    : exportRatio === 'tablet'
+      ? styles.ratioTablet
+      : styles.ratioMobile;
 
   return (
     <div className={styles.page}>
@@ -389,15 +404,18 @@ export default function DeckViewerPage() {
           <button
             type="button"
             className={styles.exportBtn}
-            onClick={handleExport}
+            onClick={openExportModal}
             disabled={exporting}
           >
-            {exporting ? '⏳ Generando...' : '📷 Exportar imagen'}
+            📷 Exportar imagen
           </button>
         </div>
       </div>
 
-      <div className={styles.exportArea} ref={exportRef}>
+      <div
+        className={`${styles.exportArea} ${exporting ? exportRatioClass : ''}`}
+        ref={exportRef}
+      >
         {/* Deck header */}
         <div className={styles.deckHeader}>
           <div className={styles.deckHeaderMain}>
@@ -603,6 +621,97 @@ export default function DeckViewerPage() {
           </div>
         </div>
       </div>
+
+      {showExportModal && (
+        <div
+          className={styles.exportModalOverlay}
+          onClick={() => !exporting && setShowExportModal(false)}
+        >
+          <div className={styles.exportModal} onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className={styles.exportModalClose}
+              onClick={() => setShowExportModal(false)}
+              disabled={exporting}
+              aria-label="Cerrar"
+            >
+              ✕
+            </button>
+            <h3 className={styles.exportModalTitle}>Exportar imagen</h3>
+
+            <div className={styles.exportField}>
+              <span className={styles.exportFieldLabel}>Vista de las cartas</span>
+              <div className={styles.optionRow}>
+                <button
+                  type="button"
+                  className={`${styles.optionBtn} ${exportView === 'grouped' ? styles.optionBtnActive : ''}`}
+                  onClick={() => setExportView('grouped')}
+                  disabled={exporting}
+                >
+                  Agrupado
+                </button>
+                <button
+                  type="button"
+                  className={`${styles.optionBtn} ${exportView === 'grid' ? styles.optionBtnActive : ''}`}
+                  onClick={() => setExportView('grid')}
+                  disabled={exporting}
+                >
+                  Grilla
+                </button>
+              </div>
+            </div>
+
+            <div className={styles.exportField}>
+              <span className={styles.exportFieldLabel}>Formato de pantalla</span>
+              <div className={styles.optionRow}>
+                <button
+                  type="button"
+                  className={`${styles.optionBtn} ${exportRatio === 'desktop' ? styles.optionBtnActive : ''}`}
+                  onClick={() => setExportRatio('desktop')}
+                  disabled={exporting}
+                >
+                  🖥️ Escritorio
+                </button>
+                <button
+                  type="button"
+                  className={`${styles.optionBtn} ${exportRatio === 'tablet' ? styles.optionBtnActive : ''}`}
+                  onClick={() => setExportRatio('tablet')}
+                  disabled={exporting}
+                >
+                  📔 Tablet
+                </button>
+                <button
+                  type="button"
+                  className={`${styles.optionBtn} ${exportRatio === 'mobile' ? styles.optionBtnActive : ''}`}
+                  onClick={() => setExportRatio('mobile')}
+                  disabled={exporting}
+                >
+                  📱 Móvil
+                </button>
+              </div>
+            </div>
+
+            <div className={styles.exportModalFooter}>
+              <button
+                type="button"
+                className={styles.exportCancelBtn}
+                onClick={() => setShowExportModal(false)}
+                disabled={exporting}
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                className={styles.exportConfirmBtn}
+                onClick={handleExport}
+                disabled={exporting}
+              >
+                {exporting ? '⏳ Generando...' : '📷 Exportar'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <CardDetailModal card={selectedCard} onClose={() => setSelectedCard(null)} />
     </div>
