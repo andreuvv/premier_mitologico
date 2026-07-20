@@ -1,5 +1,6 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
+import { toPng } from 'html-to-image';
 import { CollectionCard, CollectionFormat } from '../types/collection';
 import { loadCollectionCards } from '../services/collectionService';
 import { useBanlist } from '../hooks/useBanlist';
@@ -7,6 +8,7 @@ import { useDeckRules, DeckSubformat } from '../hooks/useDeckRules';
 import { useUserDecks, UserDeck } from '../hooks/useUserDecks';
 import { supabase } from '../config/supabase';
 import CardDetailModal from '../components/CardDetailModal';
+import { MITOXICOS_LOADER_COLOR } from '../config/loadingAssets';
 import styles from './DeckViewerPage.module.css';
 
 const DECK_SIZE = 50;
@@ -110,16 +112,20 @@ export default function DeckViewerPage() {
     type: CostChartType;
     count: number;
   } | null>(null);
+  const [viewMode, setViewMode] = useState<'grouped' | 'grid'>('grouped');
+  const [exporting, setExporting] = useState(false);
+  const exportRef = useRef<HTMLDivElement>(null);
 
   // Derived from deck
   const format = (deck?.format ?? 'pb') as 'pb' | 'fx';
   const subformat = (deck?.subformat ?? 'pb-edicion') as DeckSubformat;
   const race = deck?.race ?? '';
   const deckCards = useMemo(() => deck?.cards ?? {}, [deck]);
+  const sideDeckCards = useMemo(() => deck?.sideDeck ?? {}, [deck]);
   const isDraft = deck?.is_draft ?? false;
 
   const { banlist } = useBanlist(format, subformat);
-  const rules = useDeckRules({ subformat, race, allCards, deckCards, banlist, isDraft, lockedEdition: null });
+  const rules = useDeckRules({ subformat, race, allCards, deckCards, banlist, isDraft, lockedEdition: null, sideDeck: sideDeckCards });
 
   // Load deck then cards sequentially using async/await
   useEffect(() => {
@@ -199,6 +205,33 @@ export default function DeckViewerPage() {
     Object.keys(deckByType).filter((t) => !TYPE_ORDER.includes(t)),
   );
 
+  // Sidedeck grouped by type (shown separately, excluded from stats)
+  const sideByType = useMemo(() => {
+    const groups: Record<string, { card: CollectionCard; count: number }[]> = {};
+    for (const [idStr, count] of Object.entries(sideDeckCards)) {
+      if (count <= 0) continue;
+      const card = cardById.get(Number(idStr));
+      if (!card) continue;
+      const rawType = card.type ?? 'Otro';
+      const t = rawType.charAt(0).toUpperCase() + rawType.slice(1).toLowerCase();
+      if (!groups[t]) groups[t] = [];
+      groups[t].push({ card, count });
+    }
+    for (const items of Object.values(groups)) {
+      items.sort((a, b) => a.card.name.localeCompare(b.card.name));
+    }
+    return groups;
+  }, [sideDeckCards, cardById]);
+
+  const sideSortedTypeKeys = TYPE_ORDER.filter((t) => sideByType[t]).concat(
+    Object.keys(sideByType).filter((t) => !TYPE_ORDER.includes(t)),
+  );
+
+  const totalSideCount = useMemo(
+    () => Object.values(sideDeckCards).reduce((a, b) => a + b, 0),
+    [sideDeckCards],
+  );
+
   const totalDeckCount = useMemo(
     () => Object.values(deckCards).reduce((a, b) => a + b, 0),
     [deckCards],
@@ -237,6 +270,71 @@ export default function DeckViewerPage() {
   const editionSlug = subformat === 'pb-edicion' ? (RACE_TO_EDITION[race] ?? null) : null;
   const editionLabel = editionSlug ? (EDITION_LABELS[editionSlug] ?? editionSlug) : null;
 
+  // Flattened lists (same order as grouped view) for the grid view mode
+  const flatMainItems = useMemo(
+    () => sortedTypeKeys.flatMap((t) => deckByType[t]),
+    [sortedTypeKeys, deckByType],
+  );
+  const flatSideItems = useMemo(
+    () => sideSortedTypeKeys.flatMap((t) => sideByType[t]),
+    [sideSortedTypeKeys, sideByType],
+  );
+
+  const renderCardStack = (card: CollectionCard, count: number) => {
+    const stackWidth = CARD_WIDTH + (count - 1) * STACK_OFFSET;
+    return (
+      <div
+        key={card.id}
+        className={styles.cardStack}
+        style={{ width: `${stackWidth}px` }}
+        onClick={() => setSelectedCard(card)}
+        title={count > 1 ? `${card.name} ×${count}` : card.name}
+      >
+        {Array.from({ length: count }).map((_, i) => (
+          <div
+            key={i}
+            className={styles.stackedCard}
+            style={{ left: `${i * STACK_OFFSET}px`, zIndex: i }}
+          >
+            {card.imageUrl ? (
+              <img src={card.imageUrl} alt={card.name} className={styles.cardImg} loading="lazy" />
+            ) : (
+              <div className={styles.cardPlaceholder}>{card.name}</div>
+            )}
+          </div>
+        ))}
+        {count > 1 && <span className={styles.countBadge}>×{count}</span>}
+      </div>
+    );
+  };
+
+  const handleExport = useCallback(async () => {
+    const node = exportRef.current;
+    if (!node || exporting) return;
+    // Setting `exporting` forces the grid layout for the capture (see render below)
+    setExporting(true);
+    // Wait for React to commit and the browser to paint the grid layout
+    await new Promise((resolve) =>
+      requestAnimationFrame(() => requestAnimationFrame(() => resolve(null))),
+    );
+    try {
+      const dataUrl = await toPng(node, {
+        pixelRatio: 3,
+        cacheBust: true,
+        backgroundColor: '#2D2D2D',
+      });
+      const safeName = (deck?.name ?? 'mazo').trim().replace(/[^\w-]+/g, '_') || 'mazo';
+      const link = document.createElement('a');
+      link.download = `${safeName}.png`;
+      link.href = dataUrl;
+      link.click();
+    } catch (err) {
+      console.error('No se pudo exportar la imagen del mazo', err);
+    } finally {
+      setExporting(false);
+    }
+  }, [exporting, deck]);
+
   // authorName is set from profiles table in useEffect
 
   if (loading) {
@@ -259,95 +357,127 @@ export default function DeckViewerPage() {
     );
   }
 
+  // The export is always rendered as a flat grid, regardless of the on-screen view
+  const effectiveViewMode = exporting ? 'grid' : viewMode;
+
   return (
     <div className={styles.page}>
-      {/* Back button */}
+      {/* Top bar */}
       <div className={styles.topBar}>
         <button className={styles.backBtn} onClick={() => navigate('/deck-builder')}>
           ← Mis Mazos
         </button>
+        <div className={styles.topBarActions}>
+          <div className={styles.viewToggle}>
+            <button
+              type="button"
+              className={`${styles.viewToggleBtn} ${viewMode === 'grouped' ? styles.viewToggleBtnActive : ''}`}
+              onClick={() => setViewMode('grouped')}
+              aria-pressed={viewMode === 'grouped'}
+            >
+              Agrupado
+            </button>
+            <button
+              type="button"
+              className={`${styles.viewToggleBtn} ${viewMode === 'grid' ? styles.viewToggleBtnActive : ''}`}
+              onClick={() => setViewMode('grid')}
+              aria-pressed={viewMode === 'grid'}
+            >
+              Grilla
+            </button>
+          </div>
+          <button
+            type="button"
+            className={styles.exportBtn}
+            onClick={handleExport}
+            disabled={exporting}
+          >
+            {exporting ? '⏳ Generando...' : '📷 Exportar imagen'}
+          </button>
+        </div>
       </div>
 
-      {/* Deck header */}
-      <div className={styles.deckHeader}>
-        <div className={styles.deckHeaderMain}>
-          <h1 className={styles.deckTitle}>{deck.name}</h1>
-          <div className={styles.badgesRow}>
-            <div className={styles.badges}>
-              <span className={styles.badge}>{FORMAT_LABELS[format] ?? format}</span>
-              <span className={styles.badge}>{SUBFORMAT_LABELS[subformat] ?? subformat}</span>
+      <div className={styles.exportArea} ref={exportRef}>
+        {/* Deck header */}
+        <div className={styles.deckHeader}>
+          <div className={styles.deckHeaderMain}>
+            <h1 className={styles.deckTitle}>{deck.name}</h1>
+            <div className={styles.badgesRow}>
+              <div className={styles.badges}>
+                <span className={styles.badge}>{FORMAT_LABELS[format] ?? format}</span>
+                <span className={styles.badge}>{SUBFORMAT_LABELS[subformat] ?? subformat}</span>
                 {isDraft && <span className={styles.badge}>Borrador</span>}
-              {race && <span className={styles.badge}>{race}</span>}
-              {editionLabel && <span className={`${styles.badge} ${styles.badgeEdition}`}>{editionLabel}</span>}
+                {race && <span className={styles.badge}>{race}</span>}
+                {editionLabel && <span className={`${styles.badge} ${styles.badgeEdition}`}>{editionLabel}</span>}
+              </div>
+              <span className={styles.authorLabel}>por <strong>{authorName}</strong></span>
             </div>
-            <span className={styles.authorLabel}>por <strong>{authorName}</strong></span>
           </div>
         </div>
-      </div>
 
-      {/* Content */}
-      <div className={styles.content}>
-        {/* Card groups */}
-        <div className={styles.cardContainer}>
-          {sortedTypeKeys.length === 0 ? (
-            <p className={styles.emptyDeck}>Este mazo no tiene cartas.</p>
-          ) : (
-            sortedTypeKeys.map((type) => {
-              const items = deckByType[type];
-              const groupTotal = items.reduce((s, i) => s + i.count, 0);
-              return (
-                <div key={type} className={styles.typeGroup}>
-                  <div className={styles.typeHeader}>
-                    <span className={styles.typeLabel}>{TYPE_DISPLAY[type] ?? type}</span>
-                    <span className={styles.typeCount}>{groupTotal}</span>
+        {/* Content */}
+        <div className={styles.content}>
+          {/* Card container */}
+          <div className={styles.cardContainer}>
+            {sortedTypeKeys.length === 0 ? (
+              <p className={styles.emptyDeck}>Este mazo no tiene cartas.</p>
+            ) : effectiveViewMode === 'grouped' ? (
+              sortedTypeKeys.map((type) => {
+                const items = deckByType[type];
+                const groupTotal = items.reduce((s, i) => s + i.count, 0);
+                return (
+                  <div key={type} className={styles.typeGroup}>
+                    <div className={styles.typeHeader}>
+                      <span className={styles.typeLabel}>{TYPE_DISPLAY[type] ?? type}</span>
+                      <span className={styles.typeCount}>{groupTotal}</span>
+                    </div>
+                    <div className={styles.cardsRow}>
+                      {items.map(({ card, count }) => renderCardStack(card, count))}
+                    </div>
                   </div>
-                  <div className={styles.cardsRow}>
-                    {items.map(({ card, count }) => {
-                      const stackWidth = CARD_WIDTH + (count - 1) * STACK_OFFSET;
-                      return (
-                        <div
-                          key={card.id}
-                          className={styles.cardStack}
-                          style={{ width: `${stackWidth}px` }}
-                          onClick={() => setSelectedCard(card)}
-                          title={count > 1 ? `${card.name} ×${count}` : card.name}
-                        >
-                          {Array.from({ length: count }).map((_, i) => (
-                            <div
-                              key={i}
-                              className={styles.stackedCard}
-                              style={{
-                                left: `${i * STACK_OFFSET}px`,
-                                zIndex: i,
-                              }}
-                            >
-                              {card.imageUrl ? (
-                                <img
-                                  src={card.imageUrl}
-                                  alt={card.name}
-                                  className={styles.cardImg}
-                                  loading="lazy"
-                                />
-                              ) : (
-                                <div className={styles.cardPlaceholder}>{card.name}</div>
-                              )}
-                            </div>
-                          ))}
-                          {count > 1 && (
-                            <span className={styles.countBadge}>×{count}</span>
-                          )}
-                        </div>
-                      );
-                    })}
-                  </div>
+                );
+              })
+            ) : (
+              <div className={styles.cardsRow}>
+                {flatMainItems.map(({ card, count }) => renderCardStack(card, count))}
+              </div>
+            )}
+
+            {/* Sidedeck (shown separately, excluded from stats) */}
+            {sideSortedTypeKeys.length > 0 && (
+              <div className={styles.sideDeckBlock}>
+                <div className={styles.sideDeckDivider}>
+                  <span className={styles.sideDeckTitle}>Sidedeck</span>
+                  <span className={styles.sideDeckCount}>{totalSideCount} cartas</span>
                 </div>
-              );
-            })
-          )}
-        </div>
+                {effectiveViewMode === 'grouped' ? (
+                  sideSortedTypeKeys.map((type) => {
+                    const items = sideByType[type];
+                    const groupTotal = items.reduce((s, i) => s + i.count, 0);
+                    return (
+                      <div key={type} className={styles.typeGroup}>
+                        <div className={styles.typeHeader}>
+                          <span className={styles.typeLabel}>{TYPE_DISPLAY[type] ?? type}</span>
+                          <span className={styles.typeCount}>{groupTotal}</span>
+                        </div>
+                        <div className={styles.cardsRow}>
+                          {items.map(({ card, count }) => renderCardStack(card, count))}
+                        </div>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <div className={styles.cardsRow}>
+                    {flatSideItems.map(({ card, count }) => renderCardStack(card, count))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
 
-        {/* Stats panel */}
-        <aside className={styles.statsPanel}>
+          {/* Right column: stats + branding */}
+          <div className={styles.rightColumn}>
+          <aside className={styles.statsPanel}>
           <section className={styles.statsSection}>
             <h3 className={styles.sectionTitle}>📊 Estadísticas de construcción</h3>
             <div className={styles.statsList}>
@@ -464,6 +594,14 @@ export default function DeckViewerPage() {
             </section>
           )}
         </aside>
+
+            {/* Branding shown below the stats panel */}
+            <div className={styles.exportBrand}>
+              <img src={MITOXICOS_LOADER_COLOR} alt="Mitoxicos" className={styles.brandLogo} />
+              <span className={styles.brandText}>mitoxicos.cl</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <CardDetailModal card={selectedCard} onClose={() => setSelectedCard(null)} />

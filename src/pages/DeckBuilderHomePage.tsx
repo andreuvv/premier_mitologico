@@ -4,6 +4,8 @@ import { useAuth } from '../hooks/useAuth';
 import { useUserDecks, UserDeck, PublicDeck } from '../hooks/useUserDecks';
 import { isCurrentUserBanlistAdmin } from '../services/monthlyBanlistService';
 import SectionLoader from '../components/loading/SectionLoader';
+import NewDeckModal from '../components/NewDeckModal';
+import { Format, Subformat, PB_RACES, FX_RACES, FX_TOTEM_RACE } from '../config/deckFormats';
 import styles from './DeckBuilderHomePage.module.css';
 
 const RACE_TO_EDITION: Record<string, string> = {
@@ -21,34 +23,10 @@ const EDITION_LABELS: Record<string, string> = {
   'dracula-inferno': 'Drácula & Infierno',
 };
 
-const PB_RACES = [
-  'Caballero', 'Defensor', 'Desafiante', 'Dragon', 'Eterno',
-  'Faerie', 'Faraon', 'Heroe', 'Olimpico', 'Sacerdote', 'Sombra', 'Titan',
-];
-const FX_RACES = [
-  'Ancestral', 'Barbaro', 'Bestia', 'Caballero', 'Dragon',
-  'Eterno', 'Guerrero', 'Heroe', 'Sacerdote', 'Sombra',
-];
-const FX_TOTEM_RACE = 'Tótem';
-
-function getFxRacesForSubformat(subformat: Subformat): string[] {
-  if (subformat === 'fx-libre' || subformat === 'fx-ragnarok') {
-    return [...FX_RACES, FX_TOTEM_RACE];
-  }
-  return FX_RACES;
-}
-
 type Tab = 'myDecks' | 'explore';
-type Format = 'pb' | 'fx';
-type Subformat = 'pb-edicion' | 'pb-libre' | 'fx-vcr' | 'fx-libre' | 'fx-ragnarok';
 type FormatFilter = 'all' | Format;
 type SubformatFilter = 'all' | Subformat;
 type ExploreSortBy = 'updated' | 'created';
-
-const PB_SUBFORMATS: { value: Subformat; label: string; desc: string }[] = [
-  { value: 'pb-edicion', label: 'Racial Edición', desc: 'Solo cartas de una misma edición' },
-  { value: 'pb-libre',   label: 'Racial Libre',   desc: 'Cartas de todas las ediciones PB' },
-];
 
 function getCoverImageStyle(zoom: number, posX: number, posY: number) {
   const safeZoom = Math.max(1, zoom);
@@ -61,11 +39,6 @@ function getCoverImageStyle(zoom: number, posX: number, posY: number) {
     backgroundColor: '#101010',
   };
 }
-const FX_SUBFORMATS: { value: Subformat; label: string; desc: string }[] = [
-  { value: 'fx-vcr',   label: 'VCR',         desc: 'Solo cartas Vasallo, Cortesano o Real' },
-  { value: 'fx-libre', label: 'Racial Libre', desc: 'Cartas de todas las ediciones FX' },
-  { value: 'fx-ragnarok', label: 'Racial Ragnarok', desc: 'Todas las cartas son únicas salvo Oros sin habilidad' },
-];
 
 const ALL_SUBFORMATS: { value: Subformat; label: string }[] = [
   { value: 'pb-edicion', label: 'Racial Edición' },
@@ -160,125 +133,6 @@ function sortDecksByDate<T extends Pick<UserDeck, 'created_at' | 'updated_at'>>(
 
 function getTabFromPath(pathname: string): Tab {
   return pathname.endsWith('/explorar') ? 'explore' : 'myDecks';
-}
-
-// ─── Modal ────────────────────────────────────────────────────────────────────
-
-interface NewDeckModalProps {
-  onClose: () => void;
-  onCreate: (format: Format, subformat: Subformat, race: string, name: string) => void;
-}
-
-function NewDeckModal({ onClose, onCreate }: NewDeckModalProps) {
-  const [format, setFormat] = useState<Format>('pb');
-  const [subformat, setSubformat] = useState<Subformat>('pb-edicion');
-  const [race, setRace] = useState('');
-  const [name, setName] = useState('');
-  const [error, setError] = useState<string | null>(null);
-
-  const races = format === 'pb' ? PB_RACES : getFxRacesForSubformat(subformat);
-  const subformats = format === 'pb' ? PB_SUBFORMATS : FX_SUBFORMATS;
-
-  const handleFormatChange = (f: Format) => {
-    setFormat(f);
-    setSubformat(f === 'pb' ? 'pb-edicion' : 'fx-vcr');
-    setRace('');
-  };
-
-  const handleSubformatChange = (sf: Subformat) => {
-    setSubformat(sf);
-    if (race === FX_TOTEM_RACE && sf === 'fx-vcr') setRace('');
-  };
-
-  const handleCreate = () => {
-    setError(null);
-    if (!name.trim()) { setError('Dale un nombre a tu mazo.'); return; }
-    if (!race) { setError('Selecciona una raza.'); return; }
-    onCreate(format, subformat, race, name.trim());
-  };
-
-  return (
-    <div className={styles.modalOverlay} onClick={onClose}>
-      <div className={styles.modal} onClick={e => e.stopPropagation()}>
-        <button className={styles.modalClose} onClick={onClose} aria-label="Cerrar">✕</button>
-        <h2 className={styles.modalTitle}>Nuevo Mazo</h2>
-
-        {/* Nombre */}
-        <div className={styles.field}>
-          <label className={styles.fieldLabel}>Nombre</label>
-          <input
-            className={styles.nameInput}
-            type="text"
-            placeholder="Ej: Mi mazo Caballero"
-            value={name}
-            onChange={e => setName(e.target.value)}
-            maxLength={100}
-            autoFocus
-          />
-        </div>
-
-        {/* Formato */}
-        <div className={styles.field}>
-          <label className={styles.fieldLabel}>Formato</label>
-          <div className={styles.formatRow}>
-            <button
-              className={format === 'pb' ? styles.formatBtnActive : styles.formatBtn}
-              onClick={() => handleFormatChange('pb')}
-            >
-              <span className={styles.formatIcon}>📖</span>
-              <span className={styles.formatName}>Primer Bloque</span>
-            </button>
-            <button
-              className={format === 'fx' ? styles.formatBtnActive : styles.formatBtn}
-              onClick={() => handleFormatChange('fx')}
-            >
-              <span className={styles.formatIcon}>⚡</span>
-              <span className={styles.formatName}>Furia Extendido</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Subformato */}
-        <div className={styles.field}>
-          <label className={styles.fieldLabel}>Subformato</label>
-          <div className={styles.subformatRow}>
-            {subformats.map(sf => (
-              <button
-                key={sf.value}
-                className={subformat === sf.value ? styles.subformatBtnActive : styles.subformatBtn}
-                onClick={() => handleSubformatChange(sf.value)}
-              >
-                <span className={styles.subformatName}>{sf.label}</span>
-                <span className={styles.subformatDesc}>{sf.desc}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Raza */}
-        <div className={styles.field}>
-          <label className={styles.fieldLabel}>Raza</label>
-          <div className={styles.raceGrid}>
-            {races.map(r => (
-              <button
-                key={r}
-                className={race === r ? styles.raceBtnActive : styles.raceBtn}
-                onClick={() => setRace(r)}
-              >
-                {r}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {error && <p className={styles.modalError}>{error}</p>}
-
-        <button className={styles.confirmButton} onClick={handleCreate}>
-          Crear Mazo
-        </button>
-      </div>
-    </div>
-  );
 }
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
@@ -622,6 +476,10 @@ export default function DeckBuilderHomePage() {
                   })}
                 </div>
               )}
+
+              <div className={styles.stats}>
+                Mostrando {filteredMyDecks.length} de {decks.length} mazos
+              </div>
             </>
           )}
         </>
@@ -767,6 +625,10 @@ export default function DeckBuilderHomePage() {
                   })}
                 </div>
               )}
+
+              <div className={styles.stats}>
+                Mostrando {filteredExploreDecks.length} de {exploreDecks.length} mazos
+              </div>
             </>
           )}
         </>
@@ -776,7 +638,7 @@ export default function DeckBuilderHomePage() {
       {showModal && (
         <NewDeckModal
           onClose={() => setShowModal(false)}
-          onCreate={handleCreate}
+          onSubmit={handleCreate}
         />
       )}
     </div>

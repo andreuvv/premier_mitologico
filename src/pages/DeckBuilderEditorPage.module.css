@@ -42,9 +42,12 @@
   justify-content: space-between;
   gap: 1rem;
   background: var(--dark-brown);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   padding: 1rem 1.5rem;
   flex-shrink: 0;
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.32),
+    0 2px 6px rgba(0, 0, 0, 0.22);
 }
 
 .headerLeft {
@@ -77,22 +80,22 @@
 .nameInput {
   width: 100%;
   max-width: 640px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: var(--coal-grey);
+  border: none;
   border-radius: 8px;
   padding: 0.6rem 0.9rem;
   font-size: 1rem;
   color: var(--beige);
-  transition: border-color 0.2s;
+  transition: box-shadow 0.2s;
 }
 
 .nameInput::placeholder {
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(241, 220, 174, 0.5);
 }
 
 .nameInput:focus {
   outline: none;
-  border-color: var(--ocher);
+  box-shadow: 0 0 0 2px rgba(75, 139, 163, 0.55);
 }
 
 .tagRow {
@@ -106,11 +109,14 @@
   align-items: center;
   gap: 0.25rem;
   font-size: 0.78rem;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--coal-grey);
+  border: none;
   border-radius: 20px;
   padding: 0.2rem 0.65rem;
   color: rgba(234, 221, 207, 0.8);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.28),
+    0 1px 3px rgba(0, 0, 0, 0.18);
 }
 
 .tag strong {
@@ -137,29 +143,30 @@
 }
 
 .editionPickerSelect {
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid var(--petrol-blue);
+  background: var(--coal-grey);
+  border: none;
   border-radius: 8px;
-  padding: 0.35rem 0.65rem;
+  padding: 0.4rem 0.65rem;
   font-size: 0.82rem;
   color: var(--beige);
   cursor: pointer;
-  transition: border-color 0.2s;
+  transition: box-shadow 0.2s;
+  box-shadow: 0 0 0 1px rgba(75, 139, 163, 0.55);
 }
 
 .editionPickerSelect:focus {
   outline: none;
-  border-color: var(--ocher);
+  box-shadow: 0 0 0 2px rgba(75, 139, 163, 0.55);
 }
 
 .editionPickerSelect:disabled {
   opacity: 0.6;
   cursor: default;
-  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: none;
 }
 
 .editionPickerSelect option {
-  background: #1e1e1e;
+  background: var(--coal-grey);
 }
 
 .headerRight {
@@ -273,20 +280,20 @@
 }
 
 .backButton {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: var(--dark-brown);
+  border: 1px solid var(--ocher);
   border-radius: 8px;
   padding: 0.5rem 1rem;
   color: var(--beige);
   font-size: 0.85rem;
   cursor: pointer;
   white-space: nowrap;
-  transition: border-color 0.2s, background 0.2s;
+  transition: background 0.2s, color 0.2s;
 }
 
 .backButton:hover {
-  border-color: var(--beige);
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--ocher);
+  color: var(--coal-grey);
 }
 
 .saveButton {
@@ -367,22 +374,22 @@
 
 .searchInput {
   width: 100%;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: var(--coal-grey);
+  border: none;
   border-radius: 8px;
   padding: 0.55rem 0.75rem 0.55rem 2.2rem;
   font-size: 0.9rem;
   color: var(--beige);
-  transition: border-color 0.2s;
+  transition: box-shadow 0.2s;
 }
 
 .searchInput::placeholder {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(241, 220, 174, 0.5);
 }
 
 .searchInput:focus {
   outline: none;
-  border-color: var(--petrol-blue);
+  box-shadow: 0 0 0 2px rgba(75, 139, 163, 0.55);
 }
 
 .pageInfo {
@@ -395,8 +402,8 @@
 }
 
 .pageBtn {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: var(--coal-grey);
+  border: none;
   border-radius: 6px;
   color: var(--beige);
   width: 26px;
@@ -406,11 +413,14 @@
   justify-content: center;
   cursor: pointer;
   font-size: 1rem;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.28),
+    0 1px 3px rgba(0, 0, 0, 0.18);
   transition: background 0.15s;
 }
 
 .pageBtn:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(75, 139, 163, 0.35);
 }
 
 .pageBtn:disabled {
@@ -432,26 +442,35 @@
 }
 
 .typeTab {
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--coal-grey);
+  border: none;
   border-radius: 20px;
   padding: 0.35rem 0.85rem;
   font-size: 0.82rem;
-  color: rgba(234, 221, 207, 0.75);
+  font-weight: 600;
+  color: var(--beige);
   cursor: pointer;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.28),
+    0 1px 3px rgba(0, 0, 0, 0.18);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 
 .typeTab:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(75, 139, 163, 0.35);
   color: var(--beige);
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.32),
+    0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .typeTabActive {
-  background: var(--brick-red) !important;
-  border-color: var(--brick-red) !important;
-  color: #fff !important;
+  background: var(--petrol-blue) !important;
+  color: var(--beige) !important;
   font-weight: 600;
+  box-shadow:
+    0 3px 10px rgba(75, 139, 163, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.22) !important;
 }
 
 /* Filters row */
@@ -463,24 +482,24 @@
 }
 
 .filterSelect {
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: var(--coal-grey);
+  border: none;
   border-radius: 8px;
   padding: 0.45rem 0.75rem;
   font-size: 0.85rem;
   color: var(--beige);
   cursor: pointer;
-  transition: border-color 0.2s;
+  transition: box-shadow 0.2s;
   min-width: 130px;
 }
 
 .filterSelect:focus {
   outline: none;
-  border-color: var(--petrol-blue);
+  box-shadow: 0 0 0 2px rgba(75, 139, 163, 0.55);
 }
 
 .filterSelect option {
-  background: #1e1e1e;
+  background: var(--coal-grey);
 }
 
 /* Card grid */
@@ -494,21 +513,37 @@
 .cardItem {
   display: flex;
   flex-direction: column;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: border-color 0.2s, transform 0.15s;
+  background: var(--dark-brown);
+  border: none;
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.32),
+    0 2px 6px rgba(0, 0, 0, 0.22);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .cardItem:hover {
-  border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-1px);
+  transform: translateY(-4px);
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.38),
+    0 4px 10px rgba(0, 0, 0, 0.26);
 }
 
 .cardInDeck {
-  border-color: var(--sage-green) !important;
-  box-shadow: 0 0 0 1px var(--sage-green);
+  box-shadow:
+    0 0 8px rgba(126, 164, 112, 0.75),
+    0 0 18px rgba(126, 164, 112, 0.4),
+    0 4px 14px rgba(0, 0, 0, 0.32),
+    0 2px 6px rgba(0, 0, 0, 0.22);
+}
+
+.cardInDeck:hover {
+  box-shadow:
+    0 0 10px rgba(126, 164, 112, 0.85),
+    0 0 24px rgba(126, 164, 112, 0.45),
+    0 8px 22px rgba(0, 0, 0, 0.38),
+    0 4px 10px rgba(0, 0, 0, 0.26);
 }
 
 .cardBanned {
@@ -663,18 +698,24 @@
 }
 
 .paginationBtn {
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: var(--dark-brown);
+  border: 1px solid var(--ocher);
   border-radius: 6px;
   padding: 0.4rem 0.8rem;
   font-size: 0.82rem;
+  font-weight: 600;
   color: var(--beige);
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background 0.2s, color 0.2s;
 }
 
 .paginationBtn:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.14);
+  background: var(--ocher);
+  color: var(--coal-grey);
+}
+
+.paginationBtn:disabled {
+  border-color: #555;
 }
 
 .paginationBtn:disabled {
@@ -697,7 +738,8 @@
   flex-direction: column;
   gap: 0;
   background: var(--dark-brown);
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: -4px 0 14px rgba(0, 0, 0, 0.28);
 }
 
 /* Stats section */
@@ -736,14 +778,14 @@
 }
 
 .statCount {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--coal-grey);
   border-radius: 10px;
   padding: 0.1rem 0.6rem;
   font-weight: 600;
   font-size: 0.78rem;
   min-width: 28px;
   text-align: center;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(234, 221, 207, 0.55);
 }
 
 .statCountActive {
@@ -785,7 +827,7 @@
 }
 
 .countBadge {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--coal-grey);
   border-radius: 20px;
   padding: 0.3rem 1.2rem;
   font-size: 1rem;
@@ -1013,8 +1055,8 @@
 }
 
 .coverControls {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(214, 156, 65, 0.22);
+  background: var(--coal-grey);
+  border: 1px solid rgba(214, 156, 65, 0.3);
   border-radius: 8px;
   padding: 0.6rem;
   margin-bottom: 0.8rem;
@@ -1306,11 +1348,17 @@
 .exitConfirmModal {
   width: min(560px, 100%);
   background: var(--dark-brown);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid var(--ocher);
   border-radius: 12px;
   padding: 1.1rem 1.1rem 1rem;
   position: relative;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  animation: slideUp 0.18s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(12px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
 }
 
 .exitConfirmClose {
@@ -1394,4 +1442,147 @@
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+/* ─── Change section button ─────────────────────────────────────────────── */
+
+.changeSectionButton {
+  background: var(--coal-grey);
+  border: 1px solid var(--petrol-blue);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  color: var(--beige);
+  font-size: 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+
+.changeSectionButton:hover {
+  background: var(--petrol-blue);
+  color: var(--beige);
+}
+
+/* ─── Target toggle (Main deck / Sidedeck) ──────────────────────────────── */
+
+.targetToggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.targetToggleLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.targetBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--coal-grey);
+  border: none;
+  border-radius: 8px;
+  padding: 0.45rem 0.9rem;
+  color: var(--beige);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.28),
+    0 1px 3px rgba(0, 0, 0, 0.18);
+  transition: box-shadow 0.2s, background 0.2s;
+}
+
+.targetBtn:hover {
+  background: rgba(75, 139, 163, 0.2);
+}
+
+.targetBtnActiveMain {
+  background: var(--petrol-blue);
+  box-shadow:
+    0 3px 10px rgba(75, 139, 163, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.22);
+}
+
+.targetBtnActiveSide {
+  background: var(--ocher);
+  color: var(--coal-grey);
+  box-shadow:
+    0 3px 10px rgba(214, 156, 65, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.22);
+}
+
+.targetBtnCount {
+  font-size: 0.72rem;
+  font-weight: 700;
+  opacity: 0.85;
+  background: rgba(0, 0, 0, 0.28);
+  border-radius: 6px;
+  padding: 0.05rem 0.4rem;
+}
+
+/* ─── Sidedeck badges / list ────────────────────────────────────────────── */
+
+.cardInSide {
+  box-shadow:
+    0 0 8px rgba(214, 156, 65, 0.7),
+    0 0 18px rgba(214, 156, 65, 0.38),
+    0 4px 14px rgba(0, 0, 0, 0.32),
+    0 2px 6px rgba(0, 0, 0, 0.22);
+}
+
+.cardInSide:hover {
+  box-shadow:
+    0 0 10px rgba(214, 156, 65, 0.8),
+    0 0 24px rgba(214, 156, 65, 0.42),
+    0 8px 22px rgba(0, 0, 0, 0.38),
+    0 4px 10px rgba(0, 0, 0, 0.26);
+}
+
+.cardSideBadge {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: var(--ocher);
+  color: var(--coal-grey);
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 1px 7px;
+  line-height: 1.6;
+}
+
+.sideSectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.sideCountBadge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--beige);
+  background: var(--coal-grey);
+  border-radius: 8px;
+  padding: 0.2rem 0.6rem;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.28),
+    0 1px 3px rgba(0, 0, 0, 0.18);
+}
+
+.sideCountBadgeFull {
+  background: var(--ocher);
+  color: var(--coal-grey);
+}
+
+.sideCountBadgeOver {
+  background: var(--brick-red);
+  color: #fff;
 }

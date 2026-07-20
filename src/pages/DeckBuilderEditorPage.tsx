@@ -8,6 +8,8 @@ import { useUserDecks } from '../hooks/useUserDecks';
 import { useAuth } from '../hooks/useAuth';
 import { useUserCollection } from '../hooks/useUserCollection';
 import CardDetailModal from '../components/CardDetailModal';
+import NewDeckModal from '../components/NewDeckModal';
+import { Format, Subformat, SIDEDECK_SIZE } from '../config/deckFormats';
 import styles from './DeckBuilderEditorPage.module.css';
 
 const DECK_SIZE = 50;
@@ -119,7 +121,11 @@ function buildEditorSnapshot(options: {
   headerPosX: number;
   headerPosY: number;
   lockedEdition: string | null;
+  formatParam: Format;
+  subformat: string;
+  race: string;
   deckCards: Record<number, number>;
+  sideDeck: Record<number, number>;
 }): string {
   return [
     options.name.trim(),
@@ -130,19 +136,28 @@ function buildEditorSnapshot(options: {
     options.headerPosX.toFixed(2),
     options.headerPosY.toFixed(2),
     options.lockedEdition ?? '',
+    options.formatParam,
+    options.subformat,
+    options.race,
     serializeDeckCards(options.deckCards),
+    serializeDeckCards(options.sideDeck),
   ].join('::');
 }
 
 export default function DeckBuilderEditorPage() {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  const formatParam = searchParams.get('format') ?? 'pb';
-  const subformat = (searchParams.get('subformat') ?? (formatParam === 'pb' ? 'pb-libre' : 'fx-libre')) as DeckSubformat;
-  const race = searchParams.get('race') ?? '';
+  const initialFormatParam = (searchParams.get('format') ?? 'pb') as Format;
+  const initialSubformat = (searchParams.get('subformat') ?? (initialFormatParam === 'pb' ? 'pb-libre' : 'fx-libre')) as DeckSubformat;
+  const initialRace = searchParams.get('race') ?? '';
   const initialName = searchParams.get('name') ?? 'Nuevo Mazo';
   const urlDeckId = searchParams.get('deckId') ?? null;
+
+  // Section (format/subformat/race) is editable in-place via the "Cambiar sección" modal.
+  const [formatParam, setFormatParam] = useState<Format>(initialFormatParam);
+  const [subformat, setSubformat] = useState<DeckSubformat>(initialSubformat);
+  const [race, setRace] = useState(initialRace);
 
   const format =
     formatParam === 'fx'
@@ -156,6 +171,10 @@ export default function DeckBuilderEditorPage() {
   const [allCards, setAllCards] = useState<CollectionCard[]>([]);
   const [loading, setLoading] = useState(true);
   const [deckCards, setDeckCards] = useState<Record<number, number>>({});
+  const [sideDeck, setSideDeck] = useState<Record<number, number>>({});
+  // Which deck the +/- buttons in the card browser act on.
+  const [target, setTarget] = useState<'main' | 'side'>('main');
+  const [showSectionModal, setShowSectionModal] = useState(false);
   const [name, setName] = useState(initialName);
   const [isPublic, setIsPublic] = useState(false);
   const [isDraft, setIsDraft] = useState(false);
@@ -208,6 +227,7 @@ export default function DeckBuilderEditorPage() {
     loadDeck(urlDeckId).then((deck) => {
       if (deck) {
         setDeckCards(deck.cards);
+        setSideDeck(deck.sideDeck ?? {});
         setName(deck.name);
         setIsPublic(deck.is_public ?? false);
         setIsDraft(deck.is_draft ?? false);
@@ -225,7 +245,11 @@ export default function DeckBuilderEditorPage() {
             headerPosX: deck.headerPosX ?? 50,
             headerPosY: deck.headerPosY ?? 50,
             lockedEdition: autoEdition,
+            formatParam,
+            subformat,
+            race,
             deckCards: deck.cards,
+            sideDeck: deck.sideDeck ?? {},
           }),
         );
       }
@@ -245,9 +269,13 @@ export default function DeckBuilderEditorPage() {
         headerPosX,
         headerPosY,
         lockedEdition,
+        formatParam,
+        subformat,
+        race,
         deckCards,
+        sideDeck,
       }),
-    [name, isPublic, isDraft, headerImageUrl, headerZoom, headerPosX, headerPosY, lockedEdition, deckCards],
+    [name, isPublic, isDraft, headerImageUrl, headerZoom, headerPosX, headerPosY, lockedEdition, formatParam, subformat, race, deckCards, sideDeck],
   );
 
   useEffect(() => {
@@ -303,7 +331,7 @@ export default function DeckBuilderEditorPage() {
   // Banlist
   const { banlist } = useBanlist(formatParam as 'pb' | 'fx', subformat);
 
-  // Deck rules
+  // Deck rules (copy limits count main deck + sidedeck combined)
   const rules = useDeckRules({
     subformat,
     race,
@@ -312,7 +340,10 @@ export default function DeckBuilderEditorPage() {
     banlist,
     isDraft,
     lockedEdition,
+    sideDeck,
   });
+
+  const sideMax = SIDEDECK_SIZE[formatParam];
 
   // ── Filtered cards ────────────────────────────────────────────────────────
   const filteredCards = useMemo(() => {
@@ -386,24 +417,84 @@ export default function DeckBuilderEditorPage() {
     [deckCards],
   );
 
+  const totalSideCount = useMemo(
+    () => Object.values(sideDeck).reduce((a, b) => a + b, 0),
+    [sideDeck],
+  );
+
   useEffect(() => {
     if (isDraft && isPublic) {
       setIsPublic(false);
     }
   }, [isDraft, isPublic]);
 
-  const addCard = (card: CollectionCard) => {
-    if (!rules.canAdd(card)) return;
+  // Can add to main deck: respects combined copy limit + 50-card cap (unless draft).
+  const canAddToMain = (card: CollectionCard) => rules.canAdd(card);
+  // Can add to sidedeck: respects combined copy limit + sidedeck size cap.
+  const canAddToSide = (card: CollectionCard) =>
+    rules.availableToAdd(card) > 0 && totalSideCount < sideMax;
+
+  const addToMain = (card: CollectionCard) => {
+    if (!canAddToMain(card)) return;
     setDeckCards((prev) => ({ ...prev, [card.id]: (prev[card.id] ?? 0) + 1 }));
   };
 
-  const removeCard = (cardId: number) => {
+  const addToSide = (card: CollectionCard) => {
+    if (!canAddToSide(card)) return;
+    setSideDeck((prev) => ({ ...prev, [card.id]: (prev[card.id] ?? 0) + 1 }));
+  };
+
+  const removeFromMain = (cardId: number) => {
     setDeckCards((prev) => {
       const next = { ...prev };
       if ((next[cardId] ?? 0) <= 1) delete next[cardId];
       else next[cardId]--;
       return next;
     });
+  };
+
+  const removeFromSide = (cardId: number) => {
+    setSideDeck((prev) => {
+      const next = { ...prev };
+      if ((next[cardId] ?? 0) <= 1) delete next[cardId];
+      else next[cardId]--;
+      return next;
+    });
+  };
+
+  // Browser +/- act on the currently selected target.
+  const addCard = (card: CollectionCard) => (target === 'side' ? addToSide(card) : addToMain(card));
+  const removeCard = (cardId: number) => (target === 'side' ? removeFromSide(cardId) : removeFromMain(cardId));
+
+  const applySectionChange = (
+    nextFormat: Format,
+    nextSubformat: Subformat,
+    nextRace: string,
+    nextName: string,
+  ) => {
+    const formatChanged = nextFormat !== formatParam;
+    setFormatParam(nextFormat);
+    setSubformat(nextSubformat as DeckSubformat);
+    setRace(nextRace);
+    setName(nextName);
+    setLockedEdition(
+      nextSubformat === 'pb-edicion' ? (RACE_TO_EDITION[nextRace] ?? null) : null,
+    );
+    // Different format ⇒ different card catalog ⇒ existing cards are invalid.
+    if (formatChanged) {
+      setDeckCards({});
+      setSideDeck({});
+      setHeaderImageUrl(undefined);
+      setTarget('main');
+    }
+    // Keep the URL in sync so a refresh preserves the chosen section.
+    const params = new URLSearchParams(searchParams);
+    params.set('format', nextFormat);
+    params.set('subformat', nextSubformat);
+    params.set('race', nextRace);
+    params.set('name', nextName);
+    setSearchParams(params, { replace: true });
+    setShowSectionModal(false);
   };
 
   const handleSave = async () => {
@@ -421,10 +512,11 @@ export default function DeckBuilderEditorPage() {
       headerZoom,
       headerPosX,
       headerPosY,
-      format: formatParam as 'pb' | 'fx',
+      format: formatParam,
       subformat,
       race,
       cards: deckCards,
+      sideDeck,
     });
     if (id) {
       setLastSavedSnapshot(currentSnapshot);
@@ -457,10 +549,11 @@ export default function DeckBuilderEditorPage() {
       headerZoom,
       headerPosX,
       headerPosY,
-      format: formatParam as 'pb' | 'fx',
+      format: formatParam,
       subformat,
       race,
       cards: deckCards,
+      sideDeck,
     });
     if (id) {
       const draftSnapshot = buildEditorSnapshot({
@@ -472,7 +565,11 @@ export default function DeckBuilderEditorPage() {
         headerPosX,
         headerPosY,
         lockedEdition,
+        formatParam,
+        subformat,
+        race,
         deckCards,
+        sideDeck,
       });
       setLastSavedSnapshot(draftSnapshot);
       setShowExitModal(false);
@@ -515,6 +612,24 @@ export default function DeckBuilderEditorPage() {
 
   const countByType = (type: string) =>
     deckByType[type]?.reduce((s, { count }) => s + count, 0) ?? 0;
+
+  // Sidedeck grouped by type (independent from main deck stats)
+  const sideByType = useMemo(() => {
+    const groups: Record<string, { card: CollectionCard; count: number }[]> = {};
+    for (const [idStr, count] of Object.entries(sideDeck)) {
+      if (count <= 0) continue;
+      const card = cardById.get(Number(idStr));
+      if (!card) continue;
+      const rawType = card.type ?? 'Otro';
+      const t = rawType.charAt(0).toUpperCase() + rawType.slice(1).toLowerCase();
+      if (!groups[t]) groups[t] = [];
+      groups[t].push({ card, count });
+    }
+    for (const items of Object.values(groups)) {
+      items.sort((a, b) => a.card.name.localeCompare(b.card.name, 'es'));
+    }
+    return groups;
+  }, [sideDeck, cardById]);
 
   const costDistribution = useMemo(() => {
     const counts = new Map<number, { total: number; byType: Record<CostChartType, number> }>();
@@ -622,6 +737,10 @@ export default function DeckBuilderEditorPage() {
     Object.keys(deckByType).filter((t) => !TYPE_ORDER.includes(t)),
   );
 
+  const sideSortedTypeKeys = TYPE_ORDER.filter((t) => sideByType[t]).concat(
+    Object.keys(sideByType).filter((t) => !TYPE_ORDER.includes(t)),
+  );
+
   return (
     <div className={styles.page}>
       {/* ── Header bar ─────────────────────────────────────────────────────── */}
@@ -685,10 +804,17 @@ export default function DeckBuilderEditorPage() {
             <span className={styles.draftToggleText}>Modo Borrador</span>
           </label>
           <button
+            className={styles.changeSectionButton}
+            onClick={() => setShowSectionModal(true)}
+            title="Cambiar formato, subformato o raza"
+          >
+            ⚙ Cambiar sección
+          </button>
+          <button
             className={styles.backButton}
             onClick={handleExitRequest}
           >
-            ← Cambiar selección
+            ← Salir
           </button>
           <button
             className={`${styles.saveButton} ${saveStatus === 'saved' ? styles.saveButtonSaved : saveStatus === 'error' ? styles.saveButtonError : ''}`}
@@ -799,6 +925,27 @@ export default function DeckBuilderEditorPage() {
             </div>
           </div>
 
+          {/* Target selector: main deck vs sidedeck */}
+          <div className={styles.targetToggle}>
+            <span className={styles.targetToggleLabel}>Agregar a:</span>
+            <button
+              type="button"
+              className={`${styles.targetBtn} ${target === 'main' ? styles.targetBtnActiveMain : ''}`}
+              onClick={() => setTarget('main')}
+              aria-pressed={target === 'main'}
+            >
+              Mazo principal <span className={styles.targetBtnCount}>{totalDeckCount}/{DECK_SIZE}</span>
+            </button>
+            <button
+              type="button"
+              className={`${styles.targetBtn} ${target === 'side' ? styles.targetBtnActiveSide : ''}`}
+              onClick={() => setTarget('side')}
+              aria-pressed={target === 'side'}
+            >
+              Sidedeck <span className={styles.targetBtnCount}>{totalSideCount}/{sideMax}</span>
+            </button>
+          </div>
+
           {/* Type tabs */}
           <div className={styles.typeTabs}>
             {TYPE_TABS.map((tab) => (
@@ -884,9 +1031,11 @@ export default function DeckBuilderEditorPage() {
           <div className={styles.cardGrid}>
             {paginatedCards.map((card) => {
               const count = deckCards[card.id] ?? 0;
+              const sideCount = sideDeck[card.id] ?? 0;
               const groupCount = rules.getGroupCount(card);
               const hardMax = rules.getHardMax(card);
-              const canAddMore = rules.canAdd(card);
+              const canAddMore = target === 'side' ? canAddToSide(card) : canAddToMain(card);
+              const targetCount = target === 'side' ? sideCount : count;
               const isBanned = hardMax === 0;
               const isUnique = card.unique === true;
               const isInCollection = Boolean(user && ownedCardIds.has(card.id));
@@ -894,7 +1043,7 @@ export default function DeckBuilderEditorPage() {
               return (
                 <div
                   key={card.id}
-                  className={`${styles.cardItem} ${count > 0 ? styles.cardInDeck : ''} ${isBanned ? styles.cardBanned : ''}`}
+                  className={`${styles.cardItem} ${count > 0 ? styles.cardInDeck : ''} ${sideCount > 0 ? styles.cardInSide : ''} ${isBanned ? styles.cardBanned : ''}`}
                 >
                   <div
                     className={styles.cardImageWrapper}
@@ -915,6 +1064,9 @@ export default function DeckBuilderEditorPage() {
                     {count > 0 && (
                       <div className={styles.cardCountBadge}>{count}</div>
                     )}
+                    {sideCount > 0 && (
+                      <div className={styles.cardSideBadge} title={`${sideCount} en sidedeck`}>S{sideCount}</div>
+                    )}
                     {isBanned && (
                       <div className={styles.bannedOverlay}>PROHIBIDA</div>
                     )}
@@ -929,7 +1081,8 @@ export default function DeckBuilderEditorPage() {
                     <button
                       className={styles.btnMinus}
                       onClick={() => removeCard(card.id)}
-                      disabled={count === 0}
+                      disabled={targetCount === 0}
+                      title={target === 'side' ? 'Quitar del sidedeck' : 'Quitar del mazo'}
                     >
                       −
                     </button>
@@ -940,6 +1093,7 @@ export default function DeckBuilderEditorPage() {
                       className={styles.btnPlus}
                       onClick={() => addCard(card)}
                       disabled={!canAddMore}
+                      title={target === 'side' ? 'Agregar al sidedeck' : 'Agregar al mazo'}
                     >
                       +
                     </button>
@@ -1258,6 +1412,89 @@ export default function DeckBuilderEditorPage() {
               })
             )}
           </section>
+
+          {/* Sidedeck list */}
+          <section className={styles.deckSection}>
+            <div className={styles.sideSectionHeader}>
+              <h3 className={styles.sectionTitle}>🔁 Sidedeck</h3>
+              <span
+                className={`${styles.sideCountBadge} ${totalSideCount > sideMax ? styles.sideCountBadgeOver : totalSideCount === sideMax ? styles.sideCountBadgeFull : ''}`}
+              >
+                {totalSideCount} / {sideMax}
+              </span>
+            </div>
+            <p className={styles.coverHint}>
+              Cartas de cambio (cualquier tipo). No cuentan en las estadísticas de construcción.
+            </p>
+            {totalSideCount > sideMax && (
+              <div className={styles.validationError}>
+                ✕ El sidedeck supera el máximo de {sideMax} cartas
+              </div>
+            )}
+            {sideSortedTypeKeys.length === 0 ? (
+              <p className={styles.deckEmpty}>
+                Selecciona «Sidedeck» arriba y agrega cartas desde la grilla
+              </p>
+            ) : (
+              sideSortedTypeKeys.map((type) => {
+                const items = sideByType[type];
+                const groupCount = items.reduce((s, i) => s + i.count, 0);
+                return (
+                  <div key={type} className={styles.deckTypeGroup}>
+                    <div className={styles.deckTypeHeader}>
+                      <span>{TYPE_DISPLAY[type] ?? type}</span>
+                      <span className={styles.deckTypeCount}>{groupCount}</span>
+                    </div>
+                    {items.map(({ card, count }) => (
+                      <div
+                        key={card.id}
+                        className={styles.deckCardRow}
+                        onClick={() => setSelectedCard(card)}
+                        role="button"
+                        tabIndex={0}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            setSelectedCard(card);
+                          }
+                        }}
+                        title="Ver detalle"
+                      >
+                        <img
+                          src={card.imageUrl}
+                          alt={card.name}
+                          className={styles.deckCardThumb}
+                        />
+                        <span className={styles.deckCardName}>{card.name}</span>
+                        <div className={styles.deckCardControls}>
+                          <button
+                            className={styles.deckMinus}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              removeFromSide(card.id);
+                            }}
+                          >
+                            −
+                          </button>
+                          <span className={styles.deckCardCount}>{count}</span>
+                          <button
+                            className={styles.deckPlus}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              addToSide(card);
+                            }}
+                            disabled={!canAddToSide(card)}
+                          >
+                            +
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                );
+              })
+            )}
+          </section>
         </aside>
       </div>
 
@@ -1268,6 +1505,20 @@ export default function DeckBuilderEditorPage() {
         cards={filteredCards}
         onNavigate={navigateCardDetail}
       />
+
+      {/* ── Change section modal ─────────────────────────────────────────── */}
+      {showSectionModal && (
+        <NewDeckModal
+          title="Cambiar sección"
+          submitLabel="Aplicar cambios"
+          initialFormat={formatParam}
+          initialSubformat={subformat}
+          initialRace={race}
+          initialName={name}
+          onClose={() => setShowSectionModal(false)}
+          onSubmit={applySectionChange}
+        />
+      )}
     </div>
   );
 }

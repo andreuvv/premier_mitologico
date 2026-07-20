@@ -1,7 +1,7 @@
 .container {
-  max-width: 1500px;
-  margin: 0 auto;
-  padding: 1.25rem 1rem 2.25rem;
+  min-height: 100vh;
+  padding: 1rem 2rem 2rem;
+  background: var(--coal-grey);
   font-family: 'Roboto', sans-serif;
 }
 
@@ -125,12 +125,15 @@
 .filtersBar {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
-  padding: 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 0.7rem;
+  padding: 0.75rem 1rem;
+  border: none;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.02);
-  margin-bottom: 0.65rem;
+  background: var(--dark-brown);
+  margin-bottom: 0.75rem;
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.32),
+    0 2px 6px rgba(0, 0, 0, 0.22);
 }
 
 .formatFilterGroup {
@@ -141,40 +144,52 @@
 
 .filterChip,
 .filterChipActive {
+  border: none;
   border-radius: 999px;
-  padding: 0.3rem 0.75rem;
+  padding: 0.3rem 0.85rem;
   font-size: 0.76rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.15s, border-color 0.15s;
+  transition: background 0.2s, box-shadow 0.2s, color 0.2s;
 }
 
 .filterChip {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  color: rgba(255, 255, 255, 0.72);
+  background: var(--coal-grey);
+  color: var(--beige);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.28),
+    0 1px 3px rgba(0, 0, 0, 0.18);
 }
 
 .filterChip:hover {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(75, 139, 163, 0.35);
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.32),
+    0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .filterChipActive {
-  background: rgba(214, 156, 65, 0.18);
-  border: 1px solid rgba(214, 156, 65, 0.55);
-  color: var(--ocher);
+  background: var(--petrol-blue);
+  color: var(--beige);
+  box-shadow:
+    0 3px 10px rgba(75, 139, 163, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.22);
 }
 
 .filterChipActive.filterChipAll {
-  background: rgba(126, 164, 112, 0.2);
-  border-color: rgba(126, 164, 112, 0.6);
-  color: #c7dfbd;
+  background: var(--sage-green);
+  color: var(--dark-brown);
+  box-shadow:
+    0 3px 10px rgba(126, 164, 112, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.22);
 }
 
 .filterChipActive.filterChipFx {
-  background: rgba(201, 67, 56, 0.2);
-  border-color: rgba(201, 67, 56, 0.62);
-  color: #efb2ac;
+  background: var(--brick-red);
+  color: var(--beige);
+  box-shadow:
+    0 3px 10px rgba(201, 67, 56, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.22);
 }
 
 .filtersInputsRow {
@@ -189,8 +204,8 @@
 
 .filterSelect,
 .filterInput {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: var(--coal-grey);
+  border: none;
   border-radius: 6px;
   color: var(--beige);
   font-size: 0.82rem;
@@ -199,18 +214,13 @@
   width: 100%;
   box-sizing: border-box;
   font-family: inherit;
+  transition: box-shadow 0.2s;
 }
 
 .filterSelect {
-  padding: 0.35rem 0.5rem;
-  border: 1px solid var(--ocher);
-  border-radius: 6px;
-  background-color: var(--coal-grey);
-  color: var(--beige);
+  padding: 0.4rem 0.5rem;
   font-size: 0.8rem;
   cursor: pointer;
-  transition: border-color 0.2s;
-  width: 100%;
 }
 
 .filterSelect option {
@@ -220,16 +230,27 @@
 
 .filterSelect:focus,
 .filterInput:focus {
-  border-color: var(--petrol-blue);
+  box-shadow: 0 0 0 2px rgba(75, 139, 163, 0.55);
 }
 
 .filterInput::placeholder {
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(241, 220, 174, 0.5);
 }
 
 .emptyStateInline {
   padding: 1.4rem 0.5rem 1rem;
   text-align: center;
+}
+
+.stats {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: var(--dark-brown);
+  border-radius: 8px;
+  color: var(--beige);
+  font-size: 0.95rem;
+  border: 1px solid var(--ocher);
 }
 
 /* ─── Empty State ─────────────────────────────────────────────────────────── */
@@ -245,17 +266,23 @@
 
 .deckCard {
   background: var(--dark-brown);
-  border: 1px solid rgba(214, 156, 65, 0.35);
-  border-radius: 10px;
+  border: none;
+  border-radius: 12px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 0;
-  transition: border-color 0.15s;
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.32),
+    0 2px 6px rgba(0, 0, 0, 0.22);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .deckCard:hover {
-  border-color: var(--ocher);
+  transform: translateY(-4px);
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.38),
+    0 4px 10px rgba(0, 0, 0, 0.26);
 }
 
 .deckCardCover {
@@ -502,7 +529,8 @@
 .modalOverlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(2px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -512,8 +540,8 @@
 
 .modal {
   background: var(--dark-brown);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
+  border: 1px solid var(--ocher);
+  border-radius: 12px;
   padding: 1.75rem 2rem;
   width: 100%;
   max-width: 480px;
@@ -523,6 +551,12 @@
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  animation: slideUp 0.18s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(12px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
 }
 
 .modalClose {
@@ -568,8 +602,8 @@
 }
 
 .nameInput {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--coal-grey);
+  border: none;
   border-radius: 6px;
   color: var(--beige);
   font-size: 0.9rem;
@@ -578,15 +612,15 @@
   width: 100%;
   box-sizing: border-box;
   font-family: inherit;
-  transition: border-color 0.15s;
+  transition: box-shadow 0.2s;
 }
 
 .nameInput:focus {
-  border-color: var(--ocher);
+  box-shadow: 0 0 0 2px rgba(75, 139, 163, 0.55);
 }
 
 .nameInput::placeholder {
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(241, 220, 174, 0.5);
 }
 
 /* ─── Format Selector ─────────────────────────────────────────────────────── */
@@ -605,20 +639,25 @@
   gap: 0.35rem;
   padding: 0.85rem 0.5rem;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.03);
+  border: none;
+  background: var(--coal-grey);
   cursor: pointer;
-  transition: border-color 0.15s, background 0.15s;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.28),
+    0 1px 3px rgba(0, 0, 0, 0.18);
+  transition: box-shadow 0.2s, background 0.2s;
 }
 
 .formatBtnActive {
-  border-color: var(--ocher);
-  background: rgba(var(--ocher-rgb, 205, 152, 55), 0.1);
+  background: rgba(214, 156, 65, 0.18);
+  box-shadow: 0 0 0 2px var(--ocher);
 }
 
 .formatBtn:hover {
-  border-color: rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(75, 139, 163, 0.2);
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.32),
+    0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .formatIcon {
@@ -648,22 +687,27 @@
   gap: 0.15rem;
   padding: 0.65rem 0.85rem;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.03);
+  border: none;
+  background: var(--coal-grey);
   cursor: pointer;
   text-align: left;
-  transition: border-color 0.15s, background 0.15s;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.28),
+    0 1px 3px rgba(0, 0, 0, 0.18);
+  transition: box-shadow 0.2s, background 0.2s;
   width: 100%;
 }
 
 .subformatBtnActive {
-  border-color: var(--petrol-blue);
-  background: rgba(75, 139, 163, 0.12);
+  background: rgba(75, 139, 163, 0.16);
+  box-shadow: 0 0 0 2px var(--petrol-blue);
 }
 
 .subformatBtn:hover {
-  border-color: rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(75, 139, 163, 0.2);
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.32),
+    0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .subformatName {
@@ -689,26 +733,33 @@
 .raceBtnActive {
   padding: 0.35rem 0.75rem;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.04);
+  border: none;
+  background: var(--coal-grey);
   color: var(--beige);
   font-size: 0.78rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: border-color 0.12s, background 0.12s, color 0.12s;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.28),
+    0 1px 3px rgba(0, 0, 0, 0.18);
+  transition: box-shadow 0.15s, background 0.15s, color 0.15s;
   font-family: inherit;
 }
 
 .raceBtnActive {
-  border-color: var(--ocher);
   background: var(--ocher);
   color: var(--dark-brown);
   font-weight: 700;
+  box-shadow:
+    0 3px 10px rgba(214, 156, 65, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.22);
 }
 
 .raceBtn:hover {
-  border-color: rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(75, 139, 163, 0.28);
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.32),
+    0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* ─── Modal Error / Confirm ───────────────────────────────────────────────── */

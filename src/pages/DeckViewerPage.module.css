@@ -28,9 +28,9 @@
 
 .page {
   min-height: 100vh;
-  background: var(--dark-brown);
+  background: var(--coal-grey);
   color: var(--beige);
-  padding: 1.25rem 1.5rem 3rem;
+  padding: 1rem 2rem 3rem;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -41,21 +41,96 @@
 .topBar {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.topBarActions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.viewToggle {
+  display: inline-flex;
+  border: 1px solid var(--ocher);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--dark-brown);
+}
+
+.viewToggleBtn {
+  background: transparent;
+  border: none;
+  padding: 0.45rem 0.95rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--beige);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.viewToggleBtn:not(:last-child) {
+  border-right: 1px solid rgba(214, 156, 65, 0.4);
+}
+
+.viewToggleBtn:hover {
+  background: rgba(214, 156, 65, 0.2);
+}
+
+.viewToggleBtnActive,
+.viewToggleBtnActive:hover {
+  background: var(--ocher);
+  color: var(--coal-grey);
+}
+
+.exportBtn {
+  background: var(--ocher);
+  border: 1px solid var(--ocher);
+  border-radius: 8px;
+  padding: 0.45rem 1.1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--coal-grey);
+  cursor: pointer;
+  transition: filter 0.2s, opacity 0.2s;
+}
+
+.exportBtn:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.exportBtn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.exportArea {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 2rem;
+  background: var(--coal-grey);
+  border-radius: 16px;
 }
 
 .backBtn {
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: var(--dark-brown);
+  border: 1px solid var(--ocher);
   border-radius: 8px;
   padding: 0.45rem 1rem;
   font-size: 0.88rem;
+  font-weight: 600;
   color: var(--beige);
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background 0.2s, color 0.2s;
 }
 
 .backBtn:hover {
-  background: rgba(255, 255, 255, 0.14);
+  background: var(--ocher);
+  color: var(--coal-grey);
 }
 
 /* ── Deck header ──────────────────────────────────────────────────────────── */
@@ -73,9 +148,11 @@
 }
 
 .deckTitle {
-  font-size: 1.75rem;
+  font-size: 1.9rem;
   font-weight: 700;
-  color: var(--ocher);
+  font-family: 'Cyrodiil', serif;
+  letter-spacing: 0.02em;
+  color: var(--beige);
   margin: 0;
   line-height: 1.2;
 }
@@ -95,18 +172,20 @@
 }
 
 .badge {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: var(--coal-grey);
+  border: none;
   border-radius: 20px;
   padding: 0.25rem 0.75rem;
   font-size: 0.8rem;
   color: var(--beige);
-  font-weight: 500;
+  font-weight: 600;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.28),
+    0 1px 3px rgba(0, 0, 0, 0.18);
 }
 
 .badgeEdition {
   background: rgba(75, 139, 163, 0.2);
-  border-color: var(--petrol-blue);
   color: #a8d4e8;
 }
 
@@ -133,13 +212,15 @@
 .cardContainer {
   flex: 1;
   min-width: 0;
-  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
   padding: 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 1.75rem;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--dark-brown);
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.32),
+    0 2px 6px rgba(0, 0, 0, 0.22);
 }
 
 .emptyDeck {
@@ -176,8 +257,8 @@
 .typeCount {
   font-size: 0.78rem;
   font-weight: 600;
-  color: rgba(234, 221, 207, 0.5);
-  background: rgba(255, 255, 255, 0.06);
+  color: rgba(234, 221, 207, 0.55);
+  background: var(--coal-grey);
   border-radius: 10px;
   padding: 1px 8px;
 }
@@ -257,16 +338,47 @@
 
 /* ── Stats panel (right) ──────────────────────────────────────────────────── */
 
-.statsPanel {
+.rightColumn {
   width: 260px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
+  gap: 1.25rem;
+}
+
+.statsPanel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   gap: 0;
-  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--dark-brown);
   overflow: hidden;
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.32),
+    0 2px 6px rgba(0, 0, 0, 0.22);
+}
+
+.exportBrand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0 0.25rem;
+}
+
+.brandLogo {
+  height: 160px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.brandText {
+  font-family: 'Cyrodiil', serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  color: var(--ocher);
 }
 
 .statsSection {
@@ -337,9 +449,12 @@
   font-weight: 700;
   padding: 0.3rem 1.25rem;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: var(--coal-grey);
+  border: none;
   color: var(--beige);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.28),
+    0 1px 3px rgba(0, 0, 0, 0.18);
 }
 
 .countBadgeFull {
@@ -543,6 +658,34 @@
   background: rgba(214, 156, 65, 0.1);
   border-radius: 6px;
   padding: 0.35rem 0.6rem;
+}
+
+/* ── Sidedeck ─────────────────────────────────────────────────────────────── */
+
+.sideDeckBlock {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px dashed rgba(214, 156, 65, 0.4);
+}
+
+.sideDeckDivider {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.9rem;
+}
+
+.sideDeckTitle {
+  font-family: 'Cyrodiil', serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+  color: var(--ocher);
+}
+
+.sideDeckCount {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(234, 221, 207, 0.6);
 }
 
 /* ── Responsive ───────────────────────────────────────────────────────────── */

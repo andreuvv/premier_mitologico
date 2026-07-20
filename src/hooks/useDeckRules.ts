@@ -75,6 +75,12 @@ interface UseDeckRulesProps {
   isDraft?: boolean;
   /** For pb-edicion: the edition slug the user has locked in (null = not locked yet) */
   lockedEdition: string | null;
+  /**
+   * Sidedeck (mazo de cambio). Copies here count toward copy/unique/banlist
+   * limits combined with the main deck, but never toward main deck composition
+   * stats (min aliados, deck size, cost chart, etc.).
+   */
+  sideDeck?: Record<number, number>;
 }
 
 export interface DeckRulesResult {
@@ -104,6 +110,7 @@ export function useDeckRules({
   banlist,
   isDraft = false,
   lockedEdition,
+  sideDeck = {},
 }: UseDeckRulesProps): DeckRulesResult {
 
   const banlistLookup = useMemo(() => buildBanlistLookup(banlist), [banlist]);
@@ -183,15 +190,32 @@ export function useDeckRules({
     return entries;
   }, [deckCards, cardById]);
 
-  // Total copies in deck per cardKey(name, type)  — for unique/limited enforcement
+  // Sidedeck cards as {card, count}[]
+  const sideEntries = useMemo(() => {
+    const entries: { card: CollectionCard; count: number }[] = [];
+    for (const [idStr, count] of Object.entries(sideDeck)) {
+      if (count <= 0) continue;
+      const card = cardById.get(Number(idStr));
+      if (card) entries.push({ card, count });
+    }
+    return entries;
+  }, [sideDeck, cardById]);
+
+  // Main deck + sidedeck combined — copy/unique/banlist limits count both.
+  const combinedEntries = useMemo(
+    () => [...deckEntries, ...sideEntries],
+    [deckEntries, sideEntries],
+  );
+
+  // Total combined copies per cardKey(name, type) — for unique/limited enforcement
   const countByNameType = useMemo(() => {
     const map = new Map<string, number>();
-    for (const { card, count } of deckEntries) {
+    for (const { card, count } of combinedEntries) {
       const key = cardKey(card.name, card.type);
       map.set(key, (map.get(key) ?? 0) + count);
     }
     return map;
-  }, [deckEntries]);
+  }, [combinedEntries]);
 
   // Total number of cards in deck (all copies)
   const totalDeckCount = useMemo(
@@ -364,15 +388,16 @@ export function useDeckRules({
       errs.push('Necesitas al menos 1 Oro sin habilidad');
     }
 
-    // Per-cardKey violations (deduped across reprints)
+    // Per-cardKey violations (deduped across reprints). Copy/unique/banlist/rework/
+    // edition rules apply to main deck AND sidedeck combined.
     const representativeByKey = new Map<string, CollectionCard>();
-    for (const { card } of deckEntries) {
+    for (const { card } of combinedEntries) {
       const key = cardKey(card.name, card.type);
       if (!representativeByKey.has(key)) representativeByKey.set(key, card);
     }
 
     const reworkWarnedGroups = new Set<string>();
-    for (const { card } of deckEntries) {
+    for (const { card } of combinedEntries) {
       const gk = groupKey(card.name, card.type);
       if (groupsWithRework.has(gk) && !isReworkCard(card) && !reworkWarnedGroups.has(gk)) {
         reworkWarnedGroups.add(gk);
@@ -404,7 +429,7 @@ export function useDeckRules({
     // PB Racial Edición: edition consistency
     if (subformat === 'pb-edicion' && lockedEdition) {
       const editionWarned = new Set<string>();
-      for (const { card } of deckEntries) {
+      for (const { card } of combinedEntries) {
         const key = cardKey(card.name, card.type);
         if (editionWarned.has(key)) continue;
         editionWarned.add(key);
@@ -429,6 +454,7 @@ export function useDeckRules({
     return { errors: errs, warnings: warns };
   }, [
     deckEntries,
+    combinedEntries,
     banlistLookup,
     countByNameType,
     getHardMax,
