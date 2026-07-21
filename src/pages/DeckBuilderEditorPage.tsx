@@ -759,7 +759,7 @@ export default function DeckBuilderEditorPage() {
             maxLength={100}
           />
           <div className={styles.tagRow}>
-            <span className={styles.tag}>🎮 <strong>{formatLabel}</strong></span>
+            <span className={`${styles.tag} ${formatParam === 'pb' ? styles.tagPb : styles.tagFx}`}>🎮 <strong>{formatLabel}</strong></span>
             <span className={styles.tag}>📋 <strong>{subformatLabel}</strong></span>
             <span className={styles.tag}>🔖 Raza: <strong>{race}</strong></span>
             {isDraft && <span className={`${styles.tag} ${styles.draftTag}`}>📝 Modo Borrador</span>}

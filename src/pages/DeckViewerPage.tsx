@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useRef, useCallback, type CSSProperties } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import { toPng } from 'html-to-image';
+import { toBlob } from 'html-to-image';
 import { CollectionCard, CollectionFormat } from '../types/collection';
 import { loadCollectionCards } from '../services/collectionService';
 import { useBanlist } from '../hooks/useBanlist';
@@ -14,6 +14,25 @@ import styles from './DeckViewerPage.module.css';
 const DECK_SIZE = 50;
 const STACK_OFFSET = 13; // px offset per stacked copy
 const CARD_WIDTH = 100;  // px
+
+// Rejects if the given promise doesn't settle in time, so the "Generando..."
+// state can never get stuck permanently (e.g. if the browser can't rasterize
+// the SVG on a low-memory device).
+function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error('export-timeout')), ms);
+    promise.then(
+      (value) => {
+        clearTimeout(timer);
+        resolve(value);
+      },
+      (err) => {
+        clearTimeout(timer);
+        reject(err);
+      },
+    );
+  });
+}
 
 const RACE_TO_EDITION: Record<string, string> = {
   Faerie: 'espada-sagrada', Dragon: 'espada-sagrada', Caballero: 'espada-sagrada',
@@ -285,7 +304,7 @@ export default function DeckViewerPage() {
   );
 
   // Cards are rendered a bit smaller for the tablet/mobile export formats
-  // (resolution is preserved via the high pixelRatio in toPng)
+  // (resolution is preserved via the pixel ratio used during capture)
   const exportCardWidth = exporting
     ? exportRatio === 'mobile'
       ? 72
@@ -302,8 +321,8 @@ export default function DeckViewerPage() {
     : STACK_OFFSET;
   const exportCardHeight = Math.round(exportCardWidth / 0.72);
 
-  const renderCardStack = (card: CollectionCard, count: number) => {
-    const stackWidth = exportCardWidth + (count - 1) * exportStackOffset;
+  const renderCardStack = (card: CollectionCard, count: number, cardW: number, stackOff: number) => {
+    const stackWidth = cardW + (count - 1) * stackOff;
     return (
       <div
         key={card.id}
@@ -316,7 +335,7 @@ export default function DeckViewerPage() {
           <div
             key={i}
             className={styles.stackedCard}
-            style={{ left: `${i * exportStackOffset}px`, zIndex: i }}
+            style={{ left: `${i * stackOff}px`, zIndex: i }}
           >
             {card.imageUrl ? (
               <img src={card.imageUrl} alt={card.name} className={styles.cardImg} loading="lazy" />
@@ -331,25 +350,75 @@ export default function DeckViewerPage() {
   };
 
   const handleExport = useCallback(async () => {
-    const node = exportRef.current;
-    if (!node || exporting) return;
-    // Setting `exporting` applies the chosen view + screen format to the node (see render)
+    if (exporting) return;
+    // Setting `exporting` mounts a hidden, off-screen copy with the chosen
+    // options (see render), so the visible page is never resized.
     setExporting(true);
-    // Wait for React to commit and the browser to paint the export layout
+    // Wait for React to commit and the browser to paint the off-screen copy
     await new Promise((resolve) =>
       requestAnimationFrame(() => requestAnimationFrame(() => resolve(null))),
     );
+    const node = exportRef.current;
+    if (!node) {
+      setExporting(false);
+      setShowExportModal(false);
+      return;
+    }
     try {
-      const dataUrl = await toPng(node, {
-        pixelRatio: 3,
-        cacheBust: true,
-        backgroundColor: '#2D2D2D',
-      });
+      // Wait until every card image inside the export copy has loaded, otherwise
+      // the capture can come out blank on slower / mobile connections.
+      const imgs = Array.from(node.querySelectorAll('img'));
+      await Promise.all(
+        imgs.map((img) =>
+          img.complete && img.naturalWidth > 0
+            ? Promise.resolve()
+            : new Promise<void>((resolve) => {
+                img.addEventListener('load', () => resolve(), { once: true });
+                img.addEventListener('error', () => resolve(), { once: true });
+              }),
+        ),
+      );
+
+      // Mobile browsers (iOS Safari especially) cap canvas size (~4096px per
+      // side, ~16.7M px total). Scale the pixel ratio down so we stay under
+      // that limit while keeping the best quality the device allows.
+      const w = node.scrollWidth || node.getBoundingClientRect().width;
+      const h = node.scrollHeight || node.getBoundingClientRect().height;
+      const MAX_SIDE = 4096;
+      const MAX_AREA = 16_777_216;
+      let pixelRatio = 3;
+      if (w > 0 && h > 0) {
+        pixelRatio = Math.min(
+          pixelRatio,
+          MAX_SIDE / w,
+          MAX_SIDE / h,
+          Math.sqrt(MAX_AREA / (w * h)),
+        );
+        pixelRatio = Math.max(1, pixelRatio);
+      }
+
+      // skipFonts avoids embedding heavy @font-face data (which produces a huge
+      // SVG that low-memory mobile browsers fail to rasterize) and also silences
+      // the cross-origin (Google Fonts) CORS errors from stylesheet scanning.
+      const options = { cacheBust: true, backgroundColor: '#2D2D2D', skipFonts: true } as const;
+      let blob = await withTimeout(toBlob(node, { ...options, pixelRatio }), 30_000);
+      // Fallback: if the device still couldn't allocate the canvas, retry at 1x.
+      if (!blob && pixelRatio > 1) {
+        blob = await withTimeout(toBlob(node, { ...options, pixelRatio: 1 }), 30_000);
+      }
+      if (!blob) throw new Error('El navegador no pudo generar la imagen.');
+
       const safeName = (deck?.name ?? 'mazo').trim().replace(/[^\w-]+/g, '_') || 'mazo';
+      const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.download = `${safeName}.png`;
-      link.href = dataUrl;
+      link.href = url;
+      link.rel = 'noopener';
+      document.body.appendChild(link);
       link.click();
+      link.remove();
+      // Give the browser a moment to start the download before revoking.
+      setTimeout(() => URL.revokeObjectURL(url), 10_000);
     } catch (err) {
       console.error('No se pudo exportar la imagen del mazo', err);
     } finally {
@@ -387,138 +456,103 @@ export default function DeckViewerPage() {
     );
   }
 
-  // While exporting, render using the options chosen in the export modal
-  const effectiveViewMode = exporting ? exportView : viewMode;
   const exportRatioClass = exportRatio === 'desktop'
     ? styles.ratioDesktop
     : exportRatio === 'tablet'
       ? styles.ratioTablet
       : styles.ratioMobile;
 
-  return (
-    <div className={styles.page}>
-      {/* Top bar */}
-      <div className={styles.topBar}>
-        <button className={styles.backBtn} onClick={() => navigate('/deck-builder')}>
-          ← Mis Mazos
-        </button>
-        <div className={styles.topBarActions}>
-          <div className={styles.viewToggle}>
-            <button
-              type="button"
-              className={`${styles.viewToggleBtn} ${viewMode === 'grouped' ? styles.viewToggleBtnActive : ''}`}
-              onClick={() => setViewMode('grouped')}
-              aria-pressed={viewMode === 'grouped'}
-            >
-              Agrupado
-            </button>
-            <button
-              type="button"
-              className={`${styles.viewToggleBtn} ${viewMode === 'grid' ? styles.viewToggleBtnActive : ''}`}
-              onClick={() => setViewMode('grid')}
-              aria-pressed={viewMode === 'grid'}
-            >
-              Grilla
-            </button>
+  // Full deck body (header + cards + stats + branding). Rendered once for the
+  // visible page and again, off-screen, for the exported image — so the visible
+  // page is never resized while exporting.
+  const renderDeckBody = (
+    view: 'grouped' | 'grid',
+    includeSide: boolean,
+    cardW: number,
+    stackOff: number,
+  ) => (
+    <>
+      {/* Deck header */}
+      <div className={styles.deckHeader}>
+        <div className={styles.deckHeaderMain}>
+          <h1 className={styles.deckTitle}>{deck.name}</h1>
+          <div className={styles.badgesRow}>
+            <div className={styles.badges}>
+              <span className={`${styles.badge} ${format === 'pb' ? styles.badgePb : styles.badgeFx}`}>
+                {FORMAT_LABELS[format] ?? format}
+              </span>
+              <span className={styles.badge}>{SUBFORMAT_LABELS[subformat] ?? subformat}</span>
+              {isDraft && <span className={styles.badge}>Borrador</span>}
+              {race && <span className={styles.badge}>{race}</span>}
+              {editionLabel && <span className={`${styles.badge} ${styles.badgeEdition}`}>{editionLabel}</span>}
+            </div>
+            <span className={styles.authorLabel}>por <strong>{authorName}</strong></span>
           </div>
-          <button
-            type="button"
-            className={styles.exportBtn}
-            onClick={openExportModal}
-            disabled={exporting}
-          >
-            📷 Exportar imagen
-          </button>
         </div>
       </div>
 
-      <div
-        className={`${styles.exportArea} ${exporting ? `${styles.exportPadded} ${exportRatioClass}` : ''}`}
-        ref={exportRef}
-        style={{
-          '--card-w': `${exportCardWidth}px`,
-          '--card-h': `${exportCardHeight}px`,
-        } as CSSProperties}
-      >
-        {/* Deck header */}
-        <div className={styles.deckHeader}>
-          <div className={styles.deckHeaderMain}>
-            <h1 className={styles.deckTitle}>{deck.name}</h1>
-            <div className={styles.badgesRow}>
-              <div className={styles.badges}>
-                <span className={styles.badge}>{FORMAT_LABELS[format] ?? format}</span>
-                <span className={styles.badge}>{SUBFORMAT_LABELS[subformat] ?? subformat}</span>
-                {isDraft && <span className={styles.badge}>Borrador</span>}
-                {race && <span className={styles.badge}>{race}</span>}
-                {editionLabel && <span className={`${styles.badge} ${styles.badgeEdition}`}>{editionLabel}</span>}
-              </div>
-              <span className={styles.authorLabel}>por <strong>{authorName}</strong></span>
+      {/* Content */}
+      <div className={styles.content}>
+        {/* Card container */}
+        <div className={styles.cardContainer}>
+          {sortedTypeKeys.length === 0 ? (
+            <p className={styles.emptyDeck}>Este mazo no tiene cartas.</p>
+          ) : view === 'grouped' ? (
+            sortedTypeKeys.map((type) => {
+              const items = deckByType[type];
+              const groupTotal = items.reduce((s, i) => s + i.count, 0);
+              return (
+                <div key={type} className={styles.typeGroup}>
+                  <div className={styles.typeHeader}>
+                    <span className={styles.typeLabel}>{TYPE_DISPLAY[type] ?? type}</span>
+                    <span className={styles.typeCount}>{groupTotal}</span>
+                  </div>
+                  <div className={styles.cardsRow}>
+                    {items.map(({ card, count }) => renderCardStack(card, count, cardW, stackOff))}
+                  </div>
+                </div>
+              );
+            })
+          ) : (
+            <div className={styles.cardsRow}>
+              {flatMainItems.map(({ card, count }) => renderCardStack(card, count, cardW, stackOff))}
             </div>
-          </div>
+          )}
+
+          {/* Sidedeck (shown separately, excluded from stats) */}
+          {sideSortedTypeKeys.length > 0 && includeSide && (
+            <div className={styles.sideDeckBlock}>
+              <div className={styles.sideDeckDivider}>
+                <span className={styles.sideDeckTitle}>Sidedeck</span>
+                <span className={styles.sideDeckCount}>{totalSideCount} cartas</span>
+              </div>
+              {view === 'grouped' ? (
+                sideSortedTypeKeys.map((type) => {
+                  const items = sideByType[type];
+                  const groupTotal = items.reduce((s, i) => s + i.count, 0);
+                  return (
+                    <div key={type} className={styles.typeGroup}>
+                      <div className={styles.typeHeader}>
+                        <span className={styles.typeLabel}>{TYPE_DISPLAY[type] ?? type}</span>
+                        <span className={styles.typeCount}>{groupTotal}</span>
+                      </div>
+                      <div className={styles.cardsRow}>
+                        {items.map(({ card, count }) => renderCardStack(card, count, cardW, stackOff))}
+                      </div>
+                    </div>
+                  );
+                })
+              ) : (
+                <div className={styles.cardsRow}>
+                  {flatSideItems.map(({ card, count }) => renderCardStack(card, count, cardW, stackOff))}
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
-        {/* Content */}
-        <div className={styles.content}>
-          {/* Card container */}
-          <div className={styles.cardContainer}>
-            {sortedTypeKeys.length === 0 ? (
-              <p className={styles.emptyDeck}>Este mazo no tiene cartas.</p>
-            ) : effectiveViewMode === 'grouped' ? (
-              sortedTypeKeys.map((type) => {
-                const items = deckByType[type];
-                const groupTotal = items.reduce((s, i) => s + i.count, 0);
-                return (
-                  <div key={type} className={styles.typeGroup}>
-                    <div className={styles.typeHeader}>
-                      <span className={styles.typeLabel}>{TYPE_DISPLAY[type] ?? type}</span>
-                      <span className={styles.typeCount}>{groupTotal}</span>
-                    </div>
-                    <div className={styles.cardsRow}>
-                      {items.map(({ card, count }) => renderCardStack(card, count))}
-                    </div>
-                  </div>
-                );
-              })
-            ) : (
-              <div className={styles.cardsRow}>
-                {flatMainItems.map(({ card, count }) => renderCardStack(card, count))}
-              </div>
-            )}
-
-            {/* Sidedeck (shown separately, excluded from stats) */}
-            {sideSortedTypeKeys.length > 0 && (!exporting || exportIncludeSide) && (
-              <div className={styles.sideDeckBlock}>
-                <div className={styles.sideDeckDivider}>
-                  <span className={styles.sideDeckTitle}>Sidedeck</span>
-                  <span className={styles.sideDeckCount}>{totalSideCount} cartas</span>
-                </div>
-                {effectiveViewMode === 'grouped' ? (
-                  sideSortedTypeKeys.map((type) => {
-                    const items = sideByType[type];
-                    const groupTotal = items.reduce((s, i) => s + i.count, 0);
-                    return (
-                      <div key={type} className={styles.typeGroup}>
-                        <div className={styles.typeHeader}>
-                          <span className={styles.typeLabel}>{TYPE_DISPLAY[type] ?? type}</span>
-                          <span className={styles.typeCount}>{groupTotal}</span>
-                        </div>
-                        <div className={styles.cardsRow}>
-                          {items.map(({ card, count }) => renderCardStack(card, count))}
-                        </div>
-                      </div>
-                    );
-                  })
-                ) : (
-                  <div className={styles.cardsRow}>
-                    {flatSideItems.map(({ card, count }) => renderCardStack(card, count))}
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-
-          {/* Right column: stats + branding */}
-          <div className={styles.rightColumn}>
+        {/* Right column: stats + branding */}
+        <div className={styles.rightColumn}>
           <aside className={styles.statsPanel}>
           <section className={styles.statsSection}>
             <h3 className={styles.sectionTitle}>📊 Estadísticas de construcción</h3>
@@ -637,14 +671,75 @@ export default function DeckViewerPage() {
           )}
         </aside>
 
-            {/* Branding shown below the stats panel */}
-            <div className={styles.exportBrand}>
-              <img src={MITOXICOS_LOADER_COLOR} alt="Mitoxicos" className={styles.brandLogo} />
-              <span className={styles.brandText}>mitoxicos.cl</span>
-            </div>
+          {/* Branding shown below the stats panel */}
+          <div className={styles.exportBrand}>
+            <img src={MITOXICOS_LOADER_COLOR} alt="Mitoxicos" className={styles.brandLogo} />
+            <span className={styles.brandText}>mitoxicos.cl</span>
           </div>
         </div>
       </div>
+    </>
+  );
+
+  return (
+    <div className={styles.page}>
+      {/* Top bar */}
+      <div className={styles.topBar}>
+        <button className={styles.backBtn} onClick={() => navigate('/deck-builder')}>
+          ← Mis Mazos
+        </button>
+        <div className={styles.topBarActions}>
+          <div className={styles.viewToggle}>
+            <button
+              type="button"
+              className={`${styles.viewToggleBtn} ${viewMode === 'grouped' ? styles.viewToggleBtnActive : ''}`}
+              onClick={() => setViewMode('grouped')}
+              aria-pressed={viewMode === 'grouped'}
+            >
+              Agrupado
+            </button>
+            <button
+              type="button"
+              className={`${styles.viewToggleBtn} ${viewMode === 'grid' ? styles.viewToggleBtnActive : ''}`}
+              onClick={() => setViewMode('grid')}
+              aria-pressed={viewMode === 'grid'}
+            >
+              Grilla
+            </button>
+          </div>
+          <button
+            type="button"
+            className={styles.exportBtn}
+            onClick={openExportModal}
+            disabled={exporting}
+          >
+            📷 Exportar imagen
+          </button>
+        </div>
+      </div>
+
+      {/* Visible deck — never resized while exporting */}
+      <div className={styles.exportArea}>
+        {renderDeckBody(viewMode, true, CARD_WIDTH, STACK_OFFSET)}
+      </div>
+
+      {/* Off-screen copy captured for the exported image. The offset lives on
+          the wrapper; the captured node itself keeps normal positioning so
+          html-to-image renders its content at the origin. */}
+      {exporting && (
+        <div className={styles.exportOffscreen} aria-hidden="true">
+          <div
+            ref={exportRef}
+            className={`${styles.exportArea} ${styles.exportPadded} ${exportRatioClass}`}
+            style={{
+              '--card-w': `${exportCardWidth}px`,
+              '--card-h': `${exportCardHeight}px`,
+            } as CSSProperties}
+          >
+            {renderDeckBody(exportView, exportIncludeSide, exportCardWidth, exportStackOffset)}
+          </div>
+        </div>
+      )}
 
       {showExportModal && (
         <div
@@ -749,7 +844,14 @@ export default function DeckViewerPage() {
                 onClick={handleExport}
                 disabled={exporting}
               >
-                {exporting ? '⏳ Generando...' : '📷 Exportar'}
+                {exporting ? (
+                  <>
+                    <span className={styles.btnSpinner} aria-hidden="true" />
+                    Generando...
+                  </>
+                ) : (
+                  '📷 Exportar'
+                )}
               </button>
             </div>
           </div>

@@ -114,6 +114,7 @@
   border-radius: 20px;
   padding: 0.2rem 0.65rem;
   color: rgba(234, 221, 207, 0.8);
+  white-space: nowrap;
   box-shadow:
     0 2px 6px rgba(0, 0, 0, 0.28),
     0 1px 3px rgba(0, 0, 0, 0.18);
@@ -121,6 +122,24 @@
 
 .tag strong {
   color: var(--beige);
+}
+
+.tagPb {
+  background: rgba(214, 156, 65, 0.2);
+  color: #e6c07b;
+}
+
+.tagPb strong {
+  color: #e6c07b;
+}
+
+.tagFx {
+  background: rgba(201, 67, 56, 0.2);
+  color: #efb2ac;
+}
+
+.tagFx strong {
+  color: #efb2ac;
 }
 
 .draftTag {

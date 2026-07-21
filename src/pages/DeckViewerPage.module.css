@@ -115,6 +115,18 @@
 
 /* ── Screen-format sizing applied only during export capture ──────────────── */
 
+/* Wrapper that pushes the export copy off-screen so the visible page is never
+   resized. The offset stays on this wrapper (not the captured node) so the
+   captured node keeps normal positioning and renders at the origin. */
+.exportOffscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translateX(-200vw);
+  pointer-events: none;
+  z-index: -1;
+}
+
 /* Replicates the page's own margins in the exported image (same values as .page) */
 .exportPadded {
   padding: 1rem 2rem 3rem;
@@ -326,6 +338,11 @@
 }
 
 .exportConfirmBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-width: 8.5rem;
   background: var(--ocher);
   border: none;
   border-radius: 6px;
@@ -340,6 +357,22 @@
 
 .exportConfirmBtn:hover:not(:disabled) {
   filter: brightness(1.08);
+}
+
+.btnSpinner {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 2px solid rgba(45, 45, 45, 0.35);
+  border-top-color: var(--coal-grey);
+  animation: btnSpin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes btnSpin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .exportConfirmBtn:disabled,
@@ -412,9 +445,20 @@
   font-size: 0.8rem;
   color: var(--beige);
   font-weight: 600;
+  white-space: nowrap;
   box-shadow:
     0 2px 6px rgba(0, 0, 0, 0.28),
     0 1px 3px rgba(0, 0, 0, 0.18);
+}
+
+.badgePb {
+  background: rgba(214, 156, 65, 0.2);
+  color: #e6c07b;
+}
+
+.badgeFx {
+  background: rgba(201, 67, 56, 0.2);
+  color: #efb2ac;
 }
 
 .badgeEdition {
