@@ -111,12 +111,15 @@
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  padding: 2rem;
-  background: var(--coal-grey);
-  border-radius: 16px;
 }
 
 /* ── Screen-format sizing applied only during export capture ──────────────── */
+
+/* Replicates the page's own margins in the exported image (same values as .page) */
+.exportPadded {
+  padding: 1rem 2rem 3rem;
+  box-sizing: border-box;
+}
 
 .ratioDesktop {
   width: 1280px;
@@ -249,6 +252,53 @@
   box-shadow:
     0 0 0 2px var(--ocher),
     0 3px 10px rgba(214, 156, 65, 0.35);
+}
+
+.switchRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  border-radius: 999px;
+  border: none;
+  background: var(--coal-grey);
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: background 0.2s;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.switchOn {
+  background: var(--ocher);
+}
+
+.switchKnob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--beige);
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.switchOn .switchKnob {
+  transform: translateX(20px);
+  background: var(--dark-brown);
+}
+
+.switch:disabled {
+  opacity: 0.6;
+  cursor: default;
 }
 
 .exportModalFooter {
@@ -459,7 +509,7 @@
 
 .cardStack {
   position: relative;
-  height: 139px; /* CARD_WIDTH / 0.72 ≈ 139px */
+  height: var(--card-h, 139px);
   cursor: pointer;
   flex-shrink: 0;
   transition: transform 0.15s ease;
@@ -472,8 +522,8 @@
 .stackedCard {
   position: absolute;
   top: 0;
-  width: 100px;
-  height: 139px;
+  width: var(--card-w, 100px);
+  height: var(--card-h, 139px);
   border-radius: 6px;
   overflow: hidden;
   box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.5);

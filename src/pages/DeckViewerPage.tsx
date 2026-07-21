@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback, type CSSProperties } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { toPng } from 'html-to-image';
 import { CollectionCard, CollectionFormat } from '../types/collection';
@@ -117,6 +117,7 @@ export default function DeckViewerPage() {
   const [showExportModal, setShowExportModal] = useState(false);
   const [exportView, setExportView] = useState<'grouped' | 'grid'>('grid');
   const [exportRatio, setExportRatio] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
+  const [exportIncludeSide, setExportIncludeSide] = useState(true);
   const exportRef = useRef<HTMLDivElement>(null);
 
   // Derived from deck
@@ -283,8 +284,26 @@ export default function DeckViewerPage() {
     [sideSortedTypeKeys, sideByType],
   );
 
+  // Cards are rendered a bit smaller for the tablet/mobile export formats
+  // (resolution is preserved via the high pixelRatio in toPng)
+  const exportCardWidth = exporting
+    ? exportRatio === 'mobile'
+      ? 72
+      : exportRatio === 'tablet'
+        ? 82
+        : CARD_WIDTH
+    : CARD_WIDTH;
+  const exportStackOffset = exporting
+    ? exportRatio === 'mobile'
+      ? 10
+      : exportRatio === 'tablet'
+        ? 11
+        : STACK_OFFSET
+    : STACK_OFFSET;
+  const exportCardHeight = Math.round(exportCardWidth / 0.72);
+
   const renderCardStack = (card: CollectionCard, count: number) => {
-    const stackWidth = CARD_WIDTH + (count - 1) * STACK_OFFSET;
+    const stackWidth = exportCardWidth + (count - 1) * exportStackOffset;
     return (
       <div
         key={card.id}
@@ -297,7 +316,7 @@ export default function DeckViewerPage() {
           <div
             key={i}
             className={styles.stackedCard}
-            style={{ left: `${i * STACK_OFFSET}px`, zIndex: i }}
+            style={{ left: `${i * exportStackOffset}px`, zIndex: i }}
           >
             {card.imageUrl ? (
               <img src={card.imageUrl} alt={card.name} className={styles.cardImg} loading="lazy" />
@@ -342,6 +361,7 @@ export default function DeckViewerPage() {
   const openExportModal = () => {
     setExportView(viewMode);
     setExportRatio('desktop');
+    setExportIncludeSide(true);
     setShowExportModal(true);
   };
 
@@ -413,8 +433,12 @@ export default function DeckViewerPage() {
       </div>
 
       <div
-        className={`${styles.exportArea} ${exporting ? exportRatioClass : ''}`}
+        className={`${styles.exportArea} ${exporting ? `${styles.exportPadded} ${exportRatioClass}` : ''}`}
         ref={exportRef}
+        style={{
+          '--card-w': `${exportCardWidth}px`,
+          '--card-h': `${exportCardHeight}px`,
+        } as CSSProperties}
       >
         {/* Deck header */}
         <div className={styles.deckHeader}>
@@ -462,7 +486,7 @@ export default function DeckViewerPage() {
             )}
 
             {/* Sidedeck (shown separately, excluded from stats) */}
-            {sideSortedTypeKeys.length > 0 && (
+            {sideSortedTypeKeys.length > 0 && (!exporting || exportIncludeSide) && (
               <div className={styles.sideDeckBlock}>
                 <div className={styles.sideDeckDivider}>
                   <span className={styles.sideDeckTitle}>Sidedeck</span>
@@ -690,6 +714,25 @@ export default function DeckViewerPage() {
                 </button>
               </div>
             </div>
+
+            {totalSideCount > 0 && (
+              <div className={styles.exportField}>
+                <div className={styles.switchRow}>
+                  <span className={styles.exportFieldLabel}>Incluir sidedeck</span>
+                  <button
+                    type="button"
+                    role="switch"
+                    aria-checked={exportIncludeSide}
+                    aria-label="Incluir sidedeck"
+                    className={`${styles.switch} ${exportIncludeSide ? styles.switchOn : ''}`}
+                    onClick={() => setExportIncludeSide((v) => !v)}
+                    disabled={exporting}
+                  >
+                    <span className={styles.switchKnob} />
+                  </button>
+                </div>
+              </div>
+            )}
 
             <div className={styles.exportModalFooter}>
               <button
