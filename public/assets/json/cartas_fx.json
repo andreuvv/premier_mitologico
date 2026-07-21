@@ -115,6 +115,7 @@
           "type": "TALISMAN",
           "cost": 0,
           "attack": 0,
+          "unique": true,
           "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/walkirias_juez.webp",
           "artist": "MARIOLA QUIRLAND",
           "frequency": "PROMOCIONAL",
