@@ -3,6 +3,74 @@
     "CardCatalog": {
       "cards": [
         {
+          "id": 13117,
+          "slug": "corona-imperial",
+          "name": "Corona Imperial",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 351 P",
+          "effect": "Si controlas Aliados Caballero, puedes Desterrarlo de tu Reserva para que hasta dos cartas oponente pierdan su habilidad hasta tu próximo turno.",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/corona_imperial_LBF2_351.webp",
+          "artist": "EL KALKU",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición",
+            "sortOrder": 35
+          },
+          "interactions": []
+        },
+        {
+          "id": 13117,
+          "slug": "corona-unificada",
+          "name": "Corona Unificada",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 353 P",
+          "effect": "Si controlas Aliados Eterno, puedes Desterrarlo de tu Reserva para Agrupar hasta dos Oros.",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "",
+          "artist": "EL KALKU",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición",
+            "sortOrder": 35
+          },
+          "interactions": []
+        },
+        {
           "id": 13116,
           "slug": "corona-florentina",
           "name": "Corona Florentina",
@@ -382,7 +450,7 @@
           "slug": "toque-divino",
           "name": "Toque Divino",
           "gameId": 3,
-          "collectorCode": "LBF2 - 386 P",
+          "collectorCode": "LBF2 - 366 P",
           "effect": "Roba dos cartas. Puedes pagar un Oro y Desterrarlo de tu Cementerio para Robar dos cartas.",
           "flavor": "Su contacto despierta esperanza sagrada, entrega fuerza inmortal y deja un rastro de luz eterna en los corazones.",
           "type": "TALISMAN",
@@ -450,7 +518,7 @@
           "slug": "flecha-de-nott",
           "name": "Flecha de Nott",
           "gameId": 3,
-          "collectorCode": "LBF2 - 353 P",
+          "collectorCode": "LBF2 - 363 P",
           "effect": "Si fueras a Robar una carta, en vez de eso puedes subir esta carta de tu Cementerio a tu mano. Tu oponente Bota tres cartas.",
           "flavor": "Vuela ligera y certera hacia el destino marcado, atravesando sombras y alcanzando su objetivo sin error ni demora.",
           "type": "TALISMAN",
