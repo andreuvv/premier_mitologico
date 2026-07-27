@@ -3,6 +3,41 @@
     "CardCatalog": {
       "cards": [
         {
+          "id": 13119,
+          "slug": "corona-del-kan",
+          "name": "Corona del Kan",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 349 P",
+          "effect": "Si controlas Aliados Bárbaro, puedes Desterrarlo de tu Reserva para Robar dos cartas.",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "",
+          "artist": "EL KALKU",
+          "frequency": "ULTRA_REAL",
+          "race": [
+            "BARBARO"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición",
+            "sortOrder": 35
+          }
+        },
+        {
           "id": 13118,
           "slug": "corona-imperial",
           "name": "Corona Imperial",
