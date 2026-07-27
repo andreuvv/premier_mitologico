@@ -3,6 +3,41 @@
     "CardCatalog": {
       "cards": [
         {
+          "id": 13120,
+          "slug": "corona-iluminada",
+          "name": "Corona Iluminada",
+          "gameId": 3,
+          "collectorCode": "LBF2 - 356 P",
+          "effect": "Si controlas Aliados Sacerdote, puedes Desterrarlo de tu Reserva para subir un Aliado oponente a la mano de su dueño.",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "",
+          "artist": "EL KALKU",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            ""
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Leyendas Bloque Furia 2",
+            "productCode": "LBF2",
+            "productType": "Edición",
+            "sortOrder": 35
+          }
+        },
+        {
           "id": 13119,
           "slug": "corona-del-kan",
           "name": "Corona del Kan",
@@ -15,9 +50,9 @@
           "attack": 0,
           "imageUrl": "",
           "artist": "EL KALKU",
-          "frequency": "ULTRA_REAL",
+          "frequency": "PROMOCIONAL",
           "race": [
-            "BARBARO"
+            ""
           ],
           "edition": {
             "name": "Productos Especiales",
