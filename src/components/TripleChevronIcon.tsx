@@ -3,37 +3,26 @@ type Props = {
   className?: string;
 };
 
+const CHEVRON_DOWN = 'M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z';
+const CHEVRON_UP = 'm6.293 13.293 1.414 1.414L12 10.414l4.293 4.293 1.414-1.414L12 7.586z';
+
 export default function TripleChevronIcon({ direction, className }: Props) {
-  const paths =
-    direction === 'down'
-      ? [
-          'M5 3 L12 9 L19 3',
-          'M5 12 L12 18 L19 12',
-          'M5 21 L12 27 L19 21',
-        ]
-      : [
-          'M5 27 L12 21 L19 27',
-          'M5 18 L12 12 L19 18',
-          'M5 9 L12 3 L19 9',
-        ];
+  const isDown = direction === 'down';
+  const path = isDown ? CHEVRON_DOWN : CHEVRON_UP;
+  const offsets = isDown ? [-5.85, -0.85, 4.15] : [-4.14, 0.86, 5.86];
 
   return (
     <svg
       className={className}
-      viewBox="0 0 24 30"
-      fill="none"
+      viewBox="0 0 24 24"
+      width="1em"
+      height="1em"
+      fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      {paths.map((d) => (
-        <path
-          key={d}
-          d={d}
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
+      {offsets.map((dy, i) => (
+        <path key={i} d={path} transform={`translate(0 ${dy})`} />
       ))}
     </svg>
   );

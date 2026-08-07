@@ -3,6 +3,80 @@
     "CardCatalog": {
       "cards": [
         {
+          "id": 13122,
+          "slug": "necromancia",
+          "name": "Necromancia",
+          "gameId": 3,
+          "collectorCode": "NFX26-02",
+          "effect": "Anularlo cuesta un Oro adicional. Cuando lo juegues, Destiérralo. Elige hasta dos: Anula una carta oponente, Cancela una habilidad, Roba dos cartas o Baraja hasta tres cartas de un Cementerio.",
+          "flavor": "Top Nacional 2025 - 2026",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/FXNacional2026/NFX26_02.webp",
+          "artist": "SEHIRO",
+          "frequency": "PROMOCIONAL",
+          "race": [
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Nacional FX 2026",
+            "productCode": "NFX26",
+            "productType": "Producto Especial",
+            "sortOrder": 40
+          },
+          "interactions": [],
+          "isRework": true,
+          "isNewest": true
+        },
+        {
+          "id": 13121,
+          "slug": "ataque-de-dragon",
+          "name": "Ataque de Dragón",
+          "gameId": 3,
+          "collectorCode": "NFX26-01",
+          "effect": "Reduce su coste en un Oro si hace objetivo a un Aliado de coste 2 o menos. Destruye una carta oponente que no sea Oro y Roba una carta.",
+          "flavor": "Nacional 2025 - 2026",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/FXNacional2026/NFX26_01.webp",
+          "artist": "SEHIRO",
+          "frequency": "PROMOCIONAL",
+          "race": [
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Nacional FX 2026",
+            "productCode": "NFX26",
+            "productType": "Producto Especial",
+            "sortOrder": 40
+          },
+          "interactions": [],
+          "isRework": true,
+          "isNewest": true
+        },
+        {
           "id": 13120,
           "slug": "corona-iluminada",
           "name": "Corona Iluminada",
