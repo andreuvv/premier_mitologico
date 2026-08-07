@@ -1,6 +1,6 @@
 .row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   margin: 0.75rem 0 1rem 0;
 }
@@ -52,9 +52,11 @@
 }
 
 .card {
+  container-type: inline-size;
+  min-width: 0;
   background-color: var(--beige);
   color: var(--coal-grey);
-  padding: 1rem;
+  padding: 0.85rem;
   border-radius: 8px;
   border: 1px solid rgba(45, 45, 45, 0.1);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
@@ -356,8 +358,105 @@
   text-align: center;
 }
 
+/* Cada tarjeta adapta su contenido a su propio ancho (no al del viewport),
+   para que las 4 columnas se vean completas sin cortar textos. */
+@container (max-width: 215px) {
+  .title {
+    font-size: 0.82rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .carouselCardName {
+    font-size: 0.78rem;
+  }
+
+  .changeGrid {
+    column-gap: 0.25rem;
+    row-gap: 0.15rem;
+  }
+
+  .changeLabelBefore,
+  .changeLabelAfter {
+    font-size: 0.56rem;
+  }
+
+  .changeValueBefore,
+  .changeValueAfter {
+    font-size: 0.6rem;
+  }
+
+  .changeColumnArrows {
+    min-height: 2.4rem;
+    padding: 0;
+  }
+
+  .arrowIcon {
+    font-size: 1.9rem;
+  }
+
+  .arrowIconDouble {
+    font-size: 2.3rem;
+  }
+
+  .arrowIconTriple {
+    font-size: 2.3rem;
+  }
+
+  .carousel {
+    min-height: 0;
+    gap: 0.5rem;
+  }
+
+  .carouselArrow {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+
+  .carouselCounter {
+    font-size: 0.68rem;
+    min-width: 2.4rem;
+  }
+}
+
+@container (max-width: 165px) {
+  .title {
+    font-size: 0.72rem;
+  }
+
+  .carouselCardName {
+    font-size: 0.7rem;
+  }
+
+  .changeLabelBefore,
+  .changeLabelAfter {
+    font-size: 0.5rem;
+  }
+
+  .changeValueBefore,
+  .changeValueAfter {
+    font-size: 0.54rem;
+  }
+
+  .changeColumnArrows {
+    min-height: 2rem;
+  }
+
+  .arrowIcon {
+    font-size: 1.55rem;
+  }
+
+  .arrowIconDouble {
+    font-size: 1.9rem;
+  }
+
+  .arrowIconTriple {
+    font-size: 1.9rem;
+  }
+}
+
 @media (max-width: 800px) {
   .row {
+    grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;
   }
   
@@ -394,41 +493,6 @@
     white-space: normal;
   }
 
-  .carouselCardName {
-    font-size: 0.8rem;
-  }
-
-  .changeGrid {
-    column-gap: 0.35rem;
-    row-gap: 0.2rem;
-  }
-
-  .changeLabelBefore,
-  .changeLabelAfter {
-    font-size: 0.58rem;
-  }
-
-  .changeValueBefore,
-  .changeValueAfter {
-    font-size: 0.62rem;
-  }
-
-  .changeColumnArrows {
-    min-height: 2.75rem;
-  }
-
-  .arrowIcon {
-    font-size: 2rem;
-  }
-
-  .arrowIconDouble {
-    font-size: 2.6rem;
-  }
-
-  .arrowIconTriple {
-    font-size: 2.6rem;
-  }
-
   .wrapper {
     padding-top: 0;
   }
@@ -446,6 +510,12 @@
     width: 1.85rem;
     height: 1.85rem;
     font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .row {
+    grid-template-columns: 1fr;
   }
 }
 
