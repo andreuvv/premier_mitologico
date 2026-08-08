@@ -12329,6 +12329,7 @@
             "productType": "Edición",
             "sortOrder": 35
           },
+          "isRework": true,
           "isNewest": true
         },
         {
@@ -15221,7 +15222,9 @@
             "productCode": "LBF2",
             "productType": "Edición",
             "sortOrder": 35
-          }
+          },
+          "isNewest": true,
+          "isRework": true
         },
         {
           "id": 12359,
@@ -45410,8 +45413,8 @@
         },
         {
           "id": 11487,
-          "slug": "fuego-espirtual",
-          "name": "Fuego Espirtual",
+          "slug": "fuego-espiritual",
+          "name": "Fuego Espiritual",
           "gameId": 3,
           "collectorCode": "XS-127-128",
           "effect": "Anula un Aliado o un Tótem oponente. (esta carta puede ser jugada cuando tu oponente juegue un Aliado o un Tótem)",
@@ -45439,7 +45442,9 @@
             "productCode": "XS",
             "productType": "Edición",
             "sortOrder": 9
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11488,
@@ -48674,8 +48679,8 @@
         },
         {
           "id": 11395,
-          "slug": "fuego-espirtual",
-          "name": "Fuego Espirtual",
+          "slug": "fuego-espiritual",
+          "name": "Fuego Espiritual",
           "gameId": 3,
           "collectorCode": "XS-035-128",
           "effect": "Anula un Aliado o un Tótem oponente.",
@@ -48703,7 +48708,9 @@
             "productCode": "XS",
             "productType": "Edición",
             "sortOrder": 9
-          }
+          },
+          "isNewest": false,
+          "isRework": false
         },
         {
           "id": 11397,
@@ -60715,6 +60722,7 @@
             "productType": "Producto Especial",
             "sortOrder": 30
           },
+          "isRework": true,
           "isNewest": false
         },
         {
