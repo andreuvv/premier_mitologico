@@ -27,26 +27,26 @@ export interface TournamentConfig {
 }
 
 export const tournamentConfig: TournamentConfig = {
-  name: 'ESPADA SAGRADA EXTENDIDO - PB -',
-  date: '2026-07-18',
+  name: 'Furia MEJOR FORMATO extendido',
+  date: '2026-08-29',
   time: '15:00',
   dateTentative: false, // Set to true to show the ribbon
-  /* location: {
+  location: {
     name: "Weshes",
     address: 'Jorge Quevedo 5464, Macul, Santiago',
     googleMapsQuery: 'Jorge+Quevedo+5464,+Macul,+Santiago',
-  }, */
+  },
   /* location: {
     name: "Casa de la Vale, los Gatos y el Piter.",
     address: 'Las Tórtolas 3273, Macul, Santiago',
     googleMapsQuery: 'Las+Tórtolas+3273,+Macul,+Santiago',
   }, */
-  location: {
+  /*location: {
     name: "Timmy TCG.",
     address: 'Julio Montebruno 406, La Reina, Santiago',
     googleMapsQuery: 'Julio+Montebruno+406,+La+Reina,+Santiago',
-  },
-  formats: [
+  }, */
+  /* formats: [
     {
       name: 'Primer Bloque Racial Libre',
       shortName: 'PB Racial Libre',
@@ -57,8 +57,8 @@ export const tournamentConfig: TournamentConfig = {
       shortName: 'PB Racial Edición',
       link: '/game-formats/primerBloque/primerBloqueRacialEdicion',
     },
-  ],
-  /* formats: [
+  ], */
+  formats: [
     {
       name: 'Furia Extendido Racial Libre',
       shortName: 'FX Racial Libre',
@@ -69,7 +69,7 @@ export const tournamentConfig: TournamentConfig = {
       shortName: 'FX Racial Ragnarok',
       link: '/game-formats/formatosEspeciales/ragnarok',
     },
-  ], */
+  ],
   roundType: {
     name: 'Mejor de 3',
     link: '/tournament-info/tournamentSystem/md3',
