@@ -232,7 +232,7 @@ const Header = () => {
       <div className={styles.container}>
         <div className={styles.logoGroup}>
           <Link to="/" className={styles.logo}>
-            <img src={`${import.meta.env.BASE_URL}assets/images/logo_app(1).svg`} alt="MYL Premier" />
+            <img src={`${import.meta.env.BASE_URL}assets/images/mitoxicos_logo_color.webp`} alt="Mitóxicos" />
           </Link>
           {mitoxicosNavItem}
         </div>

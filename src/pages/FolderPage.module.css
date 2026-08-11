@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
   padding: 2rem;
-  background: var(--coal-grey);
+  background: var(--near-black);
 }
 
 .header {

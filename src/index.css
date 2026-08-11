@@ -1,5 +1,5 @@
 :root {
-  --coal-grey: #2D2D2D;
+  --coal-grey: #1c1c1c;
   --sage-green: #7EA470;
   --petrol-blue: #4B8BA3;
   --ocher: #D69C41;
@@ -7,6 +7,7 @@
   --beige: #EADDCF;
   --white: #FFFFFF;
   --dark-brown: #2b2522;
+  --near-black: #121212;
   
   /* Markdown Heading Colors */
   --markdown-h1: #D69C41;
@@ -52,7 +53,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: var(--coal-grey);
+  background-color: var(--near-black);
   color: var(--beige);
   line-height: 1.6;
 }

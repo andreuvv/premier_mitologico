@@ -1,7 +1,7 @@
 const base = import.meta.env.BASE_URL;
 
-export const MITOXICOS_LOADER_BW = `${base}assets/images/Mitoxicos_b&w.webp`;
-export const MITOXICOS_LOADER_COLOR = `${base}assets/images/Mitoxicos_color2.webp`;
+export const MITOXICOS_LOADER_BW = `${base}assets/images/mitoxicos_logo_bw.webp`;
+export const MITOXICOS_LOADER_COLOR = `${base}assets/images/mitoxicos_logo_color.webp`;
 
 export const MITOXICOS_LOADER_IMAGES = [MITOXICOS_LOADER_BW, MITOXICOS_LOADER_COLOR];
 
