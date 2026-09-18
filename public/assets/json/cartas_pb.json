@@ -3,6 +3,3710 @@
     "CardCatalog": {
       "cards": [
         {
+          "id": 41578,
+          "slug": "amkh",
+          "name": "Amkh",
+          "gameId": 1,
+          "collectorCode": "ARA-408-364",
+          "effect": "",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4/Ara-408-364-1789138386766.webp",
+          "artist": "",
+          "frequency": "REWORK",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41577,
+          "slug": "templo-sombrio",
+          "name": "Templo Sombrio",
+          "gameId": 1,
+          "collectorCode": "ARA-406-364",
+          "effect": "",
+          "flavor": "",
+          "type": "TOTEM",
+          "cost": 3,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4/Ara-406-364-1789138384435.webp",
+          "artist": "",
+          "frequency": "REWORK",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41576,
+          "slug": "escudo-de-la-tormenta",
+          "name": "Escudo de la Tormenta",
+          "gameId": 1,
+          "collectorCode": "ARA-405-364",
+          "effect": "",
+          "flavor": "",
+          "type": "ARMA",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4/Ara-405-364-1789138383560.webp",
+          "artist": "",
+          "frequency": "REWORK",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41575,
+          "slug": "espada-diamante",
+          "name": "Espada Diamante",
+          "gameId": 1,
+          "collectorCode": "ARA-404-364",
+          "effect": "",
+          "flavor": "",
+          "type": "ARMA",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4/Ara-404-364-1789138382496.webp",
+          "artist": "",
+          "frequency": "REWORK",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41574,
+          "slug": "ojos-de-serpiente",
+          "name": "Ojos de Serpiente",
+          "gameId": 1,
+          "collectorCode": "ARA-403-364",
+          "effect": "",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 1,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4/Ara-403-364-1789138381496.webp",
+          "artist": "",
+          "frequency": "REWORK",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41573,
+          "slug": "demonio-de-piedra",
+          "name": "Demonio de Piedra",
+          "gameId": 1,
+          "collectorCode": "ARA-402-364",
+          "effect": "",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 3,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4/Ara-402-364-1789138380544.webp",
+          "artist": "",
+          "frequency": "REWORK",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41572,
+          "slug": "dagi",
+          "name": "Dagi",
+          "gameId": 1,
+          "collectorCode": "ARA-401-364",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4/Ara-401-364-1789138379549.webp",
+          "artist": "",
+          "frequency": "REWORK",
+          "race": [
+            "SACERDOTE"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41571,
+          "slug": "kawit",
+          "name": "Kawit",
+          "gameId": 1,
+          "collectorCode": "ARA-400-364",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4/Ara-400-364-1789138378618.webp",
+          "artist": "",
+          "frequency": "REWORK",
+          "race": [
+            "SACERDOTE"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41570,
+          "slug": "kush-el-guerrero",
+          "name": "Kush el Guerrero",
+          "gameId": 1,
+          "collectorCode": "ARA-399-364",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4/Ara-399-364-1789138377549.webp",
+          "artist": "",
+          "frequency": "REWORK",
+          "race": [
+            "FARAON"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41569,
+          "slug": "tutankamon",
+          "name": "Tutankamon",
+          "gameId": 1,
+          "collectorCode": "ARA-398-364",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4/Ara-398-364-1789138376492.webp",
+          "artist": "",
+          "frequency": "REWORK",
+          "race": [
+            "FARAON"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41568,
+          "slug": "wepwawet",
+          "name": "Wepwawet",
+          "gameId": 1,
+          "collectorCode": "ARA-397-364",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4/Ara-397-364-1789138375411.webp",
+          "artist": "",
+          "frequency": "REWORK",
+          "race": [
+            "ETERNO"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41567,
+          "slug": "sobek",
+          "name": "Sobek",
+          "gameId": 1,
+          "collectorCode": "ARA-396-364",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 4,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4/Ara-396-364-1789138374252.webp",
+          "artist": "",
+          "frequency": "REWORK",
+          "race": [
+            "ETERNO"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41566,
+          "slug": "busto-imperial",
+          "name": "Busto Imperial",
+          "gameId": 1,
+          "collectorCode": "ARAX_36",
+          "effect": "",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-36-1789136779116.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41565,
+          "slug": "biblioteca-alejandrina",
+          "name": "Biblioteca Alejandrina",
+          "gameId": 1,
+          "collectorCode": "ARAX_35",
+          "effect": "",
+          "flavor": "",
+          "type": "TOTEM",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-35-1789136777777.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41564,
+          "slug": "kopis-alexandrino",
+          "name": "Kopis Alexandrino",
+          "gameId": 1,
+          "collectorCode": "ARAX_34",
+          "effect": "",
+          "flavor": "",
+          "type": "ARMA",
+          "cost": 3,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-34-1789136776598.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41563,
+          "slug": "luz-del-saber",
+          "name": "Luz del Saber",
+          "gameId": 1,
+          "collectorCode": "ARAX_33",
+          "effect": "",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 1,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-33-1789136775027.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41562,
+          "slug": "canto-del-veneno",
+          "name": "Canto del Veneno",
+          "gameId": 1,
+          "collectorCode": "ARAX_32",
+          "effect": "",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-32-1789136773852.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41561,
+          "slug": "ataque-a-la-biblioteca",
+          "name": "Ataque a la Biblioteca",
+          "gameId": 1,
+          "collectorCode": "ARAX_31",
+          "effect": "",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 5,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-31-1789136772950.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41560,
+          "slug": "zenodoto-de-efeso",
+          "name": "Zenodoto de Efeso",
+          "gameId": 1,
+          "collectorCode": "ARAX_30",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 4,
+          "attack": 4,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-30-1789136771138.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "SACERDOTE"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41559,
+          "slug": "licofron",
+          "name": "Licofron",
+          "gameId": 1,
+          "collectorCode": "ARAX_29",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 1,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-29-1789136769852.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "SACERDOTE"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41558,
+          "slug": "apoloniode-rodas",
+          "name": "Apoloniode Rodas",
+          "gameId": 1,
+          "collectorCode": "ARAX_28",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-28-1789136768659.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "SACERDOTE"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41557,
+          "slug": "iuwlot-del-veneno",
+          "name": "Iuwlot del Veneno",
+          "gameId": 1,
+          "collectorCode": "ARAX_27",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-27-1789136767552.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "SACERDOTE"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41556,
+          "slug": "hipatia",
+          "name": "Hipatia",
+          "gameId": 1,
+          "collectorCode": "ARAX_26",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-26-1789136766454.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "SACERDOTE"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41555,
+          "slug": "ayu-del-veneno",
+          "name": "Ayu del Veneno",
+          "gameId": 1,
+          "collectorCode": "ARAX_25",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-25-1789136765548.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "SACERDOTE"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41554,
+          "slug": "riton-arquemenida",
+          "name": "Ritón Arquemenida",
+          "gameId": 1,
+          "collectorCode": "ARAX_24",
+          "effect": "",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-24-1789136501565.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41553,
+          "slug": "taposiris-magna",
+          "name": "Taposiris Magna",
+          "gameId": 1,
+          "collectorCode": "ARAX_23",
+          "effect": "",
+          "flavor": "",
+          "type": "TOTEM",
+          "cost": 3,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-23-1789136500524.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41552,
+          "slug": "pesh-kabz",
+          "name": "Pesh-Kabz",
+          "gameId": 1,
+          "collectorCode": "ARAX_22",
+          "effect": "",
+          "flavor": "",
+          "type": "ARMA",
+          "cost": 1,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-22-1789136499235.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41551,
+          "slug": "entra-alejandro",
+          "name": "Entra Alejandro",
+          "gameId": 1,
+          "collectorCode": "ARAX_21",
+          "effect": "",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 3,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-21-1789136498449.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41550,
+          "slug": "quemar-los-templos",
+          "name": "Quemar los Templos",
+          "gameId": 1,
+          "collectorCode": "ARAX_20",
+          "effect": "",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 4,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-20-1789136497502.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41549,
+          "slug": "juramento-del-asesino",
+          "name": "Juramento del Asesino",
+          "gameId": 1,
+          "collectorCode": "ARAX_19",
+          "effect": "",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 3,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-19-1789136496469.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41548,
+          "slug": "roxana-de-bactria",
+          "name": "Roxana de Bactria",
+          "gameId": 1,
+          "collectorCode": "ARAX_18",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-18-1789136495423.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "FARAON"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41547,
+          "slug": "nastasen",
+          "name": "Nastasen",
+          "gameId": 1,
+          "collectorCode": "ARAX_17",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-17-1789136494482.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "FARAON"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41546,
+          "slug": "khababash",
+          "name": "Khababash",
+          "gameId": 1,
+          "collectorCode": "ARAX_16",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-16-1789136493260.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "FARAON"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41545,
+          "slug": "artabano-el-guerrero",
+          "name": "Artabano el Guerrero",
+          "gameId": 1,
+          "collectorCode": "ARAX_15",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-15-1789136492065.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "FARAON"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41544,
+          "slug": "dario-iii",
+          "name": "Dario III",
+          "gameId": 1,
+          "collectorCode": "ARAX_14",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 4,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-14-1789136490631.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "FARAON"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41543,
+          "slug": "xerxes-el-grande",
+          "name": "Xerxes el Grande",
+          "gameId": 1,
+          "collectorCode": "ARAX_13",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 4,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-13-1789136488473.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "FARAON"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41542,
+          "slug": "arax-12",
+          "name": "Tyet",
+          "gameId": 1,
+          "collectorCode": "ARAX_12",
+          "effect": "",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-12-1789132646510.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41541,
+          "slug": "arax-11",
+          "name": "Akhet",
+          "gameId": 1,
+          "collectorCode": "ARAX_11",
+          "effect": "",
+          "flavor": "",
+          "type": "TOTEM",
+          "cost": 3,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-11-1789132645412.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41540,
+          "slug": "arax-10",
+          "name": "Lanza de Horus",
+          "gameId": 1,
+          "collectorCode": "ARAX_10",
+          "effect": "",
+          "flavor": "",
+          "type": "ARMA",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-10-1789132644287.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41539,
+          "slug": "arax-09",
+          "name": "Madre del Sol",
+          "gameId": 1,
+          "collectorCode": "ARAX_09",
+          "effect": "",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 3,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-09-1789132642912.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41538,
+          "slug": "circulo-de-renacimiento",
+          "name": "Circulo de Renacimiento",
+          "gameId": 1,
+          "collectorCode": "ARAX_08",
+          "effect": "",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-08-1789132641608.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41537,
+          "slug": "arax-07",
+          "name": "Robar el Fuego",
+          "gameId": 1,
+          "collectorCode": "ARAX_07",
+          "effect": "",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-07-1789132640657.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41536,
+          "slug": "arax-06",
+          "name": "Jueces del Maat",
+          "gameId": 1,
+          "collectorCode": "ARAX_06",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 1,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-06-1789132639753.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41535,
+          "slug": "arax-05",
+          "name": "Nun del Abismo",
+          "gameId": 1,
+          "collectorCode": "ARAX_05",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 4,
+          "attack": 4,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-05-1789132638883.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "ETERNO"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41534,
+          "slug": "arax-04",
+          "name": "Wadjet la Protectora",
+          "gameId": 1,
+          "collectorCode": "ARAX_04",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-04-1789132637977.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "ETERNO"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41533,
+          "slug": "arax-03",
+          "name": "Hator la Dorada",
+          "gameId": 1,
+          "collectorCode": "ARAX_03",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-03-1789132636662.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "ETERNO"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41532,
+          "slug": "hauron",
+          "name": "Hauron",
+          "gameId": 1,
+          "collectorCode": "ARAX_02",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 4,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-02-1789132635428.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "ETERNO"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41531,
+          "slug": "horus-en-el-viento",
+          "name": "Horus en el Viento",
+          "gameId": 1,
+          "collectorCode": "ARAX_01",
+          "effect": "",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 4,
+          "attack": 4,
+          "imageUrl": "https://mitoxicos.b-cdn.net/cards/primer-bloque/4//Arax-01-1789132634588.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "ETERNO"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 459,
+            "name": "Relatos Dominios de RA",
+            "sortOrder": 79,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41530,
+          "slug": "guerrero-ptolemaico",
+          "name": "Guerrero Ptolemaico",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>Imbloqueable. Cuando entra en juego, puedes buscar un Aliado Guerrero o un Arma en tu Mazo Castillo y ponerlo en tu Mano.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Guerrero-ptolemaico-promocional-1789064118865.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "FARAON"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 458,
+            "name": "Juego Organizado Octubre-Noviembre 2026",
+            "sortOrder": 78,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 41529,
+          "slug": "sidhe-guerrero",
+          "name": "Sidhe Guerrero",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>No puede ser declarado bloqueador. Si esta carta es descartada de tu Mano, puedes robar una carta o pagar 1 Oro y jugarla sin pagar su coste.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Sidhe-guerrero-promocional-1788742959418.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "DESAFIANTE"
+          ],
+          "edition": {
+            "name": "💚 Hijos de Daana",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": null,
+          "__typename": "Card"
+        },
+        {
+          "id": 41528,
+          "slug": "arbol-sagrado",
+          "name": "Arbol Sagrado",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>En tu Fase de Vigilia, una vez por turno, puedes pagar este Oro y mover un Aliado que controles de la Línea de Defensa a la Línea de ataque, para que un Aliado oponente pierda su habilidad hasta la Fase Final.</p>",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/03-Helenica/cartas/Gyalino-mati-promocional-1787953184178.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "💚 Hijos de Daana",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 458,
+            "name": "Juego Organizado Octubre-Noviembre 2026",
+            "sortOrder": 78,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35759,
+          "slug": "dioxippe-la-amazona",
+          "name": "Dioxippe, la Amazona",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>Cuando entra en jego, puedes buscar un Arma en tu Mazo Castillo o Cementerio y ponerla en tu Mano. En tu Fase de Vigilia, puedes jugar este Aliado de tu Cementerio pagando su coste.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/03-Helenica/cartas/Dioxippe-la-amazona-promocional-1785769936166.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "HEROE"
+          ],
+          "edition": {
+            "name": "♥️ Helénica",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 343,
+            "name": "Juego Organizado Agosto-Septiembre 2026",
+            "sortOrder": 77,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35758,
+          "slug": "dory-de-amazona",
+          "name": "Dory de Amazona",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>El portador gana 1 a la fuerza. Cuando entra en juego, tu oponente bota 1 carta por cada Aliado que controles.</p>",
+          "flavor": "",
+          "type": "ARMA",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/03-Helenica/cartas/Dory-de-amazona-real-1785769796818.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "♥️ Helénica",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 343,
+            "name": "Juego Organizado Agosto-Septiembre 2026",
+            "sortOrder": 77,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35757,
+          "slug": "kyria-minotauro",
+          "name": "Kyria Minotauro",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p><strong>Indesterrable</strong>. Cuando entra en juego o sea destruido, puedes subir uan carta Minotauro de tu Cementerio a tu Mano.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 5,
+          "attack": 5,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/03-Helenica/cartas/Kyria-minotauro-promocional-1785769709880.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "TITAN"
+          ],
+          "edition": {
+            "name": "♥️ Helénica",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 343,
+            "name": "Juego Organizado Agosto-Septiembre 2026",
+            "sortOrder": 77,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35756,
+          "slug": "soteria",
+          "name": "Soteria",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>Cuando entra en juego, puedes elegir este u otro Aliado que controles para que gane o pierda 1 a la fuerza permanentemente. Si este Aliado está en tu Cementerio puedes pagar 1 Oro y desterrarlo para que un Aliado oponente pierda 2 a la fuerza hasta la Fase Final.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 1,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/03-Helenica/cartas/Soteria-promocional-1785769056699.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "OLIMPICO"
+          ],
+          "edition": {
+            "name": "♥️ Helénica",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 343,
+            "name": "Juego Organizado Agosto-Septiembre 2026",
+            "sortOrder": 77,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35755,
+          "slug": "gyalino-mati",
+          "name": "Gyalino Mati",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>Cuando entra en juego, puedes poner 2 cartas de tu Mano en la parte inferior de tu Mazo Castillo para robar el mismo número de cartas.</p>",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Gyalino-mati-promocional-1785768811377.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "♥️ Helénica",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 343,
+            "name": "Juego Organizado Agosto-Septiembre 2026",
+            "sortOrder": 77,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35754,
+          "slug": "haquika",
+          "name": "Haquika",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA SECRETA 12",
+          "effect": "<p>Indestructible. Cuando entra en juego, puedes elegir un Aliado oponente en juego y ponerlo en tu Línea de Defensa. Cuando este Aliado sale del juego, regresa el Aliado a la Línea de Defensa oponente.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Haquika-promocional-1785693658808.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "SACERDOTE"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 342,
+            "name": "Colección Overframe",
+            "sortOrder": 76,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35753,
+          "slug": "nephre-ka",
+          "name": "Nephre-Ka",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA SECRETA 11",
+          "effect": "<p>Cuando entra en juego, puedes desterrar cualquier cantidad de cartas de tu Cementerio para Destruir un Aliado oponente del mismo coste.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Nephre-ka-promocional-1785693630252.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "FARAON"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 342,
+            "name": "Colección Overframe",
+            "sortOrder": 76,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35752,
+          "slug": "ra",
+          "name": "Ra",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA SECRETA 10",
+          "effect": "<p>Única. No puede ser anulado. Una vez por turno, puedes destruir un Aliado que controles o pagar 3 de Oro para que tu oponente bote 5 cartas de su Mazo Castillo. Puedes descartar una carta de tu Mano para prevenir que este Aliado sea destruido o desterrado.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 5,
+          "attack": 5,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Ra-promocional-1785693611705.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "ETERNO"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 342,
+            "name": "Colección Overframe",
+            "sortOrder": 76,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35751,
+          "slug": "crom-cruach",
+          "name": "Crom Cruach",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA SECRETA 09",
+          "effect": "<p>Crom Cruach no puede bloquear. Cuando Crom Cruach es declarado atacante, puedes buscar un Aliado de raza Sombra de coste 2 o menos en tu Cementerio y ponerlo en tu Mano.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Crom-cruach-promocional-1785693554997.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "SOMBRA"
+          ],
+          "edition": {
+            "name": "💚 Hijos de Daana",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 342,
+            "name": "Colección Overframe",
+            "sortOrder": 76,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35750,
+          "slug": "aine",
+          "name": "Aine",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA SECRETA 08",
+          "effect": "<p>Cuando Aine entra en juego, puedes mostrar una Aliado de raza Desafiante de tu Mano para desterrar un Aliado oponente.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Aine-promocional-1785693531712.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "DESAFIANTE"
+          ],
+          "edition": {
+            "name": "💚 Hijos de Daana",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 342,
+            "name": "Colección Overframe",
+            "sortOrder": 76,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35749,
+          "slug": "fergus",
+          "name": "Fergus",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA SECRETA 07",
+          "effect": "<p>En tu Fase de Vigilia, una vez por turno, puedes destruir el Aliado oponente de mayor fuerza.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 1,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Fergus-promocional-1785693507047.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "DEFENSOR"
+          ],
+          "edition": {
+            "name": "💚 Hijos de Daana",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 342,
+            "name": "Colección Overframe",
+            "sortOrder": 76,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35748,
+          "slug": "cronos",
+          "name": "Cronos",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA SECRETA 06",
+          "effect": "<p>En tu Fase de Vigilia, una vez por turno, puedes pagar 3 de Oro o destruir un Aliado de raza Titán que controles para destruir un Aliado oponente. En tu Fase Final, puedes agrupar tus cartas. Carta Única.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 5,
+          "attack": 5,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/03-Helenica/cartas/Cronos-promocional-1785693479772.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "TITAN"
+          ],
+          "edition": {
+            "name": "♥️ Helénica",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 342,
+            "name": "Colección Overframe",
+            "sortOrder": 76,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35747,
+          "slug": "el-gran-zeus",
+          "name": "El Gran Zeus",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA SECRETA 05",
+          "effect": "<p>El Gran Zeus es indestructible. En tu Fase de Vigilia, sólo una vez por turno, puedes robar hasta 2 cartas. Carta única.&nbsp;</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 5,
+          "attack": 5,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/03-Helenica/cartas/El-gran-zeus-promocional-1785693454140.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "OLIMPICO"
+          ],
+          "edition": {
+            "name": "♥️ Helénica",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 342,
+            "name": "Colección Overframe",
+            "sortOrder": 76,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35746,
+          "slug": "marco-antonio",
+          "name": "Marco Antonio",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA SECRETA 04",
+          "effect": "<p>Única. Tus demás Aliados de raza Héroe ganan 1 a la fuerza. No se puede jugar Talismanes.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/03-Helenica/cartas/Marco-antonio-promocional-1785693425446.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "HEROE"
+          ],
+          "edition": {
+            "name": "♥️ Helénica",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 342,
+            "name": "Colección Overframe",
+            "sortOrder": 76,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35745,
+          "slug": "mago-merlin",
+          "name": "Mago Merlin",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA SECRETA 03",
+          "effect": "<p>Sólo puedes tener un Mago Merlín en juego. En tu Fase Final, si controlas 2 o más Aliados de coste 3 o más, puedes buscar un Talismán en tu Mazo Castillo y ponerlo en tu mano.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Mago-merlin-promocional-1785693380527.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "FAERIE"
+          ],
+          "edition": {
+            "name": "🩵 Espada Sagrada",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 342,
+            "name": "Colección Overframe",
+            "sortOrder": 76,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35744,
+          "slug": "kilgharrah",
+          "name": "Kilgharrah",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA SECRETA 02",
+          "effect": "<p>Sólo puedes tener un Kilgharrah en juego. Imbloqueable. Puede atacar cuando entra en juego. En tu Fase de Vigilia, una vez por turno, puedes barajar 2 cartas de tu Cementerio en tu Mazo Castillo para robar 2 cartas.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 6,
+          "attack": 6,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Kilgharrah-promocional-1785693348416.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "🩵 Espada Sagrada",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 342,
+            "name": "Colección Overframe",
+            "sortOrder": 76,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35743,
+          "slug": "rey-arturo-pendragon",
+          "name": "Rey Arturo Pendragón",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA SECRETA 01",
+          "effect": "<p>Única. Tus demás Aliados de raza Caballero ganan 2 a la Fuerza. Cuando entra en juego, puedes jugar un Aliado o Arma de coste 2 o menos de tu Cementerio sin pagar su coste. En cada Fase de Agrupación tu oponente bota 2 cartas.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 4,
+          "attack": 4,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Rey-arturo-pendragon-promocional-1785693273252.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "CABALLERO"
+          ],
+          "edition": {
+            "name": "🩵 Espada Sagrada",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 342,
+            "name": "Colección Overframe",
+            "sortOrder": 76,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35737,
+          "slug": "corona-de-arturo",
+          "name": "Corona de Arturo",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>Mientras controles 2 o más Aliados, los Oros son indestructibles. Si Corona de Arturo está en tu Cementerio, puedes desterrarla para robar 1 carta de tu Mazo Castillo.</p>",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Corona-de-arturo-promocional-1785693223672.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "🩵 Espada Sagrada",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 341,
+            "name": "Colección Gatos",
+            "sortOrder": 75,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35736,
+          "slug": "figuras-negras",
+          "name": "Figuras Negras",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>Si este Oro está en tu Reserva de Oros, puedes desterrarlo para que un Oro en juego y todas sus copias pierdan su habilidad hasta la Fase Final.</p>",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/03-Helenica/cartas/Figuras-negras-promocional-1785693204522.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "♥️ Helénica",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 341,
+            "name": "Colección Gatos",
+            "sortOrder": 75,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35735,
+          "slug": "salmon-del-saber",
+          "name": "Salmón del Saber",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>Cuando entra en juego, puedes barajar una carta de tu Cementerio en tu Mazo Castillo. Si está en tu Reserva de Oro, puedes desterrarlo para que un Aliado oponente no haga daño a tu Mazo Castillo este turno.</p>",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Salmon-del-saber-promocional-1785693186833.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "💚 Hijos de Daana",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 341,
+            "name": "Colección Gatos",
+            "sortOrder": 75,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35734,
+          "slug": "biblioteca-eterna",
+          "name": "Biblioteca Eterna",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>En tu Fase de Vigilia, si este Oro está en tu Reserva de Oro, puedes desterrarlo para robar 2 cartas.</p>",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Biblioteca-eterna-promocional-1785693163314.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 341,
+            "name": "Colección Gatos",
+            "sortOrder": 75,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35712,
+          "slug": "dracma-relampago",
+          "name": "Dracma Relámpago",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA RELAMPAGO",
+          "effect": "<p>Este Dracma Relámpago es la llave para obtener Tesoros Secretos en los Torneos oficiales de Mitos y Leyendas</p>",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Dracma-relampago-vasallo.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 339,
+            "name": "Torneos Relámpagos Premier Primer Trimestre",
+            "sortOrder": 74,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35711,
+          "slug": "ganimedes",
+          "name": "Ganimedes",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA VICTORIOSA PB07",
+          "effect": "<p>Cuando entra en juego, destruye una carta oponente en juego de coste igual o menor a la cantidad de Aliados de raza Héroe que controles.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/03-Helenica/cartas/Ganimedes-promocional.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "HEROE"
+          ],
+          "edition": {
+            "name": "♥️ Helénica",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 338,
+            "name": "Cartas Victoriosas JO",
+            "sortOrder": 73,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35710,
+          "slug": "aton",
+          "name": "Atón",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA RELAMPAGO",
+          "effect": "<p>No puede ser anulado. Busca un Oro en tu Mazo Castillo y ponlo en tu Mano.</p>",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Aton-promocional.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 339,
+            "name": "Torneos Relámpagos Premier Primer Trimestre",
+            "sortOrder": 74,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35709,
+          "slug": "nacer-de-la-muerte",
+          "name": "Nacer de la Muerte",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA RELAMPAGO",
+          "effect": "<p>Sólo puedes jugar este Talismán en tu Fase de Vigilia. Busca en el Mazo Castillo oponente un Aliado y juégalo bajo tu control sin pagar su coste.</p>",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 5,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Nacer-de-la-muerte-promocional.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 339,
+            "name": "Torneos Relámpagos Premier Primer Trimestre",
+            "sortOrder": 74,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35708,
+          "slug": "avalon",
+          "name": "Avalon",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA RELAMPAGO",
+          "effect": "<p>En tu Fase de Vigilia, una vez por turno, puedes robar tantas cartas como Aliados tengas en juego.</p>",
+          "flavor": "",
+          "type": "TOTEM",
+          "cost": 4,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Avalon-promocional.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "💚 Hijos de Daana",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 339,
+            "name": "Torneos Relámpagos Premier Primer Trimestre",
+            "sortOrder": 74,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35707,
+          "slug": "despertar",
+          "name": "Despertar",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA RELAMPAGO",
+          "effect": "<p>Única. Mira la Mano de tu oponente y descártale un Talismán. Luego, tu oponente puede elegir robar 1 carta, si lo hace, tú robas 2 cartas.</p>",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 1,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Despertar-promocional.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "💚 Hijos de Daana",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 339,
+            "name": "Torneos Relámpagos Premier Primer Trimestre",
+            "sortOrder": 74,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35706,
+          "slug": "atenas",
+          "name": "Atenas",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA RELAMPAGO",
+          "effect": "<p>En tu Fase de Vigilia, sólo una vez por turno, puedes pagar 2 de oro para buscar una carta en tu Mazo Castillo y ponerla en tu mano.&nbsp;</p>",
+          "flavor": "",
+          "type": "TOTEM",
+          "cost": 3,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/03-Helenica/cartas/Atenas-rework.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "♥️ Helénica",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 339,
+            "name": "Torneos Relámpagos Premier Primer Trimestre",
+            "sortOrder": 74,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35705,
+          "slug": "caja-de-pandora",
+          "name": "Caja de Pandora",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA RELAMPAGO",
+          "effect": "<p>Si Caja de Pandora está en tu Reserva de Oros, puedes desterrarla y pagar 1 Oro para anular un Talismán oponente de coste 2 o menos.</p>",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/03-Helenica/cartas/Caja-de-pandora-promocional.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "♥️ Helénica",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 339,
+            "name": "Torneos Relámpagos Premier Primer Trimestre",
+            "sortOrder": 74,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35704,
+          "slug": "bec-de-corbin",
+          "name": "Bec de Corbin",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA RELAMPAGO",
+          "effect": "<p>El portador de Bec de Corbin gana 2 a la fuerza. Cuando entra en juego, puedes buscar un Arma en tu Mazo Castillo o Cementerio y ponerla en tu mano.</p>",
+          "flavor": "",
+          "type": "ARMA",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Bec-de-corbin-promocional.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "🩵 Espada Sagrada",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 339,
+            "name": "Torneos Relámpagos Premier Primer Trimestre",
+            "sortOrder": 74,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35703,
+          "slug": "bola-de-fuego",
+          "name": "Bola de Fuego",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA RELAMPAGO",
+          "effect": "<p>Destruye una carta en juego que no sea Oro.</p>",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Bola-de-fuego-promocional.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "🩵 Espada Sagrada",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 339,
+            "name": "Torneos Relámpagos Premier Primer Trimestre",
+            "sortOrder": 74,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35702,
+          "slug": "oseye",
+          "name": "Oseye",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA VICTORIOSA PB12",
+          "effect": "<p>No puede ser anulado. Puede atacar cuando entra en juego. Puedes pagar el coste de Oro de este Aliado para prevenir que sea destruido o desterrado. Si lo haces, sube este Aliado a tu Mano.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Oseye-promocional.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "SACERDOTE"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 338,
+            "name": "Cartas Victoriosas JO",
+            "sortOrder": 73,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35701,
+          "slug": "guerrero-ptolemaico",
+          "name": "Guerrero Ptolemaico",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA VICTORIOSA PB11",
+          "effect": "<p>Imbloqueable. Cuando entra en juego, puedes buscar un Aliado Guerrero o un Arma en tu Mazo Castillo y ponerlo en tu Mano.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Guerrero-ptolemaico-promocional.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "FARAON"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 338,
+            "name": "Cartas Victoriosas JO",
+            "sortOrder": 73,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35700,
+          "slug": "renpet",
+          "name": "Renpet",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA VICTORIOSA PB10",
+          "effect": "<p>Cuando entre o salga del juego, puedes mirar las 2 primeras cartas de tu Mazo Castillo, pon una en tu Mano y la otra en la parte inferior de tu Mazo Castillo.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Renpet-promocional.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "ETERNO"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 338,
+            "name": "Cartas Victoriosas JO",
+            "sortOrder": 73,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35699,
+          "slug": "orcos",
+          "name": "Orcos",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA VICTORIOSA PB09",
+          "effect": "<p>Imbloqueable. Puede atacar cuando entra en juego. Cuando hace daño al Mazo Castillo oponente, y controlas 2 o más Aliados de raza Sombra, puedes botar una carta para robar una carta.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Orcos-promocional.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "SOMBRA"
+          ],
+          "edition": {
+            "name": "💚 Hijos de Daana",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 338,
+            "name": "Cartas Victoriosas JO",
+            "sortOrder": 73,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35698,
+          "slug": "ceilican-seelie",
+          "name": "Ceilican Seelie ",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA VICTORIOSA PB08",
+          "effect": "<p>Imbloqueable. Cuando entra en juego, puedes buscar una copia de este Aliado en tu Mazo Castillo y ponerla en tu mano. Jugar Armas en este Aliado cuesta un Oro menos.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 1,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Ceilican-seelie-promocional.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "DESAFIANTE"
+          ],
+          "edition": {
+            "name": "💚 Hijos de Daana",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 338,
+            "name": "Cartas Victoriosas JO",
+            "sortOrder": 73,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35697,
+          "slug": "amergin-el-druida",
+          "name": "Amergin el Druida",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA VICTORIOSA PB07",
+          "effect": "<p>Cuando entra en juego, puedes buscar un Druida que no sea Amergin el Druida en tu Cementerio y jugarlo sin pagar su coste. En tu Fase de Vigilia, una vez por turno, puedes elegir otro Druida que controles para que tu oponente bote tantas cartas como fuerza tenga ese Aliado.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 4,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Amergin-el-druida-promocional.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "DEFENSOR"
+          ],
+          "edition": {
+            "name": "💚 Hijos de Daana",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 338,
+            "name": "Cartas Victoriosas JO",
+            "sortOrder": 73,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35696,
+          "slug": "rea",
+          "name": "Rea",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA VICTORIOSA PB06",
+          "effect": "<p>En tu Fase de Vigilia, una vez por turno, busca un Aliado de raza Olímpico o Titán en tu Zona de Destierro y juégalo sin pagar su coste.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 6,
+          "attack": 4,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/03-Helenica/cartas/Rea-promocional.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "TITAN"
+          ],
+          "edition": {
+            "name": "♥️ Helénica",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 338,
+            "name": "Cartas Victoriosas JO",
+            "sortOrder": 73,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35695,
+          "slug": "eter",
+          "name": "Eter",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA VICTORIOSA PB05",
+          "effect": "<p>Cuando Éter entra en juego, puedes poner un Aliado oponente en la parte superior del Mazo Castillo de su dueño.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/03-Helenica/cartas/Eter-promocional.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "OLIMPICO"
+          ],
+          "edition": {
+            "name": "♥️ Helénica",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 338,
+            "name": "Cartas Victoriosas JO",
+            "sortOrder": 73,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35694,
+          "slug": "bruja-anis",
+          "name": "Bruja Anis",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA VICTORIOSA PB03",
+          "effect": "<p>En respuesta a finalizar tu turno, y si todos tus aliados son Faeries, roba 1 carta extra.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 1,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Bruja-anis-promocional.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "FAERIE"
+          ],
+          "edition": {
+            "name": "🩵 Espada Sagrada",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 338,
+            "name": "Cartas Victoriosas JO",
+            "sortOrder": 73,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35693,
+          "slug": "draig-ifanc",
+          "name": "Draig Ifanc",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA VICTORIOSA PB02",
+          "effect": "<p>Cuando Draig Ifanc entra en juego, puedes robar una carta. Si Draig Ifanc es destruido o barajado del juego y sólo controlabas Aliados Dragón, puedes buscar un Oro en tu Mazo Castillo y ponerlo en juego.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Draig-ifanc-promocional.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "🩵 Espada Sagrada",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 338,
+            "name": "Cartas Victoriosas JO",
+            "sortOrder": 73,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 35692,
+          "slug": "melchor",
+          "name": "Melchor",
+          "gameId": 1,
+          "collectorCode": "COLECCIONISTA VICTORIOSA PB01",
+          "effect": "<p>Cuando entra en juego, puedes buscar un Arma en tu Mazo Castillo y ponerla en tu Cementerio. Si lo haces, puedes robar 1 carta.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Melchor-real.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "CABALLERO"
+          ],
+          "edition": {
+            "name": "🩵 Espada Sagrada",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 338,
+            "name": "Cartas Victoriosas JO",
+            "sortOrder": 73,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 14727,
+          "slug": "morgana",
+          "name": "Morgana",
+          "gameId": 1,
+          "collectorCode": "VPB-02",
+          "effect": "<p>Solo puedes tener una Morgana en juego. En tu fase de vigilia y una vez por turno, puedes destruir uno de tus Aliados para desterrar un Aliado oponente.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 4,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Morgana-real.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "FAERIE"
+          ],
+          "edition": {
+            "name": "🩵 Espada Sagrada",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": null,
+          "__typename": "Card"
+        },
+        {
+          "id": 14726,
+          "slug": "cuchulain",
+          "name": "Cuchulain",
+          "gameId": 1,
+          "collectorCode": "VPB-01",
+          "effect": "<p>Si Cuchulain fuera a ser destruido, puedes destruir otro Aliado que controles para prevenirlo. Si Cuchulain hace daño al Mazo Castillo oponente, puedes robar 2 cartas.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Cuchulain-real.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "DEFENSOR"
+          ],
+          "edition": {
+            "name": "💚 Hijos de Daana",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": null,
+          "__typename": "Card"
+        },
+        {
+          "id": 14725,
+          "slug": "el-gran-zeus",
+          "name": "El Gran Zeus",
+          "gameId": 1,
+          "collectorCode": "VPB03",
+          "effect": "<p>El Gran Zeus es indestructible. En tu Fase de Vigilia, sólo una vez por turno, puedes robar hasta 2 cartas. Carta única.&nbsp;</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 5,
+          "attack": 5,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/03-Helenica/cartas/El-gran-zeus-real.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "OLIMPICO"
+          ],
+          "edition": {
+            "name": "♥️ Helénica",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": null,
+          "__typename": "Card"
+        },
+        {
+          "id": 14495,
+          "slug": "tadg-el-druida",
+          "name": "Tadg el Druida",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>Sólo puede bloquear. Cuando entra en juego, puedes mirar las cuatro primeras cartas de tu Castillo. Luego, puedes poner un Oro o un Aliado Druida en tu Mano y las demás en la parte inferior de tu Mazo Castillo.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 4,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Tadg-el-druida-promocional.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "DEFENSOR"
+          ],
+          "edition": {
+            "name": "💚 Hijos de Daana",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": null,
+          "__typename": "Card"
+        },
+        {
+          "id": 14494,
+          "slug": "novias-de-dracula",
+          "name": "Novias de Drácula",
+          "gameId": 1,
+          "collectorCode": "APB5 25-25C",
+          "effect": "<p>Cuando Novias de Drácula entra en juego, tu oponente destierra la primera carta de su Mazo Castillo por cada Aliado Drácula que controles. En tu Fase de Vigilia, si Novias de Drácula está en tu Cementerio y controlas un Aliado Drácula, puedes jugarla pagando su coste.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/16-Dracula-Inferno/cartas/Novias-de-dracula-cortesano.webp",
+          "artist": "",
+          "frequency": "CORTESANO",
+          "race": [
+            "SOMBRA"
+          ],
+          "edition": {
+            "name": "🧛 Drácula e Inferno",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 68,
+            "name": "Shogun V",
+            "sortOrder": 67,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 14493,
+          "slug": "novias-de-dracula",
+          "name": "Novias de Drácula",
+          "gameId": 1,
+          "collectorCode": "APB5 25-25B",
+          "effect": "<p>Cuando Novias de Drácula entra en juego, tu oponente destierra la primera carta de su Mazo Castillo por cada Aliado Drácula que controles. En tu Fase de Vigilia, si Novias de Drácula está en tu Cementerio y controlas un Aliado Drácula, puedes jugarla pagando su coste.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/16-Dracula-Inferno/cartas/Novias-de-dracula-cortesano-1783979337986.webp",
+          "artist": "",
+          "frequency": "CORTESANO",
+          "race": [
+            "SOMBRA"
+          ],
+          "edition": {
+            "name": "🧛 Drácula e Inferno",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 68,
+            "name": "Shogun V",
+            "sortOrder": 67,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 14492,
+          "slug": "novias-de-dracula",
+          "name": "Novias de Drácula",
+          "gameId": 1,
+          "collectorCode": "APB5 25-25A",
+          "effect": "<p>Cuando Novias de Drácula entra en juego, tu oponente destierra la primera carta de su Mazo Castillo por cada Aliado Drácula que controles. En tu Fase de Vigilia, si Novias de Drácula está en tu Cementerio y controlas un Aliado Drácula, puedes jugarla pagando su coste.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/16-Dracula-Inferno/cartas/Novias-de-dracula-cortesano-1783979289444.webp",
+          "artist": "",
+          "frequency": "CORTESANO",
+          "race": [
+            "SOMBRA"
+          ],
+          "edition": {
+            "name": "🧛 Drácula e Inferno",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 68,
+            "name": "Shogun V",
+            "sortOrder": 67,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 14491,
+          "slug": "hobgoblin",
+          "name": "Hobgoblin",
+          "gameId": 1,
+          "collectorCode": "AYPB5 57-25C",
+          "effect": "<p>Mientras Gobgoblin esté en juego, tus demás Aliados Goblin ganan 1 a la Fuerza.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Hobgoblin-rework.webp",
+          "artist": "",
+          "frequency": "REWORK",
+          "race": [
+            "FAERIE"
+          ],
+          "edition": {
+            "name": "🩵 Espada Sagrada",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 68,
+            "name": "Shogun V",
+            "sortOrder": 67,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 14490,
+          "slug": "hobgoblin",
+          "name": "Hobgoblin",
+          "gameId": 1,
+          "collectorCode": "AYPB5 57-25B",
+          "effect": "<p>Mientras Gobgoblin esté en juego, tus demás Aliados Goblin ganan 1 a la Fuerza.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Hobgoblin-rework-1783979247849.webp",
+          "artist": "",
+          "frequency": "REWORK",
+          "race": [
+            "FAERIE"
+          ],
+          "edition": {
+            "name": "🩵 Espada Sagrada",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 68,
+            "name": "Shogun V",
+            "sortOrder": 67,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 14489,
+          "slug": "hobgoblin",
+          "name": "Hobgoblin",
+          "gameId": 1,
+          "collectorCode": "AYPB5 57-25A",
+          "effect": "<p>Mientras Gobgoblin esté en juego, tus demás Aliados Goblin ganan 1 a la Fuerza.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Hobgoblin-rework-1783979180207.webp",
+          "artist": "",
+          "frequency": "REWORK",
+          "race": [
+            "FAERIE"
+          ],
+          "edition": {
+            "name": "🩵 Espada Sagrada",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 68,
+            "name": "Shogun V",
+            "sortOrder": 67,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 14488,
+          "slug": "gea",
+          "name": "Gea",
+          "gameId": 1,
+          "collectorCode": "APB5 05-25",
+          "effect": "<p>En tu Fase de Vigilia, una vez por turno, cada jugador baraja una carta de su Cementerio en su Mazo Castillo. Luego, tu puedes robar una carta. Si Gea está en tu Cementerio, puedes barajarla en tu Mazo Castillo.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/03-Helenica/cartas/Gea-ultra-real.webp",
+          "artist": "",
+          "frequency": "ULTRA_REAL",
+          "race": [
+            "OLIMPICO"
+          ],
+          "edition": {
+            "name": "♥️ Helénica",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 68,
+            "name": "Shogun V",
+            "sortOrder": 67,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 14487,
+          "slug": "lady-calvaur",
+          "name": "Lady Calvaur",
+          "gameId": 1,
+          "collectorCode": "AYPB5 29-25",
+          "effect": "<p>Imbloqueable. Cuando entra en juego, destierra una carta oponente en juego que no sea Oro. En tu Fase de Vigilia, si este Aliado está en tu Cementerio, puedes destruir un Aliado de raza Dragón que controles para ponerlo en tu Mano.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 7,
+          "attack": 7,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Lady-calvaur-real.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "🩵 Espada Sagrada",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 68,
+            "name": "Shogun V",
+            "sortOrder": 67,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 14486,
+          "slug": "ib-mut",
+          "name": "Ib-Mut",
+          "gameId": 1,
+          "collectorCode": "AYPB5 SM 02",
+          "effect": "<p>Cuando entra en juego, cada jugador baraja una carta de su Cementerio en su Mazo Castillo. Luego, puedes mover este Oro a tu Zona de Oro pagado para robar 1 carta.</p>",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Ib-mut-promocional.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 68,
+            "name": "Shogun V",
+            "sortOrder": 67,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 14485,
+          "slug": "vinculo-del-aullido",
+          "name": "Vinculo del Aullido",
+          "gameId": 1,
+          "collectorCode": "AYPB5 SM 01",
+          "effect": "<p>Cuando entra en juego, puedes pagar este y otro Oro que controles para robar 2 cartas. Luego, descarta 1 carta.</p>",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Vinculo-del-aullido-promocional.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "🩵 Espada Sagrada",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 68,
+            "name": "Shogun V",
+            "sortOrder": 67,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 14484,
+          "slug": "renpet",
+          "name": "Renpet",
+          "gameId": 1,
+          "collectorCode": "AYPB5 47-25",
+          "effect": "<p>Cuando entre o salga del juego, puedes mirar las 2 primeras cartas de tu Mazo Castillo, pon una en tu Mano y la otra en la parte inferior de tu Mazo Castillo.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/07-Dominios-de-RA/cartas/Renpet-real.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "ETERNO"
+          ],
+          "edition": {
+            "name": "💛 Dominios de RA",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 68,
+            "name": "Shogun V",
+            "sortOrder": 67,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 14483,
+          "slug": "melchor",
+          "name": "Melchor",
+          "gameId": 1,
+          "collectorCode": "AYPB5 33-25",
+          "effect": "<p>Cuando entra en juego, puedes buscar un Arma en tu Mazo Castillo y ponerla en tu Cementerio. Si lo haces, puedes robar 1 carta.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 2,
+          "imageUrl": "https://mitoxicos.b-cdn.net/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Melchor-real-1783978955786.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "CABALLERO"
+          ],
+          "edition": {
+            "name": "🩵 Espada Sagrada",
+            "slug": "",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 68,
+            "name": "Shogun V",
+            "sortOrder": 67,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
           "id": 14388,
           "slug": "mitoxicos-oro-inicial",
           "name": "Mitóxicos Oro Inicial",
@@ -16,8 +3720,7 @@
           "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/mitoxicos_oro.webp",
           "artist": "Troke",
           "frequency": "ORO",
-          "race": [
-          ],
+          "race": [],
           "edition": {
             "name": "Oros Iniciales Teams",
             "slug": "oros-iniciales-teams",
@@ -176626,7 +180329,7 @@
           }
         }
       ],
-      "total": 5151,
+      "total": 5261,
       "pages": 1,
       "__typename": "CardCatalog"
     }

@@ -21,16 +21,12 @@ import {
   getArg,
   hasFlag,
 } from './lib/io.mjs';
-
-function cleanCardCategory(cardCategory) {
-  if (!cardCategory) return null;
-  return {
-    id: cardCategory.id,
-    name: cardCategory.name ?? '',
-    sortOrder: cardCategory.sortOrder ?? 0,
-    __typename: 'CardCategory',
-  };
-}
+import {
+  loadCategorySortOrderMap,
+  saveCategorySortOrderMap,
+  createSortOrderRegistry,
+  resolveCardCategory,
+} from './lib/cardCategory.mjs';
 
 function cleanEdition(edition) {
   if (!edition) return { name: '', slug: '', __typename: 'Edition' };
@@ -42,7 +38,7 @@ function cleanGame(game) {
   return { name: game.name ?? '', slug: game.slug ?? '', __typename: 'Game' };
 }
 
-function buildLocalCard(apiCard, editionBySlug, gameBySlug) {
+function buildLocalCard(apiCard, editionBySlug, gameBySlug, sortOrderRegistry) {
   const edition = editionBySlug.get(apiCard.edition?.slug) ?? cleanEdition(apiCard.edition);
   const game = gameBySlug.get(apiCard.game?.slug) ?? cleanGame(apiCard.game);
 
@@ -65,7 +61,7 @@ function buildLocalCard(apiCard, editionBySlug, gameBySlug) {
   card.race = Array.isArray(apiCard.race) ? apiCard.race : [];
   card.edition = edition;
   card.game = game;
-  card.cardCategory = cleanCardCategory(apiCard.cardCategory);
+  card.cardCategory = resolveCardCategory(apiCard.cardCategory, sortOrderRegistry);
   card.__typename = 'Card';
   return card;
 }
@@ -104,6 +100,9 @@ async function main() {
     if (c.game?.slug && !gameBySlug.has(c.game.slug)) gameBySlug.set(c.game.slug, c.game);
   }
 
+  const curatedSortOrders = await loadCategorySortOrderMap(format);
+  const sortOrderRegistry = createSortOrderRegistry(localCards, curatedSortOrders);
+
   // Sync cardCategory on existing cards (preserves key order -> minimal diff).
   let categorySynced = 0;
   let categoryNull = 0;
@@ -114,7 +113,7 @@ async function main() {
       missingInApi++;
       continue;
     }
-    card.cardCategory = cleanCardCategory(apiCard.cardCategory);
+    card.cardCategory = resolveCardCategory(apiCard.cardCategory, sortOrderRegistry);
     categorySynced++;
     if (card.cardCategory === null) categoryNull++;
   }
@@ -127,13 +126,17 @@ async function main() {
     if (apiCard.edition?.slug && !editionBySlug.has(apiCard.edition.slug)) {
       unknownEditionSlugs.add(apiCard.edition.slug);
     }
-    newCards.push(buildLocalCard(apiCard, editionBySlug, gameBySlug));
+    newCards.push(buildLocalCard(apiCard, editionBySlug, gameBySlug, sortOrderRegistry));
   }
   newCards.sort((a, b) => b.id - a.id);
 
   // Prepend new cards (newest ids first) and keep existing order.
   local.data.CardCatalog.cards = [...newCards, ...localCards];
   local.data.CardCatalog.total = local.data.CardCatalog.cards.length;
+
+  if (sortOrderRegistry.assignedNew > 0) {
+    await saveCategorySortOrderMap(format, sortOrderRegistry.byCategoryId);
+  }
 
   const outPath = dry
     ? path.join(path.dirname(localPath), `cartas_${format}.preview.json`)
@@ -145,6 +148,7 @@ async function main() {
   console.log(`Cartas en API:            ${apiCards.length}`);
   console.log(`cardCategory sincronizado: ${categorySynced}`);
   console.log(`cardCategory null:         ${categoryNull}`);
+  console.log(`sortOrder nuevos:          ${sortOrderRegistry.assignedNew}`);
   console.log(`Nuevas agregadas:          ${newCards.length}`);
   console.log(`Total final:               ${local.data.CardCatalog.total}`);
   console.log(`Locales sin match en API:  ${missingInApi}`);

@@ -16,16 +16,19 @@ export function localCardsPath(format) {
   return path.join(APP_DIR, 'public', 'assets', 'json', `cartas_${format}.json`);
 }
 
-// Default API export locations (per format). Override with API_JSON env / argv.
-const DEFAULT_API = {
-  pb: 'C:/Users/veanv/Desktop/api.mazos.cl_cartas_pb.json',
-};
+// Default mazos.cl export in the repo (per format). Override with API_JSON env / argv.
 export function defaultApiPath(format) {
-  return DEFAULT_API[format] ?? null;
+  if (format === 'pb') {
+    return path.join(APP_DIR, 'public', 'assets', 'json', 'pb_mazos.json');
+  }
+  return null;
 }
 
 export async function readJson(file) {
   const raw = await readFile(file, 'utf8');
+  if (!raw.trim()) {
+    throw new Error(`El archivo JSON está vacío: ${file}`);
+  }
   return JSON.parse(raw);
 }
 

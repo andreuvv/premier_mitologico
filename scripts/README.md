@@ -24,8 +24,8 @@ node scripts/merge-cards.mjs pb --dry   # genera cartas_pb.preview.json para rev
 node scripts/merge-cards.mjs pb         # sobrescribe cartas_pb.json
 ```
 
-Por defecto lee el API desde `C:/Users/veanv/Desktop/api.mazos.cl_cartas_pb.json`.
-Para otra ruta: `node scripts/merge-cards.mjs pb API_JSON="ruta/al/api.json"`.
+Por defecto lee el export desde `public/assets/json/pb_mazos.json`.
+Para otra ruta: `node scripts/merge-cards.mjs pb API_JSON="ruta/al/export.json"`.
 
 Que hace:
 - Matchea por `id`.
@@ -33,6 +33,15 @@ Que hace:
 - Preserva todo lo demas local (incl. `imageUrl` en Bunny, `product`, `interactions`,
   `moreThan3`, `isNewest`, `isRework`, `isReworked`, `unique`, edition/game curados).
 - Nuevas: se construyen con el esquema local + `cardCategory`, anteponidas por id desc.
+- `cardCategory.sortOrder` se conserva desde `scripts/card-category-sortorders-<format>.json`
+  (el export de mazos no trae ese campo). Solo **Oros Iniciales Teams** usa `sortOrder: 0`;
+  categorias nuevas reciben el siguiente entero tras el maximo existente.
+
+Si un merge dejo todos los `sortOrder` en 0:
+
+```bash
+node scripts/restore-card-category-sortorder.mjs pb
+```
 
 ## 2. Migrar imagenes a BunnyCDN
 
