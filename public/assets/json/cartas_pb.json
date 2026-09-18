@@ -3,6 +3,41 @@
     "CardCatalog": {
       "cards": [
         {
+          "id": 14388,
+          "slug": "mitoxicos-oro-inicial",
+          "name": "Mitóxicos Oro Inicial",
+          "gameId": 1,
+          "collectorCode": "MIT-00",
+          "effect": "",
+          "flavor": "Oro Inicial Mitóxicos",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/mitoxicos_oro.webp",
+          "artist": "Troke",
+          "frequency": "ORO",
+          "race": [
+          ],
+          "edition": {
+            "name": "Oros Iniciales Teams",
+            "slug": "oros-iniciales-teams",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "cardCategory": {
+            "id": 0,
+            "name": "Oros Iniciales Teams",
+            "sortOrder": 0,
+            "__typename": "CardCategory"
+          },
+          "interactions": []
+        },
+        {
           "id": 14387,
           "slug": "guardian-incesante",
           "name": "Guardian Incesante",

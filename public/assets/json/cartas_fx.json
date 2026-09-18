@@ -3,6 +3,41 @@
     "CardCatalog": {
       "cards": [
         {
+          "id": 13123,
+          "slug": "mitoxicos-oro-inicial",
+          "name": "Mitóxicos Oro Inicial",
+          "gameId": 3,
+          "collectorCode": "MIT-00",
+          "effect": "",
+          "flavor": "Oro Inicial Mitóxicos",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/mitoxicos_oro.webp",
+          "artist": "Troke",
+          "frequency": "ORO",
+          "race": [
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Oros Iniciales Teams",
+            "productCode": "MIT",
+            "productType": "Producto Especial",
+            "sortOrder": 0
+          },
+          "interactions": []
+        },
+        {
           "id": 13122,
           "slug": "necromancia",
           "name": "Necromancia",
@@ -120,7 +155,7 @@
           "type": "ORO",
           "cost": 0,
           "attack": 0,
-          "imageUrl": "",
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/corona_del_kan_jo.webp",
           "artist": "EL KALKU",
           "frequency": "PROMOCIONAL",
           "race": [
@@ -189,7 +224,7 @@
           "type": "ORO",
           "cost": 0,
           "attack": 0,
-          "imageUrl": "",
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/corona_unificada_jo.webp",
           "artist": "EL KALKU",
           "frequency": "PROMOCIONAL",
           "race": [],
