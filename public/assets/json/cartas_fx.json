@@ -3,6 +3,144 @@
     "CardCatalog": {
       "cards": [
         {
+          "id": 13127,
+          "slug": "gema-de-cronos",
+          "name": "Gema de Cronos",
+          "gameId": 3,
+          "collectorCode": "CML-36",
+          "effect": "Si controlas dos o más Aliados, puedes moverlo a tu Oro Pagado para Barajar una carta de tu Cementerio o Desterrar una carta del Cementerio oponente.",
+          "flavor": "",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXT/00-Productos/casamyl/gema-de-cronos-metal-CML-36.webp",
+          "artist": "JP AGUIRRE",
+          "frequency": "PROMOCIONAL",
+          "race": [
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Promos Casa MYL",
+            "productCode": "CML",
+            "productType": "Producto Especial",
+            "sortOrder": 32
+          }
+        },
+        {
+          "id": 13126,
+          "slug": "dominar-la-republica",
+          "name": "Dominar la República",
+          "gameId": 3,
+          "collectorCode": "CML-33",
+          "effect": "Anula un Aliado oponente. Puedes jugar ese Aliado bajo tu control sin pagar su coste.",
+          "flavor": "",
+          "type": "TALISMAN",
+          "cost": 3,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXT/00-Productos/casamyl/Dominar-la-republica-metal-CML-33.webp",
+          "artist": "JP AGUIRRE",
+          "frequency": "PROMOCIONAL",
+          "race": [
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Promos Casa MYL",
+            "productCode": "CML",
+            "productType": "Producto Especial",
+            "sortOrder": 32
+          }
+        },
+        {
+          "id": 13125,
+          "slug": "mordred",
+          "name": "Mordred",
+          "gameId": 3,
+          "collectorCode": "CML-30",
+          "effect": "Única. Furia. Si sólo controlas Aliados Sombra, gana 1 de Fuerza por cada carta en el Destierro oponente y no puede ser afectado por Talismanes.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 4,
+          "attack": 4,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXT/00-Productos/casamyl/Mordred-metal-CML-30.webp",
+          "artist": "JP AGUIRRE",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "SOMBRA"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Promos Casa MYL",
+            "productCode": "CML",
+            "productType": "Producto Especial",
+            "sortOrder": 32
+          }
+        },
+        {
+          "id": 13124,
+          "slug": "flamel-el-alquimista",
+          "name": "Flamel el Alquimista",
+          "gameId": 3,
+          "collectorCode": "CML-29",
+          "effect": "Guardián. En tu Vigilia, una vez por turno, tu oponente Bota una carta por cada Aliado Guardián en juego.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 4,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXT/00-Productos/casamyl/flamel-el-alquimista-metal-CML-29.webp",
+          "artist": "JP AGUIRRE",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "HEROE"
+          ],
+          "edition": {
+            "name": "Productos Especiales",
+            "slug": "productos-especiales",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "🔥 Furia Extendido",
+            "slug": "furia-extendido",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "product": {
+            "productName": "Promos Casa MYL",
+            "productCode": "CML",
+            "productType": "Producto Especial",
+            "sortOrder": 32
+          }
+        },
+        {
           "id": 13123,
           "slug": "mitoxicos-oro-inicial",
           "name": "Mitóxicos Oro Inicial",
