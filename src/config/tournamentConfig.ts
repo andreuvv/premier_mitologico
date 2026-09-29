@@ -27,8 +27,8 @@ export interface TournamentConfig {
 }
 
 export const tournamentConfig: TournamentConfig = {
-  name: 'Furia MEJOR FORMATO extendido',
-  date: '2026-08-29',
+  name: 'Dado Extendido',
+  date: '2026-10-10',
   time: '15:00',
   dateTentative: false, // Set to true to show the ribbon
   location: {
@@ -46,7 +46,7 @@ export const tournamentConfig: TournamentConfig = {
     address: 'Julio Montebruno 406, La Reina, Santiago',
     googleMapsQuery: 'Julio+Montebruno+406,+La+Reina,+Santiago',
   }, */
-  /* formats: [
+  formats: [
     {
       name: 'Primer Bloque Racial Libre',
       shortName: 'PB Racial Libre',
@@ -57,8 +57,8 @@ export const tournamentConfig: TournamentConfig = {
       shortName: 'PB Racial Edición',
       link: '/game-formats/primerBloque/primerBloqueRacialEdicion',
     },
-  ], */
-  formats: [
+  ],
+  /*formats: [
     {
       name: 'Furia Extendido Racial Libre',
       shortName: 'FX Racial Libre',
@@ -69,7 +69,7 @@ export const tournamentConfig: TournamentConfig = {
       shortName: 'FX Racial Ragnarok',
       link: '/game-formats/formatosEspeciales/ragnarok',
     },
-  ],
+  ], */
   roundType: {
     name: 'Mejor de 3',
     link: '/tournament-info/tournamentSystem/md3',
