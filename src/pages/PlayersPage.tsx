@@ -5,6 +5,7 @@ import { API_BASE_URL } from '../config/api';
 import { loadProfileByPremierPlayerId } from '../hooks/useUserProfile';
 import { FaUser, FaChevronDown, FaChartPie, FaTrophy, FaHistory, FaIdCard } from 'react-icons/fa';
 import styles from './PlayersPage.module.css';
+import { secondBfSubformatName, usesRagnarokSubformat } from '../utils/bfSubformatLabel';
 
 interface PlayerDetail extends APIPlayer {
   tournaments?: PlayerTournamentData[];
@@ -393,7 +394,7 @@ const PlayersPage = () => {
     const showBF = !format || format === 'BF';
 
     const formatName = format === 'PB' ? 'PB' : format === 'BF' ? 'FX' : '';
-    const edicionLabel = format === 'BF' ? 'VCR' : 'Edición';
+    const edicionLabel = format === 'BF' ? secondBfSubformatName(tournament) : 'Edición';
     // Build race rows: each has a label and a value
     const rows: { label: string; value: string }[] = [];
 
@@ -456,7 +457,7 @@ const PlayersPage = () => {
     }
     if (showBF) {
       if (isBoth || isLibre) badges.push({ label: 'FX Racial Libre', type: 'fx' });
-      if (isBoth || isEdicion) badges.push({ label: 'FX Racial VCR', type: 'fx' });
+      if (isBoth || isEdicion) badges.push({ label: usesRagnarokSubformat(tournament) ? 'FX Racial Ragnarok' : 'FX Racial VCR', type: 'fx' });
       if (!isBoth && !isLibre && !isEdicion) badges.push({ label: 'FX', type: 'fx' });
     }
 

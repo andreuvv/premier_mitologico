@@ -45,7 +45,7 @@ export const tournamentConfig: TournamentConfig = {
     name: "Timmy TCG.",
     address: 'Julio Montebruno 406, La Reina, Santiago',
     googleMapsQuery: 'Julio+Montebruno+406,+La+Reina,+Santiago',
-  }, */
+  }, */ 
   formats: [
     {
       name: 'Primer Bloque Racial Libre',

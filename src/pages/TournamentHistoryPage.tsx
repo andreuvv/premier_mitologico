@@ -5,6 +5,7 @@ import onlineTournamentService, { OnlineTournament } from '../services/onlineTou
 import OnlineTournamentPage from './OnlineTournamentPage';
 import GlobalStandingsTable from '../components/GlobalStandingsTable';
 import { FaTrophy, FaMedal, FaStar } from 'react-icons/fa';
+import { displayStoredSubformat, secondBfSubformatName, usesRagnarokSubformat } from '../utils/bfSubformatLabel';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 import styles from './TournamentHistoryPage.module.css';
 
@@ -287,7 +288,7 @@ const TournamentHistoryPage = () => {
   const getRaceColumnLabels = () => {
     if (isFormatSpecific) {
       const format = selectedTournament?.format;
-      const edition = format === 'PB' ? 'Edición' : 'VCR';
+      const edition = format === 'PB' ? 'Edición' : secondBfSubformatName(selectedTournament);
       return {
         libre: `Raza ${format} Libre`,
         edition: `Raza ${format} ${edition}`,
@@ -301,11 +302,12 @@ const TournamentHistoryPage = () => {
 
   const getRecordColumnLabels = () => {
     if (isFormatSpecific) {
+      const companion = usesRagnarokSubformat(selectedTournament) ? 'Ragnarok' : 'Edición/VCR';
       return {
         libre: 'Record Libre',
         libreTitle: 'Record en rondas Racial Libre (Victorias-Empates-Derrotas)',
-        edicion: 'Record Edición/VCR',
-        edicionTitle: 'Record en rondas Racial Edición/VCR (Victorias-Empates-Derrotas)',
+        edicion: `Record ${companion}`,
+        edicionTitle: `Record en rondas Racial ${companion} (Victorias-Empates-Derrotas)`,
       };
     }
     return {
@@ -334,7 +336,13 @@ const TournamentHistoryPage = () => {
 
     const bfLinks = [];
     if (showLibre) bfLinks.push(<Link key="bfl" to="/game-formats/bloqueFuria/bloqueFuriaRacialLibre" className={styles.formatLink}>Furia Extendido Racial Libre</Link>);
-    if (showEdicion) bfLinks.push(<Link key="bfv" to="/game-formats/formatosEspeciales/vcr" className={styles.formatLink}>Furia Extendido Racial VCR</Link>);
+    if (showEdicion) {
+      if (usesRagnarokSubformat(selectedTournament)) {
+        bfLinks.push(<Link key="bfv" to="/game-formats/formatosEspeciales/ragnarok" className={styles.formatLink}>Furia Extendido Racial Ragnarok</Link>);
+      } else {
+        bfLinks.push(<Link key="bfv" to="/game-formats/formatosEspeciales/vcr" className={styles.formatLink}>Furia Extendido Racial VCR</Link>);
+      }
+    }
 
     let links: React.ReactNode[] = [];
     if (!format) {
@@ -858,7 +866,7 @@ const TournamentHistoryPage = () => {
                     )}
                   </div>
                   <div className={styles.chartSection}>
-                    <h2>Uso de Razas en {selectedTournament?.format} - {selectedTournament?.format === 'PB' ? 'Edición' : 'VCR'}</h2>
+                    <h2>Uso de Razas en {selectedTournament?.format} - {selectedTournament?.format === 'PB' ? 'Edición' : secondBfSubformatName(selectedTournament)}</h2>
                     {races ? (
                       <ResponsiveContainer width="100%" height={400}>
                         <PieChart>
@@ -888,7 +896,7 @@ const TournamentHistoryPage = () => {
                     )}
                   </div>
                   <div className={styles.chartSection}>
-                    <h2>Winrate por Raza - {selectedTournament?.format} {selectedTournament?.format === 'PB' ? 'Edición' : 'VCR'}</h2>
+                    <h2>Winrate por Raza - {selectedTournament?.format} {selectedTournament?.format === 'PB' ? 'Edición' : secondBfSubformatName(selectedTournament)}</h2>
                     {races && races.vcr_race_winrates ? (
                       <ResponsiveContainer width="100%" height={400}>
                         <BarChart data={prepareWinrateData(races.vcr_race_winrates)}>
@@ -1023,7 +1031,7 @@ const TournamentHistoryPage = () => {
               <ul>
                 <li><strong>Pos:</strong> Posición Final</li>
                 <li><strong>{getRaceColumnLabels().libre}:</strong> {isFormatSpecific ? `Raza elegida en ${selectedTournament?.format === 'PB' ? 'Primer Bloque' : 'Furia Extendido'} - Libre` : 'Raza elegida en Primer Bloque'}</li>
-                <li><strong>{getRaceColumnLabels().edition}:</strong> {isFormatSpecific ? `Raza elegida en ${selectedTournament?.format === 'PB' ? 'Primer Bloque' : 'Furia Extendido'} - ${selectedTournament?.format === 'PB' ? 'Edición' : 'VCR'}` : 'Raza elegida en Furia Extendido'}</li>
+                <li><strong>{getRaceColumnLabels().edition}:</strong> {isFormatSpecific ? `Raza elegida en ${selectedTournament?.format === 'PB' ? 'Primer Bloque' : 'Furia Extendido'} - ${selectedTournament?.format === 'PB' ? 'Edición' : secondBfSubformatName(selectedTournament)}` : 'Raza elegida en Furia Extendido'}</li>
                 <li><strong>RJ:</strong> Rondas Jugadas</li>
                 <li><strong>G:</strong> Rondas Ganadas</li>
                 <li><strong>E:</strong> Rondas Empatadas</li>
@@ -1058,7 +1066,7 @@ const TournamentHistoryPage = () => {
                   <summary className={styles.roundSummary}>
                     <span className={styles.roundTitle}>
                       {round.is_extra_round ? 'Ronda de finales' : `Ronda ${round.number} - ${round.format === 'PB' ? 'Primer Bloque' : 'Furia Extendido'}`}
-                      {round.subformat ? ` (${round.subformat})` : ''}
+                      {round.subformat ? ` (${displayStoredSubformat(round.subformat, selectedTournament)})` : ''}
                     </span>
                     {round.is_extra_round && (
                       <span className={styles.finalRoundBadge}>Finales</span>
