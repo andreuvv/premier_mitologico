@@ -68,12 +68,21 @@ const PlayersPage = () => {
   const [dataLoading, setDataLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isNarrow, setIsNarrow] = useState(false);
   const [expandedTournaments, setExpandedTournaments] = useState<Set<number>>(new Set());
   const [graphsExpanded, setGraphsExpanded] = useState(false);
   const [tablesCompact, setTablesCompact] = useState(false);
   const [profileUsername, setProfileUsername] = useState<string | null>(null);
   const [profileAvatarUrl, setProfileAvatarUrl] = useState<string | null>(null);
   const tableContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 900px)');
+    const onChange = () => setIsNarrow(media.matches);
+    onChange();
+    media.addEventListener('change', onChange);
+    return () => media.removeEventListener('change', onChange);
+  }, []);
 
   useEffect(() => {
     loadPlayers();
@@ -539,34 +548,51 @@ const PlayersPage = () => {
   };
 
   return (
-    <div className={styles.container}>
-      {/* Mobile Hamburger */}
-      <div className={styles.mobileHeader}>
-        <button 
-          className={styles.hamburger}
-          onClick={() => setSidebarOpen(!sidebarOpen)}
+    <div className={styles.page}>
+      <header className={styles.pageHeader}>
+        <p className={styles.kicker}>Comunidad</p>
+        <h1>Jugadores</h1>
+        <p className={styles.lede}>
+          Perfiles, récords y el historial de torneos de cada jugador.
+        </p>
+      </header>
+
+      <div className={styles.layout}>
+        <div className={styles.mobileHeader}>
+          <button
+            type="button"
+            className={styles.mobileMenuButton}
+            aria-expanded={sidebarOpen}
+            aria-controls="players-sidebar"
+            onClick={() => setSidebarOpen((open) => !open)}
+          >
+            <span className={styles.menuGlyph} aria-hidden="true" />
+            Menú
+          </button>
+          <h2 className={styles.mobileTitle}>{selectedPlayer?.name ?? 'Jugadores'}</h2>
+        </div>
+
+        {sidebarOpen && (
+          <div className={styles.overlay} onClick={() => setSidebarOpen(false)} />
+        )}
+
+        <aside
+          id="players-sidebar"
+          className={`${styles.sidebar} ${sidebarOpen ? styles.sidebarOpen : ''}`}
+          aria-hidden={isNarrow && !sidebarOpen}
+          inert={isNarrow && !sidebarOpen ? true : undefined}
         >
-          ☰
-        </button>
-        <h1 className={styles.mobileTitle}>Jugadores</h1>
-      </div>
+          <div className={styles.sidebarHeader}>
+            <span className={styles.sidebarTitle}>Jugadores</span>
+            <button
+              type="button"
+              className={styles.closeSidebar}
+              onClick={() => setSidebarOpen(false)}
+            >
+              Cerrar
+            </button>
+          </div>
 
-      {/* Overlay for mobile */}
-      {sidebarOpen && (
-        <div 
-          className={styles.overlay}
-          onClick={() => setSidebarOpen(false)}
-        />
-      )}
-
-      {/* Sidebar */}
-      <aside className={`${styles.sidebar} ${sidebarOpen ? styles.sidebarOpen : ''}`}>
-        <div className={styles.sidebarContent}>
-          <h2 className={styles.sidebarTitle}>
-            <FaUser className={styles.icon} />
-            Jugadores
-          </h2>
-          
           {loading ? (
             <div className={styles.loadingSpinner}>Cargando...</div>
           ) : error ? (
@@ -578,6 +604,7 @@ const PlayersPage = () => {
               {players.map(player => (
                 <li key={player.id}>
                   <button
+                    type="button"
                     className={`${styles.playerButton} ${
                       selectedPlayer?.id === player.id ? styles.active : ''
                     }`}
@@ -589,11 +616,15 @@ const PlayersPage = () => {
               ))}
             </ul>
           )}
-        </div>
-      </aside>
+        </aside>
 
-      {/* Main Content */}
-      <main className={styles.main}>
+        <main className={styles.content}>
+          <div className={styles.articleBar}>
+            <div>
+              <p className={styles.articleKicker}>{selectedPlayer ? 'Jugador' : 'Perfil'}</p>
+              <h2 className={styles.articleTitle}>{selectedPlayer?.name ?? 'Selecciona un jugador'}</h2>
+            </div>
+          </div>
         {selectedPlayer ? (
           <div className={styles.playerDetail}>
             <div className={styles.playerHeader}>
@@ -844,7 +875,8 @@ const PlayersPage = () => {
             <p>Selecciona un jugador para ver su historial de torneos</p>
           </div>
         )}
-      </main>
+        </main>
+      </div>
     </div>
   );
 };

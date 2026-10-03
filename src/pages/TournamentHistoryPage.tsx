@@ -24,7 +24,8 @@ const TournamentHistoryPage = () => {
   const [loading, setLoading] = useState(true);
   const [expandedYear, setExpandedYear] = useState<number | null>(null);
   const [expandedTournament, setExpandedTournament] = useState<number | null>(null);
-  const [sidebarOpen, setSidebarOpen] = useState(false); // Only for mobile
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isNarrow, setIsNarrow] = useState(false);
   const [torneosPremierExpanded, setTorneosPremierExpanded] = useState(false);
   const [eventosEspecialesExpanded, setEventosEspecialesExpanded] = useState(false);
   const [globalStandings, setGlobalStandings] = useState<GlobalStanding[]>([]);
@@ -34,6 +35,23 @@ const TournamentHistoryPage = () => {
   const [selectedOnlineTournament, setSelectedOnlineTournament] = useState<number | null>(null);
   const [hasExtraRound, setHasExtraRound] = useState(false);
   const [playoffWinners, setPlayoffWinners] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 900px)');
+    const onChange = () => setIsNarrow(media.matches);
+    onChange();
+    media.addEventListener('change', onChange);
+    return () => media.removeEventListener('change', onChange);
+  }, []);
+
+  useEffect(() => {
+    if (tournamentId && tournamentId !== '0' && !isViewingOnlineTournament) {
+      setTorneosPremierExpanded(true);
+    }
+    if (isViewingOnlineTournament) {
+      setEventosEspecialesExpanded(true);
+    }
+  }, [tournamentId, isViewingOnlineTournament]);
 
   useEffect(() => {
     loadTournaments();
@@ -199,14 +217,18 @@ const TournamentHistoryPage = () => {
     return grouped;
   };
 
+  const openView = (path: string) => {
+    setSidebarOpen(false);
+    navigate(path);
+  };
+
   const handleTournamentClick = (tournament: Tournament) => {
     setSelectedTournament(tournament);
-    // Automatically navigate to resumen (default view) when clicking a tournament
-    navigate(`/tournament-history/${tournament.id}/resumen`);
+    openView(`/tournament-history/${tournament.id}/resumen`);
   };
 
   const handleViewClick = (tournament: Tournament, viewType: 'resumen' | 'standings' | 'rounds') => {
-    navigate(`/tournament-history/${tournament.id}/${viewType}`);
+    openView(`/tournament-history/${tournament.id}/${viewType}`);
   };
 
   const calculateWinRate = (standing: TournamentStanding) => {
@@ -402,39 +424,69 @@ const TournamentHistoryPage = () => {
 
   const groupedTournaments = groupByYear();
   const years = Object.keys(groupedTournaments).map(Number).sort((a, b) => b - a);
+  const selectedOnline = onlineTournaments.find((tournament) => tournament.id === Number(tournamentId));
+  const articleKicker = isViewingOnlineTournament
+    ? 'Eventos especiales'
+    : view === 'global-standings' || view === 'global-races'
+      ? 'Estadísticas'
+      : selectedTournament?.name || 'Torneo';
+  const articleTitle = isViewingOnlineTournament
+    ? selectedOnline?.name || 'Evento especial'
+    : view === 'global-standings'
+      ? 'Ranking Global'
+      : view === 'global-races'
+        ? 'Razas Global'
+        : view === 'resumen'
+          ? 'Resumen'
+          : view === 'standings'
+            ? 'Tabla Final'
+            : view === 'rounds'
+              ? 'Rondas'
+              : 'Historial';
 
   return (
-    <div className={styles.container}>
-      {/* Page Header with Hamburger Menu */}
-      <div className={styles.pageHeader}>
-        <button 
-          className={styles.hamburgerButton}
-          onClick={() => setSidebarOpen(!sidebarOpen)}
-          aria-label="Toggle menu"
+    <div className={styles.page}>
+      <header className={styles.pageHeader}>
+        <p className={styles.kicker}>Archivo</p>
+        <h1>Historial</h1>
+        <p className={styles.lede}>
+          Rankings, razas y resultados de los torneos premier y los eventos especiales.
+        </p>
+      </header>
+
+      <div className={styles.layout}>
+        <div className={styles.mobileHeader}>
+          <button
+            type="button"
+            className={styles.mobileMenuButton}
+            aria-expanded={sidebarOpen}
+            aria-controls="history-sidebar"
+            onClick={() => setSidebarOpen((open) => !open)}
+          >
+            <span className={styles.menuGlyph} aria-hidden="true" />
+            Menú
+          </button>
+          <h2 className={styles.mobileTitle}>{articleTitle}</h2>
+        </div>
+
+        {sidebarOpen && (
+          <div className={styles.overlay} onClick={() => setSidebarOpen(false)} />
+        )}
+
+        <aside
+          id="history-sidebar"
+          className={`${styles.sidebar} ${sidebarOpen ? styles.sidebarOpen : ''}`}
+          aria-hidden={isNarrow && !sidebarOpen}
+          inert={isNarrow && !sidebarOpen ? true : undefined}
         >
-          ☰
-        </button>
-        <h1 className={styles.mobileTitle}>Historial de Torneos</h1>
-      </div>
-
-      {/* Overlay for mobile */}
-      {sidebarOpen && (
-        <div 
-          className={styles.overlay}
-          onClick={() => setSidebarOpen(false)}
-        />
-      )}
-
-      {/* Side Menu */}
-      <aside className={`${styles.sidebar} ${!sidebarOpen ? styles.sidebarClosed : ''}`}>
         <div className={styles.sidebarHeader}>
-          <h2 className={styles.sidebarTitle}>Historial de Torneos</h2>
-          <button 
+          <span className={styles.sidebarTitle}>Historial</span>
+          <button
+            type="button"
             className={styles.closeSidebar}
             onClick={() => setSidebarOpen(false)}
-            aria-label="Close menu"
           >
-            ✕
+            Cerrar
           </button>
         </div>
         {loading ? (
@@ -447,13 +499,13 @@ const TournamentHistoryPage = () => {
               <h3 className={styles.globalTitle}>Estadísticas Globales</h3>
               <button
                 className={`${styles.globalButton} ${view === 'global-standings' ? styles.activeView : ''}`}
-                onClick={() => navigate('/tournament-history/0/global-standings')}
+                onClick={() => openView('/tournament-history/0/global-standings')}
               >
                 Ranking Global
               </button>
               <button
                 className={`${styles.globalButton} ${view === 'global-races' ? styles.activeView : ''}`}
-                onClick={() => navigate('/tournament-history/0/global-races')}
+                onClick={() => openView('/tournament-history/0/global-races')}
               >
                 Razas Global
               </button>
@@ -555,7 +607,7 @@ const TournamentHistoryPage = () => {
                                 className={`${styles.tournamentButton} ${selectedOnlineTournament === tournament.id ? styles.active : ''}`}
                                 onClick={() => {
                                   setSelectedOnlineTournament(tournament.id);
-                                  navigate(`/tournament-history/online/${tournament.id}`);
+                                  openView(`/tournament-history/online/${tournament.id}`);
                                 }}
                               >
                                 {tournament.name}
@@ -574,7 +626,15 @@ const TournamentHistoryPage = () => {
       </aside>
 
       {/* Main Content */}
-      <main className={styles.mainContent}>
+      <main className={styles.content}>
+        {!isViewingOnlineTournament && (
+          <div className={styles.articleBar}>
+            <div>
+              <p className={styles.articleKicker}>{articleKicker}</p>
+              <h2 className={styles.articleTitle}>{articleTitle}</h2>
+            </div>
+          </div>
+        )}
         {isViewingOnlineTournament && tournamentId ? (
           <OnlineTournamentPage key={tournamentId} />
         ) : !tournamentId || !view ? (
@@ -583,10 +643,9 @@ const TournamentHistoryPage = () => {
             <p>Usa el menú lateral para navegar por el historial de torneos</p>
           </div>
         ) : view === 'global-standings' ? (
-          <GlobalStandingsTable standings={globalStandings} />
+          <GlobalStandingsTable standings={globalStandings} title="" />
         ) : view === 'global-races' ? (
           <div className={styles.resumenView}>
-            <h1 className={styles.pageTitle}>Razas Global - Todos los Torneos</h1>
             <div className={styles.chartsContainer}>
               <div className={styles.chartSection}>
                 <h2>Uso de Razas en Primer Bloque</h2>
@@ -696,7 +755,6 @@ const TournamentHistoryPage = () => {
           </div>
         ) : view === 'resumen' ? (
           <div className={styles.resumenView}>
-            <h1 className={styles.pageTitle}>{selectedTournament?.name} - Resumen</h1>
             {getFormatDescription()}
             <div className={styles.chartsContainer}>
               {shouldShowPB && !isFormatSpecific && (
@@ -923,7 +981,6 @@ const TournamentHistoryPage = () => {
           </div>
         ) : view === 'standings' ? (
           <div className={styles.standingsView}>
-            <h1 className={styles.pageTitle}>{selectedTournament?.name} - Tabla Final</h1>
             {getFormatDescription()}
             {hasExtraRound && (
               <div className={styles.extraRoundNotice}>
@@ -1058,7 +1115,6 @@ const TournamentHistoryPage = () => {
           </div>
         ) : (
           <div className={styles.roundsView}>
-            <h1 className={styles.pageTitle}>{tournamentName} - Rondas</h1>
             {getFormatDescription()}
             <div className={styles.roundsContainer}>
               {rounds.map((round) => (
@@ -1100,6 +1156,7 @@ const TournamentHistoryPage = () => {
           </div>
         )}
       </main>
+      </div>
     </div>
   );
 };
