@@ -169,6 +169,11 @@
   padding: 0.5rem 0.7rem;
 }
 
+.tournamentButton {
+  line-height: 1.35;
+  white-space: normal;
+}
+
 .yearButton:hover,
 .tournamentButton:hover,
 .viewButton:hover,
@@ -178,10 +183,14 @@
 }
 
 .yearButton.active,
-.tournamentButton.active,
 .viewButton.activeView,
 .globalButton.activeView {
   background-color: var(--sage-green);
+  color: var(--coal-grey);
+}
+
+.tournamentButton.active {
+  background-color: var(--ocher);
   color: var(--coal-grey);
 }
 

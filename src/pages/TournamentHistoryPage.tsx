@@ -20,7 +20,6 @@ const TournamentHistoryPage = () => {
   const [standings, setStandings] = useState<TournamentStanding[]>([]);
   const [rounds, setRounds] = useState<TournamentRound[]>([]);
   const [races, setRaces] = useState<TournamentRacesResponse | null>(null);
-  const [tournamentName, setTournamentName] = useState<string>('');
   const [loading, setLoading] = useState(true);
   const [expandedYear, setExpandedYear] = useState<number | null>(null);
   const [expandedTournament, setExpandedTournament] = useState<number | null>(null);
@@ -147,7 +146,6 @@ const TournamentHistoryPage = () => {
         ]);
         setStandings(standingsData);
         setRounds(roundsData.rounds);
-        setTournamentName(roundsData.tournament_name);
 
         const extraRounds = roundsData.rounds.filter(round => round.is_extra_round);
         if (extraRounds.length > 0) {
@@ -168,7 +166,6 @@ const TournamentHistoryPage = () => {
       } else if (viewType === 'rounds') {
         const data = await tournamentAPI.getTournamentRounds(id);
         setRounds(data.rounds);
-        setTournamentName(data.tournament_name);
 
         const extraRounds = data.rounds.filter(round => round.is_extra_round);
         if (extraRounds.length > 0) {
@@ -425,24 +422,26 @@ const TournamentHistoryPage = () => {
   const groupedTournaments = groupByYear();
   const years = Object.keys(groupedTournaments).map(Number).sort((a, b) => b - a);
   const selectedOnline = onlineTournaments.find((tournament) => tournament.id === Number(tournamentId));
+  const sectionLabel =
+    view === 'resumen'
+      ? 'Resumen'
+      : view === 'standings'
+        ? 'Tabla Final'
+        : view === 'rounds'
+          ? 'Rondas'
+          : null;
   const articleKicker = isViewingOnlineTournament
     ? 'Eventos especiales'
     : view === 'global-standings' || view === 'global-races'
       ? 'Estadísticas'
-      : selectedTournament?.name || 'Torneo';
+      : sectionLabel || 'Torneo';
   const articleTitle = isViewingOnlineTournament
     ? selectedOnline?.name || 'Evento especial'
     : view === 'global-standings'
       ? 'Ranking Global'
       : view === 'global-races'
         ? 'Razas Global'
-        : view === 'resumen'
-          ? 'Resumen'
-          : view === 'standings'
-            ? 'Tabla Final'
-            : view === 'rounds'
-              ? 'Rondas'
-              : 'Historial';
+        : selectedTournament?.name || 'Historial';
 
   return (
     <div className={styles.page}>
@@ -540,7 +539,7 @@ const TournamentHistoryPage = () => {
                                 className={`${styles.tournamentButton} ${selectedTournament?.id === tournament.id ? styles.active : ''}`}
                                 onClick={() => handleTournamentClick(tournament)}
                               >
-                                {tournament.month}
+                                {tournament.month} - {tournament.name}
                               </button>
                               {expandedTournament === tournament.id && (
                                 <div className={styles.viewOptions}>
