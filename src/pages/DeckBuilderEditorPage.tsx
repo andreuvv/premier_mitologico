@@ -10,6 +10,7 @@ import { useUserCollection } from '../hooks/useUserCollection';
 import CardDetailModal from '../components/CardDetailModal';
 import NewDeckModal from '../components/NewDeckModal';
 import { Format, Subformat, SIDEDECK_SIZE } from '../config/deckFormats';
+import { canonicalEditionNames, editionLabel, sameEdition } from '../utils/editionName';
 import styles from './DeckBuilderEditorPage.module.css';
 
 const DECK_SIZE = 50;
@@ -364,7 +365,7 @@ export default function DeckBuilderEditorPage() {
     }
     if (editionFilter) {
       if (format === CollectionFormat.PRIMER_BLOQUE) {
-        cards = cards.filter((c) => c.edition?.name === editionFilter);
+        cards = cards.filter((c) => sameEdition(c.edition?.name, editionFilter));
       } else {
         cards = cards.filter(
           (c) =>
@@ -662,13 +663,9 @@ export default function DeckBuilderEditorPage() {
   // ── Filter options ────────────────────────────────────────────────────────
   const browserEditionOptions = useMemo(() => {
     if (format === CollectionFormat.PRIMER_BLOQUE) {
-      return Array.from(
-        new Map(
-          allCards
-            .filter((c) => c.edition?.name)
-            .map((c) => [c.edition!.name, c.edition!.name]),
-        ).values(),
-      ).sort((a, b) => a.localeCompare(b, 'es'));
+      return canonicalEditionNames(
+        allCards.flatMap((c) => (c.edition?.name ? [c.edition.name] : [])),
+      );
     }
     return Array.from(
       new Map(
@@ -776,7 +773,7 @@ export default function DeckBuilderEditorPage() {
               >
                 <option value="">— Selecciona una edición —</option>
                 {editionOptions.map((ed) => (
-                  <option key={ed.slug} value={ed.slug}>{ed.name}</option>
+                  <option key={ed.slug} value={ed.slug}>{editionLabel(ed.name)}</option>
                 ))}
               </select>
             </div>
@@ -967,7 +964,7 @@ export default function DeckBuilderEditorPage() {
             {showEditionBrowserFilter && (
               <select
                 className={styles.filterSelect}
-                value={editionFilter}
+                value={browserEditionOptions.find((option) => sameEdition(option, editionFilter)) ?? editionFilter}
                 onChange={(e) => setEditionFilter(e.target.value)}
               >
                 <option value="">Todas las ediciones</option>

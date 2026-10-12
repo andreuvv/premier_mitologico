@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { CollectionCard } from '../types/collection';
+import { useCardBanStatus, type CardBanState } from '../hooks/useCardBanStatus';
 import styles from './CardDetailModal.module.css';
 
 interface CardDetailModalProps {
@@ -9,12 +10,23 @@ interface CardDetailModalProps {
   onNavigate?: (card: CollectionCard) => void;
 }
 
+const BAN_STATUS_CLASS: Record<CardBanState, string> = {
+  banned: styles.banStatusBanned,
+  limitedX1: styles.banStatusX1,
+  limitedX2: styles.banStatusX2,
+  legal: styles.banStatusLegal,
+  loading: styles.banStatusPending,
+  unavailable: styles.banStatusPending,
+};
+
 function stripHtml(value: string | undefined): string {
   if (!value) return '';
   return value.replace(/<[^>]*>/g, '').trim();
 }
 
 export default function CardDetailModal({ card, onClose, cards, onNavigate }: CardDetailModalProps) {
+  const banRows = useCardBanStatus(card);
+
   // Close on Escape key
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -130,6 +142,20 @@ export default function CardDetailModal({ card, onClose, cards, onNavigate }: Ca
                 </div>
               )}
             </div>
+
+            {banRows.length > 0 && (
+              <div className={styles.banlist}>
+                <div className={styles.banlistTitle}>Banlist</div>
+                <div className={styles.banlistRows}>
+                  {banRows.map((row) => (
+                    <div key={row.label} className={styles.banlistRow}>
+                      <span className={styles.banlistFormat}>{row.label}</span>
+                      <span className={`${styles.banStatus} ${BAN_STATUS_CLASS[row.state]}`}>{row.text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {effectText && (
               <div className={styles.effect}>

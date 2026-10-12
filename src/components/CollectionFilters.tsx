@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { FaChevronUp } from 'react-icons/fa';
 import { CollectionCard, CollectionFormat } from '../types/collection';
+import { canonicalEditionNames, sameEdition } from '../utils/editionName';
 import styles from './CollectionFilters.module.css';
 
 const PB_RACES = ['Caballero', 'Defensor', 'Desafiante', 'Dragon', 'Eterno', 'Faerie', 'Faraon', 'Heroe', 'Olimpico', 'Sacerdote', 'Sombra', 'Titan'];
@@ -68,9 +69,9 @@ export default function CollectionFilters({
   const isPB = format === CollectionFormat.PRIMER_BLOQUE;
 
   // Derive options from loaded cards
-  const pbEditions = Array.from(new Map(
-    allCards.filter(c => c.edition?.name).map(c => [c.edition!.name, c.edition!.name])
-  ).values()).sort();
+  const pbEditions = canonicalEditionNames(
+    allCards.flatMap(c => (c.edition?.name ? [c.edition.name] : [])),
+  );
 
   const fxEditions = Array.from(new Map(
     allCards.filter(c => c.product?.productType === 'Edición').map(c => [c.product!.productName, c.product!.productName])
@@ -119,7 +120,7 @@ export default function CollectionFilters({
     const normalizedSearch = normalizeStr(s.trim());
 
     if (isPB) {
-      if (e) filtered = filtered.filter(c => c.edition?.name === e);
+      if (e) filtered = filtered.filter(c => sameEdition(c.edition?.name, e));
       if (p) filtered = filtered.filter(c => c.cardCategory?.name === p);
     } else {
       if (e) filtered = filtered.filter(c => c.product?.productName === e && c.product?.productType === 'Edición');
@@ -310,7 +311,7 @@ export default function CollectionFilters({
           <label className={styles.label}>Edición</label>
           <select
             className={styles.select}
-            value={edition}
+            value={editionOptions.find(option => sameEdition(option, edition)) ?? edition}
             onChange={e => handleEditionChange(e.target.value)}
           >
             <option value="">Todas las ediciones</option>

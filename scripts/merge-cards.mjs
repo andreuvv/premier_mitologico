@@ -33,13 +33,23 @@ function cleanEdition(edition) {
   return { name: edition.name ?? '', slug: edition.slug ?? '', __typename: 'Edition' };
 }
 
+function editionIdentity(name) {
+  return String(name ?? '')
+    .replace(/\p{Extended_Pictographic}|\uFE0F|\u200D/gu, '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
+}
+
 function cleanGame(game) {
   if (!game) return { name: '', slug: '', __typename: 'Game' };
   return { name: game.name ?? '', slug: game.slug ?? '', __typename: 'Game' };
 }
 
-function buildLocalCard(apiCard, editionBySlug, gameBySlug, sortOrderRegistry) {
-  const edition = editionBySlug.get(apiCard.edition?.slug) ?? cleanEdition(apiCard.edition);
+function buildLocalCard(apiCard, resolveEdition, gameBySlug, sortOrderRegistry) {
+  const edition = resolveEdition(apiCard.edition);
   const game = gameBySlug.get(apiCard.game?.slug) ?? cleanGame(apiCard.game);
 
   const card = {
@@ -92,13 +102,43 @@ async function main() {
   const apiById = new Map(apiCards.map((c) => [c.id, c]));
   const localIds = new Set(localCards.map((c) => c.id));
 
-  // Curated edition/game lookups (keep the local emoji variants).
+  // Curated edition/game lookups. Same edition name with a different emoji
+  // collapses onto the most common local label (and its slug).
   const editionBySlug = new Map();
+  const editionVariantCounts = new Map();
   const gameBySlug = new Map();
   for (const c of localCards) {
     if (c.edition?.slug && !editionBySlug.has(c.edition.slug)) editionBySlug.set(c.edition.slug, c.edition);
+    const editionKey = editionIdentity(c.edition?.name);
+    if (c.edition?.slug && editionKey) {
+      const variants = editionVariantCounts.get(editionKey) ?? new Map();
+      const sig = `${c.edition.slug}\0${c.edition.name}`;
+      const row = variants.get(sig) ?? { edition: c.edition, count: 0 };
+      row.count += 1;
+      variants.set(sig, row);
+      editionVariantCounts.set(editionKey, variants);
+    }
     if (c.game?.slug && !gameBySlug.has(c.game.slug)) gameBySlug.set(c.game.slug, c.game);
   }
+  const editionByIdentity = new Map();
+  for (const [key, variants] of editionVariantCounts) {
+    let best = null;
+    for (const row of variants.values()) {
+      if (!best || row.count > best.count) best = row;
+    }
+    if (best) editionByIdentity.set(key, best.edition);
+  }
+
+  const unknownEditionSlugs = new Set();
+  const resolveEdition = (apiEdition) => {
+    if (apiEdition?.slug && editionBySlug.has(apiEdition.slug)) {
+      return editionBySlug.get(apiEdition.slug);
+    }
+    const byName = editionByIdentity.get(editionIdentity(apiEdition?.name));
+    if (byName) return byName;
+    if (apiEdition?.slug) unknownEditionSlugs.add(apiEdition.slug);
+    return cleanEdition(apiEdition);
+  };
 
   const curatedSortOrders = await loadCategorySortOrderMap(format);
   const sortOrderRegistry = createSortOrderRegistry(localCards, curatedSortOrders);
@@ -119,14 +159,10 @@ async function main() {
   }
 
   // Build new cards (present in API, missing locally).
-  const unknownEditionSlugs = new Set();
   const newCards = [];
   for (const apiCard of apiCards) {
     if (localIds.has(apiCard.id)) continue;
-    if (apiCard.edition?.slug && !editionBySlug.has(apiCard.edition.slug)) {
-      unknownEditionSlugs.add(apiCard.edition.slug);
-    }
-    newCards.push(buildLocalCard(apiCard, editionBySlug, gameBySlug, sortOrderRegistry));
+    newCards.push(buildLocalCard(apiCard, resolveEdition, gameBySlug, sortOrderRegistry));
   }
   newCards.sort((a, b) => b.id - a.id);
 
