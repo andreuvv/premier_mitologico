@@ -33,6 +33,7 @@
 
 .standingsRow {
   min-width: 0;
+  max-width: 100%;
 }
 
 .blogBlock {
@@ -127,6 +128,8 @@
 
 .mobileTabContent {
   display: none;
+  min-width: 0;
+  max-width: 100%;
 }
 
 @media (max-width: 900px) {

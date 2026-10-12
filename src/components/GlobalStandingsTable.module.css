@@ -1,4 +1,7 @@
 .globalStandingsView {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   animation: fadeIn 0.3s ease-in;
 }
 
@@ -8,11 +11,12 @@
 }
 
 .pageTitle {
-  font-size: 2.5rem;
+  font-size: clamp(1.35rem, 4vw, 2.5rem);
   font-weight: 900;
   color: var(--beige);
   margin-bottom: 0.5rem;
   font-family: 'Cyrodiil', serif;
+  overflow-wrap: anywhere;
 }
 
 .emptyState {
@@ -25,16 +29,21 @@
 }
 
 .tableContainer {
-  overflow-x: auto;
+  container-type: inline-size;
+  container-name: global-standings;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   margin-bottom: 2rem;
   background: var(--dark-brown);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  -webkit-overflow-scrolling: touch;
 }
 
 .globalStandingsTable {
   width: 100%;
+  max-width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
 }
 
@@ -44,19 +53,24 @@
 }
 
 .globalStandingsTable th {
-  padding: 1rem 0.5rem;
+  padding: 0.85rem 0.4rem;
   text-align: center;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+  vertical-align: bottom;
+  overflow-wrap: break-word;
 }
 
 .globalStandingsTable td {
-  padding: 1rem 0.5rem;
+  padding: 0.85rem 0.4rem;
   text-align: center;
-  font-size: 0.95rem;
+  font-size: clamp(0.68rem, 1.45cqw, 0.95rem);
   color: var(--beige);
+  vertical-align: middle;
+  overflow-wrap: anywhere;
 }
 
 .globalStandingsTable tbody tr {
@@ -93,21 +107,49 @@
 }
 
 .positionColumn {
-  width: 50px;
+  width: 5%;
   text-align: center !important;
   font-weight: 700;
-  color: var(--coal-grey);
+  color: var(--beige);
 }
 
 .nameColumn {
+  width: 18%;
   text-align: left !important;
   font-weight: 600;
-  min-width: 150px;
+}
+
+.placeColumn {
+  width: 12%;
+}
+
+.tournamentsColumn {
+  width: 13%;
+}
+
+.raceColumn {
+  width: 14%;
 }
 
 .centerColumn {
   font-weight: 600;
   color: var(--ocher);
+  font-variant-numeric: tabular-nums;
+}
+
+.headerFull {
+  display: block;
+}
+
+.headerCompact {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.1rem;
+  line-height: 1.05;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 .playerLink {
@@ -116,11 +158,15 @@
   color: var(--beige);
   cursor: pointer;
   font-size: inherit;
+  font-weight: inherit;
   font-family: inherit;
   text-decoration: none;
   padding: 0;
   text-align: left;
   display: inline;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  max-width: 100%;
 }
 
 .playerLink:hover {
@@ -128,57 +174,100 @@
   text-decoration: underline;
 }
 
-@media (max-width: 768px) {
-  .pageTitle {
-    font-size: 1.5rem;
+.raceInline {
+  display: inline;
+}
+
+.raceStack {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  line-height: 1.15;
+}
+
+.raceWinrate {
+  color: var(--ocher);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+@container global-standings (max-width: 1100px) {
+  .headerFull {
+    display: none;
   }
 
-  .globalStandingsTable th {
-    padding: 0.5rem 0.2rem;
-    font-size: 0.65rem;
+  .headerCompact {
+    display: flex;
   }
 
-  .globalStandingsTable td {
-    padding: 0.5rem 0.2rem;
-    font-size: 0.7rem;
+  .raceInline {
+    display: none;
+  }
+
+  .raceStack {
+    display: flex;
   }
 
   .positionColumn {
-    width: 30px;
+    width: 8%;
   }
 
   .nameColumn {
-    min-width: 80px;
+    width: 20%;
+  }
+
+  .placeColumn {
+    width: 9%;
+  }
+
+  .tournamentsColumn {
+    width: 14%;
+  }
+
+  .raceColumn {
+    width: 15.5%;
+  }
+
+  .globalStandingsTable th {
+    padding: 0.45rem 0.08rem;
+    font-size: 0.68rem;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  .globalStandingsTable td {
+    padding: 0.45rem 0.08rem;
   }
 }
 
-@media (max-width: 480px) {
-  .pageTitle {
-    font-size: 1.25rem;
-    padding: 0 0.5rem;
-  }
-
-  .globalStandingsTable {
-    font-size: 0.6rem;
-  }
-
+@container global-standings (max-width: 420px) {
   .globalStandingsTable th {
-    padding: 0.35rem 0.15rem;
-    font-size: 0.55rem;
-    font-weight: 600;
-    line-height: 1.2;
+    padding: 0.35rem 0.04rem;
+    font-size: 0.62rem;
   }
 
   .globalStandingsTable td {
-    padding: 0.35rem 0.15rem;
-    font-size: 0.6rem;
+    padding: 0.35rem 0.04rem;
   }
 
   .positionColumn {
-    width: 25px;
+    width: 7%;
   }
 
   .nameColumn {
-    min-width: 60px;
+    width: 22%;
+  }
+
+  .placeColumn {
+    width: 8%;
+  }
+
+  .tournamentsColumn {
+    width: 13%;
+  }
+
+  .raceColumn {
+    width: 17%;
   }
 }
