@@ -27,10 +27,10 @@ export interface TournamentConfig {
 }
 
 export const tournamentConfig: TournamentConfig = {
-  name: 'Dado Extendido',
-  date: '2026-10-10',
+  name: 'Furia Japonesa Extendida!',
+  date: '2026-11-14',
   time: '15:00',
-  dateTentative: false, // Set to true to show the ribbon
+  dateTentative: true, // Set to true to show the ribbon
   location: {
     name: "Weshes",
     address: 'Jorge Quevedo 5464, Macul, Santiago',
