@@ -8,13 +8,55 @@ import styles from './PremierTournamentPage.module.css';
 
 type Tab = 'fixture' | 'standings' | 'matriz';
 
-const sortStandingsData = (data: APIStanding[]): APIStanding[] => {
-  return [...data].sort((a, b) => {
+const headToHeadWinner = (
+  fixture: APIFixtureResponse | undefined,
+  nameA: string,
+  nameB: string,
+): string | null => {
+  if (!fixture) return null;
+  let aWins = 0;
+  let bWins = 0;
+  for (const round of fixture.rounds) {
+    if (round.is_extra_round) continue;
+    for (const match of round.matches) {
+      if (!match.completed || match.score1 === null || match.score2 === null || match.score1 === match.score2) continue;
+      const players = [match.player1_name, match.player2_name];
+      if (!players.includes(nameA) || !players.includes(nameB)) continue;
+      const winner = match.score1 > match.score2 ? match.player1_name : match.player2_name;
+      if (winner === nameA) aWins += 1;
+      else bWins += 1;
+    }
+  }
+  if (aWins > bWins) return nameA;
+  if (bWins > aWins) return nameB;
+  return null;
+};
+
+const sortStandingsData = (data: APIStanding[], fixture?: APIFixtureResponse): APIStanding[] => {
+  const sorted = [...data].sort((a, b) => {
     if (a.points !== b.points) return b.points - a.points;
     if (a.total_points_scored !== b.total_points_scored) return b.total_points_scored - a.total_points_scored;
     if (a.wins !== b.wins) return b.wins - a.wins;
-    return 0;
+    return a.id - b.id;
   });
+
+  for (let i = 0; i < sorted.length;) {
+    let j = i + 1;
+    while (
+      j < sorted.length
+      && sorted[i].points === sorted[j].points
+      && sorted[i].total_points_scored === sorted[j].total_points_scored
+      && sorted[i].wins === sorted[j].wins
+    ) {
+      j += 1;
+    }
+    if (j - i === 2 && headToHeadWinner(fixture, sorted[i].name, sorted[i + 1].name) === sorted[i + 1].name) {
+      [sorted[i], sorted[i + 1]] = [sorted[i + 1], sorted[i]];
+    }
+    i = j;
+  }
+
+  return sorted;
 };
 
 const applyPlayoffPositions = (
@@ -36,6 +78,8 @@ const applyPlayoffPositions = (
     const p1 = preExtraMap.get(match.player1_name);
     const p2 = preExtraMap.get(match.player2_name);
     if (!p1 || !p2 || match.score1 === null || match.score2 === null) continue;
+    p1.total_points_scored -= match.score1;
+    p2.total_points_scored -= match.score2;
     if (match.score1 > match.score2) {
       p1.points -= 3; p1.wins -= 1;
     } else if (match.score2 > match.score1) {
@@ -45,7 +89,7 @@ const applyPlayoffPositions = (
     }
   }
 
-  const sortedPreExtra = sortStandingsData(Array.from(preExtraMap.values()));
+  const sortedPreExtra = sortStandingsData(Array.from(preExtraMap.values()), fixture);
   const seedPosition = new Map<string, number>();
   sortedPreExtra.forEach((p, i) => seedPosition.set(p.name, i + 1));
 
@@ -73,7 +117,7 @@ const applyPlayoffPositions = (
   if (positionOverrides.size === 0) return { standings, playoffWinners };
 
   const playoffPlayerNames = new Set(positionOverrides.keys());
-  const nonPlayoffPlayers = sortStandingsData(standings.filter(p => !playoffPlayerNames.has(p.name)));
+  const nonPlayoffPlayers = sortStandingsData(standings.filter(p => !playoffPlayerNames.has(p.name)), fixture);
   const result: (APIStanding | null)[] = new Array(standings.length).fill(null);
 
   for (const [name, pos] of positionOverrides.entries()) {
@@ -237,7 +281,7 @@ const PremierTournamentPage = () => {
           sorted = result.standings;
           winners = result.playoffWinners;
         } else {
-          sorted = sortStandingsData(data);
+          sorted = sortStandingsData(data, fixture);
           winners = new Set();
         }
         setStandings(sorted);
