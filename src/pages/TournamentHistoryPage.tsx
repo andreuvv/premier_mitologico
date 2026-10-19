@@ -9,6 +9,12 @@ import { displayStoredSubformat, secondBfSubformatName, usesRagnarokSubformat } 
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 import styles from './TournamentHistoryPage.module.css';
 
+function compareNewestFirst(a: Tournament, b: Tournament): number {
+  const byDate = (b.start_date ?? '').localeCompare(a.start_date ?? '');
+  if (byDate !== 0) return byDate;
+  return b.id - a.id;
+}
+
 const TournamentHistoryPage = () => {
   const { tournamentId, view } = useParams<{ tournamentId: string; view?: string }>();
   const navigate = useNavigate();
@@ -30,8 +36,7 @@ const TournamentHistoryPage = () => {
   const [globalStandings, setGlobalStandings] = useState<GlobalStanding[]>([]);
   const [globalRaces, setGlobalRaces] = useState<TournamentRacesResponse | null>(null);
   const [onlineTournaments, setOnlineTournaments] = useState<OnlineTournament[]>([]);
-  const [expandedOnlineMonth, setExpandedOnlineMonth] = useState<string | null>(null);
-  const [selectedOnlineTournament, setSelectedOnlineTournament] = useState<number | null>(null);
+  const [expandedSpecialYear, setExpandedSpecialYear] = useState<number | null>(null);
   const [hasExtraRound, setHasExtraRound] = useState(false);
   const [playoffWinners, setPlayoffWinners] = useState<Set<string>>(new Set());
 
@@ -103,17 +108,6 @@ const TournamentHistoryPage = () => {
     }
   }, [tournamentId, view, isViewingOnlineTournament]);
 
-  // Sync selectedOnlineTournament state with URL when viewing online tournaments
-  useEffect(() => {
-    if (isViewingOnlineTournament && tournamentId) {
-      setSelectedOnlineTournament(Number(tournamentId));
-    } else if (!isViewingOnlineTournament) {
-      // Clear online tournament state when not viewing online tournaments
-      setExpandedOnlineMonth(null);
-      setSelectedOnlineTournament(null);
-    }
-  }, [tournamentId, isViewingOnlineTournament]);
-
   const loadTournaments = async () => {
     try {
       const data = await tournamentAPI.getTournaments();
@@ -123,8 +117,14 @@ const TournamentHistoryPage = () => {
         const tournament = data.find(t => t.id === Number(tournamentId));
         if (tournament) {
           setSelectedTournament(tournament);
-          setExpandedYear(tournament.year);
           setExpandedTournament(tournament.id);
+          if (tournament.type === 'special_event') {
+            setEventosEspecialesExpanded(true);
+            setExpandedSpecialYear(tournament.year);
+          } else {
+            setTorneosPremierExpanded(true);
+            setExpandedYear(tournament.year);
+          }
         }
       }
     } catch (error) {
@@ -194,23 +194,15 @@ const TournamentHistoryPage = () => {
 
   const groupByYear = () => {
     const grouped: { [year: number]: Tournament[] } = {};
-    tournaments.forEach(tournament => {
+    tournaments
+      .filter((tournament) => tournament.type !== 'special_event')
+      .forEach(tournament => {
       if (!grouped[tournament.year]) {
         grouped[tournament.year] = [];
       }
       grouped[tournament.year].push(tournament);
     });
-    return grouped;
-  };
-
-  const groupOnlineByMonth = () => {
-    const grouped: { [month: string]: OnlineTournament[] } = {};
-    onlineTournaments.forEach(tournament => {
-      if (!grouped[tournament.month]) {
-        grouped[tournament.month] = [];
-      }
-      grouped[tournament.month].push(tournament);
-    });
+    Object.values(grouped).forEach((list) => list.sort(compareNewestFirst));
     return grouped;
   };
 
@@ -260,9 +252,9 @@ const TournamentHistoryPage = () => {
       const sub = (round.subformat || '').toLowerCase();
       let isLibre: boolean;
       if (sub) {
-        if (LIBRE_VALUES.has(sub)) {
+        if (LIBRE_VALUES.has(sub) || sub.includes('libre')) {
           isLibre = true;
-        } else if (EDICION_VALUES.has(sub)) {
+        } else if (EDICION_VALUES.has(sub) || sub.includes('vcr') || sub.includes('edici') || sub.includes('ragnarok')) {
           isLibre = false;
         } else {
           // Unknown subformat, fallback to format field
@@ -300,9 +292,9 @@ const TournamentHistoryPage = () => {
   };
 
   // Helper functions for format-based display
-  const shouldShowPB = !selectedTournament?.format || selectedTournament?.format === 'PB';
-  const shouldShowBF = !selectedTournament?.format || selectedTournament?.format === 'BF';
-  const isFormatSpecific = selectedTournament?.format !== null && selectedTournament?.format !== undefined;
+  const shouldShowPB = !selectedTournament?.format || selectedTournament?.format === 'PB' || selectedTournament?.format === 'PBFX';
+  const shouldShowBF = !selectedTournament?.format || selectedTournament?.format === 'BF' || selectedTournament?.format === 'FX' || selectedTournament?.format === 'PBFX';
+  const isFormatSpecific = selectedTournament?.format === 'PB' || selectedTournament?.format === 'FX' || selectedTournament?.format === 'BF';
   
   const getRaceColumnLabels = () => {
     if (isFormatSpecific) {
@@ -342,9 +334,9 @@ const TournamentHistoryPage = () => {
     const sub = (selectedTournament?.subformat || '').toLowerCase();
 
     // Determine which subformats to show
-    const isLibre = ['libre', 'pbrl', 'bfrl'].some(v => sub === v);
-    const isEdicion = ['pbre', 'bfvcr', 'vcr', 'edición', 'edicion'].some(v => sub === v) 
-                   || sub.includes('vcr') || sub.includes('edici');
+    const isLibre = ['libre', 'pbrl', 'bfrl'].some(v => sub === v) || sub.includes('libre');
+    const isEdicion = ['pbre', 'bfvcr', 'vcr', 'edición', 'edicion', 'ragnarok'].some(v => sub === v)
+                   || sub.includes('vcr') || sub.includes('edici') || sub.includes('ragnarok');
     const isBoth = !sub || sub === 'both' || (isLibre && isEdicion);
     const showLibre = isBoth || isLibre;
     const showEdicion = isBoth || isEdicion;
@@ -368,7 +360,7 @@ const TournamentHistoryPage = () => {
       links = [...pbLinks, ...bfLinks];
     } else if (format === 'PB') {
       links = pbLinks;
-    } else if (format === 'BF') {
+    } else if (format === 'BF' || format === 'FX') {
       links = bfLinks;
     }
 
@@ -421,6 +413,13 @@ const TournamentHistoryPage = () => {
 
   const groupedTournaments = groupByYear();
   const years = Object.keys(groupedTournaments).map(Number).sort((a, b) => b - a);
+  const specialEvents = tournaments.filter((tournament) => tournament.type === 'special_event');
+  const specialByYear = specialEvents.reduce<Record<number, Tournament[]>>((grouped, tournament) => {
+    grouped[tournament.year] = [...(grouped[tournament.year] ?? []), tournament];
+    return grouped;
+  }, {});
+  Object.values(specialByYear).forEach((list) => list.sort(compareNewestFirst));
+  const specialYears = Object.keys(specialByYear).map(Number).sort((a, b) => b - a);
   const selectedOnline = onlineTournaments.find((tournament) => tournament.id === Number(tournamentId));
   const sectionLabel =
     view === 'resumen'
@@ -583,34 +582,51 @@ const TournamentHistoryPage = () => {
                 <span className={styles.arrow}>{eventosEspecialesExpanded ? '▼' : '▶'}</span>
               </button>
               {eventosEspecialesExpanded && (
-                onlineTournaments.length === 0 ? (
+                specialEvents.length === 0 ? (
                   <div className={styles.emptySection}>
                     <p>No hay eventos especiales registrados</p>
                   </div>
                 ) : (
                   <div className={styles.tournamentList}>
-                    {Object.entries(groupOnlineByMonth()).map(([month, tournaments]) => (
-                      <div key={month} className={styles.yearGroup}>
+                    {specialYears.map(year => (
+                      <div key={year} className={styles.yearGroup}>
                         <button
-                          className={`${styles.yearButton} ${expandedOnlineMonth === month ? styles.active : ''}`}
-                          onClick={() => setExpandedOnlineMonth(expandedOnlineMonth === month ? null : month)}
+                          className={`${styles.yearButton} ${expandedSpecialYear === year ? styles.active : ''}`}
+                          onClick={() => setExpandedSpecialYear(expandedSpecialYear === year ? null : year)}
                         >
-                          <span>{month}</span>
-                          <span className={styles.arrow}>{expandedOnlineMonth === month ? '▼' : '▶'}</span>
+                          <span>{year}</span>
+                          <span className={styles.arrow}>{expandedSpecialYear === year ? '▼' : '▶'}</span>
                         </button>
-                        {expandedOnlineMonth === month && (
+                        {expandedSpecialYear === year && (
                           <div className={styles.yearTournaments}>
-                            {tournaments.map(tournament => (
-                              <button
-                                key={tournament.id}
-                                className={`${styles.tournamentButton} ${selectedOnlineTournament === tournament.id ? styles.active : ''}`}
-                                onClick={() => {
-                                  setSelectedOnlineTournament(tournament.id);
-                                  openView(`/tournament-history/online/${tournament.id}`);
-                                }}
-                              >
-                                {tournament.name}
-                              </button>
+                            {specialByYear[year].map(tournament => (
+                              <div key={tournament.id} className={styles.tournamentItem}>
+                                <button
+                                  className={`${styles.tournamentButton} ${selectedTournament?.id === tournament.id ? styles.active : ''}`}
+                                  onClick={() => {
+                                    setSelectedTournament(tournament);
+                                    openView(`/tournament-history/${tournament.id}/standings`);
+                                  }}
+                                >
+                                  {tournament.month} - {tournament.name}
+                                </button>
+                                {expandedTournament === tournament.id && (
+                                  <div className={styles.viewOptions}>
+                                    <button
+                                      className={`${styles.viewButton} ${view === 'standings' ? styles.activeView : ''}`}
+                                      onClick={() => handleViewClick(tournament, 'standings')}
+                                    >
+                                      Tabla Final
+                                    </button>
+                                    <button
+                                      className={`${styles.viewButton} ${view === 'rounds' ? styles.activeView : ''}`}
+                                      onClick={() => handleViewClick(tournament, 'rounds')}
+                                    >
+                                      Rondas
+                                    </button>
+                                  </div>
+                                )}
+                              </div>
                             ))}
                           </div>
                         )}

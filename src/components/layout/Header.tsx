@@ -5,7 +5,7 @@ import {
   FaUser, FaBlog, FaBook, FaSignInAlt, FaSignOutAlt, FaChartPie, FaChevronDown, FaUsers,
   FaExchangeAlt,
 } from 'react-icons/fa';
-import { getTournamentMonthYear } from '../../config/tournamentConfig';
+import { useActiveTournamentCard } from '../../hooks/useActiveTournamentCard';
 import { useAuth } from '../../hooks/useAuth';
 import { loadProfileById } from '../../hooks/useUserProfile';
 import { fixtureAPI } from '../../services/fixtureAPI';
@@ -24,8 +24,10 @@ const Header = () => {
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [signOutConfirmOpen, setSignOutConfirmOpen] = useState(false);
   const [premierPlayerName, setPremierPlayerName] = useState<string | null>(null);
+  const [premierPlayerId, setPremierPlayerId] = useState<number | null>(null);
   const accountMenuRef = useRef<HTMLDivElement>(null);
-  const monthYear = getTournamentMonthYear();
+  const { tournament: activeTournament } = useActiveTournamentCard();
+  const monthYear = activeTournament?.monthYear ?? '';
 
   const isMitoxicosActive =
     location.pathname === '/mitoxicos'
@@ -37,13 +39,14 @@ const Header = () => {
     || location.pathname.startsWith('/players')
     || location.pathname.startsWith('/tournament-history')
     || location.pathname === '/tournament-info'
-    || location.pathname.startsWith('/blog');
+    || location.pathname.startsWith('/admin/torneo');
 
   const username = user?.user_metadata?.username ?? user?.email?.split('@')[0] ?? 'Usuario';
 
   useEffect(() => {
     if (!user) {
       setPremierPlayerName(null);
+      setPremierPlayerId(null);
       return;
     }
 
@@ -52,16 +55,25 @@ const Header = () => {
     (async () => {
       const profile = await loadProfileById(user.id);
       if (cancelled || !profile?.premier_player_id) {
-        if (!cancelled) setPremierPlayerName(null);
+        if (!cancelled) {
+          setPremierPlayerName(null);
+          setPremierPlayerId(null);
+        }
         return;
       }
 
       try {
         const players = await fixtureAPI.getPremierPlayers();
         const player = players.find((p) => p.id === profile.premier_player_id);
-        if (!cancelled) setPremierPlayerName(player?.name ?? null);
+        if (!cancelled) {
+          setPremierPlayerName(player?.name ?? null);
+          setPremierPlayerId(profile.premier_player_id);
+        }
       } catch {
-        if (!cancelled) setPremierPlayerName(null);
+        if (!cancelled) {
+          setPremierPlayerName(null);
+          setPremierPlayerId(profile.premier_player_id);
+        }
       }
     })();
 
@@ -167,6 +179,12 @@ const Header = () => {
               <FaHistory className={styles.icon} />
               Historial
             </button>
+          )}
+          {user && premierPlayerId === 1 && (
+            <Link to="/admin/torneo" className={styles.cartasDropdownItem} onClick={() => setMitoxicosHovered(false)}>
+              <FaTrophy className={styles.icon} />
+              Admin torneo
+            </Link>
           )}
           {user ? (
             <Link to="/tournament-info" className={styles.cartasDropdownItem} onClick={() => setMitoxicosHovered(false)}>
@@ -483,6 +501,12 @@ const Header = () => {
             <FaHistory className={styles.icon} />
             Historial
           </button>
+        )}
+        {user && premierPlayerId === 1 && (
+          <Link to="/admin/torneo" className={styles.mobileSubItem} onClick={() => setMobileMenuOpen(false)}>
+            <FaTrophy className={styles.icon} />
+            Admin torneo
+          </Link>
         )}
         {user ? (
           <Link to="/tournament-info" className={styles.mobileSubItem} onClick={() => setMobileMenuOpen(false)}>

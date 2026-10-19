@@ -7,9 +7,9 @@ import styles from './StandingsPage.module.css';
 // Sorting logic extracted so it can be used both inside and outside the component
 const headToHeadWinner = (
   fixture: APIFixtureResponse | undefined,
-  nameA: string,
-  nameB: string,
-): string | null => {
+  idA: number,
+  idB: number,
+): number | null => {
   if (!fixture) return null;
   let aWins = 0;
   let bWins = 0;
@@ -17,15 +17,15 @@ const headToHeadWinner = (
     if (round.is_extra_round) continue;
     for (const match of round.matches) {
       if (!match.completed || match.score1 === null || match.score2 === null || match.score1 === match.score2) continue;
-      const players = [match.player1_name, match.player2_name];
-      if (!players.includes(nameA) || !players.includes(nameB)) continue;
-      const winner = match.score1 > match.score2 ? match.player1_name : match.player2_name;
-      if (winner === nameA) aWins += 1;
+      const players = [match.player1_id, match.player2_id];
+      if (!players.includes(idA) || !players.includes(idB)) continue;
+      const winner = match.score1 > match.score2 ? match.player1_id : match.player2_id;
+      if (winner === idA) aWins += 1;
       else bWins += 1;
     }
   }
-  if (aWins > bWins) return nameA;
-  if (bWins > aWins) return nameB;
+  if (aWins > bWins) return idA;
+  if (bWins > aWins) return idB;
   return null;
 };
 
@@ -47,7 +47,7 @@ const sortStandingsData = (data: APIStanding[], fixture?: APIFixtureResponse): A
     ) {
       j += 1;
     }
-    if (j - i === 2 && headToHeadWinner(fixture, sorted[i].name, sorted[i + 1].name) === sorted[i + 1].name) {
+    if (j - i === 2 && headToHeadWinner(fixture, sorted[i].id, sorted[i + 1].id) === sorted[i + 1].id) {
       [sorted[i], sorted[i + 1]] = [sorted[i + 1], sorted[i]];
     }
     i = j;

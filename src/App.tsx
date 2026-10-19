@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/layout/Header';
+import { ActiveTournamentProvider } from './hooks/useActiveTournamentCard';
 import Footer from './components/layout/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import MitoxicosLoader from './components/loading/MitoxicosLoader';
@@ -30,6 +31,7 @@ const DeckViewerPage = lazy(() => import('./pages/DeckViewerPage'));
 const LocalJsonEditorPage = lazy(() => import('./pages/LocalJsonEditorPage'));
 const ReworkPage = lazy(() => import('./pages/ReworkPage'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage'));
+const TournamentAdminPage = lazy(() => import('./pages/TournamentAdminPage'));
 
 const PageLoader = () => (
   <LoadingOverlay visible>
@@ -39,6 +41,7 @@ const PageLoader = () => (
 
 function App() {
   return (
+    <ActiveTournamentProvider>
     <div className={styles.app}>
       <Header />
       <main className={styles.main}>
@@ -79,6 +82,7 @@ function App() {
             <Route path="/deck-builder/editor" element={<DeckBuilderEditorPage />} />
             <Route path="/deck-builder/viewer" element={<DeckViewerPage />} />
             <Route path="/deck-builder/local-json-editor" element={<LocalJsonEditorPage />} />
+            <Route path="/admin/torneo" element={<TournamentAdminPage />} />
             <Route path="/perfil" element={<ProfilePage />} />
             <Route path="/perfil/:username" element={<ProfilePage />} />
           </Routes>
@@ -87,6 +91,7 @@ function App() {
       <Footer />
       <ScrollToTop />
     </div>
+    </ActiveTournamentProvider>
   );
 }
 

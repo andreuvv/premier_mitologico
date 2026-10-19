@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import CountdownCard from './CountdownCard';
 import MapCard from './MapCard';
-import { tournamentConfig, isTournamentPast, getTournamentMonthYear } from '../config/tournamentConfig';
+import { useActiveTournamentCard } from '../hooks/useActiveTournamentCard';
 import styles from './ActiveTournamentSection.module.css';
 
 interface ActiveTournamentSectionProps {
@@ -9,8 +9,7 @@ interface ActiveTournamentSectionProps {
 }
 
 const TournamentHero = () => {
-  const isPast = isTournamentPast();
-  const monthYear = getTournamentMonthYear();
+  const { loading, tournament } = useActiveTournamentCard();
 
   return (
     <>
@@ -26,33 +25,34 @@ const TournamentHero = () => {
 
       <div className={styles.contentSection}>
         <div className={styles.eventBadge}>Torneo Premier</div>
-        <h1 className={styles.title}>
-          {tournamentConfig.name} {isPast ? (
-            <span style={{ fontWeight: 'bold', fontStyle: 'italic' }}>TBD</span>
-          ) : (
-            monthYear && <span>{monthYear}</span>
-          )}
-        </h1>
-        <p className={styles.description}>
-          Prepara tus mazos para el torneo más esperado del reino. Gloria y premios esperan a los mejores duelistas.
-        </p>
-
-        <div className={styles.formatBadges}>
-          {tournamentConfig.formats.map((format) => {
-            const name = format.shortName || format.name;
-            const colorClass = name.startsWith('FX') ? styles.formatBadgeFX
-              : name.startsWith('PB') ? styles.formatBadgePB
-              : styles.formatBadge;
-            return (
-              <Link key={format.name} to={format.link} className={`${styles.formatBadge} ${colorClass}`} onClick={(e) => e.stopPropagation()}>
-                {name}
-              </Link>
-            );
-          })}
-          <Link to={tournamentConfig.roundType.link} className={`${styles.formatBadge} ${styles.formatBadgeRound}`} onClick={(e) => e.stopPropagation()}>
-            {tournamentConfig.roundType.name}
-          </Link>
-        </div>
+        {loading ? (
+          <h1 className={styles.title}>Cargando…</h1>
+        ) : tournament ? (
+          <>
+            <h1 className={styles.title}>
+              {tournament.name} <span>{tournament.monthYear}</span>
+            </h1>
+            <p className={styles.description}>
+              Prepara tus mazos para el torneo más esperado del reino. Gloria y premios esperan a los mejores duelistas.
+            </p>
+            <div className={styles.formatBadges}>
+              {tournament.formats.map((format) => {
+                const name = format.shortName || format.name;
+                const colorClass = name.startsWith('FX') ? styles.formatBadgeFX
+                  : name.startsWith('PB') ? styles.formatBadgePB
+                  : name.startsWith('Mejor') ? styles.formatBadgeRound
+                  : styles.formatBadge;
+                return (
+                  <Link key={format.link + format.name} to={format.link} className={`${styles.formatBadge} ${colorClass}`} onClick={(event) => event.stopPropagation()}>
+                    {name}
+                  </Link>
+                );
+              })}
+            </div>
+          </>
+        ) : (
+          <h1 className={styles.title}>Aún no se ha creado un nuevo torneo.</h1>
+        )}
       </div>
     </>
   );
@@ -60,16 +60,27 @@ const TournamentHero = () => {
 
 const ActiveTournamentSection = ({ variant = 'desktop' }: ActiveTournamentSectionProps) => {
   const navigate = useNavigate();
+  const { tournament } = useActiveTournamentCard();
+  const dateMissing = Boolean(tournament && !tournament.startDate);
+  const locationMissing = Boolean(tournament && !tournament.locationName && !tournament.locationAddress);
+  const ribbonText = dateMissing && locationMissing
+    ? 'Fecha y ubicación aún no definidas'
+    : dateMissing
+      ? 'Fecha aún no definida'
+      : locationMissing
+        ? 'Ubicación aún no definida'
+        : null;
+
+  const ribbon = ribbonText ? (
+    <div className={styles.undefinedRibbon}>
+      {ribbonText}
+    </div>
+  ) : null;
 
   if (variant === 'mobile') {
     return (
       <div className={styles.mobileMainContentTop}>
-        {tournamentConfig.dateTentative && (
-          <div className={styles.undefinedRibbon}>
-            Fecha y Ubicación aún NO definidas
-          </div>
-        )}
-
+        {ribbon}
         <div
           className={styles.mobileHeroSection}
           onClick={() => navigate('/torneo-premier')}
@@ -77,7 +88,6 @@ const ActiveTournamentSection = ({ variant = 'desktop' }: ActiveTournamentSectio
         >
           <TournamentHero />
         </div>
-
         <div className={styles.cardsRow}>
           <div className={styles.cardWrapper}>
             <CountdownCard />
@@ -97,14 +107,9 @@ const ActiveTournamentSection = ({ variant = 'desktop' }: ActiveTournamentSectio
         onClick={() => navigate('/torneo-premier')}
         style={{ cursor: 'pointer' }}
       >
-        {tournamentConfig.dateTentative && (
-          <div className={styles.undefinedRibbon}>
-            Fecha y Ubicación aún NO definidas
-          </div>
-        )}
+        {ribbon}
         <TournamentHero />
       </div>
-
       <div className={styles.cardsRow}>
         <div className={styles.cardWrapper}>
           <CountdownCard />

@@ -1,6 +1,6 @@
 /**
- * From June 2026, Furia Extendido (format BF) plays Racial Ragnarok
- * as its second subformat. Archived rounds still store the old value "VCR".
+ * From June 2026, Furia Extendido (BF or FX) plays Racial Ragnarok
+ * as its second subformat. Earlier FX tournaments stay on VCR.
  */
 const SPANISH_MONTHS = [
   'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
@@ -17,7 +17,7 @@ export interface BfSubformatTournament {
 export function usesRagnarokSubformat(
   tournament: BfSubformatTournament | null | undefined,
 ): boolean {
-  if (!tournament || tournament.format !== 'BF') return false;
+  if (!tournament || (tournament.format !== 'BF' && tournament.format !== 'FX')) return false;
 
   const start = tournament.start_date?.slice(0, 10);
   if (start) return start >= '2026-06-01';
@@ -45,8 +45,9 @@ export function displayStoredSubformat(
   tournament: BfSubformatTournament | null | undefined,
 ): string {
   if (!subformat) return '';
-  if (usesRagnarokSubformat(tournament) && STORED_VCR_VALUES.has(subformat.toLowerCase())) {
-    return 'Ragnarok';
+  const normalized = subformat.toLowerCase();
+  if (usesRagnarokSubformat(tournament) && (STORED_VCR_VALUES.has(normalized) || normalized.includes('vcr'))) {
+    return normalized.includes('racial') ? 'Racial Ragnarok' : 'Ragnarok';
   }
   return subformat;
 }

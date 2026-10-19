@@ -1,8 +1,6 @@
 /**
- * Tournament Configuration
- * 
- * Update these values to configure the next tournament.
- * Set date to null or past date + 1 day to display "TBD" mode.
+ * Legacy static tournament announcement.
+ * The public site reads the active tournament from Supabase instead.
  */
 
 export interface TournamentConfig {

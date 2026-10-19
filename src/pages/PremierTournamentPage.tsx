@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, type FormEvent } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
-import { fixtureAPI, APIFixtureResponse, APIStanding } from '../services/fixtureAPI';
-import { getTournamentMonthYear, tournamentConfig } from '../config/tournamentConfig';
-import { usePreserveScroll } from '../hooks/usePreserveScroll';
+import { fixtureAPI, APIFixtureResponse, APIMatchDetail, APIStanding } from '../services/fixtureAPI';
+import { tournamentAdminAPI } from '../services/tournamentAdminService';
+import { supabase } from '../config/supabase';
+import { useActiveTournamentCard } from '../hooks/useActiveTournamentCard';
+import { useAuth } from '../hooks/useAuth';
+import { isCurrentUserBanlistAdmin } from '../services/monthlyBanlistService';
 import { FaHandRock, FaFire, FaTrophy, FaMedal, FaThLarge, FaListOl, FaClock, FaChevronLeft, FaChevronRight, FaPlay, FaPause, FaRedo, FaStar } from 'react-icons/fa';
 import styles from './PremierTournamentPage.module.css';
 
@@ -10,9 +13,9 @@ type Tab = 'fixture' | 'standings' | 'matriz';
 
 const headToHeadWinner = (
   fixture: APIFixtureResponse | undefined,
-  nameA: string,
-  nameB: string,
-): string | null => {
+  idA: number,
+  idB: number,
+): number | null => {
   if (!fixture) return null;
   let aWins = 0;
   let bWins = 0;
@@ -20,15 +23,15 @@ const headToHeadWinner = (
     if (round.is_extra_round) continue;
     for (const match of round.matches) {
       if (!match.completed || match.score1 === null || match.score2 === null || match.score1 === match.score2) continue;
-      const players = [match.player1_name, match.player2_name];
-      if (!players.includes(nameA) || !players.includes(nameB)) continue;
-      const winner = match.score1 > match.score2 ? match.player1_name : match.player2_name;
-      if (winner === nameA) aWins += 1;
+      const players = [match.player1_id, match.player2_id];
+      if (!players.includes(idA) || !players.includes(idB)) continue;
+      const winner = match.score1 > match.score2 ? match.player1_id : match.player2_id;
+      if (winner === idA) aWins += 1;
       else bWins += 1;
     }
   }
-  if (aWins > bWins) return nameA;
-  if (bWins > aWins) return nameB;
+  if (aWins > bWins) return idA;
+  if (bWins > aWins) return idB;
   return null;
 };
 
@@ -50,7 +53,7 @@ const sortStandingsData = (data: APIStanding[], fixture?: APIFixtureResponse): A
     ) {
       j += 1;
     }
-    if (j - i === 2 && headToHeadWinner(fixture, sorted[i].name, sorted[i + 1].name) === sorted[i + 1].name) {
+    if (j - i === 2 && headToHeadWinner(fixture, sorted[i].id, sorted[i + 1].id) === sorted[i + 1].id) {
       [sorted[i], sorted[i + 1]] = [sorted[i + 1], sorted[i]];
     }
     i = j;
@@ -133,6 +136,39 @@ const applyPlayoffPositions = (
   return { standings: result.filter((p): p is APIStanding => p !== null), playoffWinners };
 };
 
+const ROUND_TIMER_SECONDS = 45 * 60;
+
+const pointsBeforeRound = (fixture: APIFixtureResponse, playerId: number, roundNumber: number): number => {
+  let points = 0;
+  fixture.rounds.forEach((round) => {
+    if (round.number >= roundNumber) return;
+    round.matches.forEach((match) => {
+      if (!match.completed || match.score1 === null || match.score2 === null) return;
+      const isPlayer1 = match.player1_id === playerId;
+      const isPlayer2 = match.player2_id === playerId;
+      if (!isPlayer1 && !isPlayer2) return;
+      const own = isPlayer1 ? match.score1 : match.score2;
+      const other = isPlayer1 ? match.score2 : match.score1;
+      if (own > other) points += 3;
+      else if (match.player2_id !== null && own === other) points += 1;
+    });
+  });
+  return points;
+};
+
+const playerInitial = (name: string): string => name.trim().charAt(0).toUpperCase() || '?';
+
+const companionRecordName = (format: 'PB' | 'FX' | 'PBFX' | undefined): string => {
+  if (format === 'PB') return 'Edición';
+  if (format === 'FX') return 'Ragnarok';
+  return 'Edición/Ragnarok';
+};
+
+const isLibreRound = (subformat: string | null | undefined): boolean => {
+  const sub = (subformat || '').toLowerCase();
+  return sub === 'libre' || sub === 'pbrl' || sub === 'bfrl' || sub.includes('libre');
+};
+
 const getSubformatDisplayName = (subformat: string | undefined | null): string => {
   if (!subformat) return '';
   const subformatMap: Record<string, string> = {
@@ -146,8 +182,9 @@ const getSubformatDisplayName = (subformat: string | undefined | null): string =
 
 const PremierTournamentPage = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
+  const { loading: activeLoading, tournament: activeTournament } = useActiveTournamentCard();
   const { tab: tabParam } = useParams<{ tab?: string }>();
-  const { withScrollPreservation } = usePreserveScroll();
   
   const [activeTab, setActiveTab] = useState<Tab>(() => {
     if (tabParam === 'standings') return 'standings';
@@ -174,11 +211,42 @@ const PremierTournamentPage = () => {
   // Modal and Carousel state
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [carouselRoundIndex, setCarouselRoundIndex] = useState(0);
-  const [timeRemaining45, setTimeRemaining45] = useState(40 * 60); // 40 minutes in seconds
+  const [timeRemaining45, setTimeRemaining45] = useState(ROUND_TIMER_SECONDS);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [avatars, setAvatars] = useState<Map<number, string>>(new Map());
+  const [reportMatchId, setReportMatchId] = useState<number | null>(null);
+  const [reportScore1, setReportScore1] = useState('');
+  const [reportScore2, setReportScore2] = useState('');
+  const [reportError, setReportError] = useState('');
   const [isCountdown45Running, setIsCountdown45Running] = useState(false);
   const [timeRemaining5, setTimeRemaining5] = useState(5 * 60); // 5 minutes in seconds
   const [isCountdown5Running, setIsCountdown5Running] = useState(false);
   const [firstCountdownCompleted, setFirstCountdownCompleted] = useState(false);
+
+  useEffect(() => {
+    if (!user) {
+      setIsAdmin(false);
+      return;
+    }
+    isCurrentUserBanlistAdmin(user.id).then(setIsAdmin).catch(() => setIsAdmin(false));
+  }, [user]);
+
+  useEffect(() => {
+    supabase
+      .from('profiles')
+      .select('premier_player_id, avatar_url')
+      .eq('is_public', true)
+      .not('premier_player_id', 'is', null)
+      .then(({ data }) => {
+        const next = new Map<number, string>();
+        (data ?? []).forEach((row) => {
+          const playerId = row.premier_player_id as number | null;
+          const avatar = row.avatar_url as string | null;
+          if (playerId && avatar) next.set(playerId, avatar);
+        });
+        setAvatars(next);
+      });
+  }, []);
 
   // Load fixture data
   useEffect(() => {
@@ -202,18 +270,16 @@ const PremierTournamentPage = () => {
   // Auto-refresh fixture data every 1 minute and 30 seconds
   useEffect(() => {
     const intervalId = setInterval(async () => {
-      await withScrollPreservation(async () => {
-        try {
-          const data = await fixtureAPI.getFixture();
-          setFixtureData(data);
-        } catch (err) {
-          console.error('Error refreshing fixture data:', err);
-        }
-      });
-    }, 90 * 1000); // 90 seconds in milliseconds
+      try {
+        const data = await fixtureAPI.getFixture();
+        setFixtureData(data);
+      } catch (err) {
+        console.error('Error refreshing fixture data:', err);
+      }
+    }, 90 * 1000);
 
     return () => clearInterval(intervalId);
-  }, [withScrollPreservation]);
+  }, []);
 
   // 45-minute countdown effect
   useEffect(() => {
@@ -262,18 +328,21 @@ const PremierTournamentPage = () => {
     }
   }, [activeTab, navigate]);
 
-  // Load standings data
+  // Load standings data. The 90s refresh only replaces table rows.
   useEffect(() => {
-    const fetchStandings = async () => {
+    let cancelled = false;
+
+    const fetchStandings = async (silent: boolean) => {
       try {
-        setStandingsLoading(true);
+        if (!silent) setStandingsLoading(true);
         const [data, fixture] = await Promise.all([
           fixtureAPI.getStandings(),
           fixtureAPI.getFixture(),
         ]);
+        if (cancelled) return;
         const extraRoundExists = fixture.rounds.some(r => r.is_extra_round);
         setHasExtraRound(extraRoundExists);
-        if (!fixtureData) setFixtureData(fixture);
+        setFixtureData(fixture);
         let sorted: APIStanding[];
         let winners: Set<string>;
         if (extraRoundExists) {
@@ -289,22 +358,27 @@ const PremierTournamentPage = () => {
         setLastUpdated(new Date());
         setStandingsError(null);
       } catch (err) {
-        setStandingsError('Error al cargar la tabla de posiciones. Por favor, intenta de nuevo.');
+        if (cancelled) return;
         console.error('Error fetching standings:', err);
+        if (!silent) {
+          setStandingsError('Error al cargar la tabla de posiciones. Por favor, intenta de nuevo.');
+        }
       } finally {
-        setStandingsLoading(false);
+        if (!cancelled && !silent) setStandingsLoading(false);
       }
     };
 
-    fetchStandings();
+    fetchStandings(false);
 
-    // Auto-refresh every 1 minute and 30 seconds (90000 ms)
     const intervalId = setInterval(() => {
-      withScrollPreservation(fetchStandings);
+      fetchStandings(true);
     }, 90 * 1000);
 
-    return () => clearInterval(intervalId);
-  }, [withScrollPreservation]);
+    return () => {
+      cancelled = true;
+      clearInterval(intervalId);
+    };
+  }, []);
 
 
 
@@ -322,8 +396,7 @@ const PremierTournamentPage = () => {
     if (!fixtureData) return record;
 
     fixtureData.rounds.forEach(round => {
-      const isLibre = round.subformat === 'PBRL' || round.subformat === 'BFRL';
-      const targetRecord = isLibre ? record.libre : record.edicion;
+      const targetRecord = isLibreRound(round.subformat) ? record.libre : record.edicion;
 
       round.matches.forEach(match => {
         if (match.score1 === null || match.score2 === null) return;
@@ -357,6 +430,91 @@ const PremierTournamentPage = () => {
     return null;
   };
 
+  const openReport = (match: APIMatchDetail) => {
+    setReportMatchId(match.id);
+    setReportScore1(match.score1 === null ? '' : String(match.score1));
+    setReportScore2(match.score2 === null ? '' : String(match.score2));
+    setReportError('');
+  };
+
+  const saveReport = async (event: FormEvent) => {
+    event.preventDefault();
+    if (reportMatchId === null) return;
+    const score1 = Number(reportScore1);
+    const score2 = Number(reportScore2);
+    if (reportScore1.trim() === '' || reportScore2.trim() === '' || Number.isNaN(score1) || Number.isNaN(score2)) {
+      setReportError('Ingresa los dos resultados.');
+      return;
+    }
+    try {
+      await tournamentAdminAPI.updateScore(reportMatchId, score1, score2);
+      const [fixture, data] = await Promise.all([
+        fixtureAPI.getFixture(),
+        fixtureAPI.getStandings(),
+      ]);
+      setFixtureData(fixture);
+      const extraRoundExists = fixture.rounds.some((round) => round.is_extra_round);
+      setHasExtraRound(extraRoundExists);
+      if (extraRoundExists) {
+        const result = applyPlayoffPositions(data, fixture);
+        setStandings(result.standings);
+        setPlayoffWinners(result.playoffWinners);
+      } else {
+        setStandings(sortStandingsData(data, fixture));
+        setPlayoffWinners(new Set());
+      }
+      setLastUpdated(new Date());
+      setReportMatchId(null);
+      setReportError('');
+    } catch (saveError) {
+      setReportError(saveError instanceof Error ? saveError.message : 'No se pudo guardar el resultado.');
+    }
+  };
+
+  const renderDuelist = (playerId: number, name: string, roundNumber: number, side: 'left' | 'right') => {
+    const avatar = avatars.get(playerId);
+    const points = fixtureData ? pointsBeforeRound(fixtureData, playerId, roundNumber) : 0;
+    return (
+      <div className={`${styles.duelist} ${side === 'left' ? styles.duelistLeft : styles.duelistRight}`}>
+        {side === 'right' && (
+          avatar
+            ? <img src={avatar} alt="" className={styles.duelistAvatar} />
+            : <span className={styles.duelistFallback}>{playerInitial(name)}</span>
+        )}
+        <span className={styles.duelistMeta}>
+          <span className={styles.duelistName}>{name}</span>
+          <span className={styles.enteringPoints}>{points} pts</span>
+        </span>
+        {side === 'left' && (
+          avatar
+            ? <img src={avatar} alt="" className={styles.duelistAvatar} />
+            : <span className={styles.duelistFallback}>{playerInitial(name)}</span>
+        )}
+      </div>
+    );
+  };
+
+  const renderReport = (match: APIMatchDetail) => {
+    if (!isAdmin || match.player2_id === null) return null;
+    if (reportMatchId !== match.id) {
+      return (
+        <button type="button" className={styles.reportButton} onClick={() => openReport(match)}>
+          Reportar
+        </button>
+      );
+    }
+    return (
+      <form className={styles.reportForm} onSubmit={saveReport}>
+        <input inputMode="numeric" aria-label={`Resultado de ${match.player1_name}`} value={reportScore1} onChange={(event) => setReportScore1(event.target.value)} />
+        <span>vs</span>
+        <input inputMode="numeric" aria-label={`Resultado de ${match.player2_name}`} value={reportScore2} onChange={(event) => setReportScore2(event.target.value)} />
+        <button type="submit" className={styles.reportButton}>Guardar</button>
+        <button type="button" className={styles.reportCancel} onClick={() => setReportMatchId(null)}>Cancelar</button>
+        {reportError && <span className={styles.reportError}>{reportError}</span>}
+      </form>
+    );
+  };
+
   const formatTime = (seconds: number): string => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -377,7 +535,7 @@ const PremierTournamentPage = () => {
 
   const handleReset45 = () => {
     setIsCountdown45Running(false);
-    setTimeRemaining45(40 * 60);
+    setTimeRemaining45(ROUND_TIMER_SECONDS);
     setFirstCountdownCompleted(false);
     setIsCountdown5Running(false);
     setTimeRemaining5(5 * 60);
@@ -395,7 +553,7 @@ const PremierTournamentPage = () => {
   const handleCompleteReset = () => {
     setIsCountdown45Running(false);
     setIsCountdown5Running(false);
-    setTimeRemaining45(40 * 60);
+    setTimeRemaining45(ROUND_TIMER_SECONDS);
     setTimeRemaining5(5 * 60);
     setFirstCountdownCompleted(false);
   };
@@ -405,18 +563,24 @@ const PremierTournamentPage = () => {
       {/* Title and Subtitle */}
       <div className={styles.titleSection}>
         <h1 className={styles.mainTitle}>
-          {tournamentConfig.name} {getTournamentMonthYear()}
+          {activeLoading
+            ? 'Cargando…'
+            : activeTournament
+              ? `${activeTournament.name} ${activeTournament.monthYear}`
+              : 'Aún no se ha creado un nuevo torneo.'}
         </h1>
-        <p className={styles.subtitle}>
-          {tournamentConfig.formats.map((format, index) => (
-            <span key={index}>
-              <Link to={format.link} style={{ color: 'var(--ocher)', textDecoration: 'none', fontWeight: 'bold' }} className={styles.formatLink}>
-                {format.name}
-              </Link>
-              {index < tournamentConfig.formats.length - 1 && ' • '}
-            </span>
-          ))}
-        </p>
+        {activeTournament && (
+          <p className={styles.subtitle}>
+            {activeTournament.formats.map((format, index) => (
+              <span key={format.link + format.name}>
+                <Link to={format.link} style={{ color: 'var(--ocher)', textDecoration: 'none', fontWeight: 'bold' }} className={styles.formatLink}>
+                  {format.name}
+                </Link>
+                {index < activeTournament.formats.length - 1 && ' • '}
+              </span>
+            ))}
+          </p>
+        )}
         <button
           className={styles.timerButton}
           onClick={() => {
@@ -519,11 +683,14 @@ const PremierTournamentPage = () => {
                       <tbody>
                         {currentRound.matches.map((match) => (
                           <tr key={match.id}>
-                            <td className={styles.playerName}>{match.player1_name}</td>
+                            <td>{renderDuelist(match.player1_id, match.player1_name, currentRound.number, 'left')}</td>
                             <td className={styles.score}>{match.score1 ?? '-'}</td>
-                            <td className={styles.vs}>vs</td>
+                            <td className={styles.vs}>
+                              <div>vs</div>
+                              {renderReport(match)}
+                            </td>
                             <td className={styles.score}>{match.score2 ?? '-'}</td>
-                            <td className={styles.playerName}>{match.player2_name}</td>
+                            <td>{match.player2_id === null ? match.player2_name : renderDuelist(match.player2_id, match.player2_name, currentRound.number, 'right')}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -571,7 +738,9 @@ const PremierTournamentPage = () => {
                       <th title="Rondas Perdidas">P</th>
                       <th title="Total Partidas Ganadas (partidas individuales ganadas)">TPG</th>
                       <th title="Record en rondas Racial Libre (Victorias-Empates-Derrotas)">Record Libre</th>
-                      <th title="Record en rondas Racial Edición/VCR (Victorias-Empates-Derrotas)">Record Edición/VCR</th>
+                      <th title={`Record en rondas Racial ${companionRecordName(activeTournament?.format)} (Victorias-Empates-Derrotas)`}>
+                        Record {companionRecordName(activeTournament?.format)}
+                      </th>
                       <th title="Matches Win Rate: (Partidas ganadas / Partidas jugadas) * 100">MWR%</th>
                       <th title="Rounds Win Rate: ((Rondas ganadas + Rondas empatadas * 0.5) / Rondas Jugadas) * 100">RWR%</th>
                       <th title="Puntos (3 por victoria, 1 por empate)">Pts</th>
@@ -670,7 +839,7 @@ const PremierTournamentPage = () => {
                   <li><strong>P:</strong> Rondas Perdidas</li>
                   <li><strong>TPG:</strong> Total Partidas Ganadas (partidas individuales ganadas)</li>
                   <li><strong>Record Libre:</strong> Record en rondas Racial Libre (Victorias-Empates-Derrotas)</li>
-                  <li><strong>Record Edición/VCR:</strong> Record en rondas Racial Edición/VCR (Victorias-Empates-Derrotas)</li>
+                  <li><strong>Record {companionRecordName(activeTournament?.format)}:</strong> Record en rondas Racial {companionRecordName(activeTournament?.format)} (Victorias-Empates-Derrotas)</li>
                   <li><strong>MWR%:</strong> Matches Win Rate ( (Partidas ganadas / Partidas jugadas) * 100 )</li>
                   <li><strong>RWR%:</strong> Rounds Win Rate ( ((Rondas ganadas + Rondas empatadas * 0.5) / Rondas Jugadas) * 100 )</li>
                   <li><strong>Pts:</strong> Puntos (3 por victoria, 1 por empate)</li>
@@ -736,13 +905,13 @@ const PremierTournamentPage = () => {
                             } else {
                               // Look through all rounds for matches
                               for (const round of fixtureData.rounds) {
-                                const match = round.matches.find(m => 
-                                  (m.player1_name === rowPlayer.name && m.player2_name === colPlayer.name) ||
-                                  (m.player1_name === colPlayer.name && m.player2_name === rowPlayer.name)
+                                const match = round.matches.find(m =>
+                                  (m.player1_id === rowPlayer.id && m.player2_id === colPlayer.id) ||
+                                  (m.player1_id === colPlayer.id && m.player2_id === rowPlayer.id)
                                 );
                                 
                                 if (match) {
-                                  if (match.player1_name === rowPlayer.name) {
+                                  if (match.player1_id === rowPlayer.id) {
                                     matchResult = `${match.score1 ?? '-'}-${match.score2 ?? '-'}`;
                                     if (match.score1 !== undefined && match.score1 !== null && match.score2 !== undefined && match.score2 !== null) {
                                       if (match.score1 > match.score2) resultClass = styles.matrixWin;
@@ -819,12 +988,17 @@ const PremierTournamentPage = () => {
                       </div>
                       <div className={styles.matchesList}>
                         {fixtureData.rounds[carouselRoundIndex].matches.map((match) => (
-                          <div key={match.id} className={styles.matchItem}>
-                            <span className={styles.playerName}>{match.player1_name}</span>
-                            <span className={styles.matchScore}>{match.score1 ?? '-'}</span>
-                            <span className={styles.vs}>vs</span>
-                            <span className={styles.matchScore}>{match.score2 ?? '-'}</span>
-                            <span className={styles.playerName}>{match.player2_name}</span>
+                          <div key={match.id} className={styles.matchBlock}>
+                            <div className={styles.matchItem}>
+                              {renderDuelist(match.player1_id, match.player1_name, fixtureData.rounds[carouselRoundIndex].number, 'left')}
+                              <span className={styles.matchScore}>{match.score1 ?? '-'}</span>
+                              <span className={styles.vs}>vs</span>
+                              <span className={styles.matchScore}>{match.score2 ?? '-'}</span>
+                              {match.player2_id === null
+                                ? <span className={styles.duelistName}>{match.player2_name}</span>
+                                : renderDuelist(match.player2_id, match.player2_name, fixtureData.rounds[carouselRoundIndex].number, 'right')}
+                            </div>
+                            {renderReport(match)}
                           </div>
                         ))}
                       </div>

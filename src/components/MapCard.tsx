@@ -1,20 +1,30 @@
 import { useState } from 'react';
-import { tournamentConfig, isTournamentPast } from '../config/tournamentConfig';
+import { useActiveTournamentCard } from '../hooks/useActiveTournamentCard';
 import { useAuth } from '../hooks/useAuth';
 import AuthModal from './auth/AuthModal';
 import styles from './MapCard.module.css';
 
 export default function MapCard() {
-  const isPast = isTournamentPast();
-  const hasLocation = tournamentConfig.location.name && tournamentConfig.location.address && tournamentConfig.location.googleMapsQuery;
-  const showMap = !isPast && hasLocation;
+  const { loading, tournament } = useActiveTournamentCard();
   const { user } = useAuth();
   const [authModalOpen, setAuthModalOpen] = useState(false);
-  
-  const mapUrl = hasLocation 
-    ? `https://www.google.com/maps/embed/v1/place?key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY || ''}&q=${tournamentConfig.location.googleMapsQuery}&zoom=16`
+  const hasLocation = Boolean(tournament?.locationAddress);
+  const mapsKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '';
+  const mapUrl = hasLocation
+    ? `https://www.google.com/maps/embed/v1/place?key=${mapsKey}&q=${encodeURIComponent(tournament?.locationAddress ?? '')}&zoom=16`
     : '';
-  
+
+  const placeName = loading
+    ? 'Cargando…'
+    : !tournament
+      ? 'Aún no se ha creado un nuevo torneo.'
+      : hasLocation
+        ? (user ? (tournament.locationName || tournament.locationAddress) : '???')
+        : 'TBD';
+  const address = !tournament || !hasLocation
+    ? (tournament ? 'Ubicación aún no definida' : '')
+    : (user ? tournament.locationAddress : '???');
+
   return (
     <div className={styles.card}>
       <div className={styles.header}>
@@ -24,30 +34,29 @@ export default function MapCard() {
         </div>
         <div className={styles.divider}></div>
         <div className={styles.locationInfo}>
-          <p className={styles.locationName}>
-            {showMap ? (user ? tournamentConfig.location.name : '???') : 'TBD'}
-          </p>
-          <p className={styles.address}>
-            {showMap ? (user ? tournamentConfig.location.address : '???') : 'Ubicación de Torneo No Definida'}
-          </p>
+          <p className={styles.locationName}>{placeName}</p>
+          <p className={styles.address}>{address}</p>
         </div>
       </div>
       <div className={styles.mapContainer}>
-        {showMap && user ? (
+        {hasLocation && user ? (
           <iframe
             src={mapUrl}
             style={{ border: 0 }}
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
+            title="Ubicación del torneo"
           ></iframe>
-        ) : !showMap ? (
+        ) : !hasLocation ? (
           <div className={styles.noMapMessage}>
-            <p className={styles.noMapText}>Ubicación de Torneo No Definida</p>
+            <p className={styles.noMapText}>
+              {tournament ? 'Ubicación aún no definida' : 'Aún no se ha creado un nuevo torneo.'}
+            </p>
           </div>
         ) : null}
       </div>
-      {showMap && !user && (
+      {hasLocation && !user && (
         <div className={styles.authOverlay}>
           <p className={styles.authOverlayText}>Inicia sesión para ver la ubicación del torneo</p>
           <button className={styles.authOverlayButton} onClick={() => setAuthModalOpen(true)}>

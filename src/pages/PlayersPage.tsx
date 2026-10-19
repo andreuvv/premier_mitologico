@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { fixtureAPI, APIPlayer } from '../services/fixtureAPI';
-import { API_BASE_URL } from '../config/api';
+import { tournamentAPI } from '../services/tournamentAPI';
 import { loadProfileByPremierPlayerId } from '../hooks/useUserProfile';
 import { FaUser, FaChevronDown, FaChartPie, FaTrophy, FaHistory, FaIdCard } from 'react-icons/fa';
 import styles from './PlayersPage.module.css';
@@ -94,7 +94,7 @@ const PlayersPage = () => {
       if (player) {
         setSelectedPlayer(player);
         setSidebarOpen(false);
-        loadPlayerTournamentData(player.id, player.name);
+        loadPlayerTournamentData(player.id);
       }
     } else if (!playerName) {
       // Clear selection when no playerName in URL
@@ -153,15 +153,14 @@ const PlayersPage = () => {
     const pbRaces: string[] = [];
     const bfRaces: string[] = [];
 
-    if (!tournament.format) {
-      // Mixed tournament
+    if (!tournament.format || tournament.format === 'PBFX') {
       if (tournament.races?.race_pb) pbRaces.push(tournament.races.race_pb);
       if (tournament.races?.race_bf) bfRaces.push(tournament.races.race_bf);
     } else if (tournament.format === 'PB') {
       // PB-only tournament: both subformat races count as PB
       if (tournament.races?.race_libre) pbRaces.push(tournament.races.race_libre);
       if (tournament.races?.race_edition_vcr) pbRaces.push(tournament.races.race_edition_vcr);
-    } else if (tournament.format === 'BF') {
+    } else if (tournament.format === 'BF' || tournament.format === 'FX') {
       // BF-only tournament: both subformat races count as BF
       if (tournament.races?.race_libre) bfRaces.push(tournament.races.race_libre);
       if (tournament.races?.race_edition_vcr) bfRaces.push(tournament.races.race_edition_vcr);
@@ -392,17 +391,17 @@ const PlayersPage = () => {
   const getFormatLabels = (tournament: PlayerTournamentData) => {
     const format = tournament.format;
     const sub = (tournament.subformat || '').toLowerCase();
-    const isFormatSpecific = !!format; // PB or BF only
+    const isFormatSpecific = format === 'PB' || format === 'FX' || format === 'BF';
 
     const isLibre = ['libre', 'pbrl', 'bfrl'].some(v => sub === v) || sub.includes('libre');
-    const isEdicion = ['pbre', 'bfvcr', 'vcr', 'edición', 'edicion'].some(v => sub === v)
-                   || sub.includes('vcr') || sub.includes('edici');
+    const isEdicion = ['pbre', 'bfvcr', 'vcr', 'edición', 'edicion', 'ragnarok'].some(v => sub === v)
+                   || sub.includes('vcr') || sub.includes('edici') || sub.includes('ragnarok');
     const isBoth = !sub || sub === 'both' || (isLibre && isEdicion);
 
-    const showPB = !format || format === 'PB';
-    const showBF = !format || format === 'BF';
+    const showPB = !format || format === 'PB' || format === 'PBFX';
+    const showBF = !format || format === 'FX' || format === 'BF' || format === 'PBFX';
 
-    const formatName = format === 'PB' ? 'PB' : format === 'BF' ? 'FX' : '';
+    const formatName = format === 'PB' ? 'PB' : 'FX';
     const edicionLabel = format === 'BF' ? secondBfSubformatName(tournament) : 'Edición';
     // Build race rows: each has a label and a value
     const rows: { label: string; value: string }[] = [];
@@ -450,12 +449,12 @@ const PlayersPage = () => {
     const sub = (tournament.subformat || '').toLowerCase();
 
     const isLibre = ['libre', 'pbrl', 'bfrl'].some(v => sub === v) || sub.includes('libre');
-    const isEdicion = ['pbre', 'bfvcr', 'vcr', 'edición', 'edicion'].some(v => sub === v)
-                   || sub.includes('vcr') || sub.includes('edici');
+    const isEdicion = ['pbre', 'bfvcr', 'vcr', 'edición', 'edicion', 'ragnarok'].some(v => sub === v)
+                   || sub.includes('vcr') || sub.includes('edici') || sub.includes('ragnarok');
     const isBoth = !sub || sub === 'both' || (isLibre && isEdicion);
 
-    const showPB = !format || format === 'PB';
-    const showBF = !format || format === 'BF';
+    const showPB = !format || format === 'PB' || format === 'PBFX';
+    const showBF = !format || format === 'FX' || format === 'BF' || format === 'PBFX';
 
     const badges: { label: string; type: 'pb' | 'fx' }[] = [];
 
@@ -480,18 +479,10 @@ const PlayersPage = () => {
     // The useEffect will handle loading the player data
   };
 
-  const loadPlayerTournamentData = async (playerId: number, playerName: string) => {
+  const loadPlayerTournamentData = async (playerId: number) => {
     try {
       setDataLoading(true);
-      const response = await fetch(
-        `${API_BASE_URL}/players/${playerId}/tournaments?name=${encodeURIComponent(playerName)}`
-      );
-      
-      if (!response.ok) {
-        throw new Error('Failed to fetch tournament data');
-      }
-
-      const data = await response.json();
+      const data = await tournamentAPI.getPlayerHistory(playerId);
       
       // Transform API response to PlayerTournamentData format
       const tournamentData: PlayerTournamentData[] = data.map((item: any) => ({
