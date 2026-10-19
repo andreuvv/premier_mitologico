@@ -349,17 +349,74 @@
 }
 
 .match {
-  grid-template-columns: minmax(0, 1fr) 72px 72px auto;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.scoreControls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.65rem;
+  margin-left: auto;
+}
+
+.scoreCounter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.25rem 0.35rem 0.25rem 0.7rem;
+  background: #3a332c;
+  border-radius: 10px;
+}
+
+.scoreWho {
+  max-width: 7.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 0.25rem;
+  color: var(--beige);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.scoreValue {
+  min-width: 1.7rem;
+  text-align: center;
+  color: var(--beige);
+  font-size: 1.55rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.scoreStep {
+  width: 2.15rem;
+  height: 2.15rem;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: var(--ocher);
+  color: #1a140c;
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.scoreStep:disabled {
+  background: #2a241f;
+  color: rgba(234, 221, 207, 0.28);
+  cursor: default;
 }
 
 .raceRow {
   grid-template-columns: minmax(120px, 160px) 1fr 1fr auto;
-}
-
-.score {
-  width: 72px;
-  text-align: center;
 }
 
 .previewBadgePb,
@@ -435,12 +492,13 @@
     font-size: 2rem;
   }
 
-  .match,
   .raceRow {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
-  .match > span:first-child {
-    grid-column: 1 / -1;
+  .scoreControls {
+    width: 100%;
+    margin-left: 0;
+    justify-content: flex-start;
   }
 }

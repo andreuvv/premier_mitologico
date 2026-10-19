@@ -14,6 +14,12 @@ import styles from './TournamentAdminPage.module.css';
 
 type Tab = 'crear' | 'fixture' | 'marcadores' | 'razas' | 'archivo';
 
+const clampScore = (value: number | null | undefined): number => {
+  const parsed = Number(value ?? 0);
+  if (!Number.isFinite(parsed)) return 0;
+  return Math.min(2, Math.max(0, Math.trunc(parsed)));
+};
+
 const MONTHS = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 const TABS: Array<{ id: Tab; label: string }> = [
   { id: 'crear', label: 'Crear' },
@@ -103,8 +109,8 @@ const TournamentAdminPage = () => {
     liveFixture.rounds.forEach((round) => {
       round.matches.forEach((match) => {
         nextScores[match.id] = {
-          score1: match.score1 === null ? '' : String(match.score1),
-          score2: match.score2 === null ? '' : String(match.score2),
+          score1: String(clampScore(match.score1)),
+          score2: String(clampScore(match.score2)),
         };
       });
     });
@@ -169,6 +175,14 @@ const TournamentAdminPage = () => {
   const regularRoundCount = fixture.rounds.filter((round) => !round.is_extra_round).length;
   const hasFinalRound = fixture.rounds.some((round) => round.is_extra_round);
   const canGenerateFinal = pairingMode === 'progressive' && includeExtra && regularRoundCount >= roundCount && !hasFinalRound;
+  const changeScore = (matchId: number, side: 'score1' | 'score2', delta: number) => {
+    setScores((current) => {
+      const existing = current[matchId] ?? { score1: '0', score2: '0' };
+      const next = clampScore(Number(existing[side]) + delta);
+      return { ...current, [matchId]: { ...existing, [side]: String(next) } };
+    });
+  };
+
   const choosePairingMode = (mode: 'fixed' | 'progressive') => {
     if (mode === pairingMode) return;
     setPairingMode(mode);
@@ -572,42 +586,53 @@ const TournamentAdminPage = () => {
                 <span className={round.format === 'FX' ? styles.previewBadgeFx : styles.previewBadgePb}>{round.format}</span>
                 {round.subformat && <span className={styles.previewSubformat}>{round.subformat}</span>}
               </div>
-              {round.matches.map((match) => (
-                <div key={match.id} className={styles.match}>
-                  <span>{match.player1_name} vs {match.player2_name}</span>
-                  <input
-                    className={styles.score}
-                    inputMode="numeric"
-                    value={scores[match.id]?.score1 ?? ''}
-                    onChange={(event) => setScores((current) => ({
-                      ...current,
-                      [match.id]: { score1: event.target.value, score2: current[match.id]?.score2 ?? '' },
-                    }))}
-                  />
-                  <input
-                    className={styles.score}
-                    inputMode="numeric"
-                    value={scores[match.id]?.score2 ?? ''}
-                    onChange={(event) => setScores((current) => ({
-                      ...current,
-                      [match.id]: { score1: current[match.id]?.score1 ?? '', score2: event.target.value },
-                    }))}
-                  />
-                  <button
-                    className={styles.secondary}
-                    onClick={() => run(
-                      () => tournamentAdminAPI.updateScore(
-                        match.id,
-                        Number(scores[match.id]?.score1 ?? 0),
-                        Number(scores[match.id]?.score2 ?? 0),
-                      ),
-                      'Marcador guardado',
-                    )}
-                  >
-                    Guardar
-                  </button>
-                </div>
-              ))}
+              {round.matches.map((match) => {
+                const score1 = clampScore(Number(scores[match.id]?.score1 ?? 0));
+                const score2 = clampScore(Number(scores[match.id]?.score2 ?? 0));
+                const counter = (side: 'score1' | 'score2', playerName: string, value: number) => (
+                  <div className={styles.scoreCounter} aria-label={`Marcador de ${playerName}`}>
+                    <span className={styles.scoreWho}>{playerName}</span>
+                    <button
+                      type="button"
+                      className={styles.scoreStep}
+                      disabled={value <= 0}
+                      aria-label={`Bajar marcador de ${playerName}`}
+                      onClick={() => changeScore(match.id, side, -1)}
+                    >
+                      −
+                    </button>
+                    <span className={styles.scoreValue}>{value}</span>
+                    <button
+                      type="button"
+                      className={styles.scoreStep}
+                      disabled={value >= 2}
+                      aria-label={`Subir marcador de ${playerName}`}
+                      onClick={() => changeScore(match.id, side, 1)}
+                    >
+                      +
+                    </button>
+                  </div>
+                );
+                return (
+                  <div key={match.id} className={styles.match}>
+                    <span>{match.player1_name} vs {match.player2_name}</span>
+                    <div className={styles.scoreControls}>
+                      {counter('score1', match.player1_name, score1)}
+                      {match.player2_id !== null && counter('score2', match.player2_name, score2)}
+                      <button
+                        type="button"
+                        className={styles.secondary}
+                        onClick={() => run(
+                          () => tournamentAdminAPI.updateScore(match.id, score1, score2),
+                          'Marcador guardado',
+                        )}
+                      >
+                        Guardar
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           ))}
         </section>
