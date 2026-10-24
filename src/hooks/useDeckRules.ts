@@ -13,6 +13,8 @@ export { normalizeName } from '../utils/cardGrouping';
 export type DeckSubformat = 'pb-edicion' | 'pb-libre' | 'fx-vcr' | 'fx-libre' | 'fx-ragnarok';
 
 const DRACULA_EDITION_SLUG = 'dracula-inferno';
+/** Cartas de esta edición se pueden usar en cualquier edición de Racial Edición. */
+const OROS_INICIALES_TEAMS_SLUG = 'oros-iniciales-teams';
 const VCR_FREQUENCIES = new Set(['VASALLO', 'CORTESANO', 'REAL', 'ORO']);
 const MIN_ALIADOS = 16;
 const MIN_TOTEMS = 16;
@@ -277,13 +279,15 @@ export function useDeckRules({
       if (card.edition?.slug === DRACULA_EDITION_SLUG) {
         if (!nonDraculaCardKeys?.has(cardKey(card.name, card.type))) return false;
       }
-      // If an edition is locked, only show cards from that edition (+ Drácula reprints)
+      // If an edition is locked, only show cards from that edition
+      // (+ Drácula reprints and Oros Iniciales Teams, valid in any edition)
       if (lockedEdition) {
         const isLockedEdition = card.edition?.slug === lockedEdition;
         const isDraculaReprint =
           card.edition?.slug === DRACULA_EDITION_SLUG &&
           nonDraculaCardKeys?.has(cardKey(card.name, card.type));
-        if (!isLockedEdition && !isDraculaReprint) return false;
+        const isOrosInicialesTeams = card.edition?.slug === OROS_INICIALES_TEAMS_SLUG;
+        if (!isLockedEdition && !isDraculaReprint && !isOrosInicialesTeams) return false;
       }
     }
 
@@ -436,7 +440,8 @@ export function useDeckRules({
         const isDraculaReprint =
           card.edition?.slug === DRACULA_EDITION_SLUG &&
           nonDraculaCardKeys?.has(cardKey(card.name, card.type));
-        if (card.edition?.slug !== lockedEdition && !isDraculaReprint) {
+        const isOrosInicialesTeams = card.edition?.slug === OROS_INICIALES_TEAMS_SLUG;
+        if (card.edition?.slug !== lockedEdition && !isDraculaReprint && !isOrosInicialesTeams) {
           errs.push(`"${card.name}" no es de la edición seleccionada`);
         }
       }

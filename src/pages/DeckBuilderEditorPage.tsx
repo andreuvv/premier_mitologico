@@ -708,13 +708,19 @@ export default function DeckBuilderEditorPage() {
     subformat === 'fx-ragnarok' ? 'Racial Ragnarok' :
     'Racial Libre';
 
-  // Edition options for pb-edicion (derived from loaded cards, excluding Drácula)
+  // Edition options for pb-edicion. Drácula is reprints-only, and
+  // Oros Iniciales Teams is usable in every edition, so neither is a lockable edition.
   const editionOptions = useMemo(() => {
     if (subformat !== 'pb-edicion') return [];
     const seen = new Map<string, { slug: string; name: string }>();
     for (const c of allCards) {
       const slug = c.edition?.slug;
-      if (slug && slug !== 'dracula-inferno' && !seen.has(slug)) {
+      if (
+        slug &&
+        slug !== 'dracula-inferno' &&
+        slug !== 'oros-iniciales-teams' &&
+        !seen.has(slug)
+      ) {
         seen.set(slug, { slug, name: c.edition.name });
       }
     }
