@@ -7573,111 +7573,6 @@
           }
         },
         {
-          "id": 13130,
-          "slug": "seosan-daesa",
-          "name": "Seosan Daesa",
-          "gameId": 3,
-          "collectorCode": "SEN-378 C",
-          "effect": "Furia. Gana 2 de Fuerza por cada Aliado con Furia que controles.",
-          "flavor": "",
-          "type": "ALIADO",
-          "cost": 2,
-          "attack": 0,
-          "imageUrl": "https://codicetcg.b-cdn.net/FX/1017_SEADN/1017_378_seosan_daesa.webp",
-          "artist": "",
-          "frequency": "CORTESANO",
-          "race": [
-            "BARBARO"
-          ],
-          "edition": {
-            "name": "⛩️ Sengoku",
-            "slug": "sengoku",
-            "__typename": "Edition"
-          },
-          "game": {
-            "name": "🔥 Furia Extendido",
-            "slug": "furia-extendido",
-            "__typename": "Game"
-          },
-          "__typename": "Card",
-          "product": {
-            "productName": "Sengoku",
-            "productCode": "SEN",
-            "productType": "Edición",
-            "sortOrder": 41
-          }
-        },
-        {
-          "id": 13129,
-          "slug": "benzaiten",
-          "name": "Benzaiten",
-          "gameId": 3,
-          "collectorCode": "SEN-386 C",
-          "effect": "Furia. Cuando haga daño, puedes Agrupar un Oro. Anular tus Aliados de coste 3 o más cuesta un Oro adicional.",
-          "flavor": "",
-          "type": "ALIADO",
-          "cost": 2,
-          "attack": 3,
-          "imageUrl": "https://codicetcg.b-cdn.net/FX/1017_SEADN/1017_386_benzaiten.webp",
-          "artist": "",
-          "frequency": "CORTESANO",
-          "race": [
-            "ETERNO"
-          ],
-          "edition": {
-            "name": "⛩️ Sengoku",
-            "slug": "sengoku",
-            "__typename": "Edition"
-          },
-          "game": {
-            "name": "🔥 Furia Extendido",
-            "slug": "furia-extendido",
-            "__typename": "Game"
-          },
-          "__typename": "Card",
-          "product": {
-            "productName": "Sengoku",
-            "productCode": "SEN",
-            "productType": "Edición",
-            "sortOrder": 41
-          }
-        },
-        {
-          "id": 13128,
-          "slug": "inari",
-          "name": "Inari",
-          "gameId": 3,
-          "collectorCode": "SEN-406 V",
-          "effect": "Tu oponente juega mostrando la primera carta de su Castillo. Si esa carta es un Oro, este Aliado gana Furia y no puede salir del juego.",
-          "flavor": "",
-          "type": "ALIADO",
-          "cost": 2,
-          "attack": 3,
-          "imageUrl": "https://codicetcg.b-cdn.net/FX/1017_SEADN/1017_406_inari.webp",
-          "artist": "",
-          "frequency": "VASALLO",
-          "race": [
-            "ANCESTRAL"
-          ],
-          "edition": {
-            "name": "⛩️ Sengoku",
-            "slug": "sengoku",
-            "__typename": "Edition"
-          },
-          "game": {
-            "name": "🔥 Furia Extendido",
-            "slug": "furia-extendido",
-            "__typename": "Game"
-          },
-          "__typename": "Card",
-          "product": {
-            "productName": "Sengoku",
-            "productCode": "SEN",
-            "productType": "Edición",
-            "sortOrder": 41
-          }
-        },
-        {
           "id": 13127,
           "slug": "gema-de-cronos",
           "name": "Gema de Cronos",
@@ -138132,7 +138027,7 @@
           "isNewest": false
         }
       ],
-      "total": 4009,
+      "total": 4006,
       "pages": 1,
       "__typename": "CardCatalog"
     }
