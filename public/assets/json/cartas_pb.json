@@ -3,6 +3,3581 @@
     "CardCatalog": {
       "cards": [
         {
+          "id": 55725,
+          "slug": "joya-de-dragon",
+          "name": "Joya de Dragón",
+          "gameId": 1,
+          "collectorCode": "LPB4-334/320",
+          "effect": "<p>En respuesta a tu Fase de Agrupación, si este Oro está en tu Cementerio y controlas uno o más Aliados Draco, puedes botar 2 cartas de tu Mazo Castillo para poner este Oro en tu Mano. Sólo puedes disparar una Joya de Dragón por turno.</p>",
+          "flavor": "<p><em>No es una piedra cualquiera, es fuego inmortal cristalizado, en cuyo interior duerme la memoria de un dragón.</em></p>",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Joya-de-dragon-promocional-1793159511385.webp",
+          "artist": "Snoop",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 458,
+            "name": "Juego Organizado Octubre-Noviembre 2026",
+            "sortOrder": 78,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55724,
+          "slug": "vino-de-la-eternidad",
+          "name": "Vino de la Eternidad",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>En tu Fase de Vigilia, una vez por turno, puedes desterrar este Oro de tu Reserva y pagar 2 oros para poner un Talismán de coste 3 o menos de tu Cementerio en tu Mano.</p>",
+          "flavor": "<p><i></i></p>",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Vino-de-la-eternidad-promocional-1793159515747.webp",
+          "artist": "Kabiaz",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 458,
+            "name": "Juego Organizado Octubre-Noviembre 2026",
+            "sortOrder": 78,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55723,
+          "slug": "estrella-de-belen",
+          "name": "Estrella de Belen",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>Cuando entra en juego, puedes mostrar las 3 primeras cartas de tu Mazo Castillo. Si entra esas cartas hay un Oro, puedes ponerlo en tu Mano. Luego, baraja las demás cartas en tu Mazo Castillo.</p>",
+          "flavor": "<p>Brilló en los cielos como señal divina, Guiando a los Magos hasta el Nacimiento del Salvador. Símbolo de Esperanza, revelación y promesa cumplica en la noche sagrada.</p>",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Estrella-de-belen-promocional-1793159519519.webp",
+          "artist": "Sara Contreras",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 458,
+            "name": "Juego Organizado Octubre-Noviembre 2026",
+            "sortOrder": 78,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55722,
+          "slug": "dione",
+          "name": "Dione",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>Cuando entra en juego, puedes desterrar una carta de tu Cementerio para robar 1 carta.</p>",
+          "flavor": "<p>Antigua Diosa del oráculo, el vino del saber y la humedad primordial, habitó en Dodona. Su figura encarna a Sabiduría Arcaica y el poder femenino preolímpico.</p>",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Dione-promocional-1793159523684.webp",
+          "artist": "Kabiaz",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "TITAN"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 458,
+            "name": "Juego Organizado Octubre-Noviembre 2026",
+            "sortOrder": 78,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55721,
+          "slug": "comus",
+          "name": "Comus",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>Cuando entra en juego, puedes poner un Aliado o Tótem de coste 3 o menos de tu Cementerio en la parte superior de tu Mazo Castillo.</p>",
+          "flavor": "<p>Gran Dios del banquete y el Desenfreno, encarna la embriaguez festiva y la noche sin límites. Figura de Máscaras, placer y caos en el Teatro de la vida.</p>",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Comus-promocional-1793159526645.webp",
+          "artist": "Kabiaz",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "OLIMPICO"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 458,
+            "name": "Juego Organizado Octubre-Noviembre 2026",
+            "sortOrder": 78,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55720,
+          "slug": "epicuro-de-samos",
+          "name": "Epicuro de Samos",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>Sólo puedes tener un Epicuro de Samos en juego. En tu Fase de Vigilia, una vez por turno, puedes subir un Aliado que controles a la Mano de su dueño para que tu oponente bote 3 cartas.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Epicuro-de-samos-promocional-1793159532436.webp",
+          "artist": "Kabiaz",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "HEROE"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 458,
+            "name": "Juego Organizado Octubre-Noviembre 2026",
+            "sortOrder": 78,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55719,
+          "slug": "baltasar",
+          "name": "Baltasar",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>Solo puedes tener un Baltasar en juego. Imbloqueable. Una vez por turno, puedes desterrar un Aliado de raza Faerie que controles para cancelar la habilidad de una carta oponente en juego que no sea Oro.</p>",
+          "flavor": "<p>El más marcial de los reyes magos trajo mirra al Niño, presagio de sacrificio. Representa a Africa, la dignidad ancestral y la universalidad del mensaje de redención.</p>",
+          "type": "ALIADO",
+          "cost": 4,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Baltasar-promocional-1793159535640.webp",
+          "artist": "Sara Contreras",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "FAERIE"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 458,
+            "name": "Juego Organizado Octubre-Noviembre 2026",
+            "sortOrder": 78,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55718,
+          "slug": "gaspar",
+          "name": "Gaspar",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>En tu Fase de Vigilia, una vez por turno, puedes elegir entre barajar una carta de tu Cementerio en tu Mazo Castillo o 2 Aliados de raza Dragón de tu Cementerio en tu Mazo Castillo.</p>",
+          "flavor": "<p>El Gran Mago Ofreció incienso al Niño como símbolo de divinidad. Viajero devoto, representó la espiritualidad y la esperanza de los pueblos del Este.</p>",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Gaspar-promocional-1793159541687.webp",
+          "artist": "Sara Contreras",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 458,
+            "name": "Juego Organizado Octubre-Noviembre 2026",
+            "sortOrder": 78,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55717,
+          "slug": "melchor",
+          "name": "Melchor",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>Cuando entra en juego, puedes buscar un Arma en tu Mazo Castillo y ponerla en tu Cementerio. Si lo haces, puedes robar 1 carta.</p>",
+          "flavor": "<p><em>El Rey Mago que representa a Europa lleva como obsequio oro, reconociendo la realeza y divinidad del recién nacido.</em></p>",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Melchor-promocional-1793159544550.webp",
+          "artist": "Sara Contreras",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "CABALLERO"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 458,
+            "name": "Juego Organizado Octubre-Noviembre 2026",
+            "sortOrder": 78,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55716,
+          "slug": "behemot",
+          "name": "Behemot",
+          "gameId": 1,
+          "collectorCode": "CRPB26-168-144",
+          "effect": "Cuando entra en juego, tus Aliados de raza Titán ganan 1 a la fuerza permanentemente. Cuando entra en juego, todos tus Aliados deben ser bloqueados por los Aliados oponentes este turno.",
+          "flavor": "<p><i> Titán terrestre, emerge de las profundidades con una fuerza descomunal. Sus pisadas sacuden montañas y ríos. Encarna la furia primordial. Su rugido estremece la tierra, recordando el poder indomable de la naturaleza.</i></p>",
+          "type": "ALIADO",
+          "cost": 4,
+          "attack": 4,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/16-Dracula-Inferno/cartas//Behemot-real-1793158408480.webp",
+          "artist": "Javier Bahamonde",
+          "frequency": "REAL",
+          "race": [
+            "TITAN"
+          ],
+          "edition": {
+            "name": "🧛 Drácula e Inferno",
+            "slug": "dracula-inferno",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55715,
+          "slug": "hipogrifo",
+          "name": "Hipogrifo",
+          "gameId": 1,
+          "collectorCode": "CRPB26-167-144",
+          "effect": "<p>Cuando Hipogrifo entra en juego, puedes buscar un Talismán en tu Cementerio y ponerlo en tu mano. </p>",
+          "flavor": "<p><em>Muchos hombres de ciencia creen que no existe, ¿qué saben ellos de magia y fantasía?.</em></p>",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 1,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Hipogrifo-real-1793158411320.webp",
+          "artist": "Andrés Silva",
+          "frequency": "REAL",
+          "race": [
+            "TITAN"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55714,
+          "slug": "minotauro-colosal",
+          "name": "Minotauro Colosal",
+          "gameId": 1,
+          "collectorCode": "CRPB26-166-144",
+          "effect": "Indesterrable. Cuando entra en juego, destierra una carta oponente que no sea Oro de coste igual o menor a la cantidad de cartas Minotauro que controles. Luego, puedes barajar hasta una carta de tu Cementerio en tu Mazo Castillo como coste tenga la carta desterrada.",
+          "flavor": "Nacido del furor de un dios y la cólera de la tierra, se alza entre los picos del Atlas como un titán encadenado al horizonte. Su aliento derrumba cumbres; sus pasos abren abismos.",
+          "type": "ALIADO",
+          "cost": 4,
+          "attack": 4,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Minotauro-colosal-real-1793158414888.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "TITAN"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55713,
+          "slug": "melinoe",
+          "name": "Melinoe",
+          "gameId": 1,
+          "collectorCode": "CRPB26-165-144",
+          "effect": "Cuando entra en juego, puedes botar dos cartas para buscar un Aliado de coste 3 o más en tu Mazo Castillo y ponerlo en tu mano.",
+          "flavor": "<p><i>Musa de la oscuridad. Su presencia evoca pesadillas y locura. Su toque, frío como la muerte, arrastra almas incautas a un abismo eterno de terror y desesperación.</i></p>",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/16-Dracula-Inferno/cartas//Melinoe-real-1793158417878.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "OLIMPICO"
+          ],
+          "edition": {
+            "name": "🧛 Drácula e Inferno",
+            "slug": "dracula-inferno",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55712,
+          "slug": "nayade",
+          "name": "Nayade",
+          "gameId": 1,
+          "collectorCode": "CRPB26-164-144",
+          "effect": "Imbloqueable. Cuando entra en juego, puedes subir un Aliado de coste 1 de tu Cementerio a tu Mano.",
+          "flavor": "Habitante de aguas eternas, su canto susurra secretos olvidados por los hombres… y maldiciones para quienes la perturban.",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Nayade-real-1793158423339.webp",
+          "artist": "Ikkitouch",
+          "frequency": "REAL",
+          "race": [
+            "OLIMPICO"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55711,
+          "slug": "jano",
+          "name": "Jano",
+          "gameId": 1,
+          "collectorCode": "CRPB26-163-144",
+          "effect": "<p>En tu Fase de Vigilia, una vez por turno, genera 1 Oro para jugar Aliados o Tótem. Cuando sale del juego, puedes subir una carta oponente en juego que no sea Oro a la Mano de su dueño.</p>",
+          "flavor": "<p>Dos son sus rostros, de ellos dependemos los hombres.</p>",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Jano-real-1793158425823.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "OLIMPICO"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55710,
+          "slug": "orfeo",
+          "name": "Orfeo",
+          "gameId": 1,
+          "collectorCode": "CRPB26-162-144",
+          "effect": "<p>Única. Imbloqueable. Una vez por turno, puedes nombrar una carta. Luego, busca en el Mazo Castillo oponente una copia de la carta nombrada y destiérrala.</p>",
+          "flavor": "<p>Su canto hará llorar a las terribles Furias y acallará a las sirenas.</p>",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Orfeo-real-1793158432368.webp",
+          "artist": "Abbay",
+          "frequency": "REAL",
+          "unique": true,
+          "race": [
+            "HEROE"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55709,
+          "slug": "rey-midas",
+          "name": "Rey Midas",
+          "gameId": 1,
+          "collectorCode": "CRPB26-161-144",
+          "effect": "Cuando un Oro entra en juego bajo tu control, puedes eligir que otro Aliado en juego gane 1 a la fuerza permanentemente. Cuando salga del juego, puedes buscar un Oro en tu Cementerio y ponerlo en tu Mano.",
+          "flavor": "Midas pidió oro y recibió condena. Su toque, milagro y castigo, convirtió en metal el pan y el vino, el beso y a su hija. Ahora, solo en su dorada prisión, llora lágrimas de oro frío.",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Rey-midas-real-1793158436336.webp",
+          "artist": "Alejandro Catalan",
+          "frequency": "REAL",
+          "race": [
+            "HEROE"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55708,
+          "slug": "orestes",
+          "name": "Orestes",
+          "gameId": 1,
+          "collectorCode": "CRPB26-160-144",
+          "effect": "<p>Cuando entra en juego, si controlas menos Aliados que tu oponente, puede atacar cuando entra en juego. Cada vez que haga daño de combate, sube una carta que no sea Talismán de tu Cementerio a tu Mano.</p>",
+          "flavor": "<p>Hijo de sangre y destino, alzó la espada contra su madre para vengar a su padre. No halló paz, solo a las Furias. Errante y roto, fue rey de su propio tormento.</p>",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Orestes-real-1793158439762.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "HEROE"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55707,
+          "slug": "fenex",
+          "name": "Fenex",
+          "gameId": 1,
+          "collectorCode": "CRPB26-159-144",
+          "effect": "Cuando entra o sale del juego, tu oponente bota 1 carta.  En tu Fase de Vigilia, una vez por turno y si este Aliado está en tu Cementerio, puedes pagar 1 Oro para subirlo a tu mano.",
+          "flavor": "<p><i>Con alas rasgadas y ojos que destilan odio, devora la esperanza. Su risa, eco de tormento, presagia el fin, desatando una oscuridad que consume almas y destroza la realidad.</i></p>",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/16-Dracula-Inferno/cartas//Fenex-real-1793158444067.webp",
+          "artist": "Juan Vasquez",
+          "frequency": "REAL",
+          "race": [
+            "FAERIE"
+          ],
+          "edition": {
+            "name": "🧛 Drácula e Inferno",
+            "slug": "dracula-inferno",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55706,
+          "slug": "archimago",
+          "name": "Archimago",
+          "gameId": 1,
+          "collectorCode": "CRPB26-158-144",
+          "effect": "Cuando entra en juego, puedes jugar un Talismán de coste 3 o menos de tu Cementerio sin pagar su coste. Luego, destierra ese Talismán.",
+          "flavor": "Alzó su bastón más allá de la carne. Conoció los nombres del viento y las lágrimas del tiempo, pero en el eco final olvidó su rostro… y su alma.",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Archimago-real-1793158447810.webp",
+          "artist": "Francisco Somalo",
+          "frequency": "REAL",
+          "race": [
+            "FAERIE"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55705,
+          "slug": "soldado-goblin",
+          "name": "Soldado Goblin",
+          "gameId": 1,
+          "collectorCode": "CRPB26-157-144",
+          "effect": "Cuando es destruido, tu oponente destruye un Aliado que controle de coste 2 o menos. Luego, puedes robar una carta.",
+          "flavor": "El soldado goblin no duerme ni razona; vigila con ojos rojos y espadas herrumbrosas. Bajo tierra, en pasillos torcidos, susurros y risas anuncian su llegada.",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Soldado-goblin-real-1793158451971.webp",
+          "artist": "Rive Manga",
+          "frequency": "REAL",
+          "race": [
+            "FAERIE"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55704,
+          "slug": "draco-siniestro",
+          "name": "Draco Siniestro",
+          "gameId": 1,
+          "collectorCode": "CRPB26-156-144",
+          "effect": "Puede atacar cuando entra en juego. Cuando entra en juego, puedes descartar una carta de tu Mano para robar una carta. Si descartaste un Aliado Draco, puedes robar una carta adicional.",
+          "flavor": "Nacido del abismo y alimentado por el odio, su vuelo cubre el mundo con una noche sin fin.",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Draco-siniestro-real-1793158454917.webp",
+          "artist": "Gustaine",
+          "frequency": "REAL",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55703,
+          "slug": "draco-zafiro",
+          "name": "Draco Zafiro",
+          "gameId": 1,
+          "collectorCode": "CRPB26-155-144",
+          "effect": "Puede atacar cuando entra en juego. Puedes destruir este Aliado para prevenir que otro Aliado Draco salga del juego por una habilidad oponente. Luego, ese Aliado gana 2 a la fuerza permanentemente.",
+          "flavor": "Nacido del corazón de las montañas, es más que una bestia: es una reliquia viva. Allí donde extiende sus alas, el mundo recuerda que la magia aún respira.",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Draco-zafiro-real-1793158459590.webp",
+          "artist": "Ikkitouch",
+          "frequency": "REAL",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55702,
+          "slug": "draco-cometa",
+          "name": "Draco Cometa",
+          "gameId": 1,
+          "collectorCode": "CRPB26-154-144",
+          "effect": "Puede atacar cuando entra en juego. Cuando entra en juego, si sólo controlas Aliados de raza Dragón, elige un Aliado oponente para que pierda su habilidad y no pueda atacar ni bloquear mientras Draco Cometa esté en juego.",
+          "flavor": "Surcó los cielos como un tajo ardiente, rasgando la noche. Su fuego no era destrucción, sino augurio: el Pendragón despierta y, con él, el destino de Albion.",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Draco-cometa-real-1793158462659.webp",
+          "artist": "Draco Herrera",
+          "frequency": "REAL",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55701,
+          "slug": "sir-osanain",
+          "name": "Sir Osanain",
+          "gameId": 1,
+          "collectorCode": "CRPB26-153-144",
+          "effect": "Puede atacar cuando entra en juego. Cuando este Aliado sea declarado atacante, puedes desterrar una carta de tu Cementerio para desterrar un Aliado del Cementerio oponente.",
+          "flavor": "<p><i>Caballero pagano y de sangre sajona, dueño de un corazón indomable, enfrentó dragones y demonios, forjando su leyenda en batallas colosales.</i></p>",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 1,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Sir-osanain-real-1793158466785.webp",
+          "artist": "Heraldo Ortega",
+          "frequency": "REAL",
+          "race": [
+            "CABALLERO"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55700,
+          "slug": "sir-dinadan",
+          "name": "Sir Dinadan",
+          "gameId": 1,
+          "collectorCode": "CRPB26-152-144",
+          "effect": "<p>Imbloqueable. En tu Fase de Vigilia, una vez por turno y si este Aliado porta una o más Armas, puedes elegir otro de tus Aliados de raza Caballero para que sea Imbloqueable hasta la Fase Final.</p>",
+          "flavor": "<p>Corazón risueño y espada ligera, trovador de batallas y noble burlador entre caballeros severos. Desafió dragones, y su canto aún resuena en las antiguas mesas de Camelot.</p>",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Sir-dinadan-real-1793158469545.webp",
+          "artist": "Francisco Somalo",
+          "frequency": "REAL",
+          "race": [
+            "CABALLERO"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55699,
+          "slug": "caballero-negro",
+          "name": "Caballero Negro",
+          "gameId": 1,
+          "collectorCode": "CRPB26-151-144",
+          "effect": "Puede atacar cuando entra en juego. Cuando hace daño al Mazo Castillo oponente, puedes buscar una carta en el Mazo Castillo oponente y desterrarla. Si este Aliado fuera a ser destruido, puedes descartar un Arma de tu Mano para prevenirlo.",
+          "flavor": "Cabalgó desde las sombras, con la furia de mil tempestades en el pecho. No buscaba gloria, sino ruina. Donde pisaba, temblaban los reyes y callaban los dioses.",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Caballero-negro-real-1793158472947.webp",
+          "artist": "Draco Herrera",
+          "frequency": "REAL",
+          "race": [
+            "CABALLERO"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55698,
+          "slug": "damarchus",
+          "name": "Damarchus",
+          "gameId": 1,
+          "collectorCode": "CRPB26-150-144",
+          "effect": "<p>Una vez por turno, puedes botar una carta de tu Mazo Castillo para que este u otro Aliado en juego gane 2 a la fuerza hasta la Fase Final.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Damarchus-real-1793158498316.webp",
+          "artist": "Jose Munoz",
+          "frequency": "REAL",
+          "race": [
+            "TITAN"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55697,
+          "slug": "sosipolis",
+          "name": "Sosipolis",
+          "gameId": 1,
+          "collectorCode": "CRPB26-149-144",
+          "effect": "Cuando entra en juego, puedes buscar un Aliado de raza Olímpico en tu Mazo Castillo y ponerlo en tu Mano. En tu Fase Final, si controlas 3 o más Aliados de raza Olímpico, tu oponente bota 2 cartas.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Sosipolis-real-1793158501841.webp",
+          "artist": "Loreto Diaz",
+          "frequency": "REAL",
+          "race": [
+            "OLIMPICO"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55696,
+          "slug": "lycos-de-atenas",
+          "name": "Lycos de Atenas",
+          "gameId": 1,
+          "collectorCode": "CRPB26-148-144",
+          "effect": "En tu Fase de Vigilia, una vez por turno, puedes pagar 1 Oro para que este u otro Aliado que controles gane 1 a la fuerza y sea Imbloqueable hasta la Fase Final.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Lycos-de-atenas-real-1793158504899.webp",
+          "artist": "Jose Canales",
+          "frequency": "REAL",
+          "race": [
+            "HEROE"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55695,
+          "slug": "isengrim-el-lobo",
+          "name": "Isengrim el Lobo",
+          "gameId": 1,
+          "collectorCode": "CRPB26-147-144",
+          "effect": "Cuando entra en juego, puedes buscar un Aliado de raza Faerie de coste 4 o más en tu Mazo Castillo y ponerlo en tu Mano. Cuando sale del juego, puedes barajar 3 cartas de tu Cementerio en tu Mazo Castillo.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Isengrim-el-lobo-real-1793158509532.webp",
+          "artist": "Claudio Montoya",
+          "frequency": "REAL",
+          "race": [
+            "FAERIE"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55694,
+          "slug": "lady-calvaur",
+          "name": "Lady Calvaur",
+          "gameId": 1,
+          "collectorCode": "CRPB26-146-144",
+          "effect": "<p>Imbloqueable. Cuando entra en juego, destierra una carta oponente en juego que no sea Oro. En tu Fase de Vigilia, si este Aliado está en tu Cementerio, puedes destruir un Aliado de raza Dragón que controles para ponerlo en tu Mano.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 7,
+          "attack": 7,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Lady-calvaur-real-1793158512440.webp",
+          "artist": "Genzo",
+          "frequency": "REAL",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55693,
+          "slug": "reynard-el-zorro",
+          "name": "Reynard el Zorro",
+          "gameId": 1,
+          "collectorCode": "CRPB26-145-144",
+          "effect": "Imbloqueable. Puedes pagar 1 Oro y destruir este Aliado. Luego, roba 1 carta. Cuando sale del juego, destruye un Aliado oponente de coste 2 o menos.",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Reynard-el-zorro-real-1793158515504.webp",
+          "artist": "Genzo",
+          "frequency": "REAL",
+          "race": [
+            "CABALLERO"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 595,
+            "name": "Colecciones Raciales Primer Bloque 2026 - Buy a Box",
+            "sortOrder": 81,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55619,
+          "slug": "taumante",
+          "name": "Taumante",
+          "gameId": 1,
+          "collectorCode": "CRPB26-071-144",
+          "effect": "<p>En cada Fase de Agrupación, puedes elegir entre barajar una carta de tu Cementerio en tu Mazo Castillo, desterrar una carta de un Cementerio, o robar 1 carta.</p>",
+          "flavor": "<p>Peligroso señor del mar, personifica tormentas súbitas, abismos salinos y el temblor primigenio que precede al monstruo y al naufragio.</p>",
+          "type": "ALIADO",
+          "cost": 4,
+          "attack": 4,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas/Taumante-real-1793642063657.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "TITAN"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55618,
+          "slug": "aqueloo",
+          "name": "Aqueloo",
+          "gameId": 1,
+          "collectorCode": "CRPB26-070-144",
+          "effect": "<p>En tu Fase de Vigilia, una vez por turno, puedes desterrar una carta de tu Cementerio par abarajar una carta de tu Cementerio en tu Mazo Castillo.</p>",
+          "flavor": "<p>El mito más célebre lo enfrenta a Heracles por la mano de Deyanira. En combate, Aqueloo cambió de forma varias veces, pero el héroe lo venció y le arrancó uno de sus cuernos, que se transformó en la cornucopia, símbolo de la abundancia.</p>",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 1,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas/Aqueloo-real-1793641958566.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "TITAN"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55617,
+          "slug": "minotauro-del-hades",
+          "name": "Minotauro del Hades",
+          "gameId": 1,
+          "collectorCode": "CRPB26-069-144",
+          "effect": "<p>Indesterrable. Si controlas otro Aliado Minotauro, este Aliado puede atacar cuando entra en juego. En tu Fase de Vigilia, si este Aliado está en tu Cementerio, puedes desterrar una carta de tu Cementerio y pagar 2 Oros para jugarlo sin pagar su coste.</p>",
+          "flavor": "<p>En el Hade, el minotauro no se alimenta de carne mortal, devora recuerdos, nombres y rostros, borrando a quienes intentan escapar del olvido.</p>",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Minotauro-del-hades-real-1793158524890.webp",
+          "artist": "Seba Gallardo",
+          "frequency": "REAL",
+          "race": [
+            "TITAN"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55616,
+          "slug": "talos",
+          "name": "Talos",
+          "gameId": 1,
+          "collectorCode": "CRPB26-068-144",
+          "effect": "<p>Mientras controles otro Titán, este Aliado es Indesterrable. Cuando sea destruido, puedes desterrar un Aliado de tu Cementerio para ponerlo en tu Mano.</p>",
+          "flavor": "<p>El poderoso autómata guarda dentro de sí la capacidad de vivir y morir, casi como un humano.</p>",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas/Talos-rework-1793642241892.webp",
+          "artist": "Mauricio Herrera",
+          "frequency": "REWORK",
+          "race": [
+            "TITAN"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55615,
+          "slug": "tea",
+          "name": "Tea",
+          "gameId": 1,
+          "collectorCode": "CRPB26-067-144",
+          "effect": "<p>Una vez por turno, puedes pagar 2 de Oro o desterrar un Aliado de tu Cementerio para que un Aliado en juego tenga fuerza 0 y no pueda recibir modificadores de fuerza hasta la Fase Final.</p>",
+          "flavor": "<p>La madre de las musas despierta los sueños de los pobres mortales y el deseo de los grandes dioses</p>",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Tea-rework-1793158527587.webp",
+          "artist": "Andres Silva",
+          "frequency": "REWORK",
+          "race": [
+            "TITAN"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55613,
+          "slug": "asterion-el-minotauro",
+          "name": "Asterión el Minotauro",
+          "gameId": 1,
+          "collectorCode": "CRPB26-065-144",
+          "effect": "<p>Sólo puedes tener un Asterión el Minotauro en juego. Indesterrable. Tus Aliados Minotauro ganan 1 a la fuerza.</p>",
+          "flavor": "<p><em>Habita el laberinto del alma y la piedra. No es bestia, es un ser olvidado; sus pasos resuenan como tambores de juicio. Nadie sale indemne de su encuentro.</em></p>",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Asterion-el-minotauro-real-1793158531546.webp",
+          "artist": "Jose Canales",
+          "frequency": "REAL",
+          "race": [
+            "TITAN"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55609,
+          "slug": "minotauro-de-cartago",
+          "name": "Minotauro de Cártago",
+          "gameId": 1,
+          "collectorCode": "CRPB26-061-144",
+          "effect": "<p>Minotauro de Cártago es Indesterrable. Cuando entra en juego, puedes buscar un Aliado Minotauro de coste 2 o menos en tu Mazo Castillo o Cementerio y jugarlo sin pagar su coste.</p>",
+          "flavor": "<p><em>Gurzil, es hijo del gran Amón. Un semidios toro salvaje y fiero, un guerrero indomable que reina el mar de arena de Siwa.</em></p>",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Minotauro-de-cartago-real-1793158534893.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "TITAN"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55607,
+          "slug": "men",
+          "name": "Men",
+          "gameId": 1,
+          "collectorCode": "CRPB26-059-144",
+          "effect": "<p>Sólo puedes tener un Men en juego. Cuando entra en juego, puedes elegir un Aliado de tu Cementerio y jugarlo sin pagar su coste. Luego, bota tanta cartas como coste tenga ese Aliado.</p>",
+          "flavor": "<p>Vinculado a los ciclos lunares, el calendario, la fertilidad de la tierra y ciertos aspectos de la fortuna y el destino. También se le atribuían cualidades protectoras sobre los juramentos y las transacciones.</p>",
+          "type": "ALIADO",
+          "cost": 6,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas/Men-real-1793641404194.webp",
+          "artist": "Carlos Semper",
+          "frequency": "REAL",
+          "race": [
+            "OLIMPICO"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55605,
+          "slug": "musa-urania",
+          "name": "Musa Urania",
+          "gameId": 1,
+          "collectorCode": "CRPB26-057-144",
+          "effect": "<p>En tu Fase de Vigilia, una vez por turno, puedes pagar 1 Oro para mirar las 3 primeras cartas de tu Mazo Castillo, pon una carta que no sea Aliado o todos los Aliados Musa en tu Mano y baraja el resto.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Musa-urania-real-1793158541651.webp",
+          "artist": "Carlos Semper",
+          "frequency": "REAL",
+          "race": [
+            "OLIMPICO"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55604,
+          "slug": "las-musas",
+          "name": "Las Musas",
+          "gameId": 1,
+          "collectorCode": "CRPB26-056-144",
+          "effect": "<p>Cuando entra en juego, puedes buscar una carta Musa en tu Mazo Castillo o Cementerio y ponerla en tu Mano. Los Talismanes oponentes que hagan objetivo a tus Aliados Musa cuestan 1 Oro adicional.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Las-musas-rework-1793158544287.webp",
+          "artist": "Waldo Retamales",
+          "frequency": "REWORK",
+          "race": [
+            "OLIMPICO"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55603,
+          "slug": "musa-caliope",
+          "name": "Musa Caliope",
+          "gameId": 1,
+          "collectorCode": "CRPB26-055-144",
+          "effect": "<p>Cuando un Oro entre en juego bajo tu control, tu oponente bota 1 carta. Cuando una carta Musa entre o salga del juego, tu oponente bota 1 carta.</p>",
+          "flavor": "<p>Amor de mi Alma, tus canciones guían mi Fría vida.</p>",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 1,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas/Musa-caliope-rework-1793641679304.webp",
+          "artist": "Waldo Retamales",
+          "frequency": "REWORK",
+          "race": [
+            "OLIMPICO"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55602,
+          "slug": "gea",
+          "name": "Gea",
+          "gameId": 1,
+          "collectorCode": "CRPB26-054-144",
+          "effect": "<p>En tu Fase de Vigilia, una vez por turno, cada jugador baraja una carta de su Cementerio en su Mazo Castillo. Luego, tu puedes robar una carta. Si Gea está en tu Cementerio, puedes barajarla en tu Mazo Castillo.</p>",
+          "flavor": "<p><br></p><p><br></p><p><em>Cada edad, cada etapa de la vida se encuentra en ti. Madre Tierra, levanta tus brazos a tus hijos, perdona las heridas que te hemos hecho, hoy juraremos cuidar tu legado.</em></p>",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Gea-real-1793158546963.webp",
+          "artist": "Mariola Quirland",
+          "frequency": "REAL",
+          "race": [
+            "OLIMPICO"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55598,
+          "slug": "zagreus",
+          "name": "Zagreus",
+          "gameId": 1,
+          "collectorCode": "CRPB26-050-144",
+          "effect": "<p>Puedes destruir a Zagreus para Anular un Aliado oponente. Si juegas un Aliado de raza Olímpico, y Zagreus está en tu Cementerio, puedes pagar 1 Oro para barajarlo en tu Mazo Castillo.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Zagreus-real-1793158550062.webp",
+          "artist": "Heraldo Ortega",
+          "frequency": "REAL",
+          "race": [
+            "OLIMPICO"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55595,
+          "slug": "pelope",
+          "name": "Pelope",
+          "gameId": 1,
+          "collectorCode": "CRPB26-047-144",
+          "effect": "<p>Puede atacar cuando entra en juego. Si controlas 2 o más Aliados de raza Héroe, este Aliado gana 1 a la fuerza y es Indestructible. En tu Fase Final, puedes agrupar este Aliado.</p>",
+          "flavor": "<p>El legendario rey de pisa, es una figura asociada tanto a la astucia como a la tragedia. De Pélope desciende la célebre casa de Atreo, marcada por maldiciones, traiciones y asesinatos.</p>",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas/Pelope-real-1793396570836.webp",
+          "artist": "Gonzalo Lotito",
+          "frequency": "REAL",
+          "race": [
+            "HEROE"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55594,
+          "slug": "anfiarao",
+          "name": "Anfiarao",
+          "gameId": 1,
+          "collectorCode": "CRPB26-046-144",
+          "effect": "<p>Cuando entra en juego, puedes mirar las 3 primeras cartas de tu Mazo Castillo y jugar un Aliado de coste 3 o menos de ahí sin pagar su coste. Luego, debes dejar las otras cartas en la parte inferior de tu Mazo Castillo en cualquier orden.</p>",
+          "flavor": "<p>Poseía el don de ver el Futuro, pero también la maldición de no poder cambiarlo. Participó enl a experidión de los Siente contra Tebas, aunque sabía que esa guerra lo conduciría a la Muerte.</p>",
+          "type": "ALIADO",
+          "cost": 4,
+          "attack": 4,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas/Anfiarao-real-1793396417929.webp",
+          "artist": "Gonzalo Lotito",
+          "frequency": "REAL",
+          "race": [
+            "HEROE"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55593,
+          "slug": "telestris-la-amazona",
+          "name": "Telestris, la Amazona",
+          "gameId": 1,
+          "collectorCode": "CRPB26-045-144",
+          "effect": "<p>Puede atacar cuando entra en juego. En tu Fase de Vigilia, una vez por turno, puedes buscar una carta Amazona o una Reina Hipólita en tu Mazo Castillo y ponerlo en tu Mano. Tus Aliados Amazona y Reina Hipólita ganan 1 a la fuerza.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Telestris-la-amazona-real-1793158554256.webp",
+          "artist": "Gonzalo Lotito",
+          "frequency": "REAL",
+          "race": [
+            "HEROE"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55592,
+          "slug": "amazonas-guerreras",
+          "name": "Amazonas Guerreras",
+          "gameId": 1,
+          "collectorCode": "CRPB26-044-144",
+          "effect": "<p>Puede atacar cuando entra en juego. Si controlas 2 o más Aliados Amazona, puedes jugar este Aliado de tu Mano sin pagar su coste.</p>",
+          "flavor": "<p>Poderosas guerreras, protectoras de la feminidad. Tan solo ellas conocen los secretos de Hera.</p>",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas/Amazonas-guerreras-rework-1793396708099.webp",
+          "artist": "",
+          "frequency": "REWORK",
+          "race": [
+            "HEROE"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55591,
+          "slug": "atalanta-la-amazona",
+          "name": "Atalanta, la Amazona",
+          "gameId": 1,
+          "collectorCode": "CRPB26-043-144",
+          "effect": "<p>Puede atacar cuando entra en juego. Si controlas 1 o más Armas, este Aliado es Indestructible. Cuando entra en juego, puedes jugar un Arma de tu Mano sin pagar su coste.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 4,
+          "attack": 4,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Atalanta-la-amazona-rework-1793158560548.webp",
+          "artist": "Mauricio Herrera",
+          "frequency": "REWORK",
+          "race": [
+            "HEROE"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55589,
+          "slug": "alejandro-magno",
+          "name": "Alejandro Magno",
+          "gameId": 1,
+          "collectorCode": "CRPB26-041-144",
+          "effect": "<p>Sólo puedes tener un Alejandro Magno en juego. Cuando Alejandro Magno entra en juego, puedes ganar el control de un Aliado oponente de coste 4 o menos. Ese Aliado se considera de Raza Héroe y permanecerá bajo tu control hasta que salga del juego.</p>",
+          "flavor": "<p><br></p><p><em>Un hombre puede dominar un imperio, tan sólo debe escuchar el canto de su alma, y tener a las fortunas de su lado.</em></p>",
+          "type": "ALIADO",
+          "cost": 4,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Alejandro-magno-real-1793158565113.webp",
+          "artist": "",
+          "frequency": "REWORK",
+          "race": [
+            "HEROE"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55586,
+          "slug": "rey-minos",
+          "name": "Rey Minos",
+          "gameId": 1,
+          "collectorCode": "CRPB26-038-144",
+          "effect": "<p>Imbloqueable. Si Rey Minos hace daño al Mazo Castillo oponente, puedes buscar un Aliado de raza Héroe de coste 2 o menos en tu Mazo Castillo y ponerlo en tu mano.</p>",
+          "flavor": "<p><i>Con fortaleza gobernó Creta y el mar Egeo, dejando a Atenas bajo su puño opresor. </i></p>",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Rey-minos-real-1793158576676.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "HEROE"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55583,
+          "slug": "fiodhain",
+          "name": "Fiodhain",
+          "gameId": 1,
+          "collectorCode": "CRPB26-035-144",
+          "effect": "<p>Cuando entra en juego, puedes elegir un Aliado de tu Cementerio. Este Aliado tiene todas las habilidades de ese Aliado por el resto del juego.</p>",
+          "flavor": "<p>Nacieron cuando los dioses pidieron a los robles sagrados de Gran Bretaña que guardaran la memoria de la isla durante la invasión de las nieblas.</p>",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Fiodhain-real-1794255823047.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "FAERIE"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55582,
+          "slug": "jared-el-mago",
+          "name": "Jared el Mago",
+          "gameId": 1,
+          "collectorCode": "CRPB26-034-144",
+          "effect": "<p>Sólo puedes tener un Jared el Mago en juego. Una vez por turno, cuando juegues un Talismán puedes barajar un Aliado oponente de coste igual o menor al Talismán jugado.</p>",
+          "flavor": "<p>Hijo prohibido de un señor Sidhe y de una Hechicera Goblin, Jared nació en el corazón de un bosque crepuscular, donde las fronteras entre los reinos feéricos y subterráneos se desdibujan.</p>",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Jared-el-mago-real-1794255562156.webp",
+          "artist": "Gonzo Snow",
+          "frequency": "REAL",
+          "race": [
+            "FAERIE"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55581,
+          "slug": "goblin-berserker",
+          "name": "Goblin Berserker",
+          "gameId": 1,
+          "collectorCode": "CRPB26-033-144",
+          "effect": "<p>Puede atacar cuando entra en juego. Cuando entra en juego, puedes desterrar cualquier cantidad de cartas Goblin de tu Cementerio. Por cada carta desterrada, este Aliado gana 1 a la fuerza hasta la Fase Final.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 4,
+          "attack": 4,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Goblin-berserker-real-1793158582168.webp",
+          "artist": "Gonzo Snow",
+          "frequency": "REAL",
+          "race": [
+            "FAERIE"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55579,
+          "slug": "oberon",
+          "name": "Oberón",
+          "gameId": 1,
+          "collectorCode": "CRPB26-031-144",
+          "effect": "<p>Sólo puedes tener un Oberón en juego. Cuando entra en juego, puedes barajar una carta en juego que no sea Oro. Una vez por turno, puedes pagar 1 Oro o destruir este u otro Aliado que controles para robar 2 cartas. Luego, descarta 1 carta de tu Mano.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 4,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Oberon-rework-1793158591813.webp",
+          "artist": "Juan Vásquez",
+          "frequency": "REWORK",
+          "race": [
+            "FAERIE"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55577,
+          "slug": "reina-merrow",
+          "name": "Reina Merrow",
+          "gameId": 1,
+          "collectorCode": "CRPB26-029-144",
+          "effect": "<p>Imbloqueable. En tu Fase Final, si hizo daño al Mazo Castillo oponente y controlas 3 o más Aliados de raza Faerie, puedes robar 1 carta.</p>",
+          "flavor": "<p><br></p><p><em>La reina puede habitar tanto la tierra como el mar, esto gracias al Cohuleen druith, su sombrero o capa mágica.</em></p>",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 1,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Reina-merrow-real-1793158594294.webp",
+          "artist": "Ikkitouch",
+          "frequency": "REAL",
+          "race": [
+            "FAERIE"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55575,
+          "slug": "goblin",
+          "name": "Goblin",
+          "gameId": 1,
+          "collectorCode": "CRPB26-027-144",
+          "effect": "<p>Cuando Goblin entra en juego, puedes buscar una carta Goblin en tu Mazo Castillo y ponerla en tu mano. Si tienes 3 o más cartas Goblin en juego, este Aliado es Imbloqueable.</p>",
+          "flavor": "<p><em>Enanos verdes, solo dan risa, pero cuando un batallón completo amaneza una ciudad, son mucho más peligrosos que cualquier Dragón.</em></p>",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Goblin-real-1793158598781.webp",
+          "artist": "Francisco Guerra",
+          "frequency": "REAL",
+          "race": [
+            "FAERIE"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55571,
+          "slug": "nathair-teine",
+          "name": "Nathair-Teine",
+          "gameId": 1,
+          "collectorCode": "CRPB26-023-144",
+          "effect": "<p>Puede atacar cuando entra en juego. Cuando es declarado atacante, puedes elegir un Aliado de raza Dragón de coste 1 o menos en tu Cementerio y jugarlo sin pagar su coste en tu Línea de Ataque como un Aliado declarado atacante. En tu Fase Final, ese Aliado debe ser destruido.</p>",
+          "flavor": "<p>Una criatura legendaria de las costas escocesas e irlandesas, temida por marineros y pescadores.</p>",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Nathair-teine-real-1794519986718.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55570,
+          "slug": "y-ddraig-ddall",
+          "name": "Y Ddraig Ddall",
+          "gameId": 1,
+          "collectorCode": "CRPB26-022-144",
+          "effect": "<p>Cuando entra en juego, si controlas 2 o más Aliados de raza Dragón, puedes barajar un Aliado de raza Dragón de tu Mano para buscar un Aliado de raza Dragón en tu Mazo Castillo y ponerlo en tu Mano.</p>",
+          "flavor": "<p>El Dragón Ciego, es una antigua criatura de leyenda, habitante de una Isla perdida en mares brumosos, Percibe el mundo a través de vibraciones en el aire y ecos en el agua.</p>",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Y-ddraig-ddall-real-1794519582717.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55569,
+          "slug": "draco-de-inverness",
+          "name": "Draco de Inverness",
+          "gameId": 1,
+          "collectorCode": "CRPB26-021-144",
+          "effect": "<p>Puede atacar cuando entra en juego. Cuando es declarado atacante, si controlas 3 o más Aliados de raza Dragón, este Aliado gana 2 a la fuerza hasta la Fase Final.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 1,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Draco-de-inverness-real-1793158610421.webp",
+          "artist": "Jose Munoz",
+          "frequency": "REAL",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55568,
+          "slug": "dragon-del-agua",
+          "name": "Dragón del Agua",
+          "gameId": 1,
+          "collectorCode": "CRPB26-020-144",
+          "effect": "<p>Imbloqueable. Mientras este Aliado esté en juego, tus demás Aliados de raza Dragón no pueden ser afectados por Talismanes oponentes.</p>",
+          "flavor": "<p>Un acertijo, adivina y vivirás, de lo contrario serás alimento para la criatura más astuta de todo el reino.</p>",
+          "type": "ALIADO",
+          "cost": 5,
+          "attack": 5,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Dragon-del-agua-rework-1794520266014.webp",
+          "artist": "Andrés Silva",
+          "frequency": "REWORK",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55567,
+          "slug": "draco-aguila",
+          "name": "Draco Águila",
+          "gameId": 1,
+          "collectorCode": "CRPB26-019-144",
+          "effect": "<p>Puedes tener más de 3 Draco Águila en tu Mazo Castillo. Imbloqueable. Cuando entra en juego, tu oponente bota 1 carta por cada Draco Águila que controles.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 1,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Draco-aguila-rework-1793158613807.webp",
+          "artist": "Gabriel Rodriguez",
+          "frequency": "REWORK",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55566,
+          "slug": "draco-putrido",
+          "name": "Draco Putrido",
+          "gameId": 1,
+          "collectorCode": "CRPB26-018-144",
+          "effect": "<p>Puede atacar cuando entra en juego. Cuando salga del juego, puedes desterrar un Aliado oponente de coste 4 o menos.</p>",
+          "flavor": "<p><em>El Maldito emerge de ciénagas impías, su aliento lleva peste y muerte. Sus alas carcomidas se abren proyectando la sombra absoluta.</em></p>",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Draco-putrido-real-1793158620026.webp",
+          "artist": "José Canales",
+          "frequency": "REAL",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55561,
+          "slug": "kilgharrah",
+          "name": "Kilgharrah",
+          "gameId": 1,
+          "collectorCode": "CRPB26-013-144",
+          "effect": "<p>Sólo puedes tener un Kilgharrah en juego. Imbloqueable. Puede atacar cuando entra en juego. En tu Fase de Vigilia, una vez por turno, puedes barajar 2 cartas de tu Cementerio en tu Mazo Castillo para robar 2 cartas.</p>",
+          "flavor": "<p><em>El señor del bosque negro vinculó su sangre a la de los viejos dioses, de esta manera se levantó como señor del fuego y la magia.</em></p>",
+          "type": "ALIADO",
+          "cost": 6,
+          "attack": 6,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Kilgharrah-real-1793158623144.webp",
+          "artist": "Ikkitouch",
+          "frequency": "REAL",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55559,
+          "slug": "sir-bleoberis",
+          "name": "Sir Bleoberis",
+          "gameId": 1,
+          "collectorCode": "CRPB26-011-144",
+          "effect": "<p>Cuando entra en juego, puedes destruir una carta oponente en juego que no sea ORo, de coste igual o menor a la cantidad de Armas que controles.</p>",
+          "flavor": "<p>Procede del linaje real de Benwick, lo que lo convierte en pariente de los Bors, Lionel y otros Caballeros cercanos a Lancelot.</p>",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Sir-bleoberis-real-1794521700216.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "CABALLERO"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55558,
+          "slug": "sir-galehodin",
+          "name": "Sir Galehodin",
+          "gameId": 1,
+          "collectorCode": "CRPB26-010-144",
+          "effect": "<p>Sólo puedes tener un Sir Galehodin en juego. Mientras este Aliado esté en juego, jugar Aliados Sir te cuesta 1 Oro menos.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Sir-galehodin-real-1793158626581.webp",
+          "artist": "Hirundo",
+          "frequency": "REAL",
+          "race": [
+            "CABALLERO"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55557,
+          "slug": "sir-tor",
+          "name": "Sir Tor",
+          "gameId": 1,
+          "collectorCode": "CRPB26-009-144",
+          "effect": "<p>Imbloqueable. Puede atacar cuando entra en juego. Cuando es declarado atacante junto a 2 o más Aliados Sir, cada jugador bota 2 cartas. Luego, destierra una carta de tu Cementerio.</p>",
+          "flavor": "<p>Bastardo de Pellinore, prueba su valor entre caballeros de la Mesa Redonda: Humilde, leal, incansable, gana honor no por linaje, sino por actos justos y espada firma eterna.</p>",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 1,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Sir-tor-real-1794521388115.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "CABALLERO"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55556,
+          "slug": "lady-rachel",
+          "name": "Lady Rachel",
+          "gameId": 1,
+          "collectorCode": "CRPB26-008-144",
+          "effect": "<p>En tu Fase de Vigila, una vez por turno, puedes destruir un Arma que controles para destruir una carta oponente en juego de coste 2 o menos.</p>",
+          "flavor": "<p>Una mujer con una venganza, una belleza con una sola misión, acabar con el dragón que destruyó sus sueños.</p>",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Lady-rachel-rework-1794521791221.webp",
+          "artist": "Mauricio Herrera",
+          "frequency": "REWORK",
+          "race": [
+            "CABALLERO"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55555,
+          "slug": "sir-owen",
+          "name": "Sir Owen",
+          "gameId": 1,
+          "collectorCode": "CRPB26-007-144",
+          "effect": "<p>Única. Cuando entra en juego, puedes robar 3 cartas. Luego, destierra una carta de tu Mano.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Sir-owen-rework-1793158630972.webp",
+          "artist": "Andres Silva",
+          "frequency": "REWORK",
+          "unique": true,
+          "race": [
+            "CABALLERO"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55553,
+          "slug": "rey-arturo-pendragon",
+          "name": "Rey Arturo Pendragón",
+          "gameId": 1,
+          "collectorCode": "CRPB26-005-144",
+          "effect": "<p>Única. Tus demás Aliados de raza Caballero ganan 2 a la Fuerza. Cuando entra en juego, puedes jugar un Aliado o Arma de coste 2 o menos de tu Cementerio sin pagar su coste. En cada Fase de Agrupación tu oponente bota 2 cartas.</p>",
+          "flavor": "<p><em>Un rey, una espada, una corona y el destino de la humanidad sobre sus hombros.</em></p>",
+          "type": "ALIADO",
+          "cost": 4,
+          "attack": 4,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Rey-arturo-pendragon-real-1793158636282.webp",
+          "artist": "Waldo Retamales",
+          "frequency": "REAL",
+          "unique": true,
+          "race": [
+            "CABALLERO"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55550,
+          "slug": "duque-godofredo",
+          "name": "Duque Godofredo",
+          "gameId": 1,
+          "collectorCode": "CRPB26-002-144",
+          "effect": "<p>Mientras este Aliado esté en juego, tus Aliados de raza Caballero ganan 1 a la fuerza.</p>",
+          "flavor": "<p><em>El dragón del desierto le llamaban, el príncipe de Normandía peleará a muerte contra sus enemigos, sean cristianos, sean musulmanes.</em></p>",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Duque-godofredo-real-1793158314187.webp",
+          "artist": "El Kalku",
+          "frequency": "REAL",
+          "race": [
+            "CABALLERO"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 594,
+            "name": "Colecciones Raciales Primer Bloque 2026",
+            "sortOrder": 82,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55548,
+          "slug": "forma-de-niebla",
+          "name": "Forma de Niebla",
+          "gameId": 1,
+          "collectorCode": "LPB4-367/320 L",
+          "effect": "<p>Cuando juegues Forma de Niebla, destiérralo. Anula una carta de coste 2 o menos. Carta Única.</p>",
+          "flavor": "<p><i>El vampiro no teme a los muros, porque su duro rostro no signífica nada para él.</i></p>",
+          "type": "TALISMAN",
+          "cost": 1,
+          "attack": 0,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/16-Dracula-Inferno/cartas//Forma-de-niebla-legendaria-1793150397315.webp",
+          "artist": "Javier Bahamonde",
+          "frequency": "LEGENDARIA",
+          "unique": true,
+          "race": [],
+          "edition": {
+            "name": "🧛 Drácula e Inferno",
+            "slug": "dracula-inferno",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 593,
+            "name": "Leyendas Primer Bloque 4.5",
+            "sortOrder": 80,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55547,
+          "slug": "abismo",
+          "name": "Abismo",
+          "gameId": 1,
+          "collectorCode": "LPB4-366/320 L",
+          "effect": "<p>Única. Puedes destruir este Tótem para Anular un Aliado oponente.</p>",
+          "flavor": "<p><em>Si cierras tus ojos podrás ver el verdadero color del cielo. Sabrás que el creador aún está ahí.</em></p>",
+          "type": "TOTEM",
+          "cost": 2,
+          "attack": 0,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/cartas//Abismo-legendaria-1793150400846.webp",
+          "artist": "Maca Sainz",
+          "frequency": "LEGENDARIA",
+          "unique": true,
+          "race": [],
+          "edition": {
+            "name": "🪬 Dominios de Ra",
+            "slug": "dominios-de-ra",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 593,
+            "name": "Leyendas Primer Bloque 4.5",
+            "sortOrder": 80,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55546,
+          "slug": "mut",
+          "name": "Mut",
+          "gameId": 1,
+          "collectorCode": "LPB4-365/320 L",
+          "effect": "<p>En tu Fase de Vigilia, una vez por turno, cada jugador destierra 1 carta de su Cementerio y tú robas 1 carta. Luego, si tienes más cartas en el destierro que tu oponente, puedes elegir entre barajar 1 carta de tu Cementerio en tu Mazo Castillo o robar 1 carta. Si esta carta está en tu Cementerio, puedes ponerla en el fondo de tu Mazo Castillo.</p>",
+          "flavor": "<p>La madre silente del cielo, extiende sus alas sobre el Nilo. Reina de reinas, teje destinos con mirada serena. En su sombra, los dioses se inclinan.</p>",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/cartas//Mut-legendaria-1793150403649.webp",
+          "artist": "Mariola Quirland",
+          "frequency": "LEGENDARIA",
+          "race": [
+            "ETERNO"
+          ],
+          "edition": {
+            "name": "🪬 Dominios de Ra",
+            "slug": "dominios-de-ra",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 593,
+            "name": "Leyendas Primer Bloque 4.5",
+            "sortOrder": 80,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55545,
+          "slug": "ramses-ix",
+          "name": "Ramses IX",
+          "gameId": 1,
+          "collectorCode": "LPB4-364/320 L",
+          "effect": "<p>Cuando es declarado atacante, cada jugador bota 1 carta. Si entre esas cartas hay un Oro o un Aliado, tu oponente bota 2 cartas adicionales.</p>",
+          "flavor": "<p>A pesar de los conflictos, mantuvo obras constructivas y rituales reliquisos. Uno de los últimos señores del Nilo.</p>",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/cartas//Ramses-ix-legendaria-1793150406886.webp",
+          "artist": "JP Aguirre",
+          "frequency": "LEGENDARIA",
+          "race": [
+            "FARAON"
+          ],
+          "edition": {
+            "name": "🪬 Dominios de Ra",
+            "slug": "dominios-de-ra",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 593,
+            "name": "Leyendas Primer Bloque 4.5",
+            "sortOrder": 80,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55544,
+          "slug": "clochafarmore",
+          "name": "Clochafarmore",
+          "gameId": 1,
+          "collectorCode": "LPB4-363/320 L",
+          "effect": "<p>En tu Fase de Vigilia, puedes desterrar este Oro para que un Aliado en juego gane 2 a la fuerza permanentemente.</p>",
+          "flavor": "<p><em>La piedra en que el gran héroe del Ulster presentó su última defensa, ni la muerte lo hizo arrodillarse. </em></p>",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas//Clochafarmore-legendaria-1793150409793.webp",
+          "artist": "Ikkitouch",
+          "frequency": "LEGENDARIA",
+          "race": [],
+          "edition": {
+            "name": "🍀 Hijos de Daana",
+            "slug": "hijos-de-daana",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 593,
+            "name": "Leyendas Primer Bloque 4.5",
+            "sortOrder": 80,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55543,
+          "slug": "crom-cruach",
+          "name": "Crom Cruach",
+          "gameId": 1,
+          "collectorCode": "LPB4-362/320 L",
+          "effect": "<p>Crom Cruach no puede bloquear. Cuando Crom Cruach es declarado atacante, puedes buscar un Aliado de raza Sombra de coste 2 o menos en tu Cementerio y ponerlo en tu Mano.</p>",
+          "flavor": "<p><em>El gusano triunfante, creador de su propio infierno. Un dios oscuro que envenena la tierra de Eire. Su sombra se cierne sobre la vida, su presencia inspira temor, desesperación y desvelo.</em></p>",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas//Crom-cruach-legendaria-1793150412632.webp",
+          "artist": "José Muñoz",
+          "frequency": "LEGENDARIA",
+          "race": [
+            "SOMBRA"
+          ],
+          "edition": {
+            "name": "🍀 Hijos de Daana",
+            "slug": "hijos-de-daana",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 593,
+            "name": "Leyendas Primer Bloque 4.5",
+            "sortOrder": 80,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55542,
+          "slug": "ceilican-seelie",
+          "name": "Ceilican Seelie",
+          "gameId": 1,
+          "collectorCode": "LPB4-361/320 L",
+          "effect": "<p>Imbloqueable. Cuando entra en juego, puedes buscar una copia de este Aliado en tu Mazo Castillo y ponerla en tu mano. Jugar Armas en este Aliado cuesta un Oro menos.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 1,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas//Ceilican-seelie-legendaria-1793150415387.webp",
+          "artist": "Sara Contreras",
+          "frequency": "LEGENDARIA",
+          "race": [
+            "DESAFIANTE"
+          ],
+          "edition": {
+            "name": "🍀 Hijos de Daana",
+            "slug": "hijos-de-daana",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 593,
+            "name": "Leyendas Primer Bloque 4.5",
+            "sortOrder": 80,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55541,
+          "slug": "la-odisea",
+          "name": "La Odisea",
+          "gameId": 1,
+          "collectorCode": "LPB4-360/320 L",
+          "effect": "<p>Única. Cuando La Odisea entra en juego, puedes mostrar las tres primeras cartas de tu Mazo Castillo. Pon una en tu Mano, una en tu Cementerio y otra en tu destierro.</p>",
+          "flavor": "<p><em>Los héroes tienen su canto, nosotros, la esperanza.</em></p>",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//La-odisea-legendaria-1793150421342.webp",
+          "artist": "Mauricio Herrera",
+          "frequency": "LEGENDARIA",
+          "unique": true,
+          "race": [],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 593,
+            "name": "Leyendas Primer Bloque 4.5",
+            "sortOrder": 80,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55540,
+          "slug": "minotauro-de-cartago",
+          "name": "Minotauro de Cártago",
+          "gameId": 1,
+          "collectorCode": "LPB4-359/320 L",
+          "effect": "<p>Minotauro de Cártago es Indesterrable. Cuando entra en juego, puedes buscar un Aliado Minotauro de coste 2 o menos en tu Mazo Castillo o Cementerio y jugarlo sin pagar su coste.</p>",
+          "flavor": "<p><em>Gurzil, es hijo del gran Amón. Un semidios toro salvaje y fiero, un guerrero indomable que reina el mar de arena de Siwa.</em></p>",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Minotauro-de-cartago-legendaria-1793150424263.webp",
+          "artist": "Seba Gallardo",
+          "frequency": "LEGENDARIA",
+          "race": [
+            "TITAN"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 593,
+            "name": "Leyendas Primer Bloque 4.5",
+            "sortOrder": 80,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55539,
+          "slug": "rey-minos",
+          "name": "Rey Minos",
+          "gameId": 1,
+          "collectorCode": "LPB4-358/320 L",
+          "effect": "<p>Imbloqueable. Si Rey Minos hace daño al Mazo Castillo oponente, puedes buscar un Aliado de raza Héroe de coste 2 o menos en tu Mazo Castillo y ponerlo en tu mano.</p>",
+          "flavor": "<p><i>Con fortaleza gobernó Creta y el mar Egeo, dejando a Atenas bajo su puño opresor. </i></p>",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Rey-minos-legendaria-1793150427408.webp",
+          "artist": "Heraldo Ortega",
+          "frequency": "LEGENDARIA",
+          "race": [
+            "HEROE"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 593,
+            "name": "Leyendas Primer Bloque 4.5",
+            "sortOrder": 80,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55538,
+          "slug": "vinculo-del-aullido",
+          "name": "Vinculo del Aullido",
+          "gameId": 1,
+          "collectorCode": "LPB4-357/320 L",
+          "effect": "<p>Cuando entra en juego, puedes pagar este y otro Oro que controles para robar 2 cartas. Luego, descarta 1 carta.</p>",
+          "flavor": "<p>Pacto de sangre y aullido, une a los lobos más allá del tiempo; cuando uno cae, todos responden al rugido ancestral que jamás muere.</p>",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Vinculo-del-aullido-legendaria-1793150430699.webp",
+          "artist": "Hans Lobos",
+          "frequency": "LEGENDARIA",
+          "race": [],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 593,
+            "name": "Leyendas Primer Bloque 4.5",
+            "sortOrder": 80,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55537,
+          "slug": "melchor",
+          "name": "Melchor",
+          "gameId": 1,
+          "collectorCode": "LPB4-356/320 L",
+          "effect": "<p>Cuando entra en juego, puedes buscar un Arma en tu Mazo Castillo y ponerla en tu Cementerio. Si lo haces, puedes robar 1 carta.</p>",
+          "flavor": "<p><em>El Rey Mago que representa a Europa lleva como obsequio oro, reconociendo la realeza y divinidad del recién nacido.</em></p>",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Melchor-legendaria-1793150433566.webp",
+          "artist": "Sara Contreras",
+          "frequency": "LEGENDARIA",
+          "race": [
+            "CABALLERO"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 593,
+            "name": "Leyendas Primer Bloque 4.5",
+            "sortOrder": 80,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55536,
+          "slug": "lady-calvaur",
+          "name": "Lady Calvaur",
+          "gameId": 1,
+          "collectorCode": "LPB4-355/320 L",
+          "effect": "<p>Imbloqueable. Cuando entra en juego, destierra una carta oponente en juego que no sea Oro. En tu Fase de Vigilia, si este Aliado está en tu Cementerio, puedes destruir un Aliado de raza Dragón que controles para ponerlo en tu Mano.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 7,
+          "attack": 7,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Lady-calvaur-legendaria-1793150437607.webp",
+          "artist": "Hirundo",
+          "frequency": "LEGENDARIA",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 593,
+            "name": "Leyendas Primer Bloque 4.5",
+            "sortOrder": 80,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55535,
+          "slug": "luna-de-sangre",
+          "name": "Luna de Sangre",
+          "gameId": 1,
+          "collectorCode": "LPB4-354/320 S",
+          "effect": "<p>Puedes pagar este Oro y otro Oro que controles para robar una carta. Sólo puedes activar una Luna de Sangre por turno.</p>",
+          "flavor": "<p><em>El mundo tiembla bajo su mirada enferma. Los lobos callan. Los niños sueñan con ceniza. Nada crece. Todo sangra.</em></p>",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/16-Dracula-Inferno/cartas//Luna-de-sangre-secreta-1793150442088.webp",
+          "artist": "JP Aguirre",
+          "frequency": "SECRETA",
+          "race": [],
+          "edition": {
+            "name": "🧛 Drácula e Inferno",
+            "slug": "dracula-inferno",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 593,
+            "name": "Leyendas Primer Bloque 4.5",
+            "sortOrder": 80,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55534,
+          "slug": "nudo-de-isis",
+          "name": "Nudo de Isis",
+          "gameId": 1,
+          "collectorCode": "LPB4-353/320 S",
+          "effect": "Si este Oro está en tu Reserva de Oros, los jugadores no pueden barajar cartas de su Cementerio en su Mazo Castillo. Una vez por turno, tu oponente puede pagar 2 Oros o botar 3 cartas para que este Oro y todas sus copias en juego pierdan su habilidad hasta la Fase Final.",
+          "flavor": "Llamada “la Señora del Año”, estaba asociada al renacimiento, la fertilidad y la renovación cíclica del cosmos.",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/07-Dominios-de-RA/cartas//Nudo-de-isis-secreta-1793150446308.webp",
+          "artist": "JP Aguirre",
+          "frequency": "SECRETA",
+          "race": [],
+          "edition": {
+            "name": "🪬 Dominios de Ra",
+            "slug": "dominios-de-ra",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 593,
+            "name": "Leyendas Primer Bloque 4.5",
+            "sortOrder": 80,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55533,
+          "slug": "torc-fianna",
+          "name": "Torc Fianna",
+          "gameId": 1,
+          "collectorCode": "LPB4-352/320 S",
+          "effect": "<p>Sólo puedes tener un Torc Fianna en juego. Si este Oro está en tu Reserva de Oros, los Aliados que controles en tu Línea de Ataque ganan 1 a la fuerza.</p>",
+          "flavor": "<p>Símbolo de honor entre los guerreros libres de Fionn, forjado con juramentos y batallas, concede fuerza indomable a quien lo porta en nombre del bosque y la valentía.</p>",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas//Torc-fianna-secreta-1793150448574.webp",
+          "artist": "JP Aguirre",
+          "frequency": "SECRETA",
+          "race": [],
+          "edition": {
+            "name": "🍀 Hijos de Daana",
+            "slug": "hijos-de-daana",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 593,
+            "name": "Leyendas Primer Bloque 4.5",
+            "sortOrder": 80,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55532,
+          "slug": "diente-de-la-bestia",
+          "name": "Diente de la Bestia",
+          "gameId": 1,
+          "collectorCode": "LPB4-351/320 S",
+          "effect": "Si este Oro está en tu Reserva de Oros, puedes barajarlo en tu Mazo Castillo para que un Aliado oponente pierda su habilidad y 2 a la Fuerza hasta la Fase Final.",
+          "flavor": "Fragmento de un monstruo primordial, endurecido por la noche del mundo; quien lo empuña convoca la furia salvaje que duerme bajo la tierra.",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas//Diente-de-la-bestia-secreta-1793150450842.webp",
+          "artist": "JP Aguirre",
+          "frequency": "SECRETA",
+          "race": [],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 593,
+            "name": "Leyendas Primer Bloque 4.5",
+            "sortOrder": 80,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 55531,
+          "slug": "estrella-de-belen",
+          "name": "Estrella de Belen",
+          "gameId": 1,
+          "collectorCode": "LPB4-350/320 S",
+          "effect": "<p>Cuando entra en juego, puedes mostrar las 3 primeras cartas de tu Mazo Castillo. Si entra esas cartas hay un Oro, puedes ponerlo en tu Mano. Luego, baraja las demás cartas en tu Mazo Castillo.</p>",
+          "flavor": "<p>Brilló en los cielos como señal divina, Guiando a los Magos hasta el Nacimiento del Salvador. Símbolo de Esperanza, revelación y promesa cumplica en la noche sagrada.</p>",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas//Estrella-de-belen-secreta-1793150453116.webp",
+          "artist": "JP Aguirre",
+          "frequency": "SECRETA",
+          "race": [],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 593,
+            "name": "Leyendas Primer Bloque 4.5",
+            "sortOrder": 80,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 53311,
+          "slug": "dionisio-zagreo",
+          "name": "Dionisio Zagreo",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>Cuando Dionisio Zagreo entra en juego, puedes descartar un Aliado de tu mano para robar 1 carta. Si la carta descartada es un Aliado de raza Olímpico, puedes robar 1 carta adicional. </p>",
+          "flavor": "<p><i><p><i>Asesinado y devorado por los Titanes, encontrado por Atenea y llevado a Zeus. Así el dios órfico pudo llegar a ser la versión más brillante de Dioniso.</i></p></i></p>",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas/Dionisio-zagreo-real-1792446748896.webp",
+          "artist": "ARTIST",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "OLIMPICO"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": null,
+          "__typename": "Card"
+        },
+        {
+          "id": 53310,
+          "slug": "corff",
+          "name": "Corff",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "Imbloqueable. Cuando Corff sea declarado atacante, elije hasta dos Aliados que lo acompañen para que ganen 1 a la Fuerza hasta la Fase Final.",
+          "flavor": "<p><i>El dragón creció de la corrupción de los cuerpos en descomposición, levantó un reino de terror y muerte que cruzó varios siglos.</i></p>",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 1,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Corff-real-1792446724557.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "SOMBRA"
+          ],
+          "edition": {
+            "name": "🍀 Hijos de Daana",
+            "slug": "hijos-de-daana",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": null,
+          "__typename": "Card"
+        },
+        {
+          "id": 53309,
+          "slug": "beleth",
+          "name": "Beleth",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "Cuando entra en juego, puedes descartar una carta de tu mano para buscar en tu Mazo Castillo un Aliado de raza Desafiante de coste 3 o menos y ponerlo en tu mano.",
+          "flavor": "<p><i>Cabalga su espectral corcel entre tormentas de fuego. Su risa distorsiona la realidad, invocando terror primigenio. Portador de una corona maldita, comanda hordas infernales.</i></p>",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Beleth-real-1792446697952.webp",
+          "artist": "",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "DESAFIANTE"
+          ],
+          "edition": {
+            "name": "🍀 Hijos de Daana",
+            "slug": "hijos-de-daana",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": null,
+          "__typename": "Card"
+        },
+        {
+          "id": 53308,
+          "slug": "caliz-maldito",
+          "name": "Caliz Maldito",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "Cuando entra en juego, muestra un Aliado de tu mano para mostrar 3 cartas de la parte superior de tu Mazo Castillo. Luego, pon un Aliado de la misma raza en tu mano y baraja el resto.",
+          "flavor": "<p><i><p><i> Beber de él desata tormentos inefables, corrompiendo el alma y atando al bebedor a una condena eterna.</i></p></i></p>",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/16-Dracula-Inferno/cartas/Caliz-maldito-secreta-1792446674747.webp",
+          "artist": "ARTIST",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "🧛 Drácula e Inferno",
+            "slug": "dracula-inferno",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": null,
+          "__typename": "Card"
+        },
+        {
+          "id": 53307,
+          "slug": "liontari",
+          "name": "Liontari",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>Liontári puede atacar cuando entra en juego. Cuando Liontári entra en juego, puedes destruir un Aliado oponente. No puede bloquear.</p>",
+          "flavor": "<p><i><p><i>La fuerza del león, la oposición al héroe y lo salvaje de la naturaleza. Un Titán nacido en los desiertos del sur, desde donde suelta su feroz rugido.</i></p></i></p>",
+          "type": "ALIADO",
+          "cost": 5,
+          "attack": 5,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/03-Helenica/cartas/Liontari-real-1792446647033.webp",
+          "artist": "ARTIST",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "TITAN"
+          ],
+          "edition": {
+            "name": "🏛️ Helénica",
+            "slug": "helenica",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": null,
+          "__typename": "Card"
+        },
+        {
+          "id": 53306,
+          "slug": "kilgharrah",
+          "name": "Kilgharrah",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>Sólo puedes tener un Kilgharrah en juego. Imbloqueable. Puede atacar cuando entra en juego. En tu Fase de Vigilia, una vez por turno, puedes barajar 2 cartas de tu Cementerio en tu Mazo Castillo para robar 2 cartas.</p>",
+          "flavor": "<p><em>El señor del bosque negro vinculó su sangre a la de los viejos dioses, de esta manera se levantó como señor del fuego y la magia.</em></p>",
+          "type": "ALIADO",
+          "cost": 6,
+          "attack": 6,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Kilgharrah-promocional-1792446588185.webp",
+          "artist": "Ikkitouch",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": null,
+          "__typename": "Card"
+        },
+        {
+          "id": 53276,
+          "slug": "draig-ifanc",
+          "name": "Draig Ifanc",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>Cuando Draig Ifanc entra en juego, puedes robar una carta. Si Draig Ifanc es destruido o barajado del juego y sólo controlabas Aliados Dragón, puedes buscar un Oro en tu Mazo Castillo y ponerlo en juego.</p>",
+          "flavor": "<p><em>Después de siete noches de silencio el futuro dragón nube ruge con juvenil furia. La creación lo sabe; los amos del cielo han retornado, la era del dragón ha regresado.</em></p>",
+          "type": "ALIADO",
+          "cost": 3,
+          "attack": 2,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Draig-ifanc-real-1792349966517.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": null,
+          "__typename": "Card"
+        },
+        {
+          "id": 53275,
+          "slug": "lady-calvaur",
+          "name": "Lady Calvaur",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>Imbloqueable. Cuando entra en juego, destierra una carta oponente en juego que no sea Oro. En tu Fase de Vigilia, si este Aliado está en tu Cementerio, puedes destruir un Aliado de raza Dragón que controles para ponerlo en tu Mano.</p>",
+          "flavor": "",
+          "type": "ALIADO",
+          "cost": 7,
+          "attack": 7,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/01-Espada-Sagrada/cartas/Lady-calvaur-real-1792349889680.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "race": [
+            "DRAGON"
+          ],
+          "edition": {
+            "name": "🧙‍♂️ Espada Sagrada",
+            "slug": "espada-sagrada",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": null,
+          "__typename": "Card"
+        },
+        {
+          "id": 53274,
+          "slug": "joya-amatista",
+          "name": "Joya Amatista",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "Única. Puedes desterrar este Oro de tu Reserva para jugar un Aliado de tu Cementerio pagando su coste.",
+          "flavor": "<p><i>El deseo del viejo dios desencadenó magia de transformación. Poder y locura se entrelazaron, revelando un mundo donde deseos y pesadillas se volvieron realidad.</i></p>",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Joya-amatista-real-1792349853403.webp",
+          "artist": "",
+          "frequency": "REAL",
+          "unique": true,
+          "race": [],
+          "edition": {
+            "name": "🍀 Hijos de Daana",
+            "slug": "hijos-de-daana",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 64,
+            "name": "Juego Organizado Junio-Julio 2026",
+            "sortOrder": 72,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 52817,
+          "slug": "torc-fiain",
+          "name": "Torc Fiain",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>Puede atacar cuando entra en juego. Cuando hace daño de combate al Mazo Castillo oponente, puedes buscar un Aliado en el Mazo Castillo oponente y desterrarlo.</p>",
+          "flavor": "<p><br></p>",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Torc-fiain-promocional-1791472300168.webp",
+          "artist": "Franxo (Francisco Bahamondes)",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "SOMBRA"
+          ],
+          "edition": {
+            "name": "🍀 Hijos de Daana",
+            "slug": "hijos-de-daana",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 458,
+            "name": "Juego Organizado Octubre-Noviembre 2026",
+            "sortOrder": 78,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 52816,
+          "slug": "fuego-pascual",
+          "name": "Fuego Pascual",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>Mueve un Aliado que controles de la Línea de Defensa a la Línea de Ataque. Luego, roba 2 cartas.</p>",
+          "flavor": "<p><br></p>",
+          "type": "TALISMAN",
+          "cost": 1,
+          "attack": 0,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Fuego-pascual-promocional-1791471863832.webp",
+          "artist": "Christian Aguirre",
+          "frequency": "PROMOCIONAL",
+          "race": [],
+          "edition": {
+            "name": "🍀 Hijos de Daana",
+            "slug": "hijos-de-daana",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 458,
+            "name": "Juego Organizado Octubre-Noviembre 2026",
+            "sortOrder": 78,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 52815,
+          "slug": "sidhe-na-gcat",
+          "name": "Sidhe na gCat",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p><strong>Imbloqueable</strong>. Si controlas 2 o más cartas Sidhe, este Aliado gana 2 a la fuerza. Si este Aliado es descartado de tu Mano puedes subir otra carta Sidhe de coste 2 o menos de tu Cementerio a tu Mano.</p>",
+          "flavor": "<p><br></p>",
+          "type": "ALIADO",
+          "cost": 1,
+          "attack": 0,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Sidhe-na-gcat-promocional-1791471513235.webp",
+          "artist": "Christian Aguirre",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "DESAFIANTE"
+          ],
+          "edition": {
+            "name": "🍀 Hijos de Daana",
+            "slug": "hijos-de-daana",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 458,
+            "name": "Juego Organizado Octubre-Noviembre 2026",
+            "sortOrder": 78,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
+          "id": 52814,
+          "slug": "loeagaire-mac-neill",
+          "name": "Loeagaire Mac Neill",
+          "gameId": 1,
+          "collectorCode": "EDICION LIMITADA JO",
+          "effect": "<p>Puede atacar cuando entra en juego. Una vez por turno, puedes mover este u otro Aliado que controles de la Línea de Defensa a la Línea de Ataque para que otro Aliado que controles gane 2 a la Ffuerza hasta la Fase Final.</p>",
+          "flavor": "<p><br></p>",
+          "type": "ALIADO",
+          "cost": 2,
+          "attack": 3,
+          "imageUrl": "https://cdn.mazos.cl/PRIMER_BLOQUE/05-Hijos-de-Daana/cartas/Loeagaire-mac-neill-promocional-1791471394502.webp",
+          "artist": "Abbay",
+          "frequency": "PROMOCIONAL",
+          "race": [
+            "DEFENSOR"
+          ],
+          "edition": {
+            "name": "🍀 Hijos de Daana",
+            "slug": "hijos-de-daana",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "cardCategory": {
+            "id": 458,
+            "name": "Juego Organizado Octubre-Noviembre 2026",
+            "sortOrder": 78,
+            "__typename": "CardCategory"
+          },
+          "__typename": "Card"
+        },
+        {
           "id": 41578,
           "slug": "amkh",
           "name": "Amkh",
@@ -180329,7 +183904,7 @@
           }
         }
       ],
-      "total": 5261,
+      "total": 5365,
       "pages": 1,
       "__typename": "CardCatalog"
     }
