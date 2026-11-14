@@ -3,6 +3,108 @@
     "CardCatalog": {
       "cards": [
         {
+          "id": 55728,
+          "slug": "team-legion-oro-inicial",
+          "name": "Team Legiøn Oro Inicial",
+          "gameId": 1,
+          "collectorCode": "OIT-01",
+          "effect": "",
+          "flavor": "Oro Inicial Team Legiøn",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/mit-01-team-legion.jpg",
+          "artist": "Team Legiøn",
+          "frequency": "ORO",
+          "race": [],
+          "edition": {
+            "name": "Oros Iniciales Teams",
+            "slug": "oros-iniciales-teams",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "cardCategory": {
+            "id": 0,
+            "name": "Oros Iniciales Teams",
+            "sortOrder": 0,
+            "__typename": "CardCategory"
+          },
+          "interactions": []
+        },
+        {
+          "id": 55727,
+          "slug": "team-rata-seca-oro-inicial",
+          "name": "Team Rata Seca Oro Inicial",
+          "gameId": 1,
+          "collectorCode": "OIT-02",
+          "effect": "",
+          "flavor": "Oro Inicial Team Rata Seca",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/mit-02-team-rata-seca.jpg",
+          "artist": "Team Rata Seca",
+          "frequency": "ORO",
+          "race": [],
+          "edition": {
+            "name": "Oros Iniciales Teams",
+            "slug": "oros-iniciales-teams",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "cardCategory": {
+            "id": 0,
+            "name": "Oros Iniciales Teams",
+            "sortOrder": 0,
+            "__typename": "CardCategory"
+          },
+          "interactions": []
+        },
+        {
+          "id": 55726,
+          "slug": "bruma-store-oro-inicial",
+          "name": "Bruma Store Oro Inicial",
+          "gameId": 1,
+          "collectorCode": "OIT-03",
+          "effect": "",
+          "flavor": "Oro Inicial Bruma Store",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/mit-03-bruma-store.jpg",
+          "artist": "Bruma Store",
+          "frequency": "ORO",
+          "race": [],
+          "edition": {
+            "name": "Oros Iniciales Teams",
+            "slug": "oros-iniciales-teams",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "cardCategory": {
+            "id": 0,
+            "name": "Oros Iniciales Teams",
+            "sortOrder": 0,
+            "__typename": "CardCategory"
+          },
+          "interactions": []
+        },
+        {
           "id": 55725,
           "slug": "joya-de-dragon",
           "name": "Joya de Dragón",
@@ -7286,7 +7388,7 @@
           "slug": "mitoxicos-oro-inicial",
           "name": "Mitóxicos Oro Inicial",
           "gameId": 1,
-          "collectorCode": "MIT-00",
+          "collectorCode": "OIT-00",
           "effect": "",
           "flavor": "Oro Inicial Mitóxicos",
           "type": "ORO",
@@ -183904,7 +184006,7 @@
           }
         }
       ],
-      "total": 5365,
+      "total": 5368,
       "pages": 1,
       "__typename": "CardCatalog"
     }
