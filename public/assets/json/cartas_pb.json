@@ -3,6 +3,40 @@
     "CardCatalog": {
       "cards": [
         {
+          "id": 55729,
+          "slug": "team-periferia-oro-inicial",
+          "name": "Team Periferia Oro Inicial",
+          "gameId": 1,
+          "collectorCode": "OIT-04",
+          "effect": "",
+          "flavor": "Oro Inicial Team Periferia",
+          "type": "ORO",
+          "cost": 0,
+          "attack": 0,
+          "imageUrl": "https://mitoxicos.b-cdn.net/FURIA_EXTENDIDO/LBF2026/oit-04-team-periferia.webp",
+          "artist": "Team Periferia",
+          "frequency": "ORO",
+          "race": [],
+          "edition": {
+            "name": "Oros Iniciales Teams",
+            "slug": "oros-iniciales-teams",
+            "__typename": "Edition"
+          },
+          "game": {
+            "name": "📖 Primer Bloque",
+            "slug": "primer-bloque",
+            "__typename": "Game"
+          },
+          "__typename": "Card",
+          "cardCategory": {
+            "id": 0,
+            "name": "Oros Iniciales Teams",
+            "sortOrder": 0,
+            "__typename": "CardCategory"
+          },
+          "interactions": []
+        },
+        {
           "id": 55728,
           "slug": "team-legion-oro-inicial",
           "name": "Team Legiøn Oro Inicial",
@@ -184006,7 +184040,7 @@
           }
         }
       ],
-      "total": 5368,
+      "total": 5369,
       "pages": 1,
       "__typename": "CardCatalog"
     }
