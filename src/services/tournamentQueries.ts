@@ -1,20 +1,5 @@
 import { supabase } from '../config/supabase';
-import { API_BASE_URL } from '../config/api';
-
-export async function supabaseHasTournaments(): Promise<boolean> {
-  const { count, error } = await supabase
-    .from('tournaments')
-    .select('id', { count: 'exact', head: true });
-  if (error) return false;
-  return (count ?? 0) > 0;
-}
-
-export async function legacyGet<T>(path: string): Promise<T> {
-  const response = await fetch(`${API_BASE_URL}${path}`);
-  if (!response.ok) throw new Error(`Failed to fetch ${path}`);
-  return response.json() as Promise<T>;
-}
-
+import { queryClient, queryKeys } from '../lib/queryClient';
 
 export interface PremierPlayerRow {
   premier_id: number;
@@ -111,41 +96,48 @@ function unwrap<T>(result: { data: T | null; error: { message: string } | null }
   return result.data as T;
 }
 
-export async function fetchPremierPlayers(): Promise<PremierPlayerRow[]> {
+async function loadPremierPlayers(): Promise<PremierPlayerRow[]> {
   const result = await supabase
     .from('premier_players')
     .select('premier_id, display_name')
     .order('premier_id');
-  return unwrap(result, 'premier_players');
+  return unwrap(result, 'premier_players').map((row) => ({
+    premier_id: row.premier_id,
+    display_name: row.display_name ?? `Jugador ${row.premier_id}`,
+  }));
 }
 
-export async function fetchSubformats(): Promise<SubformatRow[]> {
+async function loadSubformats(): Promise<SubformatRow[]> {
   const result = await supabase
     .from('game_subformats')
     .select('subformat_id, subformat_name')
     .order('subformat_id');
-  return unwrap(result, 'game_subformats');
+  return unwrap(result, 'game_subformats').map((row) => ({
+    subformat_id: row.subformat_id,
+    subformat_name: row.subformat_name ?? `Subformato ${row.subformat_id}`,
+  }));
 }
 
-export async function fetchActiveTournament(): Promise<TournamentRow | null> {
+async function loadActiveTournament(): Promise<TournamentRow | null> {
   const result = await supabase
     .from('tournaments')
     .select('*')
     .eq('is_active', true)
     .maybeSingle();
   if (result.error) throw new Error(`tournaments: ${result.error.message}`);
-  return result.data;
+  // format / tournament_type / pairing_mode are restricted by CHECK constraints.
+  return result.data as TournamentRow | null;
 }
 
-export async function fetchTournaments(): Promise<TournamentRow[]> {
+async function loadTournaments(): Promise<TournamentRow[]> {
   const result = await supabase
     .from('tournaments')
     .select('*')
     .order('year', { ascending: false });
-  return unwrap(result, 'tournaments');
+  return unwrap(result, 'tournaments') as TournamentRow[];
 }
 
-export async function fetchActivePlayers(tournamentId: number): Promise<ActivePlayerRow[]> {
+async function loadActivePlayers(tournamentId: number): Promise<ActivePlayerRow[]> {
   const result = await supabase
     .from('active_tournament_player')
     .select('player_id, confirmed, created_at')
@@ -154,16 +146,17 @@ export async function fetchActivePlayers(tournamentId: number): Promise<ActivePl
   return unwrap(result, 'active_tournament_player');
 }
 
-export async function fetchRounds(table: 'active_tournaments_rounds' | 'archived_tournaments_rounds', tournamentId: number): Promise<RoundRow[]> {
+async function loadRounds(table: 'active_tournaments_rounds' | 'archived_tournaments_rounds', tournamentId: number): Promise<RoundRow[]> {
   const result = await supabase
     .from(table)
     .select('id, tournament_id, round_number, format, subformat_id, is_extra_round')
     .eq('tournament_id', tournamentId)
     .order('round_number');
-  return unwrap(result, table);
+  // format is restricted to 'PB' | 'FX' by a CHECK constraint.
+  return unwrap(result, table) as RoundRow[];
 }
 
-export async function fetchMatches(table: 'active_tournaments_matches' | 'archived_tournaments_matches', tournamentId: number): Promise<MatchRow[]> {
+async function loadMatches(table: 'active_tournaments_matches' | 'archived_tournaments_matches', tournamentId: number): Promise<MatchRow[]> {
   const result = await supabase
     .from(table)
     .select('id, tournament_id, round_id, player1_id, player2_id, score1, score2, completed')
@@ -171,19 +164,20 @@ export async function fetchMatches(table: 'active_tournaments_matches' | 'archiv
   return unwrap(result, table);
 }
 
-export async function fetchActiveStandings(): Promise<ActiveStandingRow[]> {
+async function loadActiveStandings(): Promise<ActiveStandingRow[]> {
   const result = await supabase.from('active_tournament_standings').select('*');
-  return unwrap(result, 'active_tournament_standings');
+  // View columns are reported as nullable, but every row comes from a confirmed player.
+  return unwrap(result, 'active_tournament_standings') as ActiveStandingRow[];
 }
 
-export async function fetchArchivedStandings(tournamentId?: number): Promise<StandingRow[]> {
+async function loadArchivedStandings(tournamentId?: number): Promise<StandingRow[]> {
   let query = supabase.from('archived_tournaments_standings').select('*');
   if (tournamentId !== undefined) query = query.eq('tournament_id', tournamentId);
   const result = await query;
   return unwrap(result, 'archived_tournaments_standings');
 }
 
-export async function fetchRaces(tournamentId?: number): Promise<RaceRow[]> {
+async function loadRaces(tournamentId?: number): Promise<RaceRow[]> {
   let query = supabase
     .from('tournament_player_races')
     .select('tournament_id, player_id, race_format1, race_format2');
@@ -192,14 +186,14 @@ export async function fetchRaces(tournamentId?: number): Promise<RaceRow[]> {
   return unwrap(result, 'tournament_player_races');
 }
 
-export async function fetchArchivedRoundsAll(): Promise<RoundRow[]> {
+async function loadArchivedRoundsAll(): Promise<RoundRow[]> {
   const result = await supabase
     .from('archived_tournaments_rounds')
     .select('id, tournament_id, round_number, format, subformat_id, is_extra_round');
-  return unwrap(result, 'archived_tournaments_rounds');
+  return unwrap(result, 'archived_tournaments_rounds') as RoundRow[];
 }
 
-export async function fetchArchivedMatchesAll(): Promise<MatchRow[]> {
+async function loadArchivedMatchesAll(): Promise<MatchRow[]> {
   const result = await supabase
     .from('archived_tournaments_matches')
     .select('id, tournament_id, round_id, player1_id, player2_id, score1, score2, completed');
@@ -215,3 +209,64 @@ export function subformatName(subformats: SubformatRow[], subformatId: number | 
   if (subformatId === null) return null;
   return subformats.find((subformat) => subformat.subformat_id === subformatId)?.subformat_name ?? null;
 }
+
+// ---------------------------------------------------------------------------
+// Cached accessors. Every service goes through the shared TanStack Query cache,
+// so concurrent callers share one request and reference data is not refetched
+// on every call. Writes (tournamentAdminAPI) and Realtime events invalidate
+// queryKeys.live; reference data and archives change rarely.
+// ---------------------------------------------------------------------------
+const REFERENCE_STALE_MS = 10 * 60_000;
+const LIVE_STALE_MS = 5_000;
+
+type RoundsTable = 'active_tournaments_rounds' | 'archived_tournaments_rounds';
+type MatchesTable = 'active_tournaments_matches' | 'archived_tournaments_matches';
+
+function cachedReference<T>(key: readonly unknown[], load: () => Promise<T>): Promise<T> {
+  return queryClient.fetchQuery({ queryKey: [...queryKeys.reference, ...key], queryFn: load, staleTime: REFERENCE_STALE_MS });
+}
+
+function cachedLive<T>(key: readonly unknown[], load: () => Promise<T>): Promise<T> {
+  return queryClient.fetchQuery({ queryKey: [...queryKeys.live, ...key], queryFn: load, staleTime: LIVE_STALE_MS });
+}
+
+export const fetchPremierPlayers = () => cachedReference(['premier_players'], loadPremierPlayers);
+export const fetchSubformats = () => cachedReference(['game_subformats'], loadSubformats);
+export const fetchArchivedStandings = (tournamentId?: number) =>
+  cachedReference(['archived_standings', tournamentId ?? 'all'], () => loadArchivedStandings(tournamentId));
+export const fetchArchivedRoundsAll = () => cachedReference(['archived_rounds', 'all'], loadArchivedRoundsAll);
+export const fetchArchivedMatchesAll = () => cachedReference(['archived_matches', 'all'], loadArchivedMatchesAll);
+
+// The tournament list includes is_active, so it changes when a tournament starts or is archived.
+export const fetchTournaments = () => cachedLive(['tournaments'], loadTournaments);
+export const fetchActiveTournament = () => cachedLive(['active_tournament'], loadActiveTournament);
+export const fetchActivePlayers = (tournamentId: number) =>
+  cachedLive(['active_players', tournamentId], () => loadActivePlayers(tournamentId));
+export const fetchActiveStandings = () => cachedLive(['active_standings'], loadActiveStandings);
+// Races are edited during the event, so they are treated as live data.
+export const fetchRaces = (tournamentId?: number) =>
+  cachedLive(['races', tournamentId ?? 'all'], () => loadRaces(tournamentId));
+
+export const fetchRounds = (table: RoundsTable, tournamentId: number) =>
+  table === 'active_tournaments_rounds'
+    ? cachedLive(['rounds', tournamentId], () => loadRounds(table, tournamentId))
+    : cachedReference(['archived_rounds', tournamentId], () => loadRounds(table, tournamentId));
+
+export const fetchMatches = (table: MatchesTable, tournamentId: number) =>
+  table === 'active_tournaments_matches'
+    ? cachedLive(['matches', tournamentId], () => loadMatches(table, tournamentId))
+    : cachedReference(['archived_matches', tournamentId], () => loadMatches(table, tournamentId));
+
+export interface VenueRow {
+  id: number;
+  name: string;
+  address: string;
+}
+
+async function loadVenues(): Promise<VenueRow[]> {
+  const result = await supabase.from('tournament_venues').select('id, name, address').order('name');
+  return unwrap(result, 'tournament_venues');
+}
+
+/** Saved places to play; the admin's write helpers invalidate this cache. */
+export const fetchVenues = () => cachedReference(['venues'], loadVenues);

@@ -24,7 +24,7 @@ node scripts/merge-cards.mjs pb --dry   # genera cartas_pb.preview.json para rev
 node scripts/merge-cards.mjs pb         # sobrescribe cartas_pb.json
 ```
 
-Por defecto lee el export desde `public/assets/json/pb_mazos.json`.
+Por defecto lee el export desde `scripts/source/pb_mazos.json`.
 Para otra ruta: `node scripts/merge-cards.mjs pb API_JSON="ruta/al/export.json"`.
 
 Que hace:

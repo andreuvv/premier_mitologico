@@ -107,3 +107,17 @@ function applyPlayoffOrder(standings: APIStanding[], fixture: APIFixtureResponse
   }
   return result.filter((standing): standing is APIStanding => Boolean(standing));
 }
+
+/** Players who won a match of the final (extra) round, e.g. to highlight them in the table. */
+export function playoffWinnerIds(fixture: APIFixtureResponse): Set<number> {
+  const winners = new Set<number>();
+  fixture.rounds
+    .filter((round) => round.is_extra_round)
+    .flatMap((round) => round.matches)
+    .forEach((match) => {
+      if (!match.completed || match.player2_id === null || match.score1 === null || match.score2 === null) return;
+      if (match.score1 > match.score2) winners.add(match.player1_id);
+      else if (match.score2 > match.score1) winners.add(match.player2_id);
+    });
+  return winners;
+}

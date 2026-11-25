@@ -8,10 +8,8 @@ import {
   fetchRounds,
   fetchSubformats,
   fetchTournaments,
-  legacyGet,
   playerName,
   subformatName,
-  supabaseHasTournaments,
   type MatchRow,
   type PremierPlayerRow,
   type RaceRow,
@@ -244,7 +242,6 @@ async function loadCatalog() {
 
 export const tournamentAPI = {
   getTournaments: async (): Promise<Tournament[]> => {
-    if (!(await supabaseHasTournaments())) return legacyGet<Tournament[]>('/tournaments');
     const [tournaments, subformats] = await Promise.all([fetchTournaments(), fetchSubformats()]);
     return tournaments
       .filter((tournament) => !tournament.is_active)
@@ -252,7 +249,6 @@ export const tournamentAPI = {
   },
 
   getTournamentStandings: async (tournamentId: number): Promise<TournamentStanding[]> => {
-    if (!(await supabaseHasTournaments())) return legacyGet<TournamentStanding[]>(`/tournaments/${tournamentId}/standings`);
     const [standings, races, players, tournaments] = await Promise.all([
       fetchArchivedStandings(tournamentId),
       fetchRaces(tournamentId),
@@ -287,7 +283,6 @@ export const tournamentAPI = {
   },
 
   getTournamentRounds: async (tournamentId: number): Promise<TournamentRoundsResponse> => {
-    if (!(await supabaseHasTournaments())) return legacyGet<TournamentRoundsResponse>(`/tournaments/${tournamentId}/rounds`);
     const tournaments = await fetchTournaments();
     const tournament = tournaments.find((row) => row.id === tournamentId);
     const active = tournament?.is_active;
@@ -321,7 +316,6 @@ export const tournamentAPI = {
   },
 
   getTournamentRaces: async (tournamentId: number): Promise<TournamentRacesResponse> => {
-    if (!(await supabaseHasTournaments())) return legacyGet<TournamentRacesResponse>(`/tournaments/${tournamentId}/races`);
     const catalog = await loadCatalog();
     const tournament = catalog.tournaments.find((row) => row.id === tournamentId);
     if (!tournament) return emptyRaces();
@@ -335,19 +329,16 @@ export const tournamentAPI = {
   },
 
   getGlobalStandings: async (): Promise<GlobalStanding[]> => {
-    if (!(await supabaseHasTournaments())) return legacyGet<GlobalStanding[]>('/global-standings');
     const catalog = await loadCatalog();
     return buildGlobalStandings(catalog);
   },
 
   getGlobalRaces: async (): Promise<TournamentRacesResponse> => {
-    if (!(await supabaseHasTournaments())) return legacyGet<TournamentRacesResponse>('/global-races');
     const catalog = await loadCatalog();
     return summarizeRaces(catalog.races, catalog.standings, catalog.rounds, catalog.matches, premierArchived(catalog.tournaments));
   },
 
   getPlayerHistory: async (playerId: number): Promise<PlayerHistoryItem[]> => {
-    if (!(await supabaseHasTournaments())) return legacyGet<PlayerHistoryItem[]>(`/players/${playerId}/tournaments`);
     const catalog = await loadCatalog();
     return catalog.standings
       .filter((standing) => standing.player_id === playerId)

@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { supabase } from '../config/supabase';
+import { asJson } from '../lib/supabaseTypes';
 
 export interface UserDeck {
   id: string;
@@ -158,7 +159,7 @@ export function useUserDecks() {
         .from('user_decks')
         .update({
           name: options.name,
-          cards: cardsJson,
+          cards: asJson(cardsJson),
           is_public: options.isDraft ? false : options.isPublic,
         })
         .eq('id', options.deckId)
@@ -174,7 +175,7 @@ export function useUserDecks() {
           name: options.name,
           is_public: options.isDraft ? false : options.isPublic,
           format: options.format,
-          cards: cardsJson,
+          cards: asJson(cardsJson),
         })
         .select('id')
         .single();

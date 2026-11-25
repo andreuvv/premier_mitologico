@@ -43,7 +43,7 @@ export function useUserCollection(format: CollectionFormat, targetUserId?: strin
       .select('cards')
       .eq('user_id', effectiveUserId)
       .eq('format', format)
-      .single();
+      .maybeSingle(); // no row yet = empty list
 
     if (!error && data) {
       hydrateCollection((data.cards ?? {}) as CardsJson);

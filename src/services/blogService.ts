@@ -37,7 +37,7 @@ function parseFrontmatter(content: string): FrontmatterData {
   }
 
   const [, frontmatterText, markdownContent] = match;
-  const metadata: any = {};
+  const metadata: Record<string, string | string[] | undefined> = {};
 
   // Parse YAML-like frontmatter
   const lines = frontmatterText.split('\n');
@@ -73,7 +73,8 @@ function parseFrontmatter(content: string): FrontmatterData {
   }
 
   return {
-    metadata,
+    // Required fields were checked above.
+    metadata: metadata as unknown as FrontmatterData['metadata'],
     content: markdownContent.trim(),
   };
 }

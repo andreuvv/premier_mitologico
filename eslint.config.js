@@ -6,7 +6,7 @@ import tseslint from 'typescript-eslint'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(['dist', 'scripts']),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
@@ -18,6 +18,12 @@ export default defineConfig([
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
+    },
+    rules: {
+      // Most remaining hits are the "setLoading(true) + fetch in useEffect" pattern.
+      // They are being replaced by TanStack Query (useQuery), which removes the
+      // pattern entirely; until then this is reported as a warning, not an error.
+      'react-hooks/set-state-in-effect': 'warn',
     },
   },
 ])

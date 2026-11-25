@@ -19,7 +19,7 @@ export function localCardsPath(format) {
 // Default mazos.cl export in the repo (per format). Override with API_JSON env / argv.
 export function defaultApiPath(format) {
   if (format === 'pb') {
-    return path.join(APP_DIR, 'public', 'assets', 'json', 'pb_mazos.json');
+    return path.join(APP_DIR, 'scripts', 'source', 'pb_mazos.json');
   }
   return null;
 }

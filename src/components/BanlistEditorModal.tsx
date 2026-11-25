@@ -213,7 +213,7 @@ export default function BanlistEditorModal({ format, initialCategory, baseData, 
     onSaved();
   };
 
-  const Section = ({ title, cards, category }: { title: string; cards: BanListCard[]; category: BanListCategory }) => (
+  const renderSection = (title: string, cards: BanListCard[], category: BanListCategory) => (
     <div className={styles.section}>
       <h4>{title} ({cards.length})</h4>
       {cards.length === 0 ? (
@@ -339,9 +339,9 @@ export default function BanlistEditorModal({ format, initialCategory, baseData, 
         </div>
 
         <div className={styles.sections}>
-          <Section title="Baneadas" cards={banned} category={BanListCategory.BANNED} />
-          <Section title="Limitadas x1" cards={limitedX1} category={BanListCategory.LIMITED_X1} />
-          <Section title="Limitadas x2" cards={limitedX2} category={BanListCategory.LIMITED_X2} />
+          {renderSection('Baneadas', banned, BanListCategory.BANNED)}
+          {renderSection('Limitadas x1', limitedX1, BanListCategory.LIMITED_X1)}
+          {renderSection('Limitadas x2', limitedX2, BanListCategory.LIMITED_X2)}
         </div>
 
         {error && <p className={styles.error}>{error}</p>}

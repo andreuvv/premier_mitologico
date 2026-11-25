@@ -7,9 +7,7 @@ import styles from './CollectionFilters.module.css';
 const PB_RACES = ['Caballero', 'Defensor', 'Desafiante', 'Dragon', 'Eterno', 'Faerie', 'Faraon', 'Heroe', 'Olimpico', 'Sacerdote', 'Sombra', 'Titan'];
 const FX_RACES = ['Ancestral', 'Barbaro', 'Bestia', 'Caballero', 'Dragon', 'Eterno', 'Guerrero', 'Heroe', 'Sacerdote', 'Sombra'];
 const CARD_TYPES = ['Aliado', 'Arma', 'Totem', 'Talisman', 'Oro'];
-const ORO_FILTERS = ['all', 'with', 'without'] as const;
-
-type OroFilter = typeof ORO_FILTERS[number];
+type OroFilter = 'all' | 'with' | 'without';
 
 export interface FilterParams {
   edition: string | null;

@@ -16,7 +16,7 @@ const TournamentHero = () => {
       <div className={styles.logoSection}>
         <div className={styles.logoContainer}>
           <img
-            src={`${import.meta.env.BASE_URL}assets/images/premier_image.png`}
+            src={`${import.meta.env.BASE_URL}assets/images/premier_image.webp`}
             alt="Premier Tournament Image"
             className={styles.mainLogo}
           />

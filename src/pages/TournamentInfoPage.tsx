@@ -4,13 +4,12 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import SectionLoader from '../components/loading/SectionLoader';
 import { infoSectionConfig, tournamentSubsectionConfig } from '../config/constants';
-import { useAuth } from '../hooks/useAuth';
 import {
   getInfoDocument,
   infoDocumentSlug,
   saveInfoDocument,
 } from '../services/infoDocumentService';
-import { isCurrentUserBanlistAdmin } from '../services/monthlyBanlistService';
+import { useIsAdmin } from '../hooks/useIsAdmin';
 import { InfoSection, TournamentSubsection } from '../types';
 import { getIcon } from '../utils/iconMapper';
 import styles from './GameFormatsPage.module.css';
@@ -48,7 +47,6 @@ const TournamentInfoPage: React.FC = () => {
     subsection?: string;
   }>();
   const navigate = useNavigate();
-  const { user } = useAuth();
   const initialState = getInitialState(sectionParam, subsectionParam);
   const [selectedSection, setSelectedSection] = useState<InfoSection>(initialState.section);
   const [selectedSubsection, setSelectedSubsection] = useState<TournamentSubsection | null>(
@@ -59,7 +57,7 @@ const TournamentInfoPage: React.FC = () => {
   const [loadError, setLoadError] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isNarrow, setIsNarrow] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const { isAdmin } = useIsAdmin();
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState('');
   const [saving, setSaving] = useState(false);
@@ -86,21 +84,6 @@ const TournamentInfoPage: React.FC = () => {
     }
   }, [mobileMenuOpen]);
 
-  useEffect(() => {
-    if (!user) {
-      setIsAdmin(false);
-      return;
-    }
-
-    let cancelled = false;
-    isCurrentUserBanlistAdmin(user.id).then((value) => {
-      if (!cancelled) setIsAdmin(value);
-    });
-
-    return () => {
-      cancelled = true;
-    };
-  }, [user]);
 
   useEffect(() => {
     if (subsectionParam) {
@@ -232,7 +215,7 @@ VEANVE@GMAIL.COM`;
     },
   };
 
-  const MarkdownBody: React.FC<{ content: string }> = ({ content: markdown }) => (
+  const renderMarkdown = (markdown: string) => (
     <div className={styles.markdown}>
       <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
         {markdown}
@@ -360,7 +343,7 @@ VEANVE@GMAIL.COM`;
                   <span className={styles.paneLabel}>Vista previa</span>
                   <div className={styles.previewScroll}>
                     {draft.trim() ? (
-                      <MarkdownBody content={draft} />
+                      renderMarkdown(draft)
                     ) : (
                       <p className={styles.empty}>La vista previa está vacía.</p>
                     )}
@@ -393,7 +376,7 @@ VEANVE@GMAIL.COM`;
               <p>Intenta de nuevo en un momento. Si el problema sigue, avísanos.</p>
             </div>
           ) : content.trim() ? (
-            <MarkdownBody content={content} />
+            renderMarkdown(content)
           ) : (
             <div className={styles.status}>
               <h3>Esta sección todavía no tiene contenido</h3>

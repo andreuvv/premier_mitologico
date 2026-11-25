@@ -1,4 +1,3 @@
-import { API_BASE_URL } from '../config/api';
 import {
   fetchActiveStandings,
   fetchActiveTournament,
@@ -7,7 +6,6 @@ import {
   fetchPremierPlayers,
   fetchTournaments,
   playerName,
-  supabaseHasTournaments,
 } from './tournamentQueries';
 
 export interface OnlineTournament {
@@ -75,12 +73,6 @@ function toOnlineTournament(row: {
 const onlineTournamentService = {
   async getActiveTournaments(): Promise<OnlineTournament[]> {
     try {
-      if (!(await supabaseHasTournaments())) {
-        const response = await fetch(`${API_BASE_URL}/tournaments/active`);
-        if (!response.ok) return [];
-        const tournaments = await response.json();
-        return tournaments.filter((tournament: OnlineTournament) => tournament.type === 'ONLINE');
-      }
       const tournament = await fetchActiveTournament();
       if (!tournament || tournament.tournament_type !== 'special_event') return [];
       return [toOnlineTournament(tournament)];
@@ -92,11 +84,6 @@ const onlineTournamentService = {
 
   async getTournamentStandings(tournamentId: number): Promise<OnlineStanding[]> {
     try {
-      if (!(await supabaseHasTournaments())) {
-        const response = await fetch(`${API_BASE_URL}/tournaments/online/${tournamentId}/standings`);
-        if (!response.ok) return [];
-        return response.json();
-      }
       const [tournament, players] = await Promise.all([
         fetchTournaments().then((rows) => rows.find((row) => row.id === tournamentId)),
         fetchPremierPlayers(),
@@ -136,11 +123,6 @@ const onlineTournamentService = {
 
   async getTournamentMatches(tournamentId: number): Promise<OnlineMatch[]> {
     try {
-      if (!(await supabaseHasTournaments())) {
-        const response = await fetch(`${API_BASE_URL}/tournaments/online/${tournamentId}/matches`);
-        if (!response.ok) return [];
-        return response.json();
-      }
       const tournaments = await fetchTournaments();
       const tournament = tournaments.find((row) => row.id === tournamentId);
       if (!tournament) return [];
@@ -172,11 +154,6 @@ const onlineTournamentService = {
 
   async getTournamentInfo(tournamentId: number): Promise<OnlineTournament | null> {
     try {
-      if (!(await supabaseHasTournaments())) {
-        const response = await fetch(`${API_BASE_URL}/tournaments/online/${tournamentId}/info`);
-        if (!response.ok) return null;
-        return response.json();
-      }
       const tournaments = await fetchTournaments();
       const tournament = tournaments.find((row) => row.id === tournamentId);
       return tournament ? toOnlineTournament(tournament) : null;

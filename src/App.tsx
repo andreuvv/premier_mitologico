@@ -1,11 +1,12 @@
 import { lazy, Suspense } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Header from './components/layout/Header';
-import { ActiveTournamentProvider } from './hooks/useActiveTournamentCard';
+import { ActiveTournamentProvider } from './context/ActiveTournamentProvider';
 import Footer from './components/layout/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import MitoxicosLoader from './components/loading/MitoxicosLoader';
 import LoadingOverlay from './components/loading/LoadingOverlay';
+import ErrorBoundary from './components/ErrorBoundary';
 import styles from './App.module.css';
 
 // Lazy load page components
@@ -32,6 +33,7 @@ const LocalJsonEditorPage = lazy(() => import('./pages/LocalJsonEditorPage'));
 const ReworkPage = lazy(() => import('./pages/ReworkPage'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage'));
 const TournamentAdminPage = lazy(() => import('./pages/TournamentAdminPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 const PageLoader = () => (
   <LoadingOverlay visible>
@@ -40,11 +42,14 @@ const PageLoader = () => (
 );
 
 function App() {
+  const { pathname } = useLocation();
+
   return (
     <ActiveTournamentProvider>
     <div className={styles.app}>
       <Header />
       <main className={styles.main}>
+        <ErrorBoundary resetKey={pathname}>
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -85,8 +90,10 @@ function App() {
             <Route path="/admin/torneo" element={<TournamentAdminPage />} />
             <Route path="/perfil" element={<ProfilePage />} />
             <Route path="/perfil/:username" element={<ProfilePage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
+        </ErrorBoundary>
       </main>
       <Footer />
       <ScrollToTop />

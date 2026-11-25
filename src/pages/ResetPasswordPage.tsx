@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../config/supabase';
+import { leakedPasswordError } from '../utils/passwordSecurity';
 
 export default function ResetPasswordPage() {
   const navigate = useNavigate();
@@ -37,6 +38,12 @@ export default function ResetPasswordPage() {
     }
 
     setLoading(true);
+    const leaked = await leakedPasswordError(password);
+    if (leaked) {
+      setLoading(false);
+      setError(leaked);
+      return;
+    }
     const { error } = await supabase.auth.updateUser({ password });
     setLoading(false);
 

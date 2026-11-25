@@ -1,4 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useIsAdmin } from '../hooks/useIsAdmin';
+import statusStyles from '../components/StatusMessage.module.css';
 import { CollectionCard, CollectionCatalog, CollectionFormat } from '../types/collection';
 import { loadCollectionCards } from '../services/collectionService';
 import styles from './LocalJsonEditorPage.module.css';
@@ -38,7 +41,25 @@ function asLocalCatalog(catalog: CollectionCatalog): LocalCatalog {
   };
 }
 
+/** Admin-only tool: other visitors get a notice and the catalog is never loaded. */
 export default function LocalJsonEditorPage() {
+  const { isAdmin, checking } = useIsAdmin();
+  if (checking) return <section className={statusStyles.wrapper}>Cargando…</section>;
+  if (!isAdmin) {
+    return (
+      <section className={statusStyles.wrapper}>
+        <h1 className={statusStyles.title}>Acceso restringido</h1>
+        <p className={statusStyles.text}>Esta herramienta es solo para el administrador.</p>
+        <div className={statusStyles.actions}>
+          <Link to="/deck-builder" className={statusStyles.primary}>Ir al Deck Builder</Link>
+        </div>
+      </section>
+    );
+  }
+  return <LocalJsonEditor />;
+}
+
+function LocalJsonEditor() {
   const [format, setFormat] = useState<CollectionFormat>(CollectionFormat.PRIMER_BLOQUE);
   const [catalog, setCatalog] = useState<LocalCatalog | null>(null);
   const [loading, setLoading] = useState(true);
@@ -59,7 +80,7 @@ export default function LocalJsonEditorPage() {
       .finally(() => setLoading(false));
   }, [format]);
 
-  const cards = catalog?.data.CardCatalog.cards ?? [];
+  const cards = useMemo(() => catalog?.data.CardCatalog.cards ?? [], [catalog]);
 
   const frequencyOptions = useMemo(
     () =>

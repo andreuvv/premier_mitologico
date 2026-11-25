@@ -8,7 +8,8 @@ export default function AuthCallbackPage() {
 
   useEffect(() => {
     let handled = false;
-    let timeout: ReturnType<typeof setTimeout>;
+    // Final fallback: if nothing confirmed the link after 8 s, treat it as invalid.
+    const timeout = setTimeout(() => { if (!handled) goToError(); }, 8000);
 
     const params = new URLSearchParams(window.location.search);
     const isRecoveryUrl = params.get('type') === 'recovery';
@@ -62,8 +63,6 @@ export default function AuthCallbackPage() {
       else goToConfirmed();
     });
 
-    // Final fallback timeout
-    timeout = setTimeout(() => { if (!handled) goToError(); }, 8000);
 
     return () => {
       handled = true;

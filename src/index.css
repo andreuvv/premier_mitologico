@@ -19,28 +19,32 @@
 
 @font-face {
   font-family: 'Cyrodiil';
-  src: url('/fonts/Cyrodiil.otf') format('opentype');
+  src: url('/fonts/Cyrodiil.woff2') format('woff2');
+  font-display: swap;
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Cyrodiil';
-  src: url('/fonts/Cyrodiil Bold.otf') format('opentype');
+  src: url('/fonts/Cyrodiil Bold.woff2') format('woff2');
+  font-display: swap;
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Cyrodiil';
-  src: url('/fonts/Cyrodiil Italic.otf') format('opentype');
+  src: url('/fonts/Cyrodiil Italic.woff2') format('woff2');
+  font-display: swap;
   font-weight: 400;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Cyrodiil';
-  src: url('/fonts/Cyrodiil Bold Italic.otf') format('opentype');
+  src: url('/fonts/Cyrodiil Bold Italic.woff2') format('woff2');
+  font-display: swap;
   font-weight: 700;
   font-style: italic;
 }

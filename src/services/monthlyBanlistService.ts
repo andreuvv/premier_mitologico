@@ -1,4 +1,5 @@
 import { supabase } from '../config/supabase';
+import { asJson } from '../lib/supabaseTypes';
 import { BanListData, BanListFormat, BanListCard } from '../types/banlist';
 
 interface MonthlyBanlistRow {
@@ -47,7 +48,7 @@ export const getLatestMonthlyBanlist = async (format: BanListFormat): Promise<Ba
     return null;
   }
 
-  return toBanListData(data as MonthlyBanlistRow);
+  return toBanListData(data as unknown as MonthlyBanlistRow);
 };
 
 export const getLatestTwoMonthlyBanlists = async (
@@ -70,7 +71,7 @@ export const getLatestTwoMonthlyBanlists = async (
     return [];
   }
 
-  return (data as MonthlyBanlistRow[]).map(row => ({
+  return (data as unknown as MonthlyBanlistRow[]).map(row => ({
     format: row.format,
     year: row.year,
     month: row.month,
@@ -100,7 +101,7 @@ export const getMonthlyBanlistByMonth = async (
     return null;
   }
 
-  return toBanListData(data as MonthlyBanlistRow);
+  return toBanListData(data as unknown as MonthlyBanlistRow);
 };
 
 export const upsertMonthlyBanlist = async (
@@ -116,9 +117,9 @@ export const upsertMonthlyBanlist = async (
         format,
         year,
         month,
-        banned_cards: data.banned,
-        limited_x1_cards: data.limitedX1,
-        limited_x2_cards: data.limitedX2,
+        banned_cards: asJson(data.banned),
+        limited_x1_cards: asJson(data.limitedX1),
+        limited_x2_cards: asJson(data.limitedX2),
         updated_by: (await supabase.auth.getUser()).data.user?.id ?? null,
       },
       { onConflict: 'format,year,month' }

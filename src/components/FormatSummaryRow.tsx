@@ -5,7 +5,7 @@ import {
   ChangeType,
   getChangeArrowInfo,
 } from '../data/banlistSummary';
-import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import {
   FaChevronLeft,
   FaChevronRight,
@@ -245,69 +245,59 @@ function FormatCarousel({ items, onCardClick }: FormatCarouselProps) {
   );
 }
 
+type CardLookup = {
+  all: CollectionCard[];
+  byId: Map<CollectionCard['id'], CollectionCard>;
+  byName: Map<string, CollectionCard>;
+};
+
+// The full catalogs are several MB, so they are only downloaded when the user
+// opens a card's detail, not when the summary renders (e.g. on the Home page).
+let cardLookupRequest: Promise<CardLookup> | null = null;
+
+function loadCardLookup(): Promise<CardLookup> {
+  if (!cardLookupRequest) {
+    cardLookupRequest = Promise.all([
+      loadCollectionCards(CollectionFormat.PRIMER_BLOQUE),
+      loadCollectionCards(CollectionFormat.FURIA_EXTENDIDO),
+    ]).then(([pbCatalog, fxCatalog]) => {
+      const all = [...pbCatalog.data.CardCatalog.cards, ...fxCatalog.data.CardCatalog.cards];
+      const byId = new Map(all.map((card) => [card.id, card] as const));
+      const byName = new Map<string, CollectionCard>();
+      all.forEach((card) => byName.set(card.name.toLowerCase(), card));
+      return { all, byId, byName };
+    });
+    cardLookupRequest.catch(() => {
+      cardLookupRequest = null;
+    });
+  }
+  return cardLookupRequest;
+}
+
+function resolveCollectionCard(item: FormatSummary, lookup: CardLookup): CollectionCard | null {
+  if (item.cardId) {
+    const byId = lookup.byId.get(item.cardId);
+    if (byId) return byId;
+  }
+
+  const byName = lookup.byName.get(item.card.toLowerCase());
+  if (byName) return byName;
+
+  if (item.imageUrl) {
+    const byImage = lookup.all.find((card) => card.imageUrl === item.imageUrl);
+    if (byImage) return byImage;
+  }
+
+  return null;
+}
+
 export default function FormatSummaryRow({ summaries }: Props) {
   const [viewMode, setViewMode] = useState<ViewMode>('carousel');
   const [hoveredCard, setHoveredCard] = useState<HoveredCard>(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [allCards, setAllCards] = useState<CollectionCard[]>([]);
   const [selectedCard, setSelectedCard] = useState<CollectionCard | null>(null);
   const [modalCards, setModalCards] = useState<CollectionCard[]>([]);
-
-  const cardsById = useMemo(
-    () => new Map(allCards.map((card) => [card.id, card])),
-    [allCards],
-  );
-
-  const cardsByName = useMemo(() => {
-    const map = new Map<string, CollectionCard>();
-    allCards.forEach((card) => {
-      map.set(card.name.toLowerCase(), card);
-    });
-    return map;
-  }, [allCards]);
-
-  const resolveCollectionCard = useCallback(
-    (item: FormatSummary): CollectionCard | null => {
-      if (item.cardId) {
-        const byId = cardsById.get(item.cardId);
-        if (byId) return byId;
-      }
-
-      const byName = cardsByName.get(item.card.toLowerCase());
-      if (byName) return byName;
-
-      if (item.imageUrl) {
-        const byImage = allCards.find((card) => card.imageUrl === item.imageUrl);
-        if (byImage) return byImage;
-      }
-
-      return null;
-    },
-    [allCards, cardsById, cardsByName],
-  );
-
-  useEffect(() => {
-    let cancelled = false;
-
-    Promise.all([
-      loadCollectionCards(CollectionFormat.PRIMER_BLOQUE),
-      loadCollectionCards(CollectionFormat.FURIA_EXTENDIDO),
-    ])
-      .then(([pbCatalog, fxCatalog]) => {
-        if (cancelled) return;
-        setAllCards([
-          ...pbCatalog.data.CardCatalog.cards,
-          ...fxCatalog.data.CardCatalog.cards,
-        ]);
-      })
-      .catch((error) => {
-        console.error('Error loading collection cards for banlist summary:', error);
-      });
-
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  const [loadingCard, setLoadingCard] = useState(false);
 
   useEffect(() => {
     const checkIsMobile = () => {
@@ -340,16 +330,25 @@ export default function FormatSummaryRow({ summaries }: Props) {
     handleCarouselCardClick(item, formatItems);
   };
 
-  const handleCarouselCardClick = (item: FormatSummary, formatItems: FormatSummary[]) => {
-    const card = resolveCollectionCard(item);
-    if (!card) return;
+  const handleCarouselCardClick = async (item: FormatSummary, formatItems: FormatSummary[]) => {
+    if (loadingCard) return;
+    setLoadingCard(true);
+    try {
+      const lookup = await loadCardLookup();
+      const card = resolveCollectionCard(item, lookup);
+      if (!card) return;
 
-    const resolvedCards = formatItems
-      .map((formatItem) => resolveCollectionCard(formatItem))
-      .filter((formatCard): formatCard is CollectionCard => formatCard !== null);
+      const resolvedCards = formatItems
+        .map((formatItem) => resolveCollectionCard(formatItem, lookup))
+        .filter((formatCard): formatCard is CollectionCard => formatCard !== null);
 
-    setModalCards(resolvedCards);
-    setSelectedCard(card);
+      setModalCards(resolvedCards);
+      setSelectedCard(card);
+    } catch (error) {
+      console.error('Error loading collection cards for banlist summary:', error);
+    } finally {
+      setLoadingCard(false);
+    }
   };
 
   const handleCloseModal = () => {
@@ -358,7 +357,7 @@ export default function FormatSummaryRow({ summaries }: Props) {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} aria-busy={loadingCard} style={loadingCard ? { cursor: 'progress' } : undefined}>
       <div className={styles.summaryToolbar}>
         <p className={styles.disclaimer}>Cartas no mencionadas mantienen restricciones del mes anterior</p>
         <div className={styles.viewToggle}>

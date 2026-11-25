@@ -51,11 +51,6 @@ export async function loadProfileByUsername(username: string): Promise<UserProfi
   return parseProfile(data as Record<string, unknown>);
 }
 
-export async function getProfileUsernameForPlayerId(playerId: number): Promise<string | null> {
-  const profile = await loadProfileByPremierPlayerId(playerId);
-  return profile?.username ?? null;
-}
-
 export async function loadProfileByPremierPlayerId(playerId: number): Promise<UserProfile | null> {
   const { data, error } = await supabase
     .from('profiles')

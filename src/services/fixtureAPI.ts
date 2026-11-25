@@ -6,10 +6,8 @@ import {
   fetchPremierPlayers,
   fetchRounds,
   fetchSubformats,
-  legacyGet,
   playerName,
   subformatName,
-  supabaseHasTournaments,
 } from './tournamentQueries';
 
 export interface APIMatchDetail {
@@ -98,14 +96,10 @@ async function loadActiveFixture(): Promise<APIFixtureResponse> {
 
 export const fixtureAPI = {
   getFixture: async (): Promise<APIFixtureResponse> => {
-    const tournament = await fetchActiveTournament();
-    if (!tournament && !(await supabaseHasTournaments())) return legacyGet<APIFixtureResponse>('/fixture');
     return loadActiveFixture();
   },
 
   getStandings: async (): Promise<APIStanding[]> => {
-    const tournament = await fetchActiveTournament();
-    if (!tournament && !(await supabaseHasTournaments())) return legacyGet<APIStanding[]>('/standings');
     const rows = await fetchActiveStandings();
     return rows.map((row) => ({
       id: row.player_id,
@@ -122,7 +116,6 @@ export const fixtureAPI = {
 
   getPlayers: async (): Promise<APIPlayer[]> => {
     const tournament = await fetchActiveTournament();
-    if (!tournament && !(await supabaseHasTournaments())) return legacyGet<APIPlayer[]>('/players');
     if (!tournament) return [];
     const [roster, players] = await Promise.all([
       fetchActivePlayers(tournament.id),

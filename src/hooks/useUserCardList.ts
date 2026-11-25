@@ -17,7 +17,9 @@ function setToJson(ids: Set<number>): CardsJson {
  * Mirrors useUserCollection but stores a Set membership instead of copy counts.
  * One row per (user_id, format); cards is a JSONB map { "card_id": 1 }.
  */
-export function useUserCardList(tableName: string, format: CollectionFormat, targetUserId?: string | null) {
+export type CardListTable = 'user_favorites_v2' | 'user_wishlist_v2';
+
+export function useUserCardList(tableName: CardListTable, format: CollectionFormat, targetUserId?: string | null) {
   const { user } = useAuth();
   const effectiveUserId = targetUserId ?? user?.id ?? null;
   const isOwner = Boolean(user && effectiveUserId && effectiveUserId === user.id);
@@ -41,10 +43,10 @@ export function useUserCardList(tableName: string, format: CollectionFormat, tar
       .select('cards')
       .eq('user_id', effectiveUserId)
       .eq('format', format)
-      .single();
+      .maybeSingle(); // no row yet = empty list
 
     if (!error && data) {
-      hydrate((data.cards ?? {}) as CardsJson);
+      hydrate((data.cards ?? {}) as unknown as CardsJson);
       return;
     }
 

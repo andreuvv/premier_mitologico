@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 // Disable the browser's native scroll restoration so it doesn't fire spurious
@@ -29,12 +29,10 @@ export function useScrollRestore(ready: boolean) {
 
   // Compute a stable storage key once at mount time.
   // Combining pathname + idx avoids collisions between different routes.
-  const storageKey = useRef(
-    (() => {
-      const idx = (window.history.state as { idx?: number } | null)?.idx;
-      return idx !== undefined ? `myl_scroll_${location.pathname}_${idx}` : null;
-    })()
-  ).current;
+  const [storageKey] = useState(() => {
+    const idx = (window.history.state as { idx?: number } | null)?.idx;
+    return idx !== undefined ? `myl_scroll_${location.pathname}_${idx}` : null;
+  });
 
   const hasRestoredRef = useRef(false);
   // Keep a ref to the pathname so the save closure doesn't need it in deps.
@@ -51,7 +49,7 @@ export function useScrollRestore(ready: boolean) {
     };
     window.addEventListener('scroll', save, { passive: true });
     return () => window.removeEventListener('scroll', save);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
 
   // Restore scroll once content is ready.
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, Fragment, type MouseEvent } from 'react';
+import { useState, useMemo, Fragment, type MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 import CardActionsMenu from './CardActionsMenu';
 import { sortSimpleCards } from '../utils/cardSorting';
@@ -140,16 +140,13 @@ export default function CardGrid({
   sortByCategoryOrder = false,
 }: CardGridProps) {
   const [perPage, setPerPage] = useState<PageSizeOption>(() => readSavedPerPage(cardsPerPage));
-  const [paginatedCards, setPaginatedCards] = useState<SimpleCard[]>([]);
-
   const sortedCards = useMemo(() => {
     return sortSimpleCards(cards, sortByCategoryOrder);
   }, [cards, sortByCategoryOrder]);
 
-  useEffect(() => {
+  const paginatedCards = useMemo(() => {
     const startIndex = (currentPage - 1) * perPage;
-    const endIndex = startIndex + perPage;
-    setPaginatedCards(sortedCards.slice(startIndex, endIndex));
+    return sortedCards.slice(startIndex, startIndex + perPage);
   }, [currentPage, sortedCards, perPage]);
 
   const handlePerPageChange = (newPerPage: PageSizeOption) => {

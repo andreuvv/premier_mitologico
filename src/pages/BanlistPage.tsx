@@ -5,8 +5,8 @@ import { BanListFormat, BanListCategory, BanListData, BanListCard } from '../typ
 import { CollectionCard, CollectionFormat } from '../types/collection';
 import { loadBanlist } from '../services/banlistService';
 import { loadCollectionCards } from '../services/collectionService';
-import { useAuth } from '../hooks/useAuth';
-import { getLatestTwoMonthlyBanlists, isCurrentUserBanlistAdmin, MonthlyBanlistSnapshot } from '../services/monthlyBanlistService';
+import { getLatestTwoMonthlyBanlists, MonthlyBanlistSnapshot } from '../services/monthlyBanlistService';
+import { useIsAdmin } from '../hooks/useIsAdmin';
 import BanlistEditorModal from '../components/BanlistEditorModal';
 import FormatSummaryRow from '../components/FormatSummaryRow';
 import BanlistMarqueeCarousel from '../components/BanlistMarqueeCarousel';
@@ -187,7 +187,6 @@ const compareBanlistChanges = (previous: BanListData, current: BanListData): For
 const BanlistPage = () => {
   const { format: formatSlug } = useParams<{ format?: string; category?: string }>();
   const navigate = useNavigate();
-  const { user } = useAuth();
 
   const [selectedFormat, setSelectedFormat] = useState<BanListFormat>(
     formatSlug && slugToFormat[formatSlug] ? slugToFormat[formatSlug] : BanListFormat.PRIMER_BLOQUE_EDICION,
@@ -195,7 +194,7 @@ const BanlistPage = () => {
   const [viewMode, setViewMode] = useState<ViewMode>('carousel');
   const [banlistData, setBanlistData] = useState<BanListData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const { isAdmin } = useIsAdmin();
   const [showEditor, setShowEditor] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
   const [showInfoPopup, setShowInfoPopup] = useState(false);
@@ -245,16 +244,6 @@ const BanlistPage = () => {
     }
   }, [formatSlug]);
 
-  useEffect(() => {
-    if (!user) {
-      setIsAdmin(false);
-      return;
-    }
-
-    isCurrentUserBanlistAdmin(user.id)
-      .then(setIsAdmin)
-      .catch(() => setIsAdmin(false));
-  }, [user]);
 
   useEffect(() => {
     let cancelled = false;

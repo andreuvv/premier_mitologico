@@ -4,13 +4,12 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import SectionLoader from '../components/loading/SectionLoader';
 import { formatSectionConfig, formatVariantConfig } from '../config/constants';
-import { useAuth } from '../hooks/useAuth';
 import {
   formatDocumentSlug,
   getFormatDocument,
   saveFormatDocument,
 } from '../services/formatDocumentService';
-import { isCurrentUserBanlistAdmin } from '../services/monthlyBanlistService';
+import { useIsAdmin } from '../hooks/useIsAdmin';
 import { FormatSection, FormatVariant } from '../types';
 import { getIcon } from '../utils/iconMapper';
 import styles from './GameFormatsPage.module.css';
@@ -51,7 +50,6 @@ const GameFormatsPage: React.FC = () => {
     variant?: string;
   }>();
   const navigate = useNavigate();
-  const { user } = useAuth();
   const initialState = getInitialState(sectionParam, variantParam);
   const [selectedSection, setSelectedSection] = useState<FormatSection>(initialState.section);
   const [selectedVariant, setSelectedVariant] = useState<FormatVariant | null>(initialState.variant);
@@ -60,7 +58,7 @@ const GameFormatsPage: React.FC = () => {
   const [loadError, setLoadError] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isNarrow, setIsNarrow] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const { isAdmin } = useIsAdmin();
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState('');
   const [saving, setSaving] = useState(false);
@@ -85,21 +83,6 @@ const GameFormatsPage: React.FC = () => {
     }
   }, [mobileMenuOpen]);
 
-  useEffect(() => {
-    if (!user) {
-      setIsAdmin(false);
-      return;
-    }
-
-    let cancelled = false;
-    isCurrentUserBanlistAdmin(user.id).then((value) => {
-      if (!cancelled) setIsAdmin(value);
-    });
-
-    return () => {
-      cancelled = true;
-    };
-  }, [user]);
 
   useEffect(() => {
     if (variantParam) {
